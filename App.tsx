@@ -38,7 +38,7 @@ const Modal: React.FC<{ title: string, isOpen: boolean, onClose: () => void, chi
 
 const App: React.FC = () => {
   const initialConfig: QRConfig = {
-    value: 'https://qrstudiopro.app',
+    value: 'https://shortnow.link',
     fgColor: '#1e293b',
     bgColor: '#ffffff',
     level: 'H',
@@ -480,7 +480,7 @@ const App: React.FC = () => {
           <span>© 2026 QR Maker Studio — Professional qrcode generator</span>
           <div className="flex items-center gap-8">
             <span className="text-indigo-500">Free forever</span>
-            <span>V4.6.2-SEO</span>
+            <span>V4.6.3-SEO</span>
           </div>
         </div>
       </footer>
