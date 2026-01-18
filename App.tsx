@@ -12,6 +12,13 @@ interface Toast {
   type: 'success' | 'error' | 'info';
 }
 
+const AdPlaceholder: React.FC<{ slot: string; className?: string }> = ({ slot, className }) => (
+  <div className={`bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center text-[10px] font-black uppercase tracking-widest text-slate-400 overflow-hidden min-h-[100px] ${className}`}>
+    <span>Advertisement Space - {slot}</span>
+    {/* Inserts AdSense code here */}
+  </div>
+);
+
 const Modal: React.FC<{ title: string, isOpen: boolean, onClose: () => void, children: React.ReactNode }> = ({ title, isOpen, onClose, children }) => {
   if (!isOpen) return null;
   return (
@@ -74,8 +81,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const options: Options = {
-      width: 320,
-      height: 320,
+      width: 300,
+      height: 300,
       data: config.value || ' ',
       margin: config.includeMargin ? 15 : 5,
       qrOptions: { errorCorrectionLevel: config.level },
@@ -183,7 +190,7 @@ const App: React.FC = () => {
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 py-8 md:py-16">
         
         {/* HERO SEO BLOCK */}
-        <section className="text-center mb-12 md:mb-24 space-y-6">
+        <section className="text-center mb-8 md:mb-16 space-y-6">
           <div className="inline-flex px-4 py-1.5 bg-indigo-50 text-indigo-700 text-[10px] font-black uppercase tracking-[0.3em] rounded-full border border-indigo-100 mb-2">
             The #1 Free QR Code Maker Online
           </div>
@@ -195,33 +202,44 @@ const App: React.FC = () => {
           </p>
         </section>
 
+        {/* ADSENSE TOP LEADERBOARD */}
+        <AdPlaceholder slot="Leaderboard_Top" className="w-full h-[90px] mb-12" />
+
         {/* GENERATOR CORE */}
         <div id="generator" className="grid lg:grid-cols-12 gap-8 md:gap-12 items-start">
           
-          {/* MOBILE PREVIEW - Top on Mobile, Sidebar on Desktop */}
+          {/* QR PREVIEW COLUMN - High Visibility on All Devices */}
           <aside className="lg:col-span-5 order-1 lg:order-2 lg:sticky lg:top-24">
-            <div className="bg-white p-6 md:p-10 rounded-3xl md:rounded-[3.5rem] shadow-xl border border-slate-200 flex flex-col items-center">
+            <div className="bg-white p-5 sm:p-8 md:p-10 rounded-3xl md:rounded-[3.5rem] shadow-xl border border-slate-200 flex flex-col items-center">
               <div className="w-full flex justify-between items-center mb-6">
                  <div>
                     <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block">Live Preview</span>
-                    <span className="text-xs font-black uppercase text-indigo-600">Free QR Code Maker</span>
+                    <span className="text-xs font-black uppercase text-indigo-600">Free qrcode maker</span>
                  </div>
                  <button onClick={copyToClipboard} className="p-3 bg-slate-50 hover:bg-indigo-50 text-slate-400 hover:text-indigo-600 rounded-xl transition-all border border-slate-100 shadow-sm" title="Copy to Clipboard">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
                  </button>
               </div>
 
-              <div className="p-4 md:p-10 rounded-3xl bg-slate-50 shadow-inner w-full flex justify-center border border-slate-100">
-                <div ref={qrRef} className="shadow-2xl rounded-2xl overflow-hidden bg-white p-4 scale-90 sm:scale-100 transition-all duration-300 ring-4 ring-white" />
+              {/* RESPONSIVE QR CONTAINER */}
+              <div className="relative p-3 sm:p-6 md:p-8 rounded-3xl bg-slate-50 shadow-inner w-full flex justify-center border border-slate-100 overflow-hidden min-h-[250px] sm:min-h-[350px]">
+                <div 
+                  ref={qrRef} 
+                  className="shadow-2xl rounded-2xl overflow-hidden bg-white p-2 sm:p-4 transition-all duration-300 ring-4 ring-white max-w-full flex justify-center items-center"
+                  style={{ transform: 'scale(1)', transformOrigin: 'center' }}
+                />
               </div>
 
               <div className="w-full mt-8 space-y-4">
                 <Button onClick={() => handleDownload('png')} disabled={!isValid} size="lg" className="w-full py-5 rounded-2xl text-base font-black uppercase tracking-widest shadow-lg shadow-indigo-100 hover:scale-[1.02]">Download PNG (Free)</Button>
                 <div className="grid grid-cols-2 gap-4">
-                  <Button onClick={() => handleDownload('svg')} disabled={!isValid} variant="outline" className="py-4 text-[10px] font-black tracking-widest border border-slate-200 uppercase rounded-xl">SVG Vector</Button>
+                  <Button onClick={() => handleDownload('svg')} disabled={!isValid} variant="outline" className="py-4 text-[10px] font-black tracking-widest border border-slate-200 uppercase rounded-xl">SVG (Vector)</Button>
                   <Button onClick={() => handleDownload('webp')} disabled={!isValid} variant="outline" className="py-4 text-[10px] font-black tracking-widest border border-slate-200 uppercase rounded-xl">WebP Export</Button>
                 </div>
               </div>
+
+              {/* ADSENSE SIDEBAR AD */}
+              <AdPlaceholder slot="Sidebar_Display" className="w-full h-[250px] mt-8" />
             </div>
           </aside>
 
@@ -374,6 +392,9 @@ const App: React.FC = () => {
           </div>
         </section>
 
+        {/* ADSENSE IN-CONTENT AD */}
+        <AdPlaceholder slot="In-Content_Horizontal" className="w-full h-[200px] mt-24" />
+
         {/* FEATURES SECTION */}
         <section id="features" className="mt-24 md:mt-48 max-w-5xl mx-auto seo-box">
           <h2 className="uppercase tracking-tighter">Best QR Code Generator Features</h2>
@@ -411,6 +432,9 @@ const App: React.FC = () => {
             ))}
           </div>
         </section>
+
+        {/* ADSENSE BOTTOM DISPLAY */}
+        <AdPlaceholder slot="Bottom_Footer_Display" className="w-full h-[250px] mt-24" />
       </main>
 
       {/* FIXED FOOTER */}
@@ -456,7 +480,7 @@ const App: React.FC = () => {
           <span>© 2026 QR Maker Studio — Professional qrcode generator</span>
           <div className="flex items-center gap-8">
             <span className="text-indigo-500">Free forever</span>
-            <span>V4.6.1-SEO</span>
+            <span>V4.6.2-SEO</span>
           </div>
         </div>
       </footer>
