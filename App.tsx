@@ -36,7 +36,7 @@ const Modal: React.FC<{ title: string, isOpen: boolean, onClose: () => void, chi
 };
 
 const App: React.FC = () => {
-  const [config, setConfig] = useState<QRConfig>({
+  const initialConfig: QRConfig = {
     value: 'https://qrstudiopro.app',
     fgColor: '#1e293b',
     bgColor: '#ffffff',
@@ -48,13 +48,14 @@ const App: React.FC = () => {
     cornerDotType: 'square',
     cornerSquareColor: '#1e293b',
     cornerDotColor: '#1e293b',
-  });
-  
+  };
+
+  const [config, setConfig] = useState<QRConfig>(initialConfig);
   const [activeType, setActiveType] = useState<QRType>('url');
   const [activeTab, setActiveTab] = useState<'content' | 'pattern' | 'corners' | 'logo'>('content');
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
-  const [aiSuggestion, setAiSuggestion] = useState<AIStyleSuggestion | null>(null);
+  const [aiResult, setAiResult] = useState<AIStyleSuggestion | null>(null);
   const [modalType, setModalType] = useState<string | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [history, setHistory] = useState<{value: string, timestamp: number}[]>([]);
@@ -82,21 +83,6 @@ const App: React.FC = () => {
     }
     return true;
   }, [config.value, activeType]);
-
-  const scanabilityScore = useMemo(() => {
-    const hexToRgb = (hex: string) => {
-      const bigint = parseInt(hex.replace('#', ''), 16);
-      return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
-    };
-    try {
-      const rgb1 = hexToRgb(config.fgColor);
-      const rgb2 = hexToRgb(config.bgColor);
-      const diff = Math.abs(rgb1[0]-rgb2[0]) + Math.abs(rgb1[1]-rgb2[1]) + Math.abs(rgb1[2]-rgb2[2]);
-      if (diff < 150) return 'Poor';
-      if (diff < 300) return 'Fair';
-      return 'Excellent';
-    } catch { return 'Unknown'; }
-  }, [config.fgColor, config.bgColor]);
 
   useEffect(() => {
     const options: Options = {
@@ -134,7 +120,7 @@ const App: React.FC = () => {
   }, [qrCode]);
 
   const handleDownload = (format: 'png' | 'svg' | 'webp') => {
-    qrCode.download({ name: `qr-maker-studio-pro-${Date.now()}`, extension: format });
+    qrCode.download({ name: `qr-studio-pro-${Date.now()}`, extension: format });
     addToast(`Successfully downloaded as ${format.toUpperCase()}`);
     
     const newHistory = [{ value: config.value, timestamp: Date.now() }, ...history.slice(0, 4)];
@@ -158,9 +144,10 @@ const App: React.FC = () => {
   const applyAIStyle = async () => {
     if (!config.value) return;
     setIsAiLoading(true);
+    setAiResult(null);
     try {
       const suggestion = await getAIStyleSuggestion(config.value);
-      setAiSuggestion(suggestion);
+      setAiResult(suggestion);
       setConfig(prev => ({
         ...prev,
         fgColor: suggestion.primaryColor,
@@ -175,6 +162,14 @@ const App: React.FC = () => {
     } catch (err) {
       addToast('AI suggestion failed. Please try again.', 'error');
     } finally { setIsAiLoading(false); }
+  };
+
+  const handleReset = () => {
+    setConfig(initialConfig);
+    setLogoSrc(null);
+    setUseGradient(false);
+    setAiResult(null);
+    addToast('Configuration reset to defaults.', 'info');
   };
 
   const scrollToSection = (id: string) => {
@@ -265,15 +260,28 @@ const App: React.FC = () => {
                         </span>
                       </div>
                     </div>
+
+                    {aiResult && (
+                      <div className="p-8 rounded-[3rem] bg-indigo-50 border-2 border-indigo-100 animate-in zoom-in-95 duration-500">
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-indigo-600 bg-white px-3 py-1 rounded-full shadow-sm">AI Analysis</span>
+                          <span className="text-sm font-black text-indigo-900">{aiResult.mood} Mood Applied</span>
+                        </div>
+                        <p className="text-sm text-indigo-700 font-medium leading-relaxed italic">
+                          "{aiResult.description}"
+                        </p>
+                      </div>
+                    )}
+
                     <div className="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-slate-50 gap-6">
                       <Button variant="ghost" size="lg" onClick={applyAIStyle} loading={isAiLoading} className="w-full sm:w-auto text-indigo-600 font-black tracking-widest text-[11px] uppercase hover:bg-indigo-50 px-10 rounded-3xl border-2 border-indigo-100 shadow-sm">
                         <svg className="mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                         Use AI QR Maker Theme
                       </Button>
-                      <div className="flex items-center gap-3 text-[10px] font-black text-slate-400 uppercase tracking-widest bg-slate-50 px-5 py-2 rounded-full border border-slate-100">
-                        <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></div>
-                        Safe Guest Mode: No Login Needed
-                      </div>
+                      <button onClick={handleReset} className="text-[10px] font-black text-slate-400 hover:text-red-500 uppercase tracking-widest transition-colors flex items-center gap-2">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                        Reset Studio
+                      </button>
                     </div>
                   </div>
                 )}
@@ -290,18 +298,38 @@ const App: React.FC = () => {
                     </div>
                     
                     <div className="p-10 bg-slate-50/50 rounded-[3.5rem] border-2 border-slate-100 space-y-10 shadow-inner">
-                       <h4 className="text-[12px] font-black text-slate-900 uppercase tracking-[0.3em] flex items-center gap-3">
-                          <span className="w-1 h-4 bg-indigo-500 rounded-full"></span>
-                          QRcode Generator Branding
-                       </h4>
+                       <div className="flex items-center justify-between">
+                         <h4 className="text-[12px] font-black text-slate-900 uppercase tracking-[0.3em] flex items-center gap-3">
+                            <span className="w-1 h-4 bg-indigo-500 rounded-full"></span>
+                            QRcode Generator Branding
+                         </h4>
+                         <label className="flex items-center gap-3 cursor-pointer">
+                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Gradient Mode</span>
+                            <div className={`w-12 h-6 rounded-full transition-colors relative ${useGradient ? 'bg-indigo-600' : 'bg-slate-200'}`} onClick={() => setUseGradient(!useGradient)}>
+                              <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-all ${useGradient ? 'left-7' : 'left-1'}`}></div>
+                            </div>
+                         </label>
+                       </div>
+                       
                        <div className="grid sm:grid-cols-2 gap-10">
                           <div className="space-y-4">
-                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Pattern Color</label>
+                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Pattern Color {useGradient ? 'Start' : ''}</label>
                             <div className="flex gap-5 items-center p-5 bg-white rounded-3xl border-2 border-slate-100 focus-within:border-indigo-300 transition-all shadow-sm">
                               <input type="color" value={config.fgColor} onChange={(e) => setConfig(prev => ({ ...prev, fgColor: e.target.value }))} className="w-14 h-14 rounded-2xl cursor-pointer border-0 p-0 bg-transparent ring-2 ring-slate-100 hover:scale-105 transition-transform"/>
                               <input type="text" value={config.fgColor} onChange={(e) => setConfig(prev => ({ ...prev, fgColor: e.target.value }))} className="bg-transparent text-base font-mono font-bold uppercase outline-none flex-1 text-slate-700" />
                             </div>
                           </div>
+                          
+                          {useGradient && (
+                            <div className="space-y-4 animate-in slide-in-from-right-4 duration-300">
+                              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Pattern Color End</label>
+                              <div className="flex gap-5 items-center p-5 bg-white rounded-3xl border-2 border-slate-100 focus-within:border-indigo-300 transition-all shadow-sm">
+                                <input type="color" value={gradientColor} onChange={(e) => setGradientColor(e.target.value)} className="w-14 h-14 rounded-2xl cursor-pointer border-0 p-0 bg-transparent ring-2 ring-slate-100 hover:scale-105 transition-transform"/>
+                                <input type="text" value={gradientColor} onChange={(e) => setGradientColor(e.target.value)} className="bg-transparent text-base font-mono font-bold uppercase outline-none flex-1 text-slate-700" />
+                              </div>
+                            </div>
+                          )}
+
                           <div className="space-y-4">
                             <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Background Fill</label>
                             <div className="flex gap-5 items-center p-5 bg-white rounded-3xl border-2 border-slate-100 focus-within:border-indigo-300 transition-all shadow-sm">
@@ -397,6 +425,24 @@ const App: React.FC = () => {
                   <p className="text-[13px] text-indigo-700/80 font-bold leading-snug mt-2">Generate QR as a guest with 100% anonymity. No signup required for unlimited, professional-grade code generation.</p>
                </div>
             </div>
+
+            {history.length > 0 && (
+              <div className="p-10 bg-white border-2 border-slate-100 rounded-[3.5rem] shadow-sm">
+                <h4 className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 text-slate-400">Recent Studio Activity</h4>
+                <div className="space-y-4">
+                  {history.map((item, idx) => (
+                    <button 
+                      key={idx} 
+                      onClick={() => setConfig(prev => ({ ...prev, value: item.value }))}
+                      className="w-full flex items-center justify-between p-4 rounded-2xl bg-slate-50 hover:bg-indigo-50 border border-slate-100 transition-colors text-left"
+                    >
+                      <span className="text-xs font-bold text-slate-600 truncate max-w-[200px]">{item.value}</span>
+                      <span className="text-[9px] font-black uppercase text-slate-300 tracking-widest">{new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </aside>
         </div>
 
@@ -503,6 +549,19 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      {/* TOASTS */}
+      <div className="fixed top-24 right-8 z-[200] flex flex-col gap-4 pointer-events-none">
+        {toasts.map(toast => (
+          <div key={toast.id} className={`p-5 rounded-3xl shadow-2xl flex items-center gap-4 animate-in slide-in-from-right-10 duration-300 pointer-events-auto border-l-8 ${
+            toast.type === 'error' ? 'bg-red-50 text-red-800 border-red-500' : 
+            toast.type === 'info' ? 'bg-sky-50 text-sky-800 border-sky-500' : 
+            'bg-emerald-50 text-emerald-800 border-emerald-500'
+          }`}>
+            <span className="text-sm font-bold">{toast.message}</span>
+          </div>
+        ))}
+      </div>
 
       {/* MODALS */}
       <Modal title="Privacy Shield" isOpen={modalType === 'privacy'} onClose={() => setModalType(null)}>
