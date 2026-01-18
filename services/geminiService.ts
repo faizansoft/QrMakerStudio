@@ -2,9 +2,10 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { AIStyleSuggestion } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export async function getAIStyleSuggestion(content: string): Promise<AIStyleSuggestion> {
+  // Initialize AI client inside the function to ensure it uses the latest process.env.API_KEY
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -46,7 +47,9 @@ export async function getAIStyleSuggestion(content: string): Promise<AIStyleSugg
       }
     });
 
-    const result = JSON.parse(response.text);
+    // Directly access the .text property from GenerateContentResponse
+    const jsonStr = response.text.trim();
+    const result = JSON.parse(jsonStr);
     return result as AIStyleSuggestion;
   } catch (error) {
     console.error("Gemini suggestion failed:", error);
