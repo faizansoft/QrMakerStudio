@@ -1,5 +1,7 @@
 {
   "name": "QR Studio Pro",
   "description": "A high-end, AI-enhanced QR code generator with extensive customization options, artistic styles, and smart content analysis.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [
+    "geolocation"
+  ]
 }

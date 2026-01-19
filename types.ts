@@ -1,4 +1,4 @@
-export type QRType = 'url' | 'wifi' | 'vcard' | 'phone' | 'sms' | 'email' | 'text';
+export type QRType = 'url' | 'wifi' | 'vcard' | 'phone' | 'sms' | 'email' | 'text' | 'event' | 'location' | 'crypto' | 'facebook' | 'whatsapp';
 
 export type DotType = 'square' | 'dots' | 'rounded' | 'extra-rounded' | 'classy' | 'classy-rounded';
 export type CornerSquareType = 'square' | 'dot' | 'extra-rounded';

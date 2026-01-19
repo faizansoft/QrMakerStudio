@@ -57,7 +57,7 @@ export const FAQ_ITEMS = [
 
 export const GENERATOR_DETAILS: Record<QRType, { title: string; desc: string; icon: string; guide: { step: string; detail: string }[] }> = {
   url: {
-    title: "LINK/URL",
+    title: "Website URL",
     desc: "Transform any website link into a beautiful, scannable portal for your brand.",
     icon: "🔗",
     guide: [
@@ -66,18 +66,8 @@ export const GENERATOR_DETAILS: Record<QRType, { title: string; desc: string; ic
       { step: "Export Vector", detail: "Download your custom URL QR code as an SVG to ensure it stays sharp on any marketing material." }
     ]
   },
-  wifi: {
-    title: "Instant WiFi Access",
-    desc: "The fastest way to connect guests to your network without sharing complex passwords.",
-    icon: "📶",
-    guide: [
-      { step: "Input SSID", detail: "Type your WiFi network name exactly as it appears in your network settings." },
-      { step: "Security Check", detail: "Select WPA/WPA2 for most home routers. This is the global standard for secure QR connections." },
-      { step: "Direct Connection", detail: "Scanning this code will prompt the user's phone to 'Join Network' automatically." }
-    ]
-  },
   vcard: {
-    title: "Professional vCard",
+    title: "vCard",
     desc: "A digital business card that saves your contact information directly to a smartphone.",
     icon: "👤",
     guide: [
@@ -86,29 +76,79 @@ export const GENERATOR_DETAILS: Record<QRType, { title: string; desc: string; ic
       { step: "Elegant Presentation", detail: "Use rounded corner eyes and high-contrast colors to ensure the vCard scans instantly in meetings." }
     ]
   },
-  phone: {
-    title: "Direct Call Studio",
-    desc: "Generate more leads by allowing customers to call you with a single scan.",
-    icon: "📞",
+  event: {
+    title: "Event",
+    desc: "Promote your event and let guests save it directly to their calendars.",
+    icon: "📅",
     guide: [
-      { step: "Number Input", detail: "Provide your business phone number with the country code for international compatibility." },
-      { step: "Placement Strategy", detail: "Add this QR code to your store windows or direct mail flyers for instant customer engagement." },
-      { step: "One-Tap Dialing", detail: "Scanning will automatically open the phone's dialer with your number pre-populated." }
+      { step: "Event Info", detail: "Provide the title, location, and a short description of your event." },
+      { step: "Timing", detail: "Set the start and end times accurately. This ensures it fits perfectly in their schedule." },
+      { step: "Scan to Save", detail: "Scanning will prompt the user to add the event to their Google, Apple, or Outlook calendar." }
     ]
   },
-  sms: {
-    title: "Lead Generation SMS",
-    desc: "Pre-fill text messages to your business for easier customer inquiries.",
-    icon: "💬",
+  wifi: {
+    title: "Wi-Fi",
+    desc: "The fastest way to connect guests to your network without sharing complex passwords.",
+    icon: "📶",
     guide: [
-      { step: "Recipient Number", detail: "Enter the number you want to receive the text messages at." },
-      { step: "Pre-filled Message", detail: "Draft a message like 'I'd like a free quote' so the user only has to hit send." },
-      { step: "Mobile Optimization", detail: "Perfect for social media ads or outdoor signage targeting mobile users." }
+      { step: "Input SSID", detail: "Type your WiFi network name exactly as it appears in your network settings." },
+      { step: "Security Check", detail: "Select WPA/WPA2 for most home routers. This is the global standard for secure QR connections." },
+      { step: "Direct Connection", detail: "Scanning this code will prompt the user's phone to 'Join Network' automatically." }
+    ]
+  },
+  location: {
+    title: "Location",
+    desc: "Share a specific location on the map with a single scan.",
+    icon: "📍",
+    guide: [
+      { step: "Coordinates", detail: "Enter the Latitude and Longitude of your destination." },
+      { step: "Check Mapping", detail: "Scanning this will open the user's default map app (Google Maps or Apple Maps) at the spot." },
+      { step: "Physical Marketing", detail: "Ideal for flyers and posters directing people to a new store or venue." }
+    ]
+  },
+  crypto: {
+    title: "Cryptocurrency",
+    desc: "Send and receive crypto payments easily with a branded payment code.",
+    icon: "₿",
+    guide: [
+      { step: "Select Coin", detail: "Choose your cryptocurrency (Bitcoin, Ethereum, etc.) and paste your wallet address." },
+      { step: "Set Amount", detail: "Optionally specify an amount to pre-fill the transaction for the sender." },
+      { step: "Verify Address", detail: "Always double-check your wallet address before printing your QR code." }
+    ]
+  },
+  facebook: {
+    title: "Facebook",
+    desc: "Share your social media channels and grow your followers.",
+    icon: "📘",
+    guide: [
+      { step: "Profile Link", detail: "Paste the URL of your Facebook page or personal profile." },
+      { step: "Visual Style", detail: "Use the Facebook blue (#1877F2) to make the code immediately recognizable." },
+      { step: "Grow Socials", detail: "Add to business cards or packaging to drive traffic to your social community." }
+    ]
+  },
+  text: {
+    title: "Simple Text",
+    desc: "Display a body of text or store notes in a simple format.",
+    icon: "📝",
+    guide: [
+      { step: "Enter Content", detail: "Paste any text or alphanumeric string up to 2000 characters into the text area." },
+      { step: "Density Management", detail: "Longer text makes the QR denser. Use 'Level H' correction to maintain scan speed." },
+      { step: "High Res Download", detail: "Export in high resolution to ensure all the small dots remain clear and readable." }
+    ]
+  },
+  whatsapp: {
+    title: "WhatsApp",
+    desc: "Get WhatsApp messages and start conversations instantly.",
+    icon: "🟢",
+    guide: [
+      { step: "Phone Number", detail: "Enter your phone number with the country code (e.g., 14155552671)." },
+      { step: "Welcome Message", detail: "Optionally pre-fill a message for your customers to send when they scan." },
+      { step: "Direct Support", detail: "Perfect for 'Contact Us' buttons on websites or product packaging." }
     ]
   },
   email: {
-    title: "Email Template QR",
-    desc: "Create scannable email drafts for support, sales, or customer feedback.",
+    title: "Email",
+    desc: "Get email messages with pre-filled subjects and bodies.",
     icon: "📧",
     guide: [
       { step: "Email Parameters", detail: "Specify the recipient email address and a clear subject line for better organization." },
@@ -116,14 +156,24 @@ export const GENERATOR_DETAILS: Record<QRType, { title: string; desc: string; ic
       { step: "Instant Draft", detail: "Scanning opens the default email app with everything pre-filled and ready to go." }
     ]
   },
-  text: {
-    title: "Plain Text Data",
-    desc: "Store notes, verification codes, or alphanumeric messages in a simple format.",
-    icon: "📝",
+  sms: {
+    title: "SMS",
+    desc: "Get text messages with pre-filled content.",
+    icon: "💬",
     guide: [
-      { step: "Enter Content", detail: "Paste any text or alphanumeric string up to 2000 characters into the text area." },
-      { step: "Density Management", detail: "Longer text makes the QR denser. Use 'Level H' correction to maintain scan speed." },
-      { step: "High Res Download", detail: "Export in high resolution to ensure all the small dots remain clear and readable." }
+      { step: "Recipient Number", detail: "Enter the number you want to receive the text messages at." },
+      { step: "Pre-filled Message", detail: "Draft a message like 'I'd like a free quote' so the user only has to hit send." },
+      { step: "Mobile Optimization", detail: "Perfect for social media ads or outdoor signage targeting mobile users." }
+    ]
+  },
+  phone: {
+    title: "Phone",
+    desc: "Make a phone call with a single scan.",
+    icon: "📞",
+    guide: [
+      { step: "Number Input", detail: "Provide your business phone number with the country code for international compatibility." },
+      { step: "Placement Strategy", detail: "Add this QR code to your store windows or direct mail flyers for instant customer engagement." },
+      { step: "One-Tap Dialing", detail: "Scanning will automatically open the phone's dialer with your number pre-populated." }
     ]
   }
 };

@@ -9,6 +9,11 @@ import PhonePage from './PhonePage';
 import SMSPage from './SMSPage';
 import EmailPage from './EmailPage';
 import TextPage from './TextPage';
+import EventPage from './EventPage';
+import LocationPage from './LocationPage';
+import CryptoPage from './CryptoPage';
+import FacebookPage from './FacebookPage';
+import WhatsAppPage from './WhatsAppPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -45,6 +50,11 @@ const App: React.FC = () => {
             <Route path="/sms-qr-generator" element={<SMSPage {...commonProps} />} />
             <Route path="/email-qr-generator" element={<EmailPage {...commonProps} />} />
             <Route path="/text-qr-generator" element={<TextPage {...commonProps} />} />
+            <Route path="/event-qr-generator" element={<EventPage {...commonProps} />} />
+            <Route path="/location-qr-generator" element={<LocationPage {...commonProps} />} />
+            <Route path="/crypto-qr-generator" element={<CryptoPage {...commonProps} />} />
+            <Route path="/facebook-qr-generator" element={<FacebookPage {...commonProps} />} />
+            <Route path="/whatsapp-qr-generator" element={<WhatsAppPage {...commonProps} />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
