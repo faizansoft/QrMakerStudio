@@ -26,6 +26,24 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
   const qrCode = useMemo(() => new QRCodeStyling(), []);
   const details = GENERATOR_DETAILS[type];
 
+  // DYNAMIC SEO ENGINE: Updates page title and meta description per tool
+  useEffect(() => {
+    const pageTitle = `${details.title} | QR Studio Pro`;
+    const pageDesc = `${details.desc} Create high-resolution custom QR codes for ${type} with your own logo. No expiration, 100% free.`;
+    
+    document.title = pageTitle;
+    
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', pageDesc);
+    } else {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      metaDesc.setAttribute('content', pageDesc);
+      document.head.appendChild(metaDesc);
+    }
+  }, [type, details]);
+
   useEffect(() => {
     const options: Options = {
       width: 400,
@@ -80,23 +98,21 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500 pb-24">
       <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-12">
-        {/* Navigation & Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <button onClick={() => navigate('/')} className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors font-black text-[10px] uppercase tracking-widest group">
             <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7"/></svg>
             Explore All Tools
           </button>
           <div className="flex items-center gap-4 bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm">
-            <span className="text-2xl">{details.icon}</span>
+            <span className="text-2xl" role="img" aria-label="icon">{details.icon}</span>
             <div className="flex flex-col">
-              <h2 className="text-sm font-bold text-slate-900 leading-none mb-1">{details.title}</h2>
+              <h1 className="text-sm font-bold text-slate-900 leading-none mb-1">{details.title}</h1>
               <span className="text-[9px] font-black uppercase text-indigo-500 tracking-tighter">Studio Session Active</span>
             </div>
           </div>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 items-start">
-          {/* Left Panel: Editing Studio */}
           <div className="lg:col-span-7 bg-white rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-200 overflow-hidden">
             <div className="flex bg-slate-50/50 border-b border-slate-100 p-2 overflow-x-auto no-scrollbar">
               {(['content', 'pattern', 'corners', 'logo'] as const).map(tab => (
@@ -144,11 +160,6 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                     <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Primary Color</label>
                     <div className="space-y-4">
                       <input type="color" value={styling.fgColor} onChange={e => setStyling({...styling, fgColor: e.target.value})} className="w-full h-24 rounded-3xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
-                      <div className="grid grid-cols-5 gap-2">
-                        {['#000000', '#6366f1', '#10b981', '#f59e0b', '#ef4444'].map(c => (
-                          <button key={c} onClick={() => setStyling({...styling, fgColor: c})} className="w-8 h-8 rounded-full border border-white shadow-sm" style={{backgroundColor: c}} />
-                        ))}
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -181,19 +192,17 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                 <div className="animate-in fade-in duration-300">
                   <LogoUploader onUpload={setLogoSrc} currentLogo={logoSrc} />
                   <div className="mt-8 p-6 bg-slate-50 rounded-3xl border border-slate-100 text-slate-500 text-xs leading-relaxed">
-                    <b>Pro Tip:</b> For best results, use a transparent PNG logo and set the Error Correction to "High" in the Advanced settings.
+                    <b>Pro Tip:</b> For best results, use a transparent PNG logo.
                   </div>
                 </div>
               )}
             </div>
           </div>
 
-          {/* Right Panel: Live Preview */}
           <div className="lg:col-span-5 lg:sticky lg:top-24">
             <div className="bg-white p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-200 text-center">
               <div className="relative p-8 bg-slate-50 rounded-[2.5rem] shadow-inner mb-8 flex justify-center items-center min-h-[360px] overflow-hidden group">
-                <div ref={qrRef} className="bg-white p-4 rounded-3xl shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:rotate-1" />
-                <div className="absolute inset-0 bg-indigo-600/0 group-hover:bg-indigo-600/5 transition-all pointer-events-none" />
+                <div ref={qrRef} className="bg-white p-4 rounded-3xl shadow-2xl transition-all duration-500 group-hover:scale-105" />
               </div>
               
               <div className="space-y-4">
@@ -205,23 +214,22 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                 </Button>
                 <div className="grid grid-cols-2 gap-4">
                   <Button variant="outline" onClick={() => handleDownload('svg')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest">
-                    Vector SVG (Print)
+                    Vector SVG
                   </Button>
                   <Button variant="outline" onClick={() => handleDownload('webp')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest">
-                    WebP (Optimized)
+                    WebP (Web)
                   </Button>
                 </div>
-                <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest pt-2">No expiration • Unlimited scans • Free</p>
+                <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest pt-2">Permanent QR • No Tracking</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Detailed SEO Guide Section */}
         <div className="pt-24 space-y-16 border-t border-slate-200 mt-24">
           <div className="text-center space-y-4">
-            <h2 className="text-4xl font-display font-black text-slate-900 tracking-tight">How to Build a Perfect {details.title}</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Follow our professional workspace guide to ensure your custom QR code works flawlessly in every environment.</p>
+            <h2 className="text-4xl font-display font-black text-slate-900 tracking-tight">How to Create Your {details.title}</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto">Follow these steps to ensure maximum visibility and scannability for your brand.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {details.guide.map((item, idx) => (
@@ -229,7 +237,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                 <div className="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 font-black text-sm mb-8 font-display">
                   {idx+1}
                 </div>
-                <h4 className="text-2xl font-bold text-slate-900 mb-4">{item.step}</h4>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">{item.step}</h3>
                 <p className="text-slate-500 leading-relaxed font-medium text-sm">{item.detail}</p>
               </div>
             ))}
