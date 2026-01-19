@@ -8,39 +8,13 @@
     <!-- FAVICON (SVG DATA URI) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2' ry='2'></rect><rect x='7' y='7' width='3' height='3'></rect><rect x='14' y='7' width='3' height='3'></rect><rect x='7' y='14' width='3' height='3'></rect><rect x='14' y='14' width='3' height='3'></rect></svg>">
 
-    <!-- SEO TARGETING: RANK #1 FOR KEYWORDS -->
+    <!-- SEO TARGETING -->
     <title>Free QR Code Generator | Best QR Code Maker | No Signup Required</title>
     <meta name="title" content="Free QR Code Generator | Best QR Code Maker | No Signup Required">
-    <meta name="description" content="Generate high-quality QR codes with our free QR code maker. No signup, no hidden fees. Customize with logos, AI styles, and download in PNG or SVG vector formats. The #1 qrcode generator for business and personal use.">
-    <meta name="keywords" content="qr code generator, qrcode generator, qr code maker, free qr code generator, free qrcode maker, custom qr code with logo, generate qr as guest, high res qr code, best qr code maker free, create qrcode free">
+    <meta name="description" content="Generate high-quality QR codes with our free QR code maker. No signup, no hidden fees. Customize with logos, AI styles, and download in PNG or SVG vector formats.">
+    <meta name="keywords" content="qr code generator, qrcode generator, qr code maker, free qr code generator, custom qr code with logo">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://shortnow.link/" />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shortnow.link/">
-    <meta property="og:title" content="QR Maker Studio | Professional Free QR Code Generator">
-    <meta property="og:description" content="The world's best free QR code maker. Custom styles, logos, and high-res exports. No registration required.">
-    <meta property="og:image" content="https://shortnow.link/og-image.png">
-
-    <!-- JSON-LD SCHEMA FOR RICH SEARCH RESULTS -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "QR Maker Studio",
-      "applicationCategory": "Utility",
-      "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "featureList": "No signup required, Logo support, SVG vector export, AI-powered styling, Fully responsive",
-      "description": "The best free QR code generator and qrcode maker on the web."
-    }
-    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,27 +25,20 @@
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
         .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
         .qr-gradient { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        /* SEO Content Styling */
-        .seo-box h2 { font-size: 2.25rem; font-weight: 800; color: #0f172a; margin-top: 5rem; margin-bottom: 2rem; border-left: 8px solid #6366f1; padding-left: 2rem; line-height: 1.1; }
-        @media (min-width: 768px) { .seo-box h2 { font-size: 4rem; } }
-        .seo-box h3 { font-size: 1.75rem; font-weight: 700; color: #1e293b; margin-top: 3rem; margin-bottom: 1.5rem; }
-        .seo-box p { color: #475569; line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.15rem; }
-        .keyword-highlight { color: #6366f1; font-weight: 700; }
+        .animate-in { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.0.0",
     "react/": "https://esm.sh/react@^19.2.3/",
     "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
-    "qr-code-styling": "https://esm.sh/qr-code-styling@^1.9.2",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
     "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+    "qr-code-styling": "https://esm.sh/qr-code-styling@^1.9.2"
   }
 }
 </script>
