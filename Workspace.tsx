@@ -23,13 +23,12 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiMood, setAiMood] = useState<string | null>(null);
   const qrRef = useRef<HTMLDivElement>(null);
-  const compositeRef = useRef<HTMLDivElement>(null);
   const qrCode = useMemo(() => new QRCodeStyling(), []);
   const details = GENERATOR_DETAILS[type];
 
   useEffect(() => {
     const pageTitle = `${details.title} | QR Studio Pro`;
-    const pageDesc = `${details.desc} Create high-resolution custom QR codes for ${type} with your own logo.`;
+    const pageDesc = `${details.desc} Create high-resolution custom QR codes.`;
     document.title = pageTitle;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', pageDesc);
@@ -37,15 +36,15 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
 
   useEffect(() => {
     const options: Options = {
-      width: 800, // Higher res internally for compositing
-      height: 800,
+      width: 1000, 
+      height: 1000,
       data: value || ' ',
-      margin: styling.includeMargin ? 15 : 5,
+      margin: styling.includeMargin ? 20 : 0,
       qrOptions: { errorCorrectionLevel: styling.level },
       image: logoSrc || undefined,
       dotsOptions: { color: styling.fgColor, type: styling.dotType },
       backgroundOptions: { color: styling.bgColor },
-      imageOptions: { crossOrigin: 'anonymous', margin: 8, imageSize: 0.4, hideBackgroundDots: true },
+      imageOptions: { crossOrigin: 'anonymous', margin: 10, imageSize: 0.4, hideBackgroundDots: true },
       cornersSquareOptions: { type: styling.cornerSquareType, color: styling.cornerSquareColor },
       cornersDotOptions: { type: styling.cornerDotType, color: styling.cornerDotColor }
     };
@@ -56,25 +55,21 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
     if (qrRef.current) {
       qrRef.current.innerHTML = '';
       qrCode.append(qrRef.current);
-      // Ensure the rendered canvas/svg is responsive in the preview
       const canvas = qrRef.current.querySelector('canvas');
       if (canvas) {
         canvas.style.width = '100%';
         canvas.style.height = '100%';
-        canvas.style.maxWidth = '300px';
+        canvas.style.display = 'block';
       }
     }
   }, [qrCode]);
 
-  // HIGH-RES DOWNLOAD ENGINE
   const handleDownload = async (format: 'png' | 'svg' | 'webp') => {
     if (styling.frameType === 'none') {
       qrCode.download({ name: `qr-${type}`, extension: format });
       return;
     }
 
-    // FIX: getRawData returns a Blob or Buffer, not a canvas directly. 
-    // We fetch a PNG blob to draw onto our composite canvas.
     const blob = await qrCode.getRawData('png');
     if (!blob) return;
 
@@ -84,79 +79,96 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
       i.src = URL.createObjectURL(blob as Blob);
     });
 
-    // Composite Logic for Frames
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Calculate dimensions based on frame
-    const qrSize = 1000;
-    const padding = 100;
-    const bottomHeight = styling.frameType === 'standard' || styling.frameType === 'pill' ? 250 : 0;
-    const totalWidth = qrSize + (padding * 2);
-    const totalHeight = qrSize + (padding * 2) + bottomHeight;
+    const qrSize = 1200;
+    const padding = 120;
+    const bottomHeight = (styling.frameType === 'standard' || styling.frameType === 'pill' || styling.frameType === 'speech-bubble') ? 300 : 0;
+    
+    canvas.width = qrSize + (padding * 2);
+    canvas.height = qrSize + (padding * 2) + bottomHeight;
 
-    canvas.width = totalWidth;
-    canvas.height = totalHeight;
-
-    // 1. Draw Background
+    // 1. Background
     ctx.fillStyle = styling.bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // 2. Draw Frame Decoration
+    // 2. Frame Decoration
     ctx.fillStyle = styling.frameColor;
+    ctx.strokeStyle = styling.frameColor;
+    ctx.lineWidth = 40;
+
+    const centerX = canvas.width / 2;
+    const qrRectTop = padding;
+    const qrRectBottom = padding + qrSize;
+
     if (styling.frameType === 'standard') {
-      ctx.fillRect(0, totalHeight - bottomHeight, totalWidth, bottomHeight);
+      ctx.fillRect(0, canvas.height - bottomHeight, canvas.width, bottomHeight);
     } else if (styling.frameType === 'pill') {
-      const pillMargin = 40;
+      const pW = canvas.width * 0.8;
+      const pH = 180;
+      (ctx as any).roundRect(centerX - pW/2, canvas.height - bottomHeight/2 - pH/2, pW, pH, pH/2);
+      ctx.fill();
+    } else if (styling.frameType === 'speech-bubble') {
+      const pW = canvas.width * 0.85;
+      const pH = 180;
+      const rectY = canvas.height - bottomHeight/2 - pH/2;
+      (ctx as any).roundRect(centerX - pW/2, rectY, pW, pH, 40);
+      ctx.fill();
+      // Triangle
       ctx.beginPath();
-      // Use any cast to handle potential absence of roundRect in some browser TS libs
-      (ctx as any).roundRect(pillMargin, totalHeight - bottomHeight + pillMargin, totalWidth - (pillMargin * 2), bottomHeight - (pillMargin * 2), 60);
+      ctx.moveTo(centerX - 30, rectY);
+      ctx.lineTo(centerX, rectY - 40);
+      ctx.lineTo(centerX + 30, rectY);
       ctx.fill();
     } else if (styling.frameType === 'brackets') {
-      ctx.strokeStyle = styling.frameColor;
-      ctx.lineWidth = 40;
-      const bMargin = 40;
-      // Corners
-      ctx.beginPath();
-      ctx.moveTo(bMargin + 150, bMargin); ctx.lineTo(bMargin, bMargin); ctx.lineTo(bMargin, bMargin + 150);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(totalWidth - bMargin - 150, bMargin); ctx.lineTo(totalWidth - bMargin, bMargin); ctx.lineTo(totalWidth - bMargin, bMargin + 150);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(bMargin + 150, totalHeight - bMargin); ctx.lineTo(bMargin, totalHeight - bMargin); ctx.lineTo(bMargin, totalHeight - bMargin - 150);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(totalWidth - bMargin - 150, totalHeight - bMargin); ctx.lineTo(totalWidth - bMargin, totalHeight - bMargin); ctx.lineTo(totalWidth - bMargin, totalHeight - bMargin - 150);
-      ctx.stroke();
+      const bL = 200;
+      const bM = 60;
+      // Top Left
+      ctx.beginPath(); ctx.moveTo(bM + bL, bM); ctx.lineTo(bM, bM); ctx.lineTo(bM, bM + bL); ctx.stroke();
+      // Top Right
+      ctx.beginPath(); ctx.moveTo(canvas.width - bM - bL, bM); ctx.lineTo(canvas.width - bM, bM); ctx.lineTo(canvas.width - bM, bM + bL); ctx.stroke();
+      // Bottom Left
+      ctx.beginPath(); ctx.moveTo(bM + bL, canvas.height - bM); ctx.lineTo(bM, canvas.height - bM); ctx.lineTo(bM, canvas.height - bM - bL); ctx.stroke();
+      // Bottom Right
+      ctx.beginPath(); ctx.moveTo(canvas.width - bM - bL, canvas.height - bM); ctx.lineTo(canvas.width - bM, canvas.height - bM); ctx.lineTo(canvas.width - bM, canvas.height - bM - bL); ctx.stroke();
     } else if (styling.frameType === 'postcard') {
-      ctx.strokeStyle = styling.frameColor;
-      ctx.lineWidth = 30;
-      ctx.strokeRect(40, 40, totalWidth - 80, totalHeight - 80);
+      ctx.strokeRect(60, 60, canvas.width - 120, canvas.height - 120);
+    } else if (styling.frameType === 'badge') {
+      ctx.beginPath();
+      ctx.moveTo(canvas.width, canvas.height - 300);
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.lineTo(canvas.width - 300, canvas.height);
+      ctx.closePath();
+      ctx.fill();
     }
 
-    // 3. Draw QR Code
+    // 3. QR Code
     ctx.drawImage(img, padding, padding, qrSize, qrSize);
     URL.revokeObjectURL(img.src);
 
-    // 4. Draw Text
-    // FIX: Removed redundant check for 'none' as it's already handled by early return at start of function.
-    ctx.fillStyle = styling.frameType === 'pill' || styling.frameType === 'standard' ? styling.frameTextColor : styling.frameColor;
-    ctx.font = `bold ${totalWidth * 0.08}px "Plus Jakarta Sans", sans-serif`;
+    // 4. Text
+    ctx.fillStyle = (styling.frameType === 'pill' || styling.frameType === 'standard' || styling.frameType === 'speech-bubble') ? styling.frameTextColor : styling.frameColor;
+    if (styling.frameType === 'badge') ctx.fillStyle = styling.frameTextColor;
+
+    ctx.font = `bold ${canvas.width * 0.07}px "Plus Jakarta Sans", sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     
-    let textY = totalHeight - (bottomHeight / 2);
-    if (styling.frameType === 'brackets') textY = totalHeight - 80;
     if (styling.frameType === 'badge') {
-       ctx.font = `bold 40px "Plus Jakarta Sans"`;
-       ctx.fillText(styling.frameText, totalWidth - 100, totalHeight - 50);
+      ctx.save();
+      ctx.translate(canvas.width - 100, canvas.height - 100);
+      ctx.rotate(-Math.PI / 4);
+      ctx.font = `bold 60px "Plus Jakarta Sans"`;
+      ctx.fillText(styling.frameText, 0, 0);
+      ctx.restore();
     } else {
-       ctx.fillText(styling.frameText, totalWidth / 2, textY);
+      let textY = canvas.height - (bottomHeight / 2);
+      if (styling.frameType === 'brackets' || styling.frameType === 'postcard') textY = canvas.height - 150;
+      ctx.fillText(styling.frameText, canvas.width / 2, textY);
     }
 
-    // Export
     const link = document.createElement('a');
     link.download = `qr-${type}-framed.${format}`;
     link.href = canvas.toDataURL(`image/${format === 'svg' ? 'png' : format}`, 1.0);
@@ -310,42 +322,59 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
 
           <div className="lg:col-span-5 lg:sticky lg:top-24">
             <div className="bg-white p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-200 text-center">
-              <div className="relative p-8 bg-slate-50 rounded-[2.5rem] shadow-inner mb-8 flex flex-col justify-center items-center min-h-[460px] overflow-hidden group">
+              <div className="relative p-6 bg-slate-50 rounded-[2.5rem] shadow-inner mb-8 flex flex-col justify-center items-center min-h-[460px] overflow-hidden group">
                 <div 
-                  className="flex flex-col items-center transition-all duration-500 group-hover:scale-105"
+                  className="relative p-6 transition-all duration-500 group-hover:scale-105 flex flex-col items-center"
                   style={{
                     backgroundColor: styling.bgColor,
-                    padding: styling.frameType === 'none' ? '0' : '20px',
-                    borderRadius: '32px',
-                    border: styling.frameType === 'postcard' ? `8px solid ${styling.frameColor}` : 'none'
+                    borderRadius: '40px',
+                    border: styling.frameType === 'postcard' ? `4px solid ${styling.frameColor}` : 'none',
+                    minWidth: '320px'
                   }}
                 >
-                  <div ref={qrRef} className="bg-white p-4 rounded-3xl" />
+                  {/* Fixed Brackets Preview */}
+                  {styling.frameType === 'brackets' && (
+                    <>
+                      <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4" style={{borderColor: styling.frameColor}}></div>
+                      <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4" style={{borderColor: styling.frameColor}}></div>
+                      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4" style={{borderColor: styling.frameColor}}></div>
+                      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4" style={{borderColor: styling.frameColor}}></div>
+                    </>
+                  )}
+
+                  {/* QR Core */}
+                  <div ref={qrRef} className="bg-white p-2 rounded-2xl w-[260px] aspect-square" />
                   
-                  {styling.frameType !== 'none' && (
-                    <div 
-                      className="mt-4 w-full flex items-center justify-center font-display font-black uppercase tracking-widest"
-                      style={{
-                        backgroundColor: styling.frameType === 'standard' || styling.frameType === 'pill' ? styling.frameColor : 'transparent',
-                        color: styling.frameType === 'pill' || styling.frameType === 'standard' ? styling.frameTextColor : styling.frameColor,
-                        padding: styling.frameType === 'pill' ? '12px 24px' : '16px',
-                        borderRadius: styling.frameType === 'pill' ? '99px' : '0',
-                        marginTop: styling.frameType === 'pill' ? '20px' : '16px',
-                        marginBottom: styling.frameType === 'pill' ? '10px' : '0',
-                        fontSize: '1.2rem',
-                        border: styling.frameType === 'brackets' ? 'none' : '',
-                        position: styling.frameType === 'brackets' ? 'relative' : 'static'
-                      }}
-                    >
-                      {styling.frameText}
-                      {styling.frameType === 'brackets' && (
-                        <>
-                          <div className="absolute -top-64 -left-4 w-12 h-12 border-t-4 border-l-4" style={{borderColor: styling.frameColor}}></div>
-                          <div className="absolute -top-64 -right-4 w-12 h-12 border-t-4 border-r-4" style={{borderColor: styling.frameColor}}></div>
-                          <div className="absolute top-12 -left-4 w-12 h-12 border-b-4 border-l-4" style={{borderColor: styling.frameColor}}></div>
-                          <div className="absolute top-12 -right-4 w-12 h-12 border-b-4 border-r-4" style={{borderColor: styling.frameColor}}></div>
-                        </>
+                  {/* Frame Footer Preview */}
+                  {styling.frameType !== 'none' && styling.frameType !== 'brackets' && styling.frameType !== 'postcard' && (
+                    <div className="w-full mt-4 flex flex-col items-center">
+                      {styling.frameType === 'speech-bubble' && (
+                        <div className="w-4 h-4" style={{borderLeft: '8px solid transparent', borderRight: '8px solid transparent', borderBottom: `8px solid ${styling.frameColor}`, transform: 'rotate(180deg)'}}></div>
                       )}
+                      <div 
+                        className="w-full flex items-center justify-center font-display font-black uppercase tracking-widest text-sm"
+                        style={{
+                          backgroundColor: (styling.frameType === 'standard' || styling.frameType === 'pill' || styling.frameType === 'speech-bubble') ? styling.frameColor : 'transparent',
+                          color: (styling.frameType === 'standard' || styling.frameType === 'pill' || styling.frameType === 'speech-bubble') ? styling.frameTextColor : styling.frameColor,
+                          padding: '12px 20px',
+                          borderRadius: styling.frameType === 'pill' ? '99px' : styling.frameType === 'speech-bubble' ? '16px' : '0',
+                          marginTop: styling.frameType === 'speech-bubble' ? '0' : '8px'
+                        }}
+                      >
+                        {styling.frameText}
+                      </div>
+                    </div>
+                  )}
+
+                  {(styling.frameType === 'brackets' || styling.frameType === 'postcard') && (
+                    <div className="mt-4 font-display font-black uppercase tracking-widest text-sm" style={{color: styling.frameColor}}>
+                      {styling.frameText}
+                    </div>
+                  )}
+
+                  {styling.frameType === 'badge' && (
+                    <div className="absolute bottom-0 right-0 p-3 bg-indigo-600 text-white rounded-tl-3xl font-black text-[10px] uppercase tracking-tighter shadow-lg" style={{backgroundColor: styling.frameColor, color: styling.frameTextColor}}>
+                       {styling.frameText}
                     </div>
                   )}
                 </div>
