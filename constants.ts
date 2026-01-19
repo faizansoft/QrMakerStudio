@@ -1,4 +1,4 @@
-import { StylePreset, DotType, CornerSquareType, CornerDotType, QRType } from './types';
+import { StylePreset, DotType, CornerSquareType, CornerDotType, QRType, FrameType } from './types';
 
 export const STYLE_PRESETS: StylePreset[] = [
   { id: 'classic', name: 'Classic Black', fgColor: '#000000', bgColor: '#FFFFFF', className: 'bg-white border-slate-200' },
@@ -7,6 +7,16 @@ export const STYLE_PRESETS: StylePreset[] = [
   { id: 'sunset', name: 'Sunset Glow', fgColor: '#7c2d12', bgColor: '#fff7ed', className: 'bg-orange-50 border-orange-200' },
   { id: 'forest', name: 'Evergreen', fgColor: '#064e3b', bgColor: '#f0fdf4', className: 'bg-emerald-50 border-emerald-200' },
   { id: 'royal', name: 'Royal Purple', fgColor: '#4c1d95', bgColor: '#f5f3ff', className: 'bg-violet-50 border-violet-200' },
+];
+
+export const FRAME_STYLES: { value: FrameType; label: string; icon: string }[] = [
+  { value: 'none', label: 'No Frame', icon: '◻️' },
+  { value: 'standard', label: 'Standard Bar', icon: '📊' },
+  { value: 'pill', label: 'Modern Pill', icon: '💊' },
+  { value: 'brackets', label: 'Tech Brackets', icon: '［］' },
+  { value: 'speech-bubble', label: 'Chat Bubble', icon: '💬' },
+  { value: 'postcard', label: 'Postcard', icon: '✉️' },
+  { value: 'badge', label: 'Corner Badge', icon: '🔖' },
 ];
 
 export const ERROR_CORRECTION_LEVELS = [
