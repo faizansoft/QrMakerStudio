@@ -14,7 +14,7 @@ const URLPage: React.FC<PageProps> = (props) => {
   return (
     <Workspace type="url" value={url} {...props}>
       <div className="space-y-4">
-        <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Website Address</label>
+        <label className="text-xs font-black text-slate-400 uppercase tracking-widest">Link / URL Address</label>
         <input 
           type="text" 
           value={url} 

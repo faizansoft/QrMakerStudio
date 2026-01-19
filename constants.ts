@@ -57,7 +57,7 @@ export const FAQ_ITEMS = [
 
 export const GENERATOR_DETAILS: Record<QRType, { title: string; desc: string; icon: string; guide: { step: string; detail: string }[] }> = {
   url: {
-    title: "Website URL Maker",
+    title: "LINK/URL",
     desc: "Transform any website link into a beautiful, scannable portal for your brand.",
     icon: "🔗",
     guide: [
