@@ -134,28 +134,25 @@ const Home: React.FC = () => {
       <section className="relative overflow-hidden bg-white pt-16 pb-24">
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 text-indigo-700 text-[9px] font-black uppercase tracking-[0.2em] rounded-full border border-indigo-100 mb-6">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-500"></span>
-            </span>
             Studio Pro v2.0
           </div>
           <h1 className="text-5xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight mb-6">
-            Everything you need for <br/>
-            <span className="text-indigo-600">Custom QR Design</span>
+            Professional QR codes, <br/>
+            <span className="text-indigo-600">Generated in Seconds</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 font-medium max-w-xl mx-auto mb-10 leading-relaxed">
-            Generate, customize, and download high-resolution QR codes. Add logos, patterns, and AI styles in seconds.
+            Create high-resolution codes for URLs, WiFi, and more. Free forever, no registration needed. Download in vector SVG or PNG.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/url-qr-generator">
               <Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100">Create Website QR</Button>
             </Link>
-            <Button variant="outline" size="lg" className="rounded-full px-8 py-4">Explore Gallery</Button>
+            <Link to="/about">
+              <Button variant="outline" size="lg" className="rounded-full px-8 py-4">Why QR Studio?</Button>
+            </Link>
           </div>
         </div>
         
-        {/* Subtle Background Elements */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-10">
           <div className="absolute top-10 left-1/4 w-72 h-72 bg-indigo-400 rounded-full blur-[120px]"></div>
           <div className="absolute bottom-10 right-1/4 w-72 h-72 bg-purple-400 rounded-full blur-[120px]"></div>
@@ -165,7 +162,7 @@ const Home: React.FC = () => {
       {/* Tools Section */}
       <section className="max-w-7xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-display font-black text-slate-900 mb-4">Choose Your QR Tool</h2>
+          <h2 className="text-3xl font-display font-black text-slate-900 mb-4">Select a Tool</h2>
           <div className="h-1 w-20 bg-indigo-600 mx-auto rounded-full"></div>
         </div>
 
@@ -200,16 +197,16 @@ const Home: React.FC = () => {
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <h2 className="text-3xl font-display font-black text-slate-900 leading-tight">Everything about the world's most powerful QR generator.</h2>
-              <p className="text-slate-500 font-medium">We built QR Studio Pro to be the most versatile tool for businesses and individuals alike.</p>
+              <h2 className="text-3xl font-display font-black text-slate-900 leading-tight">High-quality tools without the subscription.</h2>
+              <p className="text-slate-500 font-medium">QR Studio Pro offers business-grade customization for free. We believe basic tools should stay accessible to everyone.</p>
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
                   <div className="text-indigo-600 font-black text-2xl mb-1">∞</div>
-                  <div className="text-[10px] font-bold uppercase text-slate-400">Scans Forever</div>
+                  <div className="text-[10px] font-bold uppercase text-slate-400">Unlimited Scans</div>
                 </div>
                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
                   <div className="text-indigo-600 font-black text-2xl mb-1">100%</div>
-                  <div className="text-[10px] font-bold uppercase text-slate-400">Privacy Safe</div>
+                  <div className="text-[10px] font-bold uppercase text-slate-400">On-Device Security</div>
                 </div>
               </div>
             </div>
@@ -222,24 +219,6 @@ const Home: React.FC = () => {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="bg-slate-900 rounded-[3rem] p-10 md:p-16 text-center text-white relative overflow-hidden">
-          <div className="relative z-10 space-y-8 max-w-2xl mx-auto">
-            <h2 className="text-4xl font-display font-black leading-tight">Ready to build your <br/><span className="text-indigo-400">Professional QR?</span></h2>
-            <p className="text-slate-400 font-medium">No signup required. Start designing your first high-resolution code in seconds.</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/url-qr-generator">
-                <Button size="lg" className="rounded-full px-12 py-5 bg-indigo-600 hover:bg-indigo-500">Launch QR Studio</Button>
-              </Link>
-            </div>
-          </div>
-          {/* Decorative */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px] -mr-32 -mt-32"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px] -ml-32 -mb-32"></div>
         </div>
       </section>
     </div>

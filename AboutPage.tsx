@@ -9,30 +9,29 @@ const AboutPage: React.FC = () => {
       <section className="bg-white pt-20 pb-16 border-b border-slate-100">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-display font-black text-slate-900 tracking-tighter mb-8">
-            Empowering Connections <br/>
-            <span className="text-indigo-600">Through Design.</span>
+            Better QR tools, <br/>
+            <span className="text-indigo-600">Zero complexity.</span>
           </h1>
           <p className="text-xl text-slate-500 font-medium leading-relaxed">
-            QR Studio Pro was born out of a simple need: to provide high-end, professional QR code tools to everyone, without the hidden costs or expiration dates.
+            We built QR Studio Pro to solve a simple problem: most QR makers are either expensive, expire after a week, or look like they're from 1995. This is our solution.
           </p>
         </div>
       </section>
 
       {/* Content Sections */}
       <div className="max-w-7xl mx-auto px-6 py-24 space-y-32">
-        {/* Mission */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
-            <h2 className="text-3xl font-display font-black text-slate-900">Our Mission</h2>
+            <h2 className="text-3xl font-display font-black text-slate-900">Why we exist</h2>
             <p className="text-slate-600 leading-relaxed font-medium">
-              In a world where digital interaction is constant, we believe that the first point of contact—the QR code—should be as beautiful and professional as the brand it represents. Our mission is to bridge the gap between functionality and aesthetics.
+              Digital links shouldn't be boring or difficult to scan. We provide a studio-grade interface that runs entirely in your browser. This means your data never touches our servers, and your codes are ready for professional printing instantly.
             </p>
             <ul className="space-y-4">
               {[
-                "Uncompromising Vector Quality (SVG)",
-                "No Registration or Subscription Required",
-                "Advanced AI-Powered Styling Suggestions",
-                "Total Privacy and Data Security"
+                "Vector SVG exports for high-res printing",
+                "No scan limits, no expiration dates",
+                "Clean, ad-free design environment",
+                "Completely private generation"
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm font-bold text-slate-700">
                   <div className="w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
@@ -49,26 +48,24 @@ const AboutPage: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
                 </svg>
              </div>
-             <div className="absolute top-0 right-0 w-64 h-64 bg-white/40 rounded-full blur-3xl -mr-32 -mt-32"></div>
           </div>
         </div>
 
-        {/* Why Us */}
         <div className="grid md:grid-cols-3 gap-12">
           {[
             {
-              title: "AI Enhanced",
-              desc: "Our integration with Gemini AI allows you to generate stunning color palettes and patterns that perfectly suit your content's mood.",
+              title: "Modern Design",
+              desc: "Choose from sleek patterns and fluid shapes that match your brand identity without the pixelated look.",
               icon: "✨"
             },
             {
               title: "Privacy First",
-              desc: "We don't track your scans. We don't store your data. Your QR codes are generated directly in your browser for maximum security.",
+              desc: "We don't track who scans your codes or what's in them. Your business is your own.",
               icon: "🛡️"
             },
             {
-              title: "Vector Perfect",
-              desc: "Download in SVG format for professional printing. Our codes stay crystal clear from business cards to massive billboards.",
+              title: "Universal",
+              desc: "Works for everything from simple links to complex vCards and cryptocurrency payments.",
               icon: "📐"
             }
           ].map((card, i) => (
@@ -78,13 +75,6 @@ const AboutPage: React.FC = () => {
               <p className="text-slate-500 text-sm leading-relaxed font-medium">{card.desc}</p>
             </div>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center pt-12">
-          <Link to="/url-qr-generator">
-            <Button size="lg" className="rounded-full px-12 py-5 shadow-2xl shadow-indigo-200">Start Designing Now</Button>
-          </Link>
         </div>
       </div>
     </div>

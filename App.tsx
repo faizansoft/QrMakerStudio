@@ -16,6 +16,8 @@ import FacebookPage from './FacebookPage';
 import WhatsAppPage from './WhatsAppPage';
 import AboutPage from './AboutPage';
 import ContactPage from './ContactPage';
+import PrivacyPage from './PrivacyPage';
+import TermsPage from './TermsPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -59,6 +61,8 @@ const App: React.FC = () => {
             <Route path="/whatsapp-qr-generator" element={<WhatsAppPage {...commonProps} />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
