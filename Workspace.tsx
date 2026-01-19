@@ -26,6 +26,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
   const qrCode = useMemo(() => new QRCodeStyling(), []);
   const details = GENERATOR_DETAILS[type];
 
+  // Update Page Metadata
   useEffect(() => {
     const pageTitle = `${details.title} | QR Studio Pro`;
     const pageDesc = `${details.desc} Create high-resolution custom QR codes.`;
@@ -34,7 +35,11 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
     if (metaDesc) metaDesc.setAttribute('content', pageDesc);
   }, [type, details]);
 
+  // Robust QR Update & Mount Effect
   useEffect(() => {
+    if (!qrRef.current) return;
+
+    // 1. Configure Options
     const options: Options = {
       width: 1000, 
       height: 1000,
@@ -44,25 +49,33 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
       image: logoSrc || undefined,
       dotsOptions: { color: styling.fgColor, type: styling.dotType },
       backgroundOptions: { color: styling.bgColor },
-      imageOptions: { crossOrigin: 'anonymous', margin: 10, imageSize: 0.4, hideBackgroundDots: true },
+      imageOptions: { 
+        crossOrigin: 'anonymous', 
+        margin: 10, 
+        imageSize: 0.4, 
+        hideBackgroundDots: true,
+        saveAsBlob: true
+      },
       cornersSquareOptions: { type: styling.cornerSquareType, color: styling.cornerSquareColor },
       cornersDotOptions: { type: styling.cornerDotType, color: styling.cornerDotColor }
     };
-    qrCode.update(options);
-  }, [styling, logoSrc, qrCode, value]);
 
-  useEffect(() => {
-    if (qrRef.current) {
-      qrRef.current.innerHTML = '';
+    // 2. Initialize or Update
+    if (qrRef.current.childNodes.length === 0) {
       qrCode.append(qrRef.current);
-      const canvas = qrRef.current.querySelector('canvas');
-      if (canvas) {
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-        canvas.style.display = 'block';
-      }
     }
-  }, [qrCode]);
+    
+    qrCode.update(options);
+
+    // 3. Ensure Responsiveness in Preview
+    const canvas = qrRef.current.querySelector('canvas');
+    if (canvas) {
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.display = 'block';
+      canvas.style.maxWidth = '100%';
+    }
+  }, [styling, logoSrc, value, qrCode]);
 
   const handleDownload = (format: 'png' | 'svg' | 'webp') => {
     qrCode.download({ name: `qr-${type}`, extension: format });
@@ -183,7 +196,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                     minWidth: '320px'
                   }}
                 >
-                  <div ref={qrRef} className="bg-white p-2 rounded-2xl w-[280px] aspect-square shadow-sm" />
+                  <div ref={qrRef} className="bg-white p-2 rounded-2xl w-[280px] aspect-square shadow-sm overflow-hidden" />
                 </div>
               </div>
               
