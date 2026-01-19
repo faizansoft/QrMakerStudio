@@ -66,6 +66,16 @@ export const GENERATOR_DETAILS: Record<QRType, { title: string; desc: string; ic
       { step: "Export Vector", detail: "Download your custom URL QR code as an SVG to ensure it stays sharp on any marketing material." }
     ]
   },
+  googleform: {
+    title: "Google Forms",
+    desc: "Collect responses effortlessly with a branded QR code for your surveys.",
+    icon: "📝",
+    guide: [
+      { step: "Get Form Link", detail: "In Google Forms, click 'Send' and copy the Link. We recommend ticking 'Shorten URL' for a cleaner QR pattern." },
+      { step: "Customize Color", detail: "Use purple shades (#673ab7) to match the familiar Google Forms aesthetic for your respondents." },
+      { step: "Print Ready", detail: "Export as SVG for high-quality printing on survey flyers, feedback cards, or table tents." }
+    ]
+  },
   vcard: {
     title: "vCard",
     desc: "A digital business card that saves your contact information directly to a smartphone.",

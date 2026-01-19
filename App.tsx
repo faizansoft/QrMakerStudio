@@ -14,6 +14,7 @@ import LocationPage from './LocationPage';
 import CryptoPage from './CryptoPage';
 import FacebookPage from './FacebookPage';
 import WhatsAppPage from './WhatsAppPage';
+import GoogleFormPage from './GoogleFormPage';
 import AboutPage from './AboutPage';
 import ContactPage from './ContactPage';
 import PrivacyPage from './PrivacyPage';
@@ -48,6 +49,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/url-qr-generator" element={<URLPage {...commonProps} />} />
+            <Route path="/googleform-qr-generator" element={<GoogleFormPage {...commonProps} />} />
             <Route path="/wifi-qr-generator" element={<WiFiPage {...commonProps} />} />
             <Route path="/vcard-qr-generator" element={<VCardPage {...commonProps} />} />
             <Route path="/phone-qr-generator" element={<PhonePage {...commonProps} />} />
