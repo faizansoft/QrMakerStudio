@@ -10,7 +10,7 @@ interface PageProps {
 }
 
 const URLPage: React.FC<PageProps> = (props) => {
-  const [url, setUrl] = useState('https://shortnow.link');
+  const [url, setUrl] = useState('https://qr-generator.online');
   return (
     <Workspace type="url" value={url} {...props}>
       <div className="space-y-4">
