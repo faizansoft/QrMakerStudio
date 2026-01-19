@@ -1,4 +1,5 @@
-import { StylePreset, DotType, CornerSquareType, CornerDotType } from './types';
+
+import { StylePreset, DotType, CornerSquareType, CornerDotType, QRType } from './types';
 
 export const STYLE_PRESETS: StylePreset[] = [
   { id: 'classic', name: 'Classic Black', fgColor: '#000000', bgColor: '#FFFFFF', className: 'bg-white border-slate-200' },
@@ -52,28 +53,74 @@ export const FAQ_ITEMS = [
   {
     question: "What formats can I download my QR code in?",
     answer: "You can download your codes in PNG, WebP, or SVG. The SVG format is a vector, meaning it is perfect for high-quality printing on billboards, business cards, and menus."
-  },
-  {
-    question: "Why should I choose this as the best QR code generator?",
-    answer: "Unlike other sites, we don't hide your content behind redirects, we don't add watermarks, and we offer professional-grade customization for free."
   }
 ];
 
-export const GUIDE_STEPS = [
-  {
-    title: "Paste your Content",
-    description: "Simply enter your website URL, text, email, or vCard details into the text area. Our tool automatically prepares the data for generation."
+export const GENERATOR_DETAILS: Record<QRType, { title: string; desc: string; icon: string; guide: { step: string; detail: string }[] }> = {
+  url: {
+    title: "URL Generator",
+    desc: "Create linkable QR codes for websites, portfolios, and social media profiles.",
+    icon: "🔗",
+    guide: [
+      { step: "Paste Link", detail: "Copy the full URL from your browser address bar and paste it into the field." },
+      { step: "Brand Design", detail: "Use the pattern tab to match your website's primary colors." },
+      { step: "Add Logo", detail: "Upload your brand favicon or logo to increase trust and click-through rates." }
+    ]
   },
-  {
-    title: "Customize the Design",
-    description: "Choose from different dot styles, corner shapes, and colors. You can even use our 'AI Magic' button to get a professional design suggestion automatically."
+  wifi: {
+    title: "WiFi Access",
+    desc: "Generate QR codes that allow guests to connect to your network without typing passwords.",
+    icon: "📶",
+    guide: [
+      { step: "Network Name", detail: "Enter the SSID exactly as it appears on your router settings." },
+      { step: "Security Mode", detail: "Most modern routers use WPA/WPA2. Select 'None' only for open networks." },
+      { step: "Scan & Connect", detail: "When scanned, mobile devices will prompt to 'Join Network' automatically." }
+    ]
   },
-  {
-    title: "Add your Brand Logo",
-    description: "Upload your brand logo or icon. It will be placed perfectly in the center of the QR code to build brand recognition."
+  vcard: {
+    title: "Digital vCard",
+    desc: "Share your professional contact info instantly. Save to phone contacts with one scan.",
+    icon: "👤",
+    guide: [
+      { step: "Contact Details", detail: "Fill in your name, phone, and professional email address." },
+      { step: "Company Info", detail: "Add your job title and organization to appear professional in contact lists." },
+      { step: "Eye-Catching Style", detail: "Use sleek patterns like 'Classy' or 'Elegant' for a business-ready look." }
+    ]
   },
-  {
-    title: "Download & Print",
-    description: "Once you are happy with the preview, click 'Download PNG' or 'SVG' for professional printing. Your free QR code is ready for use immediately!"
+  phone: {
+    title: "Direct Call",
+    desc: "Encourage customers to call your business directly from signage or business cards.",
+    icon: "📞",
+    guide: [
+      { step: "Phone Number", detail: "Enter the full international number including the country code (e.g., +1...)." },
+      { step: "Quick Dial", detail: "Scanning this will automatically open the dialer on the user's smartphone." }
+    ]
+  },
+  sms: {
+    title: "SMS Message",
+    desc: "Pre-fill text messages with a specific number and content for easier communication.",
+    icon: "💬",
+    guide: [
+      { step: "Recipient", detail: "Enter the number you want the user to send the text to." },
+      { step: "Pre-filled Text", detail: "Write the message body (e.g., 'I am interested in your services')." }
+    ]
+  },
+  email: {
+    title: "Email Draft",
+    desc: "Create QR codes that open an email draft with a recipient, subject, and body already filled.",
+    icon: "📧",
+    guide: [
+      { step: "Email Setup", detail: "Enter the recipient email, subject line, and initial message body." },
+      { step: "Customer Support", detail: "Great for feedback or support requests on product packaging." }
+    ]
+  },
+  text: {
+    title: "Plain Text",
+    desc: "Store notes, secret messages, or alphanumeric data in a simple QR format.",
+    icon: "📝",
+    guide: [
+      { step: "Type Content", detail: "Enter any text string you wish to encode." },
+      { step: "Note on Size", detail: "Longer text makes the QR code more dense. Use 'Level H' correction for reliability." }
+    ]
   }
-];
+};

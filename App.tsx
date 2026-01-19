@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import QRCodeStyling, { Options, DrawType, Gradient } from 'qr-code-styling';
-import { QRConfig, QRType, StylePreset, AIStyleSuggestion } from './types';
-import { STYLE_PRESETS, ERROR_CORRECTION_LEVELS, DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS, GUIDE_STEPS } from './constants';
-import { getAIStyleSuggestion } from './services/geminiService';
+import QRCodeStyling, { Options, Gradient } from 'qr-code-styling';
+import { QRConfig, QRType } from './types';
+import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS, GENERATOR_DETAILS } from './constants';
 import { Button } from './components/Button';
 import { LogoUploader } from './components/LogoUploader';
 
@@ -11,13 +10,6 @@ interface Toast {
   message: string;
   type: 'success' | 'error' | 'info';
 }
-
-const AdPlaceholder: React.FC<{ slot: string; className?: string }> = ({ slot, className }) => (
-  <div className={`bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center text-[10px] font-black uppercase tracking-widest text-slate-400 overflow-hidden min-h-[100px] ${className}`}>
-    <span>Advertisement Space - {slot}</span>
-    {/* Inserts AdSense code here */}
-  </div>
-);
 
 const Modal: React.FC<{ title: string, isOpen: boolean, onClose: () => void, children: React.ReactNode }> = ({ title, isOpen, onClose, children }) => {
   if (!isOpen) return null;
@@ -37,8 +29,22 @@ const Modal: React.FC<{ title: string, isOpen: boolean, onClose: () => void, chi
 };
 
 const App: React.FC = () => {
-  const initialConfig: QRConfig = {
-    value: 'https://shortnow.link',
+  // Navigation State
+  const [view, setView] = useState<'home' | 'generator'>('home');
+  const [activeType, setActiveType] = useState<QRType>('url');
+  
+  // Content States
+  const [url, setUrl] = useState('https://shortnow.link');
+  const [wifi, setWifi] = useState({ ssid: '', pass: '', enc: 'WPA' });
+  const [vcard, setVcard] = useState({ firstName: '', lastName: '', mobile: '', email: '', org: '', job: '' });
+  const [phone, setPhone] = useState('');
+  const [sms, setSms] = useState({ num: '', msg: '' });
+  const [email, setEmail] = useState({ to: '', sub: '', body: '' });
+  const [text, setText] = useState('');
+
+  // Styling State
+  const [config, setConfig] = useState<QRConfig>({
+    value: '',
     fgColor: '#1e293b',
     bgColor: '#ffffff',
     level: 'H',
@@ -49,14 +55,11 @@ const App: React.FC = () => {
     cornerDotType: 'square',
     cornerSquareColor: '#1e293b',
     cornerDotColor: '#1e293b',
-  };
+  });
 
-  const [config, setConfig] = useState<QRConfig>(initialConfig);
-  const [activeType, setActiveType] = useState<QRType>('url');
   const [activeTab, setActiveTab] = useState<'content' | 'pattern' | 'corners' | 'logo'>('content');
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
-  const [aiResult, setAiResult] = useState<AIStyleSuggestion | null>(null);
   const [modalType, setModalType] = useState<string | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [useGradient, setUseGradient] = useState(false);
@@ -65,25 +68,24 @@ const App: React.FC = () => {
   const qrRef = useRef<HTMLDivElement>(null);
   const qrCode = useMemo(() => new QRCodeStyling(), []);
 
-  const addToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
-    const id = Date.now();
-    setToasts(prev => [...prev, { id, message, type }]);
-    setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 3000);
-  };
-
-  const isValid = useMemo(() => {
-    if (!config.value.trim()) return false;
-    if (activeType === 'url') {
-      try { new URL(config.value); return true; } catch { return config.value.includes('.'); }
+  const computedValue = useMemo(() => {
+    switch (activeType) {
+      case 'url': return url || ' ';
+      case 'wifi': return `WIFI:S:${wifi.ssid};T:${wifi.enc};P:${wifi.pass};;`;
+      case 'vcard': return `BEGIN:VCARD\nVERSION:3.0\nN:${vcard.lastName};${vcard.firstName}\nFN:${vcard.firstName} ${vcard.lastName}\nORG:${vcard.org}\nTITLE:${vcard.job}\nTEL;TYPE=CELL:${vcard.mobile}\nEMAIL:${vcard.email}\nEND:VCARD`;
+      case 'phone': return `tel:${phone}`;
+      case 'sms': return `smsto:${sms.num}:${sms.msg}`;
+      case 'email': return `mailto:${email.to}?subject=${encodeURIComponent(email.sub)}&body=${encodeURIComponent(email.body)}`;
+      case 'text': return text || ' ';
+      default: return '';
     }
-    return true;
-  }, [config.value, activeType]);
+  }, [activeType, url, wifi, vcard, phone, sms, email, text]);
 
   useEffect(() => {
     const options: Options = {
       width: 300,
       height: 300,
-      data: config.value || ' ',
+      data: computedValue,
       margin: config.includeMargin ? 15 : 5,
       qrOptions: { errorCorrectionLevel: config.level },
       image: logoSrc || undefined,
@@ -93,10 +95,7 @@ const App: React.FC = () => {
         gradient: useGradient ? {
           type: 'linear',
           rotation: 45,
-          colorStops: [
-            { offset: 0, color: config.fgColor },
-            { offset: 1, color: gradientColor }
-          ]
+          colorStops: [{ offset: 0, color: config.fgColor }, { offset: 1, color: gradientColor }]
         } as Gradient : undefined
       },
       backgroundOptions: { color: config.bgColor },
@@ -105,406 +104,337 @@ const App: React.FC = () => {
       cornersDotOptions: { type: config.cornerDotType, color: config.cornerDotColor }
     };
     qrCode.update(options);
-  }, [config, logoSrc, qrCode, useGradient, gradientColor]);
+  }, [config, logoSrc, qrCode, useGradient, gradientColor, computedValue]);
 
   useEffect(() => {
-    if (qrRef.current) {
+    if (view === 'generator' && qrRef.current) {
       qrRef.current.innerHTML = '';
       qrCode.append(qrRef.current);
     }
-  }, [qrCode]);
+  }, [qrCode, view]);
+
+  const addToast = (message: string) => {
+    const id = Date.now();
+    setToasts(prev => [...prev, { id, message, type: 'success' }]);
+    setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 3000);
+  };
 
   const handleDownload = (format: 'png' | 'svg' | 'webp') => {
-    qrCode.download({ name: `free-qr-code-${Date.now()}`, extension: format });
-    addToast(`Success! Your QR is ready in ${format.toUpperCase()}`);
+    qrCode.download({ name: `qr-${activeType}-${Date.now()}`, extension: format });
+    addToast(`Exported as ${format.toUpperCase()}!`);
   };
 
-  const copyToClipboard = async () => {
-    try {
-      const blob = await qrCode.getRawData('png');
-      if (blob) {
-        const item = new ClipboardItem({ 'image/png': blob as Blob });
-        await navigator.clipboard.write([item]);
-        addToast('QR Code copied to clipboard!');
-      }
-    } catch (err) {
-      addToast('Failed to copy. Try downloading.', 'error');
-    }
-  };
-
-  const applyAIStyle = async () => {
-    if (!config.value) return;
+  const applySmartStyle = () => {
     setIsAiLoading(true);
-    try {
-      const suggestion = await getAIStyleSuggestion(config.value);
-      setAiResult(suggestion);
-      setConfig(prev => ({
-        ...prev,
-        fgColor: suggestion.primaryColor,
-        bgColor: suggestion.secondaryColor,
-        cornerSquareColor: suggestion.cornerSquareColor,
-        cornerDotColor: suggestion.cornerDotColor,
-        dotType: suggestion.dotType,
-        cornerSquareType: suggestion.cornerSquareType,
-        cornerDotType: suggestion.cornerDotType,
-      }));
-      addToast('AI Style Applied!');
-    } catch (err) {
-      addToast('AI logic failed.', 'error');
-    } finally { setIsAiLoading(false); }
+    setTimeout(() => {
+      let primary = '#6366f1';
+      let accent = '#4f46e5';
+      let dot: any = 'square';
+
+      if (activeType === 'wifi') { primary = '#0ea5e9'; accent = '#0284c7'; dot = 'dots'; }
+      else if (activeType === 'vcard') { primary = '#1e293b'; accent = '#475569'; dot = 'classy'; }
+      else if (activeType === 'sms' || activeType === 'phone') { primary = '#10b981'; accent = '#059669'; dot = 'rounded'; }
+      else if (activeType === 'email') { primary = '#f43f5e'; accent = '#e11d48'; dot = 'extra-rounded'; }
+
+      const cSquare = CORNER_SQUARE_STYLES[Math.floor(Math.random() * CORNER_SQUARE_STYLES.length)].value;
+      const cDot = CORNER_DOT_STYLES[Math.floor(Math.random() * CORNER_DOT_STYLES.length)].value;
+
+      setConfig(prev => ({ ...prev, fgColor: primary, cornerSquareColor: primary, cornerDotColor: accent, dotType: dot, cornerSquareType: cSquare, cornerDotType: cDot }));
+      setIsAiLoading(false);
+      addToast('Style Optimized!');
+    }, 400);
   };
 
-  const handleReset = () => {
-    setConfig(initialConfig);
-    setLogoSrc(null);
-    setUseGradient(false);
-    setAiResult(null);
-    addToast('Configuration reset.', 'info');
+  const openGenerator = (type: QRType) => {
+    setActiveType(type);
+    setView('generator');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const renderHome = () => (
+    <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      <div className="text-center max-w-3xl mx-auto space-y-6">
+         <span className="px-4 py-1.5 bg-indigo-50 text-indigo-700 text-[10px] font-black uppercase tracking-[0.3em] rounded-full border border-indigo-100">Premium QR Suite</span>
+         <h1 className="text-5xl md:text-8xl font-display font-black text-slate-900 tracking-tighter leading-[0.9]">Select Your <span className="text-indigo-600">Tool</span></h1>
+         <p className="text-xl text-slate-500 font-medium">Choose from our suite of specialized QR generators. Each tool is built for high-performance scanning and full brand customization.</p>
+      </div>
 
-  return (
-    <div className="min-h-screen flex flex-col bg-slate-50 selection:bg-indigo-100 overflow-x-hidden">
-      {/* NAVIGATION BAR */}
-      <header className="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3 md:gap-4 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="qr-gradient w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-100 transition-transform group-hover:scale-110">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg>
-            </div>
-            <span className="text-xl md:text-2xl font-display font-black text-slate-900 tracking-tight leading-none">QR Maker Studio</span>
-          </div>
-          <nav className="hidden lg:flex items-center gap-8">
-            {['guide', 'features', 'faq'].map(section => (
-              <button key={section} onClick={() => scrollToSection(section)} className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] hover:text-indigo-600 transition-all">{section}</button>
-            ))}
-          </nav>
-          <Button size="sm" variant="primary" className="rounded-full px-5 md:px-7" onClick={() => scrollToSection('generator')}>Generate Free</Button>
-        </div>
-      </header>
-
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 py-8 md:py-16">
-        
-        {/* HERO SEO BLOCK */}
-        <section className="text-center mb-8 md:mb-16 space-y-6">
-          <div className="inline-flex px-4 py-1.5 bg-indigo-50 text-indigo-700 text-[10px] font-black uppercase tracking-[0.3em] rounded-full border border-indigo-100 mb-2">
-            The #1 Free QR Code Maker Online
-          </div>
-          <h1 className="text-4xl md:text-7xl lg:text-8xl font-display font-extrabold text-slate-900 tracking-tighter leading-[1.05]">
-            Best Free <br/><span className="text-indigo-600">QR Code Generator</span>
-          </h1>
-          <p className="text-lg md:text-2xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-            Create professional, custom qrcodes free of charge with our elite qrcode generator. No signup, no expiration, and full logo support.
-          </p>
-        </section>
-
-        {/* ADSENSE TOP LEADERBOARD */}
-        <AdPlaceholder slot="Leaderboard_Top" className="w-full h-[90px] mb-12" />
-
-        {/* GENERATOR CORE */}
-        <div id="generator" className="grid lg:grid-cols-12 gap-8 md:gap-12 items-start">
-          
-          {/* QR PREVIEW COLUMN - High Visibility on All Devices */}
-          <aside className="lg:col-span-5 order-1 lg:order-2 lg:sticky lg:top-24">
-            <div className="bg-white p-5 sm:p-8 md:p-10 rounded-3xl md:rounded-[3.5rem] shadow-xl border border-slate-200 flex flex-col items-center">
-              <div className="w-full flex justify-between items-center mb-6">
-                 <div>
-                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block">Live Preview</span>
-                    <span className="text-xs font-black uppercase text-indigo-600">Free qrcode maker</span>
-                 </div>
-                 <button onClick={copyToClipboard} className="p-3 bg-slate-50 hover:bg-indigo-50 text-slate-400 hover:text-indigo-600 rounded-xl transition-all border border-slate-100 shadow-sm" title="Copy to Clipboard">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-                 </button>
-              </div>
-
-              {/* RESPONSIVE QR CONTAINER */}
-              <div className="relative p-3 sm:p-6 md:p-8 rounded-3xl bg-slate-50 shadow-inner w-full flex justify-center border border-slate-100 overflow-hidden min-h-[250px] sm:min-h-[350px]">
-                <div 
-                  ref={qrRef} 
-                  className="shadow-2xl rounded-2xl overflow-hidden bg-white p-2 sm:p-4 transition-all duration-300 ring-4 ring-white max-w-full flex justify-center items-center"
-                  style={{ transform: 'scale(1)', transformOrigin: 'center' }}
-                />
-              </div>
-
-              <div className="w-full mt-8 space-y-4">
-                <Button onClick={() => handleDownload('png')} disabled={!isValid} size="lg" className="w-full py-5 rounded-2xl text-base font-black uppercase tracking-widest shadow-lg shadow-indigo-100 hover:scale-[1.02]">Download PNG (Free)</Button>
-                <div className="grid grid-cols-2 gap-4">
-                  <Button onClick={() => handleDownload('svg')} disabled={!isValid} variant="outline" className="py-4 text-[10px] font-black tracking-widest border border-slate-200 uppercase rounded-xl">SVG (Vector)</Button>
-                  <Button onClick={() => handleDownload('webp')} disabled={!isValid} variant="outline" className="py-4 text-[10px] font-black tracking-widest border border-slate-200 uppercase rounded-xl">WebP Export</Button>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {(Object.keys(GENERATOR_DETAILS) as QRType[]).map(type => {
+          const details = GENERATOR_DETAILS[type];
+          return (
+            <div 
+              key={type} 
+              onClick={() => openGenerator(type)}
+              className="group relative bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm hover:shadow-2xl hover:border-indigo-200 transition-all cursor-pointer overflow-hidden"
+            >
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-4xl mb-6 group-hover:scale-110 group-hover:bg-indigo-50 transition-transform">
+                  {details.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">{details.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed flex-1">{details.desc}</p>
+                <div className="mt-8 flex items-center gap-2 text-indigo-600 font-black text-[10px] uppercase tracking-widest">
+                  Open Generator
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </div>
               </div>
-
-              {/* ADSENSE SIDEBAR AD */}
-              <AdPlaceholder slot="Sidebar_Display" className="w-full h-[250px] mt-8" />
+              <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-indigo-500/5 rounded-full blur-3xl group-hover:bg-indigo-500/10 transition-all"></div>
             </div>
-          </aside>
+          );
+        })}
+      </div>
+    </div>
+  );
 
-          {/* CONTROLS COLUMN */}
-          <div className="lg:col-span-7 order-2 lg:order-1 space-y-8">
-            <section className="bg-white rounded-3xl md:rounded-[3rem] shadow-xl border border-slate-200 overflow-hidden">
-              <div className="flex overflow-x-auto no-scrollbar bg-slate-50/50 border-b border-slate-100 p-2 gap-1">
-                {(['content', 'pattern', 'corners', 'logo'] as const).map(tab => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`whitespace-nowrap flex-1 px-4 py-3 md:py-4 text-[10px] md:text-[11px] font-black uppercase tracking-widest transition-all rounded-xl md:rounded-2xl ${
-                      activeTab === tab ? 'text-indigo-600 bg-white shadow-sm ring-1 ring-slate-200' : 'text-slate-400 hover:text-slate-600'
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
+  const renderGenerator = () => {
+    const details = GENERATOR_DETAILS[activeType];
+    return (
+      <div className="space-y-12 animate-in fade-in slide-in-from-right-4 duration-500">
+        {/* Generator Navigation */}
+        <div className="flex items-center justify-between">
+           <button onClick={() => setView('home')} className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors font-black text-[10px] uppercase tracking-widest">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7"/></svg>
+              Back to Tools
+           </button>
+           <div className="flex items-center gap-3">
+              <span className="text-2xl">{details.icon}</span>
+              <h2 className="text-xl font-bold text-slate-900">{details.title}</h2>
+           </div>
+        </div>
 
-              <div className="p-6 md:p-12">
-                {activeTab === 'content' && (
-                  <div className="space-y-8 animate-in fade-in duration-500">
-                    <div className="flex flex-wrap gap-2">
-                      {(['url', 'text', 'email', 'phone', 'vcard'] as QRType[]).map(type => (
-                        <button key={type} onClick={() => setActiveType(type)} className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeType === type ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{type}</button>
-                      ))}
-                    </div>
-                    <textarea 
-                      value={config.value} 
-                      onChange={(e) => setConfig(prev => ({ ...prev, value: e.target.value }))} 
-                      placeholder={`Enter your ${activeType}...`} 
-                      className="w-full min-h-[180px] p-6 md:p-8 rounded-2xl md:rounded-[2.5rem] border-2 border-slate-100 bg-white text-slate-900 placeholder:text-slate-300 focus:ring-8 focus:ring-indigo-50/50 focus:border-indigo-400 outline-none transition-all resize-none text-xl md:text-2xl font-bold"
-                    />
-
-                    {aiResult && (
-                      <div className="p-6 rounded-3xl bg-indigo-50 border border-indigo-100">
-                        <span className="text-[9px] font-black uppercase tracking-widest text-indigo-400 mb-2 block">AI Design Context</span>
-                        <p className="text-sm text-indigo-700 font-medium italic leading-relaxed">"{aiResult.description}"</p>
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+          {/* Editor Sidebar */}
+          <div className="lg:col-span-8 bg-white rounded-[2.5rem] shadow-xl border border-slate-200 overflow-hidden">
+            <div className="flex bg-slate-50/50 border-b border-slate-100 p-2">
+              {(['content', 'pattern', 'corners', 'logo'] as const).map(tab => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`flex-1 py-4 text-[10px] font-black uppercase tracking-widest transition-all rounded-2xl ${
+                    activeTab === tab ? 'text-indigo-600 bg-white shadow-sm ring-1 ring-slate-200' : 'text-slate-400 hover:text-slate-600'
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+            
+            <div className="p-8 md:p-12">
+               {activeTab === 'content' && (
+                 <div className="space-y-8 animate-in fade-in duration-300">
+                    {/* Specialized Forms */}
+                    {activeType === 'url' && <input type="text" value={url} onChange={e => setUrl(e.target.value)} placeholder="https://your-link.com" className="w-full p-6 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold text-2xl" />}
+                    {activeType === 'wifi' && (
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <input type="text" value={wifi.ssid} onChange={e => setWifi({...wifi, ssid: e.target.value})} placeholder="SSID (Name)" className="w-full p-4 rounded-2xl bg-slate-50 border-2 border-slate-100" />
+                        <input type="text" value={wifi.pass} onChange={e => setWifi({...wifi, pass: e.target.value})} placeholder="Password" className="w-full p-4 rounded-2xl bg-slate-50 border-2 border-slate-100" />
+                        <select value={wifi.enc} onChange={e => setWifi({...wifi, enc: e.target.value})} className="col-span-full w-full p-4 rounded-2xl bg-slate-50 border-2 border-slate-100 outline-none font-bold">
+                           <option value="WPA">WPA / WPA2 (Recommended)</option>
+                           <option value="WEP">WEP</option>
+                           <option value="nopass">Open (No Password)</option>
+                        </select>
+                      </div>
+                    )}
+                    {activeType === 'vcard' && (
+                       <div className="grid grid-cols-2 gap-4">
+                          <input type="text" placeholder="First Name" value={vcard.firstName} onChange={e => setVcard({...vcard, firstName: e.target.value})} className="p-4 rounded-xl bg-slate-50 border border-slate-100" />
+                          <input type="text" placeholder="Last Name" value={vcard.lastName} onChange={e => setVcard({...vcard, lastName: e.target.value})} className="p-4 rounded-xl bg-slate-50 border border-slate-100" />
+                          <input type="text" placeholder="Mobile" value={vcard.mobile} onChange={e => setVcard({...vcard, mobile: e.target.value})} className="col-span-2 p-4 rounded-xl bg-slate-50 border border-slate-100" />
+                          <input type="text" placeholder="Email" value={vcard.email} onChange={e => setVcard({...vcard, email: e.target.value})} className="col-span-2 p-4 rounded-xl bg-slate-50 border border-slate-100" />
+                       </div>
+                    )}
+                    {activeType === 'phone' && <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+1 234 567 890" className="w-full p-6 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold text-2xl" />}
+                    {activeType === 'text' && <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Type your text content here..." className="w-full h-48 p-6 rounded-2xl bg-slate-50 border-2 border-slate-100 outline-none font-bold resize-none" />}
+                    {activeType === 'sms' && (
+                      <div className="space-y-4">
+                        <input type="tel" value={sms.num} onChange={e => setSms({...sms, num: e.target.value})} placeholder="Recipient Number" className="w-full p-4 rounded-2xl bg-slate-50 border-2 border-slate-100" />
+                        <textarea value={sms.msg} onChange={e => setSms({...sms, msg: e.target.value})} placeholder="Message body..." className="w-full h-32 p-4 rounded-2xl bg-slate-50 border-2 border-slate-100 outline-none resize-none" />
+                      </div>
+                    )}
+                    {activeType === 'email' && (
+                      <div className="space-y-4">
+                        <input type="email" value={email.to} onChange={e => setEmail({...email, to: e.target.value})} placeholder="To (Recipient)" className="w-full p-4 rounded-2xl bg-slate-50 border-2 border-slate-100" />
+                        <input type="text" value={email.sub} onChange={e => setEmail({...email, sub: e.target.value})} placeholder="Subject" className="w-full p-4 rounded-2xl bg-slate-50 border-2 border-slate-100" />
+                        <textarea value={email.body} onChange={e => setEmail({...email, body: e.target.value})} placeholder="Email body..." className="w-full h-32 p-4 rounded-2xl bg-slate-50 border-2 border-slate-100 outline-none resize-none" />
                       </div>
                     )}
 
-                    <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-slate-50">
-                      <Button variant="primary" size="lg" onClick={applyAIStyle} loading={isAiLoading} className="flex-1 rounded-2xl py-4 shadow-lg shadow-indigo-100">
-                        ✨ Generate AI Theme
-                      </Button>
-                      <button onClick={handleReset} className="text-[10px] font-black text-slate-400 hover:text-red-500 uppercase tracking-widest px-6 h-12">Reset Form</button>
+                    <div className="pt-8 border-t border-slate-100">
+                      <Button onClick={applySmartStyle} loading={isAiLoading} className="w-full py-5 rounded-3xl shadow-xl shadow-indigo-100 text-[11px] uppercase tracking-widest font-black">✨ Match Matching Style</Button>
                     </div>
-                  </div>
-                )}
+                 </div>
+               )}
 
-                {activeTab === 'pattern' && (
-                  <div className="space-y-10 animate-in fade-in duration-500">
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                      {DOT_STYLES.map(style => (
-                        <button key={style.value} onClick={() => setConfig(prev => ({ ...prev, dotType: style.value }))} className={`p-4 md:p-6 rounded-2xl border-2 text-center transition-all ${config.dotType === style.value ? 'border-indigo-500 bg-indigo-50 shadow-md' : 'border-slate-50 hover:border-slate-100'}`}>
-                          <span className={`text-[10px] font-black uppercase tracking-widest ${config.dotType === style.value ? 'text-indigo-600' : 'text-slate-400'}`}>{style.label}</span>
-                        </button>
-                      ))}
-                    </div>
-                    
-                    <div className="grid md:grid-cols-2 gap-8 bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100">
-                      <div className="space-y-4">
-                        <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest flex justify-between items-center">
-                          Foreground Color
-                          <span className="font-mono text-[9px] uppercase">{config.fgColor}</span>
-                        </label>
-                        <div className="flex gap-4 items-center p-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                          <input type="color" value={config.fgColor} onChange={(e) => setConfig(prev => ({ ...prev, fgColor: e.target.value }))} className="w-12 h-12 rounded-xl cursor-pointer border-0 p-0 bg-transparent ring-1 ring-slate-100"/>
-                          <div className="flex-1 text-xs font-bold text-slate-400">Main QR Pattern</div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest flex justify-between items-center">
-                          Background Color
-                          <span className="font-mono text-[9px] uppercase">{config.bgColor}</span>
-                        </label>
-                        <div className="flex gap-4 items-center p-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                          <input type="color" value={config.bgColor} onChange={(e) => setConfig(prev => ({ ...prev, bgColor: e.target.value }))} className="w-12 h-12 rounded-xl cursor-pointer border-0 p-0 bg-transparent ring-1 ring-slate-100"/>
-                          <div className="flex-1 text-xs font-bold text-slate-400">Outer Canvas</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === 'corners' && (
-                  <div className="grid sm:grid-cols-2 gap-8 md:gap-12 animate-in fade-in duration-500">
-                    <div className="space-y-8">
-                      <label className="text-[11px] font-black text-slate-900 uppercase tracking-widest block border-b pb-2">Corner Frames</label>
-                      <div className="space-y-3">
-                        {CORNER_SQUARE_STYLES.map(s => (
-                          <button key={s.value} onClick={() => setConfig(prev => ({ ...prev, cornerSquareType: s.value }))} className={`w-full p-4 rounded-xl border-2 text-left text-[11px] font-black uppercase tracking-widest transition-all ${config.cornerSquareType === s.value ? 'border-indigo-500 bg-indigo-50 text-indigo-700 shadow-md' : 'border-slate-50 text-slate-400 hover:border-slate-100'}`}>{s.label}</button>
-                        ))}
-                      </div>
-                      <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
-                        <label className="text-[9px] font-black text-slate-400 uppercase mb-3 block">Outer Accent Color</label>
-                        <input type="color" value={config.cornerSquareColor} onChange={(e) => setConfig(prev => ({ ...prev, cornerSquareColor: e.target.value }))} className="w-full h-10 rounded-xl cursor-pointer" />
-                      </div>
-                    </div>
-                    <div className="space-y-8">
-                      <label className="text-[11px] font-black text-slate-900 uppercase tracking-widest block border-b pb-2">Corner Eyes</label>
-                      <div className="space-y-3">
-                        {CORNER_DOT_STYLES.map(s => (
-                          <button key={s.value} onClick={() => setConfig(prev => ({ ...prev, cornerDotType: s.value }))} className={`w-full p-4 rounded-xl border-2 text-left text-[11px] font-black uppercase tracking-widest transition-all ${config.cornerDotType === s.value ? 'border-indigo-500 bg-indigo-50 text-indigo-700 shadow-md' : 'border-slate-50 text-slate-400 hover:border-slate-100'}`}>{s.label}</button>
-                        ))}
-                      </div>
-                      <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
-                        <label className="text-[9px] font-black text-slate-400 uppercase mb-3 block">Inner Accent Color</label>
-                        <input type="color" value={config.cornerDotColor} onChange={(e) => setConfig(prev => ({ ...prev, cornerDotColor: e.target.value }))} className="w-full h-10 rounded-xl cursor-pointer" />
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === 'logo' && (
-                  <div className="space-y-10 animate-in fade-in duration-500">
-                    <LogoUploader onUpload={setLogoSrc} currentLogo={logoSrc} />
-                    <div className="p-8 rounded-[2.5rem] bg-slate-900 text-white shadow-xl relative overflow-hidden">
-                       <div className="relative z-10">
-                          <h4 className="text-indigo-400 font-black text-[10px] uppercase tracking-widest mb-4">Branding Recommendation</h4>
-                          <p className="text-slate-300 leading-relaxed font-medium">For the best results, use a high-contrast logo with a transparent background. We automatically apply 30% error correction (Level H) to ensure your QR code remains scannable even with a large central icon.</p>
+               {activeTab === 'pattern' && (
+                  <div className="grid md:grid-cols-2 gap-12 animate-in fade-in duration-300">
+                    <div className="space-y-6">
+                       <label className="text-[10px] font-black uppercase text-slate-400">Dot Patterns</label>
+                       <div className="grid grid-cols-2 gap-3">
+                          {DOT_STYLES.map(s => (
+                            <button key={s.value} onClick={() => setConfig({...config, dotType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${config.dotType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`}>{s.label}</button>
+                          ))}
                        </div>
-                       <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+                    </div>
+                    <div className="space-y-6">
+                       <label className="text-[10px] font-black uppercase text-slate-400">Colors</label>
+                       <div className="space-y-4">
+                          <input type="color" value={config.fgColor} onChange={e => setConfig({...config, fgColor: e.target.value})} className="w-full h-14 rounded-2xl cursor-pointer" />
+                          <div className="flex gap-2 text-[9px] font-black uppercase text-slate-400 tracking-widest">
+                             Hex: <span className="text-slate-900">{config.fgColor}</span>
+                          </div>
+                       </div>
                     </div>
                   </div>
-                )}
-              </div>
-            </section>
+               )}
+
+               {activeTab === 'corners' && (
+                  <div className="grid md:grid-cols-2 gap-12 animate-in fade-in duration-300">
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-black uppercase text-slate-400">Outer Frame</label>
+                      <div className="grid grid-cols-1 gap-2">
+                         {CORNER_SQUARE_STYLES.map(s => (
+                           <button key={s.value} onClick={() => setConfig({...config, cornerSquareType: s.value})} className={`p-4 rounded-xl border-2 text-[10px] font-bold ${config.cornerSquareType === s.value ? 'border-indigo-600 bg-indigo-50' : 'border-slate-50'}`}>{s.label}</button>
+                         ))}
+                      </div>
+                      <input type="color" value={config.cornerSquareColor} onChange={e => setConfig({...config, cornerSquareColor: e.target.value})} className="w-full h-10 rounded-xl cursor-pointer" />
+                    </div>
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-black uppercase text-slate-400">Inner Eye</label>
+                      <div className="grid grid-cols-1 gap-2">
+                         {CORNER_DOT_STYLES.map(s => (
+                           <button key={s.value} onClick={() => setConfig({...config, cornerDotType: s.value})} className={`p-4 rounded-xl border-2 text-[10px] font-bold ${config.cornerDotType === s.value ? 'border-indigo-600 bg-indigo-50' : 'border-slate-50'}`}>{s.label}</button>
+                         ))}
+                      </div>
+                      <input type="color" value={config.cornerDotColor} onChange={e => setConfig({...config, cornerDotColor: e.target.value})} className="w-full h-10 rounded-xl cursor-pointer" />
+                    </div>
+                  </div>
+               )}
+
+               {activeTab === 'logo' && <LogoUploader onUpload={setLogoSrc} currentLogo={logoSrc} />}
+            </div>
+          </div>
+
+          {/* Preview Panel */}
+          <div className="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
+             <div className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-200 text-center">
+                <div className="relative p-6 bg-slate-50 rounded-[2rem] shadow-inner mb-8 flex justify-center items-center min-h-[300px]">
+                   <div ref={qrRef} className="bg-white p-4 rounded-3xl shadow-2xl transition-transform hover:scale-105" />
+                </div>
+                <div className="space-y-4">
+                   <Button onClick={() => handleDownload('png')} className="w-full py-5 rounded-2xl shadow-lg shadow-indigo-100 text-[10px] font-black uppercase tracking-widest">Download HD PNG</Button>
+                   <div className="grid grid-cols-2 gap-4">
+                      <Button variant="outline" onClick={() => handleDownload('svg')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest">Vector SVG</Button>
+                      <Button variant="outline" onClick={() => handleDownload('webp')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest">WebP</Button>
+                   </div>
+                </div>
+             </div>
           </div>
         </div>
 
-        {/* GUIDE SECTION - SEO GOLD */}
-        <section id="guide" className="mt-24 md:mt-48 max-w-5xl mx-auto seo-box">
-          <div className="text-center mb-16">
-            <h2 className="border-none p-0 inline-block uppercase tracking-tighter">How to use our Free QR Code Maker (Guide)</h2>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto">Follow these four simple steps to use the best qrcode generator on the web and download high-resolution files in seconds.</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {GUIDE_STEPS.map((step, idx) => (
-              <div key={idx} className="relative p-8 bg-white rounded-3xl border border-slate-200 shadow-sm group hover:shadow-xl transition-all">
-                <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-black text-xl mb-6 shadow-lg shadow-indigo-100">
-                  {idx + 1}
+        {/* Specialized Detailed Guide */}
+        <div className="pt-24 space-y-12">
+           <h2 className="text-4xl font-display font-black text-slate-900 tracking-tight text-center">How to use {details.title}</h2>
+           <div className="grid md:grid-cols-3 gap-8">
+              {details.guide.map((item, idx) => (
+                <div key={idx} className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm relative overflow-hidden group">
+                   <div className="relative z-10">
+                      <div className="text-4xl font-black text-indigo-500/20 mb-6 font-display">0{idx+1}</div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-4">{item.step}</h4>
+                      <p className="text-slate-500 leading-relaxed text-sm">{item.detail}</p>
+                   </div>
+                   <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-600/5 -mr-12 -mt-12 rounded-full group-hover:scale-150 transition-transform"></div>
                 </div>
-                <h3 className="m-0 text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed m-0">{step.description}</p>
-              </div>
-            ))}
+              ))}
+           </div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col bg-slate-50 selection:bg-indigo-100">
+      <header className="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setView('home')}>
+            <div className="qr-gradient w-10 h-10 rounded-xl flex items-center justify-center shadow-lg"><svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg></div>
+            <span className="text-xl font-display font-black text-slate-900 tracking-tight">QR Studio Pro</span>
           </div>
+          <nav className="hidden md:flex items-center gap-8">
+             <button onClick={() => setView('home')} className="text-[10px] font-black uppercase text-slate-400 hover:text-indigo-600 tracking-widest">Studio Tools</button>
+             <button onClick={() => setModalType('privacy')} className="text-[10px] font-black uppercase text-slate-400 hover:text-indigo-600 tracking-widest">Privacy</button>
+          </nav>
+          <Button size="sm" variant="primary" className="rounded-full px-6" onClick={() => { if(view==='home') openGenerator('url'); else window.scrollTo({top:0, behavior:'smooth'}) }}>{view === 'home' ? 'Start Creating' : 'Go Top'}</Button>
+        </div>
+      </header>
+
+      <main className="flex-1 max-w-7xl mx-auto w-full px-6 py-12 md:py-24">
+        {view === 'home' ? renderHome() : renderGenerator()}
+
+        {/* Shared FAQ Section (Visible on all pages for SEO) */}
+        <section className="mt-48 max-w-4xl mx-auto space-y-12">
+           <h2 className="text-3xl font-display font-black text-slate-900 text-center tracking-tight uppercase">Studio Intelligence FAQ</h2>
+           <div className="grid gap-4">
+              {FAQ_ITEMS.map((item, idx) => (
+                <div key={idx} className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm">
+                   <h4 className="font-bold text-slate-900 mb-2">{item.question}</h4>
+                   <p className="text-slate-500 leading-relaxed text-sm">{item.answer}</p>
+                </div>
+              ))}
+           </div>
         </section>
-
-        {/* ADSENSE IN-CONTENT AD */}
-        <AdPlaceholder slot="In-Content_Horizontal" className="w-full h-[200px] mt-24" />
-
-        {/* FEATURES SECTION */}
-        <section id="features" className="mt-24 md:mt-48 max-w-5xl mx-auto seo-box">
-          <h2 className="uppercase tracking-tighter">Best QR Code Generator Features</h2>
-          <div className="grid md:grid-cols-2 gap-12 mt-12">
-            <div className="space-y-4">
-              <h4 className="text-2xl font-bold text-slate-900 tracking-tight">Unlimited Free Generation</h4>
-              <p className="text-slate-600 leading-relaxed">Unlike other qrcode makers, we don't limit your usage. At QR Maker Studio, we provide 100% <span className="keyword-highlight">qr code maker free</span> services with no hidden limits. Forever.</p>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-2xl font-bold text-slate-900 tracking-tight">Advanced Vector Exports</h4>
-              <p className="text-slate-600 leading-relaxed">Our <span className="keyword-highlight">qrcode generator</span> supports SVG vector exports. This is essential for professional printing on large-scale marketing materials without any loss in clarity.</p>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-2xl font-bold text-slate-900 tracking-tight">AI-Enhanced Styling</h4>
-              <p className="text-slate-600 leading-relaxed">Let our Gemini-powered engine suggest the perfect style. It analyzes your content to suggest a mood-matched color palette automatically for your <span className="keyword-highlight">qrcode maker free</span>.</p>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-2xl font-bold text-slate-900 tracking-tight">Privacy First Approach</h4>
-              <p className="text-slate-600 leading-relaxed">We don't track your scans or store your sensitive URLs. Your data is processed securely, making this the most trusted <span className="keyword-highlight">qrcode generator</span> available.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ SECTION */}
-        <section id="faq" className="mt-24 md:mt-48 max-w-4xl mx-auto seo-box">
-          <div className="text-center mb-16">
-            <h2 className="border-none p-0 inline-block uppercase tracking-tighter">QR Code Generator FAQ</h2>
-          </div>
-          <div className="space-y-6">
-            {FAQ_ITEMS.map((item, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-3xl p-8 md:p-10 shadow-sm">
-                <h3 className="m-0 text-xl md:text-2xl font-bold text-slate-900 mb-4">{item.question}</h3>
-                <p className="text-slate-500 text-base md:text-lg leading-relaxed m-0">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ADSENSE BOTTOM DISPLAY */}
-        <AdPlaceholder slot="Bottom_Footer_Display" className="w-full h-[250px] mt-24" />
       </main>
 
-      {/* FIXED FOOTER */}
-      <footer className="bg-slate-950 text-white pt-24 pb-12 mt-24">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 border-b border-slate-900 pb-20">
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="qr-gradient w-10 h-10 rounded-xl flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg>
-              </div>
-              <span className="font-display font-black text-xl tracking-tighter">QR Maker Studio</span>
-            </div>
-            <p className="text-slate-500 text-sm leading-relaxed">The world's most accessible professional <span className="text-indigo-400 font-bold">qrcode maker free</span>. Designed for speed, privacy, and elite branding for creators.</p>
+      <footer className="bg-slate-950 text-white pt-32 pb-16">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-16 border-b border-slate-900 pb-20">
+          <div className="col-span-2 space-y-8">
+             <div className="flex items-center gap-4">
+                <div className="qr-gradient w-8 h-8 rounded-lg" />
+                <span className="font-display font-black text-2xl tracking-tight">QR Studio Pro</span>
+             </div>
+             <p className="text-slate-500 max-w-sm leading-relaxed">The #1 Professional <span className="text-indigo-400">qr code maker free</span> platform. Built for designers, brands, and enterprise teams who demand excellence without the price tag.</p>
           </div>
-          
           <div className="space-y-6">
-            <h6 className="font-black uppercase tracking-[0.2em] text-[10px] text-indigo-400">Navigation</h6>
-            <ul className="space-y-4 text-sm text-slate-400 font-medium">
-              <li><button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-white transition-colors">Generator Studio</button></li>
-              <li><button onClick={() => scrollToSection('guide')} className="hover:text-white transition-colors">Usage Guide</button></li>
-              <li><button onClick={() => scrollToSection('faq')} className="hover:text-white transition-colors">FAQ</button></li>
-            </ul>
+             <h6 className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Tools</h6>
+             <ul className="space-y-4 text-slate-400 text-sm">
+                <li><button onClick={() => openGenerator('url')} className="hover:text-white transition-colors">URL Generator</button></li>
+                <li><button onClick={() => openGenerator('wifi')} className="hover:text-white transition-colors">WiFi Access</button></li>
+                <li><button onClick={() => openGenerator('vcard')} className="hover:text-white transition-colors">Digital vCard</button></li>
+             </ul>
           </div>
-
           <div className="space-y-6">
-            <h6 className="font-black uppercase tracking-[0.2em] text-[10px] text-indigo-400">Terms</h6>
-            <ul className="space-y-4 text-sm text-slate-400 font-medium">
-              <li><button onClick={() => setModalType('privacy')} className="hover:text-white transition-colors">Privacy Shield</button></li>
-              <li><button onClick={() => setModalType('terms')} className="hover:text-white transition-colors">License Agreement</button></li>
-            </ul>
-          </div>
-
-          <div className="space-y-6">
-            <h6 className="font-black uppercase tracking-[0.2em] text-[10px] text-indigo-400">Status</h6>
-            <div className="p-5 bg-slate-900 rounded-2xl border border-slate-800 flex items-center gap-3">
-              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)] animate-pulse"></div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-slate-300">Servers Live</span>
-            </div>
+             <h6 className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Legal</h6>
+             <ul className="space-y-4 text-slate-400 text-sm">
+                <li><button onClick={() => setModalType('privacy')} className="hover:text-white transition-colors">Privacy Shield</button></li>
+                <li><button onClick={() => setModalType('terms')} className="hover:text-white transition-colors">Studio License</button></li>
+             </ul>
           </div>
         </div>
-
-        <div className="max-w-7xl mx-auto px-6 mt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-widest text-slate-600">
-          <span>© 2026 QR Maker Studio — Professional qrcode generator</span>
-          <div className="flex items-center gap-8">
-            <span className="text-indigo-500">Free forever</span>
-            <span>V4.6.3-SEO</span>
-          </div>
+        <div className="max-w-7xl mx-auto px-6 mt-12 flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-600">
+           <span>© 2026 QR Studio Pro — Global Edition</span>
+           <div className="flex gap-8">
+              <span className="text-indigo-500">Servers 100% Online</span>
+              <span>v6.1.0-STABLE</span>
+           </div>
         </div>
       </footer>
 
-      {/* TOAST SYSTEM */}
-      <div className="fixed bottom-6 right-4 md:right-8 z-[200] flex flex-col gap-3 pointer-events-none">
-        {toasts.map(toast => (
-          <div key={toast.id} className={`px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 animate-in slide-in-from-right-4 duration-300 pointer-events-auto border-l-4 ${
-            toast.type === 'error' ? 'bg-red-50 text-red-800 border-red-500' : 'bg-emerald-50 text-emerald-800 border-emerald-500'
-          }`}>
-            <span className="text-xs font-black uppercase tracking-widest">{toast.message}</span>
+      <div className="fixed bottom-8 right-8 z-[200] flex flex-col gap-3">
+        {toasts.map(t => (
+          <div key={t.id} className="bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl animate-in slide-in-from-right duration-300 font-black text-[9px] uppercase tracking-widest border-l-4 border-indigo-500">
+            {t.message}
           </div>
         ))}
       </div>
 
-      {/* MODALS */}
       <Modal title="Privacy Shield" isOpen={modalType === 'privacy'} onClose={() => setModalType(null)}>
-        <p className="mb-4">We do not store your data. All generation is done instantly in your browser. We do not use tracking cookies or session logs to identify users.</p>
-        <p>Your privacy is absolute. No signup means no email harvesting or marketing tracking.</p>
+        <p className="mb-4 font-bold text-slate-900">Your privacy is non-negotiable.</p>
+        <p>This generator processes all data locally in your browser. We never transmit your sensitive WiFi passwords, contact details, or private text to any server. No cookies, no tracking, no signup.</p>
       </Modal>
 
-      <Modal title="License Agreement" isOpen={modalType === 'terms'} onClose={() => setModalType(null)}>
-        <p className="mb-4">All QR codes generated here are free for lifetime use. We grant a worldwide, royalty-free, perpetual license for both personal and high-volume commercial use.</p>
-        <p>Users are encouraged to test codes before printing large quantities.</p>
+      <Modal title="Studio License" isOpen={modalType === 'terms'} onClose={() => setModalType(null)}>
+        <p className="mb-4">Professional Use License included.</p>
+        <p>You are granted an irrevocable, worldwide, perpetual license to use the QR codes generated on this platform for any personal or commercial project. No attribution required.</p>
       </Modal>
     </div>
   );
