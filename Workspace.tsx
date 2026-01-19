@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useMemo, useState } from 'react';
-import QRCodeStyling, { Options, Gradient } from 'qr-code-styling';
+import { useNavigate } from 'react-router-dom';
+import QRCodeStyling, { Options } from 'qr-code-styling';
 import { QRConfig, QRType } from './types';
 import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, GENERATOR_DETAILS } from './constants';
 import { Button } from './components/Button';
@@ -12,11 +13,11 @@ interface WorkspaceProps {
   setStyling: React.Dispatch<React.SetStateAction<Omit<QRConfig, 'value'>>>;
   logoSrc: string | null;
   setLogoSrc: (src: string | null) => void;
-  onBack: () => void;
-  children: React.ReactNode; // The specialized input form
+  children: React.ReactNode; 
 }
 
-const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling, logoSrc, setLogoSrc, onBack, children }) => {
+const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling, logoSrc, setLogoSrc, children }) => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'content' | 'pattern' | 'corners' | 'logo'>('content');
   const [isAiLoading, setIsAiLoading] = useState(false);
   const qrRef = useRef<HTMLDivElement>(null);
@@ -67,7 +68,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
     <div className="animate-in fade-in slide-in-from-right-4 duration-500">
       <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-12">
         <div className="flex items-center justify-between">
-          <button onClick={onBack} className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors font-black text-[10px] uppercase tracking-widest">
+          <button onClick={() => navigate('/')} className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors font-black text-[10px] uppercase tracking-widest">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7"/></svg>
             Back to Tools
           </button>

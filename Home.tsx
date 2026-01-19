@@ -1,13 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { QRType } from './types';
 import { GENERATOR_DETAILS, FAQ_ITEMS } from './constants';
 import { Button } from './components/Button';
 
-interface HomeProps {
-  onSelect: (type: QRType) => void;
-}
-
-const Home: React.FC<HomeProps> = ({ onSelect }) => {
+const Home: React.FC = () => {
   return (
     <div className="animate-in fade-in duration-700">
       <header className="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
@@ -18,7 +15,9 @@ const Home: React.FC<HomeProps> = ({ onSelect }) => {
             </div>
             <span className="text-xl font-display font-black text-slate-900">QR Studio Pro</span>
           </div>
-          <Button size="sm" variant="primary" className="rounded-full px-6" onClick={() => onSelect('url')}>Get Started</Button>
+          <Link to="/url-qr-generator">
+            <Button size="sm" variant="primary" className="rounded-full px-6">Get Started</Button>
+          </Link>
         </div>
       </header>
 
@@ -33,9 +32,9 @@ const Home: React.FC<HomeProps> = ({ onSelect }) => {
           {(Object.keys(GENERATOR_DETAILS) as QRType[]).map(type => {
             const d = GENERATOR_DETAILS[type];
             return (
-              <div 
+              <Link 
+                to={`/${type}-qr-generator`}
                 key={type} 
-                onClick={() => onSelect(type)}
                 className="group relative bg-white p-10 rounded-[3rem] border border-slate-200 shadow-sm hover:shadow-2xl hover:border-indigo-200 transition-all cursor-pointer overflow-hidden"
               >
                 <div className="relative z-10">
@@ -50,7 +49,7 @@ const Home: React.FC<HomeProps> = ({ onSelect }) => {
                   </div>
                 </div>
                 <div className="absolute -right-12 -bottom-12 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl group-hover:bg-indigo-500/10 transition-all"></div>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -74,7 +73,11 @@ const Home: React.FC<HomeProps> = ({ onSelect }) => {
               <div className="qr-gradient w-8 h-8 rounded-lg"></div>
               <span>© 2026 QR Studio Pro</span>
            </div>
-           <span>Enterprise Grade • No Tracking</span>
+           <div className="flex gap-8">
+              <Link to="/wifi-qr-generator" className="hover:text-white">WiFi QR</Link>
+              <Link to="/vcard-qr-generator" className="hover:text-white">vCard QR</Link>
+              <span>Enterprise Grade • No Tracking</span>
+           </div>
         </div>
       </footer>
     </div>

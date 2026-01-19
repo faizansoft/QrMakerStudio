@@ -7,7 +7,6 @@ interface PageProps {
   setStyling: React.Dispatch<React.SetStateAction<Omit<QRConfig, 'value'>>>;
   logoSrc: string | null;
   setLogoSrc: (src: string | null) => void;
-  onBack: () => void;
 }
 
 const WiFiPage: React.FC<PageProps> = (props) => {

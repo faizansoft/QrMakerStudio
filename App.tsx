@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { QRConfig, QRType } from './types';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { QRConfig } from './types';
 import Home from './Home';
 import URLPage from './URLPage';
 import WiFiPage from './WiFiPage';
@@ -10,9 +11,7 @@ import EmailPage from './EmailPage';
 import TextPage from './TextPage';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<QRType | 'home'>('home');
-
-  // Styling state is shared so users keep their brand colors while switching types
+  // Shared styling state remains in root to persist brand identity across different tool pages
   const [styling, setStyling] = useState<Omit<QRConfig, 'value'>>({
     fgColor: '#1e293b',
     bgColor: '#ffffff',
@@ -28,31 +27,25 @@ const App: React.FC = () => {
 
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
 
-  const navigate = (page: QRType | 'home') => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const renderPage = () => {
-    const commonProps = { styling, setStyling, logoSrc, setLogoSrc, onBack: () => navigate('home') };
-
-    switch (currentPage) {
-      case 'home': return <Home onSelect={navigate} />;
-      case 'url': return <URLPage {...commonProps} />;
-      case 'wifi': return <WiFiPage {...commonProps} />;
-      case 'vcard': return <VCardPage {...commonProps} />;
-      case 'phone': return <PhonePage {...commonProps} />;
-      case 'sms': return <SMSPage {...commonProps} />;
-      case 'email': return <EmailPage {...commonProps} />;
-      case 'text': return <TextPage {...commonProps} />;
-      default: return <Home onSelect={navigate} />;
-    }
-  };
+  const commonProps = { styling, setStyling, logoSrc, setLogoSrc };
 
   return (
-    <div className="min-h-screen bg-slate-50 selection:bg-indigo-100">
-      {renderPage()}
-    </div>
+    <HashRouter>
+      <div className="min-h-screen bg-slate-50 selection:bg-indigo-100">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/url-qr-generator" element={<URLPage {...commonProps} />} />
+          <Route path="/wifi-qr-generator" element={<WiFiPage {...commonProps} />} />
+          <Route path="/vcard-qr-generator" element={<VCardPage {...commonProps} />} />
+          <Route path="/phone-qr-generator" element={<PhonePage {...commonProps} />} />
+          <Route path="/sms-qr-generator" element={<SMSPage {...commonProps} />} />
+          <Route path="/email-qr-generator" element={<EmailPage {...commonProps} />} />
+          <Route path="/text-qr-generator" element={<TextPage {...commonProps} />} />
+          {/* Catch-all fallback to Home */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </div>
+    </HashRouter>
   );
 };
 
