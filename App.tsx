@@ -25,10 +25,6 @@ const App: React.FC = () => {
     cornerDotType: 'square',
     cornerSquareColor: '#1e293b',
     cornerDotColor: '#1e293b',
-    frameType: 'none',
-    frameText: 'SCAN ME',
-    frameColor: '#6366f1',
-    frameTextColor: '#ffffff',
   });
 
   const [logoSrc, setLogoSrc] = useState<string | null>(null);

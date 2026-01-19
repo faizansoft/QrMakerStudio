@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QRCodeStyling, { Options } from 'qr-code-styling';
-import { QRConfig, QRType, FrameType } from './types';
-import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, GENERATOR_DETAILS, FRAME_STYLES } from './constants';
+import { QRConfig, QRType } from './types';
+import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, GENERATOR_DETAILS } from './constants';
 import { Button } from './components/Button';
 import { LogoUploader } from './components/LogoUploader';
 import { getAIStyleSuggestion } from './services/geminiService';
@@ -19,7 +19,7 @@ interface WorkspaceProps {
 
 const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling, logoSrc, setLogoSrc, children }) => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'content' | 'pattern' | 'frames' | 'logo'>('content');
+  const [activeTab, setActiveTab] = useState<'content' | 'pattern' | 'logo'>('content');
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiMood, setAiMood] = useState<string | null>(null);
   const qrRef = useRef<HTMLDivElement>(null);
@@ -64,115 +64,8 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
     }
   }, [qrCode]);
 
-  const handleDownload = async (format: 'png' | 'svg' | 'webp') => {
-    if (styling.frameType === 'none') {
-      qrCode.download({ name: `qr-${type}`, extension: format });
-      return;
-    }
-
-    const blob = await qrCode.getRawData('png');
-    if (!blob) return;
-
-    const img = await new Promise<HTMLImageElement>((resolve) => {
-      const i = new Image();
-      i.onload = () => resolve(i);
-      i.src = URL.createObjectURL(blob as Blob);
-    });
-
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const qrSize = 1200;
-    const padding = 120;
-    const bottomHeight = (styling.frameType === 'standard' || styling.frameType === 'pill' || styling.frameType === 'speech-bubble') ? 300 : 0;
-    
-    canvas.width = qrSize + (padding * 2);
-    canvas.height = qrSize + (padding * 2) + bottomHeight;
-
-    // 1. Background
-    ctx.fillStyle = styling.bgColor;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // 2. Frame Decoration
-    ctx.fillStyle = styling.frameColor;
-    ctx.strokeStyle = styling.frameColor;
-    ctx.lineWidth = 40;
-
-    const centerX = canvas.width / 2;
-    const qrRectTop = padding;
-    const qrRectBottom = padding + qrSize;
-
-    if (styling.frameType === 'standard') {
-      ctx.fillRect(0, canvas.height - bottomHeight, canvas.width, bottomHeight);
-    } else if (styling.frameType === 'pill') {
-      const pW = canvas.width * 0.8;
-      const pH = 180;
-      (ctx as any).roundRect(centerX - pW/2, canvas.height - bottomHeight/2 - pH/2, pW, pH, pH/2);
-      ctx.fill();
-    } else if (styling.frameType === 'speech-bubble') {
-      const pW = canvas.width * 0.85;
-      const pH = 180;
-      const rectY = canvas.height - bottomHeight/2 - pH/2;
-      (ctx as any).roundRect(centerX - pW/2, rectY, pW, pH, 40);
-      ctx.fill();
-      // Triangle
-      ctx.beginPath();
-      ctx.moveTo(centerX - 30, rectY);
-      ctx.lineTo(centerX, rectY - 40);
-      ctx.lineTo(centerX + 30, rectY);
-      ctx.fill();
-    } else if (styling.frameType === 'brackets') {
-      const bL = 200;
-      const bM = 60;
-      // Top Left
-      ctx.beginPath(); ctx.moveTo(bM + bL, bM); ctx.lineTo(bM, bM); ctx.lineTo(bM, bM + bL); ctx.stroke();
-      // Top Right
-      ctx.beginPath(); ctx.moveTo(canvas.width - bM - bL, bM); ctx.lineTo(canvas.width - bM, bM); ctx.lineTo(canvas.width - bM, bM + bL); ctx.stroke();
-      // Bottom Left
-      ctx.beginPath(); ctx.moveTo(bM + bL, canvas.height - bM); ctx.lineTo(bM, canvas.height - bM); ctx.lineTo(bM, canvas.height - bM - bL); ctx.stroke();
-      // Bottom Right
-      ctx.beginPath(); ctx.moveTo(canvas.width - bM - bL, canvas.height - bM); ctx.lineTo(canvas.width - bM, canvas.height - bM); ctx.lineTo(canvas.width - bM, canvas.height - bM - bL); ctx.stroke();
-    } else if (styling.frameType === 'postcard') {
-      ctx.strokeRect(60, 60, canvas.width - 120, canvas.height - 120);
-    } else if (styling.frameType === 'badge') {
-      ctx.beginPath();
-      ctx.moveTo(canvas.width, canvas.height - 300);
-      ctx.lineTo(canvas.width, canvas.height);
-      ctx.lineTo(canvas.width - 300, canvas.height);
-      ctx.closePath();
-      ctx.fill();
-    }
-
-    // 3. QR Code
-    ctx.drawImage(img, padding, padding, qrSize, qrSize);
-    URL.revokeObjectURL(img.src);
-
-    // 4. Text
-    ctx.fillStyle = (styling.frameType === 'pill' || styling.frameType === 'standard' || styling.frameType === 'speech-bubble') ? styling.frameTextColor : styling.frameColor;
-    if (styling.frameType === 'badge') ctx.fillStyle = styling.frameTextColor;
-
-    ctx.font = `bold ${canvas.width * 0.07}px "Plus Jakarta Sans", sans-serif`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    
-    if (styling.frameType === 'badge') {
-      ctx.save();
-      ctx.translate(canvas.width - 100, canvas.height - 100);
-      ctx.rotate(-Math.PI / 4);
-      ctx.font = `bold 60px "Plus Jakarta Sans"`;
-      ctx.fillText(styling.frameText, 0, 0);
-      ctx.restore();
-    } else {
-      let textY = canvas.height - (bottomHeight / 2);
-      if (styling.frameType === 'brackets' || styling.frameType === 'postcard') textY = canvas.height - 150;
-      ctx.fillText(styling.frameText, canvas.width / 2, textY);
-    }
-
-    const link = document.createElement('a');
-    link.download = `qr-${type}-framed.${format}`;
-    link.href = canvas.toDataURL(`image/${format === 'svg' ? 'png' : format}`, 1.0);
-    link.click();
+  const handleDownload = (format: 'png' | 'svg' | 'webp') => {
+    qrCode.download({ name: `qr-${type}`, extension: format });
   };
 
   const applySmartStyle = async () => {
@@ -218,7 +111,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7 bg-white rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-200 overflow-hidden">
             <div className="flex bg-slate-50/50 border-b border-slate-100 p-2 overflow-x-auto no-scrollbar">
-              {(['content', 'pattern', 'frames', 'logo'] as const).map(tab => (
+              {(['content', 'pattern', 'logo'] as const).map(tab => (
                 <button 
                   key={tab} 
                   onClick={() => setActiveTab(tab)} 
@@ -268,47 +161,6 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                   </div>
                 </div>
               )}
-              {activeTab === 'frames' && (
-                <div className="space-y-12 animate-in fade-in duration-300">
-                  <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Frame Text</label>
-                    <input 
-                      type="text" 
-                      value={styling.frameText} 
-                      onChange={e => setStyling({...styling, frameText: e.target.value})} 
-                      maxLength={20}
-                      className="w-full p-6 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold text-xl uppercase" 
-                      placeholder="SCAN ME"
-                    />
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="space-y-6">
-                      <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Select Frame Style</label>
-                      <div className="grid grid-cols-2 gap-3">
-                        {FRAME_STYLES.map(s => (
-                          <button key={s.value} onClick={() => setStyling({...styling, frameType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${styling.frameType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`}>
-                            <span className="text-xl block mb-2">{s.icon}</span>
-                            {s.label}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="space-y-6">
-                      <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Frame Colors</label>
-                      <div className="space-y-4">
-                         <div>
-                            <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Frame Accent</span>
-                            <input type="color" value={styling.frameColor} onChange={e => setStyling({...styling, frameColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
-                         </div>
-                         <div>
-                            <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Text Color</span>
-                            <input type="color" value={styling.frameTextColor} onChange={e => setStyling({...styling, frameTextColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
-                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
               {activeTab === 'logo' && (
                 <div className="animate-in fade-in duration-300">
                   <LogoUploader onUpload={setLogoSrc} currentLogo={logoSrc} />
@@ -328,65 +180,20 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                   style={{
                     backgroundColor: styling.bgColor,
                     borderRadius: '40px',
-                    border: styling.frameType === 'postcard' ? `4px solid ${styling.frameColor}` : 'none',
                     minWidth: '320px'
                   }}
                 >
-                  {/* Fixed Brackets Preview */}
-                  {styling.frameType === 'brackets' && (
-                    <>
-                      <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4" style={{borderColor: styling.frameColor}}></div>
-                      <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4" style={{borderColor: styling.frameColor}}></div>
-                      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4" style={{borderColor: styling.frameColor}}></div>
-                      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4" style={{borderColor: styling.frameColor}}></div>
-                    </>
-                  )}
-
-                  {/* QR Core */}
-                  <div ref={qrRef} className="bg-white p-2 rounded-2xl w-[260px] aspect-square" />
-                  
-                  {/* Frame Footer Preview */}
-                  {styling.frameType !== 'none' && styling.frameType !== 'brackets' && styling.frameType !== 'postcard' && (
-                    <div className="w-full mt-4 flex flex-col items-center">
-                      {styling.frameType === 'speech-bubble' && (
-                        <div className="w-4 h-4" style={{borderLeft: '8px solid transparent', borderRight: '8px solid transparent', borderBottom: `8px solid ${styling.frameColor}`, transform: 'rotate(180deg)'}}></div>
-                      )}
-                      <div 
-                        className="w-full flex items-center justify-center font-display font-black uppercase tracking-widest text-sm"
-                        style={{
-                          backgroundColor: (styling.frameType === 'standard' || styling.frameType === 'pill' || styling.frameType === 'speech-bubble') ? styling.frameColor : 'transparent',
-                          color: (styling.frameType === 'standard' || styling.frameType === 'pill' || styling.frameType === 'speech-bubble') ? styling.frameTextColor : styling.frameColor,
-                          padding: '12px 20px',
-                          borderRadius: styling.frameType === 'pill' ? '99px' : styling.frameType === 'speech-bubble' ? '16px' : '0',
-                          marginTop: styling.frameType === 'speech-bubble' ? '0' : '8px'
-                        }}
-                      >
-                        {styling.frameText}
-                      </div>
-                    </div>
-                  )}
-
-                  {(styling.frameType === 'brackets' || styling.frameType === 'postcard') && (
-                    <div className="mt-4 font-display font-black uppercase tracking-widest text-sm" style={{color: styling.frameColor}}>
-                      {styling.frameText}
-                    </div>
-                  )}
-
-                  {styling.frameType === 'badge' && (
-                    <div className="absolute bottom-0 right-0 p-3 bg-indigo-600 text-white rounded-tl-3xl font-black text-[10px] uppercase tracking-tighter shadow-lg" style={{backgroundColor: styling.frameColor, color: styling.frameTextColor}}>
-                       {styling.frameText}
-                    </div>
-                  )}
+                  <div ref={qrRef} className="bg-white p-2 rounded-2xl w-[280px] aspect-square shadow-sm" />
                 </div>
               </div>
               
               <div className="space-y-4">
                 <Button onClick={() => handleDownload('png')} className="w-full py-5 rounded-2xl shadow-lg shadow-indigo-100 text-[10px] font-black uppercase tracking-widest">
-                  Download Framed PNG
+                  Download PNG
                 </Button>
                 <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" onClick={() => handleDownload('png')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest">
-                    SVG (Beta)
+                  <Button variant="outline" onClick={() => handleDownload('svg')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest">
+                    SVG (Print)
                   </Button>
                   <Button variant="outline" onClick={() => handleDownload('webp')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest">
                     WebP (Web)
@@ -401,7 +208,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
         <div className="pt-24 space-y-16 border-t border-slate-200 mt-24">
           <div className="text-center space-y-4">
             <h2 className="text-4xl font-display font-black text-slate-900 tracking-tight">Professional Branding Guide</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Learn how to combine patterns and frames to create high-conversion QR codes.</p>
+            <p className="text-slate-500 max-w-2xl mx-auto">Learn how to combine patterns and colors to create high-conversion QR codes.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {details.guide.map((item, idx) => (

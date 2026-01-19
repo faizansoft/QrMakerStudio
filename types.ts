@@ -3,7 +3,6 @@ export type QRType = 'url' | 'wifi' | 'vcard' | 'phone' | 'sms' | 'email' | 'tex
 export type DotType = 'square' | 'dots' | 'rounded' | 'extra-rounded' | 'classy' | 'classy-rounded';
 export type CornerSquareType = 'square' | 'dot' | 'extra-rounded';
 export type CornerDotType = 'square' | 'dot';
-export type FrameType = 'none' | 'standard' | 'pill' | 'brackets' | 'speech-bubble' | 'postcard' | 'badge';
 
 export interface QRConfig {
   value: string;
@@ -19,11 +18,6 @@ export interface QRConfig {
   cornerSquareColor: string;
   cornerDotColor: string;
   image?: string;
-  // Frame Options
-  frameType: FrameType;
-  frameText: string;
-  frameColor: string;
-  frameTextColor: string;
 }
 
 export interface StylePreset {
