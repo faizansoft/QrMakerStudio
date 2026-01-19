@@ -11,6 +11,7 @@ import EmailPage from './EmailPage';
 import TextPage from './TextPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
   const [styling, setStyling] = useState<Omit<QRConfig, 'value'>>({
@@ -31,6 +32,7 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen bg-slate-50 selection:bg-indigo-100 flex flex-col">
         <Header />
         <main className="flex-grow">
