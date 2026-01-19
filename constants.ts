@@ -1,4 +1,3 @@
-
 import { StylePreset, DotType, CornerSquareType, CornerDotType, QRType } from './types';
 
 export const STYLE_PRESETS: StylePreset[] = [
@@ -18,109 +17,113 @@ export const ERROR_CORRECTION_LEVELS = [
 ];
 
 export const DOT_STYLES: { value: DotType; label: string }[] = [
-  { value: 'square', label: 'Square' },
-  { value: 'rounded', label: 'Rounded' },
-  { value: 'dots', label: 'Dots' },
-  { value: 'extra-rounded', label: 'Soft' },
-  { value: 'classy', label: 'Classy' },
-  { value: 'classy-rounded', label: 'Elegant' },
+  { value: 'square', label: 'Classic Square' },
+  { value: 'rounded', label: 'Modern Rounded' },
+  { value: 'dots', label: 'Tech Dots' },
+  { value: 'extra-rounded', label: 'Friendly Soft' },
+  { value: 'classy', label: 'Premium Classy' },
+  { value: 'classy-rounded', label: 'Elegant Fluid' },
 ];
 
 export const CORNER_SQUARE_STYLES: { value: CornerSquareType; label: string }[] = [
-  { value: 'square', label: 'Square' },
-  { value: 'extra-rounded', label: 'Rounded' },
-  { value: 'dot', label: 'Dot' },
+  { value: 'square', label: 'Square Frame' },
+  { value: 'extra-rounded', label: 'Soft Frame' },
+  { value: 'dot', label: 'Circular Frame' },
 ];
 
 export const CORNER_DOT_STYLES: { value: CornerDotType; label: string }[] = [
-  { value: 'square', label: 'Square' },
-  { value: 'dot', label: 'Dot' },
+  { value: 'square', label: 'Classic Eye' },
+  { value: 'dot', label: 'Modern Dot' },
 ];
 
 export const FAQ_ITEMS = [
   {
-    question: "Is this QR code generator completely free to use?",
-    answer: "Yes, our QR code maker free tool is 100% free for both commercial and personal use. You can generate unlimited high-resolution QR codes without ever reaching a limit or paying a cent."
+    question: "Is this the best free QR code generator available online?",
+    answer: "We strive to be the top choice by offering professional customization—including custom logos, high-res vector SVG downloads, and AI-powered styles—completely free with no registration required. Our codes never expire and have no scan limits."
   },
   {
-    question: "Do I need to sign up to use this qrcode generator?",
-    answer: "No registration is required. We prioritize speed and privacy. You can use our free qrcode maker as a guest and download your files instantly."
+    question: "Can I download a high-resolution QR code for printing?",
+    answer: "Yes! Our studio allows you to export your designs as SVG (Scalable Vector Graphics), which is the gold standard for high-quality printing on billboards, menus, and business cards without any pixelation."
   },
   {
-    question: "Can I create a custom QR code with my company logo?",
-    answer: "Absolutely! Our custom qr code with logo feature allows you to upload any image and place it in the center of your QR code. We use advanced error correction to ensure the code remains 100% scannable."
+    question: "How do I make a custom QR code with my company logo?",
+    answer: "Simply use our 'Logo' tab in the workspace to upload your PNG or SVG logo. Our system automatically optimizes the placement and recommends 'High' error correction (Level H) to ensure 100% scannability."
   },
   {
-    question: "What formats can I download my QR code in?",
-    answer: "You can download your codes in PNG, WebP, or SVG. The SVG format is a vector, meaning it is perfect for high-quality printing on billboards, business cards, and menus."
+    question: "Do these QR codes have a scan limit or expiration date?",
+    answer: "No. Unlike other services, QR Studio Pro generates permanent QR codes. They will work forever as long as the destination (URL or network) remains active. We do not track or limit your scans."
   }
 ];
 
 export const GENERATOR_DETAILS: Record<QRType, { title: string; desc: string; icon: string; guide: { step: string; detail: string }[] }> = {
   url: {
-    title: "URL Generator",
-    desc: "Create linkable QR codes for websites, portfolios, and social media profiles.",
+    title: "Website URL Maker",
+    desc: "Transform any website link into a beautiful, scannable portal for your brand.",
     icon: "🔗",
     guide: [
-      { step: "Paste Link", detail: "Copy the full URL from your browser address bar and paste it into the field." },
-      { step: "Brand Design", detail: "Use the pattern tab to match your website's primary colors." },
-      { step: "Add Logo", detail: "Upload your brand favicon or logo to increase trust and click-through rates." }
+      { step: "Target Link Entry", detail: "Copy and paste the full destination URL from your browser address bar. Ensure it includes https://." },
+      { step: "Visual Branding", detail: "Navigate to the Pattern tab and select 'Elegant' or 'Classy' styles to match your brand identity." },
+      { step: "Export Vector", detail: "Download your custom URL QR code as an SVG to ensure it stays sharp on any marketing material." }
     ]
   },
   wifi: {
-    title: "WiFi Access",
-    desc: "Generate QR codes that allow guests to connect to your network without typing passwords.",
+    title: "Instant WiFi Access",
+    desc: "The fastest way to connect guests to your network without sharing complex passwords.",
     icon: "📶",
     guide: [
-      { step: "Network Name", detail: "Enter the SSID exactly as it appears on your router settings." },
-      { step: "Security Mode", detail: "Most modern routers use WPA/WPA2. Select 'None' only for open networks." },
-      { step: "Scan & Connect", detail: "When scanned, mobile devices will prompt to 'Join Network' automatically." }
+      { step: "Input SSID", detail: "Type your WiFi network name exactly as it appears in your network settings." },
+      { step: "Security Check", detail: "Select WPA/WPA2 for most home routers. This is the global standard for secure QR connections." },
+      { step: "Direct Connection", detail: "Scanning this code will prompt the user's phone to 'Join Network' automatically." }
     ]
   },
   vcard: {
-    title: "Digital vCard",
-    desc: "Share your professional contact info instantly. Save to phone contacts with one scan.",
+    title: "Professional vCard",
+    desc: "A digital business card that saves your contact information directly to a smartphone.",
     icon: "👤",
     guide: [
-      { step: "Contact Details", detail: "Fill in your name, phone, and professional email address." },
-      { step: "Company Info", detail: "Add your job title and organization to appear professional in contact lists." },
-      { step: "Eye-Catching Style", detail: "Use sleek patterns like 'Classy' or 'Elegant' for a business-ready look." }
+      { step: "Contact Details", detail: "Enter your full name, job title, and company. This information is encoded directly into the code." },
+      { step: "Communication Data", detail: "Add your mobile number and professional email for seamless one-tap communication." },
+      { step: "Elegant Presentation", detail: "Use rounded corner eyes and high-contrast colors to ensure the vCard scans instantly in meetings." }
     ]
   },
   phone: {
-    title: "Direct Call",
-    desc: "Encourage customers to call your business directly from signage or business cards.",
+    title: "Direct Call Studio",
+    desc: "Generate more leads by allowing customers to call you with a single scan.",
     icon: "📞",
     guide: [
-      { step: "Phone Number", detail: "Enter the full international number including the country code (e.g., +1...)." },
-      { step: "Quick Dial", detail: "Scanning this will automatically open the dialer on the user's smartphone." }
+      { step: "Number Input", detail: "Provide your business phone number with the country code for international compatibility." },
+      { step: "Placement Strategy", detail: "Add this QR code to your store windows or direct mail flyers for instant customer engagement." },
+      { step: "One-Tap Dialing", detail: "Scanning will automatically open the phone's dialer with your number pre-populated." }
     ]
   },
   sms: {
-    title: "SMS Message",
-    desc: "Pre-fill text messages with a specific number and content for easier communication.",
+    title: "Lead Generation SMS",
+    desc: "Pre-fill text messages to your business for easier customer inquiries.",
     icon: "💬",
     guide: [
-      { step: "Recipient", detail: "Enter the number you want the user to send the text to." },
-      { step: "Pre-filled Text", detail: "Write the message body (e.g., 'I am interested in your services')." }
+      { step: "Recipient Number", detail: "Enter the number you want to receive the text messages at." },
+      { step: "Pre-filled Message", detail: "Draft a message like 'I'd like a free quote' so the user only has to hit send." },
+      { step: "Mobile Optimization", detail: "Perfect for social media ads or outdoor signage targeting mobile users." }
     ]
   },
   email: {
-    title: "Email Draft",
-    desc: "Create QR codes that open an email draft with a recipient, subject, and body already filled.",
+    title: "Email Template QR",
+    desc: "Create scannable email drafts for support, sales, or customer feedback.",
     icon: "📧",
     guide: [
-      { step: "Email Setup", detail: "Enter the recipient email, subject line, and initial message body." },
-      { step: "Customer Support", detail: "Great for feedback or support requests on product packaging." }
+      { step: "Email Parameters", detail: "Specify the recipient email address and a clear subject line for better organization." },
+      { step: "Custom Pattern", detail: "Use a tech-focused pattern like 'Dots' to match the digital nature of email communication." },
+      { step: "Instant Draft", detail: "Scanning opens the default email app with everything pre-filled and ready to go." }
     ]
   },
   text: {
-    title: "Plain Text",
-    desc: "Store notes, secret messages, or alphanumeric data in a simple QR format.",
+    title: "Plain Text Data",
+    desc: "Store notes, verification codes, or alphanumeric messages in a simple format.",
     icon: "📝",
     guide: [
-      { step: "Type Content", detail: "Enter any text string you wish to encode." },
-      { step: "Note on Size", detail: "Longer text makes the QR code more dense. Use 'Level H' correction for reliability." }
+      { step: "Enter Content", detail: "Paste any text or alphanumeric string up to 2000 characters into the text area." },
+      { step: "Density Management", detail: "Longer text makes the QR denser. Use 'Level H' correction to maintain scan speed." },
+      { step: "High Res Download", detail: "Export in high resolution to ensure all the small dots remain clear and readable." }
     ]
   }
 };
