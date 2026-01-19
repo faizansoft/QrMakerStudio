@@ -1,13 +1,12 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { AIStyleSuggestion } from "../types";
 
 export async function getAIStyleSuggestion(content: string): Promise<AIStyleSuggestion> {
-  // Initialize AI client using the injected environment variable.
-  // Vite's 'define' will replace process.env.API_KEY with the literal string value during build.
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-  
   try {
+    // FIX: Initialize the AI client directly with process.env.API_KEY as per guidelines.
+    // Use the named parameter 'apiKey'.
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    
     // Using gemini-3-pro-preview for complex reasoning task (thematic design analysis).
     const response = await ai.models.generateContent({
       model: "gemini-3-pro-preview",
@@ -49,23 +48,24 @@ export async function getAIStyleSuggestion(content: string): Promise<AIStyleSugg
       }
     });
 
-    // Access the text property directly (it is not a method) and use safe navigation.
+    // Access the text property directly (getter)
     const jsonStr = response.text?.trim() || "{}";
     const result = JSON.parse(jsonStr);
     return result as AIStyleSuggestion;
   } catch (error) {
-    console.error("Gemini API Error on Production:", error);
-    // Fallback to a neutral style if the API call fails or the key is invalid.
+    console.error("QR Maker Studio - AI Suggestion Error:", error);
+    
+    // Return a professional fallback so the user experience doesn't break
     return {
-      primaryColor: "#1e293b",
+      primaryColor: "#6366f1", // Branding Indigo
       secondaryColor: "#ffffff",
-      cornerSquareColor: "#1e293b",
-      cornerDotColor: "#1e293b",
-      dotType: "square",
-      cornerSquareType: "square",
-      cornerDotType: "square",
-      mood: "Neutral",
-      description: "Standard clean design."
+      cornerSquareColor: "#4f46e5",
+      cornerDotColor: "#4f46e5",
+      dotType: "extra-rounded",
+      cornerSquareType: "extra-rounded",
+      cornerDotType: "dot",
+      mood: "Professional (Fallback)",
+      description: "A clean, modern design applied as a safe default."
     };
   }
 }
