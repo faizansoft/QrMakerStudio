@@ -3,12 +3,14 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { AIStyleSuggestion } from "../types";
 
 export async function getAIStyleSuggestion(content: string): Promise<AIStyleSuggestion> {
-  // Initialize AI client inside the function to ensure it uses the latest process.env.API_KEY
+  // Initialize AI client using the injected environment variable.
+  // Vite's 'define' will replace process.env.API_KEY with the literal string value during build.
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   try {
+    // Using gemini-3-pro-preview for complex reasoning task (thematic design analysis).
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3-pro-preview",
       contents: `Analyze this content for a QR code: "${content}". 
       Suggest a complete professional design theme. Choose values from these specific allowed sets:
       - dotType: ['square', 'dots', 'rounded', 'extra-rounded', 'classy', 'classy-rounded']
@@ -47,22 +49,23 @@ export async function getAIStyleSuggestion(content: string): Promise<AIStyleSugg
       }
     });
 
-    // Directly access the .text property from GenerateContentResponse
-    const jsonStr = response.text.trim();
+    // Access the text property directly (it is not a method) and use safe navigation.
+    const jsonStr = response.text?.trim() || "{}";
     const result = JSON.parse(jsonStr);
     return result as AIStyleSuggestion;
   } catch (error) {
-    console.error("Gemini suggestion failed:", error);
+    console.error("Gemini API Error on Production:", error);
+    // Fallback to a neutral style if the API call fails or the key is invalid.
     return {
-      primaryColor: "#000000",
-      secondaryColor: "#FFFFFF",
-      cornerSquareColor: "#000000",
-      cornerDotColor: "#000000",
+      primaryColor: "#1e293b",
+      secondaryColor: "#ffffff",
+      cornerSquareColor: "#1e293b",
+      cornerDotColor: "#1e293b",
       dotType: "square",
       cornerSquareType: "square",
       cornerDotType: "square",
       mood: "Neutral",
-      description: "Default fallback style."
+      description: "Standard clean design."
     };
   }
 }

@@ -1,4 +1,3 @@
-
 {
   "name": "qr-maker-studio",
   "private": true,
@@ -11,7 +10,7 @@
   },
   "dependencies": {
     "@google/genai": "^1.37.0",
-    "qr-code-styling": "^1.6.0-rc.1",
+    "qr-code-styling": "^1.9.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
   },
