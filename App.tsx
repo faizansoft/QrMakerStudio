@@ -14,6 +14,8 @@ import LocationPage from './LocationPage';
 import CryptoPage from './CryptoPage';
 import FacebookPage from './FacebookPage';
 import WhatsAppPage from './WhatsAppPage';
+import AboutPage from './AboutPage';
+import ContactPage from './ContactPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -55,6 +57,8 @@ const App: React.FC = () => {
             <Route path="/crypto-qr-generator" element={<CryptoPage {...commonProps} />} />
             <Route path="/facebook-qr-generator" element={<FacebookPage {...commonProps} />} />
             <Route path="/whatsapp-qr-generator" element={<WhatsAppPage {...commonProps} />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>

@@ -15,16 +15,21 @@ export const Header: React.FC = () => {
           <span className="text-xl font-display font-black text-slate-900 tracking-tight">QR Studio <span className="text-indigo-600">Pro</span></span>
         </Link>
         
-        <nav className="hidden md:flex items-center gap-8">
-          <Link to="/url-qr-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">URL</Link>
-          <Link to="/wifi-qr-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">WiFi</Link>
-          <Link to="/vcard-qr-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Business Card</Link>
-          <Link to="/email-qr-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Email</Link>
+        <nav className="hidden lg:flex items-center gap-8">
+          <Link to="/url-qr-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Generator</Link>
+          <Link to="/about" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">About Us</Link>
+          <Link to="/contact" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Contact</Link>
         </nav>
 
-        <Link to="/url-qr-generator">
-          <Button size="sm" variant="primary" className="rounded-full px-6 shadow-xl shadow-indigo-100">Create Free QR</Button>
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link to="/url-qr-generator" className="hidden sm:block">
+            <Button size="sm" variant="primary" className="rounded-full px-6 shadow-xl shadow-indigo-100">Create Free QR</Button>
+          </Link>
+          {/* Mobile indicator or simple button for mobile */}
+          <Link to="/url-qr-generator" className="sm:hidden">
+            <Button size="sm" variant="primary" className="rounded-full px-4 font-black text-[10px]">NEW QR</Button>
+          </Link>
+        </div>
       </div>
     </header>
   );

@@ -27,10 +27,10 @@ export const Footer: React.FC = () => {
           <div>
              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-6">Support</h4>
              <ul className="space-y-4 text-sm text-slate-300 font-medium">
-               <li><Link to="/email-qr-generator" className="hover:text-white transition-colors">Contact Support</Link></li>
+               <li><Link to="/about" className="hover:text-white transition-colors">About the Studio</Link></li>
+               <li><Link to="/contact" className="hover:text-white transition-colors">Contact Support</Link></li>
                <li><span className="text-slate-500">Privacy Policy</span></li>
                <li><span className="text-slate-500">Terms of Service</span></li>
-               <li><span className="text-slate-500">API Documentation</span></li>
              </ul>
           </div>
         </div>
