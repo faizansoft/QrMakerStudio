@@ -19,7 +19,7 @@ interface WorkspaceProps {
 
 const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling, logoSrc, setLogoSrc, children }) => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'content' | 'pattern' | 'logo'>('content');
+  const [activeTab, setActiveTab] = useState<'content' | 'pattern' | 'corners' | 'logo'>('content');
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiMood, setAiMood] = useState<string | null>(null);
   const qrRef = useRef<HTMLDivElement>(null);
@@ -88,10 +88,9 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
   };
 
   const applySmartStyle = async () => {
-    if (!value || value.length < 3) return;
     setIsAiLoading(true);
     try {
-      const suggestion = await getAIStyleSuggestion(value);
+      const suggestion = await getAIStyleSuggestion(value || "creative style");
       setStyling(prev => ({
         ...prev,
         fgColor: suggestion.primaryColor,
@@ -130,7 +129,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7 bg-white rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-200 overflow-hidden">
             <div className="flex bg-slate-50/50 border-b border-slate-100 p-2 overflow-x-auto no-scrollbar">
-              {(['content', 'pattern', 'logo'] as const).map(tab => (
+              {(['content', 'pattern', 'corners', 'logo'] as const).map(tab => (
                 <button 
                   key={tab} 
                   onClick={() => setActiveTab(tab)} 
@@ -147,47 +146,31 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                   {children}
                   <div className="pt-8 border-t border-slate-50 space-y-4">
                     <Button onClick={applySmartStyle} loading={isAiLoading} className="w-full py-5 rounded-3xl shadow-xl shadow-indigo-100 text-[11px] uppercase tracking-widest font-black transition-transform active:scale-95">
-                      {isAiLoading ? "Generating Magic..." : "✨ Generate Random Design"}
+                      {isAiLoading ? "Crafting Design..." : "✨ Generate Random Design"}
                     </Button>
                     {aiMood && <p className="text-center text-[10px] font-black uppercase text-indigo-500 tracking-widest animate-pulse">Theme: {aiMood}</p>}
                   </div>
                 </div>
               )}
+              
               {activeTab === 'pattern' && (
                 <div className="space-y-12 animate-in fade-in duration-300">
-                  {/* Pattern Colors */}
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="space-y-4">
-                       <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Main Colors</label>
-                       <div className="space-y-3">
-                          <div>
-                            <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Pattern Color</span>
-                            <input type="color" value={styling.fgColor} onChange={e => setStyling({...styling, fgColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
-                          </div>
-                          <div>
-                            <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Background</span>
-                            <input type="color" value={styling.bgColor} onChange={e => setStyling({...styling, bgColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
-                          </div>
-                       </div>
-                    </div>
-                    <div className="space-y-4">
-                       <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Corner Colors</label>
-                       <div className="space-y-3">
-                          <div>
-                            <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Outer Frame</span>
-                            <input type="color" value={styling.cornerSquareColor} onChange={e => setStyling({...styling, cornerSquareColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
-                          </div>
-                          <div>
-                            <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Inner Eye</span>
-                            <input type="color" value={styling.cornerDotColor} onChange={e => setStyling({...styling, cornerDotColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
-                          </div>
-                       </div>
+                  <div className="space-y-6">
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Main Colors</label>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Pattern Color</span>
+                        <input type="color" value={styling.fgColor} onChange={e => setStyling({...styling, fgColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
+                      </div>
+                      <div>
+                        <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Background</span>
+                        <input type="color" value={styling.bgColor} onChange={e => setStyling({...styling, bgColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
+                      </div>
                     </div>
                   </div>
 
-                  {/* Dot Style */}
-                  <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Dot Pattern</label>
+                  <div className="space-y-6">
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Dot Style</label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                       {DOT_STYLES.map(s => (
                         <button key={s.value} onClick={() => setStyling({...styling, dotType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${styling.dotType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`}>
@@ -196,10 +179,27 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                       ))}
                     </div>
                   </div>
+                </div>
+              )}
 
-                  {/* Corner Square Style */}
-                  <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Corner Frame</label>
+              {activeTab === 'corners' && (
+                <div className="space-y-12 animate-in fade-in duration-300">
+                  <div className="space-y-6">
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Corner Colors</label>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Outer Frame</span>
+                        <input type="color" value={styling.cornerSquareColor} onChange={e => setStyling({...styling, cornerSquareColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
+                      </div>
+                      <div>
+                        <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Inner Eye</span>
+                        <input type="color" value={styling.cornerDotColor} onChange={e => setStyling({...styling, cornerDotColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Corner Frame Shape</label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                       {CORNER_SQUARE_STYLES.map(s => (
                         <button key={s.value} onClick={() => setStyling({...styling, cornerSquareType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${styling.cornerSquareType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`}>
@@ -209,9 +209,8 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                     </div>
                   </div>
 
-                  {/* Corner Dot Style */}
-                  <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Corner Eye</label>
+                  <div className="space-y-6">
+                    <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Corner Eye Shape</label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                       {CORNER_DOT_STYLES.map(s => (
                         <button key={s.value} onClick={() => setStyling({...styling, cornerDotType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${styling.cornerDotType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`}>
@@ -222,6 +221,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                   </div>
                 </div>
               )}
+
               {activeTab === 'logo' && (
                 <div className="animate-in fade-in duration-300">
                   <LogoUploader onUpload={setLogoSrc} currentLogo={logoSrc} />

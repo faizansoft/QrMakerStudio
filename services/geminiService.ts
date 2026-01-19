@@ -4,20 +4,23 @@ import { AIStyleSuggestion } from "../types";
 export async function getAIStyleSuggestion(content: string): Promise<AIStyleSuggestion> {
   try {
     const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const seed = Math.random().toString(36).substring(7); // Add entropy to force fresh generation
     
-    // Explicitly asking for high variety and creative randomness
     const response = await ai.models.generateContent({
       model: "gemini-3-pro-preview",
       contents: `Analyze this QR content: "${content}". 
-      Generate a UNIQUE and CREATIVE design theme. Do not always pick the same styles. 
+      Entropy Seed: ${seed}.
+      Generate a COMPLETELY NEW, UNIQUE and CREATIVE design theme. Avoid common patterns.
+      
       Select one from these allowed sets:
       - dotType: ['square', 'dots', 'rounded', 'extra-rounded', 'classy', 'classy-rounded']
       - cornerSquareType: ['square', 'dot', 'extra-rounded']
       - cornerDotType: ['square', 'dot']
       
-      Provide hex colors that are highly readable but visually striking. 
-      Make the cornerSquareColor and cornerDotColor different from primaryColor for an accent look.
-      BE RANDOM AND VARIED. Sometimes suggest dark themes, sometimes light, sometimes colorful vibrant ones.`,
+      Provide hex colors that are highly readable (good contrast) but visually striking. 
+      Make the cornerSquareColor and cornerDotColor different from the pattern primaryColor for an accent look.
+      
+      BE BOLD AND VARIED. Sometimes suggest high-contrast dark themes, sometimes soft pastels, sometimes vibrant gradients.`,
       config: {
         responseMimeType: "application/json",
         responseSchema: {
@@ -54,20 +57,21 @@ export async function getAIStyleSuggestion(content: string): Promise<AIStyleSugg
   } catch (error) {
     console.error("QR Maker Studio - AI Suggestion Error:", error);
     
-    // Pick a truly random set of fallback constants to ensure variety even on error
+    // Fallback to random colors and styles
     const dots = ['square', 'dots', 'rounded', 'extra-rounded', 'classy', 'classy-rounded'];
     const corners = ['square', 'dot', 'extra-rounded'];
+    const randomHex = () => "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
     
     return {
-      primaryColor: "#" + Math.floor(Math.random()*16777215).toString(16),
+      primaryColor: randomHex(),
       secondaryColor: "#ffffff",
-      cornerSquareColor: "#4f46e5",
-      cornerDotColor: "#4f46e5",
+      cornerSquareColor: randomHex(),
+      cornerDotColor: randomHex(),
       dotType: dots[Math.floor(Math.random() * dots.length)] as any,
       cornerSquareType: corners[Math.floor(Math.random() * corners.length)] as any,
       cornerDotType: "dot",
-      mood: "Randomized Fallback",
-      description: "A randomly generated design due to connection issues."
+      mood: "Randomized Discovery",
+      description: "A fresh random style generated just for you."
     };
   }
 }
