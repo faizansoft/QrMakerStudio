@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { QRType } from './types';
@@ -147,21 +146,20 @@ const Home: React.FC = () => {
       <section className="relative overflow-hidden bg-white pt-16 pb-24">
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 text-indigo-700 text-[9px] font-black uppercase tracking-[0.2em] rounded-full border border-indigo-100 mb-6">
-            v2.0 Beta
+            v2.1 Stable
           </div>
           <h1 className="text-5xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight mb-6">
-            Professional QR codes, <br/>
-            <span className="text-indigo-600">Generated in Seconds</span>
+            Professional <span className="text-indigo-600">Custom QR Code</span> Maker
           </h1>
-          <p className="text-lg md:text-xl text-slate-500 font-medium max-w-xl mx-auto mb-10 leading-relaxed">
-            Create high-resolution codes for URLs, WiFi, and more. Free forever, no registration needed. Download in vector SVG or PNG with <strong>QR Generator Online</strong>.
+          <p className="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">
+            The ultimate <strong>custom qr code maker</strong>. Generate high-resolution codes for URLs, <strong>wifi qr code</strong>, and <strong>google forms qr code</strong>. Add your <strong>qr code with logo in middle</strong> for professional branding.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/url-qr-code-generator">
-              <Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100">Create Website QR</Button>
+              <Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">Get Started Free</Button>
             </Link>
-            <Link to="/about">
-              <Button variant="outline" size="lg" className="rounded-full px-8 py-4">Why Us?</Button>
+            <Link to="/faqs-qr-code-generator">
+              <Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">View FAQ</Button>
             </Link>
           </div>
         </div>
@@ -175,8 +173,9 @@ const Home: React.FC = () => {
       {/* Tools Section */}
       <section className="max-w-7xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-display font-black text-slate-900 mb-4">Select a Tool</h2>
-          <div className="h-1 w-20 bg-indigo-600 mx-auto rounded-full"></div>
+          <h2 className="text-3xl font-display font-black text-slate-900 mb-4">Powerful QR Generation Tools</h2>
+          <div className="h-1.5 w-16 bg-indigo-600 mx-auto rounded-full mb-4"></div>
+          <p className="text-slate-400 font-medium text-sm">Everything from <strong>whatsapp qr code generator</strong> to <strong>bitcoin qr code generator</strong>.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -196,7 +195,7 @@ const Home: React.FC = () => {
                   {d.desc}
                 </p>
                 <div className="mt-4 flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-indigo-500 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                  Open Generator
+                  Open Tool
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </div>
               </Link>
@@ -205,13 +204,59 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Feature Deep Dive */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+             <div className="space-y-8">
+                <h2 className="text-4xl md:text-5xl font-display font-black text-slate-900 leading-tight">Professional Branding with a <span className="text-indigo-600">QR Code with Logo in Middle</span></h2>
+                <p className="text-slate-500 font-medium text-lg leading-relaxed">
+                  Our <strong>customizable qr code</strong> tool is designed for businesses that care about their visual identity. Whether you need a <strong>qr code business card generator</strong> or a <strong>whatsapp qr code generator</strong>, we provide the precision tools to make it yours.
+                </p>
+                <div className="grid gap-6">
+                  {[
+                    { t: "SVG QR Code Generator", d: "High-resolution vector exports (SVG, PDF) for professional printing and billboard use." },
+                    { t: "Custom QR Code Maker", d: "Adjust dot shapes, corner eyes, and use any hex color to match your brand guidelines." },
+                    { t: "Fast WiFi QR Code", d: "Help guests connect in one tap with our optimized <strong>wifi qr code generator</strong>." }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex gap-4">
+                      <div className="w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center text-white text-[10px] font-bold shrink-0 mt-1">✓</div>
+                      <div>
+                        <h4 className="font-bold text-slate-900 mb-1">{item.t}</h4>
+                        <p className="text-sm text-slate-400 leading-relaxed">{item.d}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+             </div>
+             <div className="relative group">
+                <div className="absolute inset-0 bg-indigo-600/5 rounded-[4rem] -rotate-3 scale-105 group-hover:rotate-0 transition-transform duration-500"></div>
+                <div className="bg-slate-50 p-12 rounded-[3.5rem] relative z-10 border border-slate-100 shadow-sm flex items-center justify-center">
+                   <div className="bg-white p-4 rounded-3xl shadow-2xl relative">
+                      <div className="w-48 h-48 bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%234f46e5%22 stroke-width=%221%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%223%22 y=%223%22 width=%2218%22 height=%2218%22 rx=%222%22 ry=%222%22 /%3E%3Crect x=%227%22 y=%227%22 width=%223%22 height=%223%22 /%3E%3Crect x=%2214%22 y=%227%22 width=%223%22 height=%223%22 /%3E%3Crect x=%227%22 y=%2214%22 width=%223%22 height=%223%22 /%3E%3C/svg%3E')] bg-center bg-no-repeat opacity-20"></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-12 h-12 bg-indigo-600 rounded-xl shadow-lg flex items-center justify-center text-white font-black text-xs">LOGO</div>
+                      </div>
+                   </div>
+                   <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 animate-bounce">
+                      <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
+                      </div>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Scan Optimized</span>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
+      </section>
+
       {/* SEO / FAQ Section */}
-      <section className="bg-slate-50 py-24 mt-12">
+      <section className="bg-slate-50 py-24">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
               <h2 className="text-3xl font-display font-black text-slate-900 leading-tight">High-quality tools without the subscription.</h2>
-              <p className="text-slate-500 font-medium"><strong>QR Generator Online</strong> offers business-grade customization for free. We believe basic tools should stay accessible to everyone.</p>
+              <p className="text-slate-500 font-medium"><strong>QR Generator Online</strong> offers business-grade customization for free. We believe professional <strong>customizable qr code</strong> tools should stay accessible to everyone. Our <strong>svg qr code generator</strong> is the industry standard for high-res marketing.</p>
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
                   <div className="text-indigo-600 font-black text-2xl mb-1">∞</div>
@@ -219,7 +264,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
                   <div className="text-indigo-600 font-black text-2xl mb-1">100%</div>
-                  <div className="text-[10px] font-bold uppercase text-slate-400">On-Device Security</div>
+                  <div className="text-[10px] font-bold uppercase text-slate-400">On-Device Processing</div>
                 </div>
               </div>
               <div className="pt-4">
@@ -229,7 +274,7 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="space-y-4">
-              {FAQ_ITEMS.slice(0, 3).map((item, idx) => (
+              {FAQ_ITEMS.slice(0, 4).map((item, idx) => (
                 <div key={idx} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
                   <h4 className="text-sm font-bold text-slate-900 mb-2">{item.question}</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">{item.answer}</p>
