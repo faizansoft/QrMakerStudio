@@ -1,8 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Button } from './Button';
 
 export const Header: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleCreateClick = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      const element = document.getElementById('tools');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Allow the Link to handle navigation to /#tools
+    }
+  };
+
   return (
     <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -16,17 +31,17 @@ export const Header: React.FC = () => {
         </Link>
         
         <nav className="hidden lg:flex items-center gap-8">
-          <Link to="/#tools" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Tools</Link>
+          <Link to="/#tools" onClick={handleCreateClick} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Tools</Link>
           <Link to="/faqs-qr-code-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">FAQ</Link>
           <Link to="/about" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">About Us</Link>
           <Link to="/contact" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Contact</Link>
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link to="/#tools" className="hidden sm:block">
+          <Link to="/#tools" onClick={handleCreateClick} className="hidden sm:block">
             <Button size="sm" variant="primary" className="rounded-full px-6 shadow-xl shadow-indigo-100">Create Free QR</Button>
           </Link>
-          <Link to="/#tools" className="sm:hidden">
+          <Link to="/#tools" onClick={handleCreateClick} className="sm:hidden">
             <Button size="sm" variant="primary" className="rounded-full px-4 font-black text-[10px]">NEW QR</Button>
           </Link>
         </div>
