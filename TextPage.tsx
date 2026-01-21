@@ -17,76 +17,87 @@ const TextPage: React.FC<PageProps> = (props) => {
       <section className="bg-white border-b border-slate-100 py-16">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-[10px] font-black uppercase tracking-widest rounded-full border border-emerald-100 mb-6">
-            Versatile Data Tool
+            Universal Data Storage
           </div>
           <h1 className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter mb-6">
             Text to QR <span className="text-emerald-600">Generator</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">
-            Convert any message, serial number, or raw data into a scannable format with our <strong>text to qr code generator</strong>. Simple, fast, and secure.
+            Convert any body of text, serial numbers, or notes into a scannable format. Our <strong>text to qr code generator</strong> works entirely offline and stays yours forever.
           </p>
         </div>
       </section>
 
       <Workspace type="text" value={text} {...props}>
         <div className="space-y-4">
-          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Text Content</label>
+          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Raw Text Content</label>
           <textarea 
             value={text} 
             onChange={e => setText(e.target.value)} 
-            placeholder="Paste your text, notes, or raw data here..." 
-            className="w-full h-64 p-6 rounded-2xl bg-slate-50 border-2 border-slate-100 outline-none font-bold resize-none focus:border-emerald-500" 
+            placeholder="Paste your text, codes, or inventory data here..." 
+            className="w-full h-64 p-6 rounded-2xl bg-slate-50 border-2 border-slate-100 outline-none font-bold resize-none focus:border-emerald-500 shadow-inner" 
           />
-          <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-100">
-            <p className="text-[11px] text-emerald-700 font-bold">
-              <b>PRO TIP:</b> Longer text makes the pattern denser. For paragraphs, use our <strong>qr code generator svg</strong> for maximum readability at any size.
+          <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-100 flex gap-4">
+            <div className="w-6 h-6 rounded-full bg-emerald-600 flex items-center justify-center text-white shrink-0 mt-1">
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <p className="text-[11px] text-emerald-700 font-bold leading-relaxed">
+              <b>DENSITY TIP:</b> Longer text makes the QR pattern denser. For long paragraphs, use 'High' error correction and our <strong>qr code generator svg</strong> for sharp printing.
             </p>
           </div>
         </div>
       </Workspace>
 
       <article className="max-w-5xl mx-auto px-6 py-24 space-y-24">
-        <section className="space-y-6">
-          <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900">Using a text to qr code generator effectively</h2>
-          <p className="text-slate-600 leading-relaxed font-medium text-lg">
-            A <strong>qr code generator for text</strong> is perfect for sharing info that doesn't need an internet connection. From Wi-Fi backup keys to treasure hunts and warehouse inventory labels, the <strong>text to qr code generator</strong> is the most flexible tool in your digital arsenal.
-          </p>
+        <section className="space-y-8">
+          <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 leading-tight">Digital Utility, <br/>Stored Physically.</h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <p className="text-slate-600 leading-relaxed font-medium text-lg">
+              A <strong>qr code generator for text</strong> is unique because it doesn't require an internet connection to work. The information is stored directly in the pattern itself. This makes it the perfect tool for warehouse management, secret notes, or simple physical labeling.
+            </p>
+            <div className="p-8 bg-slate-50 rounded-[3rem] border border-slate-100 shadow-inner relative overflow-hidden group">
+               <div className="relative z-10 space-y-4">
+                 <h4 className="font-bold text-slate-900">Maximum Capacity</h4>
+                 <p className="text-xs text-slate-500 leading-relaxed">QR codes can hold up to 4,296 alphanumeric characters. Our <strong>text to qr code generator</strong> supports the full spectrum, including special characters and emojis.</p>
+               </div>
+               <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-emerald-100 rounded-full blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+            </div>
+          </div>
         </section>
 
-        <section className="grid md:grid-cols-2 gap-12">
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-slate-900">Common Use Cases</h3>
-            <ul className="space-y-3 text-sm text-slate-500 font-medium">
-              <li className="flex gap-2">
-                <span className="text-emerald-600 font-black">✓</span>
-                <span><strong>Product Info:</strong> Store serial numbers or batch data directly on packaging.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-emerald-600 font-black">✓</span>
-                <span><strong>Education:</strong> <strong>Create a custom qr code</strong> for hidden answers in student worksheets.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-emerald-600 font-black">✓</span>
-                <span><strong>Logistics:</strong> Generate text-based codes for asset tracking and warehouse management.</span>
-              </li>
-            </ul>
-          </div>
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-slate-900">Design Guidance</h3>
-            <p className="text-sm text-slate-500 font-medium leading-relaxed">
-              When using a <strong>qr code generator for text</strong> with a lot of data, choose 'High' error correction and download a <strong>qr code svg generator</strong> file. This ensures that even if the code is slightly damaged or printed small, the text remains recoverable.
-            </p>
-          </div>
+        <section className="grid md:grid-cols-3 gap-8">
+           {[
+             { title: "Inventory Tracking", desc: "Generate <strong>customizable qr codes</strong> for serial numbers. Durable enough for the warehouse floor." },
+             { title: "Edu-Tech Games", desc: "Create treasure hunts by hiding answers in a <strong>text to qr code generator</strong> output." },
+             { title: "WiFi Backup", desc: "Print your recovery keys or long passwords as a <strong>qr code with logo in middle</strong> to keep them safe and scannable." }
+           ].map((item, idx) => (
+             <div key={idx} className="p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:border-emerald-200 transition-all">
+                <h4 className="font-bold text-slate-900 text-lg mb-4" dangerouslySetInnerHTML={{ __html: item.title }} />
+                <p className="text-sm text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.desc }} />
+             </div>
+           ))}
+        </section>
+
+        <section className="bg-emerald-900 text-white p-12 rounded-[4rem] space-y-8">
+           <h3 className="text-3xl font-display font-black text-center">Technical Density Guide</h3>
+           <div className="grid md:grid-cols-2 gap-12 text-sm">
+             <div className="space-y-4">
+               <p className="text-emerald-100/70 font-medium">As you add more text, the <strong>qr code generator for text</strong> adds more rows and columns to the grid. This is called 'Version Incrementing'. For massive blocks of text, you need high contrast to ensure the scanner can distinguish between the tiny dots.</p>
+             </div>
+             <div className="space-y-4">
+               <p className="text-emerald-100/70 font-medium">We recommend downloading our <strong>qr code generator svg</strong> for any text block over 200 characters. Vector files handle the small grid details far better than standard image formats, preventing 'blur errors'.</p>
+             </div>
+           </div>
         </section>
 
         <section className="space-y-8">
            <h3 className="text-3xl font-display font-black text-slate-900 text-center">Text QR FAQ</h3>
            <div className="grid md:grid-cols-2 gap-6">
              {[
-               { q: "Is there a limit to how much text I can add?", a: "Technically, QR codes can hold up to 4,296 characters. However, for a <strong>text to qr code generator</strong>, we recommend keeping it under 1,000 for easier scanning." },
-               { q: "Do I need the internet to scan text codes?", a: "No! Unlike URL codes, a <strong>text to qr code generator</strong> output stores the data directly in the pattern, so it works completely offline." },
-               { q: "Can I make a qr code with logo customization for text?", a: "Yes, our tool supports <strong>qr code with logo in middle</strong> branding for all text-based codes." },
-               { q: "What format should I download for printing?", a: "Always use our <strong>qr code svg generator</strong> for printing, as it prevents the 'fuzziness' that can make dense text codes unreadable." }
+               { q: "Is a text to qr code generator free?", a: "Yes, our tool is free and produces permanent codes with no scan limits or expiration dates." },
+               { q: "Can I add emojis to the text?", a: "Yes! Our <strong>text to qr code generator</strong> supports standard Unicode, meaning emojis and special characters will scan perfectly." },
+               { q: "Does the code need the internet?", a: "No. Unlike URL codes, the text is stored in the pattern itself. It works anywhere, even in a basement with zero reception." },
+               { q: "How can I make a qr code with logo for my text?", a: "Navigate to the 'Logo' tab in the workspace to create a <strong>qr code with logo in middle</strong> for your professional labels." }
              ].map((faq, i) => (
                <div key={i} className="p-6 bg-slate-50 rounded-2xl border border-slate-100">
                  <h4 className="font-bold text-slate-900 mb-2">{faq.q}</h4>

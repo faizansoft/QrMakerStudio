@@ -17,13 +17,13 @@ const PhonePage: React.FC<PageProps> = (props) => {
       <section className="bg-white border-b border-slate-100 py-16">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-rose-50 text-rose-700 text-[10px] font-black uppercase tracking-widest rounded-full border border-rose-100 mb-6">
-            Voice Call Tools
+            Direct Voice Communication
           </div>
           <h1 className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter mb-6">
-            Phone QR <span className="text-rose-600">Generator</span>
+            Phone Call <span className="text-rose-600">QR Code</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">
-            Make it easy for clients to call you. Use our <strong>qr code generator phone number</strong> tool to create a scannable dialer link for your business.
+            Eliminate the typing hurdle. Our <strong>qr code generator phone number</strong> tool creates an instant dialer link. One scan, one tap, and your customers are speaking with you.
           </p>
         </div>
       </section>
@@ -35,40 +35,68 @@ const PhonePage: React.FC<PageProps> = (props) => {
             type="tel" 
             value={num} 
             onChange={e => setNum(e.target.value)} 
-            placeholder="e.g. +1 415 555 2671" 
-            className="w-full p-6 rounded-2xl bg-slate-50 border-2 border-slate-100 outline-none font-bold text-2xl focus:border-rose-500" 
+            placeholder="e.g. +14155552671" 
+            className="w-full p-6 rounded-2xl bg-slate-50 border-2 border-slate-100 outline-none font-bold text-2xl focus:border-rose-500 shadow-inner" 
           />
-          <p className="text-xs text-slate-400">Scanning this will automatically open the phone's dialer.</p>
+          <div className="flex items-center gap-2 px-2">
+            <div className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></div>
+            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Scanning this will automatically open the phone's dialer.</p>
+          </div>
         </div>
       </Workspace>
 
       <article className="max-w-5xl mx-auto px-6 py-24 space-y-24">
-        <section className="space-y-6 text-center">
-          <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900">The Power of a qr code generator phone number</h2>
-          <p className="text-slate-600 leading-relaxed font-medium text-lg max-w-3xl mx-auto">
-            Traditional phone numbers on flyers often go uncalled because of the friction of manual dialing. A <strong>qr code generator phone number</strong> removes this barrier, allowing customers to connect with your support or sales team with a single scan.
-          </p>
+        <section className="space-y-8">
+          <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 leading-tight">Reduce Friction, <br/>Increase Conversations.</h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <p className="text-slate-600 leading-relaxed font-medium text-lg">
+              In a mobile-first world, nobody wants to memorize a 10-digit number from a sign and type it manually into their dialer. Mistakes happen, and leads are lost. A <strong>qr code generator phone number</strong> solves this by using the universal 'tel:' protocol. 
+            </p>
+            <div className="p-8 bg-rose-50 rounded-[3rem] border border-rose-100 flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-rose-600 shadow-sm">
+                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <p className="text-sm text-rose-900 font-bold leading-relaxed">By providing a <strong>custom qr code</strong> for phone calls, you're meeting your customers exactly where they are—on their smartphones.</p>
+            </div>
+          </div>
         </section>
 
-        <section className="grid md:grid-cols-2 gap-8">
-           <div className="p-8 bg-white rounded-3xl border border-slate-100">
-              <h4 className="font-bold text-slate-900 mb-3">Service Businesses</h4>
-              <p className="text-sm text-slate-500 leading-relaxed">Plumbers, electricians, and handymen can <strong>generate qr code for contact info</strong> on their vehicles for instant emergency calls.</p>
-           </div>
-           <div className="p-8 bg-white rounded-3xl border border-slate-100">
-              <h4 className="font-bold text-slate-900 mb-3">Real Estate Agents</h4>
-              <p className="text-sm text-slate-500 leading-relaxed">Add a <strong>qr code with logo in middle</strong> to 'For Sale' signs to get calls from potential buyers directly from the curb.</p>
-           </div>
+        <section className="grid md:grid-cols-3 gap-8">
+          {[
+            { title: "Service Fleet", desc: "Plumbers and electricians can place a <strong>qr code generator phone number</strong> on their vans for instant emergency call-outs." },
+            { title: "Retail Signs", desc: "Add a <strong>qr code with logo in middle</strong> to your window. Let shoppers call you even when your shop is closed." },
+            { title: "Event Banners", desc: "Running a hotline or support desk? Use our <strong>qr code generator svg</strong> for sharp, scannable graphics." }
+          ].map((item, idx) => (
+            <div key={idx} className="p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:border-rose-200 transition-all">
+              <h4 className="font-bold text-slate-900 text-lg mb-4" dangerouslySetInnerHTML={{ __html: item.title }} />
+              <p className="text-sm text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.desc }} />
+            </div>
+          ))}
+        </section>
+
+        <section className="bg-slate-900 text-white p-12 rounded-[4rem] space-y-8 relative overflow-hidden">
+          <div className="relative z-10 space-y-6">
+            <h3 className="text-3xl font-display font-black">Professional Print Quality</h3>
+            <p className="text-slate-400 font-medium leading-relaxed max-w-2xl">
+              Don't settle for blurry PNGs. Our <strong>qr code svg generator</strong> provides mathematically perfect vector files. Whether you're printing on a business card or wrapping a 40-foot truck, your <strong>phone call qr code</strong> will remain lightning-fast to scan.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              {['SVG Support', '300 DPI Ready', 'Vector Paths', 'Infinite Scaling'].map(f => (
+                <span key={f} className="px-4 py-2 bg-slate-800 rounded-full text-[10px] font-black uppercase tracking-widest text-rose-400">{f}</span>
+              ))}
+            </div>
+          </div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-rose-600/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
         </section>
 
         <section className="space-y-8">
            <h3 className="text-3xl font-display font-black text-slate-900 text-center">Phone QR FAQ</h3>
            <div className="grid md:grid-cols-2 gap-6">
              {[
-               { q: "How to make a qr code for a phone number?", a: "Simply enter your number (including +country code) into the <strong>qr code generator phone number</strong> tool above and download your code." },
-               { q: "Does it work on both iPhone and Android?", a: "Yes. All modern smartphones recognize the 'tel:' protocol used by our <strong>custom qr code maker</strong>." },
-               { q: "Is this the best qr code generator phone number tool?", a: "We provide high-resolution <strong>qr code generator svg</strong> files for free, making us the top choice for professionals." },
-               { q: "Will the caller see my name?", a: "A phone QR only opens the dialer with your number. To share your name and info, use our <strong>vcard qr code generator</strong> instead." }
+               { q: "Is the qr code generator phone number tool free?", a: "Yes, 100%. We believe basic digital tools should be accessible to everyone without hidden fees or subscriptions." },
+               { q: "Will this automatically start the call?", a: "For security, modern phones will open the dialer with your number pre-filled. The user must then tap the 'Call' button to initiate the conversation." },
+               { q: "How to generate qr code for contact info?", a: "If you want to share more than just a number (like your name or email), we recommend using our <strong>vcard qr code generator</strong> instead." },
+               { q: "Does it work with international numbers?", a: "Absolutely. Just ensure you include the '+' and country code in the input field of our <strong>qr code generator phone number</strong> tool." }
              ].map((faq, i) => (
                <div key={i} className="p-6 bg-slate-50 rounded-2xl border border-slate-100">
                  <h4 className="font-bold text-slate-900 mb-2">{faq.q}</h4>
