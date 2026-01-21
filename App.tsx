@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QRConfig } from './types';
 import Home from './Home';
@@ -40,8 +40,18 @@ const App: React.FC = () => {
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
   const commonProps = { styling, setStyling, logoSrc, setLogoSrc };
 
+  // Detect basename for environments that host the app in a subfolder (like preview URLs)
+  const basename = useMemo(() => {
+    // If we're on a path like /some-long-id/ we need to treat that as the root
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    if (pathParts.length > 0 && pathParts[0].length > 20) {
+      return `/${pathParts[0]}`;
+    }
+    return '';
+  }, []);
+
   return (
-    <Router>
+    <Router basename={basename}>
       <ScrollToTop />
       <div className="min-h-screen bg-slate-50 selection:bg-indigo-100 flex flex-col">
         <Header />
@@ -65,6 +75,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
+            {/* Catch-all route should always be at the end */}
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
