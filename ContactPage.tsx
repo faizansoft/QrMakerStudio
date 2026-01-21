@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './components/Button';
+import { useLanguage } from './context/LanguageContext';
 
 const ContactPage: React.FC = () => {
+  const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.title = "Contact Us | Support & Partnerships | QR Generator Online";
+    document.title = t('meta_contact_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Reach out to the professional QR code experts. We offer support for custom design inquiries, SVG export issues, and business partnership opportunities.');
+      metaDesc.setAttribute('content', t('meta_contact_desc'));
     }
-  }, []);
+  }, [t]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,7 +75,7 @@ const ContactPage: React.FC = () => {
                   <div>
                     <h4 className="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-1">{item.label}</h4>
                     {item.href ? (
-                      <a href={item.href} className="text-lg font-bold text-slate-900 hover:text-indigo-600 transition-colors">{item.val}</a>
+                      <a href={item.href} title={`Email ${item.val}`} className="text-lg font-bold text-slate-900 hover:text-indigo-600 transition-colors">{item.val}</a>
                     ) : (
                       <p className="text-lg font-bold text-slate-900">{item.val}</p>
                     )}
@@ -96,7 +98,6 @@ const ContactPage: React.FC = () => {
             </section>
           </div>
 
-          {/* Form */}
           <div className="bg-white p-10 md:p-14 rounded-[3.5rem] shadow-2xl shadow-slate-200/50 border border-slate-100">
             {submitted ? (
               <div className="text-center py-16 space-y-8 animate-in slide-in-from-bottom duration-500">
@@ -107,7 +108,7 @@ const ContactPage: React.FC = () => {
                   <h3 className="text-4xl font-display font-black text-slate-900 tracking-tight">Success!</h3>
                   <p className="text-slate-500 font-medium text-lg">We have received your message. Our team usually responds within 24 business hours.</p>
                 </div>
-                <Button variant="outline" onClick={() => setSubmitted(false)} className="rounded-full mt-8 uppercase tracking-[0.2em] text-[10px] font-black px-10">Send Another Message</Button>
+                <Button variant="outline" onClick={() => setSubmitted(false)} title="Go back to form" className="rounded-full mt-8 uppercase tracking-[0.2em] text-[10px] font-black px-10">Send Another Message</Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
@@ -134,12 +135,12 @@ const ContactPage: React.FC = () => {
                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Detailed Message</label>
                   <textarea required placeholder="How can we help you create a better branded experience?" className="w-full h-44 p-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold resize-none shadow-inner" />
                 </div>
-                <Button type="submit" className="w-full py-5 rounded-3xl shadow-xl shadow-indigo-100 uppercase tracking-[0.3em] font-black text-xs">Send Secure Inquiry</Button>
+                <Button type="submit" title="Submit your message" className="w-full py-5 rounded-3xl shadow-xl shadow-indigo-100 uppercase tracking-[0.3em] font-black text-xs">Send Secure Inquiry</Button>
                 <div className="pt-6 text-center space-y-4">
                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Standard Response Time: &lt; 24 Hours</p>
                    <div className="flex justify-center gap-4">
-                      <Link to="/privacy" className="text-[9px] font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase">Privacy Promise</Link>
-                      <Link to="/faqs-qr-code-generator" className="text-[9px] font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase">View FAQs</Link>
+                      <Link to="/privacy" title="Privacy Promise" className="text-[9px] font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase">Privacy Promise</Link>
+                      <Link to="/faqs-qr-code-generator" title="View FAQs" className="text-[9px] font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase">View FAQs</Link>
                    </div>
                 </div>
               </form>

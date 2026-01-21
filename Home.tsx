@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { QRType } from './types';
-import { GENERATOR_DETAILS, FAQ_ITEMS } from './constants';
+import { GENERATOR_DETAILS } from './constants';
 import { Button } from './components/Button';
+import { useLanguage } from './context/LanguageContext';
 
 const IconWrapper: React.FC<{ type: QRType }> = ({ type }) => {
   const iconConfig: Record<QRType, { color: string, svg: React.ReactNode }> = {
@@ -31,36 +32,37 @@ const IconWrapper: React.FC<{ type: QRType }> = ({ type }) => {
 const Home: React.FC = () => {
   const toolKeys = Object.keys(GENERATOR_DETAILS) as QRType[];
   const { hash } = useLocation();
+  const { t, language } = useLanguage();
 
   useEffect(() => {
-    document.title = "Professional QR Code Generator | Custom Branded QR Studio";
+    document.title = t('meta_home_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Create professional, branded QR codes for URLs, WiFi, business cards, and social media. High-resolution SVG exports, custom patterns, and logo center integration.');
+      metaDesc.setAttribute('content', t('hero_desc'));
     }
 
     if (hash === '#tools') {
       const element = document.getElementById('tools');
       if (element) element.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [hash]);
+  }, [hash, language, t]);
 
   return (
     <div className="animate-in">
       <section className="relative overflow-hidden bg-white pt-16 pb-24 hero-min-height">
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 text-indigo-700 text-[9px] font-black uppercase tracking-[0.2em] rounded-full border border-indigo-100 mb-6">
-            Reliable Branded QR Assets
+            {t('hero_badge')}
           </div>
           <h1 className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight mb-6">
-            The Professional Way to Create <br/><span className="text-indigo-600">Customizable QR Codes</span>
+            {t('hero_title_part1')} <br/><span className="text-indigo-600">{t('hero_title_part2')}</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto mb-10 leading-relaxed">
-            Welcome to the definitive <strong>branded QR code generator</strong>. We provide specialized tools for high-quality marketing, networking, and digital access. Transform standard links into unique visual assets that stay active forever.
+            {t('hero_desc')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/#tools"><Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">Select a Tool</Button></Link>
-            <Link to="/about"><Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">Our Philosophy</Button></Link>
+            <Link to="/#tools" title="Scroll to our suite of professional QR tools"><Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">Select a Tool</Button></Link>
+            <Link to="/about" title="Read about our studio mission"><Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">{t('nav_about')}</Button></Link>
           </div>
         </div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-10">
@@ -77,7 +79,12 @@ const Home: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {toolKeys.map(type => (
-            <Link to={`/${type}-qr-code-generator`} key={type} className="group flex flex-col items-start bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <Link 
+              to={`/${type}-qr-code-generator`} 
+              key={type} 
+              title={`Create a custom ${GENERATOR_DETAILS[type].title} QR code`}
+              className="group flex flex-col items-start bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
               <div className="flex items-center gap-4 mb-3">
                 <IconWrapper type={type} />
                 <h3 className="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">{GENERATOR_DETAILS[type].title}</h3>
@@ -155,7 +162,7 @@ const Home: React.FC = () => {
                   <p className="text-sm text-slate-400 leading-relaxed font-medium">
                     Unlike standard PNG images, our <strong>SVG QR code generator</strong> outputs mathematical vector paths. This is critical for professional printing. Whether you are placing a code on a 2-inch business card or a 20-foot billboard, an SVG ensures perfectly sharp edges and zero scan errors due to pixelation.
                   </p>
-                  <Link to="/url-qr-code-generator"><Button variant="outline" className="text-white border-white/20 hover:bg-white/10 uppercase tracking-widest text-[10px] font-black rounded-full px-8">Try Vector Export</Button></Link>
+                  <Link to="/url-qr-code-generator" title="Try our vector SVG export for print quality"><Button variant="outline" className="text-white border-white/20 hover:bg-white/10 uppercase tracking-widest text-[10px] font-black rounded-full px-8">Try Vector Export</Button></Link>
                </div>
             </div>
           </div>
@@ -200,14 +207,14 @@ const Home: React.FC = () => {
              Join thousands of designers and businesses using <strong>QR Generator Online</strong> to create professional, reliable, and beautiful digital gateways.
            </p>
            <div className="flex flex-wrap justify-center gap-6">
-             <Link to="/url-qr-code-generator"><Button size="lg" className="rounded-full px-12 shadow-2xl shadow-indigo-200 uppercase tracking-widest text-[11px] font-black">Get Started Free</Button></Link>
-             <Link to="/faqs-qr-code-generator"><Button variant="outline" size="lg" className="rounded-full px-12 uppercase tracking-widest text-[11px] font-black">Learn More</Button></Link>
+             <Link to="/url-qr-code-generator" title="Go to URL QR Generator"><Button size="lg" className="rounded-full px-12 shadow-2xl shadow-indigo-200 uppercase tracking-widest text-[11px] font-black">Get Started Free</Button></Link>
+             <Link to="/faqs-qr-code-generator" title="View FAQs"><Button variant="outline" size="lg" className="rounded-full px-12 uppercase tracking-widest text-[11px] font-black">Learn More</Button></Link>
            </div>
            <div className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
-              <Link to="/wifi-qr-code-generator" className="hover:text-indigo-600 transition-colors">WiFi Tool</Link>
-              <Link to="/vcard-qr-code-generator" className="hover:text-indigo-600 transition-colors">vCard Tool</Link>
-              <Link to="/email-qr-code-generator" className="hover:text-indigo-600 transition-colors">Email Tool</Link>
-              <Link to="/whatsapp-qr-code-generator" className="hover:text-indigo-600 transition-colors">WhatsApp Tool</Link>
+              <Link to="/wifi-qr-code-generator" title="Create WiFi QR" className="hover:text-indigo-600 transition-colors">WiFi Tool</Link>
+              <Link to="/vcard-qr-code-generator" title="Create Business vCard" className="hover:text-indigo-600 transition-colors">vCard Tool</Link>
+              <Link to="/email-qr-code-generator" title="Create Email QR" className="hover:text-indigo-600 transition-colors">Email Tool</Link>
+              <Link to="/whatsapp-qr-code-generator" title="Create WhatsApp QR" className="hover:text-indigo-600 transition-colors">WhatsApp Tool</Link>
            </div>
         </section>
       </article>

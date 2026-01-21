@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
+import { useLanguage } from './context/LanguageContext';
 
 interface PageProps {
   styling: Omit<QRConfig, 'value'>;
@@ -11,16 +12,17 @@ interface PageProps {
 }
 
 const VCardPage: React.FC<PageProps> = (props) => {
+  const { t } = useLanguage();
   const [v, setV] = useState({ first: '', last: '', tel: '', email: '', org: '' });
   const val = `BEGIN:VCARD\nVERSION:3.0\nN:${v.last};${v.first}\nFN:${v.first} ${v.last}\nORG:${v.org}\nTEL;TYPE=CELL:${v.tel}\nEMAIL:${v.email}\nEND:VCARD`;
 
   useEffect(() => {
-    document.title = "vCard QR Code Generator | Professional Digital Business Cards";
+    document.title = t('meta_vcard_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Generate a professional QR code business card using the vCard 3.0 standard. Let contacts save your info instantly. High-quality SVG for networking.');
+      metaDesc.setAttribute('content', t('meta_vcard_desc'));
     }
-  }, []);
+  }, [t]);
 
   return (
     <div className="flex flex-col">
@@ -142,10 +144,10 @@ const VCardPage: React.FC<PageProps> = (props) => {
         <section className="pt-12 border-t border-slate-100 text-center space-y-8">
           <h2 className="text-2xl font-display font-black text-slate-900">Discover More Branded Tools</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/url-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">URL Maker</Link>
-            <Link to="/wifi-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">WiFi Sharing</Link>
-            <Link to="/email-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Email Automation</Link>
-            <Link to="/phone-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Phone Dialing</Link>
+            <Link to="/url-qr-code-generator" title="Go to URL Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">URL Maker</Link>
+            <Link to="/wifi-qr-code-generator" title="Go to WiFi Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">WiFi Sharing</Link>
+            <Link to="/email-qr-code-generator" title="Go to Email Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Email Automation</Link>
+            <Link to="/phone-qr-code-generator" title="Go to Phone Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Phone Dialing</Link>
           </div>
         </section>
       </article>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
+import { useLanguage } from './context/LanguageContext';
 
 interface PageProps {
   styling: Omit<QRConfig, 'value'>;
@@ -11,16 +12,17 @@ interface PageProps {
 }
 
 const EmailPage: React.FC<PageProps> = (props) => {
+  const { t } = useLanguage();
   const [e, setE] = useState({ to: '', sub: '', body: '' });
   const val = `mailto:${e.to}?subject=${encodeURIComponent(e.sub)}&body=${encodeURIComponent(e.body)}`;
 
   useEffect(() => {
-    document.title = "Email QR Code Generator | Professional Inquiry Automation";
+    document.title = t('meta_email_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Generate a professional email QR code that pre-fills recipient, subject, and body. Perfect for customer support and business networking. Free SVG exports.');
+      metaDesc.setAttribute('content', t('meta_email_desc'));
     }
-  }, []);
+  }, [t]);
   
   return (
     <div className="flex flex-col">
@@ -129,10 +131,10 @@ const EmailPage: React.FC<PageProps> = (props) => {
         <section className="pt-12 border-t border-slate-100 text-center space-y-8">
           <h2 className="text-2xl font-display font-black text-slate-900">Explore Related Branded Tools</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/vcard-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Digital Business Cards</Link>
-            <Link to="/whatsapp-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">WhatsApp Messaging</Link>
-            <Link to="/sms-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">SMS Texting</Link>
-            <Link to="/url-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Website Links</Link>
+            <Link to="/vcard-qr-code-generator" title="Go to vCard Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Digital Business Cards</Link>
+            <Link to="/whatsapp-qr-code-generator" title="Go to WhatsApp Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">WhatsApp Messaging</Link>
+            <Link to="/sms-qr-code-generator" title="Go to SMS Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">SMS Texting</Link>
+            <Link to="/url-qr-code-generator" title="Go to URL Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Website Links</Link>
           </div>
         </section>
       </article>

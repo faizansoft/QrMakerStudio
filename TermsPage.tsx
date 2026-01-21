@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from './context/LanguageContext';
 
 const TermsPage: React.FC = () => {
+  const { t } = useLanguage();
+
   useEffect(() => {
-    document.title = "Terms of Service | Professional Usage Rights | QR Generator Online";
+    document.title = t('meta_terms_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Review the terms of service for QR Generator Online. Understand your full commercial ownership of generated QR codes and our professional print liability policies.');
+      metaDesc.setAttribute('content', t('meta_terms_desc'));
     }
-  }, []);
+  }, [t]);
 
   return (
     <div className="animate-in fade-in duration-700 pb-24">
@@ -79,14 +82,14 @@ const TermsPage: React.FC = () => {
             Our <strong>branded QR code generator</strong> is provided "as is" without any warranties of any kind. We are not responsible for business losses, data corruption, or indirect damages resulting from the use or inability to use our studio tools.
           </p>
           <p className="text-slate-500 text-sm italic">
-            Terms of Service Last Updated: January 2026. For legal or licensing inquiries, please contact <a href="mailto:frehmankt@gmail.com" className="text-indigo-600 font-bold">frehmankt@gmail.com</a>.
+            Terms of Service Last Updated: January 2026. For legal or licensing inquiries, please contact <a href="mailto:frehmankt@gmail.com" title="Email Support" className="text-indigo-600 font-bold">frehmankt@gmail.com</a>.
           </p>
         </section>
 
         <div className="pt-12 text-center">
-           <Link to="/about" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest mx-4">Our Mission</Link>
-           <Link to="/privacy" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest mx-4">Privacy Policy</Link>
-           <Link to="/contact" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest mx-4">Contact Support</Link>
+           <Link to="/about" title="About Us" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest mx-4">Our Mission</Link>
+           <Link to="/privacy" title="Privacy Policy" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest mx-4">Privacy Policy</Link>
+           <Link to="/contact" title="Contact Support" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest mx-4">Contact Support</Link>
         </div>
       </div>
     </div>

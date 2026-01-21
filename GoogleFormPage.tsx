@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
+import { useLanguage } from './context/LanguageContext';
 
 interface PageProps {
   styling: Omit<QRConfig, 'value'>;
@@ -11,15 +12,16 @@ interface PageProps {
 }
 
 const GoogleFormPage: React.FC<PageProps> = (props) => {
+  const { t } = useLanguage();
   const [url, setUrl] = useState('');
 
   useEffect(() => {
-    document.title = "Google Forms QR Code Generator | Boost Survey Responses";
+    document.title = t('meta_googleform_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Generate a professional Google Forms QR code. Perfect for feedback, surveys, and event registration. High-resolution SVG exports for print.');
+      metaDesc.setAttribute('content', t('meta_googleform_desc'));
     }
-  }, []);
+  }, [t]);
   
   return (
     <div className="flex flex-col">
@@ -125,10 +127,10 @@ const GoogleFormPage: React.FC<PageProps> = (props) => {
         <section className="pt-12 border-t border-slate-100 text-center space-y-8">
           <h2 className="text-2xl font-display font-black text-slate-900">Explore Related Digital Tools</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/url-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">URL Maker</Link>
-            <Link to="/facebook-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Facebook Groups</Link>
-            <Link to="/vcard-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Business Cards</Link>
-            <Link to="/location-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Maps Navigation</Link>
+            <Link to="/url-qr-code-generator" title="Go to URL Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">URL Maker</Link>
+            <Link to="/facebook-qr-code-generator" title="Go to Facebook Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Facebook Groups</Link>
+            <Link to="/vcard-qr-code-generator" title="Go to vCard Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Business Cards</Link>
+            <Link to="/location-qr-code-generator" title="Go to Location Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Maps Navigation</Link>
           </div>
         </section>
       </article>

@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
 import { Button } from './components/Button';
 import { Link } from 'react-router-dom';
+import { useLanguage } from './context/LanguageContext';
 
 const AboutPage: React.FC = () => {
+  const { t } = useLanguage();
+
   useEffect(() => {
-    document.title = "About Us | Professional QR Code Studio | QR Generator Online";
+    document.title = t('meta_about_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Learn about our mission to provide high-quality, permanent, and branded QR code solutions. Discover our technical standards for SVG exports and privacy-first generation.');
+      metaDesc.setAttribute('content', t('meta_about_desc'));
     }
-  }, []);
+  }, [t]);
 
   return (
     <div className="animate-in fade-in duration-700 pb-24">
@@ -99,21 +102,21 @@ const AboutPage: React.FC = () => {
               <p className="text-xs text-slate-500 leading-relaxed">
                 Use our <strong>custom logo QR</strong> features to maintain visual consistency across your client's physical assets. Perfect for brand identity kits.
               </p>
-              <Link to="/url-qr-code-generator" className="text-[10px] font-black uppercase text-indigo-600 hover:underline">Try URL Maker →</Link>
+              <Link to="/url-qr-code-generator" title="Try URL Maker" className="text-[10px] font-black uppercase text-indigo-600 hover:underline">Try URL Maker →</Link>
             </div>
             <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-4">
               <h4 className="font-bold text-slate-900">Marketing Agencies</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
                 Drive higher engagement rates with <strong>branded QR codes</strong> that users actually trust and want to scan.
               </p>
-              <Link to="/facebook-qr-code-generator" className="text-[10px] font-black uppercase text-indigo-600 hover:underline">Try Social Maker →</Link>
+              <Link to="/facebook-qr-code-generator" title="Try Social Maker" className="text-[10px] font-black uppercase text-indigo-600 hover:underline">Try Social Maker →</Link>
             </div>
             <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-4">
               <h4 className="font-bold text-slate-900">Small Businesses</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
                 Modernize your store with <strong>contactless WiFi access</strong> and <strong>Google Form feedback</strong> links that work instantly.
               </p>
-              <Link to="/wifi-qr-code-generator" className="text-[10px] font-black uppercase text-indigo-600 hover:underline">Try WiFi Maker →</Link>
+              <Link to="/wifi-qr-code-generator" title="Try WiFi Maker" className="text-[10px] font-black uppercase text-indigo-600 hover:underline">Try WiFi Maker →</Link>
             </div>
           </div>
         </section>
@@ -129,10 +132,10 @@ const AboutPage: React.FC = () => {
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
-            <Link to="/contact">
+            <Link to="/contact" title="Contact Us">
               <Button size="lg" className="rounded-full px-12 font-black uppercase tracking-widest text-xs">Send Feedback</Button>
             </Link>
-            <Link to="/faqs-qr-code-generator">
+            <Link to="/faqs-qr-code-generator" title="View Help">
               <Button variant="outline" size="lg" className="rounded-full px-12 font-black uppercase tracking-widest text-xs border-slate-700 text-white hover:bg-slate-900">View Help Docs</Button>
             </Link>
           </div>

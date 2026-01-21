@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
+import { useLanguage } from './context/LanguageContext';
 
 interface PageProps {
   styling: Omit<QRConfig, 'value'>;
@@ -11,15 +12,16 @@ interface PageProps {
 }
 
 const URLPage: React.FC<PageProps> = (props) => {
+  const { t } = useLanguage();
   const [url, setUrl] = useState('https://qr-generator.online');
 
   useEffect(() => {
-    document.title = "Custom URL QR Code Generator | Branded QR Maker Studio";
+    document.title = t('meta_url_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Create a professional branded URL QR code. High-resolution SVG exports, custom logos, and unique pattern styles for marketing, menus, and business cards.');
+      metaDesc.setAttribute('content', t('meta_url_desc'));
     }
-  }, []);
+  }, [t]);
 
   return (
     <div className="flex flex-col">
@@ -139,10 +141,10 @@ const URLPage: React.FC<PageProps> = (props) => {
         <section className="pt-12 border-t border-slate-100 text-center space-y-8">
           <h2 className="text-2xl font-display font-black text-slate-900">Explore Other Professional Tools</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/wifi-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">WiFi Sharing</Link>
-            <Link to="/vcard-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Digital Business Cards</Link>
-            <Link to="/googleform-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Google Forms</Link>
-            <Link to="/facebook-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Facebook Groups</Link>
+            <Link to="/wifi-qr-code-generator" title="Create a secure WiFi connection QR code" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">WiFi Sharing</Link>
+            <Link to="/vcard-qr-code-generator" title="Create a professional digital business card QR" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Digital Business Cards</Link>
+            <Link to="/googleform-qr-code-generator" title="Create a QR for your Google Forms surveys" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Google Forms</Link>
+            <Link to="/facebook-qr-code-generator" title="Create a QR code for your Facebook page or group" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Facebook Groups</Link>
           </div>
         </section>
       </article>

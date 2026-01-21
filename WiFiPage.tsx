@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
+import { useLanguage } from './context/LanguageContext';
 
 interface PageProps {
   styling: Omit<QRConfig, 'value'>;
@@ -11,16 +12,17 @@ interface PageProps {
 }
 
 const WiFiPage: React.FC<PageProps> = (props) => {
+  const { t } = useLanguage();
   const [wifi, setWifi] = useState({ ssid: '', pass: '', enc: 'WPA' });
   const val = `WIFI:S:${wifi.ssid};T:${wifi.enc};P:${wifi.pass};;`;
 
   useEffect(() => {
-    document.title = "WiFi QR Code Generator | Connect Instantly & Securely";
+    document.title = t('meta_wifi_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Generate a secure WiFi QR code for your home, cafe, or office. Let guests scan to connect without typing passwords. High-resolution SVG and PNG exports.');
+      metaDesc.setAttribute('content', t('meta_wifi_desc'));
     }
-  }, []);
+  }, [t]);
   
   return (
     <div className="flex flex-col">
@@ -159,10 +161,10 @@ const WiFiPage: React.FC<PageProps> = (props) => {
         <section className="pt-12 border-t border-slate-100 text-center space-y-8">
           <h2 className="text-2xl font-display font-black text-slate-900">Need Other Digital Assets?</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/url-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">URL Links</Link>
-            <Link to="/vcard-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Digital Business Cards</Link>
-            <Link to="/googleform-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Google Forms</Link>
-            <Link to="/location-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Maps Locations</Link>
+            <Link to="/url-qr-code-generator" title="Go to URL Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">URL Links</Link>
+            <Link to="/vcard-qr-code-generator" title="Go to vCard Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Digital Business Cards</Link>
+            <Link to="/googleform-qr-code-generator" title="Go to Google Forms Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Google Forms</Link>
+            <Link to="/location-qr-code-generator" title="Go to Location Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Maps Locations</Link>
           </div>
         </section>
       </article>

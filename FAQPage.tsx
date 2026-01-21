@@ -1,18 +1,20 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FAQ_ITEMS } from './constants';
+import { useLanguage } from './context/LanguageContext';
 
 const FAQPage: React.FC = () => {
+  const { t } = useLanguage();
   const [search, setSearch] = useState('');
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   useEffect(() => {
-    document.title = "Help & FAQ | Professional QR Code Support | QR Generator Online";
+    document.title = t('meta_faq_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Find expert answers to common QR code questions. Learn about scan reliability, SVG exports, adding logos, and how to create permanent, branded QR codes for business.');
+      metaDesc.setAttribute('content', t('meta_faq_desc'));
     }
-  }, []);
+  }, [t]);
 
   const filteredFaqs = useMemo(() => {
     return FAQ_ITEMS.filter(item => 
@@ -77,7 +79,7 @@ const FAQPage: React.FC = () => {
                   <div className="px-8 pb-10">
                     <p className="text-slate-600 font-medium leading-relaxed" dangerouslySetInnerHTML={{ __html: item.answer }} />
                     <div className="mt-8 pt-6 border-t border-indigo-100/50 flex gap-4">
-                       <Link to="/contact" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest">More Help Needed? →</Link>
+                       <Link to="/contact" title="Contact for Help" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest">More Help Needed? →</Link>
                     </div>
                   </div>
                 </div>
@@ -117,7 +119,7 @@ const FAQPage: React.FC = () => {
               </div>
            </div>
            <div className="pt-12 text-center">
-              <Link to="/url-qr-code-generator">
+              <Link to="/url-qr-code-generator" title="Get Started">
                 <button className="px-10 py-4 bg-indigo-600 text-white rounded-full font-black uppercase text-xs tracking-widest shadow-xl shadow-indigo-100 hover:bg-indigo-700 transition-all">Start Designing Now</button>
               </Link>
            </div>
@@ -126,19 +128,19 @@ const FAQPage: React.FC = () => {
         <section className="mt-32 space-y-12 border-t border-slate-100 pt-20">
           <h2 className="text-2xl font-display font-black text-slate-900">Explore Tool Tutorials</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <Link to="/vcard-qr-code-generator" className="group p-6 bg-white border border-slate-200 rounded-3xl hover:border-indigo-600 transition-all">
+            <Link to="/vcard-qr-code-generator" title="vCard Tutorial" className="group p-6 bg-white border border-slate-200 rounded-3xl hover:border-indigo-600 transition-all">
                <h4 className="text-[10px] font-black uppercase text-slate-400 mb-2">Tutorial</h4>
                <p className="text-xs font-bold text-slate-900 group-hover:text-indigo-600">Digital Business Cards →</p>
             </Link>
-            <Link to="/wifi-qr-code-generator" className="group p-6 bg-white border border-slate-200 rounded-3xl hover:border-indigo-600 transition-all">
+            <Link to="/wifi-qr-code-generator" title="WiFi Tutorial" className="group p-6 bg-white border border-slate-200 rounded-3xl hover:border-indigo-600 transition-all">
                <h4 className="text-[10px] font-black uppercase text-slate-400 mb-2">Tutorial</h4>
                <p className="text-xs font-bold text-slate-900 group-hover:text-indigo-600">WiFi Sharing Setup →</p>
             </Link>
-            <Link to="/location-qr-code-generator" className="group p-6 bg-white border border-slate-200 rounded-3xl hover:border-indigo-600 transition-all">
+            <Link to="/location-qr-code-generator" title="Location Tutorial" className="group p-6 bg-white border border-slate-200 rounded-3xl hover:border-indigo-600 transition-all">
                <h4 className="text-[10px] font-black uppercase text-slate-400 mb-2">Tutorial</h4>
                <p className="text-xs font-bold text-slate-900 group-hover:text-indigo-600">Maps Navigation →</p>
             </Link>
-            <Link to="/crypto-qr-code-generator" className="group p-6 bg-white border border-slate-200 rounded-3xl hover:border-indigo-600 transition-all">
+            <Link to="/crypto-qr-code-generator" title="Crypto Tutorial" className="group p-6 bg-white border border-slate-200 rounded-3xl hover:border-indigo-600 transition-all">
                <h4 className="text-[10px] font-black uppercase text-slate-400 mb-2">Tutorial</h4>
                <p className="text-xs font-bold text-slate-900 group-hover:text-indigo-600">Crypto Payments →</p>
             </Link>

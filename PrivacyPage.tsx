@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from './context/LanguageContext';
 
 const PrivacyPage: React.FC = () => {
+  const { t } = useLanguage();
+
   useEffect(() => {
-    document.title = "Privacy Policy | Data Security Standards | QR Generator Online";
+    document.title = t('meta_privacy_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Understand our privacy-first architecture. We use local-rendering technology to ensure your sensitive data like WiFi passwords and contact info never leaves your browser.');
+      metaDesc.setAttribute('content', t('meta_privacy_desc'));
     }
-  }, []);
+  }, [t]);
 
   return (
     <div className="animate-in fade-in duration-700 pb-24">
@@ -54,7 +57,7 @@ const PrivacyPage: React.FC = () => {
             We do not require accounts, credit cards, or email signups to use our professional suite. We use anonymized, aggregated analytics (like Google Analytics) to understand which tools (e.g., our <strong>crypto QR generator</strong> or <strong>Google Form maker</strong>) are most popular so we can optimize our server load and improve the user interface. This data is never linked to individual users or the content of the codes they create.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
-            If you contact us via our <Link to="/contact" className="text-indigo-600 font-bold border-b border-indigo-100 hover:border-indigo-600 transition-all">Support Channel</Link>, we only use your email to reply to your specific inquiry. We do not sell your contact details to marketing firms or third parties.
+            If you contact us via our <Link to="/contact" title="Contact Us" className="text-indigo-600 font-bold border-b border-indigo-100 hover:border-indigo-600 transition-all">Support Channel</Link>, we only use your email to reply to your specific inquiry. We do not sell your contact details to marketing firms or third parties.
           </p>
         </section>
 
@@ -71,13 +74,13 @@ const PrivacyPage: React.FC = () => {
             Because we do not store "Personal Identifiable Information" (PII) of your end-users, our tools are inherently compatible with GDPR, CCPA, and other global privacy frameworks. You can use our <strong>QR code SVG generator</strong> for your European or Californian clients with total peace of mind.
           </p>
           <p className="text-slate-500 text-sm italic">
-            Privacy Policy Last Updated: January 2026. For privacy-specific technical inquiries, please reach out to our engineering lead at <a href="mailto:frehmankt@gmail.com" className="text-indigo-600 font-bold">frehmankt@gmail.com</a>.
+            Privacy Policy Last Updated: January 2026. For privacy-specific technical inquiries, please reach out to our engineering lead at <a href="mailto:frehmankt@gmail.com" title="Email Lead Engineer" className="text-indigo-600 font-bold">frehmankt@gmail.com</a>.
           </p>
         </section>
 
         <section className="pt-12 flex flex-wrap justify-center gap-4">
-           <Link to="/terms" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:text-indigo-600 transition-all">View Terms of Service</Link>
-           <Link to="/about" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:text-indigo-600 transition-all">Our Philosophy</Link>
+           <Link to="/terms" title="Terms of Service" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:text-indigo-600 transition-all">View Terms of Service</Link>
+           <Link to="/about" title="About Philosophy" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:text-indigo-600 transition-all">Our Philosophy</Link>
         </section>
       </div>
     </div>

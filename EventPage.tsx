@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
+import { useLanguage } from './context/LanguageContext';
 
 interface PageProps {
   styling: Omit<QRConfig, 'value'>;
@@ -11,6 +12,7 @@ interface PageProps {
 }
 
 const EventPage: React.FC<PageProps> = (props) => {
+  const { t } = useLanguage();
   const [e, setE] = useState({ summary: '', location: '', start: '', end: '', desc: '' });
   
   const val = `BEGIN:VEVENT
@@ -22,12 +24,12 @@ DTEND:${e.end.replace(/[-:]/g, '')}
 END:VEVENT`;
 
   useEffect(() => {
-    document.title = "Event QR Code Generator | Save to Calendar Instantly";
+    document.title = t('meta_event_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Generate a professional event QR code. Let guests save your event title, time, and location directly to their smartphone calendars. High-res SVG exports.');
+      metaDesc.setAttribute('content', t('meta_event_desc'));
     }
-  }, []);
+  }, [t]);
 
   return (
     <div className="flex flex-col">
@@ -140,10 +142,10 @@ END:VEVENT`;
         <section className="pt-12 border-t border-slate-100 text-center space-y-8">
           <h2 className="text-2xl font-display font-black text-slate-900">Enhance Your Event Networking</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/vcard-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Digital Business Cards</Link>
-            <Link to="/location-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Maps Navigation</Link>
-            <Link to="/wifi-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">WiFi Sharing</Link>
-            <Link to="/url-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Website Links</Link>
+            <Link to="/vcard-qr-code-generator" title="Go to vCard Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Digital Business Cards</Link>
+            <Link to="/location-qr-code-generator" title="Go to Location Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Maps Navigation</Link>
+            <Link to="/wifi-qr-code-generator" title="Go to WiFi Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">WiFi Sharing</Link>
+            <Link to="/url-qr-code-generator" title="Go to URL Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Website Links</Link>
           </div>
         </section>
       </article>

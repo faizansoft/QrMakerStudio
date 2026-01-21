@@ -1,6 +1,5 @@
-
-import React, { useState, useMemo } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState, useMemo, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { QRConfig } from './types';
 import Home from './Home';
 import URLPage from './URLPage';
@@ -25,6 +24,23 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
+const CanonicalTagManager = () => {
+  const location = useLocation();
+  
+  useEffect(() => {
+    let link = document.querySelector("link[rel='canonical']");
+    if (!link) {
+      link = document.createElement("link");
+      link.setAttribute("rel", "canonical");
+      document.head.appendChild(link);
+    }
+    const absoluteUrl = window.location.origin + location.pathname;
+    link.setAttribute("href", absoluteUrl);
+  }, [location]);
+
+  return null;
+};
+
 const App: React.FC = () => {
   const [styling, setStyling] = useState<Omit<QRConfig, 'value'>>({
     fgColor: '#1e293b',
@@ -42,18 +58,13 @@ const App: React.FC = () => {
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
   const commonProps = { styling, setStyling, logoSrc, setLogoSrc };
 
-  // Detect basename for environments that host the app in a sub-folder (like preview URLs)
   const basename = useMemo(() => {
     const path = window.location.pathname;
     const parts = path.split('/').filter(Boolean);
-    
-    // Heuristic: If the first part is very long (UUID/Hash) and NOT one of our tool routes
     if (parts.length > 0) {
       const firstPart = parts[0];
       const isToolPath = firstPart.includes('qr-code-generator') || 
                          ['about', 'contact', 'privacy', 'terms', 'faqs'].includes(firstPart);
-      
-      // Typical preview IDs are 30+ chars or specific hex patterns
       if (!isToolPath && firstPart.length > 25) {
         return `/${firstPart}`;
       }
@@ -64,6 +75,7 @@ const App: React.FC = () => {
   return (
     <Router basename={basename}>
       <ScrollToTop />
+      <CanonicalTagManager />
       <div className="min-h-screen bg-slate-50 selection:bg-indigo-100 flex flex-col">
         <Header />
         <main className="flex-grow">
@@ -87,7 +99,6 @@ const App: React.FC = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
-            {/* If no route matches, redirect to home to clean up the URL */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

@@ -6,6 +6,7 @@ import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, GENERATOR_DETAILS 
 import { Button } from './components/Button';
 import { LogoUploader } from './components/LogoUploader';
 import { getAIStyleSuggestion } from './services/geminiService';
+import { useLanguage } from './context/LanguageContext';
 
 interface WorkspaceProps {
   type: QRType;
@@ -18,6 +19,7 @@ interface WorkspaceProps {
 }
 
 const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling, logoSrc, setLogoSrc, children }) => {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'content' | 'pattern' | 'corners' | 'logo'>('content');
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiMood, setAiMood] = useState<string | null>(null);
@@ -73,11 +75,18 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
     } catch (err) { console.error(err); } finally { setIsAiLoading(false); }
   };
 
+  const tabs = [
+    { id: 'content', label: t('ws_tab_content') },
+    { id: 'pattern', label: t('ws_tab_pattern') },
+    { id: 'corners', label: t('ws_tab_corners') },
+    { id: 'logo', label: t('ws_tab_logo') },
+  ] as const;
+
   return (
     <div className="animate-in pb-24">
       <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-12">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <Link to="/" className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors font-black text-[10px] uppercase tracking-widest group">
+          <Link to="/" title="Go back to home and see all QR types" className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors font-black text-[10px] uppercase tracking-widest group">
             <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7"/></svg>
             Explore All Tools
           </Link>
@@ -93,8 +102,8 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7 bg-white rounded-[3rem] shadow-2xl border border-slate-200 overflow-hidden">
             <div className="flex bg-slate-50/50 border-b border-slate-100 p-2 overflow-x-auto no-scrollbar">
-              {(['content', 'pattern', 'corners', 'logo'] as const).map(tab => (
-                <button key={tab} onClick={() => setActiveTab(tab)} aria-label={`Switch to ${tab} settings`} className={`flex-1 min-w-[80px] py-4 text-[10px] font-black uppercase tracking-widest transition-all rounded-2xl ${activeTab === tab ? 'text-indigo-600 bg-white shadow-sm ring-1 ring-slate-200' : 'text-slate-400 hover:text-slate-600'}`}>{tab}</button>
+              {tabs.map(tab => (
+                <button key={tab.id} onClick={() => setActiveTab(tab.id)} aria-label={`Switch to ${tab.label} settings`} className={`flex-1 min-w-[80px] py-4 text-[10px] font-black uppercase tracking-widest transition-all rounded-2xl ${activeTab === tab.id ? 'text-indigo-600 bg-white shadow-sm ring-1 ring-slate-200' : 'text-slate-400 hover:text-slate-600'}`}>{tab.label}</button>
               ))}
             </div>
             <div className="p-8 md:p-12 min-h-[400px]">
@@ -110,10 +119,10 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                 <div className="relative p-4 transition-all duration-500 group-hover:scale-105 flex flex-col items-center" style={{ backgroundColor: styling.bgColor, borderRadius: '40px', minWidth: '240px' }}><div ref={qrRef} className="bg-white p-2 rounded-2xl w-[200px] lg:w-[260px] aspect-square shadow-sm overflow-hidden" /></div>
               </div>
               <div className="space-y-3">
-                <Button onClick={() => handleDownload('png')} aria-label="Download QR as PNG" className="w-full py-4 rounded-2xl shadow-lg text-[10px] font-black uppercase tracking-widest">Download PNG</Button>
+                <Button onClick={() => handleDownload('png')} aria-label="Download QR as PNG" className="w-full py-4 rounded-2xl shadow-lg text-[10px] font-black uppercase tracking-widest">{t('btn_download_png')}</Button>
                 <div className="grid grid-cols-2 gap-3">
-                  <Button variant="outline" onClick={() => handleDownload('svg')} aria-label="Download QR as SVG" className="text-[9px] font-black uppercase py-3 rounded-xl tracking-widest">SVG (Print)</Button>
-                  <Button variant="outline" onClick={() => handleDownload('webp')} aria-label="Download QR as WebP" className="text-[9px] font-black uppercase py-3 rounded-xl tracking-widest">WebP (Web)</Button>
+                  <Button variant="outline" onClick={() => handleDownload('svg')} aria-label="Download QR as SVG" className="text-[9px] font-black uppercase py-3 rounded-xl tracking-widest">{t('btn_download_svg')}</Button>
+                  <Button variant="outline" onClick={() => handleDownload('webp')} aria-label="Download QR as WebP" className="text-[9px] font-black uppercase py-3 rounded-xl tracking-widest">{t('btn_download_webp')}</Button>
                 </div>
                 <p className="text-[9px] font-black uppercase text-slate-400 tracking-widest pt-2">Standard Static QR Export</p>
               </div>

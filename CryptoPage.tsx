@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
+import { useLanguage } from './context/LanguageContext';
 
 interface PageProps {
   styling: Omit<QRConfig, 'value'>;
@@ -11,16 +12,17 @@ interface PageProps {
 }
 
 const CryptoPage: React.FC<PageProps> = (props) => {
+  const { t } = useLanguage();
   const [c, setC] = useState({ coin: 'bitcoin', address: '', amount: '' });
   const val = `${c.coin}:${c.address}${c.amount ? `?amount=${c.amount}` : ''}`;
 
   useEffect(() => {
-    document.title = "Crypto QR Code Generator | Secure Payments for Bitcoin & ETH";
+    document.title = t('meta_crypto_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Generate a professional cryptocurrency payment QR code. Avoid address errors and boost trust. Support for Bitcoin, Ethereum, and more. Free SVG exports.');
+      metaDesc.setAttribute('content', t('meta_crypto_desc'));
     }
-  }, []);
+  }, [t]);
 
   return (
     <div className="flex flex-col">
@@ -135,10 +137,10 @@ const CryptoPage: React.FC<PageProps> = (props) => {
         <section className="pt-12 border-t border-slate-100 text-center space-y-8">
           <h2 className="text-2xl font-display font-black text-slate-900">Explore Other Professional Tools</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/url-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">URL Maker</Link>
-            <Link to="/wifi-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">WiFi Sharing</Link>
-            <Link to="/vcard-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Business Cards</Link>
-            <Link to="/text-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Plain Text</Link>
+            <Link to="/url-qr-code-generator" title="Go to URL Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">URL Maker</Link>
+            <Link to="/wifi-qr-code-generator" title="Go to WiFi Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">WiFi Sharing</Link>
+            <Link to="/vcard-qr-code-generator" title="Go to vCard Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Business Cards</Link>
+            <Link to="/text-qr-code-generator" title="Go to Plain Text Maker" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Plain Text</Link>
           </div>
         </section>
       </article>
