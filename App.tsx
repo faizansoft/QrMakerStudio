@@ -58,19 +58,19 @@ const App: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/url-qr-generator" element={<URLPage {...commonProps} />} />
-            <Route path="/googleform-qr-generator" element={<GoogleFormPage {...commonProps} />} />
-            <Route path="/wifi-qr-generator" element={<WiFiPage {...commonProps} />} />
-            <Route path="/vcard-qr-generator" element={<VCardPage {...commonProps} />} />
-            <Route path="/phone-qr-generator" element={<PhonePage {...commonProps} />} />
-            <Route path="/sms-qr-generator" element={<SMSPage {...commonProps} />} />
-            <Route path="/email-qr-generator" element={<EmailPage {...commonProps} />} />
-            <Route path="/text-qr-generator" element={<TextPage {...commonProps} />} />
-            <Route path="/event-qr-generator" element={<EventPage {...commonProps} />} />
-            <Route path="/location-qr-generator" element={<LocationPage {...commonProps} />} />
-            <Route path="/crypto-qr-generator" element={<CryptoPage {...commonProps} />} />
-            <Route path="/facebook-qr-generator" element={<FacebookPage {...commonProps} />} />
-            <Route path="/whatsapp-qr-generator" element={<WhatsAppPage {...commonProps} />} />
+            <Route path="/url-qr-code-generator" element={<URLPage {...commonProps} />} />
+            <Route path="/googleform-qr-code-generator" element={<GoogleFormPage {...commonProps} />} />
+            <Route path="/wifi-qr-code-generator" element={<WiFiPage {...commonProps} />} />
+            <Route path="/vcard-qr-code-generator" element={<VCardPage {...commonProps} />} />
+            <Route path="/phone-qr-code-generator" element={<PhonePage {...commonProps} />} />
+            <Route path="/sms-qr-code-generator" element={<SMSPage {...commonProps} />} />
+            <Route path="/email-qr-code-generator" element={<EmailPage {...commonProps} />} />
+            <Route path="/text-qr-code-generator" element={<TextPage {...commonProps} />} />
+            <Route path="/event-qr-code-generator" element={<EventPage {...commonProps} />} />
+            <Route path="/location-qr-code-generator" element={<LocationPage {...commonProps} />} />
+            <Route path="/crypto-qr-code-generator" element={<CryptoPage {...commonProps} />} />
+            <Route path="/facebook-qr-code-generator" element={<FacebookPage {...commonProps} />} />
+            <Route path="/whatsapp-qr-code-generator" element={<WhatsAppPage {...commonProps} />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />

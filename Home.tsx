@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { QRType } from './types';
@@ -96,6 +95,7 @@ const IconWrapper: React.FC<{ type: QRType }> = ({ type }) => {
         </>
       ) 
     },
+    // Fixed: Removed duplicate whatsapp and email keys
     whatsapp: { 
       color: 'bg-green-500', 
       svg: <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-12.7 8.38 8.38 0 0 1 3.8.9L21 3z" /> 
@@ -157,7 +157,7 @@ const Home: React.FC = () => {
             Create high-resolution codes for URLs, WiFi, and more. Free forever, no registration needed. Download in vector SVG or PNG with <strong>QR Generator Online</strong>.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/url-qr-generator">
+            <Link to="/url-qr-code-generator">
               <Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100">Create Website QR</Button>
             </Link>
             <Link to="/about">
@@ -184,7 +184,7 @@ const Home: React.FC = () => {
             const d = GENERATOR_DETAILS[type];
             return (
               <Link 
-                to={`/${type}-qr-generator`}
+                to={`/${type}-qr-code-generator`}
                 key={type} 
                 className="group flex flex-col items-start bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-indigo-100 transition-all duration-300"
               >

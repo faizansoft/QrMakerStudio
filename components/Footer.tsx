@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -19,11 +18,11 @@ export const Footer: React.FC = () => {
           <div>
              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-6">Tools</h4>
              <ul className="space-y-4 text-sm text-slate-300 font-medium">
-               <li><Link to="/url-qr-generator" className="hover:text-white transition-colors">URL Generator</Link></li>
-               <li><Link to="/googleform-qr-generator" className="hover:text-white transition-colors">Google Forms QR</Link></li>
-               <li><Link to="/wifi-qr-generator" className="hover:text-white transition-colors">WiFi Maker</Link></li>
-               <li><Link to="/vcard-qr-generator" className="hover:text-white transition-colors">Business vCard</Link></li>
-               <li><Link to="/text-qr-generator" className="hover:text-white transition-colors">Text Creator</Link></li>
+               <li><Link to="/url-qr-code-generator" className="hover:text-white transition-colors">URL Generator</Link></li>
+               <li><Link to="/googleform-qr-code-generator" className="hover:text-white transition-colors">Google Forms QR</Link></li>
+               <li><Link to="/wifi-qr-code-generator" className="hover:text-white transition-colors">WiFi Maker</Link></li>
+               <li><Link to="/vcard-qr-code-generator" className="hover:text-white transition-colors">Business vCard</Link></li>
+               <li><Link to="/text-qr-code-generator" className="hover:text-white transition-colors">Text Creator</Link></li>
              </ul>
           </div>
           <div>
