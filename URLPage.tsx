@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
 
@@ -11,6 +11,15 @@ interface PageProps {
 
 const URLPage: React.FC<PageProps> = (props) => {
   const [url, setUrl] = useState('https://qr-generator.online');
+
+  useEffect(() => {
+    document.title = "Website URL QR Code Generator | QR Generator Online";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Create a professional QR code for any website URL. Customize with colors, brand logos, and download high-resolution SVG files for printing.');
+    }
+  }, []);
+
   return (
     <div className="flex flex-col">
       <section className="bg-white border-b border-slate-100 py-16">

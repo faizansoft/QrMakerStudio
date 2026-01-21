@@ -33,6 +33,13 @@ const Home: React.FC = () => {
   const { hash } = useLocation();
 
   useEffect(() => {
+    // SEO Update for Home
+    document.title = "QR Generator Online | Professional Branded QR Code Studio";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Create professional, high-resolution custom QR codes. Our studio offers specialized tools for WiFi, business cards, and URLs with high-quality SVG exports.');
+    }
+
     if (hash === '#tools') {
       const element = document.getElementById('tools');
       if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -107,7 +114,11 @@ const Home: React.FC = () => {
               alt="Networking and Collaboration" 
               loading="lazy"
               decoding="async"
+              /* Performance optimization: high fetch priority for hero image */
+              fetchpriority="high"
               className="w-full h-full object-cover rounded-[2.8rem] opacity-90 group-hover:scale-105 transition-transform duration-700" 
+              width="800"
+              height="600"
             />
             <div className="absolute inset-0 bg-indigo-600/20 mix-blend-multiply"></div>
             <div className="absolute bottom-6 left-6 right-6 p-6 bg-white/90 backdrop-blur-md rounded-2xl border border-white/50 shadow-xl">
@@ -148,7 +159,7 @@ const Home: React.FC = () => {
              <div className="relative group p-4">
                 <div className="bg-slate-50 p-8 md:p-12 rounded-[4rem] relative z-10 border border-slate-100 shadow-sm flex items-center justify-center min-h-[400px]">
                    <div className="bg-white p-6 rounded-[3.5rem] shadow-2xl relative transition-transform duration-500 group-hover:scale-[1.02]">
-                      <svg viewBox="0 0 100 100" className="w-40 h-40 md:w-56 md:h-56 text-slate-900" fill="currentColor">
+                      <svg viewBox="0 0 100 100" className="w-40 h-40 md:w-56 md:h-56 text-slate-900" fill="currentColor" aria-hidden="true">
                         <rect x="0" y="0" width="30" height="30" rx="8" fill="#4f46e5" /><rect x="5" y="5" width="20" height="20" rx="4" fill="white" /><rect x="10" y="10" width="10" height="10" rx="2" fill="#4f46e5" />
                         <rect x="70" y="0" width="30" height="30" rx="8" fill="#4f46e5" /><rect x="75" y="5" width="20" height="20" rx="4" fill="white" /><rect x="80" y="10" width="10" height="10" rx="2" fill="#4f46e5" />
                         <rect x="0" y="70" width="30" height="30" rx="8" fill="#4f46e5" /><rect x="5" y="75" width="20" height="20" rx="4" fill="white" /><rect x="10" y="80" width="10" height="10" rx="2" fill="#4f46e5" />
@@ -171,21 +182,21 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center md:text-left">
           <div className="space-y-4">
              <div className="w-12 h-12 mx-auto md:mx-0 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
-               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
              </div>
              <h3 className="text-xl font-bold">Privacy First</h3>
              <p className="text-slate-400 text-sm leading-relaxed font-medium">Your data stays on your device. We generate the QR pattern locally in your browser so your personal info stays private.</p>
           </div>
           <div className="space-y-4">
              <div className="w-12 h-12 mx-auto md:mx-0 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
-               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
              </div>
              <h3 className="text-xl font-bold">Sharp Export</h3>
              <p className="text-slate-400 text-sm leading-relaxed font-medium">Download SVG files to keep your code mathematically perfect and easy to scan at any size or on any material.</p>
           </div>
           <div className="space-y-4">
              <div className="w-12 h-12 mx-auto md:mx-0 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
-               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
              </div>
              <h3 className="text-xl font-bold">Permanent Codes</h3>
              <p className="text-slate-400 text-sm leading-relaxed font-medium">We create static codes with no scan limits and no hidden expiry. Once generated, the code is yours to use forever.</p>

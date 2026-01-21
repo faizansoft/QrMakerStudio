@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const TermsPage: React.FC = () => {
+  useEffect(() => {
+    document.title = "Terms of Service | QR Generator Online";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Terms and conditions for using QR Generator Online. Understand your rights to the permanent QR codes you generate for personal and commercial use.');
+    }
+  }, []);
+
   return (
     <div className="animate-in fade-in duration-700 pb-24">
       <section className="bg-white pt-20 pb-16 border-b border-slate-100 mb-12">

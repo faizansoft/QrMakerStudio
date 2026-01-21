@@ -42,12 +42,6 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
   };
 
   useEffect(() => {
-    document.title = `${details.title} | QR Generator Online`;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute('content', `${details.desc} Professional custom QR code generation with SVG export.`);
-  }, [type, details]);
-
-  useEffect(() => {
     if (!qrRef.current) return;
     const options: Options = {
       width: 1000, 

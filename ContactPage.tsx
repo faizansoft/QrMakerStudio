@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from './components/Button';
 
 const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    document.title = "Contact Us | QR Generator Online";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Get in touch with the QR Generator Online team. We are here to help with your custom QR code questions and professional support inquiries.');
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

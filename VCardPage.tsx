@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
 
@@ -12,6 +12,14 @@ interface PageProps {
 const VCardPage: React.FC<PageProps> = (props) => {
   const [v, setV] = useState({ first: '', last: '', tel: '', email: '', org: '' });
   const val = `BEGIN:VCARD\nVERSION:3.0\nN:${v.last};${v.first}\nFN:${v.first} ${v.last}\nORG:${v.org}\nTEL;TYPE=CELL:${v.tel}\nEMAIL:${v.email}\nEND:VCARD`;
+
+  useEffect(() => {
+    document.title = "vCard QR Code Generator | Professional Digital Business Cards";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Generate a professional qr code business card. Encode your contact details using the vCard 3.0 standard. High-quality SVG exports for professional networking.');
+    }
+  }, []);
 
   return (
     <div className="flex flex-col">
@@ -80,25 +88,13 @@ const VCardPage: React.FC<PageProps> = (props) => {
           ))}
         </section>
 
-        <section className="bg-slate-50 p-12 rounded-[4rem] border border-slate-100 space-y-8">
-           <h3 className="text-2xl font-display font-black text-slate-900">Universal Compatibility</h3>
-           <p className="text-slate-600 font-medium leading-relaxed">
-             Our <strong>vcard qr code generator</strong> uses the industry-standard <strong>vCard 3.0 format</strong>. This ensures that whether your contact uses an iPhone, a Samsung, or a Pixel, the data will be recognized and sorted into the correct fields (First Name, Last Name, Org, etc.) without any third-party apps.
-           </p>
-           <div className="flex gap-4">
-             {['iPhone (iOS)', 'Android', 'Outlook', 'Google Contacts'].map(sys => (
-               <span key={sys} className="px-4 py-1 bg-white border border-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest text-slate-500">{sys}</span>
-             ))}
-           </div>
-        </section>
-
         <section className="space-y-8">
            <h3 className="text-3xl font-display font-black text-slate-900 text-center">vCard FAQ</h3>
            <div className="grid md:grid-cols-2 gap-6">
              {[
-               { q: "Is it safe to put my phone number in a QR code?", a: "Yes. The QR code only contains the data you enter. It is a <strong>static</strong> code, meaning we do not track who scans it or store your info on our servers." },
+               { q: "Is it safe to put my phone number in a QR code?", a: "Yes. The QR code only contains the data you enter. It is a <strong>static</strong> code, meaning your info stays private." },
                { q: "How do I save the contact on my phone?", a: "Just open your camera, point it at the code, and tap the notification. Your phone will ask if you want to 'Add to Contacts'." },
-               { q: "Can I add my logo to the card?", a: "Yes! Use the 'Logo' tab in our workspace to create a <strong>qr code with logo in middle</strong> for your professional brand." },
+               { q: "Can I add my logo to the card?", a: "Yes! Use the 'Logo' tab in our workspace to create a <strong>qr code with logo in middle</strong>." },
                { q: "What is a vCard exactly?", a: "A vCard (.vcf) is a virtual business card file format. It's the digital standard for exchanging contact information globally." }
              ].map((faq, i) => (
                <div key={i} className="p-6 bg-slate-50 rounded-2xl border border-slate-100">

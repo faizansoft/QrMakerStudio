@@ -1,9 +1,17 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { FAQ_ITEMS } from './constants';
 
 const FAQPage: React.FC = () => {
   const [search, setSearch] = useState('');
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  useEffect(() => {
+    document.title = "Help & FAQ | QR Generator Online";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Find answers to frequently asked questions about QR code generation, custom styles, center logos, and technical standards for printing.');
+    }
+  }, []);
 
   const filteredFaqs = useMemo(() => {
     return FAQ_ITEMS.filter(item => 

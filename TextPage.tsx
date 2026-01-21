@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
 
@@ -11,6 +11,14 @@ interface PageProps {
 
 const TextPage: React.FC<PageProps> = (props) => {
   const [text, setText] = useState('');
+
+  useEffect(() => {
+    document.title = "Text to QR Code Generator | Secure Offline Data Storage";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Convert any raw text or notes into a scannable QR code. No internet required for scanning. Perfect for inventory labels, offline notes, and technical data.');
+    }
+  }, []);
   
   return (
     <div className="flex flex-col">
@@ -51,53 +59,19 @@ const TextPage: React.FC<PageProps> = (props) => {
       <article className="max-w-5xl mx-auto px-6 py-24 space-y-24">
         <section className="space-y-8">
           <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 leading-tight">Digital Utility, <br/>Stored Physically.</h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <p className="text-slate-600 leading-relaxed font-medium text-lg">
-              A <strong>qr code generator for text</strong> is unique because it doesn't require an internet connection to work. The information is stored directly in the pattern itself. This makes it the perfect tool for warehouse management, secret notes, or simple physical labeling.
-            </p>
-            <div className="p-8 bg-slate-50 rounded-[3rem] border border-slate-100 shadow-inner relative overflow-hidden group">
-               <div className="relative z-10 space-y-4">
-                 <h4 className="font-bold text-slate-900">Maximum Capacity</h4>
-                 <p className="text-xs text-slate-500 leading-relaxed">QR codes can hold up to 4,296 alphanumeric characters. Our <strong>text to qr code generator</strong> supports the full spectrum, including special characters and emojis.</p>
-               </div>
-               <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-emerald-100 rounded-full blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
-            </div>
-          </div>
-        </section>
-
-        <section className="grid md:grid-cols-3 gap-8">
-           {[
-             { title: "Inventory Tracking", desc: "Generate <strong>customizable qr codes</strong> for serial numbers. Durable enough for the warehouse floor." },
-             { title: "Edu-Tech Games", desc: "Create treasure hunts by hiding answers in a <strong>text to qr code generator</strong> output." },
-             { title: "WiFi Backup", desc: "Print your recovery keys or long passwords as a <strong>qr code with logo in middle</strong> to keep them safe and scannable." }
-           ].map((item, idx) => (
-             <div key={idx} className="p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:border-emerald-200 transition-all">
-                <h4 className="font-bold text-slate-900 text-lg mb-4" dangerouslySetInnerHTML={{ __html: item.title }} />
-                <p className="text-sm text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.desc }} />
-             </div>
-           ))}
-        </section>
-
-        <section className="bg-emerald-900 text-white p-12 rounded-[4rem] space-y-8">
-           <h3 className="text-3xl font-display font-black text-center">Technical Density Guide</h3>
-           <div className="grid md:grid-cols-2 gap-12 text-sm">
-             <div className="space-y-4">
-               <p className="text-emerald-100/70 font-medium">As you add more text, the <strong>qr code generator for text</strong> adds more rows and columns to the grid. This is called 'Version Incrementing'. For massive blocks of text, you need high contrast to ensure the scanner can distinguish between the tiny dots.</p>
-             </div>
-             <div className="space-y-4">
-               <p className="text-emerald-100/70 font-medium">We recommend downloading our <strong>qr code generator svg</strong> for any text block over 200 characters. Vector files handle the small grid details far better than standard image formats, preventing 'blur errors'.</p>
-             </div>
-           </div>
+          <p className="text-slate-600 leading-relaxed font-medium text-lg">
+            A <strong>qr code generator for text</strong> is unique because it doesn't require an internet connection. The information is stored directly in the pattern itself.
+          </p>
         </section>
 
         <section className="space-y-8">
            <h3 className="text-3xl font-display font-black text-slate-900 text-center">Text QR FAQ</h3>
            <div className="grid md:grid-cols-2 gap-6">
              {[
-               { q: "Is a text to qr code generator free?", a: "Yes, our tool is free and produces permanent codes with no scan limits or expiration dates." },
-               { q: "Can I add emojis to the text?", a: "Yes! Our <strong>text to qr code generator</strong> supports standard Unicode, meaning emojis and special characters will scan perfectly." },
-               { q: "Does the code need the internet?", a: "No. Unlike URL codes, the text is stored in the pattern itself. It works anywhere, even in a basement with zero reception." },
-               { q: "How can I make a qr code with logo for my text?", a: "Navigate to the 'Logo' tab in the workspace to create a <strong>qr code with logo in middle</strong> for your professional labels." }
+               { q: "Is a text to qr code generator free?", a: "Yes, our tool is free and produces permanent codes with no scan limits." },
+               { q: "Can I add emojis to the text?", a: "Yes! Our <strong>text to qr code generator</strong> supports standard Unicode, meaning emojis will scan perfectly." },
+               { q: "Does the code need the internet?", a: "No. The text is stored in the pattern itself. It works anywhere." },
+               { q: "How can I make a qr code with logo?", a: "Navigate to the 'Logo' tab to brand your professional labels." }
              ].map((faq, i) => (
                <div key={i} className="p-6 bg-slate-50 rounded-2xl border border-slate-100">
                  <h4 className="font-bold text-slate-900 mb-2">{faq.q}</h4>

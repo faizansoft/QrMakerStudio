@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const PrivacyPage: React.FC = () => {
+  useEffect(() => {
+    document.title = "Privacy Policy | QR Generator Online";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Our commitment to your privacy. Learn how QR Generator Online processes your data locally and securely without server-side tracking.');
+    }
+  }, []);
+
   return (
     <div className="animate-in fade-in duration-700 pb-24">
       <section className="bg-white pt-20 pb-16 border-b border-slate-100 mb-12">
