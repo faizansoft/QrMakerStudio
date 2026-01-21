@@ -23,7 +23,8 @@ export type TranslationKey =
   | 'meta_contact_title' | 'meta_contact_desc'
   | 'meta_privacy_title' | 'meta_privacy_desc'
   | 'meta_terms_title' | 'meta_terms_desc'
-  | 'lang_en' | 'lang_es' | 'lang_fr' | 'select_lang';
+  | 'lang_en' | 'lang_es' | 'lang_fr' | 'select_lang'
+  | 'btn_view_faqs' | 'btn_explore_tools' | 'btn_start_generating' | 'btn_try_vector';
 
 export const translations: Record<string, Record<string, string>> = {
   en: {
@@ -31,7 +32,7 @@ export const translations: Record<string, Record<string, string>> = {
     nav_faq: 'FAQ',
     nav_about: 'About Us',
     nav_contact: 'Contact',
-    cta_create_free: 'Create Free QR',
+    cta_create_free: 'Create Free QR Code',
     hero_badge: 'Reliable Branded QR Assets',
     hero_title_part1: 'The Professional Way to Create',
     hero_title_part2: 'Customizable QR Codes',
@@ -47,6 +48,10 @@ export const translations: Record<string, Record<string, string>> = {
     btn_download_png: 'Download PNG',
     btn_download_svg: 'SVG (Print)',
     btn_download_webp: 'WebP (Web)',
+    btn_view_faqs: 'Read Frequently Asked Questions',
+    btn_explore_tools: 'Explore QR Generation Tools',
+    btn_start_generating: 'Start Generating Free QR Codes',
+    btn_try_vector: 'Try Vector SVG Export',
     meta_home_title: 'Professional QR Code Generator | Custom Branded QR Studio',
     meta_url_title: 'Custom URL QR Code Generator | Branded QR Maker Studio',
     meta_url_desc: 'Create a professional branded URL QR code. High-resolution SVG exports, custom logos, and unique pattern styles.',
@@ -94,7 +99,7 @@ export const translations: Record<string, Record<string, string>> = {
     nav_faq: 'Preguntas',
     nav_about: 'Nosotros',
     nav_contact: 'Contacto',
-    cta_create_free: 'Crear QR Gratis',
+    cta_create_free: 'Crear Código QR Gratis',
     hero_badge: 'Activos QR de Marca Confiables',
     hero_title_part1: 'La Forma Profesional de Crear',
     hero_title_part2: 'Códigos QR Personalizables',
@@ -110,6 +115,10 @@ export const translations: Record<string, Record<string, string>> = {
     btn_download_png: 'Descargar PNG',
     btn_download_svg: 'SVG (Imprenta)',
     btn_download_webp: 'WebP (Web)',
+    btn_view_faqs: 'Leer Preguntas Frecuentes',
+    btn_explore_tools: 'Explorar Herramientas de Generación QR',
+    btn_start_generating: 'Empezar a Crear Códigos QR Gratis',
+    btn_try_vector: 'Probar Exportación SVG Vectorial',
     meta_home_title: 'Generador de Códigos QR Profesional | Estudio de QR Personalizado',
     meta_url_title: 'Generador de Códigos QR de URL | Estudio de Marca',
     meta_url_desc: 'Cree un código QR de URL profesional. Exportaciones SVG de alta resolución, logotipos personalizados y estilos únicos.',
@@ -157,7 +166,7 @@ export const translations: Record<string, Record<string, string>> = {
     nav_faq: 'FAQ',
     nav_about: 'À Propos',
     nav_contact: 'Contact',
-    cta_create_free: 'Créer un QR Gratuit',
+    cta_create_free: 'Créer un Code QR Gratuit',
     hero_badge: 'Actifs QR de Marque Fiables',
     hero_title_part1: 'La Manière Professionnelle de Créer des',
     hero_title_part2: 'Codes QR Personnalisables',
@@ -173,6 +182,10 @@ export const translations: Record<string, Record<string, string>> = {
     btn_download_png: 'Télécharger PNG',
     btn_download_svg: 'SVG (Impression)',
     btn_download_webp: 'WebP (Web)',
+    btn_view_faqs: 'Consulter la Foire Aux Questions',
+    btn_explore_tools: 'Explorer les Outils de Génération QR',
+    btn_start_generating: 'Commencer à Créer des Codes QR Gratuits',
+    btn_try_vector: 'Essayer l\'Exportation Vectorielle SVG',
     meta_home_title: 'Générateur de Code QR Professionnel | Studio QR de Marque',
     meta_url_title: 'Générateur de Code QR URL | Studio QR de Marque',
     meta_url_desc: 'Créez un code QR URL professionnel. Exportations SVG haute résolution, logos personnalisés et motifs uniques.',
@@ -212,7 +225,7 @@ export const translations: Record<string, Record<string, string>> = {
     meta_terms_desc: 'Consultez les conditions. Comprenez votre propriété commerciale sur les codes générés.',
     lang_en: 'Anglais',
     lang_es: 'Espagnol',
-    lang_fr: 'Français',
+    lang_fr: 'Francés',
     select_lang: 'Langue'
   }
 };

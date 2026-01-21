@@ -61,8 +61,8 @@ const Home: React.FC = () => {
             {t('hero_desc')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/#tools" title="Scroll to our suite of professional QR tools"><Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">Select a Tool</Button></Link>
-            <Link to="/about" title="Read about our studio mission"><Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">{t('nav_about')}</Button></Link>
+            <Link to="/#tools" title="Scroll to our suite of professional QR tools"><Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">{t('btn_explore_tools')}</Button></Link>
+            <Link to="/about" title="Read about our studio mission and values"><Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">Learn About Our Mission</Button></Link>
           </div>
         </div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-10">
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
               </div>
               <p className="text-slate-400 text-xs leading-relaxed line-clamp-2">{GENERATOR_DETAILS[type].desc}</p>
               <div className="mt-4 flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-indigo-500 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                Go to Generator <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                Create {GENERATOR_DETAILS[type].title} QR <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </div>
             </Link>
           ))}
@@ -148,11 +148,11 @@ const Home: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-slate-900">Trust and Recognition</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed font-medium">
                 Generic QR codes are often associated with spam or phishing. By adding a <strong>logo in the middle</strong> of your QR code, you provide instant brand recognition. This visual anchor signals to the user that the code belongs to a legitimate entity, significantly increasing the likelihood of a successful scan.
               </p>
               <h3 className="text-2xl font-bold text-slate-900">Brand Consistency</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed font-medium">
                 Every marketing touchpoint should reflect your brand identity. Our <strong>customizable QR maker</strong> allows you to apply your brand's specific color palette to the dots and eyes of the QR pattern. This turns a functional tool into a beautiful design element that complements your flyers, posters, and digital ads.
               </p>
             </div>
@@ -162,7 +162,7 @@ const Home: React.FC = () => {
                   <p className="text-sm text-slate-400 leading-relaxed font-medium">
                     Unlike standard PNG images, our <strong>SVG QR code generator</strong> outputs mathematical vector paths. This is critical for professional printing. Whether you are placing a code on a 2-inch business card or a 20-foot billboard, an SVG ensures perfectly sharp edges and zero scan errors due to pixelation.
                   </p>
-                  <Link to="/url-qr-code-generator" title="Try our vector SVG export for print quality"><Button variant="outline" className="text-white border-white/20 hover:bg-white/10 uppercase tracking-widest text-[10px] font-black rounded-full px-8">Try Vector Export</Button></Link>
+                  <Link to="/url-qr-code-generator" title="Try our vector SVG export for print quality"><Button variant="outline" className="text-white border-white/20 hover:bg-white/10 uppercase tracking-widest text-[10px] font-black rounded-full px-8">{t('btn_try_vector')}</Button></Link>
                </div>
             </div>
           </div>
@@ -207,14 +207,14 @@ const Home: React.FC = () => {
              Join thousands of designers and businesses using <strong>QR Generator Online</strong> to create professional, reliable, and beautiful digital gateways.
            </p>
            <div className="flex flex-wrap justify-center gap-6">
-             <Link to="/url-qr-code-generator" title="Go to URL QR Generator"><Button size="lg" className="rounded-full px-12 shadow-2xl shadow-indigo-200 uppercase tracking-widest text-[11px] font-black">Get Started Free</Button></Link>
-             <Link to="/faqs-qr-code-generator" title="View FAQs"><Button variant="outline" size="lg" className="rounded-full px-12 uppercase tracking-widest text-[11px] font-black">Learn More</Button></Link>
+             <Link to="/url-qr-code-generator" title="Start creating your first QR code"><Button size="lg" className="rounded-full px-12 shadow-2xl shadow-indigo-200 uppercase tracking-widest text-[11px] font-black">{t('btn_start_generating')}</Button></Link>
+             <Link to="/faqs-qr-code-generator" title="Read frequently asked questions"><Button variant="outline" size="lg" className="rounded-full px-12 uppercase tracking-widest text-[11px] font-black">{t('btn_view_faqs')}</Button></Link>
            </div>
            <div className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
-              <Link to="/wifi-qr-code-generator" title="Create WiFi QR" className="hover:text-indigo-600 transition-colors">WiFi Tool</Link>
-              <Link to="/vcard-qr-code-generator" title="Create Business vCard" className="hover:text-indigo-600 transition-colors">vCard Tool</Link>
-              <Link to="/email-qr-code-generator" title="Create Email QR" className="hover:text-indigo-600 transition-colors">Email Tool</Link>
-              <Link to="/whatsapp-qr-code-generator" title="Create WhatsApp QR" className="hover:text-indigo-600 transition-colors">WhatsApp Tool</Link>
+              <Link to="/wifi-qr-code-generator" title="Create WiFi QR Code" className="hover:text-indigo-600 transition-colors">WiFi Tool</Link>
+              <Link to="/vcard-qr-code-generator" title="Create Business vCard QR Code" className="hover:text-indigo-600 transition-colors">vCard Tool</Link>
+              <Link to="/email-qr-code-generator" title="Create Direct Email QR Code" className="hover:text-indigo-600 transition-colors">Email Tool</Link>
+              <Link to="/whatsapp-qr-code-generator" title="Create WhatsApp Automation QR Code" className="hover:text-indigo-600 transition-colors">WhatsApp Tool</Link>
            </div>
         </section>
       </article>
