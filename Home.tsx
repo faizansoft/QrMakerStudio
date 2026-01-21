@@ -384,7 +384,7 @@ const Home: React.FC = () => {
                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
              </div>
              <h3 className="text-xl font-bold">Always Free</h3>
-             <p className="text-slate-400 text-sm leading-relaxed font-medium">We don't believe in charging for basic digital utility. Generate unlimited codes with no scan limits, no ads, and no expiry dates.</p>
+             <p className="text-slate-400 text-sm leading-relaxed font-medium">We don't believe in charging for basic digital utility. Generate unlimited codes with no scan limits and no expiry dates.</p>
           </div>
         </div>
       </section>
@@ -395,7 +395,7 @@ const Home: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
               <h2 className="text-3xl font-display font-black text-slate-900 leading-tight">Built to last, <br/>not to expire.</h2>
-              <p className="text-slate-500 font-medium leading-relaxed">We noticed a trend where "free" QR sites would deactivate codes after a month to force a paid upgrade. We find that practice unethical. Our <strong>custom qr code maker</strong> produces standardized, static codes that work for as long as the destination exists. No catch.</p>
+              <p className="text-slate-500 font-medium leading-relaxed">We noticed a trend where some QR sites would deactivate codes after a month to force a paid upgrade. We find that practice unethical. Our <strong>custom qr code maker</strong> produces standardized, static codes that work for as long as the destination exists. No catch.</p>
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
                   <div className="text-indigo-600 font-black text-2xl mb-1">0</div>

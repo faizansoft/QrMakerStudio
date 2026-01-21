@@ -16,7 +16,7 @@ const AboutPage: React.FC = () => {
             <span className="text-indigo-600">we wanted to use.</span>
           </h1>
           <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto">
-            QR Generator Online started as a small internal project. We were tired of "free" tools that expired after a week, forced us to watch ads, or tracked every single scan for data harvesting.
+            QR Generator Online started as a small internal project. We were tired of "free" tools that expired after a week or tracked every single scan for data harvesting.
           </p>
         </div>
       </section>
@@ -119,7 +119,7 @@ const AboutPage: React.FC = () => {
           <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
           <h2 className="text-3xl md:text-5xl font-display font-black relative z-10">We're just getting started.</h2>
           <p className="text-slate-400 text-lg max-w-2xl relative z-10">
-            Our studio is constantly updated with new styles, better encryption, and smarter tools. We are 100% community-funded and ad-free, ensuring the best experience for your branding needs.
+            Our studio is constantly updated with new styles, better encryption, and smarter tools. We are focused on providing a high-quality, professional experience for all your branding needs.
           </p>
           <div className="flex flex-wrap justify-center gap-6 relative z-10">
             <Link to="/url-qr-code-generator">
