@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { QRConfig } from './types';
 import Home from './Home';
 import URLPage from './URLPage';
@@ -40,12 +40,21 @@ const App: React.FC = () => {
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
   const commonProps = { styling, setStyling, logoSrc, setLogoSrc };
 
-  // Detect basename for environments that host the app in a subfolder (like preview URLs)
+  // Detect basename for environments that host the app in a sub-folder (like preview URLs)
   const basename = useMemo(() => {
-    // If we're on a path like /some-long-id/ we need to treat that as the root
-    const pathParts = window.location.pathname.split('/').filter(Boolean);
-    if (pathParts.length > 0 && pathParts[0].length > 20) {
-      return `/${pathParts[0]}`;
+    const path = window.location.pathname;
+    const parts = path.split('/').filter(Boolean);
+    
+    // Heuristic: If the first part is very long (UUID/Hash) and NOT one of our tool routes
+    if (parts.length > 0) {
+      const firstPart = parts[0];
+      const isToolPath = firstPart.includes('qr-code-generator') || 
+                         ['about', 'contact', 'privacy', 'terms'].includes(firstPart);
+      
+      // Typical preview IDs are 30+ chars or specific hex patterns
+      if (!isToolPath && firstPart.length > 25) {
+        return `/${firstPart}`;
+      }
     }
     return '';
   }, []);
@@ -75,8 +84,8 @@ const App: React.FC = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
-            {/* Catch-all route should always be at the end */}
-            <Route path="*" element={<Home />} />
+            {/* If no route matches, redirect to home to clean up the URL */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         <Footer />

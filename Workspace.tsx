@@ -1,6 +1,5 @@
-
 import React, { useRef, useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import QRCodeStyling, { Options } from 'qr-code-styling';
 import { QRConfig, QRType } from './types';
 import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, GENERATOR_DETAILS } from './constants';
@@ -114,10 +113,10 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
     <div className="animate-in fade-in slide-in-from-right-4 duration-500 pb-24">
       <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-12">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <button onClick={() => navigate('/')} className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors font-black text-[10px] uppercase tracking-widest group">
+          <Link to="/" className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors font-black text-[10px] uppercase tracking-widest group">
             <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7"/></svg>
             Explore All Tools
-          </button>
+          </Link>
           <div className="flex items-center gap-4 bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm">
             <span className="text-2xl" role="img" aria-label="icon">{details.icon}</span>
             <div className="flex flex-col">
