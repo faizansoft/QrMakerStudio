@@ -13,8 +13,6 @@ export const Header: React.FC = () => {
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
-    } else {
-      // Allow the Link to handle navigation to /#tools
     }
   };
 
@@ -22,7 +20,7 @@ export const Header: React.FC = () => {
     <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="qr-gradient w-10 h-10 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+          <div className="qr-gradient w-10 h-10 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shadow-indigo-500/10">
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
             </svg>
@@ -39,10 +37,10 @@ export const Header: React.FC = () => {
 
         <div className="flex items-center gap-4">
           <Link to="/#tools" onClick={handleCreateClick} className="hidden sm:block">
-            <Button size="sm" variant="primary" className="rounded-full px-6 shadow-xl shadow-indigo-100">Create Free QR</Button>
+            <Button size="sm" variant="primary" className="rounded-full px-6 shadow-xl shadow-indigo-100" aria-label="Create Free QR Code">Create Free QR</Button>
           </Link>
           <Link to="/#tools" onClick={handleCreateClick} className="sm:hidden">
-            <Button size="sm" variant="primary" className="rounded-full px-4 font-black text-[10px]">NEW QR</Button>
+            <Button size="sm" variant="primary" className="rounded-full px-4 font-black text-[10px]" aria-label="Create New QR">NEW QR</Button>
           </Link>
         </div>
       </div>

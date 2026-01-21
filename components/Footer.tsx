@@ -16,11 +16,11 @@ export const Footer: React.FC = () => {
               <span className="text-xl font-display font-black tracking-tight text-white">QR Generator <span className="text-indigo-400">Online</span></span>
             </Link>
             <p className="text-slate-400 max-w-sm text-sm leading-relaxed font-medium">
-              We provide the most robust, privacy-focused <strong>customizable qr code maker</strong> on the web. Our tools are built to empower creators with high-resolution vector <strong>qr code generator svg</strong> files that work forever.
+              We provide professional, high-quality <strong>customizable QR code tools</strong> for individuals and businesses. Our studio is built to empower creators with high-resolution vector exports that stay yours forever.
             </p>
             <div className="flex gap-4">
               <span className="px-3 py-1 bg-slate-900 rounded-full text-[9px] font-black uppercase text-indigo-400 border border-slate-800 tracking-widest">Always Static</span>
-              <span className="px-3 py-1 bg-slate-900 rounded-full text-[9px] font-black uppercase text-green-400 border border-slate-800 tracking-widest">On-Device Rendering</span>
+              <span className="px-3 py-1 bg-slate-900 rounded-full text-[9px] font-black uppercase text-green-400 border border-slate-800 tracking-widest">Client Rendering</span>
             </div>
           </div>
           

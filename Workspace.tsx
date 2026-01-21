@@ -26,7 +26,6 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
   const qrCode = useMemo(() => new QRCodeStyling(), []);
   const details = GENERATOR_DETAILS[type];
 
-  // Map type to professional SVG paths
   const typeIcons: Record<QRType, React.ReactNode> = {
     url: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />,
     wifi: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />,
@@ -43,20 +42,17 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
     googleform: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
   };
 
-  // Update Page Metadata
   useEffect(() => {
     const pageTitle = `${details.title} | QR Generator Online`;
-    const pageDesc = `${details.desc} Create high-resolution custom QR codes with QR Generator Online.`;
+    const pageDesc = `${details.desc} Create professional, branded QR codes with high-resolution vector exports.`;
     document.title = pageTitle;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', pageDesc);
   }, [type, details]);
 
-  // Robust QR Update & Mount Effect
   useEffect(() => {
     if (!qrRef.current) return;
 
-    // 1. Configure Options
     const options: Options = {
       width: 1000, 
       height: 1000,
@@ -83,14 +79,12 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
       }
     };
 
-    // 2. Initialize or Update
     if (qrRef.current.childNodes.length === 0) {
       qrCode.append(qrRef.current);
     }
     
     qrCode.update(options);
 
-    // 3. Ensure Responsiveness in Preview
     const canvas = qrRef.current.querySelector('canvas');
     if (canvas) {
       canvas.style.width = '100%';
@@ -155,6 +149,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                   key={tab} 
                   onClick={() => setActiveTab(tab)} 
                   className={`flex-1 min-w-[100px] py-4 text-[10px] font-black uppercase tracking-widest transition-all rounded-2xl ${activeTab === tab ? 'text-indigo-600 bg-white shadow-sm ring-1 ring-slate-200' : 'text-slate-400 hover:text-slate-600'}`}
+                  aria-label={`Open ${tab} tab`}
                 >
                   {tab}
                 </button>
@@ -167,9 +162,9 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                   {children}
                   <div className="pt-8 border-t border-slate-50 space-y-4">
                     <Button onClick={applySmartStyle} loading={isAiLoading} className="w-full py-5 rounded-3xl shadow-xl shadow-indigo-100 text-[11px] uppercase tracking-widest font-black transition-transform active:scale-95">
-                      {isAiLoading ? "Crafting Design..." : "Generate Random Design"}
+                      {isAiLoading ? "Crafting Style..." : "Get Random Design"}
                     </Button>
-                    {aiMood && <p className="text-center text-[10px] font-black uppercase text-indigo-500 tracking-widest animate-pulse">Theme: {aiMood}</p>}
+                    {aiMood && <p className="text-center text-[10px] font-black uppercase text-indigo-500 tracking-widest animate-pulse">Style Theme: {aiMood}</p>}
                   </div>
                 </div>
               )}
@@ -181,11 +176,11 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Pattern Color</span>
-                        <input type="color" value={styling.fgColor} onChange={e => setStyling({...styling, fgColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
+                        <input type="color" value={styling.fgColor} onChange={e => setStyling({...styling, fgColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" aria-label="Pattern Color Picker" />
                       </div>
                       <div>
                         <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Background</span>
-                        <input type="color" value={styling.bgColor} onChange={e => setStyling({...styling, bgColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
+                        <input type="color" value={styling.bgColor} onChange={e => setStyling({...styling, bgColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" aria-label="Background Color Picker" />
                       </div>
                     </div>
                   </div>
@@ -194,7 +189,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                     <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Dot Style</label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                       {DOT_STYLES.map(s => (
-                        <button key={s.value} onClick={() => setStyling({...styling, dotType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${styling.dotType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`}>
+                        <button key={s.value} onClick={() => setStyling({...styling, dotType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${styling.dotType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`} aria-label={`Select ${s.label} dot style`}>
                           {s.label}
                         </button>
                       ))}
@@ -210,11 +205,11 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Outer Frame</span>
-                        <input type="color" value={styling.cornerSquareColor} onChange={e => setStyling({...styling, cornerSquareColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
+                        <input type="color" value={styling.cornerSquareColor} onChange={e => setStyling({...styling, cornerSquareColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" aria-label="Corner Frame Color Picker" />
                       </div>
                       <div>
                         <span className="text-[9px] font-black text-slate-400 uppercase mb-2 block">Inner Eye</span>
-                        <input type="color" value={styling.cornerDotColor} onChange={e => setStyling({...styling, cornerDotColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" />
+                        <input type="color" value={styling.cornerDotColor} onChange={e => setStyling({...styling, cornerDotColor: e.target.value})} className="w-full h-12 rounded-xl cursor-pointer p-1 bg-slate-50 border border-slate-200" aria-label="Corner Eye Color Picker" />
                       </div>
                     </div>
                   </div>
@@ -223,7 +218,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                     <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Corner Frame Shape</label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                       {CORNER_SQUARE_STYLES.map(s => (
-                        <button key={s.value} onClick={() => setStyling({...styling, cornerSquareType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${styling.cornerSquareType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`}>
+                        <button key={s.value} onClick={() => setStyling({...styling, cornerSquareType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${styling.cornerSquareType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`} aria-label={`Select ${s.label} frame shape`}>
                           {s.label}
                         </button>
                       ))}
@@ -234,7 +229,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                     <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Corner Eye Shape</label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                       {CORNER_DOT_STYLES.map(s => (
-                        <button key={s.value} onClick={() => setStyling({...styling, cornerDotType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${styling.cornerDotType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`}>
+                        <button key={s.value} onClick={() => setStyling({...styling, cornerDotType: s.value})} className={`p-4 rounded-2xl border-2 text-[9px] font-black uppercase tracking-widest transition-all ${styling.cornerDotType === s.value ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-50 hover:bg-slate-50 text-slate-400'}`} aria-label={`Select ${s.label} eye shape`}>
                           {s.label}
                         </button>
                       ))}
@@ -247,41 +242,41 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                 <div className="animate-in fade-in duration-300">
                   <LogoUploader onUpload={setLogoSrc} currentLogo={logoSrc} />
                   <div className="mt-8 p-6 bg-slate-50 rounded-3xl border border-slate-100 text-slate-500 text-xs leading-relaxed">
-                    <b>Pro Tip:</b> For best results, use a transparent PNG logo.
+                    <b>Design Tip:</b> A transparent PNG logo works best. For standard QR codes, we use High Error Correction to ensure the logo doesn't block scannability.
                   </div>
                 </div>
               )}
             </div>
           </div>
 
-          <div className="lg:col-span-5 lg:sticky lg:top-24">
+          <div className="lg:col-span-5 lg:sticky lg:top-24 order-first lg:order-last">
             <div className="bg-white p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-200 text-center">
-              <div className="relative p-6 bg-slate-50 rounded-[2.5rem] shadow-inner mb-8 flex flex-col justify-center items-center min-h-[460px] overflow-hidden group">
+              <div className="relative p-6 bg-slate-50 rounded-[2.5rem] shadow-inner mb-8 flex flex-col justify-center items-center min-h-[400px] lg:min-h-[460px] overflow-hidden group">
                 <div 
                   className="relative p-6 transition-all duration-500 group-hover:scale-105 flex flex-col items-center"
                   style={{
                     backgroundColor: styling.bgColor,
                     borderRadius: '40px',
-                    minWidth: '320px'
+                    minWidth: '280px'
                   }}
                 >
-                  <div ref={qrRef} className="bg-white p-2 rounded-2xl w-[280px] aspect-square shadow-sm overflow-hidden" />
+                  <div ref={qrRef} className="bg-white p-2 rounded-2xl w-[240px] lg:w-[280px] aspect-square shadow-sm overflow-hidden" />
                 </div>
               </div>
               
               <div className="space-y-4">
-                <Button onClick={() => handleDownload('png')} className="w-full py-5 rounded-2xl shadow-lg shadow-indigo-100 text-[10px] font-black uppercase tracking-widest">
+                <Button onClick={() => handleDownload('png')} className="w-full py-5 rounded-2xl shadow-lg shadow-indigo-100 text-[10px] font-black uppercase tracking-widest" aria-label="Download QR as PNG">
                   Download PNG
                 </Button>
                 <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" onClick={() => handleDownload('svg')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest">
+                  <Button variant="outline" onClick={() => handleDownload('svg')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest" aria-label="Download QR as SVG">
                     SVG (Print)
                   </Button>
-                  <Button variant="outline" onClick={() => handleDownload('webp')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest">
+                  <Button variant="outline" onClick={() => handleDownload('webp')} className="text-[9px] font-black uppercase py-4 rounded-xl tracking-widest" aria-label="Download QR as WebP">
                     WebP (Web)
                   </Button>
                 </div>
-                <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest pt-2">Professional Generator Export</p>
+                <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest pt-2">Standard Static QR Export</p>
               </div>
             </div>
           </div>
@@ -289,8 +284,8 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
 
         <div className="pt-24 space-y-16 border-t border-slate-200 mt-24">
           <div className="text-center space-y-4">
-            <h2 className="text-4xl font-display font-black text-slate-900 tracking-tight">Professional Branding Guide</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Learn how to combine patterns and colors to create high-conversion QR codes with <strong>QR Generator Online</strong>.</p>
+            <h2 className="text-4xl font-display font-black text-slate-900 tracking-tight">Professional Implementation</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto">Follow our guide to ensure your QR assets provide the best possible experience for your users.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {details.guide.map((item, idx) => (
