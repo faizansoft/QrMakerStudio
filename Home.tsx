@@ -156,20 +156,20 @@ const Home: React.FC = () => {
       <section className="relative overflow-hidden bg-white pt-16 pb-24">
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 text-indigo-700 text-[9px] font-black uppercase tracking-[0.2em] rounded-full border border-indigo-100 mb-6">
-            Everything you need in one place
+            Trusted by Creators & Small Businesses
           </div>
           <h1 className="text-5xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight mb-6">
-            A Better Way to Create <br/><span className="text-indigo-600">Custom QR Codes</span>
+            The Smartest Way to Create <br/><span className="text-indigo-600">Custom QR Codes</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">
-            Most QR generators feel like they were built in 2005. <strong>QR Generator Online</strong> is modern, privacy-focused, and stays yours forever. Create a <strong>customizable qr code</strong> with your <strong>logo in middle</strong> that actually looks professional.
+          <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto mb-10 leading-relaxed">
+            Most QR generators feel like they were built a decade ago—clunky, full of hidden fees, and ugly designs. <strong>QR Generator Online</strong> is the modern alternative. We focus on <strong>privacy</strong>, high-quality <strong>branding</strong>, and codes that stay yours <strong>forever</strong>.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/#tools">
-              <Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">Browse Tools</Button>
+              <Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">Browse All Tools</Button>
             </Link>
             <Link to="/faqs-qr-code-generator">
-              <Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">Common Questions</Button>
+              <Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">Read the Guide</Button>
             </Link>
           </div>
         </div>
@@ -185,7 +185,7 @@ const Home: React.FC = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-display font-black text-slate-900 mb-4">Choose Your Generator</h2>
           <div className="h-1.5 w-16 bg-indigo-600 mx-auto rounded-full mb-4"></div>
-          <p className="text-slate-400 font-medium text-sm">Thirteen specialized tools from <strong>wifi qr code generator</strong> to <strong>google forms qr code</strong> makers.</p>
+          <p className="text-slate-400 font-medium text-sm">We've crafted 13 specialized tools to help you bridge the gap between physical and digital spaces.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -214,7 +214,47 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Feature Deep Dive - UPDATED VISUALS */}
+      {/* Narrative Section: The Future of QR */}
+      <section className="py-24 bg-slate-50 border-y border-slate-100">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+          <div className="space-y-6">
+            <h2 className="text-4xl font-display font-black text-slate-900 leading-tight">Digital Experiences, <br/>Starts from a Physical Scan.</h2>
+            <p className="text-slate-600 font-medium text-lg leading-relaxed">
+              We live in a world where the first touchpoint is often physical—a menu at a cafe, a business card at a conference, or a sign in a shop window. But the real engagement happens online. 
+            </p>
+            <p className="text-slate-600 font-medium leading-relaxed">
+              A <strong>customizable qr code</strong> is the bridge. It’s not just about a link; it’s about making that link friction-free. Our <strong>custom qr code maker</strong> is built to ensure that every scan feels like a seamless part of your user's journey.
+            </p>
+            <div className="pt-4 flex gap-4">
+              <div className="flex flex-col">
+                <span className="text-2xl font-black text-indigo-600">100%</span>
+                <span className="text-[10px] font-black uppercase text-slate-400">Static Codes</span>
+              </div>
+              <div className="w-px h-12 bg-slate-200"></div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-black text-indigo-600">No</span>
+                <span className="text-[10px] font-black uppercase text-slate-400">Expiration</span>
+              </div>
+            </div>
+          </div>
+          <div className="relative p-1 bg-white rounded-[3rem] shadow-2xl border border-slate-200 overflow-hidden group">
+            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1000" alt="Networking" className="rounded-[2.8rem] opacity-90 group-hover:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-indigo-600/20 mix-blend-multiply"></div>
+            <div className="absolute bottom-10 left-10 right-10 p-6 bg-white/90 backdrop-blur-md rounded-2xl border border-white/50 shadow-xl">
+               <p className="text-sm font-bold text-slate-900">"We swapped paper menus for a custom QR code. Scans increased by 30% simply because it looked branded and trustworthy."</p>
+               <div className="mt-4 flex items-center gap-2">
+                 <div className="w-8 h-8 rounded-full bg-slate-200"></div>
+                 <div className="flex flex-col">
+                   <span className="text-[10px] font-black uppercase text-slate-900">Sarah Jenkins</span>
+                   <span className="text-[9px] font-bold text-indigo-500 uppercase">Cafe Owner</span>
+                 </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature Deep Dive */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -318,6 +358,27 @@ const Home: React.FC = () => {
                    </div>
                 </div>
              </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust & Commitment Section */}
+      <section className="bg-slate-900 text-white py-24">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+          <div className="space-y-4">
+             <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl">🛡️</div>
+             <h3 className="text-xl font-bold">Privacy First</h3>
+             <p className="text-slate-400 text-sm leading-relaxed font-medium">Your data never leaves your device. We generate the QR code pattern locally in your browser. Your links, passwords, and info are yours alone.</p>
+          </div>
+          <div className="space-y-4">
+             <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl">💎</div>
+             <h3 className="text-xl font-bold">Vector Sharpness</h3>
+             <p className="text-slate-400 text-sm leading-relaxed font-medium">Exporting as SVG means your code stays mathematically perfect. No matter how large you print it, the scan will be lightning fast.</p>
+          </div>
+          <div className="space-y-4">
+             <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl">🚀</div>
+             <h3 className="text-xl font-bold">Always Free</h3>
+             <p className="text-slate-400 text-sm leading-relaxed font-medium">We don't believe in charging for basic digital utility. Generate unlimited codes with no scan limits, no ads, and no expiry dates.</p>
           </div>
         </div>
       </section>
