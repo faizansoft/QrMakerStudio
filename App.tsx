@@ -24,18 +24,40 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
-const CanonicalTagManager = () => {
+const SEOManager = () => {
   const location = useLocation();
   
   useEffect(() => {
-    let link = document.querySelector("link[rel='canonical']");
-    if (!link) {
-      link = document.createElement("link");
-      link.setAttribute("rel", "canonical");
-      document.head.appendChild(link);
+    // 1. Manage Canonical Tag
+    let canonical = document.querySelector("link[rel='canonical']") as HTMLLinkElement;
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
     }
-    const absoluteUrl = window.location.origin + location.pathname;
-    link.setAttribute("href", absoluteUrl);
+    const cleanPath = location.pathname === '/' ? '' : location.pathname.replace(/\/$/, "");
+    const absoluteUrl = `https://qr-generator.online${cleanPath}`;
+    canonical.setAttribute("href", absoluteUrl);
+
+    // 2. Manage Social Meta Tags (OG & Twitter)
+    // We wrap this in a tiny timeout to ensure the child Page components 
+    // have finished updating document.title and the description meta tag.
+    const timeout = setTimeout(() => {
+      const title = document.title;
+      const description = document.querySelector('meta[name="description"]')?.getAttribute('content') || '';
+
+      // Open Graph
+      document.querySelector('meta[property="og:url"]')?.setAttribute('content', absoluteUrl);
+      document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
+      document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+
+      // Twitter
+      document.querySelector('meta[name="twitter:url"]')?.setAttribute('content', absoluteUrl);
+      document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', title);
+      document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description);
+    }, 50);
+
+    return () => clearTimeout(timeout);
   }, [location]);
 
   return null;
@@ -75,7 +97,7 @@ const App: React.FC = () => {
   return (
     <Router basename={basename}>
       <ScrollToTop />
-      <CanonicalTagManager />
+      <SEOManager />
       <div className="min-h-screen bg-slate-50 selection:bg-indigo-100 flex flex-col">
         <Header />
         <main className="flex-grow">
