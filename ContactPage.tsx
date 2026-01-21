@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from './components/Button';
 
 const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.title = "Contact Us | QR Generator Online";
+    document.title = "Contact Us | Support & Partnerships | QR Generator Online";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Get in touch with the QR Generator Online team. We are here to help with your custom QR code questions and professional support inquiries.');
+      metaDesc.setAttribute('content', 'Reach out to the professional QR code experts. We offer support for custom design inquiries, SVG export issues, and business partnership opportunities.');
     }
   }, []);
 
@@ -22,44 +23,46 @@ const ContactPage: React.FC = () => {
       <section className="bg-white pt-20 pb-16 border-b border-slate-100 mb-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 text-indigo-700 text-[10px] font-black uppercase tracking-widest rounded-full border border-indigo-100 mb-6">
-            Human Support
+            Responsive Studio Support
           </div>
           <h1 className="text-5xl md:text-6xl font-display font-black text-slate-900 tracking-tighter mb-8">
-            Let's <span className="text-indigo-600">Connect.</span>
+            How Can We <span className="text-indigo-600">Help You?</span>
           </h1>
           <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
-            Have a question about <strong>custom qr codes</strong>, need technical help, or just want to send us feedback? We're real people, and we're here to help.
+            Whether you are a freelancer designing high-end brand assets or a small business owner setting up your first <strong>contactless WiFi QR</strong>, we are here to support your growth.
           </p>
         </div>
       </section>
 
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-20 items-start">
-          {/* Contact Details */}
           <div className="space-y-12">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-display font-black text-slate-900">Direct Contact</h2>
-              <p className="text-slate-500 font-medium leading-relaxed">
-                Whether you're a designer looking for <strong>qr code generator svg</strong> tips or a small business owner setting up your first <strong>wifi qr code</strong>, we want to hear from you.
+            <article className="space-y-6">
+              <h2 className="text-3xl font-display font-black text-slate-900">Reach the Experts</h2>
+              <p className="text-slate-600 font-medium leading-relaxed">
+                At <strong>QR Generator Online</strong>, we believe in the human side of digital tools. If you have run into a technical issue with our <strong>QR code SVG generator</strong>, or if you need advice on which error correction level is best for your specific printing material, our team is standing by.
               </p>
-            </div>
+              <p className="text-slate-600 font-medium leading-relaxed">
+                We also welcome inquiries regarding business partnerships and custom API integrations. If your agency requires a white-label version of our <strong>branded QR maker</strong> or if you need bulk generation services for thousands of unique <strong>URL QR codes</strong>, please use the form or email us directly.
+              </p>
+            </article>
 
             <div className="space-y-8">
               {[
                 { 
-                  label: "Email Us", 
+                  label: "Email Communication", 
                   val: "frehmankt@gmail.com", 
                   href: "mailto:frehmankt@gmail.com",
                   icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 },
                 { 
-                  label: "Availability", 
-                  val: "Mon - Fri, 9AM - 6PM EST", 
+                  label: "Studio Operations", 
+                  val: "Monday - Friday, 9AM - 5PM EST", 
                   icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 },
                 { 
-                  label: "Studio Location", 
-                  val: "Digital First • Remote Studio", 
+                  label: "Our Presence", 
+                  val: "Remote-First Digital Studio", 
                   icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 }
               ].map((item, idx) => (
@@ -79,39 +82,39 @@ const ContactPage: React.FC = () => {
               ))}
             </div>
 
-            <div className="p-8 bg-slate-900 rounded-[3rem] text-white relative overflow-hidden">
-              <div className="relative z-10 space-y-4">
-                <h4 className="text-sm font-bold uppercase tracking-widest text-indigo-400">Enterprise Solutions</h4>
-                <p className="text-slate-400 text-xs leading-relaxed">
-                  Need a custom API integration for your agency or high-volume <strong>qr code svg generator</strong> services for your corporation? We provide tailored white-label solutions for scale.
+            <section className="p-10 bg-slate-950 rounded-[3.5rem] text-white relative overflow-hidden">
+              <div className="relative z-10 space-y-6">
+                <h3 className="text-xl font-bold uppercase tracking-widest text-indigo-400">Collaborate With Us</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Are you a developer or designer with a feature request? We are always looking to expand our <strong>customizable QR studio</strong>. From <strong>crypto payment links</strong> to niche <strong>event RSVP</strong> protocols, your feedback drives our product roadmap.
                 </p>
-                <div className="pt-2">
-                  <a href="mailto:frehmankt@gmail.com" className="text-white hover:text-indigo-300 font-bold text-xs uppercase tracking-widest flex items-center gap-2">
-                    Inquire for Bulk <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                  </a>
+                <div className="flex flex-wrap gap-4 pt-2">
+                   <span className="px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[9px] font-black uppercase text-indigo-300">Feature Requests</span>
+                   <span className="px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[9px] font-black uppercase text-indigo-300">Bug Reports</span>
                 </div>
               </div>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl -mr-16 -mt-16"></div>
-            </div>
+            </section>
           </div>
 
           {/* Form */}
           <div className="bg-white p-10 md:p-14 rounded-[3.5rem] shadow-2xl shadow-slate-200/50 border border-slate-100">
             {submitted ? (
-              <div className="text-center py-12 space-y-6">
-                <div className="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
+              <div className="text-center py-16 space-y-8 animate-in slide-in-from-bottom duration-500">
+                <div className="w-24 h-24 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
                 </div>
-                <h3 className="text-3xl font-display font-black text-slate-900">Message Received!</h3>
-                <p className="text-slate-500 font-medium">We've got your note. Our small team usually responds within one business day. Check your inbox soon!</p>
-                <Button variant="outline" onClick={() => setSubmitted(false)} className="rounded-full mt-8 uppercase tracking-widest text-[10px] font-black">Send New Inquiry</Button>
+                <div className="space-y-2">
+                  <h3 className="text-4xl font-display font-black text-slate-900 tracking-tight">Success!</h3>
+                  <p className="text-slate-500 font-medium text-lg">We have received your message. Our team usually responds within 24 business hours.</p>
+                </div>
+                <Button variant="outline" onClick={() => setSubmitted(false)} className="rounded-full mt-8 uppercase tracking-[0.2em] text-[10px] font-black px-10">Send Another Message</Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Full Name</label>
-                    <input required type="text" placeholder="John Doe" className="w-full p-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold shadow-inner" />
+                    <input required type="text" placeholder="e.g. John Doe" className="w-full p-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold shadow-inner" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Email Address</label>
@@ -119,15 +122,26 @@ const ContactPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Subject</label>
-                  <input required type="text" placeholder="How can we help?" className="w-full p-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold shadow-inner" />
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Subject Category</label>
+                  <select className="w-full p-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold shadow-inner appearance-none cursor-pointer">
+                    <option>Technical Support (SVG/Print)</option>
+                    <option>Design & Logo Inquiries</option>
+                    <option>Business Partnerships</option>
+                    <option>Feature Requests</option>
+                  </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Your Message</label>
-                  <textarea required placeholder="Describe your request in detail..." className="w-full h-40 p-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold resize-none shadow-inner" />
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Detailed Message</label>
+                  <textarea required placeholder="How can we help you create a better branded experience?" className="w-full h-44 p-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-indigo-500 outline-none font-bold resize-none shadow-inner" />
                 </div>
-                <Button type="submit" className="w-full py-5 rounded-3xl shadow-xl shadow-indigo-100 uppercase tracking-[0.2em] font-black text-sm">Send Secure Message</Button>
-                <p className="text-center text-[10px] text-slate-400 font-bold uppercase tracking-widest">We never share your contact info with third parties.</p>
+                <Button type="submit" className="w-full py-5 rounded-3xl shadow-xl shadow-indigo-100 uppercase tracking-[0.3em] font-black text-xs">Send Secure Inquiry</Button>
+                <div className="pt-6 text-center space-y-4">
+                   <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Standard Response Time: &lt; 24 Hours</p>
+                   <div className="flex justify-center gap-4">
+                      <Link to="/privacy" className="text-[9px] font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase">Privacy Promise</Link>
+                      <Link to="/faqs-qr-code-generator" className="text-[9px] font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase">View FAQs</Link>
+                   </div>
+                </div>
               </form>
             )}
           </div>
