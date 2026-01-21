@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
@@ -52,9 +51,10 @@ const LocationPage: React.FC<PageProps> = (props) => {
           </div>
           <button 
             onClick={getCurrentLocation}
-            className="w-full p-4 rounded-xl border-2 border-indigo-100 bg-indigo-50 text-indigo-700 font-black text-[10px] uppercase tracking-widest hover:bg-indigo-100 transition-colors"
+            className="w-full p-4 rounded-xl border-2 border-indigo-100 bg-indigo-50 text-indigo-700 font-black text-[10px] uppercase tracking-widest hover:bg-indigo-100 transition-all flex items-center justify-center gap-2"
           >
-            📍 Use My Current Location
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Use My Current Location
           </button>
         </div>
       </Workspace>

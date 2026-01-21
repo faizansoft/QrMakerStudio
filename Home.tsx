@@ -366,17 +366,23 @@ const Home: React.FC = () => {
       <section className="bg-slate-900 text-white py-24">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
           <div className="space-y-4">
-             <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl">🛡️</div>
+             <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+             </div>
              <h3 className="text-xl font-bold">Privacy First</h3>
              <p className="text-slate-400 text-sm leading-relaxed font-medium">Your data never leaves your device. We generate the QR code pattern locally in your browser. Your links, passwords, and info are yours alone.</p>
           </div>
           <div className="space-y-4">
-             <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl">💎</div>
+             <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+             </div>
              <h3 className="text-xl font-bold">Vector Sharpness</h3>
              <p className="text-slate-400 text-sm leading-relaxed font-medium">Exporting as SVG means your code stays mathematically perfect. No matter how large you print it, the scan will be lightning fast.</p>
           </div>
           <div className="space-y-4">
-             <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl">🚀</div>
+             <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+             </div>
              <h3 className="text-xl font-bold">Always Free</h3>
              <p className="text-slate-400 text-sm leading-relaxed font-medium">We don't believe in charging for basic digital utility. Generate unlimited codes with no scan limits, no ads, and no expiry dates.</p>
           </div>

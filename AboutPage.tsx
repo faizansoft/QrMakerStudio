@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from './components/Button';
 import { Link } from 'react-router-dom';
@@ -80,14 +79,34 @@ const AboutPage: React.FC = () => {
           <p className="text-lg text-slate-500 font-medium leading-relaxed">
             As designers and engineers, we know that "sharp enough" isn't good enough for print. That's why we built a <strong>qr code generator svg</strong> export that creates mathematically perfect vector files. No pixels, no blur, just clean data that stays sharp on anything from a coffee mug to a billboard.
           </p>
-          <div className="grid md:grid-cols-3 gap-8 pt-8">
+          <div className="grid md:grid-cols-3 gap-8 pt-8 text-left">
             {[
-              { label: "Designers", icon: "🎨", desc: "Download vector <strong>qr code svg generator</strong> files for Adobe Illustrator or Canva." },
-              { label: "Small Business", icon: "☕", desc: "Create a <strong>qr code with logo in middle</strong> to build trust with your customers." },
-              { label: "Event Hosts", icon: "🎫", desc: "Generate <strong>whatsapp qr code generator</strong> links for instant guest support." }
+              { 
+                label: "Designers", 
+                icon: (
+                  <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                ), 
+                desc: "Download vector <strong>qr code svg generator</strong> files for Adobe Illustrator or Canva." 
+              },
+              { 
+                label: "Small Business", 
+                icon: (
+                  <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                ), 
+                desc: "Create a <strong>qr code with logo in middle</strong> to build trust with your customers." 
+              },
+              { 
+                label: "Event Hosts", 
+                icon: (
+                  <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                ), 
+                desc: "Generate <strong>whatsapp qr code generator</strong> links for instant guest support." 
+              }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm">
-                <div className="text-3xl mb-4">{item.icon}</div>
+              <div key={idx} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm flex flex-col items-start gap-4">
+                <div className="w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center">
+                  {item.icon}
+                </div>
                 <h4 className="font-bold text-slate-900 mb-2">{item.label}</h4>
                 <p className="text-xs text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.desc }} />
               </div>
