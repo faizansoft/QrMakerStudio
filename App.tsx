@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { QRConfig } from './types';
 import Home from './Home';
 import URLPage from './URLPage';
@@ -41,7 +41,7 @@ const App: React.FC = () => {
   const commonProps = { styling, setStyling, logoSrc, setLogoSrc };
 
   return (
-    <BrowserRouter>
+    <Router>
       <ScrollToTop />
       <div className="min-h-screen bg-slate-50 selection:bg-indigo-100 flex flex-col">
         <Header />
@@ -70,7 +70,7 @@ const App: React.FC = () => {
         </main>
         <Footer />
       </div>
-    </BrowserRouter>
+    </Router>
   );
 };
 
