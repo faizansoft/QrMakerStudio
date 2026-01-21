@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { QRType } from './types';
 import { GENERATOR_DETAILS, FAQ_ITEMS } from './constants';
 import { Button } from './components/Button';
@@ -139,6 +139,16 @@ const IconWrapper: React.FC<{ type: QRType }> = ({ type }) => {
 
 const Home: React.FC = () => {
   const toolKeys = Object.keys(GENERATOR_DETAILS) as QRType[];
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash === '#tools') {
+      const element = document.getElementById('tools');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [hash]);
 
   return (
     <div className="animate-in fade-in duration-700">
@@ -146,20 +156,20 @@ const Home: React.FC = () => {
       <section className="relative overflow-hidden bg-white pt-16 pb-24">
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 text-indigo-700 text-[9px] font-black uppercase tracking-[0.2em] rounded-full border border-indigo-100 mb-6">
-            v2.1 Stable
+            Everything you need in one place
           </div>
           <h1 className="text-5xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight mb-6">
-            Professional <span className="text-indigo-600">Custom QR Code</span> Maker
+            A Better Way to Create <br/><span className="text-indigo-600">Custom QR Codes</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">
-            The ultimate <strong>custom qr code maker</strong>. Generate high-resolution codes for URLs, <strong>wifi qr code</strong>, and <strong>google forms qr code</strong>. Add your <strong>qr code with logo in middle</strong> for professional branding.
+            We built this because most QR generators are clunky, full of ads, or expire for no reason. <strong>QR Generator Online</strong> is simple, professional, and stays yours forever. Create a <strong>customizable qr code</strong> with your <strong>logo in middle</strong> in just a few clicks.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/url-qr-code-generator">
-              <Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">Get Started Free</Button>
+            <Link to="/#tools">
+              <Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">Browse Tools</Button>
             </Link>
             <Link to="/faqs-qr-code-generator">
-              <Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">View FAQ</Button>
+              <Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">Common Questions</Button>
             </Link>
           </div>
         </div>
@@ -171,11 +181,11 @@ const Home: React.FC = () => {
       </section>
 
       {/* Tools Section */}
-      <section className="max-w-7xl mx-auto px-6 py-12">
+      <section id="tools" className="max-w-7xl mx-auto px-6 py-12 scroll-mt-24">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-display font-black text-slate-900 mb-4">Powerful QR Generation Tools</h2>
+          <h2 className="text-3xl font-display font-black text-slate-900 mb-4">Choose Your Generator</h2>
           <div className="h-1.5 w-16 bg-indigo-600 mx-auto rounded-full mb-4"></div>
-          <p className="text-slate-400 font-medium text-sm">Everything from <strong>whatsapp qr code generator</strong> to <strong>bitcoin qr code generator</strong>.</p>
+          <p className="text-slate-400 font-medium text-sm">Thirteen specialized tools from <strong>wifi qr code generator</strong> to <strong>google forms qr code</strong> makers.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -195,7 +205,7 @@ const Home: React.FC = () => {
                   {d.desc}
                 </p>
                 <div className="mt-4 flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-indigo-500 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                  Open Tool
+                  Select Tool
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </div>
               </Link>
@@ -209,21 +219,21 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
              <div className="space-y-8">
-                <h2 className="text-4xl md:text-5xl font-display font-black text-slate-900 leading-tight">Professional Branding with a <span className="text-indigo-600">QR Code with Logo in Middle</span></h2>
+                <h2 className="text-4xl md:text-5xl font-display font-black text-slate-900 leading-tight">Brand Identity <br/><span className="text-indigo-600">Without Compromise</span></h2>
                 <p className="text-slate-500 font-medium text-lg leading-relaxed">
-                  Our <strong>customizable qr code</strong> tool is designed for businesses that care about their visual identity. Whether you need a <strong>qr code business card generator</strong> or a <strong>whatsapp qr code generator</strong>, we provide the precision tools to make it yours.
+                  A basic black and white square is fine, but it doesn't build trust. Our <strong>custom qr code maker</strong> lets you match your brand's exact aesthetics. Whether it's a <strong>qr code business card</strong> or a <strong>whatsapp qr code</strong>, we ensure your users feel safe scanning.
                 </p>
                 <div className="grid gap-6">
                   {[
-                    { t: "SVG QR Code Generator", d: "High-resolution vector exports (SVG, PDF) for professional printing and billboard use." },
-                    { t: "Custom QR Code Maker", d: "Adjust dot shapes, corner eyes, and use any hex color to match your brand guidelines." },
-                    { t: "Fast WiFi QR Code", d: "Help guests connect in one tap with our optimized <strong>wifi qr code generator</strong>." }
+                    { t: "Pixel-Perfect Logo Center", d: "Add your brand's <strong>logo in middle</strong> of the QR code with smart error correction." },
+                    { t: "SVG for Large Scale", d: "Export as high-quality vector <strong>qr code svg generator</strong> files for banners and merchandise." },
+                    { t: "No Tracking, Just Data", d: "We generate static codes. No middleman redirects, no data harvesting, just direct links." }
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center text-white text-[10px] font-bold shrink-0 mt-1">✓</div>
                       <div>
-                        <h4 className="font-bold text-slate-900 mb-1">{item.t}</h4>
-                        <p className="text-sm text-slate-400 leading-relaxed">{item.d}</p>
+                        <h4 className="font-bold text-slate-900 mb-1" dangerouslySetInnerHTML={{ __html: item.t }} />
+                        <p className="text-sm text-slate-400 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.d }} />
                       </div>
                     </div>
                   ))}
@@ -235,14 +245,14 @@ const Home: React.FC = () => {
                    <div className="bg-white p-4 rounded-3xl shadow-2xl relative">
                       <div className="w-48 h-48 bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%234f46e5%22 stroke-width=%221%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%223%22 y=%223%22 width=%2218%22 height=%2218%22 rx=%222%22 ry=%222%22 /%3E%3Crect x=%227%22 y=%227%22 width=%223%22 height=%223%22 /%3E%3Crect x=%2214%22 y=%227%22 width=%223%22 height=%223%22 /%3E%3Crect x=%227%22 y=%2214%22 width=%223%22 height=%223%22 /%3E%3C/svg%3E')] bg-center bg-no-repeat opacity-20"></div>
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-12 h-12 bg-indigo-600 rounded-xl shadow-lg flex items-center justify-center text-white font-black text-xs">LOGO</div>
+                        <div className="w-12 h-12 bg-indigo-600 rounded-xl shadow-lg flex items-center justify-center text-white font-black text-xs uppercase tracking-tighter">Identity</div>
                       </div>
                    </div>
                    <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 animate-bounce">
-                      <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white">
+                      <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
                       </div>
-                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Scan Optimized</span>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Custom Styled</span>
                    </div>
                 </div>
              </div>
@@ -250,26 +260,26 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SEO / FAQ Section */}
+      {/* Professional Commitment Section */}
       <section className="bg-slate-50 py-24">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <h2 className="text-3xl font-display font-black text-slate-900 leading-tight">High-quality tools without the subscription.</h2>
-              <p className="text-slate-500 font-medium"><strong>QR Generator Online</strong> offers business-grade customization for free. We believe professional <strong>customizable qr code</strong> tools should stay accessible to everyone. Our <strong>svg qr code generator</strong> is the industry standard for high-res marketing.</p>
+              <h2 className="text-3xl font-display font-black text-slate-900 leading-tight">Built to last, <br/>not to expire.</h2>
+              <p className="text-slate-500 font-medium leading-relaxed">We noticed a trend where "free" QR sites would deactivate codes after a month to force a paid upgrade. We find that practice unethical. Our <strong>custom qr code maker</strong> produces standardized, static codes that work for as long as the destination exists. No catch.</p>
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
-                  <div className="text-indigo-600 font-black text-2xl mb-1">∞</div>
-                  <div className="text-[10px] font-bold uppercase text-slate-400">Unlimited Scans</div>
+                  <div className="text-indigo-600 font-black text-2xl mb-1">0</div>
+                  <div className="text-[10px] font-bold uppercase text-slate-400">Expiration Dates</div>
                 </div>
                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
-                  <div className="text-indigo-600 font-black text-2xl mb-1">100%</div>
-                  <div className="text-[10px] font-bold uppercase text-slate-400">On-Device Processing</div>
+                  <div className="text-indigo-600 font-black text-2xl mb-1">∞</div>
+                  <div className="text-[10px] font-bold uppercase text-slate-400">Monthly Scans</div>
                 </div>
               </div>
               <div className="pt-4">
                 <Link to="/faqs-qr-code-generator">
-                  <Button variant="outline" className="rounded-full px-8 text-xs font-black uppercase tracking-widest">Explore Full FAQ Center</Button>
+                  <Button variant="outline" className="rounded-full px-8 text-xs font-black uppercase tracking-widest">Learn More in Our FAQ</Button>
                 </Link>
               </div>
             </div>

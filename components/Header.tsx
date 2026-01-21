@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './Button';
@@ -17,17 +16,17 @@ export const Header: React.FC = () => {
         </Link>
         
         <nav className="hidden lg:flex items-center gap-8">
-          <Link to="/url-qr-code-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Tools</Link>
+          <Link to="/#tools" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Tools</Link>
           <Link to="/faqs-qr-code-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">FAQ</Link>
           <Link to="/about" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">About Us</Link>
           <Link to="/contact" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Contact</Link>
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link to="/url-qr-code-generator" className="hidden sm:block">
+          <Link to="/#tools" className="hidden sm:block">
             <Button size="sm" variant="primary" className="rounded-full px-6 shadow-xl shadow-indigo-100">Create Free QR</Button>
           </Link>
-          <Link to="/url-qr-code-generator" className="sm:hidden">
+          <Link to="/#tools" className="sm:hidden">
             <Button size="sm" variant="primary" className="rounded-full px-4 font-black text-[10px]">NEW QR</Button>
           </Link>
         </div>

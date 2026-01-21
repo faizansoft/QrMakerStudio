@@ -2,12 +2,19 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // Reset scroll to top on every route change
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // If there's a hash, let the component dealing with that ID handle it or ignore scroll-to-top
+    if (!hash) {
+      window.scrollTo(0, 0);
+    } else {
+      const element = document.getElementById(hash.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [pathname, hash]);
 
   return null;
 };
