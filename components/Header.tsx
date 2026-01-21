@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './Button';
@@ -17,6 +18,7 @@ export const Header: React.FC = () => {
         
         <nav className="hidden lg:flex items-center gap-8">
           <Link to="/url-qr-code-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Tools</Link>
+          <Link to="/faqs-qr-code-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">FAQ</Link>
           <Link to="/about" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">About Us</Link>
           <Link to="/contact" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Contact</Link>
         </nav>

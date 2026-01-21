@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -28,6 +29,7 @@ export const Footer: React.FC = () => {
           <div>
              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-6">Support</h4>
              <ul className="space-y-4 text-sm text-slate-300 font-medium">
+               <li><Link to="/faqs-qr-code-generator" className="hover:text-white transition-colors">FAQs & Help</Link></li>
                <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
                <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
                <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>

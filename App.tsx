@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { QRConfig } from './types';
@@ -16,6 +17,7 @@ import FacebookPage from './FacebookPage';
 import WhatsAppPage from './WhatsAppPage';
 import GoogleFormPage from './GoogleFormPage';
 import AboutPage from './AboutPage';
+import FAQPage from './FAQPage';
 import ContactPage from './ContactPage';
 import PrivacyPage from './PrivacyPage';
 import TermsPage from './TermsPage';
@@ -49,7 +51,7 @@ const App: React.FC = () => {
     if (parts.length > 0) {
       const firstPart = parts[0];
       const isToolPath = firstPart.includes('qr-code-generator') || 
-                         ['about', 'contact', 'privacy', 'terms'].includes(firstPart);
+                         ['about', 'contact', 'privacy', 'terms', 'faqs'].includes(firstPart);
       
       // Typical preview IDs are 30+ chars or specific hex patterns
       if (!isToolPath && firstPart.length > 25) {
@@ -81,6 +83,7 @@ const App: React.FC = () => {
             <Route path="/facebook-qr-code-generator" element={<FacebookPage {...commonProps} />} />
             <Route path="/whatsapp-qr-code-generator" element={<WhatsAppPage {...commonProps} />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/faqs-qr-code-generator" element={<FAQPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />

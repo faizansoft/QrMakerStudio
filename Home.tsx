@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { QRType } from './types';
@@ -95,7 +96,6 @@ const IconWrapper: React.FC<{ type: QRType }> = ({ type }) => {
         </>
       ) 
     },
-    // Fixed: Removed duplicate whatsapp and email keys
     whatsapp: { 
       color: 'bg-green-500', 
       svg: <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-12.7 8.38 8.38 0 0 1 3.8.9L21 3z" /> 
@@ -221,6 +221,11 @@ const Home: React.FC = () => {
                   <div className="text-indigo-600 font-black text-2xl mb-1">100%</div>
                   <div className="text-[10px] font-bold uppercase text-slate-400">On-Device Security</div>
                 </div>
+              </div>
+              <div className="pt-4">
+                <Link to="/faqs-qr-code-generator">
+                  <Button variant="outline" className="rounded-full px-8 text-xs font-black uppercase tracking-widest">Explore Full FAQ Center</Button>
+                </Link>
               </div>
             </div>
             <div className="space-y-4">

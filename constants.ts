@@ -39,20 +39,54 @@ export const CORNER_DOT_STYLES: { value: CornerDotType; label: string }[] = [
 
 export const FAQ_ITEMS = [
   {
-    question: "Is this the best free QR code generator available online?",
-    answer: "We strive to be the top choice by offering professional customization—including custom logos, high-res vector SVG downloads, and AI-powered styles—completely free with no registration required. Our codes never expire and have no scan limits."
+    category: "General",
+    question: "How do I make a qr code with logo in middle?",
+    answer: "Using our advanced workspace, you can create a qr code with logo in the middle by navigating to the 'Logo' tab. Simply upload your PNG or SVG file, and our qr code generator with logo in middle functionality will automatically position it for maximum scannability. We recommend using 'High' error correction when adding center logos."
   },
   {
-    question: "Can I download a high-resolution QR code for printing?",
-    answer: "Yes! QR Generator Online allows you to export your designs as SVG (Scalable Vector Graphics), which is the gold standard for high-quality printing on billboards, menus, and business cards without any pixelation."
+    category: "Design",
+    question: "Can I create a custom qr code for my brand?",
+    answer: "Yes! Our custom qr code maker allows you to change patterns, eye shapes, and colors. Whether you need a qr code generator with logo customization or unique dot styles like 'Classy' or 'Fluid', our tool provides everything you need to create a custom qr code that matches your brand identity perfectly."
   },
   {
-    question: "How do I make a custom QR code with my company logo?",
-    answer: "Simply use our 'Logo' tab in the workspace to upload your PNG or SVG logo. Our system automatically optimizes the placement and recommends 'High' error correction (Level H) to ensure 100% scannability."
+    category: "WiFi",
+    question: "How can I generate qr code for wifi access?",
+    answer: "To generate qr code for wifi, select the 'WiFi' tool from our homepage. Simply enter your network SSID and password. This create wifi qr code tool produces a permanent wifi qr code that guests can scan to join your network instantly without typing a password. It is the most secure wifi qr code generator available online."
   },
   {
-    question: "Do these QR codes have a scan limit or expiration date?",
-    answer: "No. Unlike other services, QR Generator Online generates permanent QR codes. They will work forever as long as the destination (URL or network) remains active. We do not track or limit your scans."
+    category: "Business",
+    question: "How do I create a qr code business card or visiting card?",
+    answer: "Our qr code business card generator (vcard) allows you to encode your name, phone, and email. You can generate a qr code visiting card that saves your contact details directly to a user's phone. This qr business card is perfect for digital networking and professional vcard qr code generator needs."
+  },
+  {
+    category: "Communication",
+    question: "Is there a qr code generator for email or WhatsApp?",
+    answer: "Absolutely. We offer a dedicated qr code generator email tool and a whatsapp qr code generator. You can use our qr email generator to pre-fill subjects and bodies, or use the qr code generator for email to streamline customer inquiries. Our whatsapp qr code generator also supports pre-written messages for instant chat initiation."
+  },
+  {
+    category: "Social Media",
+    question: "How do I generate facebook qr code for my page?",
+    answer: "To generate facebook qr code, use our Facebook tool and paste your profile or business page URL. It creates a direct link that helps grow your social media presence instantly."
+  },
+  {
+    category: "Forms",
+    question: "How can I make a qr code for google form?",
+    answer: "To create qr code for google form, copy your form's share link and paste it into our google form qr code tool. This qr code generator for google forms is ideal for surveys, feedback, and event registrations. It's the simplest way to get more google forms qr code responses."
+  },
+  {
+    category: "Location",
+    question: "Can I use a qr code generator for location or Google Maps?",
+    answer: "Yes, our qr code generator location tool lets you enter coordinates or addresses. You can generate qr code for google maps specifically, making it easy for customers to find your physical store using our google maps qr code generator."
+  },
+  {
+    category: "Tech",
+    question: "Do you provide a qr code generator svg export?",
+    answer: "Yes, our svg qr code generator allows you to download your designs in vector format. The qr code svg generator is essential for professional printing, as it ensures your code remains sharp at any size on billboards or business cards."
+  },
+  {
+    category: "Various",
+    question: "What other tools do you offer like sms or bitcoin qr code generator?",
+    answer: "We offer a wide range of niche tools including a bitcoin qr code generator for payments, a qr code generator for sms marketing, and a text to qr code generator for simple notes. Our qr code generator phone number tool is also popular for instant dialing."
   }
 ];
 
