@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Workspace from './Workspace';
 import { QRConfig } from './types';
 
@@ -14,10 +15,10 @@ const WiFiPage: React.FC<PageProps> = (props) => {
   const val = `WIFI:S:${wifi.ssid};T:${wifi.enc};P:${wifi.pass};;`;
 
   useEffect(() => {
-    document.title = "WiFi QR Code Generator | Connect Instantly Without Passwords";
+    document.title = "WiFi QR Code Generator | Connect Instantly & Securely";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Generate a secure WiFi QR code. Let guests scan and connect to your network instantly without typing passwords. Private, secure, and locally rendered.');
+      metaDesc.setAttribute('content', 'Generate a secure WiFi QR code for your home, cafe, or office. Let guests scan to connect without typing passwords. High-resolution SVG and PNG exports.');
     }
   }, []);
   
@@ -26,14 +27,13 @@ const WiFiPage: React.FC<PageProps> = (props) => {
       <section className="bg-white border-b border-slate-100 py-16">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest rounded-full border border-blue-100 mb-6">
-            Free WiFi Tools
+            Contactless Network Access
           </div>
           <h1 className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter mb-6">
             WiFi QR Code <span className="text-blue-600">Generator</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">
-            Stop sharing complex passwords manually. Use our <strong>free wifi qr generator</strong> to create a custom code that connects guests to your internet in one second. 
-            Perfect for hotels, cafes, and modern homes.
+            Sharing your internet password shouldn't be a chore. Our <strong>free WiFi QR generator</strong> allows guests to scan and join your network in a single second, eliminating typos and security risks.
           </p>
         </div>
       </section>
@@ -46,7 +46,7 @@ const WiFiPage: React.FC<PageProps> = (props) => {
               type="text" 
               value={wifi.ssid} 
               onChange={e => setWifi({...wifi, ssid: e.target.value})} 
-              placeholder="e.g. My_Home_WiFi" 
+              placeholder="e.g. My_Brand_Guest_WiFi" 
               className="w-full p-5 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-blue-500 outline-none font-bold text-lg" 
             />
           </div>
@@ -56,7 +56,7 @@ const WiFiPage: React.FC<PageProps> = (props) => {
               type="text" 
               value={wifi.pass} 
               onChange={e => setWifi({...wifi, pass: e.target.value})} 
-              placeholder="Network Password" 
+              placeholder="Secure Password" 
               className="w-full p-5 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:border-blue-500 outline-none font-bold text-lg" 
               disabled={wifi.enc === 'nopass'}
             />
@@ -68,10 +68,10 @@ const WiFiPage: React.FC<PageProps> = (props) => {
               onChange={e => setWifi({...wifi, enc: e.target.value})} 
               className="w-full p-5 rounded-2xl bg-slate-50 border-2 border-slate-100 outline-none font-bold text-lg appearance-none cursor-pointer focus:border-blue-500"
             >
-              <option value="WPA">WPA / WPA2 (Most Common)</option>
-              <option value="WPA3">WPA3 (Latest & Secure)</option>
+              <option value="WPA">WPA / WPA2 (Global Standard)</option>
+              <option value="WPA3">WPA3 (Latest Security)</option>
               <option value="WEP">WEP (Legacy Devices)</option>
-              <option value="nopass">None (Public/Open)</option>
+              <option value="nopass">None (Public Network)</option>
             </select>
           </div>
         </div>
@@ -80,93 +80,90 @@ const WiFiPage: React.FC<PageProps> = (props) => {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
           </div>
           <p className="text-[11px] text-blue-800 font-bold leading-relaxed">
-            <b>SECURITY TIP:</b> Your credentials are never sent to our servers. This <strong>wifi qr code generator</strong> creates code directly in your browser using local script processing.
+            <strong>PRIVACY FIRST:</strong> This <strong>WiFi QR code generator</strong> works entirely in your browser. Your network name and password are never sent to our servers.
           </p>
         </div>
       </Workspace>
 
-      <section className="bg-slate-50 py-24 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 tracking-tight">How to share WiFi with QR code?</h2>
-            <p className="text-slate-500 font-medium">Generating your network access code takes less than 30 seconds with our <strong>create wifi qr code</strong> tool.</p>
+      <article className="max-w-5xl mx-auto px-6 py-24 space-y-24">
+        <section className="space-y-8">
+          <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 leading-tight">The Modern Way to Share Connectivity</h2>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-6">
+              <p className="text-slate-600 leading-relaxed font-medium text-lg">
+                Shouting WiFi passwords across a crowded cafe or printing them on small, easy-to-lose slips of paper is a relic of the past. A <strong>branded WiFi QR code</strong> is the gold standard for modern hospitality and office management.
+              </p>
+              <p className="text-slate-600 leading-relaxed font-medium">
+                When you <strong>create a WiFi QR code</strong>, you're not just providing convenience; you're enhancing security. Guests no longer need to see or type the raw password, reducing the risk of it being shared incorrectly or recorded by unauthorized parties. Our generator supports everything from open networks to the latest WPA3 security standards.
+              </p>
+            </div>
+            <div className="bg-slate-50 p-8 rounded-[3rem] border border-slate-200">
+               <h3 className="text-lg font-bold text-slate-900 mb-4">Key Benefits for Businesses</h3>
+               <ul className="space-y-3 text-sm text-slate-600 font-medium">
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> <strong>Zero Typos:</strong> No more "Is that a zero or an 'O'?"</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> <strong>Instant Access:</strong> Scan to join takes under 2 seconds.</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> <strong>Brand Trust:</strong> Add your cafe or hotel logo to the center.</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> <strong>Scalable Print:</strong> High-res SVG for large wall posters.</li>
+               </ul>
+            </div>
           </div>
-          <div className="grid md:grid-cols-4 gap-8">
+        </section>
+
+        <section className="space-y-12">
+          <h2 className="text-3xl font-display font-black text-slate-900 text-center">Perfect Placement for WiFi Codes</h2>
+          <div className="grid md:grid-cols-4 gap-6">
             {[
-              { step: "01", title: "Enter SSID", desc: "Type in your WiFi network name exactly as it appears on your router settings for this <strong>generate qr code for wifi</strong> tool." },
-              { step: "02", title: "Add Password", desc: "Input your security key. Our <strong>wifi qr code generator</strong> supports WPA2 and the ultra-secure WPA3 standards." },
-              { step: "03", title: "Personalize", desc: "Add your logo or change the colors to match your brand branding using our <strong>wifi qr code with logo</strong> feature." },
-              { step: "04", title: "Print & Display", desc: "Download in high-res SVG or PNG and place it on a wall or desk for guests to <strong>scan wifi qr code</strong> instantly." }
+              { t: "Vacation Rentals", d: "Place a framed <strong>WiFi QR</strong> in the living room for Airbnb guests." },
+              { t: "Retail Stores", d: "Add a small code near the checkout to keep shoppers connected." },
+              { t: "Medical Offices", d: "Improve patient waiting room experiences with easy internet." },
+              { t: "Tech Conferences", d: "Display on huge screens for thousands of attendees at once." }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm relative overflow-hidden group">
-                <div className="text-5xl font-black text-slate-100 absolute -right-2 -top-2 group-hover:text-blue-50 transition-colors">{item.step}</div>
-                <h3 className="text-lg font-bold text-slate-900 mb-3 relative z-10">{item.title}</h3>
-                <p className="text-xs text-slate-500 font-medium leading-relaxed relative z-10" dangerouslySetInnerHTML={{ __html: item.desc }} />
+              <div key={idx} className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-blue-200 transition-all">
+                <h3 className="font-bold text-slate-900 text-sm mb-2" dangerouslySetInnerHTML={{ __html: item.t }} />
+                <p className="text-xs text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.d }} />
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <article className="max-w-5xl mx-auto px-6 py-24 space-y-24">
-        <section className="space-y-6">
-          <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900">The Ultimate Guide to WiFi QR Codes</h2>
-          <p className="text-slate-600 leading-relaxed font-medium text-lg">
-            Sharing your internet connection shouldn't involve shouting long, complex passwords across the room. Whether you're a business owner or a home host, learning how to <strong>generate qr code for wifi</strong> is the modern standard for hospitality and security. A <strong>wifi qr code</strong> stores your network name (SSID), security type, and password in a format that smartphones can read instantly.
-          </p>
         </section>
 
-        <section className="grid md:grid-cols-3 gap-8">
-          <div className="col-span-full mb-4">
-            <h3 className="text-2xl font-bold text-slate-900">Where to use a WiFi QR Code?</h3>
-          </div>
-          {[
-            { title: "Cafes & Restaurants", desc: "Place a <strong>wifi qr code with logo</strong> on table tents to let customers connect without asking staff every time." },
-            { title: "Hotels & Airbnbs", desc: "Include a <strong>wifi password qr code</strong> in your welcome book or frame it in the living area for a 5-star guest experience." },
-            { title: "Corporate Offices", desc: "Securely share guest network access in meeting rooms. Our <strong>wifi qr code generator</strong> is perfect for professional environments." }
-          ].map((item, idx) => (
-            <div key={idx} className="p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:border-blue-200 transition-colors">
-              <h4 className="font-bold text-slate-900 mb-3" dangerouslySetInnerHTML={{ __html: item.title }} />
-              <p className="text-sm text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.desc }} />
+        <section className="bg-blue-600 text-white p-12 rounded-[4rem] space-y-8">
+          <h2 className="text-3xl font-display font-black">Security Standards & Scannability</h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <p className="text-blue-50 font-medium leading-relaxed">
+              Our <strong>WiFi password QR code</strong> generator uses the universal `WIFI:S:SSID;T:TYPE;P:PASS;;` standard. This is recognized by all modern iOS and Android devices without the need for additional apps. For the highest security, we recommend using WPA2 or WPA3 settings.
+            </p>
+            <div className="p-8 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20">
+               <h3 className="text-lg font-bold mb-2">Did You Know?</h3>
+               <p className="text-sm opacity-90 leading-relaxed">Most modern smartphones will automatically verify the network credentials and prompt a "Join" button. This prevents users from connecting to "evil twin" networks by mistake.</p>
             </div>
-          ))}
-        </section>
-
-        <section className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-slate-900">Expert Printing & Placement Tips</h3>
-            <ul className="space-y-4">
-              <li className="flex gap-4 items-start">
-                <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 font-bold text-xs">1</div>
-                <p className="text-xs text-slate-600"><strong>Use High Contrast:</strong> Always keep a dark pattern on a light background.</p>
-              </li>
-              <li className="flex gap-4 items-start">
-                <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 font-bold text-xs">2</div>
-                <p className="text-xs text-slate-600"><strong>Download SVG for Print:</strong> Use our <strong>qr code generator svg</strong> feature for professional signs.</p>
-              </li>
-              <li className="flex gap-4 items-start">
-                <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 font-bold text-xs">3</div>
-                <p className="text-xs text-slate-600"><strong>Minimum Size:</strong> For WiFi access, ensure the printed code is at least 2cm x 2cm.</p>
-              </li>
-            </ul>
           </div>
         </section>
 
         <section className="space-y-8">
-           <h3 className="text-3xl font-display font-black text-slate-900 text-center">WiFi QR Code FAQ</h3>
+           <h2 className="text-3xl font-display font-black text-slate-900 text-center">WiFi QR FAQ</h2>
            <div className="grid md:grid-cols-2 gap-6">
              {[
-               { q: "Is a wifi qr code generator safe?", a: "Yes, our tool generates the code locally on your machine. Your password never touches our servers." },
-               { q: "Will the code expire?", a: "No. A static <strong>wifi qr code</strong> never expires." },
-               { q: "Can I add a logo?", a: "Absolutely! Use our 'Logo' tab to create a <strong>wifi qr code with logo</strong> for your brand." },
-               { q: "Does it work on Android and iPhone?", a: "Yes, our <strong>wifi qr code</strong> format is compatible with all modern smartphones." }
+               { q: "Is the WiFi QR generator safe?", a: "Yes. Your network details are processed locally in your browser memory and never uploaded to our servers. Your privacy is 100% guaranteed." },
+               { q: "Does this work on both iPhone and Android?", a: "Absolutely. Our <strong>WiFi QR code</strong> format is compliant with international standards and works with the native camera apps on both platforms." },
+               { q: "Can I add my logo to the WiFi code?", a: "Yes. Use the 'Logo' tab in our workspace to upload your branding. A <strong>WiFi QR code with logo</strong> increases professional trust for your business." },
+               { q: "What happens if I change my password?", a: "Static WiFi codes store the password data directly. If you change your router password, you will need to generate and print a new <strong>WiFi QR code</strong>." }
              ].map((faq, i) => (
                <div key={i} className="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                 <h4 className="font-bold text-slate-900 mb-2">{faq.q}</h4>
+                 <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
                  <p className="text-xs text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: faq.a }} />
                </div>
              ))}
            </div>
+        </section>
+
+        <section className="pt-12 border-t border-slate-100 text-center space-y-8">
+          <h2 className="text-2xl font-display font-black text-slate-900">Need Other Digital Assets?</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link to="/url-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">URL Links</Link>
+            <Link to="/vcard-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Digital Business Cards</Link>
+            <Link to="/googleform-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Google Forms</Link>
+            <Link to="/location-qr-code-generator" className="px-6 py-3 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">Maps Locations</Link>
+          </div>
         </section>
       </article>
     </div>
