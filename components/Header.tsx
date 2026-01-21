@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './Button';
@@ -12,11 +13,11 @@ export const Header: React.FC = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
             </svg>
           </div>
-          <span className="text-xl font-display font-black text-slate-900 tracking-tight">QR Studio <span className="text-indigo-600">Pro</span></span>
+          <span className="text-xl font-display font-black text-slate-900 tracking-tight">QR Generator <span className="text-indigo-600">Online</span></span>
         </Link>
         
         <nav className="hidden lg:flex items-center gap-8">
-          <Link to="/url-qr-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Generator</Link>
+          <Link to="/url-qr-generator" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Tools</Link>
           <Link to="/about" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">About Us</Link>
           <Link to="/contact" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Contact</Link>
         </nav>
@@ -25,7 +26,6 @@ export const Header: React.FC = () => {
           <Link to="/url-qr-generator" className="hidden sm:block">
             <Button size="sm" variant="primary" className="rounded-full px-6 shadow-xl shadow-indigo-100">Create Free QR</Button>
           </Link>
-          {/* Mobile indicator or simple button for mobile */}
           <Link to="/url-qr-generator" className="sm:hidden">
             <Button size="sm" variant="primary" className="rounded-full px-4 font-black text-[10px]">NEW QR</Button>
           </Link>

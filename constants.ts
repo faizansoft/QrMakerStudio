@@ -1,3 +1,4 @@
+
 import { StylePreset, DotType, CornerSquareType, CornerDotType, QRType } from './types';
 
 export const STYLE_PRESETS: StylePreset[] = [
@@ -43,7 +44,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Can I download a high-resolution QR code for printing?",
-    answer: "Yes! Our studio allows you to export your designs as SVG (Scalable Vector Graphics), which is the gold standard for high-quality printing on billboards, menus, and business cards without any pixelation."
+    answer: "Yes! QR Generator Online allows you to export your designs as SVG (Scalable Vector Graphics), which is the gold standard for high-quality printing on billboards, menus, and business cards without any pixelation."
   },
   {
     question: "How do I make a custom QR code with my company logo?",
@@ -51,7 +52,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Do these QR codes have a scan limit or expiration date?",
-    answer: "No. Unlike other services, QR Studio Pro generates permanent QR codes. They will work forever as long as the destination (URL or network) remains active. We do not track or limit your scans."
+    answer: "No. Unlike other services, QR Generator Online generates permanent QR codes. They will work forever as long as the destination (URL or network) remains active. We do not track or limit your scans."
   }
 ];
 

@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const TermsPage: React.FC = () => {
@@ -45,4 +46,5 @@ const TermsPage: React.FC = () => {
   );
 };
 
+// Fixed: Added missing default export
 export default TermsPage;

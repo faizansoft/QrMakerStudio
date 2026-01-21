@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,10 +10,10 @@ export const Footer: React.FC = () => {
           <div className="col-span-2 space-y-6">
             <div className="flex items-center gap-3">
               <div className="qr-gradient w-8 h-8 rounded-lg"></div>
-              <span className="text-xl font-display font-black tracking-tight">QR Studio Pro</span>
+              <span className="text-xl font-display font-black tracking-tight">QR Generator Online</span>
             </div>
             <p className="text-slate-400 max-w-sm text-sm leading-relaxed">
-              Professional QR generation for businesses and individuals. No signup, no expiration, and no limits on your creativity.
+              Professional QR generation for businesses and individuals. No signup, no expiration, and no limits on your creativity. The leading source for custom QR codes online.
             </p>
           </div>
           <div>
@@ -36,7 +37,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
         <div className="pt-12 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-widest text-slate-600">
-          <span>© 2026 QR Studio Pro</span>
+          <span>© 2026 QR Generator Online</span>
           <div className="flex gap-8">
             <span>Local Processing</span>
             <span>No Tracking</span>

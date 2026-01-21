@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QRCodeStyling, { Options } from 'qr-code-styling';
@@ -28,8 +29,8 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
 
   // Update Page Metadata
   useEffect(() => {
-    const pageTitle = `${details.title} | QR Studio Pro`;
-    const pageDesc = `${details.desc} Create high-resolution custom QR codes.`;
+    const pageTitle = `${details.title} | QR Generator Online`;
+    const pageDesc = `${details.desc} Create high-resolution custom QR codes with QR Generator Online.`;
     document.title = pageTitle;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', pageDesc);
@@ -121,7 +122,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
             <span className="text-2xl" role="img" aria-label="icon">{details.icon}</span>
             <div className="flex flex-col">
               <h1 className="text-sm font-bold text-slate-900 leading-none mb-1">{details.title}</h1>
-              <span className="text-[9px] font-black uppercase text-indigo-500 tracking-tighter">Studio Session Active</span>
+              <span className="text-[9px] font-black uppercase text-indigo-500 tracking-tighter">Generator Session Active</span>
             </div>
           </div>
         </div>
@@ -260,7 +261,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                     WebP (Web)
                   </Button>
                 </div>
-                <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest pt-2">Professional Studio Export</p>
+                <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest pt-2">Professional Generator Export</p>
               </div>
             </div>
           </div>
@@ -269,7 +270,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
         <div className="pt-24 space-y-16 border-t border-slate-200 mt-24">
           <div className="text-center space-y-4">
             <h2 className="text-4xl font-display font-black text-slate-900 tracking-tight">Professional Branding Guide</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Learn how to combine patterns and colors to create high-conversion QR codes.</p>
+            <p className="text-slate-500 max-w-2xl mx-auto">Learn how to combine patterns and colors to create high-conversion QR codes with <strong>QR Generator Online</strong>.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {details.guide.map((item, idx) => (

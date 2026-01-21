@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const PrivacyPage: React.FC = () => {
@@ -16,7 +17,7 @@ const PrivacyPage: React.FC = () => {
         <section className="space-y-4">
           <h2 className="text-2xl font-display font-black text-slate-900">1. On-Device Generation</h2>
           <p className="text-slate-600 font-medium leading-relaxed">
-            QR Studio Pro is designed as a "static" application. This means the actual code generation process happens entirely within your web browser. Your inputs (URLs, phone numbers, email addresses) never leave your device to be processed on a remote server.
+            <strong>QR Generator Online</strong> is designed as a "static" application. This means the actual code generation process happens entirely within your web browser. Your inputs (URLs, phone numbers, email addresses) never leave your device to be processed on a remote server.
           </p>
         </section>
 
@@ -45,4 +46,5 @@ const PrivacyPage: React.FC = () => {
   );
 };
 
+// Fixed: Added missing default export
 export default PrivacyPage;

@@ -1,6 +1,6 @@
 {
-  "name": "QR Studio Pro",
-  "description": "A high-end, AI-enhanced QR code generator with extensive customization options, artistic styles, and smart content analysis.",
+  "name": "QR Generator Online",
+  "description": "The ultimate professional QR code generator for URLs, WiFi, Google Forms, and more. Customize with styles and high-resolution exports.",
   "requestFramePermissions": [
     "geolocation"
   ]

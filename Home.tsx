@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { QRType } from './types';
@@ -146,21 +147,21 @@ const Home: React.FC = () => {
       <section className="relative overflow-hidden bg-white pt-16 pb-24">
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 text-indigo-700 text-[9px] font-black uppercase tracking-[0.2em] rounded-full border border-indigo-100 mb-6">
-            Studio Pro v2.0
+            v2.0 Beta
           </div>
           <h1 className="text-5xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight mb-6">
             Professional QR codes, <br/>
             <span className="text-indigo-600">Generated in Seconds</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 font-medium max-w-xl mx-auto mb-10 leading-relaxed">
-            Create high-resolution codes for URLs, WiFi, and more. Free forever, no registration needed. Download in vector SVG or PNG.
+            Create high-resolution codes for URLs, WiFi, and more. Free forever, no registration needed. Download in vector SVG or PNG with <strong>QR Generator Online</strong>.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/url-qr-generator">
               <Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100">Create Website QR</Button>
             </Link>
             <Link to="/about">
-              <Button variant="outline" size="lg" className="rounded-full px-8 py-4">Why QR Studio?</Button>
+              <Button variant="outline" size="lg" className="rounded-full px-8 py-4">Why Us?</Button>
             </Link>
           </div>
         </div>
@@ -195,7 +196,7 @@ const Home: React.FC = () => {
                   {d.desc}
                 </p>
                 <div className="mt-4 flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-indigo-500 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                  Open Studio
+                  Open Generator
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </div>
               </Link>
@@ -210,7 +211,7 @@ const Home: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
               <h2 className="text-3xl font-display font-black text-slate-900 leading-tight">High-quality tools without the subscription.</h2>
-              <p className="text-slate-500 font-medium">QR Studio Pro offers business-grade customization for free. We believe basic tools should stay accessible to everyone.</p>
+              <p className="text-slate-500 font-medium"><strong>QR Generator Online</strong> offers business-grade customization for free. We believe basic tools should stay accessible to everyone.</p>
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
                   <div className="text-indigo-600 font-black text-2xl mb-1">∞</div>

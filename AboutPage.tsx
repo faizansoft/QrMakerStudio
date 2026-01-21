@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from './components/Button';
 import { Link } from 'react-router-dom';
@@ -13,7 +14,7 @@ const AboutPage: React.FC = () => {
             <span className="text-indigo-600">Zero complexity.</span>
           </h1>
           <p className="text-xl text-slate-500 font-medium leading-relaxed">
-            We built QR Studio Pro to solve a simple problem: most QR makers are either expensive, expire after a week, or look like they're from 1995. This is our solution.
+            We built <strong>QR Generator Online</strong> to solve a simple problem: most QR makers are either expensive, expire after a week, or look like they're from 1995. This is our solution.
           </p>
         </div>
       </section>
@@ -24,7 +25,7 @@ const AboutPage: React.FC = () => {
           <div className="space-y-6">
             <h2 className="text-3xl font-display font-black text-slate-900">Why we exist</h2>
             <p className="text-slate-600 leading-relaxed font-medium">
-              Digital links shouldn't be boring or difficult to scan. We provide a studio-grade interface that runs entirely in your browser. This means your data never touches our servers, and your codes are ready for professional printing instantly.
+              Digital links shouldn't be boring or difficult to scan. We provide a professional-grade interface that runs entirely in your browser. This means your data never touches our servers, and your codes are ready for professional printing instantly.
             </p>
             <ul className="space-y-4">
               {[
@@ -81,4 +82,5 @@ const AboutPage: React.FC = () => {
   );
 };
 
+// Fixed: Added missing default export
 export default AboutPage;
