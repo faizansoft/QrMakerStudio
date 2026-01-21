@@ -162,7 +162,7 @@ const Home: React.FC = () => {
             A Better Way to Create <br/><span className="text-indigo-600">Custom QR Codes</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">
-            We built this because most QR generators are clunky, full of ads, or expire for no reason. <strong>QR Generator Online</strong> is simple, professional, and stays yours forever. Create a <strong>customizable qr code</strong> with your <strong>logo in middle</strong> in just a few clicks.
+            Most QR generators feel like they were built in 2005. <strong>QR Generator Online</strong> is modern, privacy-focused, and stays yours forever. Create a <strong>customizable qr code</strong> with your <strong>logo in middle</strong> that actually looks professional.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/#tools">
@@ -214,20 +214,20 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Feature Deep Dive */}
+      {/* Feature Deep Dive - UPDATED VISUALS */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
              <div className="space-y-8">
-                <h2 className="text-4xl md:text-5xl font-display font-black text-slate-900 leading-tight">Brand Identity <br/><span className="text-indigo-600">Without Compromise</span></h2>
+                <h2 className="text-4xl md:text-5xl font-display font-black text-slate-900 leading-tight">Elite Branding <br/><span className="text-indigo-600">Without Compromise</span></h2>
                 <p className="text-slate-500 font-medium text-lg leading-relaxed">
-                  A basic black and white square is fine, but it doesn't build trust. Our <strong>custom qr code maker</strong> lets you match your brand's exact aesthetics. Whether it's a <strong>qr code business card</strong> or a <strong>whatsapp qr code</strong>, we ensure your users feel safe scanning.
+                  Basic black squares are for logistics, not for brands. Our <strong>custom qr code maker</strong> lets you create premium assets that people actually want to scan. From <strong>qr code business cards</strong> to <strong>wifi qr codes</strong>, we give you the tools to stand out.
                 </p>
                 <div className="grid gap-6">
                   {[
-                    { t: "Pixel-Perfect Logo Center", d: "Add your brand's <strong>logo in middle</strong> of the QR code with smart error correction." },
-                    { t: "SVG for Large Scale", d: "Export as high-quality vector <strong>qr code svg generator</strong> files for banners and merchandise." },
-                    { t: "No Tracking, Just Data", d: "We generate static codes. No middleman redirects, no data harvesting, just direct links." }
+                    { t: "Pixel-Perfect Logo Center", d: "Add your brand's <strong>logo in middle</strong> with smart transparency handling and high error correction." },
+                    { t: "SVG for Large Scale", d: "Export as high-quality vector <strong>qr code svg generator</strong> files for banners, car wraps, and billboards." },
+                    { t: "Premium Pattern Styles", d: "Choose from 'Fluid', 'Tech Dots', or 'Classy' patterns to match your brand's unique personality." }
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center text-white text-[10px] font-bold shrink-0 mt-1">✓</div>
@@ -239,20 +239,82 @@ const Home: React.FC = () => {
                   ))}
                 </div>
              </div>
+             
+             {/* STUNNING VISUAL OUTPUT PREVIEW */}
              <div className="relative group">
-                <div className="absolute inset-0 bg-indigo-600/5 rounded-[4rem] -rotate-3 scale-105 group-hover:rotate-0 transition-transform duration-500"></div>
-                <div className="bg-slate-50 p-12 rounded-[3.5rem] relative z-10 border border-slate-100 shadow-sm flex items-center justify-center">
-                   <div className="bg-white p-4 rounded-3xl shadow-2xl relative">
-                      <div className="w-48 h-48 bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%234f46e5%22 stroke-width=%221%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%223%22 y=%223%22 width=%2218%22 height=%2218%22 rx=%222%22 ry=%222%22 /%3E%3Crect x=%227%22 y=%227%22 width=%223%22 height=%223%22 /%3E%3Crect x=%2214%22 y=%227%22 width=%223%22 height=%223%22 /%3E%3Crect x=%227%22 y=%2214%22 width=%223%22 height=%223%22 /%3E%3C/svg%3E')] bg-center bg-no-repeat opacity-20"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-12 h-12 bg-indigo-600 rounded-xl shadow-lg flex items-center justify-center text-white font-black text-xs uppercase tracking-tighter">Identity</div>
+                <div className="absolute -inset-4 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-[5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                
+                <div className="bg-slate-50 p-12 md:p-16 rounded-[4rem] relative z-10 border border-slate-100 shadow-sm flex items-center justify-center">
+                   {/* Realistic QR Canvas */}
+                   <div className="bg-white p-8 rounded-[3.5rem] shadow-2xl relative transition-transform duration-500 group-hover:scale-[1.02]">
+                      <svg viewBox="0 0 100 100" className="w-48 h-48 md:w-64 md:h-64 text-slate-900" fill="currentColor">
+                        {/* Styled QR Pattern (Representation) */}
+                        <rect x="0" y="0" width="30" height="30" rx="8" fill="#4f46e5" />
+                        <rect x="5" y="5" width="20" height="20" rx="4" fill="white" />
+                        <rect x="10" y="10" width="10" height="10" rx="2" fill="#4f46e5" />
+                        
+                        <rect x="70" y="0" width="30" height="30" rx="8" fill="#4f46e5" />
+                        <rect x="75" y="5" width="20" height="20" rx="4" fill="white" />
+                        <rect x="80" y="10" width="10" height="10" rx="2" fill="#4f46e5" />
+                        
+                        <rect x="0" y="70" width="30" height="30" rx="8" fill="#4f46e5" />
+                        <rect x="5" y="75" width="20" height="20" rx="4" fill="white" />
+                        <rect x="10" y="80" width="10" height="10" rx="2" fill="#4f46e5" />
+                        
+                        {/* Central "Logo" Slot with mask-like feel */}
+                        <circle cx="50" cy="50" r="18" fill="white" />
+                        
+                        {/* Decorative Pattern Bits */}
+                        <circle cx="40" cy="15" r="3" fill="#818cf8" />
+                        <circle cx="50" cy="10" r="3" fill="#818cf8" />
+                        <circle cx="60" cy="15" r="3" fill="#818cf8" />
+                        
+                        <rect x="45" y="75" width="8" height="8" rx="2" fill="#4f46e5" />
+                        <rect x="80" y="45" width="8" height="8" rx="2" fill="#4f46e5" />
+                        
+                        {/* Fluid dots in random spots */}
+                        {[...Array(12)].map((_, i) => (
+                          <circle 
+                            key={i} 
+                            cx={20 + Math.random() * 60} 
+                            cy={20 + Math.random() * 60} 
+                            r={1.5 + Math.random() * 2} 
+                            fill={Math.random() > 0.5 ? "#4f46e5" : "#818cf8"} 
+                            className="opacity-60"
+                          />
+                        ))}
+                      </svg>
+                      
+                      {/* Floating Central Logo */}
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-14 h-14 md:w-20 md:h-20 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl shadow-xl flex items-center justify-center text-white font-black text-[10px] md:text-[12px] uppercase tracking-tighter ring-8 ring-white">
+                          <svg className="w-8 h-8 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                        </div>
                       </div>
                    </div>
+
+                   {/* Feature Badges */}
+                   <div className="absolute -top-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 animate-in slide-in-from-left-4 duration-1000">
+                      <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                      </div>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">High Scannability</span>
+                   </div>
+
                    <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 animate-bounce">
-                      <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white">
+                      <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
                       </div>
                       <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Custom Styled</span>
+                   </div>
+
+                   {/* Stylized Color Pickers (Static) */}
+                   <div className="absolute top-1/2 -right-12 -translate-y-1/2 flex flex-col gap-2 p-2 bg-white rounded-full shadow-lg border border-slate-100">
+                      <div className="w-6 h-6 rounded-full bg-indigo-600 ring-2 ring-indigo-200"></div>
+                      <div className="w-6 h-6 rounded-full bg-purple-500"></div>
+                      <div className="w-6 h-6 rounded-full bg-slate-900"></div>
                    </div>
                 </div>
              </div>
