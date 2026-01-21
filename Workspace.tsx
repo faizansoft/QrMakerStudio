@@ -146,7 +146,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
                   {children}
                   <div className="pt-8 border-t border-slate-50 space-y-4">
                     <Button onClick={applySmartStyle} loading={isAiLoading} className="w-full py-5 rounded-3xl shadow-xl shadow-indigo-100 text-[11px] uppercase tracking-widest font-black transition-transform active:scale-95">
-                      {isAiLoading ? "Crafting Design..." : "✨ Generate Random Design"}
+                      {isAiLoading ? "Crafting Design..." : "Generate Random Design"}
                     </Button>
                     {aiMood && <p className="text-center text-[10px] font-black uppercase text-indigo-500 tracking-widest animate-pulse">Theme: {aiMood}</p>}
                   </div>
