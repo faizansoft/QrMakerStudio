@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Button } from './Button';
 import { useLanguage } from '../context/LanguageContext';
+import { languageMeta, SupportedLanguage } from '../translations';
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { language, setLanguage, t } = useLanguage();
   const [showLang, setShowLang] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowLang(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleCreateClick = (e: React.MouseEvent) => {
     if (location.pathname === '/') {
@@ -18,6 +30,8 @@ export const Header: React.FC = () => {
       }
     }
   };
+
+  const activeLangData = languageMeta.find(l => l.code === language) || languageMeta[0];
 
   return (
     <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
@@ -39,27 +53,36 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className="flex items-center gap-3 md:gap-6">
-          {/* Language Switcher */}
-          <div className="relative">
+          {/* Enhanced Language Switcher */}
+          <div className="relative" ref={dropdownRef}>
             <button 
               onClick={() => setShowLang(!showLang)}
-              title="Change website language"
-              className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors text-[10px] font-black uppercase tracking-widest text-slate-500 border border-transparent hover:border-slate-200"
+              title={`Active Language: ${activeLangData.label}`}
+              className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors text-[10px] font-black uppercase tracking-widest text-slate-500 border border-slate-200"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-              {language}
+              <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+              <span className="hidden sm:inline">{activeLangData.native}</span>
+              <span className="sm:hidden">{activeLangData.code.toUpperCase()}</span>
             </button>
             {showLang && (
-              <div className="absolute top-full right-0 mt-2 w-40 bg-white rounded-2xl shadow-2xl border border-slate-100 p-2 animate-in fade-in zoom-in duration-200">
-                {(['en', 'es', 'fr'] as const).map(lang => (
-                  <button 
-                    key={lang}
-                    onClick={() => { setLanguage(lang); setShowLang(false); }}
-                    className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-bold transition-colors ${language === lang ? 'bg-indigo-50 text-indigo-600' : 'text-slate-600 hover:bg-slate-50'}`}
-                  >
-                    {lang === 'en' ? 'English' : lang === 'es' ? 'Español' : 'Français'}
-                  </button>
-                ))}
+              <div className="absolute top-full right-0 mt-2 w-64 max-h-[400px] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-100 p-2 animate-in fade-in zoom-in duration-200 no-scrollbar">
+                <div className="grid grid-cols-1 gap-1">
+                  {languageMeta.map(lang => (
+                    <button 
+                      key={lang.code}
+                      onClick={() => { setLanguage(lang.code as SupportedLanguage); setShowLang(false); }}
+                      className={`w-full text-left px-4 py-3 rounded-xl transition-all flex items-center justify-between ${language === lang.code ? 'bg-indigo-50 text-indigo-600' : 'text-slate-600 hover:bg-slate-50'}`}
+                    >
+                      <div className="flex flex-col">
+                        <span className="text-xs font-bold">{lang.native}</span>
+                        <span className="text-[9px] uppercase tracking-tighter opacity-60 font-black">{lang.label}</span>
+                      </div>
+                      {language === lang.code && (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
+                      )}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
           </div>
