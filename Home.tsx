@@ -117,11 +117,12 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="relative p-1 bg-white rounded-[3rem] shadow-2xl border border-slate-200 overflow-hidden group aspect-[4/3]">
+            {/* Fix: use fetchPriority instead of fetchpriority */}
             <img 
               src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" 
               alt="Professional Business Networking" 
               loading="lazy"
-              fetchpriority="high"
+              fetchPriority="high"
               className="w-full h-full object-cover rounded-[2.8rem] opacity-90 group-hover:scale-105 transition-transform duration-700" 
             />
             <div className="absolute inset-0 bg-indigo-600/20 mix-blend-multiply"></div>
