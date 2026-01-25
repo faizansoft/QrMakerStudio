@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>QR Generator Online | Professional Branded QR Code Studio</title>
+    <meta name="description" content="Create professional, high-resolution custom QR codes. Specialized tools for WiFi, vCard, and URLs with high-quality SVG exports.">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G2LKYV71R"></script>
@@ -13,71 +15,47 @@
       gtag('config', 'G-1G2LKYV71R');
     </script>
 
-    <!-- FAVICON -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z'></path></svg>">
-
-    <!-- SEO & PERFORMANCE -->
-    <title>QR Generator Online | Professional Branded QR Code Studio</title>
-    <meta name="description" content="Create professional, high-resolution custom QR codes. Our studio offers specialized tools for WiFi, business cards, and URLs with high-quality SVG exports.">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://qr-generator.online" />
     
-    <!-- SOCIAL PREVIEWS (Open Graph) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://qr-generator.online">
-    <meta property="og:title" content="QR Generator Online | Professional Branded QR Code Studio">
-    <meta property="og:description" content="Create professional, high-resolution custom QR codes. Specialized tools for WiFi, vCards, and URLs with SVG exports.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200">
-
-    <!-- TWITTER CARDS -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://qr-generator.online">
-    <meta name="twitter:title" content="QR Generator Online | Professional Branded QR Code Studio">
-    <meta name="twitter:description" content="Create professional, high-resolution custom QR codes. Specialized tools for WiFi, vCards, and URLs with SVG exports.">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://esm.sh">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <style>
         :root { --primary: #6366f1; }
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; overflow-x: hidden; width: 100%; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
         .qr-gradient { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
-        
-        /* Performance: Prevent layout shifts */
-        header { height: 80px; }
-        .hero-min-height { min-height: 500px; }
-        @media (min-width: 768px) { .hero-min-height { min-height: 600px; } }
-        
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .animate-in { animation: fadeIn 0.4s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        [dir="rtl"] { font-family: 'Inter', sans-serif; }
+        .input-focus { outline: none; border-color: #6366f1; box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1); }
     </style>
-<script type="importmap">
+</head>
+<body>
+    <div id="app" class="min-h-screen flex flex-col">
+        <header id="main-header"></header>
+        <main id="router-view" class="flex-grow"></main>
+        <footer id="main-footer"></footer>
+    </div>
+
+    <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
     "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
-    "vite": "https://esm.sh/esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "qr-code-styling": "https://esm.sh/qr-code-styling@^1.9.2"
+    "qr-code-styling": "https://esm.sh/qr-code-styling@^1.9.2",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
-</head>
-<body>
-    <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>
