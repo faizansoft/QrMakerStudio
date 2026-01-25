@@ -25,6 +25,38 @@ export const Footer: React.FC = () => {
               <span className="px-3 py-1 bg-slate-900 rounded-full text-[9px] font-black uppercase text-indigo-400 border border-slate-800 tracking-widest">Always Static</span>
               <span className="px-3 py-1 bg-slate-900 rounded-full text-[9px] font-black uppercase text-green-400 border border-slate-800 tracking-widest">Client Rendering</span>
             </div>
+            
+            {/* Social & Featured Badges */}
+            <div className="pt-4 flex flex-wrap items-center gap-4">
+              {/* Product Hunt Badge */}
+              <a 
+                href="https://www.producthunt.com/products/qr-generator-online?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-qr-generator-online" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block transition-transform hover:scale-[1.02] active:scale-95 shrink-0"
+              >
+                <img 
+                  alt="QR Generator Online - Secure, customizable QR codes for every need. | Product Hunt" 
+                  width="250" 
+                  height="54" 
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1067648&theme=neutral&t=1769326132352"
+                  className="rounded-lg shadow-2xl shadow-indigo-500/10"
+                />
+              </a>
+
+              {/* Facebook Social Link */}
+              <a 
+                href="https://www.facebook.com/qrgenerator.online" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Follow QR Generator Online on Facebook"
+                className="w-[54px] h-[54px] bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:text-[#1877F2] hover:bg-white hover:border-white transition-all group shrink-0 shadow-lg"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </a>
+            </div>
           </div>
           
           <div>
