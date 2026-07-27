@@ -11,8 +11,38 @@ const ContactPage: React.FC = () => {
     document.title = t('meta_contact_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', t('meta_contact_desc'));
+      metaDesc.setAttribute('content', t('contact_intro_desc'));
     }
+
+    // Add structured data for the contact page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact QR Generator Online",
+      "url": "https://qr-generator.online/contact",
+      "description": t('contact_intro_desc'),
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "QR Generator Online",
+        "url": "https://qr-generator.online",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "frehmankt@gmail.com",
+          "contactType": "customer service",
+          "areaServed": "Worldwide",
+          "availableLanguage": ["English", "Spanish", "German", "French"]
+        }
+      }
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="contact"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'contact');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -28,10 +58,10 @@ const ContactPage: React.FC = () => {
             Responsive Studio Support
           </div>
           <h1 className="text-5xl md:text-6xl font-display font-black text-slate-900 tracking-tighter mb-8">
-            How Can We <span className="text-indigo-600">Help You?</span>
+            {t('contact_intro_title')}
           </h1>
           <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
-            Whether you are a freelancer designing high-end brand assets or a small business owner setting up your first <strong>contactless WiFi QR</strong>, we are here to support your growth.
+            {t('contact_intro_desc')}
           </p>
         </div>
       </section>
@@ -40,12 +70,12 @@ const ContactPage: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           <div className="space-y-12">
             <article className="space-y-6">
-              <h2 className="text-3xl font-display font-black text-slate-900">Reach the Experts</h2>
+              <h2 className="text-3xl font-display font-black text-slate-900">{t('contact_form_title')}</h2>
               <p className="text-slate-600 font-medium leading-relaxed">
-                At <strong>QR Generator Online</strong>, we believe in the human side of digital tools. If you have run into a technical issue with our <strong>QR code SVG generator</strong>, or if you need advice on which error correction level is best for your specific printing material, our team is standing by.
+                {t('contact_form_desc')}
               </p>
               <p className="text-slate-600 font-medium leading-relaxed">
-                We also welcome inquiries regarding business partnerships and custom API integrations. If your agency requires a white-label version of our <strong>branded QR maker</strong> or if you need bulk generation services for thousands of unique <strong>URL QR codes</strong>, please use the form or email us directly.
+                {t('contact_success_desc')}
               </p>
             </article>
 
@@ -59,7 +89,7 @@ const ContactPage: React.FC = () => {
                 },
                 { 
                   label: "Studio Operations", 
-                  val: "Monday - Friday, 9AM - 5PM EST", 
+                  val: t('contact_hours_desc'),
                   icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 },
                 { 
@@ -105,8 +135,8 @@ const ContactPage: React.FC = () => {
                   <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-4xl font-display font-black text-slate-900 tracking-tight">Success!</h3>
-                  <p className="text-slate-500 font-medium text-lg">We have received your message. Our team usually responds within 24 business hours.</p>
+                  <h3 className="text-4xl font-display font-black text-slate-900 tracking-tight">{t('contact_success_title')}</h3>
+                  <p className="text-slate-500 font-medium text-lg">{t('contact_success_desc')}</p>
                 </div>
                 <Button variant="outline" onClick={() => setSubmitted(false)} title="Go back to form" className="rounded-full mt-8 uppercase tracking-[0.2em] text-[10px] font-black px-10">Send Another Message</Button>
               </div>

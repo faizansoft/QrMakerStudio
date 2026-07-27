@@ -22,6 +22,45 @@ const WhatsAppPage: React.FC<PageProps> = (props) => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_whatsapp_desc'));
     }
+
+    // Add structured data for the WhatsApp QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "WhatsApp QR Code Generator",
+      "url": "https://qr-generator.online/whatsapp-qr-code-generator",
+      "description": t('meta_whatsapp_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "WhatsApp QR generator with pre-filled message support",
+        "Official wa.me API for maximum compatibility and speed",
+        "Instant chat access without saving contact numbers",
+        "Custom branding with logo integration and WhatsApp green colors",
+        "High-resolution SVG exports for business cards and marketing materials",
+        "Perfect for customer support and sales automation"
+      ],
+      "applicationSubCategory": "Messaging QR Code Generator",
+      "keywords": "WhatsApp QR code generator, chat QR code, WhatsApp link QR, messaging QR maker"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="whatsapp"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'whatsapp');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
 
   return (

@@ -40,53 +40,78 @@ export const CORNER_DOT_STYLES: { value: CornerDotType; label: string }[] = [
 export const FAQ_ITEMS = [
   {
     category: "General",
-    question: "How do I make a qr code with logo in middle?",
-    answer: "Using our advanced workspace, you can create a qr code with logo in the middle by navigating to the 'Logo' tab. Simply upload your PNG or SVG file, and our qr code generator with logo in middle functionality will automatically position it for maximum scannability. We recommend using 'High' error correction when adding center logos."
+    question: "How do I make a QR code with logo in middle?",
+    answer: "Using our advanced workspace, you can create a QR code with logo in middle by navigating to the 'Logo' tab. Simply upload your PNG or SVG file, and our QR code generator with logo in middle functionality will automatically position it for maximum scannability. We recommend using 'High' error correction when adding center logos to ensure reliable scanning even with the logo overlay. This custom QR code maker with logo integration is perfect for brand identity and professional marketing materials."
   },
   {
     category: "Design",
-    question: "Can I create a custom qr code for my brand?",
-    answer: "Yes! Our custom qr code maker allows you to change patterns, eye shapes, and colors. Whether you need a qr code generator with logo customization or unique dot styles like 'Classy' or 'Fluid', our tool provides everything you need to create a custom qr code that matches your brand identity perfectly."
+    question: "Can I create a custom QR code for my brand?",
+    answer: "Yes! Our custom QR code maker allows you to change patterns, eye shapes, and colors. Whether you need a QR code generator with logo customization or unique dot styles like 'Classy' or 'Fluid', our tool provides everything you need to create a custom QR code that matches your brand identity perfectly. Choose from preset color themes or enter custom hex codes for precise brand matching. The QR code SVG generator ensures your designs remain sharp at any size."
   },
   {
     category: "WiFi",
-    question: "How can I generate qr code for wifi access?",
-    answer: "To generate qr code for wifi, select the 'WiFi' tool from our homepage. Simply enter your network SSID and password. This create wifi qr code tool produces a permanent wifi qr code that guests can scan to join your network instantly without typing a password. It is the most secure wifi qr code generator available online."
+    question: "How can I generate QR code for WiFi access?",
+    answer: "To generate QR code for WiFi, select the 'WiFi' tool from our homepage. Simply enter your network SSID and password. This create WiFi QR code tool produces a permanent WiFi QR code that guests can scan to join your network instantly without typing a password. It is the most secure WiFi QR code generator available online, supporting WPA, WPA2, and WEP encryption standards. Perfect for restaurants, hotels, offices, and home networks."
   },
   {
     category: "Business",
-    question: "How do I create a qr code business card or visiting card?",
-    answer: "Our qr code business card generator (vcard) allows you to encode your name, phone, and email. You can generate a qr code visiting card that saves your contact details directly to a user's phone. This qr business card is perfect for digital networking and professional vcard qr code generator needs."
+    question: "How do I create a QR code business card or visiting card?",
+    answer: "Our QR code business card generator (vCard) allows you to encode your name, phone, email, company, and job title. You can generate a QR code visiting card that saves your contact details directly to a user's phone contacts app. This QR business card is perfect for digital networking, conferences, and professional vCard QR code generator needs. The vCard 3.0 standard ensures compatibility with all major smartphone platforms."
   },
   {
     category: "Communication",
-    question: "Is there a qr code generator for email or WhatsApp?",
-    answer: "Absolutely. We offer a dedicated qr code generator email tool and a whatsapp qr code generator. You can use our qr email generator to pre-fill subjects and bodies, or use the qr code generator for email to streamline customer inquiries. Our whatsapp qr code generator also supports pre-written messages for instant chat initiation."
+    question: "Is there a QR code generator for email or WhatsApp?",
+    answer: "Absolutely. We offer a dedicated QR code generator email tool and a WhatsApp QR code generator. You can use our QR email generator to pre-fill recipients, subjects, and message bodies, or use the QR code generator for email to streamline customer inquiries and support requests. Our WhatsApp QR code generator also supports pre-written messages for instant chat initiation, making it ideal for customer service and marketing campaigns."
   },
   {
     category: "Social Media",
-    question: "How do I generate facebook qr code for my page?",
-    answer: "To generate facebook qr code, use our Facebook tool and paste your profile or business page URL. It creates a direct link that helps grow your social media presence instantly."
+    question: "How do I generate Facebook QR code for my page?",
+    answer: "To generate Facebook QR code, use our Facebook tool and paste your profile or business page URL. It creates a direct link that helps grow your social media presence instantly. This social media QR code generator works for Facebook pages, groups, and events. Perfect for print advertising, business cards, and promotional materials where you want to drive traffic to your social media presence."
   },
   {
     category: "Forms",
-    question: "How can I make a qr code for google form?",
-    answer: "To create qr code for google form, copy your form's share link and paste it into our google form qr code tool. This qr code generator for google forms is ideal for surveys, feedback, and event registrations. It's the simplest way to get more google forms qr code responses."
+    question: "How can I make a QR code for Google Form?",
+    answer: "To create QR code for Google Form, copy your form's share link and paste it into our Google Form QR code tool. This QR code generator for Google Forms is ideal for surveys, feedback collection, event registrations, and lead generation. It's the simplest way to get more Google Forms QR code responses. The tool supports both long and shortened URLs for optimal QR code density and scannability."
   },
   {
     category: "Location",
-    question: "Can I use a qr code generator for location or Google Maps?",
-    answer: "Yes, our qr code generator location tool lets you enter coordinates or addresses. You can generate qr code for google maps specifically, making it easy for customers to find your physical store using our google maps qr code generator."
+    question: "Can I use a QR code generator for location or Google Maps?",
+    answer: "Yes, our QR code generator location tool lets you enter coordinates or addresses. You can generate QR code for Google Maps specifically, making it easy for customers to find your physical store using our Google Maps QR code generator. Perfect for retail locations, restaurants, event venues, and service businesses. The location QR code opens directly in the user's preferred mapping app."
   },
   {
     category: "Tech",
-    question: "Do you provide a qr code generator svg export?",
-    answer: "Yes, our svg qr code generator allows you to download your designs in vector format. The qr code svg generator is essential for professional printing, as it ensures your code remains sharp at any size on billboards or business cards."
+    question: "Do you provide a QR code generator SVG export?",
+    answer: "Yes, our SVG QR code generator allows you to download your designs in vector format. The QR code SVG generator is essential for professional printing, as it ensures your code remains sharp at any size on billboards, business cards, or promotional materials. Unlike raster formats, SVG files can be scaled infinitely without quality loss, making them the preferred choice for professional designers and print shops."
   },
   {
     category: "Various",
-    question: "What other tools do you offer like sms or bitcoin qr code generator?",
-    answer: "We offer a wide range of niche tools including a bitcoin qr code generator for payments, a qr code generator for sms marketing, and a text to qr code generator for simple notes. Our qr code generator phone number tool is also popular for instant dialing."
+    question: "What other tools do you offer like SMS or Bitcoin QR code generator?",
+    answer: "We offer a wide range of niche tools including a Bitcoin QR code generator for cryptocurrency payments, a QR code generator for SMS marketing campaigns, and a text to QR code generator for simple notes and serial numbers. Our QR code generator phone number tool is also popular for instant dialing applications. Additionally, we support event QR codes for calendar integration, crypto payment QR codes for multiple currencies, and location QR codes for navigation."
+  },
+  {
+    category: "Printing",
+    question: "What's the best format for printing QR codes?",
+    answer: "For professional printing, we always recommend using our QR code SVG generator. SVG (Scalable Vector Graphics) files maintain perfect quality at any size, from business cards to billboards. If you need raster formats, PNG is preferred over JPEG for better quality. Ensure your QR code has adequate contrast (dark on light), maintain the quiet zone (white border), and test print before mass production. High error correction (Level H) is recommended for materials that may get damaged."
+  },
+  {
+    category: "Reliability",
+    question: "Do these QR codes expire or have scan limits?",
+    answer: "No. We generate static QR codes where the data is encoded directly into the pattern. This means your QR codes work forever with no scan limits, no expiration dates, and no subscription fees. Unlike dynamic QR codes that rely on redirect servers (which can fail or cost money), our static codes are permanent and reliable. The only limitation is if the destination URL or content changes, you would need to generate a new QR code."
+  },
+  {
+    category: "Security",
+    question: "Is my data safe when using your QR code generator?",
+    answer: "Absolutely. Our QR code generator operates on a privacy-first architecture. All QR code generation happens locally in your browser using JavaScript. Your URLs, text, contact information, and other data never leave your device or touch our servers. We don't store, track, or transmit any of the information you enter. This makes our platform one of the most secure QR code generators available, perfect for sensitive business information and personal data."
+  },
+  {
+    category: "Compatibility",
+    question: "Will these QR codes work on all smartphones and scanners?",
+    answer: "Yes. Our QR codes are generated according to the ISO/IEC 18004 international standard, ensuring compatibility with all smartphone cameras (iPhone, Android, etc.), dedicated QR scanner apps, and industrial barcode scanners. We implement proper error correction and encoding techniques to guarantee scannability across different devices and lighting conditions. Whether using native camera apps or third-party scanners, your QR codes will work reliably."
+  },
+  {
+    category: "Advanced",
+    question: "Can I use QR codes for cryptocurrency payments?",
+    answer: "Yes, our crypto QR code generator supports multiple cryptocurrencies including Bitcoin, Ethereum, and other popular digital currencies. Simply enter the wallet address and optional amount to generate a payment QR code. When scanned, it opens the user's cryptocurrency wallet app pre-filled with the payment details. This is perfect for businesses accepting crypto payments, tipping, or peer-to-peer transactions. The QR code works with all major cryptocurrency wallet applications."
   }
 ];
 

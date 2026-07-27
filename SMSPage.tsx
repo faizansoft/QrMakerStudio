@@ -22,6 +22,45 @@ const SMSPage: React.FC<PageProps> = (props) => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_sms_desc'));
     }
+
+    // Add structured data for the SMS QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SMS QR Code Generator",
+      "url": "https://qr-generator.online/sms-qr-code-generator",
+      "description": t('meta_sms_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "SMS QR generator with pre-filled recipient and message",
+        "Global smsto: protocol for iOS and Android compatibility",
+        "Instant lead capture with high-conversion text messaging",
+        "Custom branding with logo integration and brand colors",
+        "High-resolution SVG exports for billboards and retail displays",
+        "Perfect for marketing campaigns, retail windows, and support channels"
+      ],
+      "applicationSubCategory": "SMS QR Code Generator",
+      "keywords": "SMS QR code generator, text message QR, SMS marketing QR, communication QR maker"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="sms"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'sms');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
   
   return (

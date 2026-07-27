@@ -9,8 +9,43 @@ const TermsPage: React.FC = () => {
     document.title = t('meta_terms_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', t('meta_terms_desc'));
+      metaDesc.setAttribute('content', t('terms_intro_desc'));
     }
+
+    // Add structured data for the terms page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "TermsOfService",
+      "name": "Terms of Service",
+      "url": "https://qr-generator.online/terms",
+      "description": t('terms_intro_desc'),
+      "publisher": {
+        "@type": "Organization",
+        "name": "QR Generator Online",
+        "url": "https://qr-generator.online"
+      },
+      "termsOfService": [
+        {
+          "@type": "Permission",
+          "name": "Full Commercial Ownership",
+          "description": t('terms_intellectual_desc')
+        },
+        {
+          "@type": "Permission",
+          "name": "Acceptable Use Policy",
+          "description": t('terms_usage_desc')
+        }
+      ]
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="terms"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'terms');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
 
   return (
@@ -21,9 +56,9 @@ const TermsPage: React.FC = () => {
             Transparent Governance
           </div>
           <h1 className="text-5xl md:text-6xl font-display font-black text-slate-900 tracking-tighter mb-4">
-            Terms of <br/><span className="text-indigo-600">Service.</span>
+            {t('terms_intro_title')}
           </h1>
-          <p className="text-xl text-slate-500 font-medium leading-relaxed">Professional rules for a professional utility. No hidden "gotchas" or fine-print traps.</p>
+          <p className="text-xl text-slate-500 font-medium leading-relaxed">{t('terms_intro_desc')}</p>
         </div>
       </section>
 

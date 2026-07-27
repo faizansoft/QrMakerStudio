@@ -22,6 +22,45 @@ const LocationPage: React.FC<PageProps> = (props) => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_location_desc'));
     }
+
+    // Add structured data for the Location QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Location QR Code Generator",
+      "url": "https://qr-generator.online/location-qr-code-generator",
+      "description": t('meta_location_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "Google Maps QR generator with precise GPS coordinates",
+        "Universal geo: URI scheme for Google, Apple, and Waze compatibility",
+        "GPS precision guides customers to exact doorway locations",
+        "Built-in location detection for easy store location input",
+        "High-resolution SVG exports for outdoor signage and real estate",
+        "Perfect for retail stores, real estate, and event logistics"
+      ],
+      "applicationSubCategory": "Location QR Code Generator",
+      "keywords": "Location QR code generator, Google Maps QR, GPS navigation QR, location coordinates QR"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="location"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'location');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
 
   const getCurrentLocation = () => {

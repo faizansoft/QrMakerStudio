@@ -39,7 +39,17 @@ const URLPage: React.FC<PageProps> = (props) => {
       "creator": {
         "@type": "Organization",
         "name": "QR Generator Online"
-      }
+      },
+      "featureList": [
+        "Custom URL QR code generator with logo integration",
+        "High-resolution SVG exports for professional printing",
+        "Support for restaurant menus, real estate, and events",
+        "Static QR codes that work forever without subscriptions",
+        "Privacy-first architecture with local browser processing",
+        "ISO/IEC 18004 compliant with advanced error correction"
+      ],
+      "applicationSubCategory": "QR Code Generator",
+      "keywords": "URL QR code generator, custom QR code, branded QR maker, WiFi QR code, vCard QR code"
     };
 
     let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="url"]');

@@ -22,6 +22,45 @@ const WiFiPage: React.FC<PageProps> = (props) => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_wifi_desc'));
     }
+
+    // Add structured data for the WiFi QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "WiFi QR Code Generator",
+      "url": "https://qr-generator.online/wifi-qr-code-generator",
+      "description": t('meta_wifi_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "Free WiFi QR code generator with password encryption",
+        "Support for WPA, WPA2, WPA3, and WEP security standards",
+        "Instant network access for guests without password sharing",
+        "Privacy-first architecture - data never leaves your device",
+        "High-resolution SVG exports for wall posters and table tents",
+        "Universal compatibility with iOS and Android devices"
+      ],
+      "applicationSubCategory": "WiFi QR Code Generator",
+      "keywords": "WiFi QR code generator, free WiFi QR, network password QR, WiFi sharing QR"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="wifi"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'wifi');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
   
   return (
@@ -115,14 +154,14 @@ const WiFiPage: React.FC<PageProps> = (props) => {
           <h2 className="text-3xl font-display font-black text-slate-900 text-center">Perfect Placement for WiFi Codes</h2>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { t: "Vacation Rentals", d: "Place a framed <strong>WiFi QR</strong> in the living room for Airbnb guests." },
-              { t: "Retail Stores", d: "Add a small code near the checkout to keep shoppers connected." },
-              { t: "Medical Offices", d: "Improve patient waiting room experiences with easy internet." },
-              { t: "Tech Conferences", d: "Display on huge screens for thousands of attendees at once." }
+              { title: "Vacation Rentals", desc: "Place a framed <strong>WiFi QR</strong> in the living room for Airbnb guests." },
+              { title: "Retail Stores", desc: "Add a small code near the checkout to keep shoppers connected." },
+              { title: "Medical Offices", desc: "Improve patient waiting room experiences with easy internet." },
+              { title: "Tech Conferences", desc: "Display on huge screens for thousands of attendees at once." }
             ].map((item, idx) => (
               <div key={idx} className="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-blue-200 transition-all">
-                <h3 className="font-bold text-slate-900 text-sm mb-2" dangerouslySetInnerHTML={{ __html: item.t }} />
-                <p className="text-xs text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.d }} />
+                <h3 className="font-bold text-slate-900 text-sm mb-2" dangerouslySetInnerHTML={{ __html: item.title }} />
+                <p className="text-xs text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.desc }} />
               </div>
             ))}
           </div>

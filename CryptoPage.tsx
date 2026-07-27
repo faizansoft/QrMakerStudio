@@ -22,6 +22,45 @@ const CryptoPage: React.FC<PageProps> = (props) => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_crypto_desc'));
     }
+
+    // Add structured data for the Crypto QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Crypto QR Code Generator",
+      "url": "https://qr-generator.online/crypto-qr-code-generator",
+      "description": t('meta_crypto_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "Bitcoin QR code generator with BIP-21 standard compliance",
+        "Support for Bitcoin, Ethereum, Solana, Dogecoin, and Litecoin",
+        "Zero transaction errors with perfectly encoded wallet addresses",
+        "Custom branding with business logos for payment verification",
+        "High-security SVG exports for retail and donation displays",
+        "Privacy-first architecture - wallet addresses never leave your device"
+      ],
+      "applicationSubCategory": "Cryptocurrency QR Code Generator",
+      "keywords": "Bitcoin QR code generator, crypto payment QR, wallet address QR, cryptocurrency QR maker"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="crypto"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'crypto');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
 
   return (

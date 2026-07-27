@@ -10,7 +10,7 @@ const AboutPage: React.FC = () => {
     document.title = t('meta_about_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', t('meta_about_desc'));
+      metaDesc.setAttribute('content', t('about_mission_desc'));
     }
 
     // Add structured data for the about page
@@ -19,12 +19,15 @@ const AboutPage: React.FC = () => {
       "@type": "AboutPage",
       "name": "About QR Generator Online",
       "url": "https://qr-generator.online/about",
-      "description": t('meta_about_desc'),
+      "description": t('about_mission_desc'),
       "mainEntity": {
         "@type": "Organization",
         "name": "QR Generator Online",
         "url": "https://qr-generator.online",
-        "description": "Professional QR code generator with custom branding options"
+        "description": "Professional QR code generator with custom branding options",
+        "founder": "Digital designers and engineers",
+        "foundingDate": "2024",
+        "slogan": "Professional QR codes for everyone"
       }
     };
 
@@ -46,11 +49,10 @@ const AboutPage: React.FC = () => {
             The Mission Behind the Studio
           </div>
           <h1 className="text-5xl md:text-7xl font-display font-black text-slate-900 tracking-tighter mb-8 leading-tight">
-            Elevating the <br/>
-            <span className="text-indigo-600">Standard of QR Design.</span>
+            {t('about_mission_title')}
           </h1>
           <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto">
-            QR Generator Online was born out of a simple realization: the digital-to-physical bridge is often broken by poor design and predatory pricing. We are here to fix that.
+            {t('about_mission_desc')}
           </p>
         </div>
       </section>
@@ -58,9 +60,9 @@ const AboutPage: React.FC = () => {
       <div className="max-w-5xl mx-auto px-6 py-24 space-y-32">
         <section className="grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
-            <h2 className="text-3xl font-display font-black text-slate-900">Why typical QR makers fail.</h2>
+            <h2 className="text-3xl font-display font-black text-slate-900">{t('about_story_title')}</h2>
             <p className="text-slate-600 leading-relaxed font-medium">
-              In your marketing journey, you’ve likely encountered <strong>QR code generators</strong> that look promising at first, only to hold your links hostage behind a monthly subscription. Or perhaps you've used a tool that produces blurry, low-resolution images that fail to scan when printed on a professional flyer.
+              {t('about_story_desc')}
             </p>
             <p className="text-slate-600 leading-relaxed font-medium">
               We believe that a <strong>customizable QR code</strong> is a fundamental business asset, not a temporary rental. Our studio produces <strong>static QR codes</strong>—mathematically encoded patterns that contain your data directly. This means your <strong>WiFi QR codes</strong> or <strong>vCard business cards</strong> will work for as long as the material they are printed on exists. No redirects, no "scan limits," and no expiration dates.
@@ -116,31 +118,52 @@ const AboutPage: React.FC = () => {
         </section>
 
         <section className="space-y-12 text-center max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 tracking-tight">Meet the Industry Standards.</h2>
-          <p className="text-lg text-slate-500 font-medium leading-relaxed">
-            We follow the ISO/IEC 18004 standards for QR code generation, ensuring that every code created in our studio is universally readable by any scanner in the world.
-          </p>
+          <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 tracking-tight">{t('about_values_title')}</h2>
           <div className="grid md:grid-cols-3 gap-8 pt-8 text-left">
             <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-4">
-              <h4 className="font-bold text-slate-900">Brand Designers</h4>
+              <div className="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 mb-4">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <h4 className="font-bold text-slate-900">Quality First</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Use our <strong>custom logo QR</strong> features to maintain visual consistency across your client's physical assets. Perfect for brand identity kits.
+                {t('about_values_1')}
               </p>
-              <Link to="/url-qr-code-generator" title="Try URL Maker" className="text-[10px] font-black uppercase text-indigo-600 hover:underline">Try URL Maker →</Link>
             </div>
             <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-4">
-              <h4 className="font-bold text-slate-900">Marketing Agencies</h4>
+              <div className="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 mb-4">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              </div>
+              <h4 className="font-bold text-slate-900">Privacy First</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Drive higher engagement rates with <strong>branded QR codes</strong> that users actually trust and want to scan.
+                {t('about_values_2')}
               </p>
-              <Link to="/facebook-qr-code-generator" title="Try Social Maker" className="text-[10px] font-black uppercase text-indigo-600 hover:underline">Try Social Maker →</Link>
             </div>
             <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-4">
-              <h4 className="font-bold text-slate-900">Small Businesses</h4>
+              <div className="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 mb-4">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <h4 className="font-bold text-slate-900">Accessibility</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Modernize your store with <strong>contactless WiFi access</strong> and <strong>Google Form feedback</strong> links that work instantly.
+                {t('about_values_3')}
               </p>
-              <Link to="/wifi-qr-code-generator" title="Try WiFi Maker" className="text-[10px] font-black uppercase text-indigo-600 hover:underline">Try WiFi Maker →</Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-slate-950 rounded-[4rem] p-12 md:p-20 text-white">
+          <div className="max-w-3xl mx-auto text-center space-y-8">
+            <h2 className="text-3xl md:text-4xl font-display font-black">{t('about_team_title')}</h2>
+            <p className="text-slate-400 text-lg leading-relaxed">
+              {t('about_team_desc')}
+            </p>
+            <div className="pt-8">
+              <h3 className="text-xl font-bold mb-4">{t('about_cta_title')}</h3>
+              <p className="text-slate-400 mb-8">{t('about_cta_desc')}</p>
+              <Link to="/url-qr-code-generator" title="Start Creating QR Codes">
+                <button className="px-10 py-4 bg-indigo-600 text-white rounded-full font-black uppercase text-xs tracking-widest shadow-xl shadow-indigo-100 hover:bg-indigo-700 transition-all">
+                  {t('home_cta_primary')}
+                </button>
+              </Link>
             </div>
           </div>
         </section>

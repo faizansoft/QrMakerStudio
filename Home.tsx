@@ -4,6 +4,8 @@ import { QRType } from './types';
 import { GENERATOR_DETAILS } from './constants';
 import { Button } from './components/Button';
 import { useLanguage } from './context/LanguageContext';
+import Statistics from './components/Statistics';
+import RecentCodes from './components/RecentCodes';
 
 const IconWrapper: React.FC<{ type: QRType }> = ({ type }) => {
   const iconConfig: Record<QRType, { color: string, svg: React.ReactNode }> = {
@@ -38,7 +40,7 @@ const Home: React.FC = () => {
     document.title = t('meta_home_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', t('hero_desc'));
+      metaDesc.setAttribute('content', t('home_hero_subtitle'));
     }
 
     // Add structured data for the homepage
@@ -47,7 +49,7 @@ const Home: React.FC = () => {
       "@type": "WebApplication",
       "name": "QR Generator Online",
       "url": "https://qr-generator.online",
-      "description": t('hero_desc'),
+      "description": t('home_hero_subtitle'),
       "applicationCategory": "DesignApplication",
       "operatingSystem": "Web",
       "offers": {
@@ -58,7 +60,15 @@ const Home: React.FC = () => {
       "creator": {
         "@type": "Organization",
         "name": "QR Generator Online"
-      }
+      },
+      "featureList": [
+        "Custom QR code generator with logo integration",
+        "High-resolution SVG exports for professional printing",
+        "Multiple QR code types: URL, WiFi, vCard, social media, and more",
+        "Privacy-first architecture with local browser processing",
+        "ISO/IEC 18004 compliant with error correction up to 30%",
+        "Free forever with no subscriptions or scan limits"
+      ]
     };
 
     let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="home"]');
@@ -86,12 +96,15 @@ const Home: React.FC = () => {
           <h1 className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight mb-6">
             {t('hero_title_part1')} <br/><span className="text-indigo-600">{t('hero_title_part2')}</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto mb-6 leading-relaxed">
             {t('hero_desc')}
           </p>
+          <p className="text-base md:text-lg text-slate-400 font-medium max-w-3xl mx-auto mb-10 leading-relaxed">
+            {t('home_hero_subtitle')}
+          </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/#tools" title="Scroll to our suite of professional QR tools"><Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">{t('btn_explore_tools')}</Button></Link>
-            <Link to="/about" title="Read about our studio mission and values"><Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">Learn About Our Mission</Button></Link>
+            <Link to="/#tools" title="Scroll to our suite of professional QR tools"><Button size="lg" className="rounded-full px-8 py-4 shadow-xl shadow-indigo-100 uppercase tracking-widest text-xs font-black">{t('home_cta_primary')}</Button></Link>
+            <Link to="/about" title="Read about our studio mission and values"><Button variant="outline" size="lg" className="rounded-full px-8 py-4 uppercase tracking-widest text-xs font-black">{t('home_cta_secondary')}</Button></Link>
           </div>
         </div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-10">
@@ -105,6 +118,11 @@ const Home: React.FC = () => {
           <h2 className="text-3xl font-display font-black text-slate-900 mb-4">Explore Our QR Generation Suite</h2>
           <div className="h-1.5 w-16 bg-indigo-600 mx-auto rounded-full mb-4"></div>
           <p className="text-slate-400 font-medium text-sm">Every tool is optimized for the highest scannability and professional branding standards.</p>
+        </div>
+        
+        <!-- Stats Section -->
+        <div className="mb-16">
+          <Statistics />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {toolKeys.map(type => (
@@ -126,6 +144,8 @@ const Home: React.FC = () => {
           ))}
         </div>
       </section>
+
+      <RecentCodes />
 
       <section className="py-24 bg-slate-50 border-y border-slate-100">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">

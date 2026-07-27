@@ -21,6 +21,45 @@ const GoogleFormPage: React.FC<PageProps> = (props) => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_googleform_desc'));
     }
+
+    // Add structured data for the Google Form QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Google Form QR Code Generator",
+      "url": "https://qr-generator.online/googleform-qr-code-generator",
+      "description": t('meta_googleform_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "Google Form QR generator for surveys and feedback",
+        "Works with both standard and shortened forms.gle URLs",
+        "Instant form access for higher response rates",
+        "Perfect for customer feedback, event registration, and research",
+        "High-resolution SVG exports for table tents and flyers",
+        "Mobile-optimized for on-the-go survey participation"
+      ],
+      "applicationSubCategory": "Survey QR Code Generator",
+      "keywords": "Google Form QR generator, survey QR code, feedback QR code, form QR maker"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="googleform"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'googleform');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
   
   return (

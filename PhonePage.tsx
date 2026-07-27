@@ -21,6 +21,45 @@ const PhonePage: React.FC<PageProps> = (props) => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_phone_desc'));
     }
+
+    // Add structured data for the Phone QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Phone Call QR Code Generator",
+      "url": "https://qr-generator.online/phone-qr-code-generator",
+      "description": t('meta_phone_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "Phone call QR generator with international number support",
+        "Universal tel: protocol for iOS, Android, and HarmonyOS compatibility",
+        "Zero errors with perfectly encoded phone numbers",
+        "High-resolution SVG exports for outdoor signage and business cards",
+        "Perfect for real estate signs, direct mail, and in-store displays",
+        "Custom branding with logo integration for business verification"
+      ],
+      "applicationSubCategory": "Phone QR Code Generator",
+      "keywords": "Phone QR code generator, call QR code, phone number QR, voice communication QR"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="phone"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'phone');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
   
   return (

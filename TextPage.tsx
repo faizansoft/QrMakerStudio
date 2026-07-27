@@ -21,6 +21,45 @@ const TextPage: React.FC<PageProps> = (props) => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_text_desc'));
     }
+
+    // Add structured data for the Text QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Text to QR Code Generator",
+      "url": "https://qr-generator.online/text-qr-code-generator",
+      "description": t('meta_text_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "Text to QR generator for offline data storage",
+        "Self-contained QR codes that work without internet connection",
+        "Perfect for inventory management, serial numbers, and labeling",
+        "High data density with up to 2000 character capacity",
+        "High-level error correction for damaged code recovery",
+        "SVG vector exports for industrial printing and product labels"
+      ],
+      "applicationSubCategory": "Text QR Code Generator",
+      "keywords": "Text to QR generator, plain text QR, offline data QR, inventory QR code"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="text"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'text');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
   
   return (

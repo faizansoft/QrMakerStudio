@@ -22,6 +22,45 @@ const VCardPage: React.FC<PageProps> = (props) => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_vcard_desc'));
     }
+
+    // Add structured data for the vCard QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "vCard QR Code Generator",
+      "url": "https://qr-generator.online/vcard-qr-code-generator",
+      "description": t('meta_vcard_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "Professional vCard QR code generator for digital business cards",
+        "vCard 3.0 standard with iOS, Android, and Outlook compatibility",
+        "High data density patterns for fast scanning with long contact details",
+        "Center logo support for professional headshots and brand logos",
+        "Vector SVG exports for printing on visiting cards and presentation slides",
+        "Privacy-first architecture - contact data never leaves your device"
+      ],
+      "applicationSubCategory": "vCard QR Code Generator",
+      "keywords": "vCard QR code generator, digital business card, QR code visiting card, contact QR maker"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="vcard"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'vcard');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
 
   return (

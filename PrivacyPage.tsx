@@ -9,7 +9,7 @@ const PrivacyPage: React.FC = () => {
     document.title = t('meta_privacy_title');
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', t('meta_privacy_desc'));
+      metaDesc.setAttribute('content', t('privacy_intro_desc'));
     }
   }, [t]);
 
@@ -21,9 +21,9 @@ const PrivacyPage: React.FC = () => {
             On-Device Protection
           </div>
           <h1 className="text-5xl md:text-6xl font-display font-black text-slate-900 tracking-tighter mb-4">
-            A New Standard for <br/><span className="text-indigo-600">User Privacy.</span>
+            {t('privacy_intro_title')}
           </h1>
-          <p className="text-xl text-slate-500 font-medium leading-relaxed">At <strong>QR Generator Online</strong>, we believe your data belongs to you. Here is the technical breakdown of our security promise.</p>
+          <p className="text-xl text-slate-500 font-medium leading-relaxed">{t('privacy_intro_desc')}</p>
         </div>
       </section>
 

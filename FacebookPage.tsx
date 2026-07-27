@@ -21,6 +21,45 @@ const FacebookPage: React.FC<PageProps> = (props) => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_facebook_desc'));
     }
+
+    // Add structured data for the Facebook QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Facebook QR Code Generator",
+      "url": "https://qr-generator.online/facebook-qr-code-generator",
+      "description": t('meta_facebook_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "Branded Facebook QR generator for pages, groups, and profiles",
+        "Instant follow growth with direct scannable links",
+        "Custom branding with logo integration and brand colors",
+        "High-resolution SVG exports for product packaging and event signage",
+        "Static QR codes that work forever without subscriptions",
+        "Perfect for marketing campaigns and community building"
+      ],
+      "applicationSubCategory": "Social Media QR Code Generator",
+      "keywords": "Facebook QR code generator, social media QR, Facebook page QR, community QR maker"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="facebook"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'facebook');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
   
   return (

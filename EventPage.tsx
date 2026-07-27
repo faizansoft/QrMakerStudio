@@ -29,6 +29,45 @@ END:VEVENT`;
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_event_desc'));
     }
+
+    // Add structured data for the Event QR generator page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Event QR Code Generator",
+      "url": "https://qr-generator.online/event-qr-code-generator",
+      "description": t('meta_event_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      },
+      "featureList": [
+        "Event QR generator with iCalendar standard compliance",
+        "Universal compatibility with Google, Apple, and Outlook calendars",
+        "Complete event details in single scan: title, location, dates, times",
+        "Perfect for weddings, conferences, meetings, and local meetups",
+        "High-resolution SVG exports for invitations and promotional materials",
+        "Eliminates manual entry and maximizes guest attendance"
+      ],
+      "applicationSubCategory": "Event QR Code Generator",
+      "keywords": "Event QR code generator, calendar QR code, event invitation QR, meeting QR maker"
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="event"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'event');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
 
   return (
