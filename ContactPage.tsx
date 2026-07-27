@@ -74,9 +74,6 @@ const ContactPage: React.FC = () => {
               <p className="text-slate-600 font-medium leading-relaxed">
                 {t('contact_form_desc')}
               </p>
-              <p className="text-slate-600 font-medium leading-relaxed">
-                {t('contact_success_desc')}
-              </p>
             </article>
 
             <div className="space-y-8">

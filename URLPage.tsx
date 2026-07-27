@@ -147,15 +147,72 @@ const URLPage: React.FC<PageProps> = (props) => {
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-indigo-400">The Power of SVG</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Our <strong>QR code generator SVG</strong> option provides vector-based files. Unlike pixel-based images, an SVG (Scalable Vector Graphics) is a mathematical description of the pattern. This means you can scale it to the size of a billboard or shrink it to a postage stamp without any loss in sharpness or scannability.
-              </p>
+              <p className="text-slate-300 leading-relaxed">For professional printing, SVG (Scalable Vector Graphics) is the gold standard. Unlike raster formats like PNG, SVG uses mathematical paths rather than pixels. This means your <strong>custom QR code</strong> can be scaled from a business card to a billboard without any loss of quality or sharpness.</p>
+              <p className="text-slate-300 leading-relaxed">SVG files also have smaller file sizes for complex patterns and maintain perfect edges when printed. Our <strong>QR code SVG generator</strong> ensures that the fine details of the QR modules remain crisp, guaranteeing the highest possible scan rate even on challenging materials.</p>
             </div>
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-indigo-400">Web-Ready PNG & WebP</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                For websites, emails, and social media posts, our high-resolution PNG and WebP exports are optimized for fast loading and clear display on all screens, including Retina and high-DPI displays.
-              </p>
+              <h3 className="text-xl font-bold text-indigo-400">When to Use PNG</h3>
+              <p className="text-slate-300 leading-relaxed">PNG format is ideal for digital use cases such as websites, emails, and social media. PNG provides lossless compression and supports transparency, making it perfect for embedding in digital documents and presentations.</p>
+              <p className="text-slate-300 leading-relaxed">For small print runs like stickers or temporary labels, PNG at 300 DPI can suffice. However, for any permanent or large-scale printing, we strongly recommend SVG to ensure the <strong>QR code with logo</strong> remains scannable regardless of size or viewing distance.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Comprehensive URL QR Guide Section -->
+        <section className="space-y-12">
+          <h2 className="text-3xl font-display font-black text-slate-900 text-center">The Complete Guide to URL QR Codes</h2>
+          <div className="space-y-8">
+            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Understanding URL QR Codes</h3>
+              <p className="text-slate-600 leading-relaxed mb-4">URL QR codes are the most versatile and widely used type of QR code. They encode a web address (URL) that, when scanned, directs the user's smartphone browser to the specified website. This simple yet powerful technology bridges the gap between physical and digital marketing, enabling instant access to online content with a single scan.</p>
+              <p className="text-slate-600 leading-relaxed">Unlike text QR codes that store information directly in the pattern, URL QR codes rely on internet connectivity to function. When scanned, the smartphone decodes the URL and automatically opens the default web browser to navigate to the destination. This makes them ideal for driving traffic to websites, landing pages, social media profiles, and online resources.</p>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Best Practices for URL QR Codes</h3>
+              <p className="text-slate-600 leading-relaxed mb-4">To maximize the effectiveness of your URL QR codes, follow these professional best practices:</p>
+              <ul className="space-y-3 text-slate-600">
+                <li className="flex gap-3"><span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 shrink-0"></span> <strong>Use Short URLs:</strong> Long URLs create complex QR patterns that are harder to scan. Use URL shorteners like bit.ly or custom short links to keep codes simple and scannable.</li>
+                <li className="flex gap-3"><span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 shrink-0"></span> <strong>Mobile-Optimized Destinations:</strong> Ensure your destination page is mobile-responsive. Most QR scans happen on smartphones, so a poor mobile experience will defeat the purpose.</li>
+                <li className="flex gap-3"><span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 shrink-0"></span> <strong>Clear Call-to-Action:</strong> Place your QR code with accompanying text explaining what to expect (e.g., "Scan to Learn More" or "Scan for Exclusive Offer").</li>
+                <li className="flex gap-3"><span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 shrink-0"></span> <strong>Test Before Printing:</strong> Always test your QR code with multiple devices and scanning apps before bulk printing to ensure universal compatibility.</li>
+                <li className="flex gap-3"><span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 shrink-0"></span> <strong>Monitor Performance:</strong> While static codes don't provide built-in analytics, you can use URL tracking parameters to measure engagement through your web analytics.</li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Industry Applications</h3>
+              <p className="text-slate-600 leading-relaxed mb-4">URL QR codes serve countless purposes across industries. Here are some of the most effective applications:</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <h4 className="font-bold text-slate-900">Marketing & Advertising</h4>
+                  <p className="text-sm text-slate-500">Drive traffic to landing pages, promotional offers, and digital campaigns from print materials like flyers, posters, and magazines.</p>
+                </div>
+                <div className="space-y-3">
+                  <h4 className="font-bold text-slate-900">Retail & E-commerce</h4>
+                  <p className="text-sm text-slate-500">Link to product pages, shopping carts, or special promotions directly from in-store displays and product packaging.</p>
+                </div>
+                <div className="space-y-3">
+                  <h4 className="font-bold text-slate-900">Events & Conferences</h4>
+                  <p className="text-sm text-slate-500">Provide instant access to event schedules, speaker bios, and downloadable materials from printed programs and badges.</p>
+                </div>
+                <div className="space-y-3">
+                  <h4 className="font-bold text-slate-900">Real Estate</h4>
+                  <p className="text-sm text-slate-500">Connect potential buyers to virtual tours, property details, and contact information from "For Sale" signs and brochures.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Print Quality & Size Guidelines</h3>
+              <p className="text-slate-600 leading-relaxed mb-4">The physical quality of your URL QR code directly impacts its scannability. Follow these guidelines for optimal results:</p>
+              <ul className="space-y-3 text-slate-600">
+                <li className="flex gap-3"><span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 shrink-0"></span> <strong>Minimum Size:</strong> Ensure your QR code is at least 2cm x 2cm (0.8 inches) for reliable scanning. Smaller codes may be difficult for smartphone cameras to focus on.</li>
+                <li className="flex gap-3"><span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 shrink-0"></span> <strong>High Resolution:</strong> Use at least 300 DPI for print materials. Higher resolution prevents pixelation and ensures sharp edges for accurate scanning.</li>
+                <li className="flex gap-3"><span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 shrink-0"></span> <strong>Quiet Zone:</strong> Maintain at least 4 modules of white space around the QR code. This "quiet zone" prevents interference from nearby design elements.</li>
+                <li className="flex gap-3"><span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 shrink-0"></span> <strong>Contrast:</strong> Use high contrast between the QR pattern and background. Dark patterns on light backgrounds work best. Avoid reverse (light on dark) as they scan poorly.</li>
+                <li className="flex gap-3"><span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 shrink-0"></span> <strong>Material Choice:</strong> Avoid highly glossy or reflective materials that can create glare. Matte or semi-gloss surfaces provide better scanning results.</li>
+              </ul>
             </div>
           </div>
         </section>

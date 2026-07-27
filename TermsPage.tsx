@@ -56,7 +56,7 @@ const TermsPage: React.FC = () => {
             Transparent Governance
           </div>
           <h1 className="text-5xl md:text-6xl font-display font-black text-slate-900 tracking-tighter mb-4">
-            {t('terms_intro_title')}
+            Terms of <br/><span className="text-indigo-600">Service.</span>
           </h1>
           <p className="text-xl text-slate-500 font-medium leading-relaxed">{t('terms_intro_desc')}</p>
         </div>

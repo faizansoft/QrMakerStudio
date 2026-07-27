@@ -144,16 +144,20 @@ const baseTranslations: Record<TranslationKey, string> = {
   // Contact Page Content
   contact_intro_title: 'Get in Touch with Our QR Experts',
   contact_intro_desc: 'Whether you need technical support, have partnership inquiries, or want to suggest features, our team is here to help. We pride ourselves on responsive, knowledgeable support for all your QR code needs.',
-  contact_form_title: 'Send Us a Message',
-  contact_form_desc: 'Fill out the form below and we\'ll get back to you within 24 business hours. For urgent matters, email us directly.',
-  contact_success_title: 'Message Sent Successfully!',
-  contact_success_desc: 'Thank you for reaching out. Our team has received your message and will respond within 24 business hours.',
-  contact_hours_title: 'Business Hours',
-  contact_hours_desc: 'Monday - Friday: 9:00 AM - 5:00 PM EST. Response times may vary outside business hours.',
+  contact_form_title: 'Reach the Experts',
+  contact_form_desc: 'At QR Generator Online, we believe in the human side of digital tools. If you have run into a technical issue with our QR code SVG generator, or if you need advice on which error correction level is best for your specific printing material, our team is standing by.',
+  contact_success_title: 'Success!',
+  contact_success_desc: 'We have received your message. Our team usually responds within 24 business hours.',
+  contact_hours_title: 'Studio Operations',
+  contact_hours_desc: 'Monday - Friday, 9AM - 5PM EST',
+  contact_form_title: 'Reach the Experts',
+  contact_form_desc: 'At QR Generator Online, we believe in the human side of digital tools. If you have run into a technical issue with our QR code SVG generator, or if you need advice on which error correction level is best for your specific printing material, our team is standing by.',
+  contact_success_title: 'Success!',
+  contact_success_desc: 'We have received your message. Our team usually responds within 24 business hours.',
+  privacy_intro_title: 'Privacy Policy',
+  privacy_intro_desc: 'Your privacy is our top priority. We use local-rendering technology to ensure your data never leaves your device.',
   
   // Privacy Page Content
-  privacy_intro_title: 'Your Privacy is Our Priority',
-  privacy_intro_desc: 'We operate on a privacy-first architecture. All QR code generation happens locally in your browser. Your data, URLs, and content never leave your device unless you choose to share it.',
   privacy_data_title: 'Data Collection & Usage',
   privacy_data_desc: 'We do not collect, store, or transmit any data you enter into our QR generator. All processing occurs client-side. We use basic analytics to improve our service, but this data is anonymized and cannot be linked to your specific QR codes.',
   privacy_cookies_title: 'Cookie Policy',
@@ -162,8 +166,6 @@ const baseTranslations: Record<TranslationKey, string> = {
   privacy_rights_desc: 'You have full control over your data. Since processing is local, you can clear your browser data at any time. We do not store account information or require registration for basic QR generation.',
   
   // Terms Page Content
-  terms_intro_title: 'Terms of Service',
-  terms_intro_desc: 'By using QR Generator Online, you agree to these terms. We provide free QR code generation services with full commercial usage rights for generated codes.',
   terms_usage_title: 'Acceptable Use Policy',
   terms_usage_desc: 'Our platform is for legitimate QR code generation. You may not use our service for illegal activities, malicious content, or to create harmful QR codes. Generated QR codes are your responsibility.',
   terms_intellectual_title: 'Intellectual Property & Ownership',
