@@ -46,15 +46,41 @@ const SEOManager = () => {
       const title = document.title;
       const description = document.querySelector('meta[name="description"]')?.getAttribute('content') || '';
 
-      // Open Graph
-      document.querySelector('meta[property="og:url"]')?.setAttribute('content', absoluteUrl);
-      document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
-      document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+      // Open Graph - Create if they don't exist
+      const ogTags = [
+        { property: 'og:url', content: absoluteUrl },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:type', content: 'website' }
+      ];
 
-      // Twitter
-      document.querySelector('meta[name="twitter:url"]')?.setAttribute('content', absoluteUrl);
-      document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', title);
-      document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description);
+      ogTags.forEach(tag => {
+        let meta = document.querySelector(`meta[property="${tag.property}"]`) as HTMLMetaElement;
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.setAttribute('property', tag.property);
+          document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', tag.content);
+      });
+
+      // Twitter - Create if they don't exist
+      const twitterTags = [
+        { name: 'twitter:url', content: absoluteUrl },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:card', content: 'summary_large_image' }
+      ];
+
+      twitterTags.forEach(tag => {
+        let meta = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.setAttribute('name', tag.name);
+          document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', tag.content);
+      });
     }, 50);
 
     return () => clearTimeout(timeout);

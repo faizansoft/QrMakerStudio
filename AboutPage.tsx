@@ -12,6 +12,30 @@ const AboutPage: React.FC = () => {
     if (metaDesc) {
       metaDesc.setAttribute('content', t('meta_about_desc'));
     }
+
+    // Add structured data for the about page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About QR Generator Online",
+      "url": "https://qr-generator.online/about",
+      "description": t('meta_about_desc'),
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "QR Generator Online",
+        "url": "https://qr-generator.online",
+        "description": "Professional QR code generator with custom branding options"
+      }
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="about"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'about');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
 
   return (

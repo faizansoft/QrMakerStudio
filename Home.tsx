@@ -41,6 +41,35 @@ const Home: React.FC = () => {
       metaDesc.setAttribute('content', t('hero_desc'));
     }
 
+    // Add structured data for the homepage
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "QR Generator Online",
+      "url": "https://qr-generator.online",
+      "description": t('hero_desc'),
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "QR Generator Online"
+      }
+    };
+
+    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="home"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('type', 'application/ld+json');
+      scriptTag.setAttribute('data-schema', 'home');
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(structuredData);
+
     if (hash === '#tools') {
       const element = document.getElementById('tools');
       if (element) element.scrollIntoView({ behavior: 'smooth' });
