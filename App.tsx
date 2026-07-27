@@ -10,6 +10,7 @@ import TermsPage from './TermsPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import { LanguageProvider } from './context/LanguageContext';
 
 const SEOManager = () => {
   const location = useLocation();
@@ -106,25 +107,27 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <Router basename={basename}>
-      <ScrollToTop />
-      <SEOManager />
-      <div className="min-h-screen bg-slate-50 selection:bg-indigo-100 flex flex-col">
-        <Header />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/faqs-qr-code-generator" element={<FAQPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <LanguageProvider>
+      <Router basename={basename}>
+        <ScrollToTop />
+        <SEOManager />
+        <div className="min-h-screen bg-slate-50 selection:bg-indigo-100 flex flex-col">
+          <Header />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/faqs-qr-code-generator" element={<FAQPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </LanguageProvider>
   );
 };
 
