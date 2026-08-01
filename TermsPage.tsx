@@ -6,126 +6,72 @@ const TermsPage: React.FC = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = t('meta_terms_title');
+    document.title = "Terms of Service | Commercial Usage Rights | QR Maker Studio";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', t('terms_intro_desc'));
+      metaDesc.setAttribute('content', 'QR Maker Studio terms of service. Enjoy 100% full commercial ownership of all generated QR code images with zero attribution or licensing fees.');
     }
-
-    // Add structured data for the terms page
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "TermsOfService",
-      "name": "Terms of Service",
-      "url": "https://qr-generator.online/terms",
-      "description": t('terms_intro_desc'),
-      "publisher": {
-        "@type": "Organization",
-        "name": "QR Generator Online",
-        "url": "https://qr-generator.online"
-      },
-      "termsOfService": [
-        {
-          "@type": "Permission",
-          "name": "Full Commercial Ownership",
-          "description": t('terms_intellectual_desc')
-        },
-        {
-          "@type": "Permission",
-          "name": "Acceptable Use Policy",
-          "description": t('terms_usage_desc')
-        }
-      ]
-    };
-
-    let scriptTag = document.querySelector('script[type="application/ld+json"][data-schema="terms"]');
-    if (!scriptTag) {
-      scriptTag = document.createElement('script');
-      scriptTag.setAttribute('type', 'application/ld+json');
-      scriptTag.setAttribute('data-schema', 'terms');
-      document.head.appendChild(scriptTag);
-    }
-    scriptTag.textContent = JSON.stringify(structuredData);
   }, [t]);
 
   return (
-    <div className="animate-in fade-in duration-700 pb-24">
-      <section className="bg-white pt-20 pb-16 border-b border-slate-100 mb-12">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 text-indigo-700 text-[10px] font-black uppercase tracking-widest rounded-full border border-indigo-100 mb-6">
-            Transparent Governance
+    <div className="animate-in pb-24 bg-white">
+      {/* Header Banner */}
+      <section className="bg-gradient-hero pt-16 pb-16 border-b border-neutral-100 text-center">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
+            Commercial Usage Rights
           </div>
-          <h1 className="text-5xl md:text-6xl font-display font-black text-slate-900 tracking-tighter mb-4">
-            Terms of <br/><span className="text-indigo-600">Service.</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Terms of Service
           </h1>
-          <p className="text-xl text-slate-500 font-medium leading-relaxed">{t('terms_intro_desc')}</p>
+          <p className="text-lg text-gray-600 max-w-xl mx-auto">
+            Full commercial ownership, transparent governance, and print guidelines.
+          </p>
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-6 space-y-16">
-        <article className="space-y-6">
-          <h2 className="text-3xl font-display font-black text-slate-900">1. Full Commercial Ownership</h2>
-          <p className="text-slate-600 font-medium leading-relaxed text-lg">
-            Unlike many "freemium" sites, <strong>QR Generator Online</strong> grants you full, perpetual ownership of the visual assets you generate. Whether you are using our <strong>QR business card generator</strong> for your personal brand or producing thousands of <strong>restaurant menu QR codes</strong> for a client, you hold the commercial rights to the output files.
-          </p>
-          <div className="p-8 bg-indigo-50 rounded-[3rem] border border-indigo-100">
-             <p className="text-sm text-indigo-900 font-bold leading-relaxed">
-               You are free to print, distribute, and resell the generated QR images as part of your design services. We do not require any attribution or "watermarking" on your final high-resolution exports.
-             </p>
-          </div>
-        </article>
-
-        <section className="space-y-6">
-          <h2 className="text-3xl font-display font-black text-slate-900">2. Ethical Usage & Responsibility</h2>
-          <p className="text-slate-600 font-medium leading-relaxed">
-            While we provide a <strong>customizable QR maker</strong> for all, we maintain a zero-tolerance policy for malicious activity. You agree not to use our tool to create links to phishing websites, malware distribution centers, or illegal content.
-          </p>
-          <p className="text-slate-600 font-medium leading-relaxed">
-            Since our codes are <strong>static QR codes</strong>, we do not have the technical ability to "turn off" a code once it is printed. However, we reserve the right to ban specific users or IP ranges from accessing our generation studio if they are found to be violating these ethical standards. You are solely responsible for the content you encode into your <strong>custom QR codes</strong>.
+      {/* Main Content */}
+      <div className="max-w-4xl mx-auto px-4 py-16 space-y-12 text-gray-700 leading-relaxed">
+        
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-gray-900">1. Commercial Ownership</h2>
+          <p>
+            You hold 100% full, perpetual commercial rights to all QR Code images (PNG, SVG, WebP) created using <strong>QR Maker Studio</strong>. You can print, publish, or sell marketing materials featuring these QR codes without licensing fees or mandatory watermarks.
           </p>
         </section>
 
-        <section className="space-y-6">
-          <h2 className="text-3xl font-display font-black text-slate-900">3. Print Warranty & Scannability</h2>
-          <p className="text-slate-600 font-medium leading-relaxed">
-            We use the highest industry standards for QR generation (ISO/IEC 18004). However, environmental factors such as ink bleed, paper texture, lighting conditions, and camera hardware quality are outside of our control. 
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-gray-900">2. Print Guidelines & Scannability</h2>
+          <p>
+            While our generator strictly adheres to ISO/IEC 18004 standards, environmental print factors (contrast, quiet zone margins, surface texture, lighting) affect scannability.
           </p>
-          <div className="bg-slate-50 p-10 rounded-[3rem] border border-slate-100 space-y-6">
-             <h4 className="font-bold text-slate-900 uppercase text-[10px] tracking-[0.3em]">Mandatory Print Checklist</h4>
-             <p className="text-xs text-slate-500 leading-relaxed">
-               By using this site, you acknowledge that <strong>QR Generator Online</strong> is not liable for any costs associated with misprinted marketing materials, blurry signage, or unreadable codes. We strongly recommend:
-             </p>
-             <ul className="space-y-3 text-xs text-slate-500 list-disc pl-5">
-               <li>Always performing a <strong>test scan</strong> with multiple devices before bulk printing.</li>
-               <li>Utilizing our <strong>QR code SVG export</strong> for any material larger than a business card.</li>
-               <li>Using "High" error correction for any code featuring a <strong>logo in the middle</strong>.</li>
-               <li>Maintaining high contrast between the pattern and the background color.</li>
-             </ul>
+          <div className="bg-gray-50 border border-neutral-200 rounded-2xl p-6 space-y-3 text-sm">
+            <h3 className="font-bold text-gray-900 uppercase text-xs tracking-wider">Mandatory Print Checklist</h3>
+            <ul className="list-disc pl-5 space-y-1 text-gray-600">
+              <li>Always conduct test scans on multiple phone devices before mass printing.</li>
+              <li>Use <strong>Vector SVG</strong> for billboard or large print formats.</li>
+              <li>Set error correction to <strong>Level H</strong> when adding center brand logos.</li>
+              <li>Maintain high contrast between pattern and background colors.</li>
+            </ul>
           </div>
         </section>
 
-        <section className="space-y-6">
-          <h2 className="text-3xl font-display font-black text-slate-900">4. Intellectual Property</h2>
-          <p className="text-slate-600 font-medium leading-relaxed">
-            While you own the generated QR files, the underlying software, unique pattern algorithms, and brand assets of <strong>QR Generator Online</strong> are our protected intellectual property. You may not scrape our site, reverse-engineer our design theme engine, or attempt to repackage our core generation logic as a competing commercial service without express written permission.
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-gray-900">3. Acceptable Use Policy</h2>
+          <p>
+            Users are strictly prohibited from using QR Maker Studio to generate codes pointing to phishing sites, malware, scam portals, or illegal content.
           </p>
         </section>
 
-        <section className="space-y-6 border-t border-slate-100 pt-12">
-          <h2 className="text-2xl font-display font-black text-slate-900">5. Limitation of Liability</h2>
-          <p className="text-slate-600 font-medium leading-relaxed">
-            Our <strong>branded QR code generator</strong> is provided "as is" without any warranties of any kind. We are not responsible for business losses, data corruption, or indirect damages resulting from the use or inability to use our studio tools.
-          </p>
-          <p className="text-slate-500 text-sm italic">
-            Terms of Service Last Updated: January 2026. For legal or licensing inquiries, please contact <a href="mailto:frehmankt@gmail.com" title="Email Support" className="text-indigo-600 font-bold">frehmankt@gmail.com</a>.
-          </p>
-        </section>
-
-        <div className="pt-12 text-center">
-           <Link to="/about" title="About Us" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest mx-4">Our Mission</Link>
-           <Link to="/privacy" title="Privacy Policy" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest mx-4">Privacy Policy</Link>
-           <Link to="/contact" title="Contact Support" className="text-[10px] font-black uppercase text-indigo-500 hover:underline tracking-widest mx-4">Contact Support</Link>
+        <div className="pt-8 border-t border-neutral-200 flex flex-wrap gap-4">
+          <Link to="/privacy" className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-xl text-xs transition-colors">
+            Privacy Policy
+          </Link>
+          <Link to="/contact" className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-xl text-xs transition-colors">
+            Contact Support
+          </Link>
         </div>
+
       </div>
     </div>
   );

@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../context/LanguageContext';
 
 export const Footer: React.FC = () => {
-  const { t } = useLanguage();
-
   return (
     <footer className="bg-gray-900 text-white">
       {/* Main Footer Content */}
@@ -30,7 +27,6 @@ export const Footer: React.FC = () => {
             <Link
               to="/"
               onClick={(e) => {
-                e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 setTimeout(() => {
                   document.getElementById('qr-generator')?.scrollIntoView({ behavior: 'smooth' });
@@ -80,10 +76,11 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Support */}
+            {/* Support & Pricing */}
             <div>
               <h4 className="text-sm font-bold text-white mb-4 tracking-wide">Support</h4>
               <ul className="space-y-3">
+                <li><Link to="/pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">Pricing</Link></li>
                 <li><Link to="/faqs-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Help & FAQ</Link></li>
                 <li>
                   <a href="mailto:support@qr-generator.online" className="text-sm text-neutral-400 hover:text-white transition-colors underline">
@@ -107,7 +104,6 @@ export const Footer: React.FC = () => {
 
             {/* Social Icons */}
             <div className="flex items-center gap-5">
-              {/* Facebook */}
               <a
                 href="https://www.facebook.com/qrgenerator.online"
                 target="_blank"
@@ -120,7 +116,6 @@ export const Footer: React.FC = () => {
                 </svg>
               </a>
 
-              {/* X/Twitter */}
               <a
                 href="#"
                 target="_blank"
@@ -133,7 +128,6 @@ export const Footer: React.FC = () => {
                 </svg>
               </a>
 
-              {/* YouTube */}
               <a
                 href="#"
                 target="_blank"
@@ -146,7 +140,6 @@ export const Footer: React.FC = () => {
                 </svg>
               </a>
 
-              {/* LinkedIn */}
               <a
                 href="#"
                 target="_blank"

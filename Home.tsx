@@ -1,23 +1,140 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import QRCodeStyling from 'qr-code-styling';
-import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, STYLE_PRESETS } from './constants';
+import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS } from './constants';
 import { DotType, CornerSquareType, CornerDotType } from './types';
 
-// ── Tab definitions matching TQRCG ──
+// ── Tab definitions with SVG Icon functions ──
 const TABS = [
-  { id: 'url', label: 'URL', icon: '🔗', description: 'Redirect to an existing web URL' },
-  { id: 'text', label: 'Plain Text', icon: '📝', description: 'Encode plain text into a QR Code' },
-  { id: 'vcard', label: 'Contact', icon: '👤', description: 'Share contact information instantly' },
-  { id: 'wifi', label: 'WiFi', icon: '📶', description: 'Share WiFi credentials via QR Code' },
-  { id: 'email', label: 'Email', icon: '📧', description: 'Create a pre-filled email QR Code' },
-  { id: 'sms', label: 'SMS', icon: '💬', description: 'Create a pre-filled SMS QR Code' },
-  { id: 'phone', label: 'Phone', icon: '📞', description: 'Make a phone call with one scan' },
-  { id: 'whatsapp', label: 'WhatsApp', icon: '💚', description: 'Start a WhatsApp conversation' },
-  { id: 'facebook', label: 'Social', icon: '🌐', description: 'Link to your social media profile' },
-  { id: 'location', label: 'Location', icon: '📍', description: 'Share a map location' },
-  { id: 'event', label: 'Event', icon: '📅', description: 'Create a calendar event QR Code' },
-  { id: 'crypto', label: 'Crypto', icon: '₿', description: 'Share cryptocurrency payment address' },
-  { id: 'googleform', label: 'Google Form', icon: '📋', description: 'Link to a Google Form survey' },
+  {
+    id: 'url',
+    label: 'URL',
+    description: 'Redirect to an existing web URL',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+      </svg>
+    )
+  },
+  {
+    id: 'text',
+    label: 'Plain Text',
+    description: 'Encode plain text into a QR Code',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+    )
+  },
+  {
+    id: 'vcard',
+    label: 'Contact',
+    description: 'Share contact information instantly',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+    )
+  },
+  {
+    id: 'wifi',
+    label: 'WiFi',
+    description: 'Share WiFi credentials via QR Code',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+      </svg>
+    )
+  },
+  {
+    id: 'email',
+    label: 'Email',
+    description: 'Create a pre-filled email QR Code',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    )
+  },
+  {
+    id: 'sms',
+    label: 'SMS',
+    description: 'Create a pre-filled SMS QR Code',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+      </svg>
+    )
+  },
+  {
+    id: 'phone',
+    label: 'Phone',
+    description: 'Make a phone call with one scan',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+      </svg>
+    )
+  },
+  {
+    id: 'whatsapp',
+    label: 'WhatsApp',
+    description: 'Start a WhatsApp conversation',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+      </svg>
+    )
+  },
+  {
+    id: 'facebook',
+    label: 'Social',
+    description: 'Link to your social media profile',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+      </svg>
+    )
+  },
+  {
+    id: 'location',
+    label: 'Location',
+    description: 'Share a map location',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    )
+  },
+  {
+    id: 'event',
+    label: 'Event',
+    description: 'Create a calendar event QR Code',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    )
+  },
+  {
+    id: 'crypto',
+    label: 'Crypto',
+    description: 'Share cryptocurrency payment address',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    )
+  },
+  {
+    id: 'googleform',
+    label: 'Google Form',
+    description: 'Link to a Google Form survey',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      </svg>
+    )
+  },
 ];
 
 // Template Presets
@@ -30,72 +147,12 @@ const TEMPLATES = [
   { id: 'purple', name: 'Royal Violet', fgColor: '#7c3aed', bgColor: '#f5f3ff', cornerSquareColor: '#5b21b6', cornerDotColor: '#7c3aed', dotType: 'classy' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
 ];
 
-// ── Step data ──
-const STEPS = [
-  {
-    number: 1,
-    title: 'Choose your QR Code type',
-    description: 'Choose your QR Code type based on what you want it to do: open a URL, share WiFi, display contact info, send an email, and more.',
-    emoji: '🎯',
-  },
-  {
-    number: 2,
-    title: 'Fill in the details & customize',
-    description: 'Enter the content for your QR Code. Add custom colors, dot styles, eye shapes, and upload your brand logo.',
-    emoji: '✏️',
-  },
-  {
-    number: 3,
-    title: 'Download your QR Code',
-    description: 'Your QR Code is generated instantly. Download it in high resolution PNG, SVG, or WebP formats for print and digital use.',
-    emoji: '⬇️',
-  },
-];
+interface HomeProps {
+  initialTab?: string;
+}
 
-// ── Features data ──
-const FEATURES = [
-  {
-    icon: '🎨',
-    title: 'Fully Customizable',
-    description: 'Customize colors, patterns, corner styles, and add your logo for branded QR Codes that match your identity.',
-  },
-  {
-    icon: '📐',
-    title: 'High Resolution',
-    description: 'Export in 1000×1000px resolution. Download as PNG, SVG, or WebP for perfect quality in print and digital.',
-  },
-  {
-    icon: '🔒',
-    title: 'Privacy First',
-    description: 'All QR Code generation happens in your browser. No data is sent to any server. Your information stays private.',
-  },
-  {
-    icon: '⚡',
-    title: 'Instant Generation',
-    description: 'Create QR Codes in seconds with real-time preview. No waiting, no loading — see changes as you make them.',
-  },
-  {
-    icon: '🆓',
-    title: '100% Free Forever',
-    description: 'No fees, no subscriptions, no hidden limits. Create unlimited QR Codes with full customization at no cost.',
-  },
-  {
-    icon: '🌍',
-    title: 'Multi-Language Support',
-    description: 'Available in multiple languages. Create QR Codes in English, Spanish, German, French, and many more.',
-  },
-];
-
-// ── Industry data ──
-const INDUSTRIES = [
-  { icon: '🍽️', title: 'Restaurants', description: 'Replace physical menus, collect feedback, or promote special offers. Guests enjoy a touch-free, modern experience.' },
-  { icon: '🏠', title: 'Real Estate', description: 'Add QR Codes to property listings, open house signs, and business cards to share virtual tours and contact details.' },
-  { icon: '🎓', title: 'Education', description: 'Share course materials, assignment links, and classroom resources. Students access content instantly with a scan.' },
-  { icon: '🎪', title: 'Events', description: 'Streamline check-ins, share event schedules, and connect attendees to registration forms and social channels.' },
-];
-
-const Home: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('url');
+const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
+  const [activeTab, setActiveTab] = useState(initialTab);
   
   // Custom QR Styling Options State
   const [fgColor, setFgColor] = useState('#2B6F53');
@@ -126,6 +183,12 @@ const Home: React.FC = () => {
 
   const qrContainerRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (initialTab) {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab]);
 
   const activeTabData = TABS.find(t => t.id === activeTab) || TABS[0];
 
@@ -294,7 +357,7 @@ const Home: React.FC = () => {
                       {/* Left Scroll Arrow Button */}
                       <button
                         onClick={() => scrollTabs('left')}
-                        className="z-10 p-2 text-white/70 hover:text-white bg-black/30 hover:bg-black/60 rounded-full transition-all focus:outline-none shrink-0"
+                        className="z-10 p-2 text-white/70 hover:text-white bg-black/40 hover:bg-black/80 rounded-full transition-all focus:outline-none shrink-0"
                         title="Scroll Left"
                         aria-label="Scroll tabs left"
                       >
@@ -306,19 +369,19 @@ const Home: React.FC = () => {
                       {/* Scrollable Tabs */}
                       <div
                         ref={tabsRef}
-                        className="flex overflow-x-auto px-2 pt-[10px] pb-[10px] gap-[10px] min-[700px]:pt-3 min-[700px]:pb-2 scrollbar-hide scroll-smooth flex-1"
+                        className="flex overflow-x-auto px-2 pt-[10px] pb-[10px] gap-[8px] min-[700px]:pt-3 min-[700px]:pb-2 scrollbar-hide scroll-smooth flex-1"
                       >
                         {TABS.map(tab => (
                           <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`shrink-0 flex flex-col items-center gap-[5px] px-[12px] py-[8px] rounded-[8px] text-[12px] font-medium whitespace-nowrap transition-all ${
+                            className={`shrink-0 flex flex-col items-center gap-[4px] px-[12px] py-[8px] rounded-[8px] text-[12px] font-medium whitespace-nowrap transition-all ${
                               activeTab === tab.id
                                 ? 'bg-white/15 text-[#e7ffd3] shadow-md border border-white/20'
                                 : 'text-[#BEF392] hover:bg-white/5 opacity-80 hover:opacity-100'
                             }`}
                           >
-                            <span className="text-lg" role="img" aria-hidden="true">{tab.icon}</span>
+                            <span className="shrink-0">{tab.icon}</span>
                             <span>{tab.label}</span>
                           </button>
                         ))}
@@ -327,7 +390,7 @@ const Home: React.FC = () => {
                       {/* Right Scroll Arrow Button */}
                       <button
                         onClick={() => scrollTabs('right')}
-                        className="z-10 p-2 text-white/70 hover:text-white bg-black/30 hover:bg-black/60 rounded-full transition-all focus:outline-none shrink-0"
+                        className="z-10 p-2 text-white/70 hover:text-white bg-black/40 hover:bg-black/80 rounded-full transition-all focus:outline-none shrink-0"
                         title="Scroll Right"
                         aria-label="Scroll tabs right"
                       >
@@ -661,32 +724,53 @@ const Home: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* RIGHT PANEL: QR Preview + Templates + Custom Options Button */}
+                  {/* RIGHT PANEL: QR Preview + Templates Carousel + Custom Options */}
                   <div className="w-full min-[700px]:w-[36.7%] px-6 min-[700px]:px-6 pt-[14px] pb-6 flex flex-col items-center justify-between border-t min-[700px]:border-t-0 min-[700px]:border-l border-white/10">
                     <p className="text-xs text-white/70 font-medium mb-2 text-center">
                       QR Code Preview & Templates
                     </p>
 
-                    {/* QR Canvas + Template Selector Side-by-Side */}
+                    {/* QR Canvas + Template Mini-QR Carousel */}
                     <div className="flex items-center justify-between w-full gap-3">
                       {/* Canvas Container */}
                       <div className="relative bg-white border-2 border-black/10 rounded-xl p-3 aspect-square flex items-center justify-center shadow-lg" style={{ width: '72%', maxWidth: '230px' }}>
                         <div ref={qrContainerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />
                       </div>
 
-                      {/* Template Selector Vertical Carousel */}
+                      {/* Template Selector Vertical Carousel with Mini-QR Vector Previews */}
                       <div className="flex flex-col items-center gap-2 flex-1 max-h-[220px] overflow-y-auto scrollbar-hide py-1">
                         {TEMPLATES.map((tpl) => (
                           <button
                             key={tpl.id}
                             onClick={() => applyTemplate(tpl)}
                             title={tpl.name}
-                            className={`w-9 h-9 rounded-lg border-2 transition-all p-1 flex items-center justify-center ${
-                              activeTemplate === tpl.id ? 'border-accent ring-2 ring-accent/50 scale-105' : 'border-white/20 opacity-70 hover:opacity-100'
+                            className={`relative group w-12 h-12 rounded-xl border-2 transition-all p-1 flex items-center justify-center shrink-0 ${
+                              activeTemplate === tpl.id ? 'border-accent ring-2 ring-accent/50 scale-105 shadow-md' : 'border-white/20 opacity-70 hover:opacity-100'
                             }`}
                             style={{ backgroundColor: tpl.bgColor }}
                           >
-                            <div className="w-full h-full rounded" style={{ backgroundColor: tpl.fgColor }} />
+                            {/* Mini QR Code Vector Preview */}
+                            <svg viewBox="0 0 24 24" className="w-full h-full" fill="none">
+                              {/* Top Left Eye */}
+                              <rect x="2" y="2" width="6" height="6" rx={tpl.cornerSquareType === 'extra-rounded' ? '2' : tpl.cornerSquareType === 'dot' ? '3' : '0.5'} stroke={tpl.cornerSquareColor} strokeWidth="1.5" fill="none" />
+                              <circle cx="5" cy="5" r={tpl.cornerDotType === 'dot' ? '1.5' : '1'} fill={tpl.cornerDotColor} />
+                              
+                              {/* Top Right Eye */}
+                              <rect x="16" y="2" width="6" height="6" rx={tpl.cornerSquareType === 'extra-rounded' ? '2' : tpl.cornerSquareType === 'dot' ? '3' : '0.5'} stroke={tpl.cornerSquareColor} strokeWidth="1.5" fill="none" />
+                              <circle cx="19" cy="5" r={tpl.cornerDotType === 'dot' ? '1.5' : '1'} fill={tpl.cornerDotColor} />
+                              
+                              {/* Bottom Left Eye */}
+                              <rect x="2" y="16" width="6" height="6" rx={tpl.cornerSquareType === 'extra-rounded' ? '2' : tpl.cornerSquareType === 'dot' ? '3' : '0.5'} stroke={tpl.cornerSquareColor} strokeWidth="1.5" fill="none" />
+                              <circle cx="5" cy="19" r={tpl.cornerDotType === 'dot' ? '1.5' : '1'} fill={tpl.cornerDotColor} />
+
+                              {/* Matrix Dots */}
+                              <rect x="10" y="3" width="2" height="2" rx={tpl.dotType === 'dots' || tpl.dotType === 'rounded' ? '1' : '0'} fill={tpl.fgColor} />
+                              <rect x="13" y="5" width="2" height="2" rx={tpl.dotType === 'dots' || tpl.dotType === 'rounded' ? '1' : '0'} fill={tpl.fgColor} />
+                              <rect x="10" y="10" width="4" height="4" rx={tpl.dotType === 'dots' || tpl.dotType === 'rounded' ? '2' : '0'} fill={tpl.fgColor} />
+                              <rect x="16" y="12" width="2" height="2" rx={tpl.dotType === 'dots' || tpl.dotType === 'rounded' ? '1' : '0'} fill={tpl.fgColor} />
+                              <rect x="11" y="17" width="3" height="3" rx={tpl.dotType === 'dots' || tpl.dotType === 'rounded' ? '1.5' : '0'} fill={tpl.fgColor} />
+                              <rect x="17" y="17" width="3" height="3" rx={tpl.dotType === 'dots' || tpl.dotType === 'rounded' ? '1.5' : '0'} fill={tpl.fgColor} />
+                            </svg>
                           </button>
                         ))}
                       </div>
@@ -870,24 +954,24 @@ const Home: React.FC = () => {
           </div>
           <div className="flex items-center gap-6">
             <div className="flex flex-col items-center gap-1">
-              <div className="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center">
-                <svg className="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center text-accent">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
               <span className="text-[10px] font-bold text-gray-400 uppercase">Secure</span>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center">
-                <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <span className="text-[10px] font-bold text-gray-400 uppercase">Global</span>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <div className="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center">
-                <svg className="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
@@ -924,10 +1008,24 @@ const Home: React.FC = () => {
                     <p className="text-base md:text-lg leading-relaxed text-gray-500">{step.description}</p>
                   </div>
 
-                  {/* Emoji/Visual */}
+                  {/* Icon Visual Card */}
                   <div className={`row-start-2 col-span-full ${idx % 2 === 0 ? 'md:row-start-1 md:col-span-1 md:col-start-1 md:flex md:justify-end' : 'md:row-start-1 md:col-span-1 md:col-start-3 md:flex md:justify-start'}`}>
-                    <div className="w-full max-w-[380px] rounded-card bg-white border border-neutral-100 shadow-sm p-8 flex items-center justify-center">
-                      <span className="text-6xl">{step.emoji}</span>
+                    <div className="w-full max-w-[340px] rounded-card bg-white border border-neutral-200 shadow-sm p-8 flex items-center justify-center text-accent">
+                      {step.number === 1 && (
+                        <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                        </svg>
+                      )}
+                      {step.number === 2 && (
+                        <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                      )}
+                      {step.number === 3 && (
+                        <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -951,16 +1049,12 @@ const Home: React.FC = () => {
                 key={tab.id}
                 onClick={() => { setActiveTab(tab.id); document.getElementById('qr-generator')?.scrollIntoView({ behavior: 'smooth' }); }}
                 className="group relative bg-white rounded-2xl border border-neutral-200 p-5 text-left hover:border-accent hover:shadow-lg transition-all duration-200"
-                style={{ animationDelay: `${idx * 50}ms` }}
               >
-                <span className="text-3xl mb-3 block">{tab.icon}</span>
+                <div className="text-accent mb-3 p-2 bg-accent/10 rounded-xl inline-block group-hover:bg-accent group-hover:text-white transition-colors">
+                  {tab.icon}
+                </div>
                 <h3 className="text-sm font-semibold text-gray-900 group-hover:text-accent transition-colors">{tab.label}</h3>
                 <p className="text-xs text-gray-400 mt-1 line-clamp-2">{tab.description}</p>
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </div>
               </button>
             ))}
           </div>
@@ -981,9 +1075,40 @@ const Home: React.FC = () => {
                 key={idx}
                 className="bg-white rounded-2xl border border-neutral-100 p-8 hover:shadow-lg hover:border-accent/20 transition-all duration-300 group"
               >
-                <span className="text-4xl mb-4 block">{feature.icon}</span>
+                <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-colors">
+                  {idx === 0 && (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                    </svg>
+                  )}
+                  {idx === 1 && (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  )}
+                  {idx === 2 && (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  )}
+                  {idx === 3 && (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  )}
+                  {idx === 4 && (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )}
+                  {idx === 5 && (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )}
+                </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-accent transition-colors">{feature.title}</h3>
-                <p className="text-gray-500 leading-relaxed">{feature.description}</p>
+                <p className="text-gray-500 leading-relaxed text-sm">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -1004,7 +1129,29 @@ const Home: React.FC = () => {
                 key={idx}
                 className="bg-gray-50 rounded-2xl p-8 hover:bg-accent/5 hover:shadow-md transition-all duration-300 border border-transparent hover:border-accent/10"
               >
-                <span className="text-4xl mb-4 block">{industry.icon}</span>
+                <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4">
+                  {idx === 0 && (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  )}
+                  {idx === 1 && (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                  )}
+                  {idx === 2 && (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                    </svg>
+                  )}
+                  {idx === 3 && (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  )}
+                </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{industry.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{industry.description}</p>
               </div>

@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom';
 import { QRConfig } from './types';
 import Home from './Home';
 import AboutPage from './AboutPage';
@@ -7,6 +7,7 @@ import FAQPage from './FAQPage';
 import ContactPage from './ContactPage';
 import PrivacyPage from './PrivacyPage';
 import TermsPage from './TermsPage';
+import PricingPage from './PricingPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -32,7 +33,6 @@ const SEOManager = () => {
       const title = document.title;
       const description = document.querySelector('meta[name="description"]')?.getAttribute('content') || '';
 
-      // Open Graph - Create if they don't exist
       const ogTags = [
         { property: 'og:url', content: absoluteUrl },
         { property: 'og:title', content: title },
@@ -50,7 +50,6 @@ const SEOManager = () => {
         meta.setAttribute('content', tag.content);
       });
 
-      // Twitter - Create if they don't exist
       const twitterTags = [
         { name: 'twitter:url', content: absoluteUrl },
         { name: 'twitter:title', content: title },
@@ -75,30 +74,19 @@ const SEOManager = () => {
   return null;
 };
 
+// Route wrapper for specific QR tool URLs (e.g., /wifi-qr-code-generator)
+const ToolRouteHandler: React.FC<{ toolId: string }> = ({ toolId }) => {
+  return <Home initialTab={toolId} />;
+};
+
 const App: React.FC = () => {
-  const [styling, setStyling] = useState<Omit<QRConfig, 'value'>>({
-    fgColor: '#1e293b',
-    bgColor: '#ffffff',
-    level: 'H',
-    size: 512,
-    includeMargin: true,
-    dotType: 'square',
-    cornerSquareType: 'square',
-    cornerDotType: 'square',
-    cornerSquareColor: '#1e293b',
-    cornerDotColor: '#1e293b',
-  });
-
-  const [logoSrc, setLogoSrc] = useState<string | null>(null);
-  const commonProps = { styling, setStyling, logoSrc, setLogoSrc };
-
   const basename = useMemo(() => {
     const path = window.location.pathname;
     const parts = path.split('/').filter(Boolean);
     if (parts.length > 0) {
       const firstPart = parts[0];
       const isToolPath = firstPart.includes('qr-code-generator') || 
-                         ['about', 'contact', 'privacy', 'terms', 'faqs'].includes(firstPart);
+                         ['about', 'contact', 'privacy', 'terms', 'faqs', 'pricing'].includes(firstPart);
       if (!isToolPath && firstPart.length > 25) {
         return `/${firstPart}`;
       }
@@ -116,11 +104,28 @@ const App: React.FC = () => {
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/pricing" element={<PricingPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/faqs-qr-code-generator" element={<FAQPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
+
+              {/* QR Code Tool Specific Routes */}
+              <Route path="/url-qr-code-generator" element={<ToolRouteHandler toolId="url" />} />
+              <Route path="/text-qr-code-generator" element={<ToolRouteHandler toolId="text" />} />
+              <Route path="/vcard-qr-code-generator" element={<ToolRouteHandler toolId="vcard" />} />
+              <Route path="/wifi-qr-code-generator" element={<ToolRouteHandler toolId="wifi" />} />
+              <Route path="/email-qr-code-generator" element={<ToolRouteHandler toolId="email" />} />
+              <Route path="/sms-qr-code-generator" element={<ToolRouteHandler toolId="sms" />} />
+              <Route path="/phone-qr-code-generator" element={<ToolRouteHandler toolId="phone" />} />
+              <Route path="/whatsapp-qr-code-generator" element={<ToolRouteHandler toolId="whatsapp" />} />
+              <Route path="/facebook-qr-code-generator" element={<ToolRouteHandler toolId="facebook" />} />
+              <Route path="/location-qr-code-generator" element={<ToolRouteHandler toolId="location" />} />
+              <Route path="/event-qr-code-generator" element={<ToolRouteHandler toolId="event" />} />
+              <Route path="/crypto-qr-code-generator" element={<ToolRouteHandler toolId="crypto" />} />
+              <Route path="/googleform-qr-code-generator" element={<ToolRouteHandler toolId="googleform" />} />
+
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
