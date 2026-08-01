@@ -1,21 +1,33 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import QRCodeStyling from 'qr-code-styling';
+import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, STYLE_PRESETS } from './constants';
+import { DotType, CornerSquareType, CornerDotType } from './types';
 
 // ── Tab definitions matching TQRCG ──
 const TABS = [
-  { id: 'url', label: 'URL', icon: '🔗', description: 'Redirect to an existing web URL', placeholder: 'Enter URL', inputType: 'url', hint: 'Try something like https://example.com/' },
-  { id: 'text', label: 'Plain Text', icon: '📝', description: 'Encode plain text into a QR Code', placeholder: 'Enter your text', inputType: 'textarea', hint: 'Type any message or text content' },
-  { id: 'vcard', label: 'Contact', icon: '👤', description: 'Share contact information instantly', placeholder: 'Full Name', inputType: 'text', hint: 'Create a digital business card' },
-  { id: 'wifi', label: 'WiFi', icon: '📶', description: 'Share WiFi credentials via QR Code', placeholder: 'Network Name (SSID)', inputType: 'text', hint: 'Let others join your WiFi instantly' },
-  { id: 'email', label: 'Email', icon: '📧', description: 'Create a pre-filled email QR Code', placeholder: 'recipient@example.com', inputType: 'email', hint: 'Recipients can email you with one scan' },
-  { id: 'sms', label: 'SMS', icon: '💬', description: 'Create a pre-filled SMS QR Code', placeholder: '+1 234 567 890', inputType: 'tel', hint: 'Recipients can text you with one scan' },
-  { id: 'phone', label: 'Phone', icon: '📞', description: 'Make a phone call with one scan', placeholder: '+1 234 567 890', inputType: 'tel', hint: 'One scan to dial your number' },
-  { id: 'whatsapp', label: 'WhatsApp', icon: '💚', description: 'Start a WhatsApp conversation', placeholder: '+1 234 567 890', inputType: 'tel', hint: 'Open a WhatsApp chat instantly' },
-  { id: 'facebook', label: 'Social', icon: '🌐', description: 'Link to your social media profile', placeholder: 'https://facebook.com/username', inputType: 'url', hint: 'Share your social media presence' },
-  { id: 'location', label: 'Location', icon: '📍', description: 'Share a map location', placeholder: 'Enter Google Maps URL', inputType: 'url', hint: 'Share any location on the map' },
-  { id: 'event', label: 'Event', icon: '📅', description: 'Create a calendar event QR Code', placeholder: 'Event Name', inputType: 'text', hint: 'Add events to calendars with one scan' },
-  { id: 'crypto', label: 'Crypto', icon: '₿', description: 'Share cryptocurrency payment address', placeholder: 'Wallet Address', inputType: 'text', hint: 'Receive crypto payments easily' },
-  { id: 'googleform', label: 'Google Form', icon: '📋', description: 'Link to a Google Form survey', placeholder: 'https://forms.google.com/...', inputType: 'url', hint: 'Collect responses with a simple scan' },
+  { id: 'url', label: 'URL', icon: '🔗', description: 'Redirect to an existing web URL' },
+  { id: 'text', label: 'Plain Text', icon: '📝', description: 'Encode plain text into a QR Code' },
+  { id: 'vcard', label: 'Contact', icon: '👤', description: 'Share contact information instantly' },
+  { id: 'wifi', label: 'WiFi', icon: '📶', description: 'Share WiFi credentials via QR Code' },
+  { id: 'email', label: 'Email', icon: '📧', description: 'Create a pre-filled email QR Code' },
+  { id: 'sms', label: 'SMS', icon: '💬', description: 'Create a pre-filled SMS QR Code' },
+  { id: 'phone', label: 'Phone', icon: '📞', description: 'Make a phone call with one scan' },
+  { id: 'whatsapp', label: 'WhatsApp', icon: '💚', description: 'Start a WhatsApp conversation' },
+  { id: 'facebook', label: 'Social', icon: '🌐', description: 'Link to your social media profile' },
+  { id: 'location', label: 'Location', icon: '📍', description: 'Share a map location' },
+  { id: 'event', label: 'Event', icon: '📅', description: 'Create a calendar event QR Code' },
+  { id: 'crypto', label: 'Crypto', icon: '₿', description: 'Share cryptocurrency payment address' },
+  { id: 'googleform', label: 'Google Form', icon: '📋', description: 'Link to a Google Form survey' },
+];
+
+// Template Presets
+const TEMPLATES = [
+  { id: 'emerald', name: 'Emerald', fgColor: '#2B6F53', bgColor: '#ffffff', cornerSquareColor: '#1E1E1E', cornerDotColor: '#2B6F53', dotType: 'rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
+  { id: 'classic', name: 'Classic Black', fgColor: '#000000', bgColor: '#ffffff', cornerSquareColor: '#000000', cornerDotColor: '#000000', dotType: 'square' as DotType, cornerSquareType: 'square' as CornerSquareType, cornerDotType: 'square' as CornerDotType },
+  { id: 'ocean', name: 'Deep Ocean', fgColor: '#0284c7', bgColor: '#f0f9ff', cornerSquareColor: '#0369a1', cornerDotColor: '#0284c7', dotType: 'classy-rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
+  { id: 'midnight', name: 'Dark Luxe', fgColor: '#f8fafc', bgColor: '#0f172a', cornerSquareColor: '#38bdf8', cornerDotColor: '#38bdf8', dotType: 'dots' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
+  { id: 'sunset', name: 'Sunset Amber', fgColor: '#d97706', bgColor: '#fffbeb', cornerSquareColor: '#b45309', cornerDotColor: '#d97706', dotType: 'extra-rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
+  { id: 'purple', name: 'Royal Violet', fgColor: '#7c3aed', bgColor: '#f5f3ff', cornerSquareColor: '#5b21b6', cornerDotColor: '#7c3aed', dotType: 'classy' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
 ];
 
 // ── Step data ──
@@ -28,8 +40,8 @@ const STEPS = [
   },
   {
     number: 2,
-    title: 'Fill in the details',
-    description: 'Enter the content for your QR Code. Add a URL, text, contact details, or any other information you want to encode.',
+    title: 'Fill in the details & customize',
+    description: 'Enter the content for your QR Code. Add custom colors, dot styles, eye shapes, and upload your brand logo.',
     emoji: '✏️',
   },
   {
@@ -84,55 +96,150 @@ const INDUSTRIES = [
 
 const Home: React.FC = () => {
   const [activeTab, setActiveTab] = useState('url');
-  const [qrData, setQrData] = useState('');
-  const [generated, setGenerated] = useState(false);
+  
+  // Custom QR Styling Options State
+  const [fgColor, setFgColor] = useState('#2B6F53');
+  const [bgColor, setBgColor] = useState('#ffffff');
+  const [cornerSquareColor, setCornerSquareColor] = useState('#1E1E1E');
+  const [cornerDotColor, setCornerDotColor] = useState('#2B6F53');
+  const [dotStyle, setDotStyle] = useState<DotType>('rounded');
+  const [cornerSquareStyle, setCornerSquareStyle] = useState<CornerSquareType>('extra-rounded');
+  const [cornerDotStyle, setCornerDotStyle] = useState<CornerDotType>('dot');
+  const [logoSrc, setLogoSrc] = useState<string | null>(null);
+  const [activeTemplate, setActiveTemplate] = useState('emerald');
+
+  // Customization drawer/modal toggle
+  const [showCustomize, setShowCustomize] = useState(false);
+
+  // Form Fields per QR Type
+  const [urlInput, setUrlInput] = useState('');
+  const [textInput, setTextInput] = useState('');
+  const [vCardInput, setVCardInput] = useState({ firstName: '', lastName: '', phone: '', email: '', company: '', title: '', website: '' });
+  const [wifiInput, setWifiInput] = useState({ ssid: '', password: '', encryption: 'WPA', hidden: false });
+  const [emailInput, setEmailInput] = useState({ to: '', subject: '', body: '' });
+  const [smsInput, setSmsInput] = useState({ phone: '', message: '' });
+  const [phoneInput, setPhoneInput] = useState('');
+  const [whatsappInput, setWhatsappInput] = useState({ phone: '', message: '' });
+  const [locationInput, setLocationInput] = useState({ lat: '', lng: '', query: '' });
+  const [eventInput, setEventInput] = useState({ title: '', location: '', start: '', end: '', description: '' });
+  const [cryptoInput, setCryptoInput] = useState({ coin: 'Bitcoin', address: '', amount: '' });
+
   const qrContainerRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
 
   const activeTabData = TABS.find(t => t.id === activeTab) || TABS[0];
 
+  // Tab Bar Scroll Controls
+  const scrollTabs = (direction: 'left' | 'right') => {
+    if (tabsRef.current) {
+      const scrollAmount = direction === 'left' ? -220 : 220;
+      tabsRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  // Compute final QR data string based on active tab and fields
+  const qrData = useMemo(() => {
+    switch (activeTab) {
+      case 'url':
+      case 'googleform':
+      case 'facebook':
+        return urlInput.trim();
+      case 'text':
+        return textInput.trim();
+      case 'vcard':
+        if (!vCardInput.firstName && !vCardInput.lastName && !vCardInput.phone && !vCardInput.email) return '';
+        return `BEGIN:VCARD\nVERSION:3.0\nN:${vCardInput.lastName};${vCardInput.firstName};;;\nFN:${vCardInput.firstName} ${vCardInput.lastName}\nORG:${vCardInput.company}\nTITLE:${vCardInput.title}\nTEL;TYPE=CELL:${vCardInput.phone}\nEMAIL:${vCardInput.email}\nURL:${vCardInput.website}\nEND:VCARD`;
+      case 'wifi':
+        if (!wifiInput.ssid) return '';
+        return `WIFI:T:${wifiInput.encryption};S:${wifiInput.ssid};P:${wifiInput.password};H:${wifiInput.hidden ? 'true' : 'false'};;`;
+      case 'email':
+        if (!emailInput.to) return '';
+        return `mailto:${emailInput.to}?subject=${encodeURIComponent(emailInput.subject)}&body=${encodeURIComponent(emailInput.body)}`;
+      case 'sms':
+        if (!smsInput.phone) return '';
+        return `smsto:${smsInput.phone}:${smsInput.message}`;
+      case 'phone':
+        if (!phoneInput) return '';
+        return `tel:${phoneInput}`;
+      case 'whatsapp':
+        if (!whatsappInput.phone) return '';
+        const cleanPhone = whatsappInput.phone.replace(/[^0-9]/g, '');
+        return `https://wa.me/${cleanPhone}${whatsappInput.message ? `?text=${encodeURIComponent(whatsappInput.message)}` : ''}`;
+      case 'location':
+        if (locationInput.lat && locationInput.lng) {
+          return `geo:${locationInput.lat},${locationInput.lng}`;
+        }
+        return locationInput.query.trim();
+      case 'event':
+        if (!eventInput.title) return '';
+        return `BEGIN:VEVENT\nSUMMARY:${eventInput.title}\nLOCATION:${eventInput.location}\nDESCRIPTION:${eventInput.description}\nDTSTART:${eventInput.start ? eventInput.start.replace(/[-:]/g, '') : ''}\nDTEND:${eventInput.end ? eventInput.end.replace(/[-:]/g, '') : ''}\nEND:VEVENT`;
+      case 'crypto':
+        if (!cryptoInput.address) return '';
+        const coinScheme = cryptoInput.coin.toLowerCase();
+        return `${coinScheme}:${cryptoInput.address}${cryptoInput.amount ? `?amount=${cryptoInput.amount}` : ''}`;
+      default:
+        return urlInput.trim();
+    }
+  }, [activeTab, urlInput, textInput, vCardInput, wifiInput, emailInput, smsInput, phoneInput, whatsappInput, locationInput, eventInput, cryptoInput]);
+
+  const generated = qrData.length > 0;
+
+  // Initialize QRCodeStyling instance
   const qrCode = useMemo(() => new QRCodeStyling({
     width: 280,
     height: 280,
     type: 'svg',
     data: ' ',
-    dotsOptions: { color: '#2B6F53', type: 'rounded' },
-    backgroundOptions: { color: '#ffffff' },
-    cornersSquareOptions: { color: '#1E1E1E', type: 'extra-rounded' },
-    cornersDotOptions: { color: '#2B6F53', type: 'dot' },
-    imageOptions: { crossOrigin: 'anonymous', margin: 10 },
+    dotsOptions: { color: fgColor, type: dotStyle },
+    backgroundOptions: { color: bgColor },
+    cornersSquareOptions: { color: cornerSquareColor, type: cornerSquareStyle },
+    cornersDotOptions: { color: cornerDotColor, type: cornerDotStyle },
+    image: logoSrc || undefined,
+    imageOptions: { crossOrigin: 'anonymous', margin: 10, imageSize: 0.35, hideBackgroundDots: true },
     qrOptions: { errorCorrectionLevel: 'H' },
   }), []);
 
+  // Append QR Canvas on mount
   useEffect(() => {
-    if (qrContainerRef.current && qrContainerRef.current.childNodes.length === 0) {
+    if (qrContainerRef.current) {
+      qrContainerRef.current.innerHTML = '';
       qrCode.append(qrContainerRef.current);
     }
   }, [qrCode]);
 
+  // Update QR Code whenever data or custom options change
   useEffect(() => {
-    if (qrData.trim()) {
-      qrCode.update({ data: qrData });
-      setGenerated(true);
-    } else {
-      qrCode.update({ data: ' ' });
-      setGenerated(false);
-    }
-  }, [qrData, qrCode]);
+    qrCode.update({
+      data: generated ? qrData : ' ',
+      dotsOptions: { color: fgColor, type: dotStyle },
+      backgroundOptions: { color: bgColor },
+      cornersSquareOptions: { color: cornerSquareColor, type: cornerSquareStyle },
+      cornersDotOptions: { color: cornerDotColor, type: cornerDotStyle },
+      image: logoSrc || undefined,
+    });
+  }, [qrData, generated, fgColor, bgColor, cornerSquareColor, cornerDotColor, dotStyle, cornerSquareStyle, cornerDotStyle, logoSrc, qrCode]);
 
-  // Reset input when tab changes
-  useEffect(() => {
-    setQrData('');
-    setGenerated(false);
-  }, [activeTab]);
-
-  const handleDownload = (format: 'png' | 'svg' | 'webp') => {
-    if (!qrData.trim()) return;
-    qrCode.download({ name: `qr-${activeTab}`, extension: format });
+  // Apply template preset
+  const applyTemplate = (tpl: typeof TEMPLATES[0]) => {
+    setActiveTemplate(tpl.id);
+    setFgColor(tpl.fgColor);
+    setBgColor(tpl.bgColor);
+    setCornerSquareColor(tpl.cornerSquareColor);
+    setCornerDotColor(tpl.cornerDotColor);
+    setDotStyle(tpl.dotType);
+    setCornerSquareStyle(tpl.cornerSquareType);
+    setCornerDotStyle(tpl.cornerDotType);
   };
 
+  // Download Handler
+  const handleDownload = (format: 'png' | 'svg' | 'webp') => {
+    if (!generated) return;
+    qrCode.download({ name: `qrmaker-${activeTab}`, extension: format });
+  };
+
+  // Copy Handler
   const handleCopy = async () => {
-    if (!qrData.trim()) return;
+    if (!generated) return;
     try {
       const blob = await qrCode.getRawData('png');
       if (blob) {
@@ -145,6 +252,18 @@ const Home: React.FC = () => {
     }
   };
 
+  // Logo File Upload
+  const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setLogoSrc(event.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div>
       {/* ═══════════════════════════ HERO SECTION ═══════════════════════════ */}
@@ -152,37 +271,51 @@ const Home: React.FC = () => {
         <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
           <div className="flex flex-col items-center gap-3">
 
-            {/* Title & Subtitle (order-2 on lg to appear below widget) */}
+            {/* Title & Subtitle */}
             <div className="order-2 lg:order-1 text-center">
               <h1 className="mt-8 lg:mt-0 mb-4 text-[26px] font-medium text-gray-900 text-balance md:mb-2 md:text-4xl">
                 QR Maker Studio
               </h1>
               <p className="mb-8 text-lg text-gray-700 md:text-xl">
-                All-in-one tool to create free QR Codes, customize them, and download in high resolution.
+                All-in-one tool to create free QR Codes, customize designs, and download in high resolution.
               </p>
             </div>
 
             {/* ──── DARK QR GENERATOR WIDGET ──── */}
             <div className="order-1 lg:order-2 w-full max-w-[1205px]" id="qr-generator">
-              <div className="bg-[#1E1E1E] rounded-[20px] overflow-hidden w-full max-w-[1205px] mx-auto">
-                <div className="flex flex-col min-[700px]:flex-row min-h-[420px] pt-4 px-0 pb-0 min-[700px]:p-6">
+              <div className="bg-[#1E1E1E] rounded-[20px] overflow-hidden w-full max-w-[1205px] mx-auto shadow-2xl">
+                <div className="flex flex-col min-[700px]:flex-row min-h-[440px] pt-4 px-0 pb-0 min-[700px]:p-6">
 
-                  {/* LEFT PANEL: Tabs + Input */}
+                  {/* LEFT PANEL: Scrollable Tabs + Input Form */}
                   <div className="w-full min-[700px]:w-[63.3%] relative flex flex-col">
-                    {/* Tab Bar */}
-                    <div className="relative">
+                    
+                    {/* TAB BAR WITH ARROW BUTTONS */}
+                    <div className="relative flex items-center px-2 min-[700px]:px-4">
+                      {/* Left Scroll Arrow Button */}
+                      <button
+                        onClick={() => scrollTabs('left')}
+                        className="z-10 p-2 text-white/70 hover:text-white bg-black/30 hover:bg-black/60 rounded-full transition-all focus:outline-none shrink-0"
+                        title="Scroll Left"
+                        aria-label="Scroll tabs left"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+
+                      {/* Scrollable Tabs */}
                       <div
                         ref={tabsRef}
-                        className="flex overflow-x-auto px-5 pt-[10px] pb-[10px] gap-[12px] min-[700px]:px-6 min-[700px]:pt-5 min-[700px]:pb-0 min-[700px]:gap-0 min-[700px]:justify-between scrollbar-hide"
+                        className="flex overflow-x-auto px-2 pt-[10px] pb-[10px] gap-[10px] min-[700px]:pt-3 min-[700px]:pb-2 scrollbar-hide scroll-smooth flex-1"
                       >
                         {TABS.map(tab => (
                           <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`shrink-0 flex flex-col items-center gap-[5px] px-[10px] py-[10px] rounded-[6px] text-[12px] font-medium whitespace-nowrap transition-colors ${
+                            className={`shrink-0 flex flex-col items-center gap-[5px] px-[12px] py-[8px] rounded-[8px] text-[12px] font-medium whitespace-nowrap transition-all ${
                               activeTab === tab.id
-                                ? 'bg-white/10 text-[#e7ffd3]'
-                                : 'text-[#BEF392] hover:bg-white/5'
+                                ? 'bg-white/15 text-[#e7ffd3] shadow-md border border-white/20'
+                                : 'text-[#BEF392] hover:bg-white/5 opacity-80 hover:opacity-100'
                             }`}
                           >
                             <span className="text-lg" role="img" aria-hidden="true">{tab.icon}</span>
@@ -190,127 +323,504 @@ const Home: React.FC = () => {
                           </button>
                         ))}
                       </div>
+
+                      {/* Right Scroll Arrow Button */}
+                      <button
+                        onClick={() => scrollTabs('right')}
+                        className="z-10 p-2 text-white/70 hover:text-white bg-black/30 hover:bg-black/60 rounded-full transition-all focus:outline-none shrink-0"
+                        title="Scroll Right"
+                        aria-label="Scroll tabs right"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
 
-                    {/* Input Area */}
-                    <div className="flex-1 px-6 pt-5 pb-6 flex flex-col gap-[9px] min-[700px]:pt-[25px] min-[700px]:pb-[60px]">
-                      <p className="text-sm leading-5 font-semibold text-white min-[700px]:text-[22px] min-[700px]:leading-normal">
+                    {/* INPUT FORM PER QR TYPE */}
+                    <div className="flex-1 px-6 pt-4 pb-6 flex flex-col gap-3 min-[700px]:pt-[20px] min-[700px]:pb-[50px]">
+                      <p className="text-sm font-semibold text-white min-[700px]:text-[20px]">
                         {activeTabData.description}
                       </p>
-                      <div className="flex-1">
-                        <div className="flex flex-col gap-3">
-                          <div className="relative mt-5">
-                            {activeTabData.inputType === 'textarea' ? (
-                              <textarea
-                                placeholder={activeTabData.placeholder}
-                                value={qrData}
-                                onChange={(e) => setQrData(e.target.value)}
-                                rows={3}
-                                className="w-full rounded-2xl bg-white text-black pl-4 pr-4 py-3 text-base outline-none resize-none"
-                              />
-                            ) : (
-                              <input
-                                type={activeTabData.inputType}
-                                placeholder={activeTabData.placeholder}
-                                value={qrData}
-                                onChange={(e) => setQrData(e.target.value)}
-                                className="w-full rounded-full bg-white text-black pl-4 pr-[6%] py-2.5 text-base outline-none"
-                              />
-                            )}
+
+                      <div className="flex-1 mt-2">
+                        {/* URL / GOOGLE FORMS / SOCIAL */}
+                        {['url', 'googleform', 'facebook'].includes(activeTab) && (
+                          <div className="flex flex-col gap-2">
+                            <input
+                              type="url"
+                              placeholder={activeTab === 'googleform' ? 'https://forms.google.com/...' : activeTab === 'facebook' ? 'https://facebook.com/yourpage' : 'https://example.com'}
+                              value={urlInput}
+                              onChange={(e) => setUrlInput(e.target.value)}
+                              className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
+                            />
+                            <span className="text-xs text-white/70">Enter your full web address including https://</span>
                           </div>
-                          <sub className="text-sm font-normal text-white/70">{activeTabData.hint}</sub>
-                        </div>
+                        )}
+
+                        {/* PLAIN TEXT */}
+                        {activeTab === 'text' && (
+                          <div className="flex flex-col gap-2">
+                            <textarea
+                              placeholder="Enter message or notes to encode..."
+                              value={textInput}
+                              onChange={(e) => setTextInput(e.target.value)}
+                              rows={4}
+                              className="w-full rounded-2xl bg-white text-black p-4 text-base outline-none resize-none focus:ring-2 focus:ring-accent"
+                            />
+                            <span className="text-xs text-white/70">Plain text QR codes work offline on all device scanners.</span>
+                          </div>
+                        )}
+
+                        {/* VCARD CONTACT */}
+                        {activeTab === 'vcard' && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <input
+                              type="text"
+                              placeholder="First Name *"
+                              value={vCardInput.firstName}
+                              onChange={(e) => setVCardInput({ ...vCardInput, firstName: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Last Name"
+                              value={vCardInput.lastName}
+                              onChange={(e) => setVCardInput({ ...vCardInput, lastName: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
+                            />
+                            <input
+                              type="tel"
+                              placeholder="Phone Number *"
+                              value={vCardInput.phone}
+                              onChange={(e) => setVCardInput({ ...vCardInput, phone: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
+                            />
+                            <input
+                              type="email"
+                              placeholder="Email Address"
+                              value={vCardInput.email}
+                              onChange={(e) => setVCardInput({ ...vCardInput, email: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Company Name"
+                              value={vCardInput.company}
+                              onChange={(e) => setVCardInput({ ...vCardInput, company: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Job Title"
+                              value={vCardInput.title}
+                              onChange={(e) => setVCardInput({ ...vCardInput, title: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
+                            />
+                          </div>
+                        )}
+
+                        {/* WIFI */}
+                        {activeTab === 'wifi' && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <input
+                              type="text"
+                              placeholder="WiFi SSID (Network Name) *"
+                              value={wifiInput.ssid}
+                              onChange={(e) => setWifiInput({ ...wifiInput, ssid: e.target.value })}
+                              className="sm:col-span-2 rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                            <input
+                              type="password"
+                              placeholder="WiFi Password"
+                              value={wifiInput.password}
+                              onChange={(e) => setWifiInput({ ...wifiInput, password: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                            <select
+                              value={wifiInput.encryption}
+                              onChange={(e) => setWifiInput({ ...wifiInput, encryption: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            >
+                              <option value="WPA">WPA / WPA2 / WPA3</option>
+                              <option value="WEP">WEP</option>
+                              <option value="nopass">No Password (Open)</option>
+                            </select>
+                            <label className="sm:col-span-2 flex items-center gap-2 text-white/80 text-xs cursor-pointer pt-1">
+                              <input
+                                type="checkbox"
+                                checked={wifiInput.hidden}
+                                onChange={(e) => setWifiInput({ ...wifiInput, hidden: e.target.checked })}
+                                className="rounded text-accent focus:ring-accent"
+                              />
+                              Hidden Network
+                            </label>
+                          </div>
+                        )}
+
+                        {/* EMAIL */}
+                        {activeTab === 'email' && (
+                          <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <input
+                              type="email"
+                              placeholder="Recipient Email Address *"
+                              value={emailInput.to}
+                              onChange={(e) => setEmailInput({ ...emailInput, to: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Email Subject"
+                              value={emailInput.subject}
+                              onChange={(e) => setEmailInput({ ...emailInput, subject: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                            <textarea
+                              placeholder="Email Body Content..."
+                              value={emailInput.body}
+                              onChange={(e) => setEmailInput({ ...emailInput, body: e.target.value })}
+                              rows={2}
+                              className="rounded-xl bg-white text-black p-3 text-sm outline-none resize-none"
+                            />
+                          </div>
+                        )}
+
+                        {/* SMS */}
+                        {activeTab === 'sms' && (
+                          <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <input
+                              type="tel"
+                              placeholder="Phone Number (+1 234 567 890) *"
+                              value={smsInput.phone}
+                              onChange={(e) => setSmsInput({ ...smsInput, phone: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                            <textarea
+                              placeholder="Pre-filled SMS Message..."
+                              value={smsInput.message}
+                              onChange={(e) => setSmsInput({ ...smsInput, message: e.target.value })}
+                              rows={2}
+                              className="rounded-xl bg-white text-black p-3 text-sm outline-none resize-none"
+                            />
+                          </div>
+                        )}
+
+                        {/* PHONE */}
+                        {activeTab === 'phone' && (
+                          <div className="flex flex-col gap-2">
+                            <input
+                              type="tel"
+                              placeholder="Enter Phone Number with country code (+1 234 567 890)"
+                              value={phoneInput}
+                              onChange={(e) => setPhoneInput(e.target.value)}
+                              className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
+                            />
+                            <span className="text-xs text-white/70">Scanning will open dialer automatically</span>
+                          </div>
+                        )}
+
+                        {/* WHATSAPP */}
+                        {activeTab === 'whatsapp' && (
+                          <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <input
+                              type="tel"
+                              placeholder="WhatsApp Number with country code (e.g. 14155552671) *"
+                              value={whatsappInput.phone}
+                              onChange={(e) => setWhatsappInput({ ...whatsappInput, phone: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                            <textarea
+                              placeholder="Pre-filled WhatsApp Message..."
+                              value={whatsappInput.message}
+                              onChange={(e) => setWhatsappInput({ ...whatsappInput, message: e.target.value })}
+                              rows={2}
+                              className="rounded-xl bg-white text-black p-3 text-sm outline-none resize-none"
+                            />
+                          </div>
+                        )}
+
+                        {/* LOCATION */}
+                        {activeTab === 'location' && (
+                          <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <input
+                              type="text"
+                              placeholder="Google Maps URL or Address"
+                              value={locationInput.query}
+                              onChange={(e) => setLocationInput({ ...locationInput, query: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                            <div className="grid grid-cols-2 gap-2">
+                              <input
+                                type="text"
+                                placeholder="Latitude (e.g. 40.7128)"
+                                value={locationInput.lat}
+                                onChange={(e) => setLocationInput({ ...locationInput, lat: e.target.value })}
+                                className="rounded-xl bg-white text-black px-3 py-2 text-xs outline-none"
+                              />
+                              <input
+                                type="text"
+                                placeholder="Longitude (e.g. -74.0060)"
+                                value={locationInput.lng}
+                                onChange={(e) => setLocationInput({ ...locationInput, lng: e.target.value })}
+                                className="rounded-xl bg-white text-black px-3 py-2 text-xs outline-none"
+                              />
+                            </div>
+                          </div>
+                        )}
+
+                        {/* EVENT */}
+                        {activeTab === 'event' && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <input
+                              type="text"
+                              placeholder="Event Title *"
+                              value={eventInput.title}
+                              onChange={(e) => setEventInput({ ...eventInput, title: e.target.value })}
+                              className="sm:col-span-2 rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Location / Venue"
+                              value={eventInput.location}
+                              onChange={(e) => setEventInput({ ...eventInput, location: e.target.value })}
+                              className="sm:col-span-2 rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
+                            />
+                            <div>
+                              <span className="text-[10px] text-white/70 block mb-1">Start Date & Time</span>
+                              <input
+                                type="datetime-local"
+                                value={eventInput.start}
+                                onChange={(e) => setEventInput({ ...eventInput, start: e.target.value })}
+                                className="w-full rounded-xl bg-white text-black px-3 py-1.5 text-xs outline-none"
+                              />
+                            </div>
+                            <div>
+                              <span className="text-[10px] text-white/70 block mb-1">End Date & Time</span>
+                              <input
+                                type="datetime-local"
+                                value={eventInput.end}
+                                onChange={(e) => setEventInput({ ...eventInput, end: e.target.value })}
+                                className="w-full rounded-xl bg-white text-black px-3 py-1.5 text-xs outline-none"
+                              />
+                            </div>
+                          </div>
+                        )}
+
+                        {/* CRYPTO */}
+                        {activeTab === 'crypto' && (
+                          <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <div className="flex gap-2">
+                              <select
+                                value={cryptoInput.coin}
+                                onChange={(e) => setCryptoInput({ ...cryptoInput, coin: e.target.value })}
+                                className="rounded-xl bg-white text-black px-3 py-2 text-sm outline-none"
+                              >
+                                <option value="Bitcoin">Bitcoin (BTC)</option>
+                                <option value="Ethereum">Ethereum (ETH)</option>
+                                <option value="Litecoin">Litecoin (LTC)</option>
+                                <option value="USDT">Tether (USDT)</option>
+                              </select>
+                              <input
+                                type="text"
+                                placeholder="Amount (optional)"
+                                value={cryptoInput.amount}
+                                onChange={(e) => setCryptoInput({ ...cryptoInput, amount: e.target.value })}
+                                className="flex-1 rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
+                              />
+                            </div>
+                            <input
+                              type="text"
+                              placeholder="Crypto Wallet Address *"
+                              value={cryptoInput.address}
+                              onChange={(e) => setCryptoInput({ ...cryptoInput, address: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
 
-                    {/* Toggle Switches (Desktop) */}
-                    <div className="hidden min-[700px]:flex absolute bottom-0 left-0 px-6 pb-4 items-center gap-6">
+                    {/* Bottom Toggles */}
+                    <div className="hidden min-[700px]:flex absolute bottom-0 left-0 px-6 pb-3 items-center gap-6">
                       <label className="flex items-center gap-2 cursor-pointer">
                         <span className="relative inline-flex h-5 w-9 items-center rounded-full transition-colors bg-accent">
                           <span className="inline-block h-3.5 w-3.5 rounded-full bg-white transition-transform translate-x-4" />
                         </span>
-                        <span className="text-sm text-white flex items-center gap-1">
+                        <span className="text-xs text-white/90 flex items-center gap-1">
                           Privacy Mode
-                          <svg className="w-3 h-3 text-[#BEF392]" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
-                          </svg>
                         </span>
                       </label>
                       <label className="flex items-center gap-2 cursor-pointer">
                         <span className="relative inline-flex h-5 w-9 items-center rounded-full transition-colors bg-accent">
                           <span className="inline-block h-3.5 w-3.5 rounded-full bg-white transition-transform translate-x-4" />
                         </span>
-                        <span className="text-sm text-white flex items-center gap-1">
-                          High Quality
-                          <svg className="w-3 h-3 text-[#BEF392]" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
+                        <span className="text-xs text-white/90 flex items-center gap-1">
+                          High Resolution (1000px)
                         </span>
                       </label>
                     </div>
                   </div>
 
-                  {/* RIGHT PANEL: QR Preview + Actions */}
-                  <div className="w-full min-[700px]:w-[36.7%] px-6 min-[700px]:px-8 pt-[17px] pb-6 flex flex-col items-center">
-                    <p className="hidden min-[700px]:block text-sm text-white/70 font-medium mb-3 text-center">
-                      QR Code Preview
+                  {/* RIGHT PANEL: QR Preview + Templates + Custom Options Button */}
+                  <div className="w-full min-[700px]:w-[36.7%] px-6 min-[700px]:px-6 pt-[14px] pb-6 flex flex-col items-center justify-between border-t min-[700px]:border-t-0 min-[700px]:border-l border-white/10">
+                    <p className="text-xs text-white/70 font-medium mb-2 text-center">
+                      QR Code Preview & Templates
                     </p>
 
-                    {/* QR Preview */}
-                    <div className="flex items-center justify-center w-full">
-                      <div className="relative bg-white border-2 border-black/10 rounded-lg p-3 aspect-square flex items-center justify-center" style={{ width: '80%', maxWidth: '260px' }}>
+                    {/* QR Canvas + Template Selector Side-by-Side */}
+                    <div className="flex items-center justify-between w-full gap-3">
+                      {/* Canvas Container */}
+                      <div className="relative bg-white border-2 border-black/10 rounded-xl p-3 aspect-square flex items-center justify-center shadow-lg" style={{ width: '72%', maxWidth: '230px' }}>
                         <div ref={qrContainerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />
+                      </div>
+
+                      {/* Template Selector Vertical Carousel */}
+                      <div className="flex flex-col items-center gap-2 flex-1 max-h-[220px] overflow-y-auto scrollbar-hide py-1">
+                        {TEMPLATES.map((tpl) => (
+                          <button
+                            key={tpl.id}
+                            onClick={() => applyTemplate(tpl)}
+                            title={tpl.name}
+                            className={`w-9 h-9 rounded-lg border-2 transition-all p-1 flex items-center justify-center ${
+                              activeTemplate === tpl.id ? 'border-accent ring-2 ring-accent/50 scale-105' : 'border-white/20 opacity-70 hover:opacity-100'
+                            }`}
+                            style={{ backgroundColor: tpl.bgColor }}
+                          >
+                            <div className="w-full h-full rounded" style={{ backgroundColor: tpl.fgColor }} />
+                          </button>
+                        ))}
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex items-center gap-2 mt-6 w-full">
-                      <div className="flex gap-2 flex-1">
+                    {/* Action Buttons Row */}
+                    <div className="flex flex-col gap-2 mt-4 w-full">
+                      <div className="flex items-center gap-2 w-full">
                         <button
                           onClick={() => handleDownload('png')}
                           disabled={!generated}
-                          className={`h-11 rounded-lg text-sm font-bold text-white transition-colors flex-1 ${generated ? 'bg-accent hover:bg-accent-dark' : 'bg-[#C7C7C7] cursor-not-allowed'}`}
+                          className={`h-10 rounded-lg text-xs font-bold text-white transition-colors flex-1 ${generated ? 'bg-accent hover:bg-accent-dark' : 'bg-[#C7C7C7] cursor-not-allowed'}`}
                         >
-                          Download
+                          Download PNG
                         </button>
                         <button
                           onClick={() => handleDownload('svg')}
                           disabled={!generated}
                           title="Download SVG"
-                          className={`h-11 px-3 rounded-lg transition-colors flex items-center justify-center ${generated ? 'bg-accent/80 hover:bg-accent text-white' : 'bg-[#C7C7C7] cursor-not-allowed'}`}
+                          className={`h-10 px-3 rounded-lg text-xs font-bold text-white transition-colors ${generated ? 'bg-accent/80 hover:bg-accent' : 'bg-[#C7C7C7] cursor-not-allowed'}`}
                         >
-                          <span className="text-xs font-bold">SVG</span>
+                          SVG
+                        </button>
+                        <button
+                          onClick={handleCopy}
+                          disabled={!generated}
+                          title="Copy to clipboard"
+                          className={`h-10 px-3 rounded-lg transition-colors text-white ${generated ? 'bg-white/10 hover:bg-white/20' : 'bg-[#C7C7C7] cursor-not-allowed'}`}
+                        >
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m0 16H8V7h11z" />
+                          </svg>
                         </button>
                       </div>
+
+                      {/* Customize Options Button */}
                       <button
-                        onClick={handleCopy}
-                        disabled={!generated}
-                        title="Copy to clipboard"
-                        className={`h-11 px-3 rounded-lg transition-colors flex items-center justify-center ${generated ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-[#C7C7C7] cursor-not-allowed'}`}
+                        onClick={() => setShowCustomize(!showCustomize)}
+                        className="w-full py-2.5 bg-white/10 hover:bg-white/20 text-[#BEF392] font-semibold rounded-lg text-xs flex items-center justify-center gap-2 border border-white/10 transition-colors"
                       >
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m0 16H8V7h11z" />
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                         </svg>
+                        <span>{showCustomize ? 'Hide Custom Options' : 'Custom QR Options & Logo'}</span>
                       </button>
                     </div>
                   </div>
                 </div>
 
-                {/* Mobile Toggle Switches */}
-                <div className="min-[700px]:hidden flex items-center gap-6 px-6 pb-6 pt-2">
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <span className="relative inline-flex h-5 w-9 items-center rounded-full transition-colors bg-accent">
-                      <span className="inline-block h-3.5 w-3.5 rounded-full bg-white transition-transform translate-x-4" />
-                    </span>
-                    <span className="text-sm text-white flex items-center gap-1">Privacy Mode</span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <span className="relative inline-flex h-5 w-9 items-center rounded-full transition-colors bg-accent">
-                      <span className="inline-block h-3.5 w-3.5 rounded-full bg-white transition-transform translate-x-4" />
-                    </span>
-                    <span className="text-sm text-white flex items-center gap-1">High Quality</span>
-                  </label>
-                </div>
+                {/* ──── CUSTOM QR OPTIONS EXPANDABLE PANEL ──── */}
+                {showCustomize && (
+                  <div className="bg-[#141414] border-t border-white/10 p-6 text-white animate-in">
+                    <h3 className="text-sm font-bold text-[#BEF392] uppercase tracking-wider mb-4 flex items-center gap-2">
+                      🎨 Custom Design Options
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+                      {/* Colors */}
+                      <div className="space-y-3">
+                        <label className="text-xs font-bold text-white/80 block">Color Palette</label>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between text-xs text-white/60">
+                            <span>Pattern Color</span>
+                            <input type="color" value={fgColor} onChange={(e) => setFgColor(e.target.value)} className="w-7 h-7 rounded cursor-pointer border-none bg-transparent" />
+                          </div>
+                          <div className="flex items-center justify-between text-xs text-white/60">
+                            <span>Background</span>
+                            <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="w-7 h-7 rounded cursor-pointer border-none bg-transparent" />
+                          </div>
+                          <div className="flex items-center justify-between text-xs text-white/60">
+                            <span>Corner Frame</span>
+                            <input type="color" value={cornerSquareColor} onChange={(e) => setCornerSquareColor(e.target.value)} className="w-7 h-7 rounded cursor-pointer border-none bg-transparent" />
+                          </div>
+                          <div className="flex items-center justify-between text-xs text-white/60">
+                            <span>Corner Eye</span>
+                            <input type="color" value={cornerDotColor} onChange={(e) => setCornerDotColor(e.target.value)} className="w-7 h-7 rounded cursor-pointer border-none bg-transparent" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Dot Styles */}
+                      <div className="space-y-3">
+                        <label className="text-xs font-bold text-white/80 block">Dot Pattern</label>
+                        <select
+                          value={dotStyle}
+                          onChange={(e) => setDotStyle(e.target.value as DotType)}
+                          className="w-full bg-white/10 text-white rounded-lg p-2 text-xs outline-none border border-white/10"
+                        >
+                          {DOT_STYLES.map(s => (
+                            <option key={s.value} value={s.value} className="bg-gray-900 text-white">{s.label}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Corner Shapes */}
+                      <div className="space-y-3">
+                        <label className="text-xs font-bold text-white/80 block">Corner Frame & Eye</label>
+                        <select
+                          value={cornerSquareStyle}
+                          onChange={(e) => setCornerSquareStyle(e.target.value as CornerSquareType)}
+                          className="w-full bg-white/10 text-white rounded-lg p-2 text-xs outline-none border border-white/10 mb-2"
+                        >
+                          {CORNER_SQUARE_STYLES.map(s => (
+                            <option key={s.value} value={s.value} className="bg-gray-900 text-white">{s.label}</option>
+                          ))}
+                        </select>
+                        <select
+                          value={cornerDotStyle}
+                          onChange={(e) => setCornerDotStyle(e.target.value as CornerDotType)}
+                          className="w-full bg-white/10 text-white rounded-lg p-2 text-xs outline-none border border-white/10"
+                        >
+                          {CORNER_DOT_STYLES.map(s => (
+                            <option key={s.value} value={s.value} className="bg-gray-900 text-white">{s.label}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Logo Upload */}
+                      <div className="space-y-3">
+                        <label className="text-xs font-bold text-white/80 block">Add Center Logo</label>
+                        <label className="block w-full cursor-pointer bg-white/10 hover:bg-white/20 border border-white/20 border-dashed rounded-lg p-3 text-center transition-colors">
+                          <span className="text-xs text-[#BEF392] block font-medium">Upload Logo (PNG/JPEG)</span>
+                          <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
+                        </label>
+                        {logoSrc && (
+                          <div className="flex items-center justify-between bg-white/5 p-2 rounded-lg text-xs">
+                            <span className="text-white/80">Logo Loaded</span>
+                            <button onClick={() => setLogoSrc(null)} className="text-red-400 hover:text-red-300 font-bold">Remove</button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
