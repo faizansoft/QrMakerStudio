@@ -147,6 +147,62 @@ const TEMPLATES = [
   { id: 'purple', name: 'Royal Violet', fgColor: '#7c3aed', bgColor: '#f5f3ff', cornerSquareColor: '#5b21b6', cornerDotColor: '#7c3aed', dotType: 'classy' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
 ];
 
+// ── Step data ──
+const STEPS = [
+  {
+    number: 1,
+    title: 'Choose your QR Code type',
+    description: 'Choose your QR Code type based on what you want it to do: open a URL, share WiFi, display contact info, send an email, and more.',
+  },
+  {
+    number: 2,
+    title: 'Fill in the details & customize',
+    description: 'Enter the content for your QR Code. Add custom colors, dot styles, eye shapes, and upload your brand logo.',
+  },
+  {
+    number: 3,
+    title: 'Download your QR Code',
+    description: 'Your QR Code is generated instantly. Download it in high resolution PNG, SVG, or WebP formats for print and digital use.',
+  },
+];
+
+// ── Features data ──
+const FEATURES = [
+  {
+    title: 'Fully Customizable',
+    description: 'Customize colors, patterns, corner styles, and add your logo for branded QR Codes that match your identity.',
+  },
+  {
+    title: 'High Resolution Exports',
+    description: 'Download in 1000×1000px SVG, PNG, or WebP formats for perfect quality in print and digital media.',
+  },
+  {
+    title: 'Privacy First Architecture',
+    description: 'All QR Code generation happens in your browser. No data is sent to external servers.',
+  },
+  {
+    title: 'Instant Real-time Generation',
+    description: 'Create QR Codes in seconds with live preview updates as you type.',
+  },
+  {
+    title: '100% Free & Permanent',
+    description: 'No subscriptions or scan limits. Your static QR codes work forever.',
+  },
+  {
+    title: 'Multi-Language Support',
+    description: 'Available in English, Spanish, German, French, and many more global languages.',
+  },
+];
+
+// ── Industry data ──
+const INDUSTRIES = [
+  { title: 'Restaurants & Hospitality', description: 'Replace physical menus, collect guest feedback, or promote daily specials with contactless table QR codes.' },
+  { title: 'Real Estate Listings', description: 'Add QR Codes to property flyers, yard signs, and business cards to share virtual tours and agent contact info.' },
+  { title: 'Education & Classrooms', description: 'Share course materials, assignment links, and digital resources instantly with students.' },
+  { title: 'Events & Conferences', description: 'Streamline event check-ins, share schedules, and connect attendees to registration forms.' },
+];
+
+
 interface HomeProps {
   initialTab?: string;
 }
