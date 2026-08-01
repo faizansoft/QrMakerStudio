@@ -111,7 +111,7 @@ const App: React.FC = () => {
       <Router basename={basename}>
         <ScrollToTop />
         <SEOManager />
-        <div className="min-h-screen bg-slate-50 selection:bg-indigo-100 flex flex-col">
+        <div className="min-h-screen bg-white selection:bg-green-100 flex flex-col">
           <Header />
           <main className="flex-grow">
             <Routes>

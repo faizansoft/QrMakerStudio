@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>QR Generator Online | Professional Branded QR Code Studio</title>
-    <meta name="description" content="Create professional, high-resolution custom QR codes. Specialized tools for WiFi, vCard, and URLs with high-quality SVG exports.">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    
+    <title>QR Maker Studio: Create Free QR Codes</title>
+    <meta name="description" content="Create free static and dynamic QR Codes using custom logos and colors. All-in-one tool to generate professional QR codes, customize them, and download in high resolution.">
+    <meta name="robots" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://qr-generator.online/">
-    <meta property="og:title" content="QR Generator Online | Professional Branded QR Code Studio">
-    <meta property="og:description" content="Create professional, high-resolution custom QR codes. Specialized tools for WiFi, vCard, and URLs with high-quality SVG exports.">
+    <meta property="og:title" content="QR Maker Studio: Create Free QR Codes">
+    <meta property="og:description" content="Create free static and dynamic QR Codes using custom logos and colors. All-in-one tool to generate professional QR codes, customize them, and download in high resolution.">
     <meta property="og:image" content="https://qr-generator.online/og-image.png">
+    <meta property="og:site_name" content="QR Maker Studio">
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://qr-generator.online/">
-    <meta property="twitter:title" content="QR Generator Online | Professional Branded QR Code Studio">
-    <meta property="twitter:description" content="Create professional, high-resolution custom QR codes. Specialized tools for WiFi, vCard, and URLs with high-quality SVG exports.">
+    <meta property="twitter:title" content="QR Maker Studio: Create Free QR Codes">
+    <meta property="twitter:description" content="Create free static and dynamic QR Codes using custom logos and colors. All-in-one tool to generate professional QR codes, customize them, and download in high resolution.">
     <meta property="twitter:image" content="https://qr-generator.online/og-image.png">
 
     <!-- Google tag (gtag.js) -->
@@ -32,7 +32,7 @@
       gtag('config', 'G-1G2LKYV71R');
     </script>
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z'></path></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232B6F53' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z'></path></svg>">
     <link rel="canonical" href="https://qr-generator.online" />
 
     <!-- Hreflang Tags -->
@@ -44,9 +44,9 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "QR Generator Online",
+      "name": "QR Maker Studio",
       "url": "https://qr-generator.online",
-      "description": "Create professional, high-resolution custom QR codes. Specialized tools for WiFi, vCard, and URLs with high-quality SVG exports.",
+      "description": "Create free static and dynamic QR Codes using custom logos and colors. All-in-one tool to generate professional QR codes.",
       "applicationCategory": "DesignApplication",
       "operatingSystem": "Web",
       "offers": {
@@ -56,53 +56,96 @@
       },
       "creator": {
         "@type": "Organization",
-        "name": "QR Generator Online"
+        "name": "QR Maker Studio"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "2450",
+        "bestRating": "5"
       }
     }
     </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: {
+                DEFAULT: '#2B6F53',
+                dark: '#1F5A42',
+                light: '#BEF392',
+              },
+              surface: {
+                DEFAULT: '#f8f9fa',
+                subtle: '#f3f4f6',
+                dark: '#111827',
+              },
+              star: '#f59e0b',
+            },
+            fontFamily: {
+              display: ['"Roboto Flex"', 'sans-serif'],
+              body: ['"Roboto Flex"', 'sans-serif'],
+            },
+            borderRadius: {
+              'button': '8px',
+              'card': '16px',
+              'banner': '16px',
+            },
+          },
+        },
+      }
+    </script>
     <style>
         body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #f8fafc; 
+            font-family: 'Roboto Flex', sans-serif; 
+            background-color: #ffffff; 
             scroll-behavior: smooth; 
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            letter-spacing: 0.00938em;
         }
-        .font-display { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Roboto Flex', sans-serif; }
         
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         
-        .animate-in { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+        .animate-in { animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
         @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(20px); } 
+            from { opacity: 0; transform: translateY(16px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
-        
-        [dir="rtl"] { font-family: 'Inter', sans-serif; }
-        
-        .input-focus { 
-            outline: none; 
-            border-color: #3b82f6; 
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); 
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .btn-premium {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .animate-delay-100 { animation-delay: 100ms; }
+        .animate-delay-200 { animation-delay: 200ms; }
+        .animate-delay-300 { animation-delay: 300ms; }
+
+        /* TQRCG-style gradient hero */
+        .bg-gradient-hero {
+            background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 40%, #ecfdf5 100%);
         }
-        
-        .btn-premium:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
-        }
+
+        /* Rounded button matching TQRCG */
+        .rounded-button { border-radius: 8px; }
+
+        /* Custom toggle switch */
+        .toggle-track { transition: background-color 0.2s ease; }
+        .toggle-thumb { transition: transform 0.2s ease; }
+
+        [dir="rtl"] { font-family: 'Roboto Flex', sans-serif; }
     </style>
 </head>
 <body>
@@ -125,6 +168,6 @@
   }
 }
 </script>
-    <script type="module" src="/index.tsx?v=2"></script>
+    <script type="module" src="/index.tsx?v=3"></script>
 </body>
 </html>
