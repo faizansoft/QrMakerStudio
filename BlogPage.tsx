@@ -1,9 +1,11 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BLOG_POSTS, BlogPost } from './constants/blogData';
+import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 
 const BlogPage: React.FC = () => {
+  const { language, t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -22,7 +24,7 @@ const BlogPage: React.FC = () => {
     return () => {
       removeJSONLD('jsonld-breadcrumbs');
     };
-  }, []);
+  }, [language]);
 
   const categories = ['All', 'Hospitality', 'Printing & Design', 'Business & Networking', 'Real Estate'];
 

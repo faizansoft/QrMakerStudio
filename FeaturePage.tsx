@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FEATURE_SEO_DATA } from './constants/featureSeoData';
 import { TOOL_SEO_DATA } from './constants/toolSeoData';
 import Home from './Home';
+import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getToolSoftwareSchema, getFAQSchema, getBreadcrumbSchema } from './services/seoUtils';
 
 interface FeaturePageProps {
@@ -10,6 +11,7 @@ interface FeaturePageProps {
 }
 
 const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
+  const { language, t } = useLanguage();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const featureSeo = useMemo(() => {
@@ -38,7 +40,7 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
       removeJSONLD('jsonld-faq');
       removeJSONLD('jsonld-breadcrumbs');
     };
-  }, [featureSeo]);
+  }, [featureSeo, language]);
 
   return (
     <div className="animate-in pb-24 bg-white">

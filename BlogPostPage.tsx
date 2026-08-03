@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { BLOG_POSTS } from './constants/blogData';
+import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 
 const BlogPostPage: React.FC = () => {
+  const { language, t } = useLanguage();
   const { slug } = useParams<{ slug: string }>();
 
   const post = useMemo(() => {
@@ -51,7 +53,7 @@ const BlogPostPage: React.FC = () => {
       removeJSONLD('jsonld-blog-post');
       removeJSONLD('jsonld-breadcrumbs');
     };
-  }, [post]);
+  }, [post, language]);
 
   if (!post) {
     return <Navigate to="/blog" replace />;
