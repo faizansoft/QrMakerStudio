@@ -1074,7 +1074,16 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
             <div className="flex flex-col items-center gap-1">
               <div className="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600">
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {/* ═══════════════════════════ EXPLANATORY GUIDE ARTICLE ═══════════════════════════ */}
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <span className="text-[10px] font-bold text-gray-400 uppercase">Fast</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════ EXPLANATORY GUIDE ARTICLE ═══════════════════════════ */}
       <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
         <div className="mx-auto max-w-4xl px-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
@@ -1290,25 +1299,6 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold rounded-button transition-all duration-200 border-2 border-transparent bg-accent text-white hover:bg-accent-dark px-8 py-3.5 text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5"
           >
             Create {currentSeo.title} — It's Free
-          </a>
-          <p className="text-sm text-white/40 mt-4">No sign-up required • Unlimited QR Codes • Download in PNG, SVG, WebP</p>
-        </div>
-      </section>
-    </div>
-  );
-};
-
-export default Home;">
-            Ready to Create Your QR Code?
-          </h2>
-          <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
-            Start generating professional, customizable QR Codes in seconds. No account needed, no fees — ever.
-          </p>
-          <a
-            href="#qr-generator"
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold rounded-button transition-all duration-200 border-2 border-transparent bg-accent text-white hover:bg-accent-dark px-8 py-3.5 text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-          >
-            Create QR Code — It's Free
           </a>
           <p className="text-sm text-white/40 mt-4">No sign-up required • Unlimited QR Codes • Download in PNG, SVG, WebP</p>
         </div>
