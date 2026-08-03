@@ -8,6 +8,7 @@ import ContactPage from './ContactPage';
 import PrivacyPage from './PrivacyPage';
 import TermsPage from './TermsPage';
 import PricingPage from './PricingPage';
+import FeaturePage from './FeaturePage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -115,6 +116,13 @@ const App: React.FC = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
+
+              {/* Feature Dedicated Routes */}
+              <Route path="/qr-code-with-logo" element={<FeaturePage featureId="qr-code-with-logo" />} />
+              <Route path="/custom-qr-codes" element={<FeaturePage featureId="custom-qr-codes" />} />
+              <Route path="/colored-qr-code-generator" element={<FeaturePage featureId="colored-qr-code-generator" />} />
+              <Route path="/svg-qr-code-generator" element={<FeaturePage featureId="svg-qr-code-generator" />} />
+              <Route path="/high-resolution-qr-codes" element={<FeaturePage featureId="high-resolution-qr-codes" />} />
 
               {/* QR Code Tool Specific Routes */}
               <Route path="/url-qr-code-generator" element={<ToolRouteHandler toolId="url" />} />

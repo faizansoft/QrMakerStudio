@@ -56,11 +56,11 @@ export const Header: React.FC = () => {
   ];
 
   const features = [
-    { label: 'Customizable Designs', href: '/' },
-    { label: 'QR Code with Logo', href: '/' },
-    { label: 'Colored QR Codes', href: '/' },
-    { label: 'High-Res Downloads', href: '/' },
-    { label: 'Multiple Formats', href: '/' },
+    { label: 'QR Code with Logo', href: '/qr-code-with-logo' },
+    { label: 'Customizable Designs', href: '/custom-qr-codes' },
+    { label: 'Colored QR Codes', href: '/colored-qr-code-generator' },
+    { label: 'Vector SVG Export', href: '/svg-qr-code-generator' },
+    { label: 'High-Res Downloads', href: '/high-resolution-qr-codes' },
   ];
 
   const resources = [
