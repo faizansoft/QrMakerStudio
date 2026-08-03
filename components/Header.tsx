@@ -40,18 +40,19 @@ export const Header: React.FC = () => {
   const activeLangData = languageMeta.find(l => l.code === language) || languageMeta[0];
 
   const qrTypes = [
-    { label: 'Text', href: '/text-qr-code-generator' },
-    { label: 'vCard', href: '/vcard-qr-code-generator' },
-    { label: 'Email', href: '/email-qr-code-generator' },
-    { label: 'SMS', href: '/sms-qr-code-generator' },
-    { label: 'Phone', href: '/phone-qr-code-generator' },
-    { label: 'WhatsApp', href: '/whatsapp-qr-code-generator' },
-    { label: 'Facebook', href: '/facebook-qr-code-generator' },
-    { label: 'WiFi', href: '/wifi-qr-code-generator' },
-    { label: 'Location', href: '/location-qr-code-generator' },
-    { label: 'Event', href: '/event-qr-code-generator' },
-    { label: 'Crypto', href: '/crypto-qr-code-generator' },
-    { label: 'Google Forms', href: '/googleform-qr-code-generator' },
+    { label: 'URL Website', href: '/url-qr-code-generator' },
+    { label: 'Plain Text', href: '/text-qr-code-generator' },
+    { label: 'vCard Contact', href: '/vcard-qr-code-generator' },
+    { label: 'WiFi Password', href: '/wifi-qr-code-generator' },
+    { label: 'Email Link', href: '/email-qr-code-generator' },
+    { label: 'SMS Message', href: '/sms-qr-code-generator' },
+    { label: 'Phone Call', href: '/phone-qr-code-generator' },
+    { label: 'WhatsApp Chat', href: '/whatsapp-qr-code-generator' },
+    { label: 'Social Media', href: '/facebook-qr-code-generator' },
+    { label: 'Google Maps Location', href: '/location-qr-code-generator' },
+    { label: 'Event Calendar', href: '/event-qr-code-generator' },
+    { label: 'Crypto Address', href: '/crypto-qr-code-generator' },
+    { label: 'Google Forms Survey', href: '/googleform-qr-code-generator' },
   ];
 
   const features = [

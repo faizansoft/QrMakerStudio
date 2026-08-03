@@ -45,11 +45,12 @@ export const Footer: React.FC = () => {
             <div>
               <h4 className="text-sm font-bold text-white mb-4 tracking-wide">QR Code Types</h4>
               <ul className="space-y-3">
-                <li><Link to="/url-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">URL / Link</Link></li>
-                <li><Link to="/wifi-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">WiFi Sharing</Link></li>
-                <li><Link to="/vcard-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">vCard Contact</Link></li>
+                <li><Link to="/url-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">URL / Website Link</Link></li>
+                <li><Link to="/wifi-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">WiFi Network</Link></li>
+                <li><Link to="/vcard-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">vCard Digital Card</Link></li>
                 <li><Link to="/text-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Plain Text</Link></li>
-                <li><Link to="/email-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Email</Link></li>
+                <li><Link to="/email-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Email Message</Link></li>
+                <li><Link to="/sms-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">SMS Text</Link></li>
               </ul>
             </div>
 
@@ -57,11 +58,13 @@ export const Footer: React.FC = () => {
             <div>
               <h4 className="text-sm font-bold text-white mb-4 tracking-wide">More Types</h4>
               <ul className="space-y-3">
-                <li><Link to="/whatsapp-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">WhatsApp</Link></li>
-                <li><Link to="/facebook-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Facebook</Link></li>
-                <li><Link to="/phone-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Phone Call</Link></li>
-                <li><Link to="/sms-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">SMS</Link></li>
+                <li><Link to="/whatsapp-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">WhatsApp Chat</Link></li>
+                <li><Link to="/facebook-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Social Media</Link></li>
+                <li><Link to="/location-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Google Maps</Link></li>
+                <li><Link to="/event-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Event Calendar</Link></li>
+                <li><Link to="/crypto-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Crypto Address</Link></li>
                 <li><Link to="/googleform-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Google Forms</Link></li>
+                <li><Link to="/phone-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Phone Call</Link></li>
               </ul>
             </div>
 

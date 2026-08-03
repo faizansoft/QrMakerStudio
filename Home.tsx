@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import QRCodeStyling from 'qr-code-styling';
 import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS } from './constants';
+import { TOOL_SEO_DATA } from './constants/toolSeoData';
 import { DotType, CornerSquareType, CornerDotType } from './types';
-import { injectJSONLD, removeJSONLD, getToolSoftwareSchema, getBreadcrumbSchema } from './services/seoUtils';
+import { injectJSONLD, removeJSONLD, getToolSoftwareSchema, getFAQSchema, getBreadcrumbSchema } from './services/seoUtils';
 
 // ── Tab definitions with SVG Icon functions ──
 const TABS = [
@@ -238,6 +240,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   const [eventInput, setEventInput] = useState({ title: '', location: '', start: '', end: '', description: '' });
   const [cryptoInput, setCryptoInput] = useState({ coin: 'Bitcoin', address: '', amount: '' });
 
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
   const qrContainerRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
 
@@ -247,54 +251,43 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     }
   }, [initialTab]);
 
-  useEffect(() => {
-    const tabNames: Record<string, { name: string; path: string; desc: string }> = {
-      url: { name: 'Free URL QR Code Generator', path: '/url-qr-code-generator', desc: 'Create custom URL QR codes with logos, colors, and SVG downloads.' },
-      text: { name: 'Plain Text QR Code Generator', path: '/text-qr-code-generator', desc: 'Encode plain text into scannable vector QR codes.' },
-      vcard: { name: 'vCard & Contact QR Code Generator', path: '/vcard-qr-code-generator', desc: 'Share digital business cards and contact info instantly via QR codes.' },
-      wifi: { name: 'WiFi QR Code Generator', path: '/wifi-qr-code-generator', desc: 'Connect to WiFi networks without typing passwords using WiFi QR codes.' },
-      email: { name: 'Email QR Code Generator', path: '/email-qr-code-generator', desc: 'Generate pre-filled email message QR codes.' },
-      sms: { name: 'SMS QR Code Generator', path: '/sms-qr-code-generator', desc: 'Send text messages with one scan using custom SMS QR codes.' },
-      phone: { name: 'Phone Call QR Code Generator', path: '/phone-qr-code-generator', desc: 'Dial phone numbers automatically using scannable QR codes.' },
-      whatsapp: { name: 'WhatsApp QR Code Generator', path: '/whatsapp-qr-code-generator', desc: 'Start WhatsApp chats and send pre-written messages via QR codes.' },
-      facebook: { name: 'Social Media QR Code Generator', path: '/facebook-qr-code-generator', desc: 'Promote your social media profiles and pages with custom QR codes.' },
-      location: { name: 'Location & Map QR Code Generator', path: '/location-qr-code-generator', desc: 'Share GPS location coordinates and Google Maps locations via QR code.' },
-      event: { name: 'Event Calendar QR Code Generator', path: '/event-qr-code-generator', desc: 'Add calendar events and schedules directly to smartphones via QR code.' },
-      crypto: { name: 'Crypto Address QR Code Generator', path: '/crypto-qr-code-generator', desc: 'Receive Bitcoin, Ethereum, and crypto payments effortlessly via QR codes.' },
-      googleform: { name: 'Google Forms QR Code Generator', path: '/googleform-qr-code-generator', desc: 'Direct users to Google Forms surveys and questionnaires using QR codes.' },
-    };
+  const currentSeo = useMemo(() => {
+    return TOOL_SEO_DATA[activeTab] || TOOL_SEO_DATA.url;
+  }, [activeTab]);
 
-    const currentTab = tabNames[activeTab] || tabNames.url;
+  useEffect(() => {
+    const isRoot = activeTab === 'url' && window.location.pathname === '/';
     
     // 1. Update Title & Meta Description
-    document.title = activeTab === 'url' && window.location.pathname === '/' 
+    document.title = isRoot 
       ? "QR Maker Studio: Create Free QR Codes" 
-      : `${currentTab.name} | QR Maker Studio`;
+      : `${currentSeo.metaTitle} | QR Maker Studio`;
 
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', currentTab.desc);
+      metaDesc.setAttribute('content', currentSeo.metaDescription);
     }
 
     // 2. Structured Data (JSON-LD)
-    const isRoot = activeTab === 'url' && window.location.pathname === '/';
-    const toolPath = isRoot ? '/' : currentTab.path;
+    const toolPath = isRoot ? '/' : currentSeo.slug;
     
-    injectJSONLD('jsonld-tool', getToolSoftwareSchema(currentTab.name, toolPath, currentTab.desc));
+    injectJSONLD('jsonld-tool', getToolSoftwareSchema(currentSeo.title, toolPath, currentSeo.metaDescription));
+    injectJSONLD('jsonld-faq', getFAQSchema(currentSeo.faqs));
 
     const breadcrumbs = [
       { name: 'Home', url: '/' }
     ];
     if (!isRoot) {
-      breadcrumbs.push({ name: currentTab.name, url: currentTab.path });
+      breadcrumbs.push({ name: currentSeo.title, url: currentSeo.slug });
     }
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema(breadcrumbs));
 
     return () => {
       removeJSONLD('jsonld-tool');
+      removeJSONLD('jsonld-faq');
       removeJSONLD('jsonld-breadcrumbs');
     };
-  }, [activeTab]);
+  }, [activeTab, currentSeo]);
 
   const activeTabData = TABS.find(t => t.id === activeTab) || TABS[0];
 
@@ -441,12 +434,15 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
           <div className="flex flex-col items-center gap-3">
 
             {/* Title & Subtitle */}
-            <div className="order-2 lg:order-1 text-center">
-              <h1 className="mt-8 lg:mt-0 mb-4 text-[26px] font-medium text-gray-900 text-balance md:mb-2 md:text-4xl">
-                QR Maker Studio
+            <div className="order-2 lg:order-1 text-center max-w-4xl mx-auto px-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-3 mt-6 lg:mt-0">
+                {currentSeo.badge}
+              </div>
+              <h1 className="mb-4 text-[26px] font-bold text-gray-900 leading-tight md:text-4xl lg:text-5xl">
+                {currentSeo.headline}
               </h1>
-              <p className="mb-8 text-lg text-gray-700 md:text-xl">
-                All-in-one tool to create free QR Codes, customize designs, and download in high resolution.
+              <p className="mb-8 text-base text-gray-600 md:text-lg max-w-2xl mx-auto leading-relaxed">
+                {currentSeo.subheadline}
               </p>
             </div>
 
@@ -1078,21 +1074,29 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
             <div className="flex flex-col items-center gap-1">
               <div className="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600">
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <span className="text-[10px] font-bold text-gray-400 uppercase">Fast</span>
-            </div>
+              {/* ═══════════════════════════ EXPLANATORY GUIDE ARTICLE ═══════════════════════════ */}
+      <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
+        <div className="mx-auto max-w-4xl px-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
+            Comprehensive Guide
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            {currentSeo.introTitle}
+          </h2>
+          <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-4">
+            {currentSeo.introParagraphs.map((para, i) => (
+              <p key={i} className="text-base md:text-lg leading-relaxed text-gray-600">{para}</p>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════ HOW TO: 3 STEPS ═══════════════════════════ */}
-      <section id="how-to-create" className="bg-gray-50 py-16 md:py-24 scroll-mt-24">
+      <section id="how-to-create" className="bg-gray-50 py-16 md:py-24 scroll-mt-24 border-t border-neutral-100">
         <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
-          <div className="mb-10 flex flex-col items-center text-center">
+          <div className="mb-12 flex flex-col items-center text-center">
             <h2 className="text-3xl md:text-4xl font-semibold leading-tight tracking-normal text-gray-900 text-balance">
-              How to create a free QR Code in 3 simple steps
+              {currentSeo.stepsTitle}
             </h2>
           </div>
 
@@ -1100,8 +1104,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
             {/* Vertical timeline line */}
             <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-neutral-200 md:block" />
 
-            <div className="flex flex-col gap-16 md:gap-20">
-              {STEPS.map((step, idx) => (
+            <div className="flex flex-col gap-12 md:gap-16">
+              {currentSeo.steps.map((step, idx) => (
                 <div key={step.number} className="relative grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-3 md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-8">
                   {/* Step Number Circle */}
                   <div className="row-start-1 col-start-1 self-start md:col-start-2 md:self-center relative z-10 flex h-10 w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-full bg-accent text-base md:text-lg font-bold text-white shadow-md">
@@ -1111,24 +1115,24 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                   {/* Text Content */}
                   <div className={`row-start-1 col-start-2 ${idx % 2 === 0 ? 'md:col-start-3 md:pl-4' : 'md:col-start-1 md:pr-4 md:text-right'}`}>
                     <h3 className="mb-1 md:mb-2 text-xl md:text-2xl font-semibold text-gray-900">{step.title}</h3>
-                    <p className="text-base md:text-lg leading-relaxed text-gray-500">{step.description}</p>
+                    <p className="text-base leading-relaxed text-gray-500">{step.description}</p>
                   </div>
 
                   {/* Icon Visual Card */}
                   <div className={`row-start-2 col-span-full ${idx % 2 === 0 ? 'md:row-start-1 md:col-span-1 md:col-start-1 md:flex md:justify-end' : 'md:row-start-1 md:col-span-1 md:col-start-3 md:flex md:justify-start'}`}>
-                    <div className="w-full max-w-[340px] rounded-card bg-white border border-neutral-200 shadow-sm p-8 flex items-center justify-center text-accent">
+                    <div className="w-full max-w-[340px] rounded-card bg-white border border-neutral-200 shadow-sm p-6 flex items-center justify-center text-accent">
                       {step.number === 1 && (
-                        <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                         </svg>
                       )}
                       {step.number === 2 && (
-                        <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                         </svg>
                       )}
                       {step.number === 3 && (
-                        <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
                       )}
@@ -1141,79 +1145,25 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
         </div>
       </section>
 
-      {/* ═══════════════════════════ QR CODE TYPES GRID ═══════════════════════════ */}
-      <section className="bg-white py-16 md:py-24">
+      {/* ═══════════════════════════ FEATURES & BENEFITS ═══════════════════════════ */}
+      <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
         <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">All QR Code Types</h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">Choose from 13 specialized QR Code generators, each designed for a specific purpose.</p>
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{currentSeo.featuresTitle}</h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {TABS.map((tab, idx) => (
-              <button
-                key={tab.id}
-                onClick={() => { setActiveTab(tab.id); document.getElementById('qr-generator')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className="group relative bg-white rounded-2xl border border-neutral-200 p-5 text-left hover:border-accent hover:shadow-lg transition-all duration-200"
-              >
-                <div className="text-accent mb-3 p-2 bg-accent/10 rounded-xl inline-block group-hover:bg-accent group-hover:text-white transition-colors">
-                  {tab.icon}
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 group-hover:text-accent transition-colors">{tab.label}</h3>
-                <p className="text-xs text-gray-400 mt-1 line-clamp-2">{tab.description}</p>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════ FEATURES SECTION ═══════════════════════════ */}
-      <section className="bg-gray-50 py-16 md:py-24">
-        <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">Why Choose QR Maker Studio?</h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">Everything you need to create professional QR Codes, all in one place.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {FEATURES.map((feature, idx) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {currentSeo.features.map((feature, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl border border-neutral-100 p-8 hover:shadow-lg hover:border-accent/20 transition-all duration-300 group"
+                className="bg-gray-50 rounded-2xl border border-neutral-100 p-6 hover:shadow-md hover:border-accent/20 transition-all duration-300 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-colors">
-                  {idx === 0 && (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                    </svg>
-                  )}
-                  {idx === 1 && (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  )}
-                  {idx === 2 && (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                  )}
-                  {idx === 3 && (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  )}
-                  {idx === 4 && (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  )}
-                  {idx === 5 && (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  )}
+                <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-accent transition-colors">{feature.title}</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-accent transition-colors">{feature.title}</h3>
                 <p className="text-gray-500 leading-relaxed text-sm">{feature.description}</p>
               </div>
             ))}
@@ -1221,47 +1171,107 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
         </div>
       </section>
 
-      {/* ═══════════════════════════ INDUSTRY USE CASES ═══════════════════════════ */}
-      <section className="bg-white py-16 md:py-24">
+      {/* ═══════════════════════════ USE CASES SECTION ═══════════════════════════ */}
+      <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-100">
         <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">QR Codes for Every Industry</h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">See how businesses across industries use QR Codes to connect with their audience.</p>
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{currentSeo.useCasesTitle}</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {INDUSTRIES.map((industry, idx) => (
+            {currentSeo.useCases.map((useCase, idx) => (
               <div
                 key={idx}
-                className="bg-gray-50 rounded-2xl p-8 hover:bg-accent/5 hover:shadow-md transition-all duration-300 border border-transparent hover:border-accent/10"
+                className="bg-white rounded-2xl p-6 hover:bg-accent/5 hover:shadow-md transition-all duration-300 border border-neutral-200 hover:border-accent/10"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4">
-                  {idx === 0 && (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  )}
-                  {idx === 1 && (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                  )}
-                  {idx === 2 && (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                    </svg>
-                  )}
-                  {idx === 3 && (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  )}
+                <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 font-bold text-base">
+                  {idx + 1}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{industry.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{industry.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{useCase.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{useCase.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════ TOOL-SPECIFIC FAQ SECTION ═══════════════════════════ */}
+      <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
+        <div className="mx-auto max-w-4xl px-4">
+          <div className="mb-12 text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-3">
+              Knowledge Base & FAQs
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions about {currentSeo.title}
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto text-base">
+              Everything you need to know about creating, customizing, and printing {currentSeo.title}s.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {currentSeo.faqs.map((faq, idx) => (
+              <div
+                key={idx}
+                className={`border rounded-2xl transition-all overflow-hidden ${
+                  openFaqIndex === idx ? 'border-accent bg-accent/5' : 'border-neutral-200 bg-white hover:border-neutral-300'
+                }`}
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+                  className="w-full flex items-center justify-between p-6 text-left outline-none"
+                >
+                  <h3 className={`text-lg font-bold transition-colors ${openFaqIndex === idx ? 'text-accent' : 'text-gray-900'}`}>
+                    {faq.question}
+                  </h3>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${openFaqIndex === idx ? 'bg-accent text-white rotate-180' : 'bg-gray-100 text-gray-500'}`}>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </button>
+                {openFaqIndex === idx && (
+                  <div className="px-6 pb-6 pt-0 text-gray-600 leading-relaxed text-sm border-t border-neutral-100/50 pt-3">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════ QR CODE TYPES INTERLINKING MATRIX ═══════════════════════════ */}
+      <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-200">
+        <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">All 13 QR Code Generators</h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">Explore all specialized QR Code generators to convert websites, WiFi, vCards, emails, and locations into scannable barcodes.</p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {TABS.map((tab) => {
+              const tabSeo = TOOL_SEO_DATA[tab.id] || TOOL_SEO_DATA.url;
+              return (
+                <Link
+                  key={tab.id}
+                  to={tabSeo.slug}
+                  onClick={() => { setActiveTab(tab.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  className={`group relative bg-white rounded-2xl border p-5 text-left transition-all duration-200 ${
+                    activeTab === tab.id 
+                      ? 'border-accent ring-2 ring-accent/20 bg-accent/5' 
+                      : 'border-neutral-200 hover:border-accent hover:shadow-lg'
+                  }`}
+                >
+                  <div className="text-accent mb-3 p-2 bg-accent/10 rounded-xl inline-block group-hover:bg-accent group-hover:text-white transition-colors">
+                    {tab.icon}
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 group-hover:text-accent transition-colors">{tab.label}</h3>
+                  <p className="text-xs text-gray-400 mt-1 line-clamp-2">{tab.description}</p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1270,6 +1280,25 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
       <section className="bg-[#1E1E1E] py-16 md:py-24">
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
+            Ready to Create Your {currentSeo.title}?
+          </h2>
+          <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
+            Start generating professional, customizable QR Codes in seconds. No account needed, no fees — ever.
+          </p>
+          <a
+            href="#qr-generator"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold rounded-button transition-all duration-200 border-2 border-transparent bg-accent text-white hover:bg-accent-dark px-8 py-3.5 text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+          >
+            Create {currentSeo.title} — It's Free
+          </a>
+          <p className="text-sm text-white/40 mt-4">No sign-up required • Unlimited QR Codes • Download in PNG, SVG, WebP</p>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;">
             Ready to Create Your QR Code?
           </h2>
           <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
