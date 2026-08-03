@@ -9,6 +9,8 @@ import PrivacyPage from './PrivacyPage';
 import TermsPage from './TermsPage';
 import PricingPage from './PricingPage';
 import FeaturePage from './FeaturePage';
+import BlogPage from './BlogPage';
+import BlogPostPage from './BlogPostPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -116,6 +118,8 @@ const App: React.FC = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
 
               {/* Feature Dedicated Routes */}
               <Route path="/qr-code-with-logo" element={<FeaturePage featureId="qr-code-with-logo" />} />

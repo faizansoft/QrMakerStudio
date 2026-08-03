@@ -73,6 +73,7 @@ export const Footer: React.FC = () => {
               <h4 className="text-sm font-bold text-white mb-4 tracking-wide">Company</h4>
               <ul className="space-y-3">
                 <li><Link to="/about" className="text-sm text-neutral-400 hover:text-white transition-colors">About Us</Link></li>
+                <li><Link to="/blog" className="text-sm text-neutral-400 hover:text-white transition-colors">Blog & Guides</Link></li>
                 <li><Link to="/contact" className="text-sm text-neutral-400 hover:text-white transition-colors">Contact</Link></li>
                 <li><Link to="/privacy" className="text-sm text-neutral-400 hover:text-white transition-colors">Privacy Policy</Link></li>
                 <li><Link to="/terms" className="text-sm text-neutral-400 hover:text-white transition-colors">Terms of Use</Link></li>

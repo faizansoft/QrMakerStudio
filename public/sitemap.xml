@@ -133,6 +133,42 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://qr-generator.online/blog</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://qr-generator.online/blog/qr-codes-for-restaurants</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qr-generator.online/blog/printing-qr-codes-guide</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qr-generator.online/blog/vcard-qr-code-business-cards</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qr-generator.online/blog/qr-codes-for-real-estate</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qr-generator.online/blog/wifi-qr-codes-for-hospitality</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://qr-generator.online/contact</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>

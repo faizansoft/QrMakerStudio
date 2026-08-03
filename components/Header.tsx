@@ -64,7 +64,7 @@ export const Header: React.FC = () => {
   ];
 
   const resources = [
-    { label: 'Blog', href: '/about' },
+    { label: 'Blog & Guides', href: '/blog' },
     { label: 'Help & FAQ', href: '/faqs-qr-code-generator' },
     { label: 'About Us', href: '/about' },
   ];
