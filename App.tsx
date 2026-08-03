@@ -32,7 +32,7 @@ const SEOManager = () => {
       canonical.setAttribute("rel", "canonical");
       document.head.appendChild(canonical);
     }
-    const cleanPath = location.pathname === '/' ? '' : location.pathname.replace(/\/$/, "");
+    const cleanPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/$/, "");
     const absoluteUrl = `https://qr-generator.online${cleanPath}`;
     canonical.setAttribute("href", absoluteUrl);
 
