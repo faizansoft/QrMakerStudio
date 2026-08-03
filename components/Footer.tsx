@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Footer: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-gray-900 text-white">
       {/* Main Footer Content */}
@@ -19,10 +22,10 @@ export const Footer: React.FC = () => {
               <span className="text-lg font-bold text-white">QR Maker Studio</span>
             </div>
             <h2 className="mb-3 text-xl font-bold text-white">
-              Start creating professional QR Codes today!
+              {t('home_cta_primary')}
             </h2>
             <p className="mb-6 text-base leading-relaxed text-neutral-400">
-              Create unlimited, fully customizable QR Codes with our free tool. All processing happens in your browser — your data stays <em className="font-bold text-neutral-300">private</em> and <em className="font-bold text-neutral-300">secure</em>.
+              {t('footer_desc')}
             </p>
             <Link
               to="/"
@@ -34,7 +37,7 @@ export const Footer: React.FC = () => {
               }}
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold rounded-button transition-colors duration-150 border-2 border-transparent bg-accent text-white hover:bg-accent-dark px-6 py-2.5 text-sm"
             >
-              Create QR Code Free
+              {t('cta_create_free')}
             </Link>
           </div>
 
@@ -43,38 +46,36 @@ export const Footer: React.FC = () => {
 
             {/* QR Code Types */}
             <div>
-              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">QR Code Types</h4>
+              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('nav_tools')}</h4>
               <ul className="space-y-3">
-                <li><Link to="/url-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">URL / Website Link</Link></li>
-                <li><Link to="/wifi-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">WiFi Network</Link></li>
-                <li><Link to="/vcard-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">vCard Digital Card</Link></li>
-                <li><Link to="/text-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Plain Text</Link></li>
-                <li><Link to="/email-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Email Message</Link></li>
-                <li><Link to="/sms-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">SMS Text</Link></li>
+                <li><Link to="/url-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_url')}</Link></li>
+                <li><Link to="/wifi-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_wifi')}</Link></li>
+                <li><Link to="/vcard-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_vcard')}</Link></li>
+                <li><Link to="/text-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_text')}</Link></li>
+                <li><Link to="/email-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_email')}</Link></li>
+                <li><Link to="/sms-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_sms')}</Link></li>
               </ul>
             </div>
 
-            {/* More Types */}
+            {/* Features */}
             <div>
-              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">More Types</h4>
+              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('nav_features')}</h4>
               <ul className="space-y-3">
-                <li><Link to="/whatsapp-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">WhatsApp Chat</Link></li>
-                <li><Link to="/facebook-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Social Media</Link></li>
-                <li><Link to="/location-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Google Maps</Link></li>
-                <li><Link to="/event-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Event Calendar</Link></li>
-                <li><Link to="/crypto-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Crypto Address</Link></li>
-                <li><Link to="/googleform-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Google Forms</Link></li>
-                <li><Link to="/phone-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Phone Call</Link></li>
+                <li><Link to="/qr-code-with-logo" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_logo')}</Link></li>
+                <li><Link to="/custom-qr-codes" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_custom')}</Link></li>
+                <li><Link to="/colored-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_color')}</Link></li>
+                <li><Link to="/svg-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_svg')}</Link></li>
+                <li><Link to="/high-resolution-qr-codes" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_hd')}</Link></li>
               </ul>
             </div>
 
             {/* Company */}
             <div>
-              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">Company</h4>
+              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('footer_company_title')}</h4>
               <ul className="space-y-3">
-                <li><Link to="/about" className="text-sm text-neutral-400 hover:text-white transition-colors">About Us</Link></li>
-                <li><Link to="/blog" className="text-sm text-neutral-400 hover:text-white transition-colors">Blog & Guides</Link></li>
-                <li><Link to="/contact" className="text-sm text-neutral-400 hover:text-white transition-colors">Contact</Link></li>
+                <li><Link to="/about" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_about')}</Link></li>
+                <li><Link to="/blog" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_blog')}</Link></li>
+                <li><Link to="/contact" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_contact')}</Link></li>
                 <li><Link to="/privacy" className="text-sm text-neutral-400 hover:text-white transition-colors">Privacy Policy</Link></li>
                 <li><Link to="/terms" className="text-sm text-neutral-400 hover:text-white transition-colors">Terms of Use</Link></li>
               </ul>
@@ -82,10 +83,10 @@ export const Footer: React.FC = () => {
 
             {/* Support & Pricing */}
             <div>
-              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">Support</h4>
+              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('footer_support_title')}</h4>
               <ul className="space-y-3">
-                <li><Link to="/pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">Pricing</Link></li>
-                <li><Link to="/faqs-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Help & FAQ</Link></li>
+                <li><Link to="/pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_pricing')}</Link></li>
+                <li><Link to="/faqs-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_faq')}</Link></li>
                 <li>
                   <a href="mailto:support@qr-generator.online" className="text-sm text-neutral-400 hover:text-white transition-colors underline">
                     support@qr-generator.online

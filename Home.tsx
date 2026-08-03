@@ -4,6 +4,7 @@ import QRCodeStyling from 'qr-code-styling';
 import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS } from './constants';
 import { TOOL_SEO_DATA } from './constants/toolSeoData';
 import { DotType, CornerSquareType, CornerDotType } from './types';
+import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getToolSoftwareSchema, getFAQSchema, getBreadcrumbSchema } from './services/seoUtils';
 
 // ── Tab definitions with SVG Icon functions ──
@@ -211,6 +212,7 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
+  const { language, t } = useLanguage();
   const [activeTab, setActiveTab] = useState(initialTab);
   
   // Custom QR Styling Options State
@@ -287,7 +289,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
       removeJSONLD('jsonld-faq');
       removeJSONLD('jsonld-breadcrumbs');
     };
-  }, [activeTab, currentSeo]);
+  }, [activeTab, currentSeo, language]);
 
   const activeTabData = TABS.find(t => t.id === activeTab) || TABS[0];
 

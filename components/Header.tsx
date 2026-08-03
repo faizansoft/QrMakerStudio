@@ -40,33 +40,33 @@ export const Header: React.FC = () => {
   const activeLangData = languageMeta.find(l => l.code === language) || languageMeta[0];
 
   const qrTypes = [
-    { label: 'URL Website', href: '/url-qr-code-generator' },
-    { label: 'Plain Text', href: '/text-qr-code-generator' },
-    { label: 'vCard Contact', href: '/vcard-qr-code-generator' },
-    { label: 'WiFi Password', href: '/wifi-qr-code-generator' },
-    { label: 'Email Link', href: '/email-qr-code-generator' },
-    { label: 'SMS Message', href: '/sms-qr-code-generator' },
-    { label: 'Phone Call', href: '/phone-qr-code-generator' },
-    { label: 'WhatsApp Chat', href: '/whatsapp-qr-code-generator' },
-    { label: 'Social Media', href: '/facebook-qr-code-generator' },
-    { label: 'Google Maps Location', href: '/location-qr-code-generator' },
-    { label: 'Event Calendar', href: '/event-qr-code-generator' },
-    { label: 'Crypto Address', href: '/crypto-qr-code-generator' },
-    { label: 'Google Forms Survey', href: '/googleform-qr-code-generator' },
+    { label: t('tool_url'), href: '/url-qr-code-generator' },
+    { label: t('tool_text'), href: '/text-qr-code-generator' },
+    { label: t('tool_vcard'), href: '/vcard-qr-code-generator' },
+    { label: t('tool_wifi'), href: '/wifi-qr-code-generator' },
+    { label: t('tool_email'), href: '/email-qr-code-generator' },
+    { label: t('tool_sms'), href: '/sms-qr-code-generator' },
+    { label: t('tool_phone'), href: '/phone-qr-code-generator' },
+    { label: t('tool_whatsapp'), href: '/whatsapp-qr-code-generator' },
+    { label: t('tool_facebook'), href: '/facebook-qr-code-generator' },
+    { label: t('tool_location'), href: '/location-qr-code-generator' },
+    { label: t('tool_event'), href: '/event-qr-code-generator' },
+    { label: t('tool_crypto'), href: '/crypto-qr-code-generator' },
+    { label: t('tool_googleform'), href: '/googleform-qr-code-generator' },
   ];
 
   const features = [
-    { label: 'QR Code with Logo', href: '/qr-code-with-logo' },
-    { label: 'Customizable Designs', href: '/custom-qr-codes' },
-    { label: 'Colored QR Codes', href: '/colored-qr-code-generator' },
-    { label: 'Vector SVG Export', href: '/svg-qr-code-generator' },
-    { label: 'High-Res Downloads', href: '/high-resolution-qr-codes' },
+    { label: t('feature_logo'), href: '/qr-code-with-logo' },
+    { label: t('feature_custom'), href: '/custom-qr-codes' },
+    { label: t('feature_color'), href: '/colored-qr-code-generator' },
+    { label: t('feature_svg'), href: '/svg-qr-code-generator' },
+    { label: t('feature_hd'), href: '/high-resolution-qr-codes' },
   ];
 
   const resources = [
-    { label: 'Blog & Guides', href: '/blog' },
-    { label: 'Help & FAQ', href: '/faqs-qr-code-generator' },
-    { label: 'About Us', href: '/about' },
+    { label: t('nav_blog'), href: '/blog' },
+    { label: t('nav_faq'), href: '/faqs-qr-code-generator' },
+    { label: t('nav_about'), href: '/about' },
   ];
 
   const toggleDropdown = (name: string) => {
@@ -109,7 +109,7 @@ export const Header: React.FC = () => {
                 onClick={() => toggleDropdown('types')}
                 className="flex items-center gap-1 whitespace-nowrap text-sm xl:text-base transition-colors text-gray-900 hover:text-accent font-medium"
               >
-                QR Code Types
+                {t('nav_tools')}
                 <ChevronIcon />
               </button>
               {openDropdown === 'types' && (
@@ -134,7 +134,7 @@ export const Header: React.FC = () => {
                 onClick={() => toggleDropdown('features')}
                 className="flex items-center gap-1 whitespace-nowrap text-sm xl:text-base transition-colors text-gray-900 hover:text-accent font-medium"
               >
-                Features
+                {t('nav_features')}
                 <ChevronIcon />
               </button>
               {openDropdown === 'features' && (
@@ -159,7 +159,7 @@ export const Header: React.FC = () => {
                 onClick={() => toggleDropdown('resources')}
                 className="flex items-center gap-1 whitespace-nowrap text-sm xl:text-base transition-colors text-gray-900 hover:text-accent font-medium"
               >
-                Resources
+                {t('nav_resources')}
                 <ChevronIcon />
               </button>
               {openDropdown === 'resources' && (
@@ -182,7 +182,7 @@ export const Header: React.FC = () => {
               to="/contact"
               className="whitespace-nowrap text-sm xl:text-base transition-colors text-gray-900 hover:text-accent font-medium"
             >
-              Contact
+              {t('nav_contact')}
             </Link>
           </nav>
         </div>
@@ -231,7 +231,7 @@ export const Header: React.FC = () => {
             onClick={handleCreateClick}
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold rounded-button transition-colors duration-150 border-2 border-transparent bg-accent text-white hover:bg-accent-dark px-5 py-2 text-sm"
           >
-            Create QR Code
+            {t('cta_create_free')}
           </Link>
         </div>
 
@@ -242,7 +242,7 @@ export const Header: React.FC = () => {
             onClick={handleCreateClick}
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold rounded-button transition-colors duration-150 border-2 border-transparent bg-accent text-white hover:bg-accent-dark px-4 py-1.5 text-sm"
           >
-            Create QR
+            {t('cta_create_free')}
           </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
