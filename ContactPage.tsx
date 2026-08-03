@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
+import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 
 const ContactPage: React.FC = () => {
   const { t } = useLanguage();
@@ -12,6 +13,15 @@ const ContactPage: React.FC = () => {
     if (metaDesc) {
       metaDesc.setAttribute('content', 'Get in touch with the QR Maker Studio support team. Technical support for SVG print exports, custom branding, and general inquiries.');
     }
+
+    injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
+      { name: 'Home', url: '/' },
+      { name: 'Contact Us', url: '/contact' }
+    ]));
+
+    return () => {
+      removeJSONLD('jsonld-breadcrumbs');
+    };
   }, [t]);
 
   const handleSubmit = (e: React.FormEvent) => {

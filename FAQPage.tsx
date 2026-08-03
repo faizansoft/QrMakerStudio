@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FAQ_ITEMS } from './constants';
 import { useLanguage } from './context/LanguageContext';
+import { injectJSONLD, removeJSONLD, getFAQSchema, getBreadcrumbSchema } from './services/seoUtils';
 
 const FAQPage: React.FC = () => {
   const { t } = useLanguage();
@@ -14,6 +15,18 @@ const FAQPage: React.FC = () => {
     if (metaDesc) {
       metaDesc.setAttribute('content', 'Answers to common QR code questions. Learn about SVG vector downloads, custom branding, WiFi QR codes, vCard business cards, and print scannability.');
     }
+
+    // Structured Data (JSON-LD)
+    injectJSONLD('jsonld-faq', getFAQSchema(FAQ_ITEMS));
+    injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
+      { name: 'Home', url: '/' },
+      { name: 'Help & FAQ', url: '/faqs-qr-code-generator' }
+    ]));
+
+    return () => {
+      removeJSONLD('jsonld-faq');
+      removeJSONLD('jsonld-breadcrumbs');
+    };
   }, [t]);
 
   const filteredFaqs = useMemo(() => {

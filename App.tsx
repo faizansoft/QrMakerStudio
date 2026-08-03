@@ -12,12 +12,17 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { LanguageProvider } from './context/LanguageContext';
+import { injectJSONLD, getOrganizationSchema, getWebSiteSchema } from './services/seoUtils';
 
 const SEOManager = () => {
   const location = useLocation();
   
   useEffect(() => {
-    // 1. Manage Canonical Tag
+    // 1. Base JSON-LD Organization & WebSite Schemas
+    injectJSONLD('jsonld-organization', getOrganizationSchema());
+    injectJSONLD('jsonld-website', getWebSiteSchema());
+
+    // 2. Manage Canonical Tag
     let canonical = document.querySelector("link[rel='canonical']") as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement("link");

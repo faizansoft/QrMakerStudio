@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import QRCodeStyling from 'qr-code-styling';
 import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS } from './constants';
 import { DotType, CornerSquareType, CornerDotType } from './types';
+import { injectJSONLD, removeJSONLD, getToolSoftwareSchema, getBreadcrumbSchema } from './services/seoUtils';
 
 // ── Tab definitions with SVG Icon functions ──
 const TABS = [
@@ -245,6 +246,55 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
       setActiveTab(initialTab);
     }
   }, [initialTab]);
+
+  useEffect(() => {
+    const tabNames: Record<string, { name: string; path: string; desc: string }> = {
+      url: { name: 'Free URL QR Code Generator', path: '/url-qr-code-generator', desc: 'Create custom URL QR codes with logos, colors, and SVG downloads.' },
+      text: { name: 'Plain Text QR Code Generator', path: '/text-qr-code-generator', desc: 'Encode plain text into scannable vector QR codes.' },
+      vcard: { name: 'vCard & Contact QR Code Generator', path: '/vcard-qr-code-generator', desc: 'Share digital business cards and contact info instantly via QR codes.' },
+      wifi: { name: 'WiFi QR Code Generator', path: '/wifi-qr-code-generator', desc: 'Connect to WiFi networks without typing passwords using WiFi QR codes.' },
+      email: { name: 'Email QR Code Generator', path: '/email-qr-code-generator', desc: 'Generate pre-filled email message QR codes.' },
+      sms: { name: 'SMS QR Code Generator', path: '/sms-qr-code-generator', desc: 'Send text messages with one scan using custom SMS QR codes.' },
+      phone: { name: 'Phone Call QR Code Generator', path: '/phone-qr-code-generator', desc: 'Dial phone numbers automatically using scannable QR codes.' },
+      whatsapp: { name: 'WhatsApp QR Code Generator', path: '/whatsapp-qr-code-generator', desc: 'Start WhatsApp chats and send pre-written messages via QR codes.' },
+      facebook: { name: 'Social Media QR Code Generator', path: '/facebook-qr-code-generator', desc: 'Promote your social media profiles and pages with custom QR codes.' },
+      location: { name: 'Location & Map QR Code Generator', path: '/location-qr-code-generator', desc: 'Share GPS location coordinates and Google Maps locations via QR code.' },
+      event: { name: 'Event Calendar QR Code Generator', path: '/event-qr-code-generator', desc: 'Add calendar events and schedules directly to smartphones via QR code.' },
+      crypto: { name: 'Crypto Address QR Code Generator', path: '/crypto-qr-code-generator', desc: 'Receive Bitcoin, Ethereum, and crypto payments effortlessly via QR codes.' },
+      googleform: { name: 'Google Forms QR Code Generator', path: '/googleform-qr-code-generator', desc: 'Direct users to Google Forms surveys and questionnaires using QR codes.' },
+    };
+
+    const currentTab = tabNames[activeTab] || tabNames.url;
+    
+    // 1. Update Title & Meta Description
+    document.title = activeTab === 'url' && window.location.pathname === '/' 
+      ? "QR Maker Studio: Create Free QR Codes" 
+      : `${currentTab.name} | QR Maker Studio`;
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', currentTab.desc);
+    }
+
+    // 2. Structured Data (JSON-LD)
+    const isRoot = activeTab === 'url' && window.location.pathname === '/';
+    const toolPath = isRoot ? '/' : currentTab.path;
+    
+    injectJSONLD('jsonld-tool', getToolSoftwareSchema(currentTab.name, toolPath, currentTab.desc));
+
+    const breadcrumbs = [
+      { name: 'Home', url: '/' }
+    ];
+    if (!isRoot) {
+      breadcrumbs.push({ name: currentTab.name, url: currentTab.path });
+    }
+    injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema(breadcrumbs));
+
+    return () => {
+      removeJSONLD('jsonld-tool');
+      removeJSONLD('jsonld-breadcrumbs');
+    };
+  }, [activeTab]);
 
   const activeTabData = TABS.find(t => t.id === activeTab) || TABS[0];
 

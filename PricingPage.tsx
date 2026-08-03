@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
+import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 
 const PricingPage: React.FC = () => {
   const { t } = useLanguage();
@@ -11,6 +12,15 @@ const PricingPage: React.FC = () => {
     if (metaDesc) {
       metaDesc.setAttribute('content', 'Explore QR Maker Studio pricing. 100% Free static QR Code generation forever with high-resolution vector SVG exports, custom logos, and no limits.');
     }
+
+    injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
+      { name: 'Home', url: '/' },
+      { name: 'Pricing', url: '/pricing' }
+    ]));
+
+    return () => {
+      removeJSONLD('jsonld-breadcrumbs');
+    };
   }, [t]);
 
   return (

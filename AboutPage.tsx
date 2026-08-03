@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
+import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 
 const AboutPage: React.FC = () => {
   const { t } = useLanguage();
@@ -11,6 +12,15 @@ const AboutPage: React.FC = () => {
     if (metaDesc) {
       metaDesc.setAttribute('content', 'Learn about QR Maker Studio: Our privacy-first mission to empower creators with free, high-resolution customizable static QR codes with logo integration and vector SVG downloads.');
     }
+
+    injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
+      { name: 'Home', url: '/' },
+      { name: 'About Us', url: '/about' }
+    ]));
+
+    return () => {
+      removeJSONLD('jsonld-breadcrumbs');
+    };
   }, [t]);
 
   return (
