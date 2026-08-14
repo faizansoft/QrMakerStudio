@@ -498,6 +498,13 @@ const ROUTES = [
           'In modern hospitality, speed and service accuracy are essential. Digital QR menus on table tents allow guests to view up-to-date food and drink options immediately upon seating.',
           'Restaurants cut reprinting expenses whenever prices change while highlighting seasonal specials and high-margin dishes.'
         ]
+      },
+      {
+        title: 'How to Set Up a QR Code Menu for Your Restaurant',
+        paragraphs: [
+          'Getting started takes under five minutes. Upload your existing PDF menu or link your online ordering page, then generate a branded QR code with your restaurant logo in the center. Print it on durable laminated table tents, window decals, or receipt footers.',
+          'Studies show that restaurants using digital QR menus see an average 15% increase in average order value because guests explore full menus at their own pace rather than relying on verbal specials. Updating items, prices, or seasonal offerings is instant — no reprinting needed. Pair each QR code with a short descriptive call-to-action like "Scan to view today's full menu" for best results.'
+        ]
       }
     ]
   },
@@ -515,6 +522,13 @@ const ROUTES = [
         paragraphs: [
           'A simple formula for print sizing is the 10:1 distance-to-size ratio. For example, a poster scanned from 1 meter away requires a minimum QR code width of 10 cm.',
           'Always preserve the 4-module quiet zone margin and export in vector SVG for flawless offset and digital press output.'
+        ]
+      },
+      {
+        title: 'Color Contrast, Error Correction & Format Recommendations',
+        paragraphs: [
+          'Always maintain a minimum contrast ratio of 4:1 between the QR code foreground and background. Avoid printing light QR patterns on pale backgrounds — low contrast is the leading cause of scanning failure in glossy print environments. Use Level H error correction (30% data redundancy) when embedding logos to maintain reliable scanning.',
+          'For commercial offset printing, always provide files in vector SVG or EPS format to your print house. Raster PNG or JPEG images pixelate when scaled beyond their original resolution, leading to blurry module edges that confuse scanners. At minimum, export a 2048×2048 pixel PNG at 300 DPI when SVG is not accepted. Always request a physical test print and perform a scan test before approving large print runs.'
         ]
       }
     ]
@@ -534,6 +548,13 @@ const ROUTES = [
           'A vCard QR code eliminates manual contact typing errors during networking events and trade shows.',
           'Recipients scan the back of your business card to immediately add your name, mobile number, email, and LinkedIn profile to their address book.'
         ]
+      },
+      {
+        title: 'Design Tips for Business Cards with QR Codes',
+        paragraphs: [
+          'Place the QR code on the reverse side of your business card with a clear call-to-action such as "Scan to save my contact." Keep the code at least 2.5 cm × 2.5 cm (1 inch × 1 inch) for reliable scanning. Leave a white quiet zone border of at least 4 modules around all four edges. Embedding your professional headshot or company logo in the center boosts confidence and scan rates.',
+          'Use QR Maker Studio to encode your full vCard 3.0 profile including first name, last name, job title, company, work phone, mobile phone, email, website, and postal address. Export in vector SVG to ensure flawless quality at any card print size. Premium business card stock with a matte finish provides the highest scan reliability compared to glossy laminate, which can create lens glare under bright lighting.'
+        ]
       }
     ]
   },
@@ -552,6 +573,13 @@ const ROUTES = [
           'Placing a QR code on "For Sale" yard signs allows passersby to tour 3D floor plans, view video walkthroughs, and review pricing instantly from their car.',
           'Capture high-intent buyer inquiries 24/7 without waiting for open houses.'
         ]
+      },
+      {
+        title: 'Best Practices for Real Estate QR Code Campaigns',
+        paragraphs: [
+          'Link your QR code directly to a dedicated property landing page rather than your general homepage. Include the full address, listing price, bedroom and bathroom count, square footage, and an embedded video walkthrough. Dynamic QR codes allow you to update the destination URL if the listing price changes or if the property sells and you wish to redirect to a similar listing without reprinting yard signs.',
+          'For maximum outdoor scan reliability, print QR codes at a minimum size of 7 cm × 7 cm (approximately 2.75 inches) on weather-resistant signage. Use high-contrast black on white or dark green on white to ensure visibility in direct sunlight. Adding a branded logo and a short tagline like "Scan for Virtual Tour" significantly increases scan rates from drive-by traffic. Track scan analytics to understand which neighborhoods and listing types generate the most buyer interest.'
+        ]
       }
     ]
   },
@@ -569,6 +597,13 @@ const ROUTES = [
         paragraphs: [
           'Hotel and Airbnb guests frequently struggle with typing complex WiFi passwords into their phones and laptops.',
           'A customized, framed WiFi QR code card on the nightstand or cafe counter lets guests scan and connect instantly.'
+        ]
+      },
+      {
+        title: 'How to Deploy WiFi QR Codes in Hotels & Vacation Rentals',
+        paragraphs: [
+          'Generate a separate WiFi QR code for each network zone — guest room WiFi, lobby WiFi, and pool area WiFi — and print them on individually branded cards. For hotels, laminate the QR code card and place it on the in-room desk and bathroom mirror where guests naturally look for connectivity instructions. Include the network name (SSID) and a note confirming whether a password is pre-filled so guests feel confident about what the scan will do.',
+          'For Airbnb hosts, embedding a WiFi QR code into a custom welcome booklet alongside house rules and local recommendations dramatically improves guest check-in satisfaction scores. Cafes and co-working spaces benefit most from large-format table displays with framed QR codes at eye level. Rotate WiFi passwords monthly for security and simply generate a new QR code — no reprinting needed if using digital menu boards or replaceable card inserts.'
         ]
       }
     ]
