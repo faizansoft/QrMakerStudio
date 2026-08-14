@@ -1,4 +1,35 @@
+# Allow all crawlers and search engines
 User-agent: *
 Allow: /
 
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+
+# Ahrefs Crawlers (General & Site Audit)
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: AhrefsSiteAudit
+Allow: /
+
+# Semrush Crawlers (General, Site Audit & Backlinks)
+User-agent: SemrushBot
+Allow: /
+
+User-agent: SemrushBot-SA
+Allow: /
+
+User-agent: SemrushBot-BA
+Allow: /
+
+# Moz Crawler
+User-agent: DotBot
+Allow: /
+
+# Sitemap Location
 Sitemap: https://qr-generator.online/sitemap.xml
