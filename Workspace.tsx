@@ -93,7 +93,7 @@ const Workspace: React.FC<WorkspaceProps> = ({ type, value, styling, setStyling,
           <div className="flex items-center gap-4 bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm">
             <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-6 h-6">{typeIcons[type]}</svg></div>
             <div className="flex flex-col">
-              <h1 className="text-sm font-bold text-slate-900 leading-none mb-1">{details.title}</h1>
+              <span className="text-sm font-bold text-slate-900 leading-none mb-1">{details.title}</span>
               <span className="text-[9px] font-black uppercase text-indigo-500 tracking-tighter">Generator Active</span>
             </div>
           </div>

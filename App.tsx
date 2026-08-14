@@ -14,8 +14,10 @@ import BlogPostPage from './BlogPostPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import NotFoundPage from './NotFoundPage';
 import { LanguageProvider } from './context/LanguageContext';
 import { injectJSONLD, getOrganizationSchema, getWebSiteSchema } from './services/seoUtils';
+import { getRouteMeta } from './constants/routeMeta';
 
 const SEOManager = () => {
   const location = useLocation();
@@ -25,58 +27,63 @@ const SEOManager = () => {
     injectJSONLD('jsonld-organization', getOrganizationSchema());
     injectJSONLD('jsonld-website', getWebSiteSchema());
 
-    // 2. Manage Canonical Tag
+    // 2. Fetch Centralized Route Metadata
+    const meta = getRouteMeta(location.pathname);
+
+    // 3. Set Document Title & Meta Description
+    document.title = meta.title;
+
+    let descTag = document.querySelector('meta[name="description"]') as HTMLMetaElement;
+    if (!descTag) {
+      descTag = document.createElement('meta');
+      descTag.name = 'description';
+      document.head.appendChild(descTag);
+    }
+    descTag.setAttribute('content', meta.description);
+
+    // 4. Manage Canonical Tag (Self-referencing, no trailing slash except root)
     let canonical = document.querySelector("link[rel='canonical']") as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement("link");
       canonical.setAttribute("rel", "canonical");
       document.head.appendChild(canonical);
     }
-    const cleanPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/$/, "");
-    const absoluteUrl = `https://qr-generator.online${cleanPath}`;
-    canonical.setAttribute("href", absoluteUrl);
+    canonical.setAttribute("href", meta.canonical);
 
-    // 2. Manage Social Meta Tags (OG & Twitter)
-    const timeout = setTimeout(() => {
-      const title = document.title;
-      const description = document.querySelector('meta[name="description"]')?.getAttribute('content') || '';
+    // 5. Manage Social Meta Tags (OG & Twitter)
+    const ogTags = [
+      { property: 'og:url', content: meta.canonical },
+      { property: 'og:title', content: meta.title },
+      { property: 'og:description', content: meta.description },
+      { property: 'og:type', content: meta.type || 'website' }
+    ];
 
-      const ogTags = [
-        { property: 'og:url', content: absoluteUrl },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: description },
-        { property: 'og:type', content: 'website' }
-      ];
+    ogTags.forEach(tag => {
+      let ogEl = document.querySelector(`meta[property="${tag.property}"]`) as HTMLMetaElement;
+      if (!ogEl) {
+        ogEl = document.createElement('meta');
+        ogEl.setAttribute('property', tag.property);
+        document.head.appendChild(ogEl);
+      }
+      ogEl.setAttribute('content', tag.content);
+    });
 
-      ogTags.forEach(tag => {
-        let meta = document.querySelector(`meta[property="${tag.property}"]`) as HTMLMetaElement;
-        if (!meta) {
-          meta = document.createElement('meta');
-          meta.setAttribute('property', tag.property);
-          document.head.appendChild(meta);
-        }
-        meta.setAttribute('content', tag.content);
-      });
+    const twitterTags = [
+      { name: 'twitter:url', content: meta.canonical },
+      { name: 'twitter:title', content: meta.title },
+      { name: 'twitter:description', content: meta.description },
+      { name: 'twitter:card', content: 'summary_large_image' }
+    ];
 
-      const twitterTags = [
-        { name: 'twitter:url', content: absoluteUrl },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: description },
-        { name: 'twitter:card', content: 'summary_large_image' }
-      ];
-
-      twitterTags.forEach(tag => {
-        let meta = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
-        if (!meta) {
-          meta = document.createElement('meta');
-          meta.setAttribute('name', tag.name);
-          document.head.appendChild(meta);
-        }
-        meta.setAttribute('content', tag.content);
-      });
-    }, 50);
-
-    return () => clearTimeout(timeout);
+    twitterTags.forEach(tag => {
+      let twEl = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
+      if (!twEl) {
+        twEl = document.createElement('meta');
+        twEl.setAttribute('name', tag.name);
+        document.head.appendChild(twEl);
+      }
+      twEl.setAttribute('content', tag.content);
+    });
   }, [location]);
 
   return null;
@@ -143,7 +150,7 @@ const App: React.FC = () => {
               <Route path="/crypto-qr-code-generator" element={<ToolRouteHandler toolId="crypto" />} />
               <Route path="/googleform-qr-code-generator" element={<ToolRouteHandler toolId="googleform" />} />
 
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
           <Footer />

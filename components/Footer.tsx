@@ -42,25 +42,32 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Right: Link Columns */}
-          <div className="md:grid md:grid-cols-4 md:gap-x-10 md:gap-y-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
 
             {/* QR Code Types */}
             <div>
               <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('nav_tools')}</h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 <li><Link to="/url-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_url')}</Link></li>
                 <li><Link to="/wifi-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_wifi')}</Link></li>
                 <li><Link to="/vcard-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_vcard')}</Link></li>
+                <li><Link to="/googleform-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Google Forms QR</Link></li>
+                <li><Link to="/whatsapp-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">WhatsApp QR</Link></li>
                 <li><Link to="/text-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_text')}</Link></li>
                 <li><Link to="/email-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_email')}</Link></li>
                 <li><Link to="/sms-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_sms')}</Link></li>
+                <li><Link to="/phone-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Phone QR</Link></li>
+                <li><Link to="/location-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Location QR</Link></li>
+                <li><Link to="/crypto-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Crypto QR</Link></li>
+                <li><Link to="/event-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Event QR</Link></li>
+                <li><Link to="/facebook-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Facebook QR</Link></li>
               </ul>
             </div>
 
             {/* Features */}
             <div>
               <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('nav_features')}</h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 <li><Link to="/qr-code-with-logo" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_logo')}</Link></li>
                 <li><Link to="/custom-qr-codes" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_custom')}</Link></li>
                 <li><Link to="/colored-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_color')}</Link></li>
@@ -69,26 +76,31 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Company */}
+            {/* Guides & Resources */}
             <div>
-              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('footer_company_title')}</h4>
-              <ul className="space-y-3">
-                <li><Link to="/about" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_about')}</Link></li>
-                <li><Link to="/blog" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_blog')}</Link></li>
-                <li><Link to="/contact" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_contact')}</Link></li>
-                <li><Link to="/privacy" className="text-sm text-neutral-400 hover:text-white transition-colors">Privacy Policy</Link></li>
-                <li><Link to="/terms" className="text-sm text-neutral-400 hover:text-white transition-colors">Terms of Use</Link></li>
+              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">Guides & Blog</h4>
+              <ul className="space-y-2.5">
+                <li><Link to="/blog" className="text-sm text-neutral-400 hover:text-white transition-colors">All Articles</Link></li>
+                <li><Link to="/blog/qr-codes-for-restaurants" className="text-sm text-neutral-400 hover:text-white transition-colors">Restaurant QR Menus</Link></li>
+                <li><Link to="/blog/printing-qr-codes-guide" className="text-sm text-neutral-400 hover:text-white transition-colors">Printing QR Codes</Link></li>
+                <li><Link to="/blog/vcard-qr-code-business-cards" className="text-sm text-neutral-400 hover:text-white transition-colors">vCard Business Cards</Link></li>
+                <li><Link to="/blog/qr-codes-for-real-estate" className="text-sm text-neutral-400 hover:text-white transition-colors">Real Estate QR</Link></li>
+                <li><Link to="/blog/wifi-qr-codes-for-hospitality" className="text-sm text-neutral-400 hover:text-white transition-colors">Hospitality WiFi QR</Link></li>
               </ul>
             </div>
 
-            {/* Support & Pricing */}
+            {/* Company & Support */}
             <div>
-              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('footer_support_title')}</h4>
-              <ul className="space-y-3">
+              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('footer_company_title')}</h4>
+              <ul className="space-y-2.5">
                 <li><Link to="/pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_pricing')}</Link></li>
                 <li><Link to="/faqs-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_faq')}</Link></li>
-                <li>
-                  <a href="mailto:support@qr-generator.online" className="text-sm text-neutral-400 hover:text-white transition-colors underline">
+                <li><Link to="/about" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_about')}</Link></li>
+                <li><Link to="/contact" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('nav_contact')}</Link></li>
+                <li><Link to="/privacy" className="text-sm text-neutral-400 hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-sm text-neutral-400 hover:text-white transition-colors">Terms of Use</Link></li>
+                <li className="pt-2">
+                  <a href="mailto:support@qr-generator.online" className="text-xs text-emerald-400 hover:underline">
                     support@qr-generator.online
                   </a>
                 </li>

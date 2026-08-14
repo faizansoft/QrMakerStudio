@@ -1,6 +1,14 @@
 # Enable URL rewriting
 RewriteEngine On
 
+# 301 Permanent Redirect: www to apex domain
+RewriteCond %{HTTP_HOST} ^www\.qr-generator\.online$ [NC]
+RewriteRule ^(.*)$ https://qr-generator.online/$1 [L,R=301]
+
+# 301 Permanent Redirect: HTTP to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://qr-generator.online/$1 [L,R=301]
+
 # Redirect all requests to index.html for SPA routing
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
