@@ -503,7 +503,7 @@ const ROUTES = [
         title: 'How to Set Up a QR Code Menu for Your Restaurant',
         paragraphs: [
           'Getting started takes under five minutes. Upload your existing PDF menu or link your online ordering page, then generate a branded QR code with your restaurant logo in the center. Print it on durable laminated table tents, window decals, or receipt footers.',
-          'Studies show that restaurants using digital QR menus see an average 15% increase in average order value because guests explore full menus at their own pace rather than relying on verbal specials. Updating items, prices, or seasonal offerings is instant — no reprinting needed. Pair each QR code with a short descriptive call-to-action like "Scan to view today's full menu" for best results.'
+          'Studies show that restaurants using digital QR menus see an average 15% increase in average order value because guests explore full menus at their own pace rather than relying on verbal specials. Updating items, prices, or seasonal offerings is instant — no reprinting needed. Pair each QR code with a short descriptive call-to-action like "Scan to view today\'s full menu" for best results.'
         ]
       }
     ]
