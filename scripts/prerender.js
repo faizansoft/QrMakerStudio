@@ -782,7 +782,7 @@ function prerender() {
     // 7. Inject full semantic pre-rendered body into #app shell
     const prerenderedBody = buildBodyHtml(route);
     html = html.replace(
-      /<div id="app"[\s\S]*?<\/div>\s*(?=<script)/i,
+      /<div id="app"[\s\S]*?<\/footer>\s*<\/div>/i,
       prerenderedBody
     );
 

@@ -74,9 +74,113 @@
 </head>
 <body>
     <div id="app" class="min-h-screen flex flex-col">
-        <header id="main-header"></header>
-        <main id="router-view" class="flex-grow"></main>
-        <footer id="main-footer"></footer>
+        <header id="main-header" style="background:#ffffff; border-bottom:1px solid #e5e7eb; padding:16px 24px;">
+            <div style="max-width:1280px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                <a href="/" style="display:flex; align-items:center; gap:8px; font-weight:800; font-size:20px; color:#111827; text-decoration:none;">
+                    <span style="display:inline-block; width:28px; height:28px; background:#2B6F53; border-radius:6px;"></span>
+                    QR Maker Studio
+                </a>
+                <nav style="display:flex; gap:16px; flex-wrap:wrap; font-size:14px; font-weight:600;">
+                    <a href="/" style="color:#2B6F53; text-decoration:none;">Home</a>
+                    <a href="/wifi-qr-code-generator" style="color:#4b5563; text-decoration:none;">WiFi QR</a>
+                    <a href="/url-qr-code-generator" style="color:#4b5563; text-decoration:none;">URL QR</a>
+                    <a href="/vcard-qr-code-generator" style="color:#4b5563; text-decoration:none;">vCard QR</a>
+                    <a href="/qr-code-with-logo" style="color:#4b5563; text-decoration:none;">Logo QR</a>
+                    <a href="/pricing" style="color:#4b5563; text-decoration:none;">Pricing</a>
+                    <a href="/faqs-qr-code-generator" style="color:#4b5563; text-decoration:none;">FAQ</a>
+                    <a href="/blog" style="color:#4b5563; text-decoration:none;">Blog</a>
+                </nav>
+            </div>
+        </header>
+
+        <main id="router-view" class="flex-grow" style="padding:48px 24px; max-width:1120px; margin:0 auto; width:100%;">
+            <div style="text-align:center; margin-bottom:40px;">
+                <span style="display:inline-block; padding:6px 14px; background:rgba(43,111,83,0.1); color:#2B6F53; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; border-radius:9999px; margin-bottom:16px;">
+                    Free Online QR Generator
+                </span>
+                <h1 style="font-size:32px; sm:font-size:44px; font-weight:800; color:#111827; line-height:1.2; margin-bottom:16px; max-width:900px; margin-left:auto; margin-right:auto;">
+                    Free Custom QR Code Generator with Logo & Vector SVG Export
+                </h1>
+                <p style="font-size:17px; color:#4b5563; line-height:1.6; max-width:760px; margin:0 auto 28px;">
+                    Generate high-resolution QR codes with custom colors, dot patterns, frames, and company logos. 100% free with unlimited scans and zero expiration.
+                </p>
+                <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+                    <a href="/" style="padding:12px 24px; background:#2B6F53; color:#ffffff; font-weight:700; border-radius:10px; text-decoration:none; display:inline-block;">Create QR Code Now</a>
+                    <a href="/pricing" style="padding:12px 24px; background:#ffffff; color:#374151; font-weight:600; border:1px solid #d1d5db; border-radius:10px; text-decoration:none; display:inline-block;">View Features</a>
+                </div>
+            </div>
+
+            <div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:16px; padding:32px; margin-bottom:36px;">
+                <h2 style="font-size:20px; font-weight:700; color:#111827; margin-bottom:12px;">Why Choose QR Maker Studio?</h2>
+                <p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:12px;">
+                    QR Maker Studio is the web’s most flexible, privacy-focused, and 100% free QR code generator. Whether you need a simple link for a marketing flyer, a digital business card, or instant guest WiFi access, our platform creates professional, scannable QR codes in seconds.
+                </p>
+                <p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:12px;">
+                    Unlike other tools that lock high-resolution downloads behind paywalls or expire your codes after 14 days, all static QR codes created on QR Maker Studio remain permanent and functional forever with unlimited scans.
+                </p>
+            </div>
+        </main>
+
+        <footer id="main-footer" style="background:#111827; color:#ffffff; padding:52px 24px 32px;">
+            <div style="max-width:1280px; margin:0 auto;">
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:36px; margin-bottom:40px;">
+                    <div>
+                        <h4 style="font-size:14px; font-weight:700; color:#ffffff; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.05em;">QR Code Tools</h4>
+                        <ul style="list-style:none; padding:0; margin:0; line-height:1.8;">
+                            <li><a href="/url-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">URL QR Code</a></li>
+                            <li><a href="/wifi-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">WiFi QR Code</a></li>
+                            <li><a href="/vcard-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">vCard QR Code</a></li>
+                            <li><a href="/googleform-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">Google Forms QR</a></li>
+                            <li><a href="/whatsapp-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">WhatsApp QR</a></li>
+                            <li><a href="/text-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">Text QR Code</a></li>
+                            <li><a href="/email-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">Email QR Code</a></li>
+                            <li><a href="/sms-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">SMS QR Code</a></li>
+                            <li><a href="/phone-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">Phone QR Code</a></li>
+                            <li><a href="/location-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">Location QR Code</a></li>
+                            <li><a href="/crypto-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">Crypto QR Code</a></li>
+                            <li><a href="/event-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">Event QR Code</a></li>
+                            <li><a href="/facebook-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">Facebook QR Code</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-size:14px; font-weight:700; color:#ffffff; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.05em;">Features</h4>
+                        <ul style="list-style:none; padding:0; margin:0; line-height:1.8;">
+                            <li><a href="/qr-code-with-logo" style="color:#9ca3af; text-decoration:none; font-size:13px;">QR Code with Logo</a></li>
+                            <li><a href="/custom-qr-codes" style="color:#9ca3af; text-decoration:none; font-size:13px;">Custom QR Codes</a></li>
+                            <li><a href="/colored-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">Colored QR Code</a></li>
+                            <li><a href="/svg-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">SVG Vector QR</a></li>
+                            <li><a href="/high-resolution-qr-codes" style="color:#9ca3af; text-decoration:none; font-size:13px;">High Resolution QR</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-size:14px; font-weight:700; color:#ffffff; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.05em;">Guides & Blog</h4>
+                        <ul style="list-style:none; padding:0; margin:0; line-height:1.8;">
+                            <li><a href="/blog" style="color:#9ca3af; text-decoration:none; font-size:13px;">All Articles</a></li>
+                            <li><a href="/blog/qr-codes-for-restaurants" style="color:#9ca3af; text-decoration:none; font-size:13px;">Restaurant QR Menus</a></li>
+                            <li><a href="/blog/printing-qr-codes-guide" style="color:#9ca3af; text-decoration:none; font-size:13px;">Printing QR Guide</a></li>
+                            <li><a href="/blog/vcard-qr-code-business-cards" style="color:#9ca3af; text-decoration:none; font-size:13px;">vCard Business Cards</a></li>
+                            <li><a href="/blog/qr-codes-for-real-estate" style="color:#9ca3af; text-decoration:none; font-size:13px;">Real Estate QR</a></li>
+                            <li><a href="/blog/wifi-qr-codes-for-hospitality" style="color:#9ca3af; text-decoration:none; font-size:13px;">Hospitality WiFi QR</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-size:14px; font-weight:700; color:#ffffff; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.05em;">Company & Support</h4>
+                        <ul style="list-style:none; padding:0; margin:0; line-height:1.8;">
+                            <li><a href="/pricing" style="color:#9ca3af; text-decoration:none; font-size:13px;">Pricing</a></li>
+                            <li><a href="/faqs-qr-code-generator" style="color:#9ca3af; text-decoration:none; font-size:13px;">Help & FAQ</a></li>
+                            <li><a href="/about" style="color:#9ca3af; text-decoration:none; font-size:13px;">About Us</a></li>
+                            <li><a href="/contact" style="color:#9ca3af; text-decoration:none; font-size:13px;">Contact</a></li>
+                            <li><a href="/privacy" style="color:#9ca3af; text-decoration:none; font-size:13px;">Privacy Policy</a></li>
+                            <li><a href="/terms" style="color:#9ca3af; text-decoration:none; font-size:13px;">Terms of Service</a></li>
+                        </ul>
+                        <div style="margin-top:16px;"><a href="mailto:support@qr-generator.online" style="color:#34d399; font-size:12px; text-decoration:none;">support@qr-generator.online</a></div>
+                    </div>
+                </div>
+                <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; text-align:center; color:#9ca3af; font-size:13px;">
+                    <p>© 2026 QR Maker Studio. All rights reserved. Free QR Code Generator.</p>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script type="importmap">
