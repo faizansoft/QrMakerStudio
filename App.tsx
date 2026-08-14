@@ -50,7 +50,19 @@ const SEOManager = () => {
     }
     canonical.setAttribute("href", meta.canonical);
 
-    // 5. Manage Social Meta Tags (OG & Twitter)
+    // 5. Manage Hreflang Tags (Self-referencing to own canonical)
+    ['en', 'x-default'].forEach(lang => {
+      let hreflangEl = document.querySelector(`link[rel='alternate'][hreflang='${lang}']`) as HTMLLinkElement;
+      if (!hreflangEl) {
+        hreflangEl = document.createElement('link');
+        hreflangEl.setAttribute('rel', 'alternate');
+        hreflangEl.setAttribute('hreflang', lang);
+        document.head.appendChild(hreflangEl);
+      }
+      hreflangEl.setAttribute('href', meta.canonical);
+    });
+
+    // 6. Manage Social Meta Tags (OG & Twitter)
     const ogTags = [
       { property: 'og:url', content: meta.canonical },
       { property: 'og:title', content: meta.title },
