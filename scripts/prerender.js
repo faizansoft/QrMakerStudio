@@ -1,6 +1,17 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { TOOL_RICH_DATA } from './toolRichData.js';
+import { FEATURE_RICH_DATA } from './featureRichData.js';
+import { BLOG_RICH_DATA } from './blogRichData.js';
+import { COMPANY_RICH_DATA } from './companyRichData.js';
+
+const ALL_RICH_DATA = {
+  ...TOOL_RICH_DATA,
+  ...FEATURE_RICH_DATA,
+  ...BLOG_RICH_DATA,
+  ...COMPANY_RICH_DATA
+};
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -712,10 +723,148 @@ function buildFooterHtml() {
 function buildBodyHtml(route) {
   const sectionsHtml = (route.sections || []).map(sec => `
     <div style="margin-bottom:28px;">
-      <h2 style="font-size:20px; font-weight:700; color:#111827; margin-bottom:12px;">${sec.title}</h2>
+      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:12px;">${sec.title}</h2>
       ${sec.paragraphs.map(p => `<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:12px;">${p}</p>`).join('')}
     </div>
   `).join('');
+
+  // Look up rich structured data for all routes (tools, features, blog, company)
+  const rich = ALL_RICH_DATA[route.path] || null;
+
+  const techOverviewHtml = rich && rich.technicalOverview ? `
+    <section style="margin-top:40px; padding:32px; background:#f9fafb; border:1px solid #e5e7eb; border-radius:16px;">
+      <div style="display:inline-block; padding:4px 12px; background:rgba(43,111,83,0.1); color:#2B6F53; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; border-radius:9999px; margin-bottom:12px;">
+        Technical Architecture &amp; Protocol
+      </div>
+      <h2 style="font-size:24px; font-weight:800; color:#111827; margin-bottom:16px;">${rich.technicalOverview.title}</h2>
+      ${rich.technicalOverview.paragraphs.map(p => `<p style="color:#4b5563; font-size:15px; line-height:1.75; margin-bottom:14px;">${p}</p>`).join('')}
+    </section>
+  ` : '';
+
+  const comparisonTableHtml = rich && rich.comparisonTable ? `
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
+      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:20px; text-align:center;">${rich.comparisonTable.title}</h2>
+      <div style="overflow-x:auto; margin-bottom:20px;">
+        <table style="width:100%; border-collapse:collapse; background:#fff; border:1px solid #e5e7eb; border-radius:12px; font-size:14px; text-align:left;">
+          <thead>
+            <tr style="background:#f3f4f6; border-bottom:2px solid #e5e7eb;">
+              ${rich.comparisonTable.headers.map((h, i) => `<th style="padding:14px 16px; font-weight:700; color:${i === 1 ? '#166534' : '#111827'};">${h}</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>
+            ${rich.comparisonTable.rows.map((row, idx) => `
+              <tr style="border-bottom:1px solid #e5e7eb; background:${idx % 2 === 0 ? '#fff' : '#f9fafb'};">
+                <td style="padding:12px 16px; font-weight:600; color:#1f2937;">${row[0]}</td>
+                <td style="padding:12px 16px; color:#166534; font-weight:600;">${row[1]}</td>
+                <td style="padding:12px 16px; color:#6b7280;">${row[2]}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ` : '';
+
+  const stepsHtml = rich && rich.steps ? `
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
+      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:20px; text-align:center;">How to Generate &amp; Deploy (3-Step Practical Manual)</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px;">
+        ${rich.steps.map(s => `
+          <div style="background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:22px;">
+            <div style="width:36px; height:36px; background:#2B6F53; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; margin-bottom:12px;">${s.number}</div>
+            <h3 style="font-size:16px; font-weight:700; color:#111827; margin-bottom:8px;">${s.title}</h3>
+            <p style="font-size:13px; color:#6b7280; line-height:1.6; margin:0;">${s.description}</p>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+  ` : '';
+
+  const featuresHtml = rich && rich.features ? `
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
+      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:20px; text-align:center;">Core Capabilities &amp; Enterprise Advantages</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;">
+        ${rich.features.map(f => `
+          <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; padding:20px;">
+            <h3 style="font-size:15px; font-weight:700; color:#166534; margin-bottom:8px;">${f.title}</h3>
+            <p style="font-size:13px; color:#4b5563; line-height:1.6; margin:0;">${f.description}</p>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+  ` : '';
+
+  const sizingMatrixHtml = rich && rich.sizingMatrix ? `
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
+      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:10px; text-align:center;">${rich.sizingMatrix.title}</h2>
+      <p style="text-align:center; color:#6b7280; font-size:14px; max-width:720px; margin:0 auto 20px;">${rich.sizingMatrix.description}</p>
+      <div style="overflow-x:auto; margin-bottom:20px;">
+        <table style="width:100%; border-collapse:collapse; background:#fff; border:1px solid #e5e7eb; border-radius:12px; font-size:13px; text-align:left;">
+          <thead>
+            <tr style="background:#f3f4f6; border-bottom:2px solid #e5e7eb;">
+              ${rich.sizingMatrix.headers.map(h => `<th style="padding:12px 14px; font-weight:700; color:#111827;">${h}</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>
+            ${rich.sizingMatrix.rows.map((row, idx) => `
+              <tr style="border-bottom:1px solid #e5e7eb; background:${idx % 2 === 0 ? '#fff' : '#f9fafb'};">
+                <td style="padding:10px 14px; font-weight:600; color:#1f2937;">${row[0]}</td>
+                <td style="padding:10px 14px; color:#4b5563;">${row[1]}</td>
+                <td style="padding:10px 14px; color:#166534; font-weight:600;">${row[2]}</td>
+                <td style="padding:10px 14px; color:#6b7280;">${row[3]}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ` : '';
+
+  const useCasesHtml = rich && rich.useCases ? `
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
+      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:20px; text-align:center;">Cross-Industry Practical Applications</h2>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;">
+        ${rich.useCases.map((u, i) => `
+          <li style="background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:20px;">
+            <div style="width:26px; height:26px; background:#2B6F53; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; margin-bottom:10px;">${i+1}</div>
+            <h3 style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">${u.title}</h3>
+            <p style="font-size:13px; color:#6b7280; line-height:1.6; margin:0;">${u.description}</p>
+          </li>
+        `).join('')}
+      </ul>
+    </section>
+  ` : '';
+
+  const troubleshootingHtml = rich && rich.troubleshooting ? `
+    <section style="margin-top:48px; padding:28px 32px; background:#fef2f2; border:1px solid #fecaca; border-radius:16px;">
+      <h2 style="font-size:20px; font-weight:800; color:#991b1b; margin-bottom:16px;">${rich.troubleshooting.title}</h2>
+      <ul style="margin:0; padding-left:20px; color:#7f1d1d; font-size:14px; line-height:1.75;">
+        ${rich.troubleshooting.points.map(pt => `<li style="margin-bottom:10px;">${pt}</li>`).join('')}
+      </ul>
+    </section>
+  ` : '';
+
+  const faqsHtml = rich && rich.faqs ? `
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
+      <h2 style="font-size:24px; font-weight:800; color:#111827; margin-bottom:8px; text-align:center;">Comprehensive Technical &amp; Practical FAQ</h2>
+      <p style="text-align:center; color:#6b7280; font-size:14px; margin-bottom:24px;">Everything developers, marketers, and business owners need to know.</p>
+      <div style="max-width:820px; margin:0 auto;">
+        ${rich.faqs.map(f => `
+          <details style="border:1px solid #e5e7eb; border-radius:10px; margin-bottom:12px; background:#fff; overflow:hidden;">
+            <summary style="padding:16px 20px; font-size:15px; font-weight:700; color:#111827; cursor:pointer; list-style:none;">${f.q}</summary>
+            <div style="padding:0 20px 16px; font-size:14px; color:#4b5563; line-height:1.7; border-top:1px solid #f3f4f6;">${f.a}</div>
+          </details>
+        `).join('')}
+      </div>
+    </section>
+  ` : '';
+
+  const bestPracticesHtml = rich && rich.bestPractices ? `
+    <section style="margin-top:48px; padding:28px 32px; background:#111827; border-radius:16px; color:#fff;">
+      <h2 style="font-size:18px; font-weight:700; color:#34d399; margin-bottom:10px;">Production Checklist &amp; Scanning Quality Assurance</h2>
+      <p style="font-size:14px; color:#d1d5db; line-height:1.8; margin:0;">${rich.bestPractices}</p>
+    </section>
+  ` : '';
 
   return `
     <div id="app" class="min-h-screen flex flex-col">
@@ -740,6 +889,16 @@ function buildBodyHtml(route) {
         <div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:16px; padding:32px; margin-bottom:36px;">
           ${sectionsHtml}
         </div>
+
+        ${techOverviewHtml}
+        ${comparisonTableHtml}
+        ${stepsHtml}
+        ${featuresHtml}
+        ${sizingMatrixHtml}
+        ${useCasesHtml}
+        ${troubleshootingHtml}
+        ${faqsHtml}
+        ${bestPracticesHtml}
       </main>
       ${buildFooterHtml()}
     </div>

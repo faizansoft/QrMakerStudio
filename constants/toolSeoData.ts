@@ -41,34 +41,39 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     keywords: ['url qr code generator', 'website link qr code', 'free link to qr code', 'custom logo url qr code', 'svg url qr code'],
     introTitle: 'What is a URL QR Code Generator?',
     introParagraphs: [
-      'A URL QR Code (Uniform Resource Locator Quick Response Code) is a 2D barcode that encodes a web address, allowing smartphone cameras to instantly open any webpage without typing long, complex web addresses.',
+      'A URL QR Code (Uniform Resource Locator Quick Response Code) is a two-dimensional matrix barcode standardized under ISO/IEC 18004. It encodes alphanumeric web addresses into a scannable grid of dark and light modules, allowing smartphone cameras to open any target webpage immediately without typing long, complex web addresses.',
       'Whether you are directing customers to a restaurant menu, an e-commerce store, a promotional landing page, a social media profile, or a digital portfolio, URL QR Codes provide a seamless bridge between offline physical marketing materials and digital online destinations.',
       'With QR Maker Studio, you can customize your link QR codes with brand colors, unique pattern shapes, and custom central logos. Download your high-resolution QR codes in vector SVG or crisp PNG formats completely free with zero scan limits or expiration dates.'
     ],
     stepsTitle: 'How to Create a Free URL QR Code in 3 Steps',
     steps: [
-      { number: 1, title: 'Enter Your Website URL', description: 'Paste your target destination web address (e.g. https://yourwebsite.com) into the input box above.' },
-      { number: 2, title: 'Customize Colors & Logo', description: 'Select your brand palette colors, dot style patterns, corner eyes, and upload your custom logo.' },
-      { number: 3, title: 'Download in SVG or PNG', description: 'Click Download PNG or SVG to save your high-resolution QR code ready for print and digital publishing.' }
+      { number: 1, title: 'Enter Your Website URL & UTM Tags', description: 'Paste your target destination web address (e.g. https://yourwebsite.com) into the input box above, optionally appending UTM campaign tracking parameters.' },
+      { number: 2, title: 'Customize Colors & Logo', description: 'Select your brand palette colors, dot style patterns, corner eyes, and upload your custom company logo in the center.' },
+      { number: 3, title: 'Download in Vector SVG or PNG', description: 'Click Download PNG or SVG to save your high-resolution QR code ready for professional print and digital publishing.' }
     ],
     featuresTitle: 'Why Use QR Maker Studio for URL QR Codes?',
     features: [
-      { title: 'Permanent & Unlimited Scans', description: 'Static URL QR codes generated on our platform never expire and support unlimited scans forever.' },
-      { title: 'High-Resolution Vector SVG', description: 'Export crisp vector graphics perfect for large billboards, banners, flyers, packaging, and print media.' },
-      { title: 'Custom Brand Logo Embedding', description: 'Upload your company logo or pick from popular icon presets to increase brand recognition and trust.' },
-      { title: '100% Browser-Based Privacy', description: 'Your data is processed locally in your browser without tracking or storing sensitive link data.' }
+      { title: 'Permanent & Unlimited Scans', description: 'Static URL QR codes generated on our platform never expire and support unlimited scans forever at zero cost.' },
+      { title: 'High-Resolution Vector SVG', description: 'Export crisp vector graphics perfect for large billboards, banners, flyers, packaging, and commercial print media.' },
+      { title: 'Custom Brand Logo Embedding', description: 'Upload your company logo or pick from popular icon presets to increase brand recognition and consumer trust.' },
+      { title: '100% Browser-Based Privacy', description: 'Your data is processed locally in your browser memory without tracking, logging, or storing sensitive link data.' }
     ],
     useCasesTitle: 'Popular Use Cases for URL QR Codes',
     useCases: [
-      { title: 'Print Marketing & Magazines', description: 'Add website links to print ads, magazine articles, and billboards to drive instant traffic to landing pages.' },
-      { title: 'Product Packaging & Labels', description: 'Guide buyers to user manuals, warranty registrations, recipe ideas, or video demonstrations.' },
-      { title: 'Business Cards & Stationery', description: 'Link directly to your personal portfolio, LinkedIn profile, or booking calendar.' },
-      { title: 'Restaurant Menus & Order Systems', description: 'Give guests instant touchless access to digital PDF food and beverage menus.' }
+      { title: 'Print Marketing & Magazines', description: 'Add website links to print ads, magazine articles, and billboards to drive instant traffic to digital landing pages.' },
+      { title: 'Product Packaging & Labels', description: 'Guide buyers to user manuals, warranty registrations, recipe ideas, or video demonstrations on their phones.' },
+      { title: 'Business Cards & Stationery', description: 'Link directly to your personal portfolio, LinkedIn profile, or online booking calendar on printed cards.' },
+      { title: 'Restaurant Menus & Order Systems', description: 'Give guests instant touchless access to digital PDF food and beverage menus without physical printing.' }
     ],
     faqs: [
-      { question: 'Do URL QR Codes expire?', answer: 'No! Static URL QR Codes generated on QR Maker Studio contain your direct web address and will work indefinitely as long as your target website URL remains online.' },
-      { question: 'Can I change the destination URL after printing?', answer: 'Static QR codes encode the destination URL permanently inside the matrix. To change the link without re-printing, use a URL shortener domain that you control or redirect.' },
-      { question: 'What file format is best for printing URL QR Codes?', answer: 'SVG (Scalable Vector Graphics) is best for commercial printing because it can be scaled to any size without losing sharpness. PNG is ideal for websites and emails.' }
+      { question: 'Do URL QR Codes created on QR Maker Studio ever expire?', answer: 'No. Static URL QR codes generated on our platform encode your web address directly into the visual matrix. They have no expiration date, no recurring subscriptions, and will remain scannable forever as long as your destination website remains live.' },
+      { question: 'Can I edit the destination URL after printing a static QR Code?', answer: 'Because static QR codes encode the destination URL permanently inside the module pattern, the encoded text cannot be changed post-print. To retain flexibility without reprinting, link the QR code to a custom short link on your domain (e.g. yourdomain.com/promo) and redirect that URL whenever your campaign destination changes.' },
+      { question: 'What is the maximum number of scans allowed on free QR codes?', answer: 'There are zero scan limitations. Because generation is 100% static and client-side, your QR codes can receive tens of millions of scans without hitting any bandwidth caps or paywalls.' },
+      { question: 'Why is SVG format recommended over PNG for commercial printing?', answer: 'SVG (Scalable Vector Graphics) defines geometric shapes using mathematical coordinates rather than fixed pixel grids. When scaled to billboard or banner sizes, SVG lines remain razor-sharp with zero blur or pixelation, whereas raster PNG images degrade when printed larger than their original pixel dimensions.' },
+      { question: 'How do UTM parameters help track QR code marketing campaigns?', answer: 'By appending campaign tags (like ?utm_source=brochure&utm_medium=qr&utm_campaign=summer_sale) to your destination URL, Google Analytics 4 (GA4) precisely attributes sessions, user engagement, and sales to that specific physical marketing asset rather than lumping them into generic Direct traffic.' },
+      { question: 'Can I use a URL QR Code to link directly to a downloadable PDF file?', answer: 'Yes. Simply host your PDF on your website, Dropbox, or Google Drive, copy the direct public URL, and paste it into our generator. When scanned, smartphone browsers will automatically open or download the PDF document.' },
+      { question: 'Are URL QR Codes compatible with older iPhone and Android smartphones?', answer: 'Yes. All iPhones running iOS 11 or newer (released 2017+) and Android devices running Android 9+ support native QR scanning directly inside the built-in camera app without downloading third-party scanning tools.' },
+      { question: 'How does Error Correction Level H protect my QR Code with a custom logo?', answer: 'Level H error correction employs Reed-Solomon algebraic redundancy algorithms to duplicate up to 30% of the encoded payload. This allows you to overlay a central brand logo over the center modules without corrupting the scanner ability to reconstruct the full URL.' }
     ]
   },
 
@@ -90,9 +95,9 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     ],
     stepsTitle: 'How to Generate a WiFi QR Code in 3 Simple Steps',
     steps: [
-      { number: 1, title: 'Enter Network Details', description: 'Provide your WiFi Network Name (SSID), select WPA/WPA2/WPA3 encryption, and enter your password.' },
-      { number: 2, title: 'Style & Add WiFi Logo', description: 'Customize pattern colors, frames, and add a WiFi icon or custom venue logo in the center.' },
-      { number: 3, title: 'Print or Display', description: 'Download your high-res PNG or vector SVG file to print on table stands, tent cards, or welcome packets.' }
+      { number: 1, title: 'Enter Network Details & Encryption', description: 'Provide your WiFi Network Name (SSID), select WPA/WPA2/WPA3 encryption, and enter your wireless security password.' },
+      { number: 2, title: 'Style & Add WiFi Logo', description: 'Customize pattern colors, corner frames, and add a WiFi icon or custom venue logo in the center.' },
+      { number: 3, title: 'Print or Display for Guests', description: 'Download your high-res PNG or vector SVG file to print on table stands, tent cards, or hotel welcome packets.' }
     ],
     featuresTitle: 'Key Benefits of WiFi QR Codes',
     features: [
@@ -109,9 +114,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Events & Conferences', description: 'Allow hundreds of attendees to connect effortlessly without network congestion at check-in.' }
     ],
     faqs: [
-      { question: 'Is it safe to share WiFi credentials via a QR Code?', answer: 'Yes! The QR code simply holds your network name and password in plain text format that devices read. Anyone near the QR code can scan it, so place it only where you want to grant guest access.' },
-      { question: 'Does a WiFi QR Code work on both iPhone and Android?', answer: 'Yes. All modern iPhones running iOS 11+ and Android smartphones running Android 10+ natively support connecting to WiFi networks directly from the stock camera app.' },
-      { question: 'How do I handle hidden WiFi networks?', answer: 'Check the "Hidden Network" option when generating your QR code so the camera knows to scan for invisible SSIDs.' }
+      { question: 'Is it secure to print a WiFi QR Code in a public space?', answer: 'A WiFi QR code encodes the network SSID and password in standard plain text. Anyone who scans the code gains access to that network. It is best practice to generate QR codes for a dedicated, isolated Guest Network with client isolation enabled, rather than exposing your private internal business network.' },
+      { question: 'Does a WiFi QR Code work on both Apple iPhones and Android devices?', answer: 'Yes. Native camera apps on iPhones running iOS 11+ and Android smartphones running Android 10+ natively detect the WIFI: protocol and prompt users to join the network with a single tap.' },
+      { question: 'What happens if I change my WiFi network password in the future?', answer: 'Because static WiFi QR codes encode the specific password directly into the barcode modules, changing your router password requires generating and printing a new QR code.' },
+      { question: 'Can I generate a WiFi QR code for an open network with no password?', answer: 'Yes! Select the "No Encryption" option in our generator, enter your SSID, and generate the QR code. Scanning will connect users directly to the open network without prompting for a passkey.' },
+      { question: 'Does scanning a WiFi QR code expose the password on the user screen?', answer: 'On iOS devices, the camera shows a prompt "Join [Network Name]?" without displaying the underlying password characters on the screen, adding a layer of visual privacy against shoulder-surfing.' },
+      { question: 'Can I add my business logo to the center of a WiFi QR code?', answer: 'Yes. QR Maker Studio uses Level H error correction, allowing you to embed your venue logo or a standard WiFi icon in the center while maintaining 100% scan reliability.' },
+      { question: 'Do WiFi QR codes expire or have monthly scan limits?', answer: 'No. The generated QR codes are permanent static barcodes with infinite lifetime validity and zero scan limitations.' },
+      { question: 'Why did my phone fail to connect after scanning the WiFi QR code?', answer: 'The most common causes are: (1) incorrect SSID capitalization, (2) selecting WEP instead of WPA/WPA2/WPA3, (3) the router being out of physical range, or (4) the network having MAC address filtering enabled.' }
     ]
   },
 
@@ -135,7 +145,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     steps: [
       { number: 1, title: 'Fill in Contact Details', description: 'Enter your name, phone number, email, organization, job title, and personal website link.' },
       { number: 2, title: 'Add Personal Branding', description: 'Customize colors, dot patterns, and embed your headshot or corporate logo in the center.' },
-      { number: 3, title: 'Save & Print', description: 'Export in high-resolution vector SVG format to print on paper business cards, badges, or flyers.' }
+      { number: 3, title: 'Save & Print on Business Cards', description: 'Export in high-resolution vector SVG format to print on paper business cards, badges, or flyers.' }
     ],
     featuresTitle: 'Advantages of vCard Business Card QR Codes',
     features: [
@@ -152,9 +162,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Email Signatures & Websites', description: 'Embed a contact QR code in your email footer or about page for quick mobile saving.' }
     ],
     faqs: [
-      { question: 'What happens when someone scans my vCard QR code?', answer: 'Their phone will prompt them with a "Add to Contacts" notification. Tapping it opens their native Contacts app with your name, phone, email, and company pre-filled.' },
-      { question: 'Can I include a photo in static vCard QR code?', answer: 'Large binary files like photos make static QR codes extremely dense and difficult to scan. It is recommended to put your logo in the QR code center and link your website URL for full photos.' },
-      { question: 'Is vCard 3.0 supported on all phones?', answer: 'Yes! vCard 3.0 is the international industry standard supported natively by Apple iOS, Google Android, Windows Mobile, and BlackBerry devices.' }
+      { question: 'What happens when someone scans a vCard QR Code on their phone?', answer: 'On iOS, the camera banner prompts "Add [Name] to Contacts". Tapping it opens Apple Contacts with all your encoded fields pre-populated. On Android, it opens Google Contacts with a "Save" prompt. In both cases, your full profile is saved in one tap.' },
+      { question: 'Can I include a photo in a static vCard QR Code?', answer: 'Encoding raw image binary data expands the QR payload by thousands of bytes, creating an unreadable matrix. The industry standard is to embed your photo/logo as an overlay in the center of the QR code and include your website or LinkedIn URL in the vCard URL field where your full photo is hosted.' },
+      { question: 'Do vCard QR codes require an internet connection to scan?', answer: 'No! Because all contact information is stored directly inside the visual barcode pattern using standard vCard 3.0 text encoding, phones can scan and save your contact profile completely offline without cellular data or WiFi.' },
+      { question: 'Are vCard QR codes compatible with Outlook and Gmail?', answer: 'Yes. The vCard 3.0 format is the universal industry standard supported by Microsoft Outlook, Apple Mail, Google Contacts, and all major enterprise CRM systems.' },
+      { question: 'Do static vCard QR codes have an expiration date?', answer: 'Never. Static vCard QR codes generated on QR Maker Studio contain raw contact data and remain permanent forever with zero recurring fees or scan restrictions.' },
+      { question: 'How should I format international phone numbers in a vCard?', answer: 'Always use E.164 international format beginning with a plus sign followed by country code, area code, and phone number (e.g. +14155552671). This ensures contacts in other countries can call or text you without dialing prefix errors.' },
+      { question: 'Can I print a vCard QR code on both sides of my business card?', answer: 'It is recommended to print your visual branding and name on the front of the card, and place the vCard QR code on the back alongside a clear call-to-action such as "Scan to save contact".' },
+      { question: 'Which export format is best for sending to a commercial business card printer?', answer: 'Always provide your print shop with the vector SVG or EPS file. Vector files maintain 100% mathematical precision across all commercial offset and digital presses.' }
     ]
   },
 
@@ -195,9 +210,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'E-commerce & Retail Sales', description: 'Help online shoppers ask product questions or request custom quotes directly on WhatsApp.' }
     ],
     faqs: [
-      { question: 'Do customers need to save my number before scanning?', answer: 'No! Scanning the WhatsApp QR code opens a direct conversation with your phone number automatically, without requiring the user to add you to their address book.' },
-      { question: 'How should I format the phone number?', answer: 'Use the full international format without plus signs, dashes, or brackets (e.g. 14155552671 for a US number).' },
-      { question: 'Can I use this for WhatsApp Business accounts?', answer: 'Yes! It works identically for personal WhatsApp accounts and official WhatsApp Business accounts.' }
+      { question: 'Do customers need to save my business phone number before scanning?', answer: 'No! The wa.me deep-link protocol opens a direct conversation with your phone number immediately without requiring the user to add you to their address book.' },
+      { question: 'How should I format my phone number for WhatsApp QR codes?', answer: 'Enter your phone number in full international format containing digits only. For example, a US number (415) 555-1234 becomes 14155551234. A UK mobile 07911 123456 becomes 447911123456 (omit leading 0).' },
+      { question: 'Does scanning automatically send the message on behalf of the user?', answer: 'No. Scanning opens WhatsApp with your recipient number and the pre-filled text placed inside the user message compose box. The user must manually tap the Send button, ensuring complete user control and transparency.' },
+      { question: 'What happens if a user scans the code on a desktop computer?', answer: 'The browser redirects to WhatsApp Web or prompts to open the WhatsApp Desktop application, allowing desktop users to continue the chat seamlessly.' },
+      { question: 'Can I use this with WhatsApp Business automated greeting messages?', answer: 'Yes! When a customer initiates a chat via your QR code, your WhatsApp Business automated welcome messages, quick replies, and away messages trigger automatically.' },
+      { question: 'Do WhatsApp QR codes expire or have limits on conversation starts?', answer: 'No. Static WhatsApp QR codes generated on QR Maker Studio have permanent validity, support unlimited scans, and never expire.' },
+      { question: 'Can I track how many people scan my WhatsApp QR code?', answer: 'You can track scans by using unique pre-filled message text for each physical marketing asset (e.g. "Inquiry from Spring Flyer" vs "Inquiry from Window Banner") to identify which channel generated the lead.' },
+      { question: 'Is it free to generate and use WhatsApp QR codes?', answer: 'Yes. Generating static WhatsApp click-to-chat QR codes on QR Maker Studio is 100% free with no monthly subscription or hidden fees.' }
     ]
   },
 
@@ -238,9 +258,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Wifi Passwords & Access Keys', description: 'Display plain text encryption keys on physical cards for manual entry.' }
     ],
     faqs: [
-      { question: 'How much text can I put into a single QR Code?', answer: 'A QR code can store up to 4,296 alphanumeric characters or 7,089 numeric digits. However, keeping your text shorter ensures a cleaner QR code that is easier to scan from a distance.' },
-      { question: 'Does scanning a text QR code open a browser?', answer: 'No. Since the data is recognized as raw text rather than a web URL (`https://`), the phone will display the text in a popup dialog or copy it to the clipboard.' },
-      { question: 'Can I encode emojis and special characters?', answer: 'Yes! QR Maker Studio supports full UTF-8 encoding, allowing foreign language characters, math symbols, and emojis.' }
+      { question: 'How many characters can I encode in a single Plain Text QR Code?', answer: 'A QR code can technically store up to 4,296 alphanumeric characters or 7,089 numeric digits. However, to ensure rapid optical scanning at standard sizes, it is recommended to keep text under 300 characters.' },
+      { question: 'Does scanning a Plain Text QR code require an internet connection?', answer: 'No! Plain text QR codes store their entire data payload directly inside the visual barcode matrix. They scan and display 100% offline without cellular data or WiFi.' },
+      { question: 'What happens on a smartphone when a user scans a Text QR code?', answer: 'The camera app displays the decoded text in a system dialog box with options to copy the text to the clipboard or perform a web search.' },
+      { question: 'Can I encode special characters, foreign language scripts, and emojis?', answer: 'Yes! QR Maker Studio supports full UTF-8 byte encoding, allowing foreign language alphabets (Japanese, Arabic, Cyrillic), mathematical symbols, and emojis.' },
+      { question: 'Do Plain Text QR codes expire or charge fees?', answer: 'No. Static text QR codes generated on QR Maker Studio have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
+      { question: 'Are Text QR codes compatible with industrial barcode scanners?', answer: 'Yes! All standard 2D barcode imagers (Zebra, Honeywell, Datalogic) scan text QR codes and output the decoded characters directly to connected terminal software.' },
+      { question: 'What file format is best for thermal barcode label printers?', answer: 'Export the vector SVG or high-resolution PNG format. Vector SVG files render with 100% precision on commercial thermal label printing software.' },
+      { question: 'Is the encoded text data kept private during generation?', answer: 'Yes. All QR code generation is performed 100% client-side in your web browser memory. No text data is ever transmitted or stored on external servers.' }
     ]
   },
 
@@ -281,9 +306,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Technical Support & Inquiries', description: 'Include an email QR code in user documentation for quick warranty claims.' }
     ],
     faqs: [
-      { question: 'Which email apps open when scanning an Email QR code?', answer: 'The scan will trigger whichever email application is set as default on the user device, such as Apple Mail, Gmail, Outlook, or Yahoo Mail.' },
-      { question: 'Can I leave the subject line or body blank?', answer: 'Yes! You can specify only the recipient email address, leaving subject and body blank for the user to write freely.' },
-      { question: 'Does scanning send the email automatically?', answer: 'No. Scanning opens the pre-filled compose window in the user’s email app. The user retains full control to review and tap "Send".' }
+      { question: 'Which email app opens when a user scans an Email QR Code?', answer: 'Scanning invokes whichever email client is set as the default on the user device — typically Apple Mail on iPhone, Gmail on Android, or Outlook/Yahoo if configured by the user.' },
+      { question: 'Does scanning automatically send the email?', answer: 'No. For security and user privacy, scanning opens the compose window with the fields pre-filled. The user must tap the Send button to dispatch the email.' },
+      { question: 'Can I leave the subject and body fields blank?', answer: 'Yes. You can specify only the recipient email address, leaving the subject and body empty for the user to compose freely.' },
+      { question: 'Can I include multiple recipient email addresses?', answer: 'Yes. You can enter multiple comma-separated email addresses in the recipient field to send messages to multiple team members simultaneously.' },
+      { question: 'Do Email QR codes expire or require paid plans?', answer: 'No. Static mailto QR codes generated on QR Maker Studio have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
+      { question: 'How many characters can I include in the pre-filled email body?', answer: 'While the mailto protocol supports long strings, it is best practice to keep the body under 150 characters to maintain a clean, easily scannable QR code matrix.' },
+      { question: 'Can I track how many emails are generated from my QR code?', answer: 'You can track email conversions by embedding unique tracking tags in the pre-filled subject line (e.g. `[Source: Summer Flyer]`) and filtering them in your inbox or CRM.' },
+      { question: 'Is my email address kept private during generation?', answer: 'Yes. QR Maker Studio processes all encoding 100% client-side in your web browser memory. No email addresses are logged or stored on external servers.' }
     ]
   },
 
@@ -324,9 +354,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Customer Support Texts', description: 'Provide a direct SMS channel for urgent concierge and service requests.' }
     ],
     faqs: [
-      { question: 'Does scanning automatically send the text message?', answer: 'No. For user security, scanning opens the native Messaging app with your number and text pre-filled. The user must press the send button.' },
-      { question: 'Are standard carrier SMS rates applicable?', answer: 'Yes. The text message sent by the user uses their standard mobile phone plan SMS messaging allowances.' },
-      { question: 'What is the maximum character count for pre-filled SMS?', answer: 'Standard SMS messages support up to 160 characters. Keeping text concise ensures maximum mobile compatibility.' }
+      { question: 'Does scanning the QR code automatically send the text message?', answer: 'No. Scanning opens the user native SMS messaging app with the number and message pre-filled. The user must tap Send to dispatch the message, complying with mobile privacy regulations.' },
+      { question: 'Are standard carrier SMS rates charged when users send the text?', answer: 'Yes. The text message sent by the user uses their standard cellular plan SMS allowances and any applicable carrier messaging rates.' },
+      { question: 'Can I use an SMS QR code with 5-digit or 6-digit shortcodes?', answer: 'Yes! You can enter standard 10-digit mobile numbers, toll-free 800 numbers, or 5-6 digit marketing shortcodes in the phone number input field.' },
+      { question: 'Do SMS QR codes expire or have monthly scan limits?', answer: 'No. Static SMS QR codes generated on QR Maker Studio have permanent validity and support unlimited scans forever.' },
+      { question: 'What is the character limit for pre-filled SMS text?', answer: 'Standard SMS supports up to 160 characters per message. Keeping your pre-filled text under 160 characters ensures single-segment delivery across all carriers.' },
+      { question: 'Can I embed my logo into an SMS QR code?', answer: 'Yes! QR Maker Studio uses Level H error correction, allowing you to embed a message icon or company logo in the center without affecting scannability.' },
+      { question: 'Do SMS QR codes require an internet connection to scan?', answer: 'Scanning the QR code and opening the Messages app works completely offline. Sending the resulting SMS message requires standard cellular mobile reception.' },
+      { question: 'Is customer phone data stored on QR Maker Studio servers?', answer: 'No. All QR code generation is performed locally in your browser memory. No phone numbers or message strings are ever uploaded or stored.' }
     ]
   },
 
@@ -367,9 +402,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Restaurant Takeout Flyers', description: 'Allow customers to scan to call in phone orders directly from fridge menus.' }
     ],
     faqs: [
-      { question: 'Will the QR code dial the phone call automatically?', answer: 'No. For safety and compliance, scanning displays a prompt asking the user to confirm dialing the phone number.' },
-      { question: 'Should I include the country code?', answer: 'Yes! Including your country code (e.g. +1 for US/Canada, +44 for UK) ensures international callers and roaming users can connect seamlessly.' },
-      { question: 'Does this work on iPads and tablets without SIM cards?', answer: 'On devices without cellular service, scanning will prompt to call via connected FaceTime or internet calling services.' }
+      { question: 'Will scanning the QR code initiate the phone call immediately?', answer: 'No. For user security, modern smartphones display a confirmation dialog showing the decoded phone number with a "Call" button. The user must tap Call to begin dialing.' },
+      { question: 'Should I include my country code in the phone number?', answer: 'Yes! Always include the full international country code starting with a plus sign (e.g. +1 for US/Canada, +44 for UK). This ensures all callers connect regardless of their mobile carrier or roaming status.' },
+      { question: 'What happens if someone scans a Phone QR code on an iPad without a SIM card?', answer: 'On WiFi-only tablets, scanning prompts the user to place the voice call via connected Apple FaceTime Audio, Skype, or paired iPhone cellular relay.' },
+      { question: 'Can I encode phone extensions into the QR code?', answer: 'Yes. Insert a comma `,` between the main telephone number and the extension (e.g. `tel:+14155550199,104`). The comma inserts a 2-second pause before dialing the DTMF extension digits.' },
+      { question: 'Do Phone QR codes expire or charge per call?', answer: 'No. Static tel URI QR codes generated on QR Maker Studio have permanent validity, zero scan limits, and no recurring service charges.' },
+      { question: 'What vector format is best for commercial vehicle wrap printing?', answer: 'Download the vector SVG file. SVG maintains mathematical vector precision and can be scaled to billboard or vehicle sizes without pixelation.' },
+      { question: 'Can I track how many phone calls come from my QR code?', answer: 'To track phone conversions precisely, link your Phone QR code to a dedicated call-tracking phone number (from services like CallRail or Twilio) assigned exclusively to that marketing asset.' },
+      { question: 'Is my phone number stored on external servers during generation?', answer: 'No. QR Maker Studio generates all barcodes 100% client-side in your browser memory. Your phone numbers are never stored, logged, or shared.' }
     ]
   },
 
@@ -410,9 +450,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Product Unboxing Cards', description: 'Include social QR codes in package inserts inviting buyers to post unboxing videos.' }
     ],
     faqs: [
-      { question: 'Will scanning open the Facebook or Instagram app?', answer: 'If the user has the Facebook or Instagram app installed on their phone, scanning will open the profile natively inside the app for easy one-tap following.' },
-      { question: 'Can I link to a specific Facebook post or event?', answer: 'Yes! You can paste the direct link to any public Facebook post, photo album, group, or event page.' },
-      { question: 'Which format is best for printing social QR codes on signage?', answer: 'SVG vector format is recommended for banners and storefront signs so the QR code remains crisp at any scale.' }
+      { question: 'Will scanning open the Facebook app or a web browser?', answer: 'If the user has the Facebook mobile app installed, the operating system Universal Link protocol automatically opens your profile natively inside the app. If the app is not installed, it opens in the mobile web browser.' },
+      { question: 'Can I link to a specific Facebook post, album, or event instead of a page?', answer: 'Yes! Simply copy the direct URL of any public Facebook post, photo album, live stream, or event page and paste it into the generator.' },
+      { question: 'How can I link to multiple social media platforms with one QR Code?', answer: 'Create a free link aggregation landing page (such as Linktree, Beacons, or a dedicated page on your website), copy that URL, and generate your QR code. Scanners can then choose which platform to follow.' },
+      { question: 'Do Facebook QR codes expire or have monthly scan limits?', answer: 'No. Static QR codes generated on QR Maker Studio contain your direct URL and remain active permanently with unlimited lifetime scans.' },
+      { question: 'Can I customize the QR code with Facebook official blue color?', answer: 'Yes. You can use official Facebook Hex color `#1877F2` for the foreground modules while keeping the background clean white `#FFFFFF` for optimal scanning contrast.' },
+      { question: 'Why is it better to use a QR code instead of asking users to search for my page?', answer: 'Direct QR scans eliminate search drop-off, prevent users from landing on competing pages with similar names, and complete the follow action in under 2 seconds.' },
+      { question: 'What file format should I download for printing on storefront signage?', answer: 'Export the vector SVG format. Vector graphics scale infinitely to any billboard or banner size without pixelation or blur.' },
+      { question: 'Is client privacy protected when generating social QR codes?', answer: 'Yes. QR Maker Studio generates all QR codes client-side in your browser. Your URLs and profile links are never stored or logged on external servers.' }
     ]
   },
 
@@ -453,9 +498,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Tourism & Landmark Guidebooks', description: 'Guide tourists to historic sites, hiking trailheads, and scenic viewpoints.' }
     ],
     faqs: [
-      { question: 'How do I find my Google Maps link to paste?', answer: 'Open Google Maps, search for your location, click "Share", copy the short link, and paste it into our generator.' },
-      { question: 'Can I use latitude and longitude coordinates instead of an address?', answer: 'Yes! Entering precise lat/lng coordinates (e.g. 37.7749,-122.4194) is ideal for outdoor locations without formal street addresses.' },
-      { question: 'Does it work for Apple Maps users?', answer: 'Yes. Mobile operating systems automatically open their default navigation app (Apple Maps on iPhone, Google Maps on Android).' }
+      { question: 'How do I obtain the correct Google Maps link for my QR code?', answer: 'Open Google Maps, search for your business or drop a pin on your location, click "Share", copy the shareable short link, and paste it into our generator.' },
+      { question: 'Can I use latitude and longitude coordinates instead of a street address?', answer: 'Yes! Inputting exact latitude and longitude coordinates (e.g. `37.7749,-122.4194`) is ideal for parks, festival grounds, and rural venues without formal addresses.' },
+      { question: 'Will this open Apple Maps for iPhone users and Google Maps for Android users?', answer: 'Yes. Standard Google Maps URLs and Geo URIs trigger the respective default map application on iOS and Android smartphones.' },
+      { question: 'Do Location QR codes expire or charge fees?', answer: 'No. Static location QR codes generated on QR Maker Studio have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
+      { question: 'Can I embed a map pin icon in the center of the QR code?', answer: 'Yes! QR Maker Studio utilizes Level H error correction, allowing you to embed a navigation pin or venue logo in the center without affecting scannability.' },
+      { question: 'What is the best export format for wedding invitation printing?', answer: 'Export vector SVG or 300 DPI high-resolution PNG for wedding stationery and commercial cardstock printing.' },
+      { question: 'Can users navigate while offline?', answer: 'If using Geo URI coordinates (`geo:lat,lng`), offline navigation apps like maps.me or pre-downloaded Google Maps areas can navigate without cellular data.' },
+      { question: 'Is my location data private during generation?', answer: 'Yes. All QR codes are generated 100% client-side in your web browser. No location coordinates or map URLs are stored on external servers.' }
     ]
   },
 
@@ -496,9 +546,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Store Sales & Product Launches', description: 'Remind loyal shoppers about upcoming promotional sale start dates.' }
     ],
     faqs: [
-      { question: 'What happens when someone scans an Event QR code?', answer: 'A prompt appears asking to "Add to Calendar". Tapping it opens their phone calendar with title, date, time, location, and description pre-filled.' },
-      { question: 'Can I specify time zones for international events?', answer: 'Yes! Ensure your start and end times reflect the local event time zone so calendar entries save accurately.' },
-      { question: 'Will this set a reminder on the attendee phone?', answer: 'Yes. Most smartphone calendar apps automatically apply standard default reminders (e.g. 15 minutes before) when adding new events.' }
+      { question: 'What happens when someone scans an Event QR Code?', answer: 'On iOS, a prompt appears stating "Add to Calendar". Tapping it opens Apple Calendar with the title, dates, venue, and description pre-filled. On Android, it opens Google Calendar with a Save prompt.' },
+      { question: 'Can I include a Zoom or Google Meet link in the event details?', answer: 'Yes! Paste your video conferencing link into the Location or Description field so virtual attendees have the meeting URL stored in their calendar entry.' },
+      { question: 'Will the calendar entry automatically set a reminder for the attendee?', answer: 'Yes. Most smartphone calendar apps automatically apply standard default reminders (typically 15 to 30 minutes prior to event start) when new events are added.' },
+      { question: 'Can I edit the event date or time after printing the QR Code?', answer: 'Static event QR codes encode the specific date and time permanently inside the matrix. To update details post-print, consider using a URL QR code pointing to an event web page you control.' },
+      { question: 'Do Event QR codes expire or charge monthly fees?', answer: 'No. Static iCalendar QR codes generated on QR Maker Studio have permanent validity, unlimited scans, and zero recurring fees.' },
+      { question: 'Which export format is recommended for printing on wedding stationery?', answer: 'Download the vector SVG file. Vector files maintain perfect line sharpness when printed on commercial presses, textured linen, or metallic cardstock.' },
+      { question: 'Can I embed my wedding monogram or company logo in the QR code?', answer: 'Yes! QR Maker Studio uses Level H error correction, allowing you to embed a custom monogram or event icon in the center without affecting scanning reliability.' },
+      { question: 'Is my event information private during generation?', answer: 'Yes. All QR code generation is performed 100% client-side in your web browser. No event titles or dates are stored on external servers.' }
     ]
   },
 
@@ -539,9 +594,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Freelancer Invoicing', description: 'Embed crypto wallet QR codes on PDF invoices for instant international settlement.' }
     ],
     faqs: [
-      { question: 'Is it safe to display a crypto QR code publicly?', answer: 'Yes! A crypto QR code only contains your public wallet address (where funds are sent). Your private keys remain completely secure.' },
-      { question: 'Can I request a specific payment amount in the QR code?', answer: 'Yes! You can specify an optional crypto amount (e.g. 0.05 BTC or 100 USDT) which wallet apps will auto-fill upon scanning.' },
-      { question: 'Which wallet apps can scan these QR codes?', answer: 'All major crypto wallet apps (Coinbase, Trust Wallet, MetaMask, Exodus, Phantom, Binance) support scanning standard crypto URI QR codes.' }
+      { question: 'Is it safe to display my Crypto QR Code publicly?', answer: 'Yes! A Crypto QR code only contains your public wallet receiving address. It allows people to send funds to your wallet, but cannot withdraw or access your holdings. Your private keys remain 100% secure in your custody.' },
+      { question: 'Which wallet apps can scan these Crypto QR Codes?', answer: 'All standard mobile crypto wallets support standard URI QR codes, including MetaMask, Trust Wallet, Coinbase Wallet, Binance, Phantom, Exodus, Kraken, and Electrum.' },
+      { question: 'Can I specify a fixed payment amount in the QR code?', answer: 'Yes. You can enter an optional amount (e.g. `0.005 BTC` or `50 USDT`), which wallet apps will automatically populate upon scanning.' },
+      { question: 'What happens if someone sends a different cryptocurrency to my address?', answer: 'Sending an incompatible cryptocurrency (like sending Bitcoin to an Ethereum address) can result in permanent loss of funds on the blockchain. Always label your QR code with the exact coin and network name.' },
+      { question: 'Do Crypto QR codes expire or charge transaction fees?', answer: 'No. Static Crypto QR codes generated on QR Maker Studio have permanent validity and zero fees. Standard blockchain network gas fees apply only when payers submit transactions.' },
+      { question: 'Where do I find my public wallet receive address?', answer: 'Open your crypto wallet app, navigate to Receive, select your coin, and copy the alphanumeric public address shown.' },
+      { question: 'Can I embed the official Bitcoin or Ethereum logo in the QR code?', answer: 'Yes! QR Maker Studio uses Level H error correction, allowing you to embed official cryptocurrency logos in the center without affecting scanning reliability.' },
+      { question: 'Are my wallet addresses stored on QR Maker Studio servers?', answer: 'No. All QR code generation executes 100% client-side in your web browser memory. Your wallet addresses are never uploaded, logged, or tracked.' }
     ]
   },
 
@@ -582,9 +642,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Market Research & Surveys', description: 'Collect survey opinions at trade show booths, conferences, and focus groups.' }
     ],
     faqs: [
-      { question: 'How do I get my Google Form share link?', answer: 'In Google Forms, click the purple "Send" button at the top right, select the Link tab, copy the URL, and paste it into QR Maker Studio.' },
-      { question: 'Will the form work on both iPhone and Android?', answer: 'Yes! Scanning opens the Google Form seamlessly in the user default mobile browser without requiring a Google login unless you specify otherwise.' },
-      { question: 'Do Google Form QR codes expire?', answer: 'No. As long as your Google Form remains open and accepting responses, the static QR code will work indefinitely.' }
+      { question: 'How do I obtain the correct public Google Form link for my QR code?', answer: 'Open your form in Google Forms, click the purple "Send" button at the top right, select the Link icon, check the "Shorten URL" box, and copy the resulting link to paste into our generator.' },
+      { question: 'Do respondents need a Google account to fill out the form?', answer: 'No. As long as you have disabled "Limit to 1 response" and file upload questions in your Google Form settings, anyone can complete the form on their mobile browser without logging into Google.' },
+      { question: 'Do Google Forms QR codes expire or charge fees?', answer: 'No. Static Google Forms QR codes generated on QR Maker Studio have permanent validity, unlimited scans, and zero recurring fees.' },
+      { question: 'Can I link to a Google Form that automatically populates certain fields?', answer: 'Yes! In Google Forms, click the three dots menu > "Get pre-filled link", fill in default fields, copy the link, and generate your QR code. Scanners will see those fields pre-populated.' },
+      { question: 'Where do the submitted responses go?', answer: 'All responses appear instantly in your Google Forms "Responses" tab and automatically sync in real-time to your linked Google Sheets spreadsheet.' },
+      { question: 'Can I embed my school or company logo in the QR code?', answer: 'Yes! QR Maker Studio uses Level H error correction, allowing you to embed a Google Forms icon or your custom logo in the center without affecting scanning reliability.' },
+      { question: 'What file format is best for printing table tents and flyers?', answer: 'Download the vector SVG file for crisp commercial printing or high-resolution PNG for digital presentation slides and documents.' },
+      { question: 'Is my survey link data kept private during generation?', answer: 'Yes. All QR code generation executes 100% client-side in your web browser memory. No form URLs or survey data are ever uploaded or stored on external servers.' }
     ]
   }
 };
