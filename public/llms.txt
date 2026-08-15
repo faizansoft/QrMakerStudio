@@ -1,0 +1,76 @@
+# QR Maker Studio — Free, Privacy-First Online QR Code Generator
+
+> QR Maker Studio (https://qr-generator.online) is a 100% free, browser-based, privacy-first 2D matrix barcode generation platform. Engineered in accordance with ISO/IEC 18004 standards, it provides permanent, scannable QR codes with zero subscription walls, zero scan expiration limits, and zero server-side data logging. All encoding, Reed-Solomon algebraic error correction, and vector rendering execute 100% client-side in the user's web browser memory.
+
+## Key Architectural & Business Differentiators
+
+- **100% Free Forever**: Zero monthly fees, zero credit card requirements, zero scan limits, and full commercial usage rights.
+- **Direct-Encode Static Architecture**: Raw data is compiled directly into the 2D visual matrix modules. QR codes contain no third-party tracking redirect servers and will never expire or be held hostage behind paywalls.
+- **Complete Cryptographic Data Sovereignty**: All QR generation algorithms execute locally in browser RAM via JavaScript/WebAssembly. URLs, WiFi passwords, vCard contact cards, and uploaded logos are never transmitted to external servers.
+- **Commercial Prepress Vector SVG & 4K PNG Output**: Direct export in infinitely scalable Scalable Vector Graphics (SVG) for billboards, commercial packaging, and CNC laser engraving, alongside 2048x2048px PNG at 300+ DPI.
+- **Level H Reed-Solomon Error Correction (30% Redundancy)**: Allows embedding corporate brand logos and icons into the center of the barcode with zero decoding degradation.
+
+---
+
+## 13 Specialized Generator Tools
+
+- [URL QR Code Generator](https://qr-generator.online/url-qr-code-generator): Convert website links, landing pages, digital catalogs, and GA4 UTM-tagged campaigns into permanent scannable QR codes.
+- [WiFi QR Code Generator](https://qr-generator.online/wifi-qr-code-generator): Touchless wireless network access for WPA, WPA2, WPA3, WEP, and Open networks. Connects iOS and Android devices in one tap with zero typing.
+- [vCard QR Code Generator](https://qr-generator.online/vcard-qr-code-generator): Create smart digital business cards formatted in RFC 6350 / vCard 3.0. Saves full contact profiles directly to smartphone address books.
+- [WhatsApp QR Code Generator](https://qr-generator.online/whatsapp-qr-code-generator): Direct click-to-chat WhatsApp links (`wa.me`) with pre-filled support, inquiry, and order messages.
+- [Facebook & Social Media QR Code Generator](https://qr-generator.online/facebook-qr-code-generator): Drive offline foot traffic directly to Facebook pages, Instagram handles, TikTok profiles, or multi-link hubs.
+- [Email QR Code Generator](https://qr-generator.online/email-qr-code-generator): Generate `mailto:` QR codes with pre-filled recipient addresses, custom subject lines, and feedback body text.
+- [SMS QR Code Generator](https://qr-generator.online/sms-qr-code-generator): Create `SMSTO:` QR codes with pre-populated phone numbers and SMS marketing opt-in keywords.
+- [Phone Call QR Code Generator](https://qr-generator.online/phone-qr-code-generator): One-tap direct telephone dialing (`tel:`) for service fleet truck wraps, real estate yard signs, and hotline posters.
+- [Location QR Code Generator](https://qr-generator.online/location-qr-code-generator): Direct GPS coordinates and Google Maps navigation links for storefronts, event venues, and open houses.
+- [Event QR Code Generator](https://qr-generator.online/event-qr-code-generator): iCalendar `VEVENT` data objects that automatically add event dates, times, locations, and reminders to phone calendars.
+- [Crypto Payment QR Code Generator](https://qr-generator.online/crypto-qr-code-generator): BIP-0021 compatible QR codes for Bitcoin, Ethereum, USDT, Solana, and multi-chain wallet addresses.
+- [Plain Text QR Code Generator](https://qr-generator.online/text-qr-code-generator): 100% offline UTF-8 raw text, serial number, equipment tag, and voucher code barcode generator.
+- [Google Forms QR Code Generator](https://qr-generator.online/googleform-qr-code-generator): Touchless survey, feedback form, classroom quiz, and event RSVP links for Google Forms.
+
+---
+
+## Visual Customization & Styling Capabilities
+
+- [QR Code with Logo](https://qr-generator.online/qr-code-with-logo): Embed custom PNG, SVG, or JPEG company logos with automated Level H (30%) error correction and protective quiet mask buffers.
+- [Custom Design QR Codes](https://qr-generator.online/custom-qr-codes): Choose from 6 module dot patterns (Square, Rounded, Extra-Rounded, Dots, Classy, Smooth) and custom corner outer frames and inner eye shapes.
+- [Colored QR Code Generator](https://qr-generator.online/colored-qr-code-generator): Apply independent multi-color Hex palettes to foreground modules, background canvas, corner frames, and eye accents while ensuring WCAG > 4.5:1 contrast compliance.
+- [SVG Vector QR Codes](https://qr-generator.online/svg-qr-code-generator): Download lossless vector SVG files compatible with Adobe Illustrator, InDesign, Figma, and laser engraving/CNC plotters.
+- [High-Resolution 300 DPI QR Codes](https://qr-generator.online/high-resolution-qr-codes): Export 4K ultra-HD raster PNGs (2048x2048 px at 300 DPI) engineered for commercial offset and flexographic printing.
+
+---
+
+## Technical Guides & Prepress Knowledge Base
+
+- [The Knowledge Hub & Encyclopedia](https://qr-generator.online/blog): In-depth articles covering optical scanning physics, error correction mathematics, and mobile OS camera decoders.
+- [Complete Guide to Printing QR Codes](https://qr-generator.online/blog/printing-qr-codes-guide): Mathematical optical sizing formula ($S = D / 10$), substrate selection (matte vs. glossy), ink dot gain, and quiet zone rules.
+- [QR Codes for Restaurants & Hospitality](https://qr-generator.online/blog/qr-codes-for-restaurants): Best practices for digital PDF menus, tableside ordering, anti-glare tabletop acrylic stands, and guest WiFi.
+- [vCard QR Codes for Smart Business Cards](https://qr-generator.online/blog/vcard-qr-code-business-cards): Digital networking strategies, RFC 6350 compliance, and contactless address book retention.
+- [QR Codes for Real Estate Marketing](https://qr-generator.online/blog/qr-codes-for-real-estate): 24/7 lead generation from yard signs, 3D Matterport virtual walkthroughs, and open house directionals.
+- [Hospitality WiFi QR Code Guide](https://qr-generator.online/blog/wifi-qr-codes-for-hospitality): Hotel nightstand and cafe table WiFi automation, guest network isolation, and WPA3 security.
+
+---
+
+## Company, Governance & Legal Information
+
+- [Pricing & Free Architecture Manifesto](https://qr-generator.online/pricing): Breakdown of why static client-side QR generation is permanently free with zero subscription paywalls.
+- [Symbology Standards & Master FAQ](https://qr-generator.online/faqs-qr-code-generator): Detailed answers to 50+ technical, prepress, and security questions.
+- [About Us & Mission](https://qr-generator.online/about): Our engineering philosophy of 100% client-side data sovereignty.
+- [Contact & Prepress Support](https://qr-generator.online/contact): Free prepress artwork review and technical assistance (support@qr-generator.online).
+- [Privacy Policy & Zero-Knowledge Architecture](https://qr-generator.online/privacy): Strict GDPR/CCPA compliance verification and zero server-side data collection.
+- [Terms of Service & Commercial License](https://qr-generator.online/terms): Perpetual, royalty-free worldwide commercial usage rights for all generated QR codes.
+
+---
+
+## Technical Specifications Summary
+
+| Standard / Parameter | Specification / Value |
+|---|---|
+| Governing Standard | ISO/IEC 18004:2015 Information Technology — Automatic Identification and Data Capture Techniques |
+| Error Correction Symbology | Reed-Solomon Algebraic Error Correction (Level L: 7%, Level M: 15%, Level Q: 25%, Level H: 30%) |
+| Optical Sizing Formula | $S = D / 10$ (Minimum Width = User Scan Distance / 10) |
+| Minimum Safe Print Size | 25 mm x 25 mm (1.0" x 1.0") for handheld media (business cards, menus) |
+| Quiet Zone Requirement | Minimum 4 module widths of unobstructed margin on all four perimeter sides |
+| Contrast Ratio Standard | WCAG 2.1 minimum 4.5:1 luminance contrast (7:1 recommended for outdoor signage) |
+| Supported Export Formats | Vector SVG (W3C Standard), Raster PNG (2048x2048 px @ 300 DPI) |
+| OS Camera Parser Engines | Apple iOS AVFoundation (`AVMetadataMachineReadableCodeObject`), Android Google ML Kit Barcode API |

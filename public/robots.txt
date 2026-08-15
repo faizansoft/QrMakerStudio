@@ -10,14 +10,32 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-# Ahrefs Crawlers (General & Site Audit)
+# AI Crawlers & LLM Agents
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# SEO Audit Crawlers
 User-agent: AhrefsBot
 Allow: /
 
 User-agent: AhrefsSiteAudit
 Allow: /
 
-# Semrush Crawlers (General, Site Audit & Backlinks)
 User-agent: SemrushBot
 Allow: /
 
@@ -27,9 +45,11 @@ Allow: /
 User-agent: SemrushBot-BA
 Allow: /
 
-# Moz Crawler
 User-agent: DotBot
 Allow: /
+
+# LLM Agent Summary Location
+# See: https://qr-generator.online/llms.txt
 
 # Sitemap Location
 Sitemap: https://qr-generator.online/sitemap.xml
