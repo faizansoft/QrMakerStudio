@@ -899,10 +899,118 @@ function buildBodyHtml(route) {
         ${troubleshootingHtml}
         ${faqsHtml}
         ${bestPracticesHtml}
+
+        <!-- Contextual In-Content Link Equity Mesh -->
+        <section style="margin-top:48px; padding:32px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:16px;">
+          <h3 style="font-size:20px; font-weight:800; color:#166534; margin-bottom:12px;">Explore Related Free QR Code Generators &amp; Guides</h3>
+          <p style="color:#15803d; font-size:14px; line-height:1.6; margin-bottom:18px;">
+            Enhance your workflow with complementary tools from QR Maker Studio. Create high-resolution vector assets with zero scan caps:
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <a href="/url-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">URL QR Generator</a>
+            <a href="/wifi-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">WiFi QR Generator</a>
+            <a href="/vcard-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">vCard Business Cards</a>
+            <a href="/qr-code-with-logo" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Logo QR Generator</a>
+            <a href="/svg-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Vector SVG Export</a>
+            <a href="/colored-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Colored QR Codes</a>
+            <a href="/blog/printing-qr-codes-guide" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Print Sizing Guide</a>
+            <a href="/pricing" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Free Pricing Guarantee</a>
+          </div>
+        </section>
+
+        <!-- Webmaster Embed & Citation Link Magnet -->
+        <section style="margin-top:36px; padding:24px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px;">
+          <h4 style="font-size:15px; font-weight:700; color:#1e293b; margin-bottom:8px;">Cite or Link to this Free Resource</h4>
+          <p style="font-size:13px; color:#64748b; margin-bottom:12px;">Webmasters, educators, and designers can cite or link to this tool using the HTML snippet below:</p>
+          <textarea readonly style="width:100%; height:54px; font-family:monospace; font-size:12px; padding:8px; border:1px solid #cbd5e1; border-radius:6px; background:#ffffff; color:#334155; resize:none;" onclick="this.select()">&lt;a href="${route.canonical}" target="_blank" rel="noopener"&gt;Free ${route.badge || 'QR Code Generator'} by QR Maker Studio&lt;/a&gt;</textarea>
+        </section>
       </main>
       ${buildFooterHtml()}
     </div>
   `;
+}
+
+function buildJsonLd(route, rich) {
+  const schemas = [];
+
+  // 1. WebApplication Schema
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": route.title,
+    "url": route.canonical,
+    "description": route.description,
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QR Maker Studio",
+      "url": "https://qr-generator.online"
+    }
+  });
+
+  // 2. BreadcrumbList Schema
+  const pathSegments = route.path.split('/').filter(Boolean);
+  const breadcrumbItems = [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://qr-generator.online/"
+    }
+  ];
+  if (pathSegments.length > 0) {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      "position": 2,
+      "name": route.badge || route.h1 || "Generator",
+      "item": route.canonical
+    });
+  }
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbItems
+  });
+
+  // 3. HowTo Schema (if steps exist)
+  if (rich && rich.steps && rich.steps.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": `How to Create a ${route.badge || 'QR Code'} with QR Maker Studio`,
+      "description": route.lead || route.description,
+      "step": rich.steps.map((s, idx) => ({
+        "@type": "HowToStep",
+        "position": idx + 1,
+        "name": s.title,
+        "text": s.description
+      }))
+    });
+  }
+
+  // 4. FAQPage Schema (if faqs exist)
+  if (rich && rich.faqs && rich.faqs.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": rich.faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q || f.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a || f.answer
+        }
+      }))
+    });
+  }
+
+  return schemas.map(s => `<script type="application/ld+json">\n${JSON.stringify(s, null, 2)}\n</script>`).join('\n');
 }
 
 function prerender() {
@@ -919,6 +1027,7 @@ function prerender() {
 
   for (const route of ROUTES) {
     let html = template;
+    const rich = ALL_RICH_DATA[route.path] || null;
 
     // 1. Update Title
     html = html.replace(/<title>.*?<\/title>/i, `<title>${route.title}</title>`);
@@ -973,14 +1082,21 @@ function prerender() {
       `<meta property="twitter:description" content="${route.description}">`
     );
 
-    // 7. Inject full semantic pre-rendered body into #app shell
+    // 7. Inject Route-Specific JSON-LD Schemas (WebApplication, BreadcrumbList, HowTo, FAQPage)
+    const jsonLdHtml = buildJsonLd(route, rich);
+    html = html.replace(
+      /<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/i,
+      jsonLdHtml
+    );
+
+    // 8. Inject full semantic pre-rendered body into #app shell
     const prerenderedBody = buildBodyHtml(route);
     html = html.replace(
       /<div id="app"[\s\S]*?<\/footer>\s*<\/div>/i,
       prerenderedBody
     );
 
-    // 8. Write file to disk
+    // 9. Write file to disk
     if (route.path === '/') {
       fs.writeFileSync(templatePath, html, 'utf8');
       generatedCount++;
