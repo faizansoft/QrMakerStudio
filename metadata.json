@@ -1,7 +1,0 @@
-{
-  "name": "QR Generator Online",
-  "description": "The ultimate professional QR code generator for URLs, WiFi, Google Forms, and more. Customize with styles and high-resolution exports.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
-}
