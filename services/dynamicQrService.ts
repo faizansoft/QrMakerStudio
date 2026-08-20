@@ -155,15 +155,20 @@ export const getUserDynamicLinks = async (): Promise<{ data: DynamicLink[]; erro
 };
 
 /**
- * Get a single dynamic link by ID
+ * Get a single dynamic link by ID or Shortcode
  */
 export const getDynamicLinkById = async (linkId: string): Promise<{ data: DynamicLink | null; error: Error | null }> => {
   try {
-    const { data, error } = await supabase
-      .from('links')
-      .select('*')
-      .eq('id', linkId)
-      .single();
+    const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(linkId);
+    
+    let query = supabase.from('links').select('*');
+    if (isUuid) {
+      query = query.eq('id', linkId);
+    } else {
+      query = query.eq('short_code', linkId);
+    }
+
+    const { data, error } = await query.maybeSingle();
 
     if (error) throw error;
     return { data, error: null };

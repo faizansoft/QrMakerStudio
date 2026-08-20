@@ -116,24 +116,10 @@ const ToolRouteHandler: React.FC<{ toolId: string }> = ({ toolId }) => {
 };
 
 const App: React.FC = () => {
-  const basename = useMemo(() => {
-    const path = window.location.pathname;
-    const parts = path.split('/').filter(Boolean);
-    if (parts.length > 0) {
-      const firstPart = parts[0];
-      const isToolPath = firstPart.includes('qr-code-generator') || 
-                         ['about', 'contact', 'privacy', 'terms', 'faqs', 'pricing'].includes(firstPart);
-      if (!isToolPath && firstPart.length > 25) {
-        return `/${firstPart}`;
-      }
-    }
-    return '';
-  }, []);
-
   return (
     <LanguageProvider>
       <AuthProvider>
-        <Router basename={basename}>
+        <Router>
           <ScrollToTop />
           <SEOManager />
           <div className="min-h-screen bg-white selection:bg-green-100 flex flex-col">

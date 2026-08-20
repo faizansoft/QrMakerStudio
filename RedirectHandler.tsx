@@ -13,9 +13,10 @@ const RedirectHandler: React.FC = () => {
       return;
     }
 
+    const cleanCode = shortCode.trim().replace(/\/+$/, '');
     const handleRedirect = async () => {
       try {
-        const { data: link, error: fetchErr } = await getLinkByShortCode(shortCode);
+        const { data: link, error: fetchErr } = await getLinkByShortCode(cleanCode);
 
         if (fetchErr || !link) {
           setError('not_found');

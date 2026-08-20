@@ -28,13 +28,13 @@ const AnalyticsPage: React.FC = () => {
   const loadData = async () => {
     if (!linkId) return;
     setLoading(true);
-    const [linkRes, analyticsRes] = await Promise.all([
-      getDynamicLinkById(linkId),
-      getLinkAnalytics(linkId),
-    ]);
+    const linkRes = await getDynamicLinkById(linkId);
 
-    if (linkRes.data) setLink(linkRes.data);
-    if (analyticsRes.data) setAnalytics(analyticsRes.data);
+    if (linkRes.data) {
+      setLink(linkRes.data);
+      const analyticsRes = await getLinkAnalytics(linkRes.data.id);
+      if (analyticsRes.data) setAnalytics(analyticsRes.data);
+    }
     setLoading(false);
   };
 

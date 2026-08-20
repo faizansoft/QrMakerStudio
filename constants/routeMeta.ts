@@ -405,6 +405,27 @@ export const getRouteMeta = (pathname: string): RouteMeta => {
     return ROUTE_METADATA[cleanPath];
   }
 
+  // Dynamic route matches
+  if (cleanPath.startsWith('/analytics/')) {
+    return {
+      path: cleanPath,
+      title: 'Real-Time QR Analytics & Scan Intelligence | QR Maker Studio',
+      description: 'Track real-time scans, geographic location, device types, and visitor engagement metrics for your dynamic QR campaign.',
+      canonical: `https://qr-generator.online${cleanPath}`,
+      h1: 'Dynamic QR Code Real-Time Analytics Dashboard',
+    };
+  }
+
+  if (cleanPath.startsWith('/r/')) {
+    return {
+      path: cleanPath,
+      title: 'Redirecting to Destination... | QR Maker Studio',
+      description: 'Redirecting your smartphone to the verified campaign destination.',
+      canonical: `https://qr-generator.online${cleanPath}`,
+      h1: 'Dynamic QR Code High-Speed Redirection',
+    };
+  }
+
   // 404 fallback
   return {
     path: cleanPath,
