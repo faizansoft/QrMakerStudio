@@ -125,6 +125,15 @@ const DashboardPage: React.FC = () => {
       l.target_url.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+  if (authLoading || (user && loading)) {
+    return (
+      <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-4">
+        <div className="w-8 h-8 border-2 border-slate-200 border-t-accent rounded-full animate-spin mb-3" />
+        <p className="text-xs font-semibold text-slate-500">Loading your Dynamic QR studio...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-6">

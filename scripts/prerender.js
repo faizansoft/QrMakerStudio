@@ -786,6 +786,78 @@ const ROUTES = [
         ]
       }
     ]
+  },
+  {
+    path: '/dashboard',
+    title: 'Dynamic QR Code Dashboard & Studio | QR Maker Studio',
+    description: 'Manage all your dynamic QR codes, change target landing pages in real time, and monitor scan performance analytics from your personal dashboard.',
+    canonical: 'https://qr-generator.online/dashboard',
+    h1: 'Dynamic QR Code Management Studio & Dashboard',
+    badge: 'Management Console',
+    lead: 'Manage all your dynamic QR codes, update destination URLs in real time, and monitor live scan performance.',
+    sections: [
+      {
+        title: 'Centralized Dynamic QR Campaign Management',
+        paragraphs: [
+          'Update destination URLs on printed menus, product packaging, and business signs instantly without ever reprinting.',
+          'Filter by active, paused, or archived campaigns and dive into deep scan intelligence with one click.'
+        ]
+      }
+    ]
+  },
+  {
+    path: '/bulk-qr-code-generator',
+    title: 'Free Bulk QR Code Generator | Generate Multiple QR Codes at Once',
+    description: 'Batch generate hundreds of custom QR codes from CSV or Excel data. Download all codes in high resolution ZIP archive 100% free.',
+    canonical: 'https://qr-generator.online/bulk-qr-code-generator',
+    h1: 'Free Bulk & Batch QR Code Generator with ZIP Export',
+    badge: 'Batch QR Generator',
+    lead: 'Generate dozens or hundreds of custom QR codes simultaneously from text lists or CSV uploads and download all files in a single ZIP.',
+    sections: [
+      {
+        title: 'High-Volume Batch QR Code Production',
+        paragraphs: [
+          'Upload your CSV or enter a list of URLs to generate dozens of high-resolution QR codes simultaneously.',
+          'Download all generated QR codes packaged in a single organized ZIP archive.'
+        ]
+      }
+    ]
+  },
+  {
+    path: '/qr-code-scanner',
+    title: 'Free Online QR Code Scanner | Scan QR Codes via Web Camera or Image',
+    description: 'Scan QR codes directly from your browser using your webcam, mobile camera, or by uploading an image file. 100% free with instant decoding.',
+    canonical: 'https://qr-generator.online/qr-code-scanner',
+    h1: 'Free Online QR Code Scanner via Camera & Image Upload',
+    badge: 'Browser QR Scanner',
+    lead: 'Scan and decode any QR code directly in your browser using your webcam, phone camera, or by uploading an image file.',
+    sections: [
+      {
+        title: 'Instant In-Browser Optical QR Scanning',
+        paragraphs: [
+          'No app download required. Decode URLs, WiFi credentials, vCards, and plain text barcodes directly in your browser.',
+          'Supports live video feed scanning or drag-and-drop image file analysis.'
+        ]
+      }
+    ]
+  },
+  {
+    path: '/social-media-qr-code',
+    title: 'Free All-in-One Social Media QR Code Generator | QR Maker Studio',
+    description: 'Create a single bio-link QR code connecting all your social profiles: Instagram, YouTube, TikTok, LinkedIn, Twitter, Facebook, and Telegram.',
+    canonical: 'https://qr-generator.online/social-media-qr-code',
+    h1: 'Free All-in-One Multi-Link Social Media QR Code Generator',
+    badge: 'Multi-Link Social QR',
+    lead: 'Connect all your social profiles, channel links, and messaging apps into a single beautiful multi-link bio landing page.',
+    sections: [
+      {
+        title: 'One QR Code for All Your Social Profiles',
+        paragraphs: [
+          'Combine Instagram, TikTok, YouTube, LinkedIn, X/Twitter, and Telegram under one scannable QR code.',
+          'Perfect for printed marketing materials, product packaging, business cards, and event banners.'
+        ]
+      }
+    ]
   }
 ];
 
