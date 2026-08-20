@@ -16,6 +16,38 @@
   ],
   "rewrites": [
     {
+      "source": "/r/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/analytics/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/signup",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/bulk-qr-code-generator",
+      "destination": "/bulk-qr-code-generator/index.html"
+    },
+    {
+      "source": "/qr-code-scanner",
+      "destination": "/qr-code-scanner/index.html"
+    },
+    {
+      "source": "/social-media-qr-code",
+      "destination": "/social-media-qr-code/index.html"
+    },
+    {
       "source": "/((?!api|.*\\..*).*)",
       "destination": "/index.html"
     }

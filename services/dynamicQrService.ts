@@ -306,7 +306,6 @@ export const recordScanEvent = async (params: {
     await supabase.from('clicks').insert({
       link_id: params.linkId,
       ts: now.toISOString(),
-      created_at: now.toISOString(),
       ua,
       device,
       os,
@@ -315,7 +314,6 @@ export const recordScanEvent = async (params: {
       referrer_domain: referrerDomain || 'Direct Scan',
       country,
       city,
-      day,
     });
   } catch (err) {
     console.error('Scan recording failed:', err);
