@@ -123,15 +123,15 @@ const BulkGeneratorPage: React.FC = () => {
       {/* Hero */}
       <section className="pt-12 pb-8 md:pt-16 md:pb-12">
         <div className="max-w-5xl mx-auto px-4 text-center">
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-indigo-600 transition-colors mb-6">
+          <Link to="/" className="inline-flex items-center gap-2 text-xs text-slate-500 hover:text-accent transition-colors mb-6 font-medium">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/></svg>
             Back to Home
           </Link>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4">
-            Bulk Generator
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent text-xs font-semibold uppercase tracking-wider rounded-full mb-3">
+            Batch Creator
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
-            Bulk QR Code Generator — Free Batch Creator
+          <h1 className="text-2xl md:text-4xl font-bold text-slate-900 mb-3 tracking-tight">
+            Bulk QR Code Generator
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Generate hundreds of QR codes at once from a list of URLs, text, or CSV file. Download all as individual files or a single ZIP archive. 100% free, no limits.

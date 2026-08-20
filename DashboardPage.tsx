@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import QRCodeStyling from 'qr-code-styling';
 import { useAuth } from './context/AuthContext';
@@ -16,14 +16,13 @@ const DashboardPage: React.FC = () => {
   const [links, setLinks] = useState<DynamicLink[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'paused'>('all');
   const [editingLink, setEditingLink] = useState<DynamicLink | null>(null);
   const [newTargetUrl, setNewTargetUrl] = useState('');
   const [newTitle, setNewTitle] = useState('');
   const [saving, setSaving] = useState(false);
   const [copySuccess, setCopySuccess] = useState<string | null>(null);
   const [previewQrLink, setPreviewQrLink] = useState<DynamicLink | null>(null);
-
-  const previewModalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -75,7 +74,7 @@ const DashboardPage: React.FC = () => {
 
   // Delete Link
   const handleDelete = async (linkId: string) => {
-    if (!window.confirm('Are you sure you want to delete this dynamic QR code? All tracking history will be permanently deleted.')) {
+    if (!window.confirm('Are you sure you want to archive this dynamic QR code? All tracking metrics will be permanently deleted.')) {
       return;
     }
     const { success } = await deleteDynamicLink(linkId);
@@ -112,147 +111,203 @@ const DashboardPage: React.FC = () => {
 
   const totalScans = links.reduce((acc, l) => acc + (l.total_clicks || 0), 0);
   const activeCount = links.filter(l => l.is_active !== false).length;
+  const pausedCount = links.filter(l => l.is_active === false).length;
 
-  const filteredLinks = links.filter(l =>
-    (l.title?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
-    l.short_code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    l.target_url.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredLinks = links
+    .filter(l => {
+      if (statusFilter === 'active') return l.is_active !== false;
+      if (statusFilter === 'paused') return l.is_active === false;
+      return true;
+    })
+    .filter(l =>
+      (l.title?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
+      l.short_code.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      l.target_url.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
   return (
-    <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-[#F8FAFC] py-8 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto space-y-6">
         
         {/* Top Header */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
+            <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
               Dynamic QR Code Studio
             </h1>
-            <p className="text-sm text-gray-500 mt-1">
-              Manage all your editable QR codes, update destination links, and monitor live scan analytics.
+            <p className="text-xs text-slate-500 mt-1">
+              Manage editable QR codes, update destination URLs in real time, and monitor live scan performance.
             </p>
           </div>
           <div className="flex items-center gap-3">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent hover:bg-accent-dark text-white text-sm font-bold rounded-xl shadow-lg shadow-accent/20 transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-accent hover:bg-accent-dark text-white text-xs font-semibold rounded-xl shadow-xs transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" />
               </svg>
-              Create New QR Code
+              Create New Dynamic QR
             </Link>
           </div>
         </div>
 
-        {/* Stats Overview */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-            <div className="flex items-center justify-between text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">
-              <span>Total Dynamic QR Codes</span>
-              <span className="p-2 bg-indigo-50 text-indigo-600 rounded-lg">🏷️</span>
+        {/* Overview Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+            <div className="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+              <span>Dynamic Codes</span>
+              <div className="w-7 h-7 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                </svg>
+              </div>
             </div>
-            <p className="text-3xl font-black text-gray-900">{links.length}</p>
+            <p className="text-3xl font-black text-slate-900">{links.length}</p>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-            <div className="flex items-center justify-between text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">
-              <span>Total Lifetime Scans</span>
-              <span className="p-2 bg-emerald-50 text-emerald-600 rounded-lg">📊</span>
+          <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+            <div className="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+              <span>Lifetime Scans</span>
+              <div className="w-7 h-7 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
             </div>
             <p className="text-3xl font-black text-emerald-600">{totalScans.toLocaleString()}</p>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-            <div className="flex items-center justify-between text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">
-              <span>Active Campaigns</span>
-              <span className="p-2 bg-blue-50 text-blue-600 rounded-lg">⚡</span>
+          <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+            <div className="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+              <span>Active Codes</span>
+              <div className="w-7 h-7 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
             </div>
             <p className="text-3xl font-black text-blue-600">{activeCount}</p>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-            <div className="flex items-center justify-between text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">
-              <span>Plan Status</span>
-              <span className="p-2 bg-amber-50 text-amber-600 rounded-lg">⭐</span>
+          <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+            <div className="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">
+              <span>Subscription Plan</span>
+              <div className="w-7 h-7 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
             </div>
-            <p className="text-xl font-bold text-gray-900">Free Lifetime</p>
-            <span className="text-[11px] text-emerald-600 font-semibold">Unlimited Scans & Edits</span>
+            <p className="text-lg font-bold text-slate-900">Free Lifetime</p>
+            <span className="text-[11px] text-emerald-600 font-medium">Unlimited Scans & Live Edits</span>
           </div>
         </div>
 
-        {/* Search & Filter */}
-        <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm mb-6 flex items-center justify-between gap-4">
+        {/* Filter & Search Bar */}
+        <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="relative flex-1 max-w-md">
             <svg className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
               type="text"
-              placeholder="Search dynamic QR codes by title, shortcode, or URL..."
+              placeholder="Search dynamic QR codes by title, slug, or URL..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white transition-all"
             />
           </div>
-          <div className="text-xs text-slate-500 font-medium">
-            Showing {filteredLinks.length} of {links.length} QR codes
+
+          {/* Status Tabs */}
+          <div className="inline-flex p-1 bg-slate-100 rounded-xl shrink-0">
+            <button
+              onClick={() => setStatusFilter('all')}
+              className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+                statusFilter === 'all' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-900'
+              }`}
+            >
+              All ({links.length})
+            </button>
+            <button
+              onClick={() => setStatusFilter('active')}
+              className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+                statusFilter === 'active' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-900'
+              }`}
+            >
+              Active ({activeCount})
+            </button>
+            <button
+              onClick={() => setStatusFilter('paused')}
+              className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+                statusFilter === 'paused' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-900'
+              }`}
+            >
+              Paused ({pausedCount})
+            </button>
           </div>
         </div>
 
-        {/* QR List Table / Cards */}
+        {/* QR Code Cards List */}
         {loading ? (
-          <div className="bg-white rounded-2xl p-12 border border-slate-200 text-center">
-            <div className="w-10 h-10 border-4 border-accent/20 border-t-accent rounded-full animate-spin mx-auto mb-3" />
-            <p className="text-sm text-slate-500 font-medium">Loading your dynamic QR codes...</p>
+          <div className="bg-white rounded-2xl p-12 border border-slate-200/80 text-center">
+            <div className="w-8 h-8 border-2 border-slate-200 border-t-accent rounded-full animate-spin mx-auto mb-3" />
+            <p className="text-xs font-medium text-slate-500">Loading your campaigns...</p>
           </div>
         ) : filteredLinks.length === 0 ? (
           <div className="bg-white rounded-2xl p-12 border border-dashed border-slate-300 text-center">
-            <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
-              ✨
+            <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mx-auto mb-3 text-slate-400">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+              </svg>
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-1">
+            <h3 className="text-sm font-bold text-slate-900 mb-1">
               {links.length === 0 ? 'No Dynamic QR Codes Yet' : 'No Matching QR Codes Found'}
             </h3>
-            <p className="text-sm text-slate-500 max-w-sm mx-auto mb-6">
+            <p className="text-xs text-slate-500 max-w-sm mx-auto mb-5 leading-relaxed">
               {links.length === 0
-                ? 'Create your first editable dynamic QR code. Update your link anytime and track scans in real time.'
-                : 'Try adjusting your search terms to find what you are looking for.'}
+                ? 'Create your first dynamic QR code to change destination links anytime with zero reprinting.'
+                : 'Try adjusting your search query or status filter.'}
             </p>
             {links.length === 0 && (
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-bold rounded-xl shadow-md hover:bg-accent-dark transition-all text-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-xl text-xs shadow-xs hover:bg-accent-dark transition-colors"
               >
-                Create Dynamic QR Code Now
+                Create Dynamic QR Code
               </Link>
             )}
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-3">
             {filteredLinks.map(link => (
               <div
                 key={link.id}
-                className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-5"
+                className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:border-slate-300 transition-all flex flex-col md:flex-row md:items-center justify-between gap-4"
               >
                 {/* Left: Thumbnail & Details */}
                 <div className="flex items-start sm:items-center gap-4 min-w-0 flex-1">
-                  <div className="w-16 h-16 shrink-0 bg-slate-100 rounded-xl p-1 border border-slate-200 flex items-center justify-center">
+                  <button
+                    onClick={() => setPreviewQrLink(link)}
+                    className="w-14 h-14 shrink-0 bg-slate-50 hover:bg-slate-100 rounded-xl p-1 border border-slate-200 flex items-center justify-center transition-colors group relative"
+                    title="Click to preview QR code"
+                  >
                     <img
-                      src={`https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://qr-generator.online/r/${link.short_code}`}
-                      alt="QR"
+                      src={`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://qr-generator.online/r/${link.short_code}`}
+                      alt="QR Preview"
                       className="w-full h-full object-contain rounded"
                     />
-                  </div>
+                  </button>
+                  
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <h3 className="font-bold text-gray-900 text-base truncate">
-                        {link.title || `Dynamic QR - ${link.short_code}`}
+                      <h3 className="font-bold text-slate-900 text-sm truncate">
+                        {link.title || `Campaign: ${link.short_code}`}
                       </h3>
-                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                        link.is_active !== false ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'
+                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold ${
+                        link.is_active !== false ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/50' : 'bg-slate-100 text-slate-600 border border-slate-200'
                       }`}>
+                        <span className={`w-1 h-1 rounded-full ${link.is_active !== false ? 'bg-emerald-500' : 'bg-slate-400'}`} />
                         {link.is_active !== false ? 'Active' : 'Paused'}
                       </span>
                     </div>
@@ -262,16 +317,15 @@ const DashboardPage: React.FC = () => {
                       <span className="text-accent font-semibold">https://qr-generator.online/r/{link.short_code}</span>
                       <button
                         onClick={() => handleCopyLink(link.short_code)}
-                        className="text-slate-400 hover:text-accent font-sans transition-colors"
-                        title="Copy link"
+                        className="text-slate-400 hover:text-accent font-sans text-xs transition-colors"
                       >
-                        {copySuccess === link.short_code ? '✓ Copied' : '📋 Copy'}
+                        {copySuccess === link.short_code ? '✓ Copied' : 'Copy'}
                       </button>
                     </div>
 
                     {/* Target destination */}
                     <p className="text-xs text-slate-400 truncate flex items-center gap-1">
-                      <span>↳ Destination:</span>
+                      <span>↳ Target:</span>
                       <span className="text-slate-700 font-medium truncate">{link.target_url}</span>
                     </p>
                   </div>
@@ -279,17 +333,17 @@ const DashboardPage: React.FC = () => {
 
                 {/* Middle: Scan Count */}
                 <div className="flex md:flex-col items-center md:items-end justify-between md:justify-center border-t md:border-t-0 pt-3 md:pt-0 border-slate-100 shrink-0">
-                  <span className="text-xs text-slate-400">Lifetime Scans</span>
-                  <span className="text-2xl font-black text-emerald-600">
+                  <span className="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">Lifetime Scans</span>
+                  <span className="text-2xl font-black text-slate-900">
                     {(link.total_clicks || 0).toLocaleString()}
                   </span>
                 </div>
 
                 {/* Right: Actions */}
-                <div className="flex items-center gap-2 border-t md:border-t-0 pt-3 md:pt-0 border-slate-100 shrink-0 flex-wrap">
+                <div className="flex items-center gap-1.5 border-t md:border-t-0 pt-3 md:pt-0 border-slate-100 shrink-0 flex-wrap">
                   <Link
                     to={`/analytics/${link.id}`}
-                    className="px-3.5 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5"
+                    className="px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-xl transition-colors flex items-center gap-1.5"
                   >
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -303,16 +357,22 @@ const DashboardPage: React.FC = () => {
                       setNewTargetUrl(link.target_url);
                       setNewTitle(link.title || '');
                     }}
-                    className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-colors"
+                    className="px-3 py-2 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl border border-slate-200 transition-colors flex items-center gap-1"
                   >
-                    ✏️ Edit URL
+                    <svg className="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
+                    Edit URL
                   </button>
 
                   <div className="relative group">
-                    <button className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-colors">
-                      ⬇️ Download
+                    <button className="px-3 py-2 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl border border-slate-200 transition-colors flex items-center gap-1">
+                      <svg className="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                      Download
                     </button>
-                    <div className="absolute right-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-slate-200 p-1.5 hidden group-hover:block z-10 w-28">
+                    <div className="absolute right-0 top-full mt-1 bg-white rounded-xl shadow-lg border border-slate-200 p-1 hidden group-hover:block z-10 w-28">
                       <button
                         onClick={() => handleDownload(link, 'png')}
                         className="w-full text-left px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 rounded-lg"
@@ -330,20 +390,33 @@ const DashboardPage: React.FC = () => {
 
                   <button
                     onClick={() => handleToggleActive(link)}
-                    className={`p-2 rounded-xl text-xs transition-colors ${
-                      link.is_active !== false ? 'text-amber-600 hover:bg-amber-50' : 'text-emerald-600 hover:bg-emerald-50'
+                    className={`p-2 rounded-xl text-xs border transition-colors ${
+                      link.is_active !== false
+                        ? 'bg-slate-50 border-slate-200 text-slate-600 hover:text-amber-600'
+                        : 'bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100'
                     }`}
                     title={link.is_active !== false ? 'Pause QR Code' : 'Activate QR Code'}
                   >
-                    {link.is_active !== false ? '⏸️' : '▶️'}
+                    {link.is_active !== false ? (
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    ) : (
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )}
                   </button>
 
                   <button
                     onClick={() => handleDelete(link.id)}
                     className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors text-xs"
-                    title="Delete QR Code"
+                    title="Archive QR Code"
                   >
-                    🗑️
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -351,15 +424,18 @@ const DashboardPage: React.FC = () => {
           </div>
         )}
 
-        {/* Edit Modal */}
+        {/* Edit Destination Modal */}
         {editingLink && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-            <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-neutral-100">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-bold text-gray-900">Edit Dynamic QR Code</h3>
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
+            <div className="bg-white rounded-2xl p-6 sm:p-7 max-w-lg w-full shadow-xl border border-slate-200">
+              <div className="flex items-center justify-between mb-5">
+                <div>
+                  <h3 className="text-base font-bold text-slate-900">Edit Destination URL</h3>
+                  <p className="text-xs text-slate-400">Printed QR codes will immediately redirect to the new URL</p>
+                </div>
                 <button
                   onClick={() => setEditingLink(null)}
-                  className="text-slate-400 hover:text-slate-600 p-1.5 rounded-full hover:bg-slate-100"
+                  className="text-slate-400 hover:text-slate-600 p-1 rounded-lg"
                 >
                   ✕
                 </button>
@@ -367,50 +443,96 @@ const DashboardPage: React.FC = () => {
 
               <form onSubmit={handleUpdate} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1">Campaign Title</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Campaign Title</label>
                   <input
                     type="text"
                     value={newTitle}
                     onChange={(e) => setNewTitle(e.target.value)}
-                    placeholder="e.g. Summer Restaurant Menu"
-                    className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-accent outline-none"
+                    placeholder="e.g. Restaurant Summer Menu"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-accent focus:bg-white outline-none transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1">
-                    New Destination URL (Changes immediately with zero reprinting)
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    New Target Destination Link
                   </label>
                   <input
                     type="url"
                     required
                     value={newTargetUrl}
                     onChange={(e) => setNewTargetUrl(e.target.value)}
-                    placeholder="https://yournewwebsite.com"
-                    className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-accent outline-none font-mono"
+                    placeholder="https://yourwebsite.com/new-page"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-accent focus:bg-white outline-none font-mono transition-all"
                   />
-                  <span className="text-[11px] text-emerald-600 font-medium block mt-1">
-                    ✓ All existing printed QR codes will immediately redirect to this new link.
+                  <span className="text-[11px] text-emerald-600 font-medium block mt-1.5">
+                    ✓ Instant change with zero reprinting required.
                   </span>
                 </div>
 
-                <div className="flex gap-3 pt-4">
+                <div className="flex gap-2.5 pt-3">
                   <button
                     type="button"
                     onClick={() => setEditingLink(null)}
-                    className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-sm transition-colors"
+                    className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition-colors"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={saving}
-                    className="flex-1 py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-xl text-sm transition-colors disabled:opacity-50"
+                    className="flex-1 py-2.5 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl text-xs transition-colors disabled:opacity-50"
                   >
                     {saving ? 'Updating...' : 'Save Changes'}
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+
+        {/* QR Zoom / Preview Modal */}
+        {previewQrLink && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
+            <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl border border-slate-200 text-center">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-sm font-bold text-slate-900 truncate max-w-[220px]">
+                  {previewQrLink.title || previewQrLink.short_code}
+                </h3>
+                <button
+                  onClick={() => setPreviewQrLink(null)}
+                  className="text-slate-400 hover:text-slate-600 p-1 rounded-lg"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl mb-4 flex items-center justify-center">
+                <img
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://qr-generator.online/r/${previewQrLink.short_code}`}
+                  alt="High Res QR"
+                  className="w-48 h-48 object-contain"
+                />
+              </div>
+
+              <p className="text-xs text-slate-400 font-mono mb-4 truncate">
+                https://qr-generator.online/r/{previewQrLink.short_code}
+              </p>
+
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleDownload(previewQrLink, 'png')}
+                  className="flex-1 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl transition-colors"
+                >
+                  Download PNG
+                </button>
+                <button
+                  onClick={() => handleDownload(previewQrLink, 'svg')}
+                  className="flex-1 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-colors"
+                >
+                  Download SVG
+                </button>
+              </div>
             </div>
           </div>
         )}

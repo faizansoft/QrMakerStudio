@@ -80,9 +80,9 @@ export const Header: React.FC = () => {
   ];
 
   const features = [
-    { label: '⚡ Bulk QR Generator', href: '/bulk-qr-code-generator' },
-    { label: '📷 QR Code Scanner', href: '/qr-code-scanner' },
-    { label: '🌐 Social Media QR Page', href: '/social-media-qr-code' },
+    { label: 'Bulk QR Generator', href: '/bulk-qr-code-generator' },
+    { label: 'QR Code Scanner', href: '/qr-code-scanner' },
+    { label: 'Social Media QR Hub', href: '/social-media-qr-code' },
     { label: t('feature_logo'), href: '/qr-code-with-logo' },
     { label: t('feature_custom'), href: '/custom-qr-codes' },
     { label: t('feature_color'), href: '/colored-qr-code-generator' },
@@ -184,10 +184,12 @@ export const Header: React.FC = () => {
               {/* Dynamic QR Studio Link */}
               <Link
                 to={user ? "/dashboard" : "/login"}
-                className="whitespace-nowrap text-sm xl:text-base transition-colors text-emerald-700 hover:text-emerald-800 font-bold flex items-center gap-1.5"
+                className="whitespace-nowrap text-sm xl:text-base transition-colors text-emerald-700 hover:text-emerald-800 font-semibold flex items-center gap-1.5"
               >
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Dynamic QR Studio
+                <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Dynamic Studio
               </Link>
 
               {/* Resources Dropdown */}
@@ -279,31 +281,40 @@ export const Header: React.FC = () => {
                 </button>
 
                 {showUserMenu && (
-                  <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-xl border border-neutral-200 py-2 z-50 animate-fadeIn">
-                    <div className="px-4 py-2 border-b border-neutral-100">
-                      <p className="text-[10px] uppercase font-bold text-gray-400">Signed in as</p>
-                      <p className="text-xs font-bold text-gray-900 truncate">{user.email}</p>
+                  <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-200 py-2 z-50 animate-fadeIn">
+                    <div className="px-4 py-2 border-b border-slate-100">
+                      <p className="text-[10px] uppercase font-bold text-slate-400">Signed in as</p>
+                      <p className="text-xs font-bold text-slate-900 truncate">{user.email}</p>
                     </div>
                     <Link
                       to="/dashboard"
                       onClick={() => setShowUserMenu(false)}
-                      className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-neutral-50 hover:text-accent font-medium transition-colors"
+                      className="flex items-center gap-2 px-4 py-2.5 text-xs text-slate-700 hover:bg-slate-50 hover:text-accent font-medium transition-colors"
                     >
-                      📊 Dynamic QR Studio
+                      <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                      Dynamic QR Studio
                     </Link>
                     <Link
                       to="/"
                       onClick={handleCreateClick}
-                      className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-neutral-50 hover:text-accent font-medium transition-colors"
+                      className="flex items-center gap-2 px-4 py-2.5 text-xs text-slate-700 hover:bg-slate-50 hover:text-accent font-medium transition-colors"
                     >
-                      ➕ Create New QR
+                      <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                      </svg>
+                      Create New QR
                     </Link>
-                    <div className="border-t border-neutral-100 mt-1 pt-1">
+                    <div className="border-t border-slate-100 mt-1 pt-1">
                       <button
                         onClick={() => { signOut(); setShowUserMenu(false); }}
-                        className="w-full text-left flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 font-medium transition-colors"
+                        className="w-full text-left flex items-center gap-2 px-4 py-2 text-xs text-red-600 hover:bg-red-50 font-medium transition-colors"
                       >
-                        🚪 Sign Out
+                        <svg className="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        Sign Out
                       </button>
                     </div>
                   </div>
