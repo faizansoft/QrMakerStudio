@@ -651,5 +651,381 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'What file format is best for printing table tents and flyers?', answer: 'Download the vector SVG file for crisp commercial printing or high-resolution PNG for digital presentation slides and documents.' },
       { question: 'Is my survey link data kept private during generation?', answer: 'Yes. All QR code generation executes 100% client-side in your web browser memory. No form URLs or survey data are ever uploaded or stored on external servers.' }
     ]
+  },
+  instagram: {
+    id: 'instagram',
+    slug: '/instagram-qr-code-generator',
+    title: 'Instagram QR Code Generator',
+    headline: 'Free Instagram QR Code Generator for Profile Sharing & Follower Growth',
+    subheadline: 'Create custom, scannable QR codes linking directly to your Instagram profile. Grow your audience from physical products, cards, and print materials.',
+    badge: 'Instagram QR Code',
+    metaTitle: 'Free Instagram QR Code Generator | Share Your Profile Instantly',
+    metaDescription: 'Create a free QR code for your Instagram profile. Scan to follow — perfect for business cards, flyers, product packaging, and social media growth.',
+    keywords: ['instagram qr code generator', 'instagram profile qr code', 'instagram follow qr code free', 'custom instagram qr code'],
+    introTitle: 'What is an Instagram QR Code Generator?',
+    introParagraphs: [
+      'An Instagram QR Code is a scannable barcode that directs smartphone users directly to your Instagram profile, post, reel, or story without having to manually search your username.',
+      'By placing an Instagram QR code on your product packaging, business cards, store windows, restaurant menus, or event flyers, you can seamlessly convert offline customers into engaged online followers with a single camera scan.',
+      'QR Maker Studio allows you to create high-resolution Instagram QR codes with official Instagram brand colors, custom center logos, and downloadable vector SVG or PNG files — 100% free with unlimited scans.'
+    ],
+    stepsTitle: 'How to Make an Instagram QR Code in 3 Steps',
+    steps: [
+      { number: 1, title: 'Enter Instagram Username or URL', description: 'Type your Instagram handle (e.g. yourbrand) or paste your full profile link.' },
+      { number: 2, title: 'Customize Colors & Add Logo', description: 'Select vibrant Instagram gradient colors, customize pattern dots, and embed an Instagram icon.' },
+      { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for print on business cards, stickers, and merchandise.' }
+    ],
+    featuresTitle: 'Why Use QR Maker Studio for Instagram QR Codes?',
+    features: [
+      { title: 'One-Tap App Launch', description: 'When scanned on mobile, opens the Instagram app directly to your profile page for instant following.' },
+      { title: 'Permanent & Free Forever', description: 'Static Instagram QR codes never expire and support unlimited lifetime scans with zero fees.' },
+      { title: 'Vector SVG for Print', description: 'Download infinitely scalable vector SVG files that stay razor-sharp from stickers to billboards.' },
+      { title: '100% Privacy-First', description: 'All QR generation runs client-side in your browser. No Instagram account credentials or data are stored.' }
+    ],
+    useCasesTitle: 'Popular Uses for Instagram QR Codes',
+    useCases: [
+      { title: 'Product Packaging & Labels', description: 'Encourage buyers to tag your brand and share unboxing photos on Instagram.' },
+      { title: 'Storefronts & Restaurant Menus', description: 'Invite diners and shoppers to follow your page for daily specials and updates.' },
+      { title: 'Business Cards & Media Kits', description: 'Network seamlessly at trade shows and conferences with instant social profile access.' },
+      { title: 'Event Signage & Banners', description: 'Drive live event attendees to follow your Instagram account for photo highlights.' }
+    ],
+    faqs: [
+      { question: 'How do I create a QR code for my Instagram profile?', answer: 'Simply enter your Instagram username (without the @ symbol) or paste your full profile URL into the generator above, customize your design, and click download.' },
+      { question: 'Does scanning open the Instagram app directly?', answer: 'Yes! On modern iOS and Android smartphones with Instagram installed, scanning the QR code triggers a deep link opening your profile directly in the Instagram app.' },
+      { question: 'Can I add the official Instagram logo to the QR code?', answer: 'Yes, you can upload an Instagram icon or your own brand logo to embed in the center of your QR code using our Level H error correction.' },
+      { question: 'Do Instagram QR codes expire?', answer: 'No. Static Instagram QR codes generated on QR Maker Studio are permanent and work forever with unlimited scans.' },
+      { question: 'Can I link to a specific Instagram post or Reel instead of a profile?', answer: 'Yes! Simply copy the URL of the specific post, Reel, or Story from Instagram and paste the complete URL into the URL generator tool.' },
+      { question: 'What is the best size for printing Instagram QR codes?', answer: 'For business cards, print at a minimum of 2 x 2 cm (0.8 x 0.8 in). For flyers and posters, 3 x 3 cm or larger is recommended.' },
+      { question: 'Is this Instagram QR code generator completely free?', answer: 'Yes, 100% free with no watermarks, no account signup required, and no hidden fees.' },
+      { question: 'Can I download the Instagram QR code in SVG vector format?', answer: 'Yes! You can download both high-resolution PNG and vector SVG formats for professional graphic design and print.' }
+    ]
+  },
+  youtube: {
+    id: 'youtube',
+    slug: '/youtube-qr-code-generator',
+    title: 'YouTube QR Code Generator',
+    headline: 'Free YouTube QR Code Generator for Channels, Videos & Subscriber Growth',
+    subheadline: 'Generate high-resolution QR codes that link directly to your YouTube channel, specific video, or playlist to drive views and subscribers.',
+    badge: 'YouTube QR Code',
+    metaTitle: 'Free YouTube QR Code Generator | Channel & Video Link QR Codes',
+    metaDescription: 'Generate free QR codes for YouTube channels and videos. Drive subscribers and views with scannable QR codes for print and digital marketing.',
+    keywords: ['youtube qr code generator', 'youtube channel qr code', 'youtube video qr code free', 'subscribe youtube qr code'],
+    introTitle: 'What is a YouTube QR Code Generator?',
+    introParagraphs: [
+      'A YouTube QR Code links scanners directly to your YouTube channel, a specific video, a curated playlist, or a YouTube Shorts clip. Scanning the code opens the video or channel instantly in the YouTube app or mobile browser.',
+      'Content creators, educators, brands, and marketers use YouTube QR codes on flyers, product packaging, user manuals, and presentation slides to drive video engagement and subscriber growth without requiring users to search for video titles.',
+      'With QR Maker Studio, you can customize your YouTube QR codes with signature red branding, custom logos, and vector SVG exports for crystal-clear printing at any scale.'
+    ],
+    stepsTitle: 'How to Create a YouTube QR Code in 3 Steps',
+    steps: [
+      { number: 1, title: 'Paste YouTube Channel or Video URL', description: 'Copy your YouTube channel, video, Short, or playlist link from YouTube and paste it into the generator.' },
+      { number: 2, title: 'Customize Design & Red Accents', description: 'Choose YouTube red (#FF0000) or your brand colors, customize corner styles, and embed a play button logo.' },
+      { number: 3, title: 'Download Vector or PNG', description: 'Download your high-resolution QR code ready for video promotion on flyers, posters, and merchandise.' }
+    ],
+    featuresTitle: 'Why Generate YouTube QR Codes with QR Maker Studio?',
+    features: [
+      { title: 'Direct YouTube App Launch', description: 'Scanners are redirected seamlessly into the native YouTube mobile app for optimal viewing.' },
+      { title: 'Unlimited Views & Scans', description: 'Permanent static QR codes with zero scan limits and lifetime operational validity.' },
+      { title: 'Vector SVG Print Ready', description: 'Infinitely scalable vector formats for event banners, conference stages, and packaging.' },
+      { title: 'Private & Secure', description: 'All QR code encoding happens in your local browser without third-party tracking.' }
+    ],
+    useCasesTitle: 'High-Impact Uses for YouTube QR Codes',
+    useCases: [
+      { title: 'Product User Manuals & Tutorials', description: 'Link printed setup instructions to detailed step-by-step video assembly guides.' },
+      { title: 'Event Presentations & Conference Slides', description: 'Project QR codes on presentation slides so attendees can subscribe or watch the recording.' },
+      { title: 'Music & Film Promotional Posters', description: 'Let fans scan concert posters or album artwork to watch the official music video or trailer.' },
+      { title: 'Restaurant & Recipe Packaging', description: 'Direct food package buyers to cooking tutorial videos on your brand channel.' }
+    ],
+    faqs: [
+      { question: 'How do I link a QR code to my YouTube channel?', answer: 'Copy your channel URL (e.g., https://youtube.com/@yourchannel) from your browser or the YouTube app, paste it into our generator, and download your custom QR code.' },
+      { question: 'Can I create a QR code that auto-prompts users to subscribe?', answer: 'Yes! Append ?sub_confirmation=1 to your YouTube channel URL (e.g. https://youtube.com/@yourchannel?sub_confirmation=1) so desktop scanners see a subscribe popup.' },
+      { question: 'Does scanning open the native YouTube app?', answer: 'Yes, on both iOS and Android, scanning the YouTube QR code automatically opens the target video or channel in the YouTube app if installed.' },
+      { question: 'Can I link to a specific timestamp in a YouTube video?', answer: 'Yes! Add &t=XmYs (or ?t=XmYs) to your video URL to start video playback at a precise second.' },
+      { question: 'Do YouTube QR codes expire?', answer: 'No, static YouTube QR codes created on QR Maker Studio are permanent and work as long as the YouTube video remains online.' },
+      { question: 'Can I add the YouTube play button logo to the center?', answer: 'Yes! You can upload a YouTube play icon or your own channel avatar to embed in the center of the QR code.' },
+      { question: 'Are there any scan limits on free YouTube QR codes?', answer: 'No. All static QR codes have unlimited scans forever with no subscriptions or fees.' },
+      { question: 'What formats can I download?', answer: 'You can export in high-resolution PNG, vector SVG, and modern WebP formats.' }
+    ]
+  },
+  linkedin: {
+    id: 'linkedin',
+    slug: '/linkedin-qr-code-generator',
+    title: 'LinkedIn QR Code Generator',
+    headline: 'Free LinkedIn QR Code Generator for Professional Networking & Business Cards',
+    subheadline: 'Create professional LinkedIn profile and company page QR codes. Connect instantly at conferences, networking mixers, and interviews.',
+    badge: 'LinkedIn QR Code',
+    metaTitle: 'Free LinkedIn QR Code Generator | Professional Profile QR Codes',
+    metaDescription: 'Create professional LinkedIn profile QR codes for networking events and business cards. Share your profile with a scan and grow connections fast.',
+    keywords: ['linkedin qr code generator', 'linkedin profile qr code', 'professional networking qr code', 'linkedin business card qr'],
+    introTitle: 'What is a LinkedIn QR Code Generator?',
+    introParagraphs: [
+      'A LinkedIn QR Code connects smartphone users straight to your LinkedIn profile, personal resume, or company page with a quick camera scan. It eliminates spelling mistakes and makes networking at business events effortless.',
+      'Instead of handing out traditional paper business cards that end up misplaced, a LinkedIn QR code allows prospective employers, clients, and partners to connect with you on LinkedIn instantly while the conversation is active.',
+      'QR Maker Studio allows professionals to generate sleek, brand-aligned LinkedIn QR codes with custom colors, professional frame styling, and vector SVG exports for premium business card printing.'
+    ],
+    stepsTitle: 'How to Create a LinkedIn QR Code in 3 Steps',
+    steps: [
+      { number: 1, title: 'Copy Your LinkedIn Profile URL', description: 'Copy your public LinkedIn profile link (e.g. linkedin.com/in/yourname) or company page URL.' },
+      { number: 2, title: 'Customize Professional Styling', description: 'Choose professional LinkedIn blue (#0A66C2), stylish dot patterns, and embed the LinkedIn logo.' },
+      { number: 3, title: 'Download in SVG or PNG', description: 'Export your print-ready vector file for luxury business cards, conference badges, and resumes.' }
+    ],
+    featuresTitle: 'Why Use QR Maker Studio for LinkedIn QR Codes?',
+    features: [
+      { title: 'Instant Mobile Networking', description: 'Launches the LinkedIn mobile app directly to your profile for one-click connection requests.' },
+      { title: 'Permanent & Free Forever', description: 'Your static LinkedIn QR code never expires and supports unlimited connections at zero cost.' },
+      { title: 'Vector SVG for Luxury Cards', description: 'Ensure razor-sharp vector print clarity on matte, foil-stamped, or embossed business cards.' },
+      { title: 'Zero Data Harvesting', description: 'All QR generation executes locally in your browser with complete personal privacy.' }
+    ],
+    useCasesTitle: 'Strategic Uses for LinkedIn QR Codes',
+    useCases: [
+      { title: 'Executive & Freelancer Business Cards', description: 'Replace physical contact clutter with a modern LinkedIn QR code on the back of your card.' },
+      { title: 'Conference Name Badges & Lanyards', description: 'Make meeting fellow attendees effortless by printing your LinkedIn QR code on event badges.' },
+      { title: 'Resumes & Portfolios', description: 'Add a QR code to your printed or PDF resume for hiring managers to view recommendations.' },
+      { title: 'Trade Show Booth Displays', description: 'Encourage B2B attendees to follow your company LinkedIn page for industry insights.' }
+    ],
+    faqs: [
+      { question: 'How do I find my public LinkedIn profile URL?', answer: 'Open LinkedIn, click your profile picture > "View Profile", and copy the URL from the browser bar or from the "Contact info" section (e.g. https://www.linkedin.com/in/yourname).' },
+      { question: 'Does the QR code open the LinkedIn app on mobile?', answer: 'Yes! When scanned on a smartphone with LinkedIn installed, it automatically launches the LinkedIn app directly to your profile page.' },
+      { question: 'Can I put a LinkedIn QR code on my resume?', answer: 'Yes! Adding a LinkedIn QR code to your resume header allows recruiters to quickly review your recommendations, portfolio, and mutual connections.' },
+      { question: 'Do LinkedIn QR codes expire?', answer: 'No. Static LinkedIn QR codes are permanent and work indefinitely as long as your LinkedIn profile link remains active.' },
+      { question: 'Can I generate a QR code for a LinkedIn Company Page?', answer: 'Yes! Simply paste your company page URL (e.g. https://www.linkedin.com/company/yourbrand) to direct scanners to follow your company.' },
+      { question: 'Can I embed the LinkedIn logo in the center?', answer: 'Yes, you can upload the LinkedIn icon or your personal avatar to embed in the center of the QR code.' },
+      { question: 'What is the recommended size for printing on business cards?', answer: 'Print at a minimum size of 20 x 20 mm (0.8 x 0.8 inches) with good contrast for instant camera detection.' },
+      { question: 'Is this service free to use for commercial networking?', answer: 'Yes, 100% free with unlimited scans, no account signup, and no subscription fees.' }
+    ]
+  },
+  twitter: {
+    id: 'twitter',
+    slug: '/twitter-qr-code-generator',
+    title: 'Twitter / X QR Code Generator',
+    headline: 'Free Twitter / X QR Code Generator for Profile Sharing & Audience Growth',
+    subheadline: 'Create custom QR codes that link directly to your Twitter/X profile, tweet, or community. Grow followers from offline touchpoints.',
+    badge: 'Twitter / X QR Code',
+    metaTitle: 'Free Twitter / X QR Code Generator | Share Your Profile via QR',
+    metaDescription: 'Generate free QR codes for your Twitter/X profile. Drive followers from print materials, email signatures, and events with a simple scan.',
+    keywords: ['twitter qr code generator', 'x qr code generator', 'twitter profile qr code free', 'x profile qr code'],
+    introTitle: 'What is a Twitter / X QR Code Generator?',
+    introParagraphs: [
+      'A Twitter / X QR Code is a scannable barcode that directs scanners directly to your Twitter/X profile, a specific tweet, a thread, or an X List without manual handle typing.',
+      'Whether you are an author, tech founder, journalist, or brand, displaying a Twitter QR code on presentation decks, event flyers, product packaging, and printed articles connects offline audiences directly to your digital commentary.',
+      'QR Maker Studio provides free, customizable Twitter/X QR codes with dark/light presets, custom logos, and high-resolution SVG/PNG downloads with unlimited scans.'
+    ],
+    stepsTitle: 'How to Create a Twitter / X QR Code in 3 Steps',
+    steps: [
+      { number: 1, title: 'Enter Handle or Profile Link', description: 'Enter your Twitter/X username (e.g. handle) or paste your full x.com or twitter.com profile URL.' },
+      { number: 2, title: 'Style & Add X Logo', description: 'Customize colors, dot patterns, eye shapes, and embed an X or Twitter bird logo.' },
+      { number: 3, title: 'Download in High Resolution', description: 'Export your QR code in vector SVG or PNG format ready for print and digital publishing.' }
+    ],
+    featuresTitle: 'Why Use QR Maker Studio for Twitter / X QR Codes?',
+    features: [
+      { title: 'Direct X App Integration', description: 'Seamlessly launches the official X / Twitter mobile app directly to your profile.' },
+      { title: 'Permanent & Lifetime Validity', description: 'Static QR codes never expire and support unlimited lifetime scans with zero fees.' },
+      { title: 'Vector SVG Output', description: 'Perfect print quality on conference badges, banners, magazine ads, and merchandise.' },
+      { title: 'Complete Privacy', description: 'Client-side generation guarantees your handle and data are never stored on external servers.' }
+    ],
+    useCasesTitle: 'Popular Uses for Twitter / X QR Codes',
+    useCases: [
+      { title: 'Conference Presentations', description: 'Put your Twitter QR code on the final slide of your deck for instant audience Q&A and follows.' },
+      { title: 'Author Book Covers & Articles', description: 'Print on book jackets and printed articles so readers can follow your real-time updates.' },
+      { title: 'Podcast Cover Art & Merch', description: 'Direct podcast listeners to join live Twitter discussions and community spaces.' },
+      { title: 'Event Badges & Name Tags', description: 'Network at hackathons and tech meetups with instant X profile access.' }
+    ],
+    faqs: [
+      { question: 'How do I make a QR code for my Twitter / X profile?', answer: 'Type your handle (without @) or paste your full profile link (https://x.com/yourhandle) into the generator, customize styling, and download your QR code.' },
+      { question: 'Does the QR code work with both x.com and twitter.com links?', answer: 'Yes! Both x.com and twitter.com URLs are fully supported and seamlessly redirect scanners to your profile.' },
+      { question: 'Does scanning open the X app on mobile phones?', answer: 'Yes! On devices with the X/Twitter app installed, scanning opens your profile directly within the app.' },
+      { question: 'Can I link a QR code to a specific Tweet or Thread?', answer: 'Yes! Simply copy the link to the specific tweet from X and paste it into the URL generator.' },
+      { question: 'Do Twitter QR codes expire or have scan limits?', answer: 'No. Static Twitter QR codes generated on QR Maker Studio have permanent validity and unlimited scans forever.' },
+      { question: 'Can I embed the X or Twitter logo in the center?', answer: 'Yes! You can upload an X icon, the classic bird logo, or your brand avatar to display in the center.' },
+      { question: 'What formats are available for download?', answer: 'You can download high-resolution PNG, vector SVG, and WebP formats.' },
+      { question: 'Is there any fee to create Twitter QR codes?', answer: 'No, our generator is 100% free with no watermarks and no registration required.' }
+    ]
+  },
+  tiktok: {
+    id: 'tiktok',
+    slug: '/tiktok-qr-code-generator',
+    title: 'TikTok QR Code Generator',
+    headline: 'Free TikTok QR Code Generator for Profile Promotion & Viral Growth',
+    subheadline: 'Create custom, scannable QR codes that link directly to your TikTok profile, video, or brand challenge. Drive viral followers from offline touchpoints.',
+    badge: 'TikTok QR Code',
+    metaTitle: 'Free TikTok QR Code Generator | Go Viral with Scannable QR Codes',
+    metaDescription: 'Create free TikTok profile QR codes to grow your audience. Perfect for cross-platform promotion on Instagram, YouTube, and printed merchandise.',
+    keywords: ['tiktok qr code generator', 'tiktok profile qr code', 'tiktok follower qr code free', 'tiktok video qr code'],
+    introTitle: 'What is a TikTok QR Code Generator?',
+    introParagraphs: [
+      'A TikTok QR Code is a specialized barcode that links smartphone users directly to your TikTok profile, a viral video, a branded hashtag challenge, or a live stream.',
+      'Content creators, retail brands, musicians, and influencers place TikTok QR codes on stickers, clothing tags, in-store displays, posters, and packaging to bridge physical customer interactions into viral digital views and follows.',
+      'With QR Maker Studio, you can generate TikTok QR codes with vibrant cyan and magenta styling, custom logos, and print-ready SVG/PNG files — completely free with unlimited scans.'
+    ],
+    stepsTitle: 'How to Make a TikTok QR Code in 3 Steps',
+    steps: [
+      { number: 1, title: 'Enter TikTok Username or Link', description: 'Type your TikTok handle (e.g. username) or paste your full profile or video URL.' },
+      { number: 2, title: 'Customize Neon Styling', description: 'Select TikTok vibrant colors (#00F2EA, #FF0050), customize patterns, and embed the TikTok logo.' },
+      { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for stickers, flyers, product tags, and packaging.' }
+    ],
+    featuresTitle: 'Why Use QR Maker Studio for TikTok QR Codes?',
+    features: [
+      { title: 'Direct TikTok App Launch', description: 'Instantly opens the native TikTok app on iOS and Android for one-tap following.' },
+      { title: 'Permanent & Free Forever', description: 'Static TikTok QR codes never expire and support unlimited lifetime scans with zero fees.' },
+      { title: 'Vector SVG for Apparel & Print', description: 'Crisp vector formatting perfect for screen printing on hoodies, stickers, and posters.' },
+      { title: 'Client-Side Privacy', description: 'All QR codes are generated in your local browser memory with zero tracking or logging.' }
+    ],
+    useCasesTitle: 'Popular Uses for TikTok QR Codes',
+    useCases: [
+      { title: 'Merchandise & Clothing Tags', description: 'Print TikTok QR codes on apparel tags to convert merchandise buyers into loyal followers.' },
+      { title: 'Stickers & Street Marketing', description: 'Distribute branded stickers with your TikTok QR code to drive organic local discovery.' },
+      { title: 'Restaurant & Retail Displays', description: 'Encourage shoppers to film TikTok reviews and tag your brand for store discounts.' },
+      { title: 'Event Signage & Stage Banners', description: 'Display large QR codes at concerts and festivals to promote event hashtag challenges.' }
+    ],
+    faqs: [
+      { question: 'How do I create a QR code for my TikTok account?', answer: 'Enter your TikTok handle (without @) or paste your complete profile URL (https://www.tiktok.com/@yourname), customize the design, and download your QR code.' },
+      { question: 'Does scanning open the TikTok mobile app directly?', answer: 'Yes! When scanned on a mobile device with TikTok installed, the QR code opens your profile directly in the TikTok app for instant following.' },
+      { question: 'Can I link to a specific TikTok video or sound?', answer: 'Yes! Simply copy the share link of the specific TikTok video or sound and paste it into the URL generator.' },
+      { question: 'Do TikTok QR codes expire?', answer: 'No. Static TikTok QR codes generated on QR Maker Studio are permanent and work indefinitely with unlimited scans.' },
+      { question: 'Can I embed the TikTok music note logo in the center?', answer: 'Yes! You can upload the TikTok logo or your creator avatar to embed in the center of the QR code.' },
+      { question: 'What is the best format for printing on stickers and clothing?', answer: 'Download the vector SVG format for screen printing and vinyl sticker cutters, or PNG for standard digital printing.' },
+      { question: 'Are there any scan limits on free TikTok QR codes?', answer: 'No. There are zero scan limits, no watermarks, and no subscription fees.' },
+      { question: 'Can I customize the QR code with TikTok brand colors?', answer: 'Yes! You can use TikTok iconic cyan (#00F2EA) and magenta (#FF0050) colors for eye-catching branded codes.' }
+    ]
+  },
+  telegram: {
+    id: 'telegram',
+    slug: '/telegram-qr-code-generator',
+    title: 'Telegram QR Code Generator',
+    headline: 'Free Telegram QR Code Generator for Groups, Channels & Profile Sharing',
+    subheadline: 'Generate custom QR codes linking directly to your Telegram channel, group, bot, or personal chat. Grow your community effortlessly.',
+    badge: 'Telegram QR Code',
+    metaTitle: 'Free Telegram QR Code Generator | Group, Channel & Profile QR',
+    metaDescription: 'Generate QR codes for Telegram profiles, groups, and channels. Grow your Telegram community with scannable codes on websites and print media.',
+    keywords: ['telegram qr code generator', 'telegram group qr code', 'telegram channel qr code free', 'telegram bot qr code'],
+    introTitle: 'What is a Telegram QR Code Generator?',
+    introParagraphs: [
+      'A Telegram QR Code links smartphone users directly to a Telegram personal chat, public channel, private group, or automated Telegram bot using the standard t.me deep link protocol.',
+      'Community managers, crypto projects, content publishers, and customer support teams use Telegram QR codes on websites, flyers, packaging, and social media to invite users into discussions and broadcast channels without typing invite links.',
+      'QR Maker Studio generates high-resolution Telegram QR codes with official blue styling, center logos, and downloadable SVG/PNG files with unlimited lifetime scans.'
+    ],
+    stepsTitle: 'How to Make a Telegram QR Code in 3 Steps',
+    steps: [
+      { number: 1, title: 'Enter Telegram Username or Group Link', description: 'Type your Telegram username (e.g. username), group invite link, or channel name.' },
+      { number: 2, title: 'Customize Telegram Blue Styling', description: 'Choose Telegram signature blue (#0088CC), custom dot styles, and embed the paper plane logo.' },
+      { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for website placement, flyers, and event signage.' }
+    ],
+    featuresTitle: 'Why Use QR Maker Studio for Telegram QR Codes?',
+    features: [
+      { title: 'One-Tap Telegram App Launch', description: 'Launches the native Telegram app directly to the chat, group, or channel.' },
+      { title: 'Permanent & Free Forever', description: 'Static Telegram QR codes never expire and support unlimited lifetime scans with zero fees.' },
+      { title: 'Vector SVG Format', description: 'Scalable vector files for high-resolution event banners, flyers, and merchandise.' },
+      { title: '100% Privacy Protection', description: 'All QR codes are generated client-side with zero data storage or link logging.' }
+    ],
+    useCasesTitle: 'Popular Uses for Telegram QR Codes',
+    useCases: [
+      { title: 'Crypto & Web3 Community Growth', description: 'Invite investors and enthusiasts into your official Telegram community group.' },
+      { title: 'Customer Support Channels', description: 'Print Telegram QR codes on product manuals for instant 1-on-1 customer service.' },
+      { title: 'News & Signal Broadcast Channels', description: 'Direct readers from printed publications to your real-time Telegram news feed.' },
+      { title: 'Event & Conference Groups', description: 'Create temporary attendee networking groups accessible via printed badges.' }
+    ],
+    faqs: [
+      { question: 'How do I create a QR code for a Telegram channel or group?', answer: 'Copy your public channel link (https://t.me/yourchannel) or private group invite link, paste it into our generator, customize your design, and download your QR code.' },
+      { question: 'Does scanning open the Telegram app automatically?', answer: 'Yes! On smartphones with Telegram installed, scanning the QR code triggers the t.me deep link to open the chat or channel directly in Telegram.' },
+      { question: 'Can I generate a QR code for a Telegram Bot?', answer: 'Yes! Paste your bot link (e.g. https://t.me/your_bot) into the generator. When scanned, it opens the bot with the "Start" button ready.' },
+      { question: 'Do Telegram QR codes expire?', answer: 'No. Static Telegram QR codes are permanent and work indefinitely as long as your Telegram channel or invite link remains active.' },
+      { question: 'Can I embed the Telegram paper plane logo in the center?', answer: 'Yes! You can upload the official Telegram icon or your community logo to embed in the center of the QR code.' },
+      { question: 'Are there any fees or scan limits?', answer: 'No, our generator is 100% free with unlimited scans, no watermarks, and no sign-up needed.' },
+      { question: 'What file formats can I download?', answer: 'You can download high-resolution PNG, vector SVG, and WebP formats.' },
+      { question: 'Is my group link kept secure during generation?', answer: 'Yes, all QR generation executes 100% locally in your browser memory without being transmitted to external servers.' }
+    ]
+  },
+  paypal: {
+    id: 'paypal',
+    slug: '/paypal-qr-code-generator',
+    title: 'PayPal QR Code Generator',
+    headline: 'Free PayPal QR Code Generator for Instant Payment Collection',
+    subheadline: 'Create free PayPal payment QR codes for your business, invoices, tips, and market stalls. Customers scan and pay instantly via PayPal.me.',
+    badge: 'PayPal Payment QR',
+    metaTitle: 'Free PayPal QR Code Generator | Accept Payments via QR Code',
+    metaDescription: 'Create free PayPal payment QR codes for your business. Customers scan to pay instantly via PayPal.me — ideal for invoices and market stalls.',
+    keywords: ['paypal qr code generator', 'paypal.me qr code', 'payment qr code free', 'contactless payment qr'],
+    introTitle: 'What is a PayPal QR Code Generator?',
+    introParagraphs: [
+      'A PayPal QR Code provides a fast, contactless way to receive payments from customers, clients, and donors. Scanning the code opens PayPal.me directly on the user phone with your account pre-filled for instant checkout.',
+      'Freelancers, small business owners, market vendors, and non-profits use PayPal QR codes on invoices, shop counters, donation jars, and service menus to accept cashless payments without expensive card terminal hardware.',
+      'QR Maker Studio generates crisp, brand-aligned PayPal QR codes with custom colors, PayPal logos, and vector SVG exports for professional signage — 100% free with zero platform transaction markup.'
+    ],
+    stepsTitle: 'How to Make a PayPal QR Code in 3 Steps',
+    steps: [
+      { number: 1, title: 'Enter PayPal.me Username or Link', description: 'Enter your PayPal.me username (e.g. yourname) or full PayPal payment link.' },
+      { number: 2, title: 'Style & Add PayPal Logo', description: 'Select PayPal blue (#003087, #0079C1), choose dot patterns, and embed the PayPal logo.' },
+      { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for print on invoices, counter displays, and stickers.' }
+    ],
+    featuresTitle: 'Why Use QR Maker Studio for PayPal QR Codes?',
+    features: [
+      { title: 'Zero Platform Fees', description: 'Our generator is 100% free with zero transaction fees or commissions added to your payments.' },
+      { title: 'Instant Mobile Checkout', description: 'Opens the PayPal app or mobile web checkout directly for fast, frictionless payment.' },
+      { title: 'Vector SVG for Signage', description: 'Export crisp vector graphics for durable acrylic counter stands, stickers, and menus.' },
+      { title: 'Bank-Grade Security', description: 'No financial credentials touch our servers. All QR encoding runs client-side in your browser.' }
+    ],
+    useCasesTitle: 'Popular Uses for PayPal QR Codes',
+    useCases: [
+      { title: 'Market Stalls & Pop-Up Shops', description: 'Accept touchless payments at farmers markets and craft fairs without a POS terminal.' },
+      { title: 'Freelancer & Consultant Invoices', description: 'Print on PDF invoices so clients can settle payments immediately by scanning.' },
+      { title: 'Tip Jars & Musician Busking', description: 'Collect cashless tips and donations at live performances and service counters.' },
+      { title: 'Non-Profit Charity Donations', description: 'Display donation QR codes on charity gala tables and fundraising flyers.' }
+    ],
+    faqs: [
+      { question: 'How do I create a PayPal.me QR code?', answer: 'Enter your PayPal.me username (e.g. yourbusiness) or paste your full PayPal link (https://paypal.me/yourbusiness), customize your styling, and click download.' },
+      { question: 'Can I set a fixed payment amount in the QR code?', answer: 'Yes! Append the amount to your PayPal.me link (e.g. https://paypal.me/yourbusiness/25 for $25) so scanners see the exact amount pre-filled.' },
+      { question: 'Does the customer need a PayPal account to pay?', answer: 'Customers with a PayPal account can pay instantly with one tap. Those without an account can pay using their credit/debit card on PayPal secure mobile guest checkout.' },
+      { question: 'Are there any transaction fees from QR Maker Studio?', answer: 'None! QR Maker Studio charges 0% fees. Standard PayPal transaction fees apply as per your PayPal merchant agreement.' },
+      { question: 'Do PayPal QR codes expire?', answer: 'No. Static PayPal QR codes are permanent and work as long as your PayPal.me account is active.' },
+      { question: 'Can I embed the PayPal logo in the center of the QR code?', answer: 'Yes! You can embed the PayPal "PP" icon or your own company logo in the center.' },
+      { question: 'What is the best format for printing counter display signs?', answer: 'Download the vector SVG file for large acrylic counter stands and banners, or PNG for printed invoice headers.' },
+      { question: 'Is my financial information safe during generation?', answer: 'Yes. All QR code generation is executed 100% in your browser. No financial data, passwords, or personal details are ever sent to our servers.' }
+    ]
+  },
+  upi: {
+    id: 'upi',
+    slug: '/upi-qr-code-generator',
+    title: 'UPI QR Code Generator',
+    headline: 'Free UPI QR Code Generator for Google Pay, PhonePe & Paytm Payments',
+    subheadline: 'Create free UPI payment QR codes compatible with all Indian UPI apps. Accept instant, zero-fee bank transfers with a single scan.',
+    badge: 'UPI Payment QR',
+    metaTitle: 'Free UPI QR Code Generator | GPay, PhonePe & Paytm Payment QR',
+    metaDescription: 'Generate free UPI payment QR codes compatible with Google Pay, PhonePe, Paytm, and all UPI apps. Perfect for Indian merchants and freelancers.',
+    keywords: ['upi qr code generator', 'gpay qr code', 'phonepe qr code', 'paytm qr code free', 'bhim upi qr'],
+    introTitle: 'What is a UPI QR Code Generator?',
+    introParagraphs: [
+      'A UPI QR Code (Unified Payments Interface Quick Response Code) is a standardized payment barcode recognized across India by the National Payments Corporation of India (NPCI).',
+      'When scanned by any UPI app — including Google Pay, PhonePe, Paytm, BHIM, Amazon Pay, or banking apps — it instantly initiates a direct bank-to-bank transfer with the payee VPA, name, and optional amount pre-filled.',
+      'QR Maker Studio allows Indian merchants, freelancers, and businesses to generate high-resolution UPI QR codes with custom styling, logos, and vector SVG exports for professional shop counter displays — 100% free with unlimited scans.'
+    ],
+    stepsTitle: 'How to Make a UPI QR Code in 3 Steps',
+    steps: [
+      { number: 1, title: 'Enter Your UPI ID (VPA)', description: 'Type your UPI ID (e.g., yourname@okhdfcbank, merchant@paytm) and optional payee name and amount.' },
+      { number: 2, title: 'Customize Colors & Logo', description: 'Choose vibrant colors, customize corner eyes, and embed a UPI or business logo in the center.' },
+      { number: 3, title: 'Download in SVG or PNG', description: 'Export your print-ready QR code for shop counters, billing receipts, and digital invoices.' }
+    ],
+    featuresTitle: 'Why Use QR Maker Studio for UPI QR Codes?',
+    features: [
+      { title: 'Universal UPI App Compatibility', description: 'Works seamlessly with Google Pay, PhonePe, Paytm, BHIM, Amazon Pay, and all Indian banking apps.' },
+      { title: 'Zero Platform Fees', description: '100% free with zero transaction fees, setup charges, or monthly subscriptions.' },
+      { title: 'Standard NPCI UPI Protocol', description: 'Generates compliant upi://pay protocol strings for flawless interoperability across all scanners.' },
+      { title: 'Vector SVG for Shop Signage', description: 'Print durable high-resolution counter stands, stickers, and wall displays without pixelation.' }
+    ],
+    useCasesTitle: 'Popular Uses for UPI QR Codes',
+    useCases: [
+      { title: 'Retail Shops & Grocery Stores', description: 'Display at billing counters for rapid, touchless customer payment settlement.' },
+      { title: 'Freelancers & Service Providers', description: 'Add UPI QR codes to client invoices for instant direct-to-bank wire settlement.' },
+      { title: 'Restaurants & Cafes', description: 'Place UPI QR codes on dining tables and bill folders for convenient customer bill settlement.' },
+      { title: 'Donations & Cultural Events', description: 'Collect cashless contributions and entry fees at community festivals and events.' }
+    ],
+    faqs: [
+      { question: 'What is a UPI ID (VPA) and where do I find it?', answer: 'Your UPI ID (Virtual Payment Address) is a unique identifier linked to your bank account (e.g. yourname@oksbi, mobile@paytm). You can find it in your Google Pay, PhonePe, or Paytm profile.' },
+      { question: 'Which payment apps can scan this UPI QR code?', answer: 'All UPI-enabled apps in India can scan this QR code, including Google Pay (GPay), PhonePe, Paytm, BHIM, Amazon Pay, CRED, and all mobile banking apps.' },
+      { question: 'Can I pre-fill a fixed payment amount in the QR code?', answer: 'Yes! Enter an amount in the generator form, and the payer app will automatically display that exact amount when scanned.' },
+      { question: 'Are there any platform charges for using this UPI QR code generator?', answer: 'No. QR Maker Studio is 100% free with zero transaction fees or recurring charges.' },
+      { question: 'Do UPI QR codes expire?', answer: 'No. Static UPI QR codes have permanent validity and work indefinitely as long as your linked UPI ID is active.' },
+      { question: 'Can I add my shop or company logo to the UPI QR code?', answer: 'Yes! You can embed your shop logo or the official UPI icon in the center of the QR code.' },
+      { question: 'What format should I download for printing counter stands?', answer: 'Download the vector SVG format for crisp large-scale printing on acrylic stands, sunboard signs, and vinyl stickers.' },
+      { question: 'Is my banking information secure during generation?', answer: 'Yes. All QR code generation is performed locally in your web browser. No UPI IDs, names, or financial data are stored or sent to any server.' }
+    ]
   }
 };

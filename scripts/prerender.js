@@ -279,6 +279,138 @@ const ROUTES = [
     ]
   },
   {
+    path: '/instagram-qr-code-generator',
+    title: 'Free Instagram QR Code Generator | Share Your Profile Instantly',
+    description: 'Create a free QR code for your Instagram profile. Scan to follow — perfect for business cards, flyers, product packaging, and social media growth.',
+    canonical: 'https://qr-generator.online/instagram-qr-code-generator',
+    h1: 'Free Instagram QR Code Generator for Profile Sharing & Follower Growth',
+    badge: 'Instagram QR Code',
+    lead: 'Create beautiful, scannable QR codes that link directly to your Instagram profile. Perfect for growing followers from printed materials and digital campaigns.',
+    sections: [
+      { title: 'Grow Your Instagram Following with Print & Digital QR Codes', paragraphs: ['Print Instagram QR codes on business cards, product packaging, restaurant menus, event banners, and merchandise to drive organic followers.', 'When scanned, the QR code opens the Instagram app directly to your profile page for one-tap following.'] }
+    ]
+  },
+  {
+    path: '/youtube-qr-code-generator',
+    title: 'Free YouTube QR Code Generator | Channel & Video Link QR Codes',
+    description: 'Generate free QR codes for YouTube channels and videos. Drive subscribers and views with scannable QR codes for print and digital marketing.',
+    canonical: 'https://qr-generator.online/youtube-qr-code-generator',
+    h1: 'Free YouTube QR Code Generator for Channels, Videos & Subscriber Growth',
+    badge: 'YouTube QR Code',
+    lead: 'Link directly to your YouTube channel, specific video, or playlist with a scannable QR code. Perfect for cross-platform promotion and subscriber growth.',
+    sections: [
+      { title: 'Drive YouTube Views & Subscribers from Offline Marketing', paragraphs: ['Add YouTube QR codes to event flyers, conference presentations, product manuals, and print ads to drive traffic to your video content.', 'Supports channel URLs, individual video links, and playlist links for maximum flexibility.'] }
+    ]
+  },
+  {
+    path: '/linkedin-qr-code-generator',
+    title: 'Free LinkedIn QR Code Generator | Professional Profile QR Codes',
+    description: 'Create professional LinkedIn profile QR codes for networking events and business cards. Share your profile with a scan and grow connections fast.',
+    canonical: 'https://qr-generator.online/linkedin-qr-code-generator',
+    h1: 'Free LinkedIn QR Code Generator for Professional Networking & Business Cards',
+    badge: 'LinkedIn QR Code',
+    lead: 'Share your professional LinkedIn profile instantly at networking events, conferences, and on business cards with a scannable QR code.',
+    sections: [
+      { title: 'Professional Networking Made Effortless', paragraphs: ['Print LinkedIn QR codes on business cards, conference badges, and email signatures for seamless professional connection building.', 'When scanned, it opens your LinkedIn profile directly in the LinkedIn app or browser for one-click connecting.'] }
+    ]
+  },
+  {
+    path: '/twitter-qr-code-generator',
+    title: 'Free Twitter / X QR Code Generator | Share Your Profile via QR',
+    description: 'Generate free QR codes for your Twitter/X profile. Drive followers from print materials, email signatures, and events with a simple scan.',
+    canonical: 'https://qr-generator.online/twitter-qr-code-generator',
+    h1: 'Free Twitter / X QR Code Generator for Profile Sharing & Audience Growth',
+    badge: 'Twitter / X QR Code',
+    lead: 'Create scannable QR codes linking to your Twitter/X profile. Grow your audience from business cards, flyers, and offline marketing materials.',
+    sections: [
+      { title: 'Grow Your X / Twitter Audience with QR Codes', paragraphs: ['Bridge the gap between physical and digital presence by adding Twitter QR codes to printed materials, email signatures, and event banners.', 'Supports both twitter.com and x.com URLs, as well as direct handle entry for automatic link generation.'] }
+    ]
+  },
+  {
+    path: '/tiktok-qr-code-generator',
+    title: 'Free TikTok QR Code Generator | Go Viral with Scannable QR Codes',
+    description: 'Create free TikTok profile QR codes to grow your audience. Perfect for cross-platform promotion on Instagram, YouTube, and printed merchandise.',
+    canonical: 'https://qr-generator.online/tiktok-qr-code-generator',
+    h1: 'Free TikTok QR Code Generator for Profile Promotion & Viral Growth',
+    badge: 'TikTok QR Code',
+    lead: 'Drive TikTok followers from real-world touchpoints with scannable QR codes on merchandise, packaging, and event signage.',
+    sections: [
+      { title: 'Cross-Platform TikTok Promotion', paragraphs: ['Print TikTok QR codes on merchandise, product packaging, stickers, and event materials to drive followers from the real world to your TikTok profile.', 'Perfect for creators, brands, and businesses looking to grow their TikTok presence through cross-platform promotion.'] }
+    ]
+  },
+  {
+    path: '/telegram-qr-code-generator',
+    title: 'Free Telegram QR Code Generator | Group, Channel & Profile QR',
+    description: 'Generate QR codes for Telegram profiles, groups, and channels. Grow your Telegram community with scannable codes on websites and print media.',
+    canonical: 'https://qr-generator.online/telegram-qr-code-generator',
+    h1: 'Free Telegram QR Code Generator for Groups, Channels & Profile Sharing',
+    badge: 'Telegram QR Code',
+    lead: 'Create QR codes that link directly to your Telegram profile, group, or channel using the t.me deep link format.',
+    sections: [
+      { title: 'Grow Your Telegram Community', paragraphs: ['Share Telegram group join links via QR codes on websites, forums, social media, and print materials for effortless community building.', 'Supports personal profiles, public groups, private invite links, and channels.'] }
+    ]
+  },
+  {
+    path: '/paypal-qr-code-generator',
+    title: 'Free PayPal QR Code Generator | Accept Payments via QR Code',
+    description: 'Create free PayPal payment QR codes for your business. Customers scan to pay instantly via PayPal.me — ideal for invoices and market stalls.',
+    canonical: 'https://qr-generator.online/paypal-qr-code-generator',
+    h1: 'Free PayPal QR Code Generator for Instant Payment Collection',
+    badge: 'PayPal Payment QR',
+    lead: 'Accept payments instantly by sharing a PayPal QR code at your shop, market stall, or on invoices. Customers scan and pay via PayPal.me.',
+    sections: [
+      { title: 'Contactless Payment Collection Made Simple', paragraphs: ['Print PayPal QR codes for market stalls, freelance invoices, donation jars, and tip collection. Customers scan and pay instantly without typing your email.', 'Works with PayPal.me usernames and direct PayPal payment URLs.'] }
+    ]
+  },
+  {
+    path: '/upi-qr-code-generator',
+    title: 'Free UPI QR Code Generator | GPay, PhonePe & Paytm Payment QR',
+    description: 'Generate free UPI payment QR codes compatible with Google Pay, PhonePe, Paytm, and all UPI apps. Perfect for Indian merchants and freelancers.',
+    canonical: 'https://qr-generator.online/upi-qr-code-generator',
+    h1: 'Free UPI QR Code Generator for Google Pay, PhonePe & Paytm Payments',
+    badge: 'UPI Payment QR',
+    lead: 'Generate standard upi:// payment QR codes compatible with Google Pay, PhonePe, Paytm, BHIM, and all UPI-enabled apps in India.',
+    sections: [
+      { title: 'Accept UPI Payments Anywhere in India', paragraphs: ['Print UPI QR codes for shop counters, market stalls, invoices, and online stores. Supports pre-filled amount and payee name for faster checkout.', 'Compatible with all major UPI apps including Google Pay, PhonePe, Paytm, BHIM, and Amazon Pay.'] }
+    ]
+  },
+  {
+    path: '/bulk-qr-code-generator',
+    title: 'Free Bulk QR Code Generator | Batch Create from CSV or Text List',
+    description: 'Generate hundreds of QR codes at once from a CSV file or text list. Download all as individual files or a single ZIP archive. 100% free and private.',
+    canonical: 'https://qr-generator.online/bulk-qr-code-generator',
+    h1: 'Free Bulk QR Code Generator — Batch Create & Download as ZIP',
+    badge: 'Bulk Batch Generator',
+    lead: 'Paste a list or upload a CSV file and generate hundreds of QR codes at once. Download them individually or as a single ZIP archive.',
+    sections: [
+      { title: 'Mass QR Code Production for Business & Marketing', paragraphs: ['Upload a CSV or paste a text list with one URL per line. Our bulk generator creates all QR codes instantly in your browser — no data leaves your device.', 'Download each QR code individually or grab them all as a single ZIP file. Perfect for product labeling, event badges, and mass mailings.'] }
+    ]
+  },
+  {
+    path: '/qr-code-scanner',
+    title: 'Free QR Code Scanner & Reader Online | Camera & Image Upload',
+    description: 'Scan and decode QR codes online using your camera or by uploading an image. Fast, private, browser-based — no app installation required.',
+    canonical: 'https://qr-generator.online/qr-code-scanner',
+    h1: 'Free Online QR Code Scanner & Reader — Camera & Image Upload',
+    badge: 'QR Code Scanner',
+    lead: 'Scan QR codes using your device camera or upload an image to decode. 100% browser-based, no app required, completely private.',
+    sections: [
+      { title: 'Scan & Decode QR Codes Instantly', paragraphs: ['Use your phone or laptop camera for real-time QR code scanning, or upload a screenshot or photo containing a QR code for instant decoding.', 'All processing happens locally in your browser. Your camera feed and uploaded images never leave your device.'] }
+    ]
+  },
+  {
+    path: '/social-media-qr-code',
+    title: 'Free Social Media QR Code Generator | All Platforms in One Place',
+    description: 'Create branded QR codes for Instagram, YouTube, LinkedIn, TikTok, Twitter/X, and more. Each code matches platform colors for instant recognition.',
+    canonical: 'https://qr-generator.online/social-media-qr-code',
+    h1: 'Free Social Media QR Code Generator — All Platforms, One Dashboard',
+    badge: 'All Social Media QR',
+    lead: 'Enter your profiles for Instagram, YouTube, LinkedIn, TikTok, Twitter/X, Facebook, Telegram, and WhatsApp. Get color-matched QR codes for each platform.',
+    sections: [
+      { title: 'One Dashboard for All Your Social QR Codes', paragraphs: ['Enter your social media handles and URLs in one form. Our generator creates individual, platform-color-matched QR codes for each profile you provide.', 'Download each QR code separately in PNG or SVG format. Perfect for business cards, media kits, and multi-platform marketing materials.'] }
+    ]
+  },
+  {
     path: '/qr-code-with-logo',
     title: 'Free QR Code Generator with Logo | Custom Branded QR Codes',
     description: 'Add your company logo or brand icon to the center of high-resolution QR codes. Boost scan rates, brand trust, and recognition in SVG & PNG.',

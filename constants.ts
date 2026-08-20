@@ -245,5 +245,85 @@ export const GENERATOR_DETAILS: Record<QRType, { title: string; desc: string; ic
       { step: "Placement Strategy", detail: "Add this QR code to your store windows or direct mail flyers for instant customer engagement." },
       { step: "One-Tap Dialing", detail: "Scanning will automatically open the phone's dialer with your number pre-populated." }
     ]
+  },
+  instagram: {
+    title: "Instagram",
+    desc: "Grow your Instagram following with a scannable profile link.",
+    icon: "📸",
+    guide: [
+      { step: "Username Entry", detail: "Enter your Instagram username (without @). We'll generate the direct profile link automatically." },
+      { step: "Brand Colors", detail: "Use Instagram gradient colors (#E1306C, #F77737, #FCAF45) for instant brand recognition." },
+      { step: "Print & Share", detail: "Perfect for business cards, product packaging, and in-store signage to drive followers." }
+    ]
+  },
+  youtube: {
+    title: "YouTube",
+    desc: "Drive subscribers and views with a QR code for your channel or video.",
+    icon: "🎬",
+    guide: [
+      { step: "Link Entry", detail: "Paste your YouTube channel URL or specific video URL to direct scanners to your content." },
+      { step: "Red Branding", detail: "Use YouTube red (#FF0000) for the QR foreground to make it instantly recognizable." },
+      { step: "Cross-Promote", detail: "Add to print flyers, business cards, and event banners to grow your subscriber base." }
+    ]
+  },
+  linkedin: {
+    title: "LinkedIn",
+    desc: "Network professionally by sharing your LinkedIn profile via QR code.",
+    icon: "💼",
+    guide: [
+      { step: "Profile URL", detail: "Paste your LinkedIn profile URL (linkedin.com/in/yourname) for direct professional connections." },
+      { step: "Professional Style", detail: "Use LinkedIn blue (#0A66C2) for instant brand recognition on your networking materials." },
+      { step: "Networking Events", detail: "Print on business cards or conference badges for seamless professional networking." }
+    ]
+  },
+  twitter: {
+    title: "Twitter / X",
+    desc: "Share your Twitter/X profile and grow your audience.",
+    icon: "🐦",
+    guide: [
+      { step: "Handle Entry", detail: "Enter your Twitter/X handle (without @) or paste your full profile URL." },
+      { step: "Brand Style", detail: "Use Twitter's color scheme for recognizable QR codes on marketing materials." },
+      { step: "Social Growth", detail: "Add to promotional materials, email signatures, and packaging to grow followers." }
+    ]
+  },
+  tiktok: {
+    title: "TikTok",
+    desc: "Go viral by sharing your TikTok profile with a scannable QR code.",
+    icon: "🎵",
+    guide: [
+      { step: "Username Entry", detail: "Enter your TikTok username (without @). We'll format the profile link for you." },
+      { step: "Creative Design", detail: "Use TikTok's vibrant colors (#00F2EA, #FF0050) for eye-catching QR designs." },
+      { step: "Cross-Platform", detail: "Perfect for Instagram stories, YouTube descriptions, and printed merch." }
+    ]
+  },
+  telegram: {
+    title: "Telegram",
+    desc: "Connect with your audience through a Telegram QR code.",
+    icon: "✈️",
+    guide: [
+      { step: "Username Entry", detail: "Enter your Telegram username, group, or channel name to generate a direct t.me link." },
+      { step: "Blue Branding", detail: "Use Telegram blue (#0088CC) for consistent messaging platform branding." },
+      { step: "Community Growth", detail: "Share on websites, forums, and print materials to grow your Telegram community." }
+    ]
+  },
+  paypal: {
+    title: "PayPal",
+    desc: "Accept payments instantly with a PayPal QR code.",
+    icon: "💰",
+    guide: [
+      { step: "PayPal Link", detail: "Enter your PayPal.me link or email address associated with your PayPal account." },
+      { step: "Payment Ready", detail: "Scanning opens PayPal with your account pre-filled for instant payment." },
+      { step: "Business Use", detail: "Perfect for invoices, market stalls, tipping jars, and freelancer payment collection." }
+    ]
+  },
+  upi: {
+    title: "UPI Payment",
+    desc: "Accept UPI payments in India with a scannable payment QR code.",
+    icon: "🇮🇳",
+    guide: [
+      { step: "UPI Details", detail: "Enter your UPI ID (e.g., yourname@upi), payee name, and optional amount." },
+      { step: "Payment Standard", detail: "Generates a standard upi:// URI compatible with all major UPI apps (GPay, PhonePe, Paytm)." },
+      { step: "Merchant Display", detail: "Print and display at your shop counter, market stall, or include in invoices." }
+    ]
   }
 };

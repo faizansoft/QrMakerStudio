@@ -49,6 +49,14 @@ export const Footer: React.FC = () => {
               <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('nav_tools')}</h4>
               <ul className="space-y-2.5">
                 <li><Link to="/url-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_url')}</Link></li>
+                <li><Link to="/instagram-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Instagram QR</Link></li>
+                <li><Link to="/youtube-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">YouTube QR</Link></li>
+                <li><Link to="/linkedin-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">LinkedIn QR</Link></li>
+                <li><Link to="/twitter-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Twitter / X QR</Link></li>
+                <li><Link to="/tiktok-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">TikTok QR</Link></li>
+                <li><Link to="/telegram-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Telegram QR</Link></li>
+                <li><Link to="/paypal-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">PayPal Payment QR</Link></li>
+                <li><Link to="/upi-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">UPI Payment QR</Link></li>
                 <li><Link to="/wifi-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_wifi')}</Link></li>
                 <li><Link to="/vcard-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('tool_vcard')}</Link></li>
                 <li><Link to="/googleform-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Google Forms QR</Link></li>
@@ -64,10 +72,13 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Features */}
+            {/* Features & Free Utilities */}
             <div>
-              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">{t('nav_features')}</h4>
+              <h4 className="text-sm font-bold text-white mb-4 tracking-wide">Free Tools & Features</h4>
               <ul className="space-y-2.5">
+                <li><Link to="/bulk-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">⚡ Bulk QR Generator</Link></li>
+                <li><Link to="/qr-code-scanner" className="text-sm text-neutral-400 hover:text-white transition-colors">📷 QR Code Scanner</Link></li>
+                <li><Link to="/social-media-qr-code" className="text-sm text-neutral-400 hover:text-white transition-colors">🌐 Social Media QR</Link></li>
                 <li><Link to="/qr-code-with-logo" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_logo')}</Link></li>
                 <li><Link to="/custom-qr-codes" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_custom')}</Link></li>
                 <li><Link to="/colored-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_color')}</Link></li>

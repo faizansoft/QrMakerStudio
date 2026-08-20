@@ -12,13 +12,24 @@
 
 ---
 
-## 13 Specialized Generator Tools
+## 21 Specialized Generator Tools & Free Utilities
 
+- [Bulk QR Code Generator](https://qr-generator.online/bulk-qr-code-generator): Batch generate hundreds of QR codes from CSV files or text lists with instant ZIP download archive.
+- [Online QR Code Scanner](https://qr-generator.online/qr-code-scanner): Decode QR codes online using live camera or image file upload — 100% private in browser memory.
+- [Social Media QR Page](https://qr-generator.online/social-media-qr-code): Generate color-matched QR codes for Instagram, YouTube, LinkedIn, TikTok, Twitter/X, and WhatsApp in one dashboard.
+- [Instagram QR Code Generator](https://qr-generator.online/instagram-qr-code-generator): Direct deep-link routing into the native Instagram app for profile following, Reels, and Stories.
+- [YouTube QR Code Generator](https://qr-generator.online/youtube-qr-code-generator): Direct native video and channel launch with optional one-tap auto-subscribe confirmation.
+- [LinkedIn QR Code Generator](https://qr-generator.online/linkedin-qr-code-generator): Professional networking QR codes for business cards, conference badges, and resumes.
+- [Twitter / X QR Code Generator](https://qr-generator.online/twitter-qr-code-generator): Link directly to Twitter/X profiles, tweets, and community threads.
+- [TikTok QR Code Generator](https://qr-generator.online/tiktok-qr-code-generator): Drive viral video views and followers from apparel tags, packaging, and stickers.
+- [Telegram QR Code Generator](https://qr-generator.online/telegram-qr-code-generator): Deep-link into Telegram personal chats, public channels, private groups, and automated bots.
+- [PayPal QR Code Generator](https://qr-generator.online/paypal-qr-code-generator): Contactless touchless mobile payment collection via PayPal.me with zero platform transaction fees.
+- [UPI QR Code Generator](https://qr-generator.online/upi-qr-code-generator): Standard NPCI UPI payment QR codes for Google Pay, PhonePe, Paytm, BHIM, and all Indian banking apps.
 - [URL QR Code Generator](https://qr-generator.online/url-qr-code-generator): Convert website links, landing pages, digital catalogs, and GA4 UTM-tagged campaigns into permanent scannable QR codes.
 - [WiFi QR Code Generator](https://qr-generator.online/wifi-qr-code-generator): Touchless wireless network access for WPA, WPA2, WPA3, WEP, and Open networks. Connects iOS and Android devices in one tap with zero typing.
 - [vCard QR Code Generator](https://qr-generator.online/vcard-qr-code-generator): Create smart digital business cards formatted in RFC 6350 / vCard 3.0. Saves full contact profiles directly to smartphone address books.
 - [WhatsApp QR Code Generator](https://qr-generator.online/whatsapp-qr-code-generator): Direct click-to-chat WhatsApp links (`wa.me`) with pre-filled support, inquiry, and order messages.
-- [Facebook & Social Media QR Code Generator](https://qr-generator.online/facebook-qr-code-generator): Drive offline foot traffic directly to Facebook pages, Instagram handles, TikTok profiles, or multi-link hubs.
+- [Facebook & Social Media QR Code Generator](https://qr-generator.online/facebook-qr-code-generator): Drive offline foot traffic directly to Facebook pages, groups, and events.
 - [Email QR Code Generator](https://qr-generator.online/email-qr-code-generator): Generate `mailto:` QR codes with pre-filled recipient addresses, custom subject lines, and feedback body text.
 - [SMS QR Code Generator](https://qr-generator.online/sms-qr-code-generator): Create `SMSTO:` QR codes with pre-populated phone numbers and SMS marketing opt-in keywords.
 - [Phone Call QR Code Generator](https://qr-generator.online/phone-qr-code-generator): One-tap direct telephone dialing (`tel:`) for service fleet truck wraps, real estate yard signs, and hotline posters.

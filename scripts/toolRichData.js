@@ -954,5 +954,571 @@ export const TOOL_RICH_DATA = {
       { q: 'Is my survey link data kept private during generation?', a: 'Yes. All QR code generation executes 100% client-side in your web browser memory. No form URLs or survey data are ever uploaded or stored on external servers.' }
     ],
     bestPractices: 'Keep mobile surveys short (3 to 5 questions maximum). Use shortened Google Forms URLs for simpler barcode matrices, and offer an incentive like a discount or raffle entry to maximize completion rates.'
+  },
+  '/instagram-qr-code-generator': {
+    technicalOverview: {
+      title: 'Technical Architecture & Deep-Linking of Instagram QR Codes',
+      paragraphs: [
+        'An Instagram QR Code encodes a standardized Universal Link (on iOS via Apple App Search / Universal Links) or App Link (on Android via Intent filters) in the format `https://instagram.com/{username}`. When scanned by a smartphone camera, the operating system decodes the URL and resolves the native app URI schema (`instagram://user?username={username}`), opening the profile directly inside the native Instagram mobile application rather than an external web browser.',
+        'This direct app-handoff eliminates login friction: because the user is already authenticated inside their native Instagram app, they can immediately tap the "Follow" button or browse posts, Reels, and Stories without entering credentials.',
+        'QR Maker Studio generates permanent static Instagram QR codes using Level H error correction (30% redundancy). You can safely customize your code with Instagram iconic gradient colors (#E1306C, #F77737, #FCAF45) and embed an official Instagram camera glyph or brand logo in the center.'
+      ]
+    },
+    comparisonTable: {
+      title: 'Direct Instagram QR Code vs. Manual Handle Search vs. Linktree',
+      headers: ['Feature / Aspect', 'Instagram QR (QR Maker Studio)', 'Manual Handle Search', 'Linktree Landing Page'],
+      rows: [
+        ['Conversion Friction', 'Zero friction (1 scan → Instant profile)', 'High (Typing typos, multiple lookalikes)', 'Medium (Additional click required)'],
+        ['App Launch Speed', 'Instant native Instagram app launch', 'Manual app open + search query', 'Opens browser first, then app hop'],
+        ['Offline Scannability', '100% scannable from print & displays', 'Requires user to remember username', 'Requires multi-step navigation'],
+        ['Branding Customization', 'Full gradient color matching & logo', 'No visual branding', 'Third-party branding template'],
+        ['Lifetime Validity', 'Permanent lifetime validity (0 fees)', 'Permanent', 'Subject to service availability']
+      ]
+    },
+    steps: [
+      { number: 1, title: 'Enter Instagram Handle or Profile URL', description: 'Type your Instagram username (e.g. yourbrand) without the @ symbol, or paste your complete profile link.' },
+      { number: 2, title: 'Apply Instagram Gradient Colors & Logo', description: 'Select vibrant Instagram gradient colors, choose rounded or classy dot styles, and embed an Instagram camera logo.' },
+      { number: 3, title: 'Download Vector SVG for Print or High-Res PNG', description: 'Export scalable vector SVG for apparel tags, stickers, packaging, and store signage, or high-res PNG for digital media.' }
+    ],
+    features: [
+      { title: 'Native App Deep-Linking', description: 'Triggers instant deep-link routing into the installed Instagram app on iOS and Android for frictionless following.' },
+      { title: 'Permanent & Unlimited Scans', description: 'Static Instagram QR codes never expire and support unlimited lifetime scans with zero recurring costs.' },
+      { title: 'Vector SVG for Physical Print', description: 'Download vector SVG files that scale infinitely from 2 cm product tags to giant trade show banners.' },
+      { title: '100% Privacy & Zero Tracking', description: 'All QR generation executes locally in your browser without tracking, logging, or requiring account logins.' }
+    ],
+    sizingMatrix: {
+      title: 'Print Sizing & Recommended Placement for Instagram QR Codes',
+      description: 'Follow the optical scanning rule S = D / 10 to ensure instant scannability across all lighting conditions.',
+      headers: ['Placement / Application', 'Scanning Distance', 'Minimum Print Size', 'Recommended Call-to-Action'],
+      rows: [
+        ['Product Packaging & Box Flaps', '20 cm - 40 cm (8" - 16")', '25 mm x 25 mm (1.0" x 1.0")', '"Scan to Tag Us on Instagram"'],
+        ['Apparel Tags & Clothing Labels', '15 cm - 30 cm (6" - 12")', '22 mm x 22 mm (0.9" x 0.9")', '"Scan & Follow for Giveaways"'],
+        ['Restaurant Table Cards & Menus', '30 cm - 50 cm (12" - 20")', '35 mm x 35 mm (1.4" x 1.4")', '"Scan to View Daily Food Specials"'],
+        ['Storefront Windows & Cash Wraps', '50 cm - 100 cm (20" - 40")', '60 mm x 60 mm (2.4" x 2.4")', '"Follow Us for Exclusive In-Store Deals"'],
+        ['Event Banners & Stage Backdrops', '2.0 m - 5.0 m (6.5 ft - 16 ft)', '300 mm x 300 mm (12" x 12")', '"Scan to Share Your Event Photos"']
+      ]
+    },
+    useCases: [
+      { title: 'E-Commerce Unboxing Experiences', description: 'Include an Instagram QR code on packing slips and unboxing cards encouraging customers to post photos and tag your brand.' },
+      { title: 'Restaurant & Cafe Table Signage', description: 'Let diners view mouthwatering photo menus, food reels, and daily story highlights directly on your Instagram page.' },
+      { title: 'Beauty Salons & Fitness Studios', description: 'Showcase before-and-after client transformations and workout reels to walk-in clients waiting in reception areas.' },
+      { title: 'Fashion & Apparel Merchandising', description: 'Add QR codes to clothing hangtags so shoppers can see styling ideas and real customer lookbooks.' },
+      { title: 'Artist & Creator Exhibitions', description: 'Place Instagram QR codes beside gallery artwork so visitors can follow your creative journey in real time.' }
+    ],
+    troubleshooting: {
+      title: '5 Common Instagram QR Code Scanning Issues & Fixes',
+      points: [
+        'Including the "@" Symbol in the URL: When entering your username, omit the "@" prefix (e.g. use "brandname", not "@brandname") to generate a valid URL.',
+        'Private Account Restrictions: If your Instagram account is private, scanners must request to follow rather than viewing your grid immediately.',
+        'Low Foreground/Background Contrast: Avoid light pink foregrounds on white backgrounds. Ensure high contrast so phone cameras lock focus rapidly.',
+        'Embedding Oversized Center Logos: Keep center logos under 30% of the total QR width to maintain error correction readability.',
+        'Username Changes Breaking Old Codes: Changing your Instagram handle will break all previously printed static QR codes. Ensure your handle is finalized before mass printing.'
+      ]
+    },
+    faqs: [
+      { q: 'How do I create a QR code for my Instagram profile?', a: 'Enter your Instagram username (without @) or paste your profile URL, customize your brand colors and logo, and download your free QR code.' },
+      { q: 'Does scanning open the Instagram app directly?', a: 'Yes! Modern iOS and Android smartphones automatically trigger universal deep links that open your profile inside the Instagram app.' },
+      { q: 'Can I add an Instagram logo to the QR code?', a: 'Yes! QR Maker Studio includes Level H error correction, allowing you to embed the official Instagram camera logo or your custom brand icon in the center.' },
+      { q: 'Do Instagram QR codes expire?', a: 'No. Static Instagram QR codes are permanent and work indefinitely with unlimited scans.' },
+      { q: 'Can I link to a specific Instagram Reel or Post?', a: 'Yes! Simply copy the URL of the specific post or Reel from Instagram and paste the complete URL into the generator.' },
+      { q: 'What is the best format for printing stickers and packaging?', a: 'Download the vector SVG format for commercial printing presses and sticker die-cutters, or high-res PNG for digital documents.' },
+      { q: 'Is this Instagram QR code maker free for commercial use?', a: 'Yes, 100% free with no watermarks, no scan limits, and no subscriptions.' },
+      { q: 'What contrast ratio should I use for Instagram QR codes?', a: 'Ensure a contrast ratio of at least 4.5:1 between foreground dots and background. Dark magenta/purple on white or light yellow provides excellent scannability.' }
+    ],
+    bestPractices: 'Use the official Instagram gradient colors for high visual recognition, add an actionable CTA like "Scan to Follow Us", and test scan the physical print under varied lighting before volume production.'
+  },
+  '/youtube-qr-code-generator': {
+    technicalOverview: {
+      title: 'Technical Architecture & Deep-Linking of YouTube QR Codes',
+      paragraphs: [
+        'A YouTube QR Code encodes standard YouTube web URLs (such as `https://youtube.com/@channel`, `https://youtu.be/{videoId}`, or playlist URLs). When scanned by a mobile device camera, native OS link handlers map the HTTPS protocol to the YouTube application intent (`vnd.youtube:{videoId}`), launching playback directly inside the YouTube mobile app with zero browser redirection delay.',
+        'This direct app handoff provides an optimal viewer experience: users can immediately like, comment, subscribe, and stream in full HD or 4K resolution using their logged-in YouTube account.',
+        'Static YouTube QR codes generated on QR Maker Studio store the exact canonical video or channel URI directly within the matrix modules, ensuring permanent functionality for the lifetime of your YouTube content.'
+      ]
+    },
+    comparisonTable: {
+      title: 'YouTube QR Codes vs. Manual Video Search vs. Video Embeds',
+      headers: ['Feature', 'YouTube QR Code', 'Manual Search', 'Web Video Embed'],
+      rows: [
+        ['User Effort', '1 Camera Scan (Instant playback)', 'High (Typing keywords & finding video)', 'Medium (Must browse website)'],
+        ['App Integration', 'Direct native YouTube app launch', 'Manual search navigation', 'Web browser player (Limited engagement)'],
+        ['Conversion to Subscriptions', 'High (Native 1-tap subscribe)', 'Low (Competitor distraction in search)', 'Low (Requires opening app separately)'],
+        ['Print Compatibility', '100% print-ready (Flyers, posters, cards)', 'N/A', 'N/A (Digital only)'],
+        ['Lifetime Cost', '100% Free & Unlimited', 'Free', 'Hosting fees']
+      ]
+    },
+    steps: [
+      { number: 1, title: 'Paste YouTube Video, Channel, or Playlist Link', description: 'Copy your public YouTube channel URL, video link, or playlist URL and paste it into the input box.' },
+      { number: 2, title: 'Customize with YouTube Red & Play Icon', description: 'Select iconic YouTube red (#FF0000), choose rounded dot patterns, and embed a center YouTube play logo.' },
+      { number: 3, title: 'Download in SVG or PNG Format', description: 'Export your print-ready vector SVG for posters, banners, and packaging, or high-res PNG for slide decks.' }
+    ],
+    features: [
+      { title: 'Direct Native App Video Launch', description: 'Opens videos and channels directly inside the native YouTube app on mobile for highest viewer engagement.' },
+      { title: 'Permanent & Unlimited Scans', description: 'Static YouTube QR codes never expire and support unlimited lifetime views with zero recurring fees.' },
+      { title: 'Vector SVG for Large Format Print', description: 'Download infinitely scalable vector SVG graphics for conference banners, billboards, and stage backdrops.' },
+      { title: 'Privacy-First Architecture', description: 'All QR codes are generated client-side in browser memory with zero tracking or user profiling.' }
+    ],
+    sizingMatrix: {
+      title: 'Print Sizing & Distance Recommendations for YouTube QR Codes',
+      description: 'Calculate minimum print size using S = D / 10 for rapid camera recognition.',
+      headers: ['Placement / Application', 'Scanning Distance', 'Minimum Print Size', 'Recommended Call-to-Action'],
+      rows: [
+        ['Product Setup Manuals & Guides', '20 cm - 40 cm (8" - 16")', '25 mm x 25 mm (1.0" x 1.0")', '"Scan for Step-by-Step Video Setup"'],
+        ['Conference Presentation Slides', '2.0 m - 5.0 m (6.5 ft - 16 ft)', '250 mm x 250 mm (10" x 10")', '"Scan to Watch Recording & Subscribe"'],
+        ['Concert & Music Promotional Posters', '50 cm - 150 cm (20" - 60")', '80 mm x 80 mm (3.2" x 3.2")', '"Scan to Watch Official Music Video"'],
+        ['Event Stage Banners & Backdrops', '3.0 m - 8.0 m (10 ft - 26 ft)', '400 mm x 400 mm (16" x 16")', '"Scan to Stream Live Keynote"'],
+        ['Direct Mail Postcards & Brochures', '25 cm - 40 cm (10" - 16")', '30 mm x 30 mm (1.2" x 1.2")', '"Scan for Video Demonstration"']
+      ]
+    },
+    useCases: [
+      { title: 'Product Assembly & Setup Video Manuals', description: 'Eliminate complex paper instruction booklets by linking packaging QR codes to clear, step-by-step video assembly guides.' },
+      { title: 'Keynote Presentations & Slide Decks', description: 'Project a YouTube QR code on your closing slide so attendees can subscribe or review video demonstrations.' },
+      { title: 'Music & Film Entertainment Marketing', description: 'Place QR codes on album covers, concert flyers, and movie posters to stream official trailers and music videos.' },
+      { title: 'Real Estate Video Property Tours', description: 'Add YouTube QR codes to property yard signs and brochures allowing potential buyers to watch cinematic home walkthroughs.' },
+      { title: 'Culinary Packaging & Recipe Tutorials', description: 'Print QR codes on food ingredient packaging leading to engaging cooking tutorial videos.' }
+    ],
+    troubleshooting: {
+      title: '5 Common YouTube QR Code Issues & Solutions',
+      points: [
+        'Linking to Private or Unlisted Videos: Ensure your video privacy is set to "Public" or "Unlisted" so all scanners can view the video.',
+        'Age-Restricted Video Limitations: Age-gated videos require users to log in before viewing, which may add friction for some scanners.',
+        'Using Expired Playlist Links: Ensure playlist URLs are permanent and public rather than temporary user queue links.',
+        'Low Color Contrast: Avoid light red on pink backgrounds; maintain high contrast between the red foreground and white background canvas.',
+        'Overly Long Share Links: Use shortened youtu.be links (e.g. https://youtu.be/xyz) for cleaner, less dense QR code patterns.'
+      ]
+    },
+    faqs: [
+      { q: 'How do I link a QR code to my YouTube channel?', a: 'Copy your channel URL (e.g. https://youtube.com/@channel), paste it into our generator, customize your styling, and download your QR code.' },
+      { q: 'Can I create a QR code that auto-prompts users to subscribe?', a: 'Yes! Append ?sub_confirmation=1 to your channel URL (e.g. https://youtube.com/@channel?sub_confirmation=1) for an instant subscribe prompt.' },
+      { q: 'Does scanning open the native YouTube app on mobile?', a: 'Yes! Mobile devices automatically launch the YouTube app directly to the video or channel page.' },
+      { q: 'Can I link to a specific timestamp in a YouTube video?', a: 'Yes! Add ?t=1m30s to your video URL to start video playback at 1 minute and 30 seconds.' },
+      { q: 'Do YouTube QR codes expire?', a: 'No, static YouTube QR codes are permanent and work as long as your YouTube video remains active.' },
+      { q: 'Can I add a YouTube play icon to the center?', a: 'Yes! You can embed a YouTube play button or your channel avatar in the center of the QR code.' },
+      { q: 'Are there any scan limits on free YouTube QR codes?', a: 'No. All static QR codes generated on QR Maker Studio support unlimited lifetime scans with zero fees.' },
+      { q: 'What file formats are available for download?', a: 'You can export in high-resolution PNG, vector SVG, and WebP formats.' }
+    ],
+    bestPractices: 'Add a clear call-to-action such as "Scan to Watch Video Tutorial", use shortened youtu.be links for simpler barcode patterns, and test scan from the intended viewing distance.'
+  },
+  '/linkedin-qr-code-generator': {
+    technicalOverview: {
+      title: 'Technical Architecture of LinkedIn Profile QR Codes',
+      paragraphs: [
+        'A LinkedIn QR Code encodes the standard LinkedIn public profile URI (`https://www.linkedin.com/in/{profileId}`) or company page URL (`https://www.linkedin.com/company/{companyId}`). When scanned, smartphone operating systems trigger native Universal Links that launch the LinkedIn mobile app directly to the member profile page.',
+        'This direct app launch enables one-tap professional connection requests, direct messaging, profile following, and resume viewing while in-person networking at conferences, job fairs, and client meetings.',
+        'Static LinkedIn QR codes created on QR Maker Studio feature permanent lifetime scannability with zero data degradation, ensuring your printed business cards and portfolio materials remain functional indefinitely.'
+      ]
+    },
+    comparisonTable: {
+      title: 'LinkedIn QR Codes vs. Paper Business Cards vs. NFC Cards',
+      headers: ['Feature', 'LinkedIn QR Code', 'Paper Business Card', 'NFC Smart Card'],
+      rows: [
+        ['Connection Speed', 'Instant (1 Scan → 1 Tap Connect)', 'Slow (Manual typing required later)', 'Fast (Tap phone)'],
+        ['Cost per Contact', '$0.00 (Free & Unlimited)', 'High ongoing printing costs', '$20 - $50 hardware cost'],
+        ['Information Freshness', 'Always real-time & up-to-date', 'Static (Outdated if info changes)', 'Dependent on app portal'],
+        ['Device Compatibility', '100% of all smartphone cameras', 'N/A', 'Requires NFC-enabled devices'],
+        ['Networking Retention', 'High (Saved directly in LinkedIn network)', 'Low (88% of paper cards thrown away)', 'Medium']
+      ]
+    },
+    steps: [
+      { number: 1, title: 'Copy Your Public LinkedIn Profile URL', description: 'Open your LinkedIn profile, copy your public profile link (e.g. linkedin.com/in/yourname), and paste it into the generator.' },
+      { number: 2, title: 'Style with Professional LinkedIn Blue', description: 'Choose LinkedIn blue (#0A66C2), customize elegant corner shapes, and embed the official LinkedIn "in" logo.' },
+      { number: 3, title: 'Download Print-Ready Vector SVG', description: 'Export vector SVG for luxury embossed business cards, conference badges, resumes, and portfolio presentations.' }
+    ],
+    features: [
+      { title: 'Direct LinkedIn Mobile App Launch', description: 'Redirects scanners directly into the LinkedIn app for instant 1-tap connection requests.' },
+      { title: 'Permanent & Free Forever', description: 'Static LinkedIn QR codes never expire and support unlimited professional connections at zero cost.' },
+      { title: 'Vector SVG for Luxury Print', description: 'Razor-sharp vector clarity on matte, foil-stamped, and embossed business card stocks.' },
+      { title: '100% Private & Secure', description: 'No LinkedIn credentials or personal data are collected. All QR encoding runs client-side.' }
+    ],
+    sizingMatrix: {
+      title: 'Print Sizing & Placement Guide for LinkedIn QR Codes',
+      description: 'Follow standard optical sizing benchmarks for professional stationery and badges.',
+      headers: ['Placement / Application', 'Scanning Distance', 'Minimum Print Size', 'Recommended Call-to-Action'],
+      rows: [
+        ['Business Cards (Back Side)', '15 cm - 30 cm (6" - 12")', '22 mm x 22 mm (0.9" x 0.9")', '"Scan to Connect on LinkedIn"'],
+        ['Conference Badges & Lanyards', '30 cm - 60 cm (12" - 24")', '35 mm x 35 mm (1.4" x 1.4")', '"Scan to Connect"'],
+        ['Printed Resumes & CVs', '20 cm - 40 cm (8" - 16")', '25 mm x 25 mm (1.0" x 1.0")', '"Scan to View Recommendations"'],
+        ['Trade Show Booth Backdrop', '1.5 m - 3.0 m (5 ft - 10 ft)', '200 mm x 200 mm (8" x 8")', '"Scan to Follow Company Page"'],
+        ['Executive Email Signatures', 'Digital Screen', '120 px x 120 px', '"Connect on LinkedIn"']
+      ]
+    },
+    useCases: [
+      { title: 'Executive & Entrepreneur Business Cards', description: 'Modernize traditional business cards with a sleek LinkedIn QR code on the reverse side for instant digital connection.' },
+      { title: 'Conference Badges & Networking Mixers', description: 'Print LinkedIn QR codes on event badges so attendees can connect in seconds during networking breaks.' },
+      { title: 'Job Applicant Resumes & Portfolios', description: 'Include a LinkedIn QR code on your printed or PDF resume for hiring managers to easily review recommendations and portfolio samples.' },
+      { title: 'Trade Show B2B Lead Generation', description: 'Display company LinkedIn QR codes at booth stands encouraging corporate visitors to follow your brand.' },
+      { title: 'Speaker Presentation Slide Decks', description: 'Place your LinkedIn QR code on concluding presentation slides so audience members can connect and stay in touch.' }
+    ],
+    troubleshooting: {
+      title: '5 Best Practices for LinkedIn QR Scannability',
+      points: [
+        'Customize Your LinkedIn Public URL: Set a clean, professional custom URL (e.g. linkedin.com/in/john-doe) rather than a long random string.',
+        'Enable Public Profile Visibility: Ensure your LinkedIn profile visibility settings allow public viewing so scanners without LinkedIn accounts can still view your info.',
+        'Maintain Strong Color Contrast: Use dark blue or black on white paper for flawless camera recognition in dim conference halls.',
+        'Protect the Quiet Zone Margin: Maintain a clear border around the QR code with no overlapping text or graphics.',
+        'Avoid Small Font Size CTAs: Accompany the code with a clear, readable text label like "Scan to Connect on LinkedIn".'
+      ]
+    },
+    faqs: [
+      { q: 'How do I find my public LinkedIn profile link?', a: 'Open LinkedIn, view your profile, and copy the URL from your browser address bar or from the "Contact info" section.' },
+      { q: 'Does scanning open the LinkedIn app on mobile?', a: 'Yes! Scanning the QR code launches the native LinkedIn mobile app directly to your profile page.' },
+      { q: 'Can I add a LinkedIn QR code to my printed resume?', a: 'Yes! It allows recruiters to instantly review your recommendations, portfolio projects, and full work history.' },
+      { q: 'Do LinkedIn QR codes expire?', a: 'No. Static LinkedIn QR codes are permanent and work as long as your LinkedIn profile URL remains active.' },
+      { q: 'Can I create a QR code for a LinkedIn Company Page?', a: 'Yes! Simply paste your company page URL (e.g. https://www.linkedin.com/company/yourbrand).' },
+      { q: 'Can I embed the LinkedIn logo in the center?', a: 'Yes! You can embed the official LinkedIn "in" logo or your professional headshot in the center.' },
+      { q: 'What is the recommended size for business cards?', a: 'Print at a minimum size of 20 x 20 mm (0.8 x 0.8 inches) with sharp contrast.' },
+      { q: 'Is this LinkedIn QR generator free?', a: 'Yes, 100% free with unlimited scans, no watermarks, and no sign-up needed.' }
+    ],
+    bestPractices: 'Customize your LinkedIn URL handle for clean barcode density, print at minimum 22x22mm on business cards, and use professional LinkedIn blue (#0A66C2) with white background.'
+  },
+  '/twitter-qr-code-generator': {
+    technicalOverview: {
+      title: 'Technical Architecture of Twitter / X QR Codes',
+      paragraphs: [
+        'A Twitter / X QR Code encodes the standard X/Twitter profile link (`https://x.com/{handle}` or `https://twitter.com/{handle}`). When scanned by a mobile device, operating system universal link handlers open the native X app directly to the target profile or post.',
+        'This direct app integration allows users to follow your account, like tweets, join Twitter Spaces, and participate in hashtag conversations with zero typing friction.',
+        'QR Maker Studio generates permanent static Twitter/X QR codes with full custom color support, eye shape styling, and vector SVG exports for professional printing.'
+      ]
+    },
+    comparisonTable: {
+      title: 'Twitter QR Code vs. Manual Handle Search vs. Social Links',
+      headers: ['Feature', 'Twitter / X QR Code', 'Manual Search', 'Generic Link'],
+      rows: [
+        ['Conversion Speed', '1 Scan → Instant Profile Launch', 'Slow & error-prone', 'Opens browser first'],
+        ['App Launch', 'Direct native X app launch', 'Manual app search', 'Browser redirection'],
+        ['Print Ready', '100% Vector SVG & PNG', 'N/A', 'N/A'],
+        ['Lifetime Scans', 'Unlimited & Permanent', 'Unlimited', 'May expire'],
+        ['Cost', '$0.00 Free', 'Free', 'Varies']
+      ]
+    },
+    steps: [
+      { number: 1, title: 'Enter Your Twitter/X Handle or URL', description: 'Type your handle without the @ symbol, or paste your complete x.com or twitter.com profile link.' },
+      { number: 2, title: 'Style & Add X or Bird Logo', description: 'Customize colors, dot patterns, corner shapes, and embed an X or Twitter bird logo in the center.' },
+      { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for print on flyers, presentations, books, and merchandise.' }
+    ],
+    features: [
+      { title: 'Direct X App Launch', description: 'Opens the official X mobile app directly to your profile for one-tap following.' },
+      { title: 'Permanent & Free Forever', description: 'Static QR codes never expire and support unlimited lifetime scans with zero fees.' },
+      { title: 'Vector SVG for Print', description: 'Infinitely scalable vector files for conference banners, book jackets, and posters.' },
+      { title: '100% Private', description: 'All QR generation executes client-side in your web browser with zero data harvesting.' }
+    ],
+    sizingMatrix: {
+      title: 'Print Sizing & Distance Benchmarks for Twitter / X QR Codes',
+      description: 'Follow S = D / 10 optical formula for reliable scanning across all smartphones.',
+      headers: ['Placement / Application', 'Scanning Distance', 'Minimum Print Size', 'Recommended Call-to-Action'],
+      rows: [
+        ['Book Covers & Magazine Ads', '20 cm - 40 cm (8" - 16")', '25 mm x 25 mm (1.0" x 1.0")', '"Scan to Follow on X"'],
+        ['Conference Slides & Decks', '2.0 m - 5.0 m (6.5 ft - 16 ft)', '200 mm x 200 mm (8" x 8")', '"Scan to Join the Discussion on X"'],
+        ['Product Packaging & Inserts', '20 cm - 35 cm (8" - 14")', '25 mm x 25 mm (1.0" x 1.0")', '"Follow Us for Updates & Giveaways"'],
+        ['Event Badges & Lanyards', '30 cm - 50 cm (12" - 20")', '30 mm x 30 mm (1.2" x 1.2")', '"Scan to Connect on X"']
+      ]
+    },
+    useCases: [
+      { title: 'Keynote Presentations & Webinars', description: 'Display your Twitter QR code on presentation closing slides for live audience engagement.' },
+      { title: 'Author Books & Printed Articles', description: 'Print on book jackets and journal articles allowing readers to follow your real-time commentary.' },
+      { title: 'Podcast Cover Art & Merch', description: 'Direct podcast listeners to join live Twitter discussions and community spaces.' },
+      { title: 'Event Signage & Meetup Badges', description: 'Network at tech meetups and conferences with instant X profile access.' }
+    ],
+    troubleshooting: {
+      title: '5 Common Twitter / X QR Code Pitfalls',
+      points: [
+        'Do Not Include "@" Symbol in URL: Enter your raw handle (e.g. "handle", not "@handle") to ensure proper URL formatting.',
+        'Support for Both x.com and twitter.com: Both domains are fully supported and redirect seamlessly to your profile.',
+        'High Contrast Requirement: Ensure dark foreground modules against a white or light background canvas.',
+        'Center Logo Size: Keep center logos under 30% of the QR matrix width to ensure Level H error correction functions properly.',
+        'Test Before Printing: Test scan with both iOS and Android camera apps before mass printing.'
+      ]
+    },
+    faqs: [
+      { q: 'How do I create a QR code for Twitter / X?', a: 'Type your handle or paste your profile link, customize styling, and download your QR code.' },
+      { q: 'Does it support both x.com and twitter.com?', a: 'Yes! Both x.com and twitter.com URLs are fully supported and resolve properly.' },
+      { q: 'Does scanning open the X app on mobile?', a: 'Yes, on devices with the X app installed, scanning opens your profile directly within the app.' },
+      { q: 'Can I link to a specific Tweet or Thread?', a: 'Yes! Simply copy the URL of the tweet and paste it into the generator.' },
+      { q: 'Do Twitter QR codes expire?', a: 'No. Static Twitter QR codes are permanent and work indefinitely.' },
+      { q: 'Can I embed an X or Twitter logo in the center?', a: 'Yes! You can upload an X icon or Twitter bird logo to embed in the center.' },
+      { q: 'What file formats can I download?', a: 'High-resolution PNG, vector SVG, and WebP formats are available.' },
+      { q: 'Is there any fee or scan limit?', a: 'No, 100% free with unlimited scans and no watermarks.' }
+    ],
+    bestPractices: 'Use clean high-contrast black/white styling with the X logo, include a clear "Scan to Follow on X" CTA, and export in vector SVG for print.'
+  },
+  '/tiktok-qr-code-generator': {
+    technicalOverview: {
+      title: 'Technical Architecture & Viral Growth via TikTok QR Codes',
+      paragraphs: [
+        'A TikTok QR Code encodes the direct mobile profile URI (`https://www.tiktok.com/@{username}`) or video link. When scanned by a mobile device camera, OS universal link handlers launch the TikTok native application directly to the creator profile.',
+        'This direct app launch removes login and search barriers, allowing viewers to immediately follow, like videos, and participate in branded hashtag challenges with a single tap.',
+        'Static TikTok QR codes generated on QR Maker Studio feature permanent lifetime scannability with zero scan limits and full vector SVG export capabilities.'
+      ]
+    },
+    comparisonTable: {
+      title: 'TikTok QR Code vs. Manual Search vs. In-App QR Code',
+      headers: ['Feature', 'QR Maker Studio TikTok QR', 'Manual Handle Search', 'In-App TikCode'],
+      rows: [
+        ['Customization Options', 'Full color palettes, dot styles, SVG', 'None', 'Fixed in-app template only'],
+        ['Vector SVG Print Export', 'Yes (Infinitely scalable vector SVG)', 'N/A', 'Low-res raster image only'],
+        ['Direct Native App Launch', 'Yes (Instant profile handoff)', 'Manual typing required', 'Yes'],
+        ['Permanent & Free', '100% Free forever with no limits', 'Free', 'Requires app access'],
+        ['Custom Logo Embedding', 'Yes (Embed your brand icon)', 'No', 'TikTok logo only']
+      ]
+    },
+    steps: [
+      { number: 1, title: 'Enter TikTok Username or Link', description: 'Type your TikTok handle (e.g. username) without the @ symbol, or paste your complete profile URL.' },
+      { number: 2, title: 'Apply TikTok Vibrant Neon Colors', description: 'Select TikTok cyan (#00F2EA) and magenta (#FF0050) colors, customize dot patterns, and embed the TikTok logo.' },
+      { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for stickers, flyers, product tags, and merchandise.' }
+    ],
+    features: [
+      { title: 'Direct TikTok App Launch', description: 'Launches the native TikTok app directly to your profile page for instant following.' },
+      { title: 'Permanent & Free Forever', description: 'Static TikTok QR codes never expire and support unlimited lifetime scans with zero fees.' },
+      { title: 'Vector SVG for Apparel & Print', description: 'Scalable vector formatting perfect for screen printing on hoodies, stickers, and posters.' },
+      { title: '100% Privacy Protection', description: 'All QR generation executes locally in your browser memory with zero tracking.' }
+    ],
+    sizingMatrix: {
+      title: 'Print Sizing & Placement Guide for TikTok QR Codes',
+      description: 'Calculate minimum print size using S = D / 10 for rapid camera recognition.',
+      headers: ['Placement / Application', 'Scanning Distance', 'Minimum Print Size', 'Recommended Call-to-Action'],
+      rows: [
+        ['Merchandise & Apparel Tags', '15 cm - 30 cm (6" - 12")', '22 mm x 22 mm (0.9" x 0.9")', '"Scan to Follow on TikTok"'],
+        ['Vinyl Stickers & Decals', '20 cm - 40 cm (8" - 16")', '25 mm x 25 mm (1.0" x 1.0")', '"Scan for Viral TikTok Reels"'],
+        ['Restaurant Table Tents & Menus', '30 cm - 50 cm (12" - 20")', '35 mm x 35 mm (1.4" x 1.4")', '"Scan to Tag Us on TikTok"'],
+        ['Event Stage Banners & Posters', '1.0 m - 3.0 m (3 ft - 10 ft)', '150 mm x 150 mm (6" x 6")', '"Scan to Join the Challenge"']
+      ]
+    },
+    useCases: [
+      { title: 'Clothing & Merchandise Tags', description: 'Print TikTok QR codes on apparel tags to convert merchandise buyers into loyal social followers.' },
+      { title: 'Stickers & Street Marketing', description: 'Distribute branded stickers with your TikTok QR code to drive organic local discovery.' },
+      { title: 'Restaurant & Retail Displays', description: 'Encourage shoppers to film TikTok reviews and tag your brand for store discounts.' },
+      { title: 'Concerts & Festival Signage', description: 'Display large QR codes at live events to promote event hashtag challenges.' }
+    ],
+    troubleshooting: {
+      title: '5 Common TikTok QR Code Pitfalls',
+      points: [
+        'Omit the "@" Symbol: Enter your clean handle without the "@" character for valid URL generation.',
+        'High Contrast Requirement: Maintain high contrast between foreground dots and background canvas.',
+        'Verify Handle Accuracy: Double check your TikTok username spelling before mass printing.',
+        'Test on Mobile Devices: Verify the QR code launches the TikTok app on both iOS and Android.',
+        'Center Logo Proportions: Keep center logos under 30% of the total QR width.'
+      ]
+    },
+    faqs: [
+      { q: 'How do I create a QR code for my TikTok account?', a: 'Enter your TikTok handle (without @) or paste your profile URL, customize your design, and download your QR code.' },
+      { q: 'Does scanning open the TikTok app directly?', a: 'Yes! On mobile devices with TikTok installed, the QR code opens your profile directly in the TikTok app.' },
+      { q: 'Can I link to a specific TikTok video or sound?', a: 'Yes! Simply copy the share link of the specific video or sound and paste it into the generator.' },
+      { q: 'Do TikTok QR codes expire?', a: 'No. Static TikTok QR codes are permanent and work indefinitely with unlimited scans.' },
+      { q: 'Can I embed the TikTok logo in the center?', a: 'Yes! You can upload the TikTok logo or your creator avatar to embed in the center.' },
+      { q: 'What format is best for printing stickers and apparel?', a: 'Download vector SVG for screen printing and vinyl die-cutters, or PNG for digital documents.' },
+      { q: 'Are there any scan limits on free TikTok QR codes?', a: 'No. All codes support unlimited lifetime scans with zero fees.' },
+      { q: 'Can I use custom TikTok colors?', a: 'Yes! You can customize with TikTok iconic cyan (#00F2EA) and magenta (#FF0050) colors.' }
+    ],
+    bestPractices: 'Use TikTok vibrant neon colors, add an engaging CTA like "Scan to Watch on TikTok", and export in vector SVG for crisp physical printing.'
+  },
+  '/telegram-qr-code-generator': {
+    technicalOverview: {
+      title: 'Technical Architecture & Protocols of Telegram QR Codes',
+      paragraphs: [
+        'A Telegram QR Code encodes the standard Telegram universal link (`https://t.me/{username}` or `https://t.me/joinchat/{inviteHash}`). When scanned by a smartphone camera, the OS deep link handler maps to the Telegram app protocol (`tg://resolve?domain={username}`), opening the chat, group, channel, or bot directly in the Telegram application.',
+        'This direct app routing eliminates manual searching and allows users to join public channels, private communities, and customer support chats with a single tap.',
+        'Static Telegram QR codes created on QR Maker Studio are permanent, private, and fully customizable with signature Telegram blue styling and vector SVG exports.'
+      ]
+    },
+    comparisonTable: {
+      title: 'Telegram QR Code vs. Manual Search vs. Telegram In-App QR',
+      headers: ['Feature', 'QR Maker Studio Telegram QR', 'Manual Handle Search', 'Telegram In-App QR'],
+      rows: [
+        ['Customization Options', 'Full colors, dot styles, custom logos, SVG', 'None', 'Basic color themes only'],
+        ['Vector SVG Print Export', 'Yes (Infinitely scalable vector SVG)', 'N/A', 'Raster only'],
+        ['Bot & Group Invite Support', 'Yes (Supports channels, groups, bots)', 'Manual search only', 'Profiles only'],
+        ['Permanent & Free', '100% Free forever with no limits', 'Free', 'Free'],
+        ['Browser-Based Privacy', '100% Client-side generation', 'N/A', 'Server-side']
+      ]
+    },
+    steps: [
+      { number: 1, title: 'Enter Telegram Username, Group, or Channel Link', description: 'Type your Telegram username (e.g. username), channel name, or paste your group invite link.' },
+      { number: 2, title: 'Style with Telegram Blue & Paper Plane Logo', description: 'Choose Telegram signature blue (#0088CC), customize corner shapes, and embed the paper plane logo.' },
+      { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for websites, flyers, packaging, and event banners.' }
+    ],
+    features: [
+      { title: 'One-Tap Telegram App Launch', description: 'Launches the native Telegram app directly to the chat, group, or channel for instant joining.' },
+      { title: 'Permanent & Free Forever', description: 'Static Telegram QR codes never expire and support unlimited lifetime scans with zero fees.' },
+      { title: 'Vector SVG Format', description: 'Scalable vector files for high-resolution event banners, flyers, and merchandise.' },
+      { title: '100% Privacy Protection', description: 'All QR codes are generated client-side with zero data storage or link logging.' }
+    ],
+    sizingMatrix: {
+      title: 'Print Sizing & Distance Recommendations for Telegram QR Codes',
+      description: 'Follow S = D / 10 optical formula for reliable scanning across all smartphones.',
+      headers: ['Placement / Application', 'Scanning Distance', 'Minimum Print Size', 'Recommended Call-to-Action'],
+      rows: [
+        ['Product Manuals & Customer Support', '20 cm - 40 cm (8" - 16")', '25 mm x 25 mm (1.0" x 1.0")', '"Scan for 24/7 Telegram Support"'],
+        ['Crypto & Web3 Community Flyers', '30 cm - 60 cm (12" - 24")', '35 mm x 35 mm (1.4" x 1.4")', '"Scan to Join Telegram Community"'],
+        ['Conference Badges & Banners', '50 cm - 150 cm (20" - 60")', '75 mm x 75 mm (3.0" x 3.0")', '"Scan to Join Attendee Group"'],
+        ['Website Footers & Headers', 'Digital Screen', '120 px x 120 px', '"Join Our Telegram Channel"']
+      ]
+    },
+    useCases: [
+      { title: 'Crypto & Web3 Community Growth', description: 'Invite investors and enthusiasts into your official Telegram community group from flyers and conferences.' },
+      { title: 'Customer Support Channels', description: 'Print Telegram QR codes on product packaging and user manuals for instant 1-on-1 customer service.' },
+      { title: 'News & Signal Broadcast Channels', description: 'Direct readers from printed publications to your real-time Telegram news feed.' },
+      { title: 'Event & Conference Attendee Groups', description: 'Create temporary networking groups accessible to attendees via badge QR codes.' }
+    ],
+    troubleshooting: {
+      title: '5 Common Telegram QR Code Pitfalls',
+      points: [
+        'Omit the "@" Symbol: Enter your clean username without the "@" symbol for valid t.me link generation.',
+        'Private Group Invite Links: For private groups, use the full t.me/joinchat or t.me/+link format.',
+        'High Contrast Requirement: Ensure high contrast between blue foreground dots and white background.',
+        'Center Logo Proportions: Keep center logos under 30% of the total QR width.',
+        'Test on Mobile Devices: Verify the QR code launches the Telegram app on both iOS and Android.'
+      ]
+    },
+    faqs: [
+      { q: 'How do I create a QR code for a Telegram channel or group?', a: 'Copy your public channel link (https://t.me/yourchannel) or group invite link, paste it into our generator, customize your design, and download your QR code.' },
+      { q: 'Does scanning open the Telegram app automatically?', a: 'Yes! On smartphones with Telegram installed, scanning triggers the t.me deep link to open the chat or channel directly in Telegram.' },
+      { q: 'Can I generate a QR code for a Telegram Bot?', a: 'Yes! Paste your bot link (e.g. https://t.me/your_bot) into the generator. When scanned, it opens the bot with the "Start" button ready.' },
+      { q: 'Do Telegram QR codes expire?', a: 'No. Static Telegram QR codes are permanent and work as long as your Telegram link remains active.' },
+      { q: 'Can I embed the Telegram paper plane logo in the center?', a: 'Yes! You can upload the official Telegram icon or your community logo to embed in the center.' },
+      { q: 'Are there any fees or scan limits?', a: 'No, our generator is 100% free with unlimited scans, no watermarks, and no sign-up needed.' },
+      { q: 'What file formats can I download?', a: 'You can download high-resolution PNG, vector SVG, and WebP formats.' },
+      { q: 'Is my group link kept secure during generation?', a: 'Yes, all QR generation executes 100% locally in your browser memory without being transmitted to external servers.' }
+    ],
+    bestPractices: 'Use Telegram signature blue (#0088CC), embed the paper plane logo, add an actionable CTA like "Scan to Join Telegram Community", and download in vector SVG for print.'
+  },
+  '/paypal-qr-code-generator': {
+    technicalOverview: {
+      title: 'Technical Architecture & Security of PayPal QR Codes',
+      paragraphs: [
+        'A PayPal QR Code encodes the standard PayPal.me payment URI (`https://paypal.me/{username}/{amount}`) or direct PayPal checkout URL. When scanned by a smartphone camera, the operating system launches the native PayPal mobile application or mobile browser checkout with your account recipient and optional fixed amount pre-filled.',
+        'This touchless payment solution allows merchants, freelancers, market vendors, and non-profits to accept cashless payments without purchasing or leasing expensive POS card terminal hardware.',
+        'QR Maker Studio generates permanent static PayPal QR codes with zero platform fees, bank-grade client-side encryption, and downloadable vector SVG exports for professional acrylic counter stands and invoice headers.'
+      ]
+    },
+    comparisonTable: {
+      title: 'PayPal QR Codes vs. Traditional POS Terminals vs. Bank Transfers',
+      headers: ['Feature', 'PayPal QR Code', 'POS Card Terminal', 'Direct Bank Transfer'],
+      rows: [
+        ['Hardware Cost', '$0.00 (Print on paper/acrylic)', '$200 - $800 + Monthly rental', '$0.00'],
+        ['Setup Time', '30 seconds (Instant generation)', '1 - 2 weeks approval', 'Manual setup'],
+        ['Payment Speed', 'Instant mobile checkout', 'Instant card dip/tap', '1 - 3 business days wire'],
+        ['Contactless & Hygienic', '100% Touchless mobile payment', 'Requires physical card contact', 'Online banking login'],
+        ['Print Scalability', 'Print unlimited counter stands & flyers', 'Requires 1 physical device per till', 'Manual account number entry']
+      ]
+    },
+    steps: [
+      { number: 1, title: 'Enter PayPal.me Username or Link', description: 'Enter your PayPal.me username (e.g. yourname) or paste your complete PayPal payment link.' },
+      { number: 2, title: 'Style with PayPal Blue & Logo', description: 'Select PayPal official blue (#003087, #0079C1), choose dot patterns, and embed the PayPal logo.' },
+      { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for print on invoices, counter displays, and stickers.' }
+    ],
+    features: [
+      { title: 'Zero Platform Fees', description: 'Our generator is 100% free with zero transaction fees or commissions added to your payments.' },
+      { title: 'Instant Mobile Checkout', description: 'Opens the PayPal app or mobile web checkout directly for fast, frictionless payment.' },
+      { title: 'Vector SVG for Signage', description: 'Export crisp vector graphics for durable acrylic counter stands, stickers, and menus.' },
+      { title: 'Bank-Grade Security', description: 'No financial credentials touch our servers. All QR encoding runs client-side in your browser.' }
+    ],
+    sizingMatrix: {
+      title: 'Print Sizing & Placement Guide for PayPal QR Codes',
+      description: 'Follow S = D / 10 optical formula for reliable scanning across all smartphones.',
+      headers: ['Placement / Application', 'Scanning Distance', 'Minimum Print Size', 'Recommended Call-to-Action'],
+      rows: [
+        ['Acrylic Counter Stands & Tills', '25 cm - 40 cm (10" - 16")', '35 mm x 35 mm (1.4" x 1.4")', '"Scan to Pay with PayPal"'],
+        ['Printed Invoices & Receipts', '15 cm - 30 cm (6" - 12")', '25 mm x 25 mm (1.0" x 1.0")', '"Scan to Settle Invoice via PayPal"'],
+        ['Tip Jars & Musician Cases', '30 cm - 60 cm (12" - 24")', '40 mm x 40 mm (1.6" x 1.6")', '"Scan to Tip via PayPal"'],
+        ['Charity Donation Posters', '50 cm - 100 cm (20" - 40")', '75 mm x 75 mm (3.0" x 3.0")', '"Scan to Donate via PayPal"']
+      ]
+    },
+    useCases: [
+      { title: 'Farmers Markets & Pop-Up Shops', description: 'Accept touchless payments at market stalls and craft fairs without a POS terminal or Wi-Fi card reader.' },
+      { title: 'Freelancer & Contractor Invoices', description: 'Print PayPal QR codes on PDF invoices so clients can settle payments immediately by scanning.' },
+      { title: 'Musician Tip Jars & Busking', description: 'Collect cashless tips and donations at live performances and service counters.' },
+      { title: 'Non-Profit Charity Donations', description: 'Display donation QR codes on charity gala tables, banners, and fundraising flyers.' }
+    ],
+    troubleshooting: {
+      title: '5 Best Practices for PayPal QR Code Payments',
+      points: [
+        'Activate PayPal.me Link First: Ensure your PayPal.me link is claimed and active in your PayPal account settings before printing.',
+        'Pre-Fill Amount (Optional): Append the amount to your link (e.g. paypal.me/user/25) for fixed-price items.',
+        'High Contrast Requirement: Use dark PayPal blue or black on white background for rapid optical recognition.',
+        'Center Logo Safety: Keep center logos under 30% width to ensure Level H error correction maintains data integrity.',
+        'Test with Real Payment: Make a small test payment to verify funds deposit into the correct PayPal wallet.'
+      ]
+    },
+    faqs: [
+      { q: 'How do I create a PayPal.me QR code?', a: 'Enter your PayPal.me username (e.g. yourbusiness) or paste your full PayPal link, customize your styling, and click download.' },
+      { q: 'Can I set a fixed payment amount in the QR code?', a: 'Yes! Append the amount to your PayPal.me link (e.g. https://paypal.me/yourbusiness/25 for $25).' },
+      { q: 'Does the customer need a PayPal account to pay?', a: 'Customers with PayPal can pay in one tap. Those without an account can pay using debit/credit card via PayPal guest checkout.' },
+      { q: 'Are there any fees from QR Maker Studio?', a: 'None! QR Maker Studio charges 0% fees. Standard PayPal transaction fees apply as per your PayPal agreement.' },
+      { q: 'Do PayPal QR codes expire?', a: 'No. Static PayPal QR codes are permanent and work as long as your PayPal account is active.' },
+      { q: 'Can I embed the PayPal logo in the center?', a: 'Yes! You can embed the PayPal "PP" icon or your own company logo in the center.' },
+      { q: 'What format is best for printing counter signs?', a: 'Download vector SVG for large acrylic counter stands and banners, or PNG for printed invoice headers.' },
+      { q: 'Is my financial information secure during generation?', a: 'Yes. All QR generation executes 100% locally in your browser memory without being transmitted to external servers.' }
+    ],
+    bestPractices: 'Use PayPal official blue branding, display an acrylic counter stand with a clear "Scan to Pay with PayPal" CTA, and export in vector SVG.'
+  },
+  '/upi-qr-code-generator': {
+    technicalOverview: {
+      title: 'Technical Architecture & NPCI Specification of UPI QR Codes',
+      paragraphs: [
+        'A UPI QR Code (Unified Payments Interface Quick Response Code) encodes the standardized NPCI payment URI schema (`upi://pay?pa={vpa}&pn={name}&am={amount}&cu=INR`). When scanned by any UPI-compatible application in India, the application decodes the VPA (Virtual Payment Address), payee legal name, currency (INR), and optional pre-set transaction amount.',
+        'Because the UPI protocol is standardized across India by NPCI, a single QR code works seamlessly with Google Pay (GPay), PhonePe, Paytm, BHIM, Amazon Pay, CRED, and all mobile banking applications without proprietary lock-in.',
+        'QR Maker Studio generates permanent static UPI QR codes with zero platform commission, custom shop branding, and downloadable vector SVG exports for professional shop counter displays.'
+      ]
+    },
+    comparisonTable: {
+      title: 'UPI QR Codes vs. Card Swipe POS Machines vs. Cash Payments',
+      headers: ['Feature', 'UPI QR Code', 'Card Swipe POS Machine', 'Cash Payments'],
+      rows: [
+        ['Hardware Cost', '₹0 (Free printable QR code)', '₹1,500 - ₹5,000 + Monthly rental', '₹0'],
+        ['Merchant Transaction Fee', '0% (NPCI zero-MDR on standard UPI)', '1.5% - 2.5% MDR per transaction', 'Cash handling costs & risk'],
+        ['Settlement Speed', 'Instant real-time bank credit', 'T+1 or T+2 business days', 'Manual bank deposit'],
+        ['App Interoperability', 'Universal (GPay, PhonePe, Paytm, BHIM)', 'Card brand dependent', 'N/A'],
+        ['Contactless & Hygienic', '100% Touchless mobile payment', 'Requires physical card/PIN entry', 'Physical currency exchange']
+      ]
+    },
+    steps: [
+      { number: 1, title: 'Enter UPI ID (VPA) & Payee Name', description: 'Type your UPI ID (e.g. yourname@oksbi, merchant@paytm), payee business name, and optional fixed amount.' },
+      { number: 2, title: 'Customize Colors & Embed UPI Logo', description: 'Select vibrant colors, customize corner eyes, and embed an official UPI or shop logo in the center.' },
+      { number: 3, title: 'Download in SVG or PNG Format', description: 'Export your print-ready QR code for shop counters, billing receipts, acrylic stands, and digital invoices.' }
+    ],
+    features: [
+      { title: 'Universal UPI App Interoperability', description: 'Works with Google Pay, PhonePe, Paytm, BHIM, Amazon Pay, CRED, and all Indian banking apps.' },
+      { title: 'Zero Platform Commission', description: '100% free with zero transaction fees, setup charges, or monthly subscriptions.' },
+      { title: 'Standard NPCI UPI Protocol', description: 'Generates compliant upi://pay protocol strings for flawless interoperability across all scanners.' },
+      { title: 'Vector SVG for Shop Displays', description: 'Print durable high-resolution counter stands, stickers, and wall displays without pixelation.' }
+    ],
+    sizingMatrix: {
+      title: 'Print Sizing & Placement Guide for UPI QR Codes',
+      description: 'Follow S = D / 10 optical formula for reliable scanning across all smartphones.',
+      headers: ['Placement / Application', 'Scanning Distance', 'Minimum Print Size', 'Recommended Call-to-Action'],
+      rows: [
+        ['Billing Counter & Cash Wrap Stands', '25 cm - 40 cm (10" - 16")', '40 mm x 40 mm (1.6" x 1.6")', '"Scan & Pay with Any UPI App"'],
+        ['Storefront Windows & Entrance Doors', '50 cm - 100 cm (20" - 40")', '75 mm x 75 mm (3.0" x 3.0")', '"Accepted Here: GPay, PhonePe, Paytm"'],
+        ['Delivery Invoices & Bill Folders', '15 cm - 30 cm (6" - 12")', '25 mm x 25 mm (1.0" x 1.0")', '"Scan to Pay Bill via UPI"'],
+        ['Tabletop Dining Cards & Cafes', '30 cm - 50 cm (12" - 20")', '35 mm x 35 mm (1.4" x 1.4")', '"Scan to Pay Tableside"']
+      ]
+    },
+    useCases: [
+      { title: 'Retail Shops & Supermarkets', description: 'Display at billing counters for rapid, touchless customer payment settlement with zero POS machine rental fees.' },
+      { title: 'Freelancers & Service Providers', description: 'Add UPI QR codes to client invoices for instant direct-to-bank settlement without wire transfer delays.' },
+      { title: 'Restaurants, Cafes & Food Trucks', description: 'Place UPI QR codes on dining tables and bill folders for convenient customer bill settlement.' },
+      { title: 'Donations & Cultural Festivals', description: 'Collect cashless contributions and entry fees at community festivals and religious trusts.' }
+    ],
+    troubleshooting: {
+      title: '5 Best Practices for UPI QR Code Payments',
+      points: [
+        'Verify VPA Spelling: Double-check your UPI ID (e.g. mobile@upi or name@bank) before mass printing.',
+        'Include Payee Name (pn parameter): Ensure your legal or business name is included so customers can verify the recipient before approving payment.',
+        'High Contrast Requirement: Use black or dark navy on white for rapid scanning under dim shop lighting.',
+        'Protect from Wear & Tear: Laminate printed QR codes or use acrylic display stands to avoid surface scratches that impede scanning.',
+        'Test Across Multiple Apps: Test scan using GPay, PhonePe, and Paytm to verify smooth payment flow.'
+      ]
+    },
+    faqs: [
+      { q: 'What is a UPI ID (VPA) and where do I find it?', a: 'Your UPI ID is a unique identifier linked to your bank account (e.g. yourname@oksbi, mobile@paytm). You can find it in your GPay, PhonePe, or Paytm profile.' },
+      { q: 'Which payment apps can scan this UPI QR code?', a: 'All UPI apps in India: Google Pay (GPay), PhonePe, Paytm, BHIM, Amazon Pay, CRED, and all mobile banking apps.' },
+      { q: 'Can I pre-fill a fixed payment amount in the QR code?', a: 'Yes! Enter an amount in the generator form, and the payer app will automatically display that exact amount.' },
+      { q: 'Are there any platform charges from QR Maker Studio?', a: 'No. QR Maker Studio is 100% free with zero transaction fees or recurring charges.' },
+      { q: 'Do UPI QR codes expire?', a: 'No. Static UPI QR codes have permanent validity and work indefinitely as long as your linked UPI ID is active.' },
+      { q: 'Can I add my shop or company logo to the UPI QR code?', a: 'Yes! You can embed your shop logo or the official UPI icon in the center of the QR code.' },
+      { q: 'What format should I download for printing counter stands?', a: 'Download vector SVG for crisp large-scale printing on acrylic stands, sunboard signs, and vinyl stickers.' },
+      { q: 'Is my banking information secure during generation?', a: 'Yes. All QR generation executes 100% locally in your browser memory without being transmitted to external servers.' }
+    ],
+    bestPractices: 'Display an acrylic counter stand with the UPI logo, list "Accepted: GPay, PhonePe, Paytm, BHIM", and test scan with multiple apps before placing on counters.'
   }
 };

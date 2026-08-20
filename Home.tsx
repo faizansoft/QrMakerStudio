@@ -139,6 +139,90 @@ const TABS = [
       </svg>
     )
   },
+  {
+    id: 'instagram',
+    label: 'Instagram',
+    description: 'Share your Instagram profile',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a6 6 0 016-6h6a6 6 0 016 6v6a6 6 0 01-6 6H9a6 6 0 01-6-6V9z" />
+        <circle cx="12" cy="12" r="4" strokeWidth="2" />
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    )
+  },
+  {
+    id: 'youtube',
+    label: 'YouTube',
+    description: 'Link to your YouTube channel or video',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    )
+  },
+  {
+    id: 'linkedin',
+    label: 'LinkedIn',
+    description: 'Share your LinkedIn profile',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+        <circle cx="4" cy="4" r="2" strokeWidth="2" />
+      </svg>
+    )
+  },
+  {
+    id: 'twitter',
+    label: 'Twitter / X',
+    description: 'Share your Twitter/X profile',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4l6.5 8L4 20h2l5.5-6.5L16 20h4l-6.5-8L20 4h-2l-5.5 6.5L8 4H4z" />
+      </svg>
+    )
+  },
+  {
+    id: 'tiktok',
+    label: 'TikTok',
+    description: 'Share your TikTok profile',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12a4 4 0 104 4V4a5 5 0 005 5" />
+      </svg>
+    )
+  },
+  {
+    id: 'telegram',
+    label: 'Telegram',
+    description: 'Share your Telegram profile or group',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+      </svg>
+    )
+  },
+  {
+    id: 'paypal',
+    label: 'PayPal',
+    description: 'Accept PayPal payments via QR',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    )
+  },
+  {
+    id: 'upi',
+    label: 'UPI',
+    description: 'Accept UPI payments (India)',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    )
+  },
 ];
 
 // Template Presets
@@ -241,6 +325,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   const [locationInput, setLocationInput] = useState({ lat: '', lng: '', query: '' });
   const [eventInput, setEventInput] = useState({ title: '', location: '', start: '', end: '', description: '' });
   const [cryptoInput, setCryptoInput] = useState({ coin: 'Bitcoin', address: '', amount: '' });
+  const [instagramInput, setInstagramInput] = useState('');
+  const [youtubeInput, setYoutubeInput] = useState('');
+  const [linkedinInput, setLinkedinInput] = useState('');
+  const [twitterInput, setTwitterInput] = useState('');
+  const [tiktokInput, setTiktokInput] = useState('');
+  const [telegramInput, setTelegramInput] = useState('');
+  const [paypalInput, setPaypalInput] = useState('');
+  const [upiInput, setUpiInput] = useState({ vpa: '', name: '', amount: '' });
 
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
@@ -341,10 +433,36 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
         if (!cryptoInput.address) return '';
         const coinScheme = cryptoInput.coin.toLowerCase();
         return `${coinScheme}:${cryptoInput.address}${cryptoInput.amount ? `?amount=${cryptoInput.amount}` : ''}`;
+      case 'instagram':
+        if (!instagramInput.trim()) return '';
+        const igUser = instagramInput.trim().replace(/^@/, '');
+        return `https://instagram.com/${igUser}`;
+      case 'youtube':
+        return youtubeInput.trim();
+      case 'linkedin':
+        return linkedinInput.trim();
+      case 'twitter':
+        if (!twitterInput.trim()) return '';
+        const twHandle = twitterInput.trim().replace(/^@/, '');
+        return twHandle.startsWith('http') ? twHandle : `https://x.com/${twHandle}`;
+      case 'tiktok':
+        if (!tiktokInput.trim()) return '';
+        const ttUser = tiktokInput.trim().replace(/^@/, '');
+        return `https://tiktok.com/@${ttUser}`;
+      case 'telegram':
+        if (!telegramInput.trim()) return '';
+        const tgUser = telegramInput.trim().replace(/^@/, '');
+        return `https://t.me/${tgUser}`;
+      case 'paypal':
+        if (!paypalInput.trim()) return '';
+        return paypalInput.trim().startsWith('http') ? paypalInput.trim() : `https://paypal.me/${paypalInput.trim()}`;
+      case 'upi':
+        if (!upiInput.vpa) return '';
+        return `upi://pay?pa=${encodeURIComponent(upiInput.vpa)}&pn=${encodeURIComponent(upiInput.name)}${upiInput.amount ? `&am=${upiInput.amount}` : ''}`;
       default:
         return urlInput.trim();
     }
-  }, [activeTab, urlInput, textInput, vCardInput, wifiInput, emailInput, smsInput, phoneInput, whatsappInput, locationInput, eventInput, cryptoInput]);
+  }, [activeTab, urlInput, textInput, vCardInput, wifiInput, emailInput, smsInput, phoneInput, whatsappInput, locationInput, eventInput, cryptoInput, instagramInput, youtubeInput, linkedinInput, twitterInput, tiktokInput, telegramInput, paypalInput, upiInput]);
 
   const generated = qrData.length > 0;
 
@@ -800,6 +918,131 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                               placeholder="Crypto Wallet Address *"
                               value={cryptoInput.address}
                               onChange={(e) => setCryptoInput({ ...cryptoInput, address: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                          </div>
+                        )}
+
+                        {/* INSTAGRAM */}
+                        {activeTab === 'instagram' && (
+                          <div className="flex flex-col gap-2">
+                            <input
+                              type="text"
+                              placeholder="Instagram username (without @)"
+                              value={instagramInput}
+                              onChange={(e) => setInstagramInput(e.target.value)}
+                              className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
+                            />
+                            <span className="text-xs text-white/70">We'll generate instagram.com/username link automatically</span>
+                          </div>
+                        )}
+
+                        {/* YOUTUBE */}
+                        {activeTab === 'youtube' && (
+                          <div className="flex flex-col gap-2">
+                            <input
+                              type="url"
+                              placeholder="https://youtube.com/@yourchannel or video URL"
+                              value={youtubeInput}
+                              onChange={(e) => setYoutubeInput(e.target.value)}
+                              className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
+                            />
+                            <span className="text-xs text-white/70">Paste your YouTube channel or video URL</span>
+                          </div>
+                        )}
+
+                        {/* LINKEDIN */}
+                        {activeTab === 'linkedin' && (
+                          <div className="flex flex-col gap-2">
+                            <input
+                              type="url"
+                              placeholder="https://linkedin.com/in/yourprofile"
+                              value={linkedinInput}
+                              onChange={(e) => setLinkedinInput(e.target.value)}
+                              className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
+                            />
+                            <span className="text-xs text-white/70">Paste your LinkedIn profile URL</span>
+                          </div>
+                        )}
+
+                        {/* TWITTER / X */}
+                        {activeTab === 'twitter' && (
+                          <div className="flex flex-col gap-2">
+                            <input
+                              type="text"
+                              placeholder="Twitter/X handle (without @) or full URL"
+                              value={twitterInput}
+                              onChange={(e) => setTwitterInput(e.target.value)}
+                              className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
+                            />
+                            <span className="text-xs text-white/70">Enter handle or paste x.com/twitter.com URL</span>
+                          </div>
+                        )}
+
+                        {/* TIKTOK */}
+                        {activeTab === 'tiktok' && (
+                          <div className="flex flex-col gap-2">
+                            <input
+                              type="text"
+                              placeholder="TikTok username (without @)"
+                              value={tiktokInput}
+                              onChange={(e) => setTiktokInput(e.target.value)}
+                              className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
+                            />
+                            <span className="text-xs text-white/70">We'll generate tiktok.com/@username link automatically</span>
+                          </div>
+                        )}
+
+                        {/* TELEGRAM */}
+                        {activeTab === 'telegram' && (
+                          <div className="flex flex-col gap-2">
+                            <input
+                              type="text"
+                              placeholder="Telegram username, group, or channel name"
+                              value={telegramInput}
+                              onChange={(e) => setTelegramInput(e.target.value)}
+                              className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
+                            />
+                            <span className="text-xs text-white/70">We'll generate t.me/username link automatically</span>
+                          </div>
+                        )}
+
+                        {/* PAYPAL */}
+                        {activeTab === 'paypal' && (
+                          <div className="flex flex-col gap-2">
+                            <input
+                              type="text"
+                              placeholder="PayPal.me username or full PayPal.me URL"
+                              value={paypalInput}
+                              onChange={(e) => setPaypalInput(e.target.value)}
+                              className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
+                            />
+                            <span className="text-xs text-white/70">Enter your PayPal.me username or full URL</span>
+                          </div>
+                        )}
+
+                        {/* UPI */}
+                        {activeTab === 'upi' && (
+                          <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <input
+                              type="text"
+                              placeholder="UPI ID (e.g., yourname@upi) *"
+                              value={upiInput.vpa}
+                              onChange={(e) => setUpiInput({ ...upiInput, vpa: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Payee Name"
+                              value={upiInput.name}
+                              onChange={(e) => setUpiInput({ ...upiInput, name: e.target.value })}
+                              className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
+                            />
+                            <input
+                              type="number"
+                              placeholder="Amount (optional)"
+                              value={upiInput.amount}
+                              onChange={(e) => setUpiInput({ ...upiInput, amount: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                           </div>

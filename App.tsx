@@ -15,6 +15,9 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import NotFoundPage from './NotFoundPage';
+import BulkGeneratorPage from './BulkGeneratorPage';
+import QRScannerPage from './QRScannerPage';
+import SocialMediaQRPage from './SocialMediaQRPage';
 import { LanguageProvider } from './context/LanguageContext';
 import { injectJSONLD, getOrganizationSchema, getWebSiteSchema } from './services/seoUtils';
 import { getRouteMeta } from './constants/routeMeta';
@@ -161,6 +164,19 @@ const App: React.FC = () => {
               <Route path="/event-qr-code-generator" element={<ToolRouteHandler toolId="event" />} />
               <Route path="/crypto-qr-code-generator" element={<ToolRouteHandler toolId="crypto" />} />
               <Route path="/googleform-qr-code-generator" element={<ToolRouteHandler toolId="googleform" />} />
+              <Route path="/instagram-qr-code-generator" element={<ToolRouteHandler toolId="instagram" />} />
+              <Route path="/youtube-qr-code-generator" element={<ToolRouteHandler toolId="youtube" />} />
+              <Route path="/linkedin-qr-code-generator" element={<ToolRouteHandler toolId="linkedin" />} />
+              <Route path="/twitter-qr-code-generator" element={<ToolRouteHandler toolId="twitter" />} />
+              <Route path="/tiktok-qr-code-generator" element={<ToolRouteHandler toolId="tiktok" />} />
+              <Route path="/telegram-qr-code-generator" element={<ToolRouteHandler toolId="telegram" />} />
+              <Route path="/paypal-qr-code-generator" element={<ToolRouteHandler toolId="paypal" />} />
+              <Route path="/upi-qr-code-generator" element={<ToolRouteHandler toolId="upi" />} />
+
+              {/* Utility Pages */}
+              <Route path="/bulk-qr-code-generator" element={<BulkGeneratorPage />} />
+              <Route path="/qr-code-scanner" element={<QRScannerPage />} />
+              <Route path="/social-media-qr-code" element={<SocialMediaQRPage />} />
 
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
