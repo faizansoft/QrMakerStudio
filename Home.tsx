@@ -346,6 +346,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   const [dynamicTitle, setDynamicTitle] = useState('');
   const [dynamicCustomCode, setDynamicCustomCode] = useState('');
   const [savedDynamicLink, setSavedDynamicLink] = useState<DynamicLink | null>(null);
+  const [activeDynamicShortCode, setActiveDynamicShortCode] = useState<string | null>(null);
   const [savingDynamic, setSavingDynamic] = useState(false);
   const [dynamicError, setDynamicError] = useState<string | null>(null);
   const [copyShortUrlSuccess, setCopyShortUrlSuccess] = useState(false);
@@ -503,17 +504,25 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     }
   }, [qrCode]);
 
+  // Compute effective data string for QR generator (supports dynamic shortlink mode)
+  const effectiveQrData = useMemo(() => {
+    if (activeDynamicShortCode) {
+      return `https://qr-generator.online/r/${activeDynamicShortCode}`;
+    }
+    return generated ? qrData : ' ';
+  }, [activeDynamicShortCode, generated, qrData]);
+
   // Update QR Code whenever data or custom options change
   useEffect(() => {
     qrCode.update({
-      data: generated ? qrData : ' ',
+      data: effectiveQrData,
       dotsOptions: { color: fgColor, type: dotStyle },
       backgroundOptions: { color: bgColor },
       cornersSquareOptions: { color: cornerSquareColor, type: cornerSquareStyle },
       cornersDotOptions: { color: cornerDotColor, type: cornerDotStyle },
       image: logoSrc || undefined,
     });
-  }, [qrData, generated, fgColor, bgColor, cornerSquareColor, cornerDotColor, dotStyle, cornerSquareStyle, cornerDotStyle, logoSrc, qrCode]);
+  }, [effectiveQrData, fgColor, bgColor, cornerSquareColor, cornerDotColor, dotStyle, cornerSquareStyle, cornerDotStyle, logoSrc, qrCode]);
 
   // Apply template preset
   const applyTemplate = (tpl: typeof TEMPLATES[0]) => {
@@ -530,7 +539,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   // Download Handler
   const handleDownload = (format: 'png' | 'svg' | 'webp') => {
     if (!generated) return;
-    qrCode.download({ name: `qrmaker-${activeTab}`, extension: format });
+    const namePrefix = activeDynamicShortCode ? `dynamic-qr-${activeDynamicShortCode}` : `qrmaker-${activeTab}`;
+    qrCode.download({ name: namePrefix, extension: format });
   };
 
   // Copy Handler
@@ -586,10 +596,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     if (error) {
       setDynamicError(error.message);
     } else if (data) {
+      setActiveDynamicShortCode(data.short_code);
       setSavedDynamicLink(data);
-      // Update preview QR code to point to the short URL!
-      const shortUrl = `https://qr-generator.online/r/${data.short_code}`;
-      qrCode.update({ data: shortUrl });
     }
     setSavingDynamic(false);
   };
@@ -1646,18 +1654,50 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
             </button>
 
             {savedDynamicLink ? (
-              <div className="text-center py-2">
-                <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-3 border border-emerald-200/60">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="text-center py-1">
+                <div className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-2.5 border border-emerald-200/60">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-1">Dynamic QR Code Created</h3>
-                <p className="text-xs text-slate-500 mb-5">
-                  Your QR code is now live and tracking scans in real time.
+                <h3 className="text-base font-bold text-slate-900 mb-0.5">Dynamic QR Code Created</h3>
+                <p className="text-xs text-slate-500 mb-4">
+                  Destination can be changed anytime with zero reprinting.
                 </p>
 
-                <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 mb-5 text-left">
+                {/* QR Preview Card */}
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl mb-4 flex flex-col items-center justify-center">
+                  <img
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://qr-generator.online/r/${savedDynamicLink.short_code}`}
+                    alt="Dynamic QR Code"
+                    className="w-36 h-36 object-contain rounded mb-3 bg-white p-2 border border-slate-200"
+                  />
+                  <div className="flex gap-2 w-full max-w-xs">
+                    <button
+                      type="button"
+                      onClick={() => handleDownload('png')}
+                      className="flex-1 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                      PNG
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDownload('svg')}
+                      className="flex-1 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                      SVG
+                    </button>
+                  </div>
+                </div>
+
+                {/* Short link row */}
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 text-left">
                   <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider block mb-1">
                     Short Redirect Link
                   </span>
@@ -1672,15 +1712,27 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                       {copyShortUrlSuccess ? '✓ Copied' : 'Copy'}
                     </button>
                   </div>
+                  <div className="mt-2 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px]">
+                    <span className="text-slate-500">Target: <span className="font-medium text-slate-800 truncate">{savedDynamicLink.target_url}</span></span>
+                    <a
+                      href={`https://qr-generator.online/r/${savedDynamicLink.short_code}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent font-semibold hover:underline shrink-0 ml-2"
+                    >
+                      Test Redirect ↗
+                    </a>
+                  </div>
                 </div>
 
-                <div className="flex gap-2.5">
-                  <button
+                <div className="flex gap-2">
+                  <Link
+                    to="/dashboard"
                     onClick={() => { setShowDynamicSaveModal(false); setSavedDynamicLink(null); }}
                     className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition-colors"
                   >
-                    Done
-                  </button>
+                    Go to Dashboard
+                  </Link>
                   <Link
                     to={`/analytics/${savedDynamicLink.id}`}
                     className="flex-1 py-2.5 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5"

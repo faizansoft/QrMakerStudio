@@ -41,11 +41,18 @@ const RedirectHandler: React.FC = () => {
 
         setTargetUrl(destination);
 
-        // Record scan analytics event in background
-        recordScanEvent({
-          linkId: link.id,
-          referrer: document.referrer,
-        }).catch(() => {});
+        // Record scan analytics event safely before window unloads
+        try {
+          await Promise.race([
+            recordScanEvent({
+              linkId: link.id,
+              referrer: document.referrer,
+            }),
+            new Promise((res) => setTimeout(res, 800))
+          ]);
+        } catch {
+          // Continue redirect even if telemetry fails
+        }
 
         // Instant redirect
         window.location.replace(destination);

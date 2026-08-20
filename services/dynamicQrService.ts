@@ -288,7 +288,7 @@ export const recordScanEvent = async (params: {
     let country = 'Unknown';
     let city = 'Unknown';
     try {
-      const geoRes = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(2000) });
+      const geoRes = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(800) });
       if (geoRes.ok) {
         const geoData = await geoRes.json();
         country = geoData.country_name || geoData.country_code || 'Unknown';

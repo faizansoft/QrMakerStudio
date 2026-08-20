@@ -413,17 +413,21 @@ const AnalyticsPage: React.FC = () => {
               </div>
             </div>
             <div className="space-y-3.5">
-              {analytics.devices.map((dev, idx) => (
-                <div key={idx}>
-                  <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
-                    <span>{dev.name}</span>
-                    <span>{dev.count} ({dev.percentage}%)</span>
+              {analytics.devices.length === 0 ? (
+                <p className="text-xs text-slate-400 py-3 text-center">Awaiting first mobile or desktop scan.</p>
+              ) : (
+                analytics.devices.map((dev, idx) => (
+                  <div key={idx}>
+                    <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                      <span>{dev.name}</span>
+                      <span>{dev.count} ({dev.percentage}%)</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div style={{ width: `${dev.percentage}%` }} className="h-full bg-blue-500 rounded-full" />
+                    </div>
                   </div>
-                  <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                    <div style={{ width: `${dev.percentage}%` }} className="h-full bg-blue-500 rounded-full" />
-                  </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
 
@@ -441,17 +445,21 @@ const AnalyticsPage: React.FC = () => {
               </div>
             </div>
             <div className="space-y-3.5">
-              {analytics.os.map((osItem, idx) => (
-                <div key={idx}>
-                  <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
-                    <span>{osItem.name}</span>
-                    <span>{osItem.count} ({osItem.percentage}%)</span>
+              {analytics.os.length === 0 ? (
+                <p className="text-xs text-slate-400 py-3 text-center">Awaiting first scan to log OS.</p>
+              ) : (
+                analytics.os.map((osItem, idx) => (
+                  <div key={idx}>
+                    <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                      <span>{osItem.name}</span>
+                      <span>{osItem.count} ({osItem.percentage}%)</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div style={{ width: `${osItem.percentage}%` }} className="h-full bg-emerald-500 rounded-full" />
+                    </div>
                   </div>
-                  <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                    <div style={{ width: `${osItem.percentage}%` }} className="h-full bg-emerald-500 rounded-full" />
-                  </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
 
@@ -469,17 +477,21 @@ const AnalyticsPage: React.FC = () => {
               </div>
             </div>
             <div className="space-y-3.5">
-              {analytics.browsers.map((b, idx) => (
-                <div key={idx}>
-                  <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
-                    <span>{b.name}</span>
-                    <span>{b.count} ({b.percentage}%)</span>
+              {analytics.browsers.length === 0 ? (
+                <p className="text-xs text-slate-400 py-3 text-center">Awaiting first scan to log browser.</p>
+              ) : (
+                analytics.browsers.map((b, idx) => (
+                  <div key={idx}>
+                    <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                      <span>{b.name}</span>
+                      <span>{b.count} ({b.percentage}%)</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div style={{ width: `${b.percentage}%` }} className="h-full bg-purple-500 rounded-full" />
+                    </div>
                   </div>
-                  <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                    <div style={{ width: `${b.percentage}%` }} className="h-full bg-purple-500 rounded-full" />
-                  </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
         </div>
