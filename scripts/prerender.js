@@ -750,6 +750,42 @@ const ROUTES = [
         ]
       }
     ]
+  },
+  {
+    path: '/login',
+    title: 'Log In to Dynamic QR Studio | QR Maker Studio',
+    description: 'Log in to your free QR Maker Studio account to manage dynamic QR codes, update landing pages, and track scan performance.',
+    canonical: 'https://qr-generator.online/login',
+    h1: 'Log In to Your Dynamic QR Maker Studio Account',
+    badge: 'Account Access',
+    lead: 'Access your dynamic QR codes, edit destination URLs, and monitor real-time scan analytics.',
+    sections: [
+      {
+        title: 'Manage Dynamic QR Campaigns',
+        paragraphs: [
+          'Log in to update destination URLs for all your printed materials in real time without reprinting.',
+          'Review detailed scan analytics including device types, operating systems, browsers, and geographic locations.'
+        ]
+      }
+    ]
+  },
+  {
+    path: '/signup',
+    title: 'Create Free Account | Unlimited Dynamic QR Codes & Analytics',
+    description: 'Sign up for a 100% free QR Maker Studio account. Create permanent dynamic QR codes with live destination editing and scan analytics.',
+    canonical: 'https://qr-generator.online/signup',
+    h1: 'Create Your Free Dynamic QR Maker Account',
+    badge: '100% Free Forever',
+    lead: 'Create unlimited editable dynamic QR codes with real-time analytics and zero fees.',
+    sections: [
+      {
+        title: 'Why Create a Free Dynamic QR Account?',
+        paragraphs: [
+          'Create permanent dynamic QR codes that can be updated at any time without reprinting menus, flyers, or signs.',
+          'Get enterprise-grade real-time scan analytics with device, OS, browser, country, and city breakdowns.'
+        ]
+      }
+    ]
   }
 ];
 
@@ -767,6 +803,17 @@ const ALL_LINKS = [
   { label: 'Crypto QR Code', href: '/crypto-qr-code-generator' },
   { label: 'Event QR Code', href: '/event-qr-code-generator' },
   { label: 'Facebook QR Code', href: '/facebook-qr-code-generator' },
+  { label: 'Instagram QR Code', href: '/instagram-qr-code-generator' },
+  { label: 'YouTube QR Code', href: '/youtube-qr-code-generator' },
+  { label: 'LinkedIn QR Code', href: '/linkedin-qr-code-generator' },
+  { label: 'Twitter / X QR Code', href: '/twitter-qr-code-generator' },
+  { label: 'TikTok QR Code', href: '/tiktok-qr-code-generator' },
+  { label: 'Telegram QR Code', href: '/telegram-qr-code-generator' },
+  { label: 'PayPal Payment QR', href: '/paypal-qr-code-generator' },
+  { label: 'UPI Payment QR', href: '/upi-qr-code-generator' },
+  { label: 'Bulk QR Generator', href: '/bulk-qr-code-generator' },
+  { label: 'QR Code Scanner', href: '/qr-code-scanner' },
+  { label: 'Social Media QR', href: '/social-media-qr-code' },
   { label: 'QR Code with Logo', href: '/qr-code-with-logo' },
   { label: 'Custom QR Codes', href: '/custom-qr-codes' },
   { label: 'Colored QR Code', href: '/colored-qr-code-generator' },
@@ -782,6 +829,8 @@ const ALL_LINKS = [
   { label: 'Real Estate QR', href: '/blog/qr-codes-for-real-estate' },
   { label: 'Hospitality WiFi QR', href: '/blog/wifi-qr-codes-for-hospitality' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Log In', href: '/login' },
+  { label: 'Sign Up Free', href: '/signup' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms of Service', href: '/terms' }
 ];

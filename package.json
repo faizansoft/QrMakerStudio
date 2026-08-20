@@ -17,7 +17,8 @@
     "react-router-dom": "^7.0.0",
     "jszip": "^3.10.1",
     "file-saver": "^2.0.5",
-    "html5-qrcode": "^2.3.8"
+    "html5-qrcode": "^2.3.8",
+    "@supabase/supabase-js": "^2.48.1"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

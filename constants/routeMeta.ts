@@ -368,6 +368,30 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
     h1: 'WiFi QR Codes for Hotels, Cafes & Airbnb Hosts: Seamless Guest Access',
     type: 'article',
     keywords: ['wifi qr codes for hotels', 'airbnb wifi qr code', 'hospitality guest wifi qr']
+  },
+  '/dashboard': {
+    path: '/dashboard',
+    title: 'Dynamic QR Code Studio & Analytics Dashboard | QR Maker Studio',
+    description: 'Manage all your editable dynamic QR codes, change destination links in real time, and monitor live scan metrics, devices, and geographic data.',
+    canonical: 'https://qr-generator.online/dashboard',
+    h1: 'Dynamic QR Code Studio & Real-Time Management Dashboard',
+    keywords: ['dynamic qr dashboard', 'editable qr codes manager', 'qr code campaign management']
+  },
+  '/login': {
+    path: '/login',
+    title: 'Log In to Dynamic QR Studio | QR Maker Studio',
+    description: 'Log in to your free QR Maker Studio account to manage dynamic QR codes, update landing pages, and track scan performance.',
+    canonical: 'https://qr-generator.online/login',
+    h1: 'Log In to Your Dynamic QR Maker Studio Account',
+    keywords: ['qr code login', 'dynamic qr studio sign in']
+  },
+  '/signup': {
+    path: '/signup',
+    title: 'Create Free Account | Unlimited Dynamic QR Codes & Analytics',
+    description: 'Sign up for a 100% free QR Maker Studio account. Create permanent dynamic QR codes with live destination editing and scan analytics.',
+    canonical: 'https://qr-generator.online/signup',
+    h1: 'Create Your Free Dynamic QR Maker Account',
+    keywords: ['free dynamic qr code sign up', 'create dynamic qr account free']
   }
 };
 

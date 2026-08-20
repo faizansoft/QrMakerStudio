@@ -5,6 +5,9 @@ import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS } from '
 import { TOOL_SEO_DATA } from './constants/toolSeoData';
 import { DotType, CornerSquareType, CornerDotType } from './types';
 import { useLanguage } from './context/LanguageContext';
+import { useAuth } from './context/AuthContext';
+import { AuthModal } from './components/AuthModal';
+import { createDynamicLink, DynamicLink } from './services/dynamicQrService';
 import { injectJSONLD, removeJSONLD, getToolSoftwareSchema, getFAQSchema, getBreadcrumbSchema } from './services/seoUtils';
 
 // ── Tab definitions with SVG Icon functions ──
@@ -336,6 +339,17 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
 
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
+  // Dynamic QR State
+  const { user } = useAuth();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showDynamicSaveModal, setShowDynamicSaveModal] = useState(false);
+  const [dynamicTitle, setDynamicTitle] = useState('');
+  const [dynamicCustomCode, setDynamicCustomCode] = useState('');
+  const [savedDynamicLink, setSavedDynamicLink] = useState<DynamicLink | null>(null);
+  const [savingDynamic, setSavingDynamic] = useState(false);
+  const [dynamicError, setDynamicError] = useState<string | null>(null);
+  const [copyShortUrlSuccess, setCopyShortUrlSuccess] = useState(false);
+
   const qrContainerRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
 
@@ -532,6 +546,59 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     } catch (err) {
       console.error('Copy failed:', err);
     }
+  };
+
+  // Dynamic QR Save Handler
+  const handleOpenDynamicModal = () => {
+    if (!qrData) return;
+    if (!user) {
+      setShowAuthModal(true);
+    } else {
+      setDynamicTitle(`${currentSeo.title} Campaign`);
+      setShowDynamicSaveModal(true);
+    }
+  };
+
+  const handleSaveDynamic = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!qrData) return;
+
+    setSavingDynamic(true);
+    setDynamicError(null);
+
+    const { data, error } = await createDynamicLink({
+      targetUrl: qrData,
+      title: dynamicTitle.trim() || `${currentSeo.title} Campaign`,
+      qrType: activeTab,
+      qrStyle: {
+        fgColor,
+        bgColor,
+        cornerSquareColor,
+        cornerDotColor,
+        dotStyle,
+        cornerSquareStyle,
+        cornerDotStyle,
+        logoSrc,
+      },
+      customCode: dynamicCustomCode.trim() || undefined,
+    });
+
+    if (error) {
+      setDynamicError(error.message);
+    } else if (data) {
+      setSavedDynamicLink(data);
+      // Update preview QR code to point to the short URL!
+      const shortUrl = `https://qr-generator.online/r/${data.short_code}`;
+      qrCode.update({ data: shortUrl });
+    }
+    setSavingDynamic(false);
+  };
+
+  const handleCopyShortUrl = (shortCode: string) => {
+    const url = `https://qr-generator.online/r/${shortCode}`;
+    navigator.clipboard.writeText(url);
+    setCopyShortUrlSuccess(true);
+    setTimeout(() => setCopyShortUrlSuccess(false), 2000);
   };
 
   // Logo File Upload
@@ -1153,6 +1220,20 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                         </button>
                       </div>
 
+                      {/* Dynamic QR Action Button */}
+                      <button
+                        onClick={handleOpenDynamicModal}
+                        disabled={!generated}
+                        className={`w-full py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md ${
+                          generated
+                            ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-900/30'
+                            : 'bg-white/5 text-white/30 cursor-not-allowed'
+                        }`}
+                      >
+                        <span>⚡</span>
+                        <span>Save as Dynamic QR (Editable & Trackable)</span>
+                      </button>
+
                       {/* Customize Options Button */}
                       <button
                         onClick={() => setShowCustomize(!showCustomize)}
@@ -1548,6 +1629,148 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
           <p className="text-sm text-white/40 mt-4">No sign-up required • Unlimited QR Codes • Download in PNG, SVG, WebP</p>
         </div>
       </section>
+
+      {/* ═══════════════════════════ DYNAMIC QR SAVE MODAL ═══════════════════════════ */}
+      {showDynamicSaveModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-neutral-100 relative">
+            <button
+              onClick={() => { setShowDynamicSaveModal(false); setSavedDynamicLink(null); }}
+              className="absolute top-5 right-5 text-gray-400 hover:text-gray-600 p-2 rounded-full hover:bg-neutral-100"
+            >
+              ✕
+            </button>
+
+            {savedDynamicLink ? (
+              <div className="text-center py-2">
+                <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                  ✓
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-1">Dynamic QR Code Created!</h3>
+                <p className="text-sm text-gray-500 mb-6">
+                  Your QR code is now live and tracking scans in real time.
+                </p>
+
+                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-6 text-left">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">
+                    Your Short Redirect URL
+                  </span>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-sm font-mono font-bold text-accent truncate">
+                      https://qr-generator.online/r/{savedDynamicLink.short_code}
+                    </span>
+                    <button
+                      onClick={() => handleCopyShortUrl(savedDynamicLink.short_code)}
+                      className="px-3 py-1.5 bg-accent text-white text-xs font-bold rounded-lg shadow-sm hover:bg-accent-dark transition-colors shrink-0"
+                    >
+                      {copyShortUrlSuccess ? '✓ Copied' : 'Copy'}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => { setShowDynamicSaveModal(false); setSavedDynamicLink(null); }}
+                    className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-sm transition-colors"
+                  >
+                    Done
+                  </button>
+                  <Link
+                    to={`/analytics/${savedDynamicLink.id}`}
+                    className="flex-1 py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-xl text-sm transition-colors flex items-center justify-center gap-1.5"
+                  >
+                    <span>📊</span>
+                    <span>View Analytics</span>
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-lg">
+                    ⚡
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">Save Dynamic QR Code</h3>
+                    <p className="text-xs text-gray-500">Edit destination anytime & track real-time scans</p>
+                  </div>
+                </div>
+
+                {dynamicError && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs font-medium">
+                    {dynamicError}
+                  </div>
+                )}
+
+                <form onSubmit={handleSaveDynamic} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Campaign Title</label>
+                    <input
+                      type="text"
+                      required
+                      value={dynamicTitle}
+                      onChange={(e) => setDynamicTitle(e.target.value)}
+                      placeholder="e.g. Summer Promo Flyer"
+                      className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-accent outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Current Destination</label>
+                    <input
+                      type="text"
+                      disabled
+                      value={qrData}
+                      className="w-full px-4 py-2.5 bg-neutral-100 border border-neutral-200 rounded-xl text-xs text-gray-600 font-mono truncate"
+                    />
+                    <span className="text-[10px] text-gray-400 block mt-1">
+                      You can change this target link at any time from your dashboard without reprinting.
+                    </span>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Custom Shortcode / Slug (Optional)</label>
+                    <div className="flex items-center">
+                      <span className="px-3 py-2.5 bg-neutral-100 border border-r-0 border-neutral-200 rounded-l-xl text-xs font-mono text-gray-500">
+                        qr-generator.online/r/
+                      </span>
+                      <input
+                        type="text"
+                        value={dynamicCustomCode}
+                        onChange={(e) => setDynamicCustomCode(e.target.value.replace(/[^a-zA-Z0-9-_]/g, ''))}
+                        placeholder="custom-slug"
+                        className="flex-1 px-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-r-xl text-xs font-mono focus:ring-2 focus:ring-accent outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={savingDynamic}
+                      className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-xl text-sm shadow-lg shadow-emerald-900/20 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                    >
+                      {savingDynamic ? 'Creating Dynamic Link...' : '⚡ Generate Dynamic QR Code'}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ═══════════════════════════ AUTH MODAL ═══════════════════════════ */}
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onSuccess={() => {
+          setShowAuthModal(false);
+          setShowDynamicSaveModal(true);
+        }}
+        title="Sign Up to Save Dynamic QR Code"
+        subtitle="Create an account to change your destination link anytime and track live scan analytics."
+      />
     </div>
   );
 };

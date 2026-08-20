@@ -18,7 +18,13 @@ import NotFoundPage from './NotFoundPage';
 import BulkGeneratorPage from './BulkGeneratorPage';
 import QRScannerPage from './QRScannerPage';
 import SocialMediaQRPage from './SocialMediaQRPage';
+import DashboardPage from './DashboardPage';
+import AnalyticsPage from './AnalyticsPage';
+import LoginPage from './LoginPage';
+import SignupPage from './SignupPage';
+import RedirectHandler from './RedirectHandler';
 import { LanguageProvider } from './context/LanguageContext';
+import { AuthProvider } from './context/AuthContext';
 import { injectJSONLD, getOrganizationSchema, getWebSiteSchema } from './services/seoUtils';
 import { getRouteMeta } from './constants/routeMeta';
 
@@ -126,64 +132,73 @@ const App: React.FC = () => {
 
   return (
     <LanguageProvider>
-      <Router basename={basename}>
-        <ScrollToTop />
-        <SEOManager />
-        <div className="min-h-screen bg-white selection:bg-green-100 flex flex-col">
-          <Header />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/pricing" element={<PricingPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/faqs-qr-code-generator" element={<FAQPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/privacy" element={<PrivacyPage />} />
-              <Route path="/terms" element={<TermsPage />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:slug" element={<BlogPostPage />} />
+      <AuthProvider>
+        <Router basename={basename}>
+          <ScrollToTop />
+          <SEOManager />
+          <div className="min-h-screen bg-white selection:bg-green-100 flex flex-col">
+            <Header />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/pricing" element={<PricingPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/faqs-qr-code-generator" element={<FAQPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/privacy" element={<PrivacyPage />} />
+                <Route path="/terms" element={<TermsPage />} />
+                <Route path="/blog" element={<BlogPage />} />
+                <Route path="/blog/:slug" element={<BlogPostPage />} />
 
-              {/* Feature Dedicated Routes */}
-              <Route path="/qr-code-with-logo" element={<FeaturePage featureId="qr-code-with-logo" />} />
-              <Route path="/custom-qr-codes" element={<FeaturePage featureId="custom-qr-codes" />} />
-              <Route path="/colored-qr-code-generator" element={<FeaturePage featureId="colored-qr-code-generator" />} />
-              <Route path="/svg-qr-code-generator" element={<FeaturePage featureId="svg-qr-code-generator" />} />
-              <Route path="/high-resolution-qr-codes" element={<FeaturePage featureId="high-resolution-qr-codes" />} />
+                {/* Auth & Dynamic QR Studio Routes */}
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/analytics/:linkId" element={<AnalyticsPage />} />
+                <Route path="/r/:shortCode" element={<RedirectHandler />} />
 
-              {/* QR Code Tool Specific Routes */}
-              <Route path="/url-qr-code-generator" element={<ToolRouteHandler toolId="url" />} />
-              <Route path="/text-qr-code-generator" element={<ToolRouteHandler toolId="text" />} />
-              <Route path="/vcard-qr-code-generator" element={<ToolRouteHandler toolId="vcard" />} />
-              <Route path="/wifi-qr-code-generator" element={<ToolRouteHandler toolId="wifi" />} />
-              <Route path="/email-qr-code-generator" element={<ToolRouteHandler toolId="email" />} />
-              <Route path="/sms-qr-code-generator" element={<ToolRouteHandler toolId="sms" />} />
-              <Route path="/phone-qr-code-generator" element={<ToolRouteHandler toolId="phone" />} />
-              <Route path="/whatsapp-qr-code-generator" element={<ToolRouteHandler toolId="whatsapp" />} />
-              <Route path="/facebook-qr-code-generator" element={<ToolRouteHandler toolId="facebook" />} />
-              <Route path="/location-qr-code-generator" element={<ToolRouteHandler toolId="location" />} />
-              <Route path="/event-qr-code-generator" element={<ToolRouteHandler toolId="event" />} />
-              <Route path="/crypto-qr-code-generator" element={<ToolRouteHandler toolId="crypto" />} />
-              <Route path="/googleform-qr-code-generator" element={<ToolRouteHandler toolId="googleform" />} />
-              <Route path="/instagram-qr-code-generator" element={<ToolRouteHandler toolId="instagram" />} />
-              <Route path="/youtube-qr-code-generator" element={<ToolRouteHandler toolId="youtube" />} />
-              <Route path="/linkedin-qr-code-generator" element={<ToolRouteHandler toolId="linkedin" />} />
-              <Route path="/twitter-qr-code-generator" element={<ToolRouteHandler toolId="twitter" />} />
-              <Route path="/tiktok-qr-code-generator" element={<ToolRouteHandler toolId="tiktok" />} />
-              <Route path="/telegram-qr-code-generator" element={<ToolRouteHandler toolId="telegram" />} />
-              <Route path="/paypal-qr-code-generator" element={<ToolRouteHandler toolId="paypal" />} />
-              <Route path="/upi-qr-code-generator" element={<ToolRouteHandler toolId="upi" />} />
+                {/* Feature Dedicated Routes */}
+                <Route path="/qr-code-with-logo" element={<FeaturePage featureId="qr-code-with-logo" />} />
+                <Route path="/custom-qr-codes" element={<FeaturePage featureId="custom-qr-codes" />} />
+                <Route path="/colored-qr-code-generator" element={<FeaturePage featureId="colored-qr-code-generator" />} />
+                <Route path="/svg-qr-code-generator" element={<FeaturePage featureId="svg-qr-code-generator" />} />
+                <Route path="/high-resolution-qr-codes" element={<FeaturePage featureId="high-resolution-qr-codes" />} />
 
-              {/* Utility Pages */}
-              <Route path="/bulk-qr-code-generator" element={<BulkGeneratorPage />} />
-              <Route path="/qr-code-scanner" element={<QRScannerPage />} />
-              <Route path="/social-media-qr-code" element={<SocialMediaQRPage />} />
+                {/* QR Code Tool Specific Routes */}
+                <Route path="/url-qr-code-generator" element={<ToolRouteHandler toolId="url" />} />
+                <Route path="/text-qr-code-generator" element={<ToolRouteHandler toolId="text" />} />
+                <Route path="/vcard-qr-code-generator" element={<ToolRouteHandler toolId="vcard" />} />
+                <Route path="/wifi-qr-code-generator" element={<ToolRouteHandler toolId="wifi" />} />
+                <Route path="/email-qr-code-generator" element={<ToolRouteHandler toolId="email" />} />
+                <Route path="/sms-qr-code-generator" element={<ToolRouteHandler toolId="sms" />} />
+                <Route path="/phone-qr-code-generator" element={<ToolRouteHandler toolId="phone" />} />
+                <Route path="/whatsapp-qr-code-generator" element={<ToolRouteHandler toolId="whatsapp" />} />
+                <Route path="/facebook-qr-code-generator" element={<ToolRouteHandler toolId="facebook" />} />
+                <Route path="/location-qr-code-generator" element={<ToolRouteHandler toolId="location" />} />
+                <Route path="/event-qr-code-generator" element={<ToolRouteHandler toolId="event" />} />
+                <Route path="/crypto-qr-code-generator" element={<ToolRouteHandler toolId="crypto" />} />
+                <Route path="/googleform-qr-code-generator" element={<ToolRouteHandler toolId="googleform" />} />
+                <Route path="/instagram-qr-code-generator" element={<ToolRouteHandler toolId="instagram" />} />
+                <Route path="/youtube-qr-code-generator" element={<ToolRouteHandler toolId="youtube" />} />
+                <Route path="/linkedin-qr-code-generator" element={<ToolRouteHandler toolId="linkedin" />} />
+                <Route path="/twitter-qr-code-generator" element={<ToolRouteHandler toolId="twitter" />} />
+                <Route path="/tiktok-qr-code-generator" element={<ToolRouteHandler toolId="tiktok" />} />
+                <Route path="/telegram-qr-code-generator" element={<ToolRouteHandler toolId="telegram" />} />
+                <Route path="/paypal-qr-code-generator" element={<ToolRouteHandler toolId="paypal" />} />
+                <Route path="/upi-qr-code-generator" element={<ToolRouteHandler toolId="upi" />} />
 
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
+                {/* Utility Pages */}
+                <Route path="/bulk-qr-code-generator" element={<BulkGeneratorPage />} />
+                <Route path="/qr-code-scanner" element={<QRScannerPage />} />
+                <Route path="/social-media-qr-code" element={<SocialMediaQRPage />} />
+
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </AuthProvider>
     </LanguageProvider>
   );
 };
