@@ -50,13 +50,17 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const signUp = async (email: string, password: string) => {
     try {
+      const redirectUrl = typeof window !== 'undefined' ? `${window.location.origin}/dashboard` : undefined;
       const { data, error } = await supabase.auth.signUp({
-        email,
+        email: email.trim(),
         password,
+        options: {
+          emailRedirectTo: redirectUrl,
+        },
       });
       return { data, error };
     } catch (err: any) {
-      return { error: err };
+      return { error: err, data: null };
     }
   };
 

@@ -39,8 +39,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         const { data, error } = await signUp(email, password);
         if (error) {
           setError(error.message);
+        } else if (data?.user && (!data.user.identities || data.user.identities.length === 0)) {
+          setError('This email is already registered. Please click "Log In" above to access your account.');
         } else if (data?.user && !data.session) {
-          setMessage('Account created! Please check your email to confirm your account, or sign in.');
+          setMessage('Account created! Please check your email inbox (and spam folder) to confirm your email, or click Log In.');
         } else {
           onSuccess?.();
           onClose();
