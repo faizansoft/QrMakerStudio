@@ -43,7 +43,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     introParagraphs: [
       'A URL QR Code (Uniform Resource Locator Quick Response Code) is a two-dimensional matrix barcode standardized under ISO/IEC 18004. It encodes alphanumeric web addresses into a scannable grid of dark and light modules, allowing smartphone cameras to open any target webpage immediately without typing long, complex web addresses.',
       'Whether you are directing customers to a restaurant menu, an e-commerce store, a promotional landing page, a social media profile, or a digital portfolio, URL QR Codes provide a seamless bridge between offline physical marketing materials and digital online destinations.',
-      'With QR Maker Studio, you can customize your link QR codes with brand colors, unique pattern shapes, and custom central logos. Download your high-resolution QR codes in vector SVG or crisp PNG formats completely free with zero scan limits or expiration dates.'
+      'With QR Generator Online, you can customize your link QR codes with brand colors, unique pattern shapes, and custom central logos. Download your high-resolution QR codes in vector SVG or crisp PNG formats completely free with zero scan limits or expiration dates.'
     ],
     stepsTitle: 'How to Create a Free URL QR Code in 3 Steps',
     steps: [
@@ -51,7 +51,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { number: 2, title: 'Customize Colors & Logo', description: 'Select your brand palette colors, dot style patterns, corner eyes, and upload your custom company logo in the center.' },
       { number: 3, title: 'Download in Vector SVG or PNG', description: 'Click Download PNG or SVG to save your high-resolution QR code ready for professional print and digital publishing.' }
     ],
-    featuresTitle: 'Why Use QR Maker Studio for URL QR Codes?',
+    featuresTitle: 'Why Use QR Generator Online for URL QR Codes?',
     features: [
       { title: 'Permanent & Unlimited Scans', description: 'Static URL QR codes generated on our platform never expire and support unlimited scans forever at zero cost.' },
       { title: 'High-Resolution Vector SVG', description: 'Export crisp vector graphics perfect for large billboards, banners, flyers, packaging, and commercial print media.' },
@@ -66,7 +66,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { title: 'Restaurant Menus & Order Systems', description: 'Give guests instant touchless access to digital PDF food and beverage menus without physical printing.' }
     ],
     faqs: [
-      { question: 'Do URL QR Codes created on QR Maker Studio ever expire?', answer: 'No. Static URL QR codes generated on our platform encode your web address directly into the visual matrix. They have no expiration date, no recurring subscriptions, and will remain scannable forever as long as your destination website remains live.' },
+      { question: 'Do URL QR Codes created on QR Generator Online ever expire?', answer: 'No. Static URL QR codes generated on our platform encode your web address directly into the visual matrix. They have no expiration date, no recurring subscriptions, and will remain scannable forever as long as your destination website remains live.' },
       { question: 'Can I edit the destination URL after printing a static QR Code?', answer: 'Because static QR codes encode the destination URL permanently inside the module pattern, the encoded text cannot be changed post-print. To retain flexibility without reprinting, link the QR code to a custom short link on your domain (e.g. yourdomain.com/promo) and redirect that URL whenever your campaign destination changes.' },
       { question: 'What is the maximum number of scans allowed on free QR codes?', answer: 'There are zero scan limitations. Because generation is 100% static and client-side, your QR codes can receive tens of millions of scans without hitting any bandwidth caps or paywalls.' },
       { question: 'Why is SVG format recommended over PNG for commercial printing?', answer: 'SVG (Scalable Vector Graphics) defines geometric shapes using mathematical coordinates rather than fixed pixel grids. When scaled to billboard or banner sizes, SVG lines remain razor-sharp with zero blur or pixelation, whereas raster PNG images degrade when printed larger than their original pixel dimensions.' },
@@ -119,7 +119,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'What happens if I change my WiFi network password in the future?', answer: 'Because static WiFi QR codes encode the specific password directly into the barcode modules, changing your router password requires generating and printing a new QR code.' },
       { question: 'Can I generate a WiFi QR code for an open network with no password?', answer: 'Yes! Select the "No Encryption" option in our generator, enter your SSID, and generate the QR code. Scanning will connect users directly to the open network without prompting for a passkey.' },
       { question: 'Does scanning a WiFi QR code expose the password on the user screen?', answer: 'On iOS devices, the camera shows a prompt "Join [Network Name]?" without displaying the underlying password characters on the screen, adding a layer of visual privacy against shoulder-surfing.' },
-      { question: 'Can I add my business logo to the center of a WiFi QR code?', answer: 'Yes. QR Maker Studio uses Level H error correction, allowing you to embed your venue logo or a standard WiFi icon in the center while maintaining 100% scan reliability.' },
+      { question: 'Can I add my business logo to the center of a WiFi QR code?', answer: 'Yes. QR Generator Online uses Level H error correction, allowing you to embed your venue logo or a standard WiFi icon in the center while maintaining 100% scan reliability.' },
       { question: 'Do WiFi QR codes expire or have monthly scan limits?', answer: 'No. The generated QR codes are permanent static barcodes with infinite lifetime validity and zero scan limitations.' },
       { question: 'Why did my phone fail to connect after scanning the WiFi QR code?', answer: 'The most common causes are: (1) incorrect SSID capitalization, (2) selecting WEP instead of WPA/WPA2/WPA3, (3) the router being out of physical range, or (4) the network having MAC address filtering enabled.' }
     ]
@@ -166,7 +166,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'Can I include a photo in a static vCard QR Code?', answer: 'Encoding raw image binary data expands the QR payload by thousands of bytes, creating an unreadable matrix. The industry standard is to embed your photo/logo as an overlay in the center of the QR code and include your website or LinkedIn URL in the vCard URL field where your full photo is hosted.' },
       { question: 'Do vCard QR codes require an internet connection to scan?', answer: 'No! Because all contact information is stored directly inside the visual barcode pattern using standard vCard 3.0 text encoding, phones can scan and save your contact profile completely offline without cellular data or WiFi.' },
       { question: 'Are vCard QR codes compatible with Outlook and Gmail?', answer: 'Yes. The vCard 3.0 format is the universal industry standard supported by Microsoft Outlook, Apple Mail, Google Contacts, and all major enterprise CRM systems.' },
-      { question: 'Do static vCard QR codes have an expiration date?', answer: 'Never. Static vCard QR codes generated on QR Maker Studio contain raw contact data and remain permanent forever with zero recurring fees or scan restrictions.' },
+      { question: 'Do static vCard QR codes have an expiration date?', answer: 'Never. Static vCard QR codes generated on QR Generator Online contain raw contact data and remain permanent forever with zero recurring fees or scan restrictions.' },
       { question: 'How should I format international phone numbers in a vCard?', answer: 'Always use E.164 international format beginning with a plus sign followed by country code, area code, and phone number (e.g. +14155552671). This ensures contacts in other countries can call or text you without dialing prefix errors.' },
       { question: 'Can I print a vCard QR code on both sides of my business card?', answer: 'It is recommended to print your visual branding and name on the front of the card, and place the vCard QR code on the back alongside a clear call-to-action such as "Scan to save contact".' },
       { question: 'Which export format is best for sending to a commercial business card printer?', answer: 'Always provide your print shop with the vector SVG or EPS file. Vector files maintain 100% mathematical precision across all commercial offset and digital presses.' }
@@ -215,9 +215,9 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'Does scanning automatically send the message on behalf of the user?', answer: 'No. Scanning opens WhatsApp with your recipient number and the pre-filled text placed inside the user message compose box. The user must manually tap the Send button, ensuring complete user control and transparency.' },
       { question: 'What happens if a user scans the code on a desktop computer?', answer: 'The browser redirects to WhatsApp Web or prompts to open the WhatsApp Desktop application, allowing desktop users to continue the chat seamlessly.' },
       { question: 'Can I use this with WhatsApp Business automated greeting messages?', answer: 'Yes! When a customer initiates a chat via your QR code, your WhatsApp Business automated welcome messages, quick replies, and away messages trigger automatically.' },
-      { question: 'Do WhatsApp QR codes expire or have limits on conversation starts?', answer: 'No. Static WhatsApp QR codes generated on QR Maker Studio have permanent validity, support unlimited scans, and never expire.' },
+      { question: 'Do WhatsApp QR codes expire or have limits on conversation starts?', answer: 'No. Static WhatsApp QR codes generated on QR Generator Online have permanent validity, support unlimited scans, and never expire.' },
       { question: 'Can I track how many people scan my WhatsApp QR code?', answer: 'You can track scans by using unique pre-filled message text for each physical marketing asset (e.g. "Inquiry from Spring Flyer" vs "Inquiry from Window Banner") to identify which channel generated the lead.' },
-      { question: 'Is it free to generate and use WhatsApp QR codes?', answer: 'Yes. Generating static WhatsApp click-to-chat QR codes on QR Maker Studio is 100% free with no monthly subscription or hidden fees.' }
+      { question: 'Is it free to generate and use WhatsApp QR codes?', answer: 'Yes. Generating static WhatsApp click-to-chat QR codes on QR Generator Online is 100% free with no monthly subscription or hidden fees.' }
     ]
   },
 
@@ -261,8 +261,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'How many characters can I encode in a single Plain Text QR Code?', answer: 'A QR code can technically store up to 4,296 alphanumeric characters or 7,089 numeric digits. However, to ensure rapid optical scanning at standard sizes, it is recommended to keep text under 300 characters.' },
       { question: 'Does scanning a Plain Text QR code require an internet connection?', answer: 'No! Plain text QR codes store their entire data payload directly inside the visual barcode matrix. They scan and display 100% offline without cellular data or WiFi.' },
       { question: 'What happens on a smartphone when a user scans a Text QR code?', answer: 'The camera app displays the decoded text in a system dialog box with options to copy the text to the clipboard or perform a web search.' },
-      { question: 'Can I encode special characters, foreign language scripts, and emojis?', answer: 'Yes! QR Maker Studio supports full UTF-8 byte encoding, allowing foreign language alphabets (Japanese, Arabic, Cyrillic), mathematical symbols, and emojis.' },
-      { question: 'Do Plain Text QR codes expire or charge fees?', answer: 'No. Static text QR codes generated on QR Maker Studio have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
+      { question: 'Can I encode special characters, foreign language scripts, and emojis?', answer: 'Yes! QR Generator Online supports full UTF-8 byte encoding, allowing foreign language alphabets (Japanese, Arabic, Cyrillic), mathematical symbols, and emojis.' },
+      { question: 'Do Plain Text QR codes expire or charge fees?', answer: 'No. Static text QR codes generated on QR Generator Online have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
       { question: 'Are Text QR codes compatible with industrial barcode scanners?', answer: 'Yes! All standard 2D barcode imagers (Zebra, Honeywell, Datalogic) scan text QR codes and output the decoded characters directly to connected terminal software.' },
       { question: 'What file format is best for thermal barcode label printers?', answer: 'Export the vector SVG or high-resolution PNG format. Vector SVG files render with 100% precision on commercial thermal label printing software.' },
       { question: 'Is the encoded text data kept private during generation?', answer: 'Yes. All QR code generation is performed 100% client-side in your web browser memory. No text data is ever transmitted or stored on external servers.' }
@@ -310,10 +310,10 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'Does scanning automatically send the email?', answer: 'No. For security and user privacy, scanning opens the compose window with the fields pre-filled. The user must tap the Send button to dispatch the email.' },
       { question: 'Can I leave the subject and body fields blank?', answer: 'Yes. You can specify only the recipient email address, leaving the subject and body empty for the user to compose freely.' },
       { question: 'Can I include multiple recipient email addresses?', answer: 'Yes. You can enter multiple comma-separated email addresses in the recipient field to send messages to multiple team members simultaneously.' },
-      { question: 'Do Email QR codes expire or require paid plans?', answer: 'No. Static mailto QR codes generated on QR Maker Studio have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
+      { question: 'Do Email QR codes expire or require paid plans?', answer: 'No. Static mailto QR codes generated on QR Generator Online have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
       { question: 'How many characters can I include in the pre-filled email body?', answer: 'While the mailto protocol supports long strings, it is best practice to keep the body under 150 characters to maintain a clean, easily scannable QR code matrix.' },
       { question: 'Can I track how many emails are generated from my QR code?', answer: 'You can track email conversions by embedding unique tracking tags in the pre-filled subject line (e.g. `[Source: Summer Flyer]`) and filtering them in your inbox or CRM.' },
-      { question: 'Is my email address kept private during generation?', answer: 'Yes. QR Maker Studio processes all encoding 100% client-side in your web browser memory. No email addresses are logged or stored on external servers.' }
+      { question: 'Is my email address kept private during generation?', answer: 'Yes. QR Generator Online processes all encoding 100% client-side in your web browser memory. No email addresses are logged or stored on external servers.' }
     ]
   },
 
@@ -357,11 +357,11 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'Does scanning the QR code automatically send the text message?', answer: 'No. Scanning opens the user native SMS messaging app with the number and message pre-filled. The user must tap Send to dispatch the message, complying with mobile privacy regulations.' },
       { question: 'Are standard carrier SMS rates charged when users send the text?', answer: 'Yes. The text message sent by the user uses their standard cellular plan SMS allowances and any applicable carrier messaging rates.' },
       { question: 'Can I use an SMS QR code with 5-digit or 6-digit shortcodes?', answer: 'Yes! You can enter standard 10-digit mobile numbers, toll-free 800 numbers, or 5-6 digit marketing shortcodes in the phone number input field.' },
-      { question: 'Do SMS QR codes expire or have monthly scan limits?', answer: 'No. Static SMS QR codes generated on QR Maker Studio have permanent validity and support unlimited scans forever.' },
+      { question: 'Do SMS QR codes expire or have monthly scan limits?', answer: 'No. Static SMS QR codes generated on QR Generator Online have permanent validity and support unlimited scans forever.' },
       { question: 'What is the character limit for pre-filled SMS text?', answer: 'Standard SMS supports up to 160 characters per message. Keeping your pre-filled text under 160 characters ensures single-segment delivery across all carriers.' },
-      { question: 'Can I embed my logo into an SMS QR code?', answer: 'Yes! QR Maker Studio uses Level H error correction, allowing you to embed a message icon or company logo in the center without affecting scannability.' },
+      { question: 'Can I embed my logo into an SMS QR code?', answer: 'Yes! QR Generator Online uses Level H error correction, allowing you to embed a message icon or company logo in the center without affecting scannability.' },
       { question: 'Do SMS QR codes require an internet connection to scan?', answer: 'Scanning the QR code and opening the Messages app works completely offline. Sending the resulting SMS message requires standard cellular mobile reception.' },
-      { question: 'Is customer phone data stored on QR Maker Studio servers?', answer: 'No. All QR code generation is performed locally in your browser memory. No phone numbers or message strings are ever uploaded or stored.' }
+      { question: 'Is customer phone data stored on QR Generator Online servers?', answer: 'No. All QR code generation is performed locally in your browser memory. No phone numbers or message strings are ever uploaded or stored.' }
     ]
   },
 
@@ -406,10 +406,10 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'Should I include my country code in the phone number?', answer: 'Yes! Always include the full international country code starting with a plus sign (e.g. +1 for US/Canada, +44 for UK). This ensures all callers connect regardless of their mobile carrier or roaming status.' },
       { question: 'What happens if someone scans a Phone QR code on an iPad without a SIM card?', answer: 'On WiFi-only tablets, scanning prompts the user to place the voice call via connected Apple FaceTime Audio, Skype, or paired iPhone cellular relay.' },
       { question: 'Can I encode phone extensions into the QR code?', answer: 'Yes. Insert a comma `,` between the main telephone number and the extension (e.g. `tel:+14155550199,104`). The comma inserts a 2-second pause before dialing the DTMF extension digits.' },
-      { question: 'Do Phone QR codes expire or charge per call?', answer: 'No. Static tel URI QR codes generated on QR Maker Studio have permanent validity, zero scan limits, and no recurring service charges.' },
+      { question: 'Do Phone QR codes expire or charge per call?', answer: 'No. Static tel URI QR codes generated on QR Generator Online have permanent validity, zero scan limits, and no recurring service charges.' },
       { question: 'What vector format is best for commercial vehicle wrap printing?', answer: 'Download the vector SVG file. SVG maintains mathematical vector precision and can be scaled to billboard or vehicle sizes without pixelation.' },
       { question: 'Can I track how many phone calls come from my QR code?', answer: 'To track phone conversions precisely, link your Phone QR code to a dedicated call-tracking phone number (from services like CallRail or Twilio) assigned exclusively to that marketing asset.' },
-      { question: 'Is my phone number stored on external servers during generation?', answer: 'No. QR Maker Studio generates all barcodes 100% client-side in your browser memory. Your phone numbers are never stored, logged, or shared.' }
+      { question: 'Is my phone number stored on external servers during generation?', answer: 'No. QR Generator Online generates all barcodes 100% client-side in your browser memory. Your phone numbers are never stored, logged, or shared.' }
     ]
   },
 
@@ -453,11 +453,11 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'Will scanning open the Facebook app or a web browser?', answer: 'If the user has the Facebook mobile app installed, the operating system Universal Link protocol automatically opens your profile natively inside the app. If the app is not installed, it opens in the mobile web browser.' },
       { question: 'Can I link to a specific Facebook post, album, or event instead of a page?', answer: 'Yes! Simply copy the direct URL of any public Facebook post, photo album, live stream, or event page and paste it into the generator.' },
       { question: 'How can I link to multiple social media platforms with one QR Code?', answer: 'Create a free link aggregation landing page (such as Linktree, Beacons, or a dedicated page on your website), copy that URL, and generate your QR code. Scanners can then choose which platform to follow.' },
-      { question: 'Do Facebook QR codes expire or have monthly scan limits?', answer: 'No. Static QR codes generated on QR Maker Studio contain your direct URL and remain active permanently with unlimited lifetime scans.' },
+      { question: 'Do Facebook QR codes expire or have monthly scan limits?', answer: 'No. Static QR codes generated on QR Generator Online contain your direct URL and remain active permanently with unlimited lifetime scans.' },
       { question: 'Can I customize the QR code with Facebook official blue color?', answer: 'Yes. You can use official Facebook Hex color `#1877F2` for the foreground modules while keeping the background clean white `#FFFFFF` for optimal scanning contrast.' },
       { question: 'Why is it better to use a QR code instead of asking users to search for my page?', answer: 'Direct QR scans eliminate search drop-off, prevent users from landing on competing pages with similar names, and complete the follow action in under 2 seconds.' },
       { question: 'What file format should I download for printing on storefront signage?', answer: 'Export the vector SVG format. Vector graphics scale infinitely to any billboard or banner size without pixelation or blur.' },
-      { question: 'Is client privacy protected when generating social QR codes?', answer: 'Yes. QR Maker Studio generates all QR codes client-side in your browser. Your URLs and profile links are never stored or logged on external servers.' }
+      { question: 'Is client privacy protected when generating social QR codes?', answer: 'Yes. QR Generator Online generates all QR codes client-side in your browser. Your URLs and profile links are never stored or logged on external servers.' }
     ]
   },
 
@@ -501,8 +501,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'How do I obtain the correct Google Maps link for my QR code?', answer: 'Open Google Maps, search for your business or drop a pin on your location, click "Share", copy the shareable short link, and paste it into our generator.' },
       { question: 'Can I use latitude and longitude coordinates instead of a street address?', answer: 'Yes! Inputting exact latitude and longitude coordinates (e.g. `37.7749,-122.4194`) is ideal for parks, festival grounds, and rural venues without formal addresses.' },
       { question: 'Will this open Apple Maps for iPhone users and Google Maps for Android users?', answer: 'Yes. Standard Google Maps URLs and Geo URIs trigger the respective default map application on iOS and Android smartphones.' },
-      { question: 'Do Location QR codes expire or charge fees?', answer: 'No. Static location QR codes generated on QR Maker Studio have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
-      { question: 'Can I embed a map pin icon in the center of the QR code?', answer: 'Yes! QR Maker Studio utilizes Level H error correction, allowing you to embed a navigation pin or venue logo in the center without affecting scannability.' },
+      { question: 'Do Location QR codes expire or charge fees?', answer: 'No. Static location QR codes generated on QR Generator Online have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
+      { question: 'Can I embed a map pin icon in the center of the QR code?', answer: 'Yes! QR Generator Online utilizes Level H error correction, allowing you to embed a navigation pin or venue logo in the center without affecting scannability.' },
       { question: 'What is the best export format for wedding invitation printing?', answer: 'Export vector SVG or 300 DPI high-resolution PNG for wedding stationery and commercial cardstock printing.' },
       { question: 'Can users navigate while offline?', answer: 'If using Geo URI coordinates (`geo:lat,lng`), offline navigation apps like maps.me or pre-downloaded Google Maps areas can navigate without cellular data.' },
       { question: 'Is my location data private during generation?', answer: 'Yes. All QR codes are generated 100% client-side in your web browser. No location coordinates or map URLs are stored on external servers.' }
@@ -550,9 +550,9 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'Can I include a Zoom or Google Meet link in the event details?', answer: 'Yes! Paste your video conferencing link into the Location or Description field so virtual attendees have the meeting URL stored in their calendar entry.' },
       { question: 'Will the calendar entry automatically set a reminder for the attendee?', answer: 'Yes. Most smartphone calendar apps automatically apply standard default reminders (typically 15 to 30 minutes prior to event start) when new events are added.' },
       { question: 'Can I edit the event date or time after printing the QR Code?', answer: 'Static event QR codes encode the specific date and time permanently inside the matrix. To update details post-print, consider using a URL QR code pointing to an event web page you control.' },
-      { question: 'Do Event QR codes expire or charge monthly fees?', answer: 'No. Static iCalendar QR codes generated on QR Maker Studio have permanent validity, unlimited scans, and zero recurring fees.' },
+      { question: 'Do Event QR codes expire or charge monthly fees?', answer: 'No. Static iCalendar QR codes generated on QR Generator Online have permanent validity, unlimited scans, and zero recurring fees.' },
       { question: 'Which export format is recommended for printing on wedding stationery?', answer: 'Download the vector SVG file. Vector files maintain perfect line sharpness when printed on commercial presses, textured linen, or metallic cardstock.' },
-      { question: 'Can I embed my wedding monogram or company logo in the QR code?', answer: 'Yes! QR Maker Studio uses Level H error correction, allowing you to embed a custom monogram or event icon in the center without affecting scanning reliability.' },
+      { question: 'Can I embed my wedding monogram or company logo in the QR code?', answer: 'Yes! QR Generator Online uses Level H error correction, allowing you to embed a custom monogram or event icon in the center without affecting scanning reliability.' },
       { question: 'Is my event information private during generation?', answer: 'Yes. All QR code generation is performed 100% client-side in your web browser. No event titles or dates are stored on external servers.' }
     ]
   },
@@ -598,10 +598,10 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'Which wallet apps can scan these Crypto QR Codes?', answer: 'All standard mobile crypto wallets support standard URI QR codes, including MetaMask, Trust Wallet, Coinbase Wallet, Binance, Phantom, Exodus, Kraken, and Electrum.' },
       { question: 'Can I specify a fixed payment amount in the QR code?', answer: 'Yes. You can enter an optional amount (e.g. `0.005 BTC` or `50 USDT`), which wallet apps will automatically populate upon scanning.' },
       { question: 'What happens if someone sends a different cryptocurrency to my address?', answer: 'Sending an incompatible cryptocurrency (like sending Bitcoin to an Ethereum address) can result in permanent loss of funds on the blockchain. Always label your QR code with the exact coin and network name.' },
-      { question: 'Do Crypto QR codes expire or charge transaction fees?', answer: 'No. Static Crypto QR codes generated on QR Maker Studio have permanent validity and zero fees. Standard blockchain network gas fees apply only when payers submit transactions.' },
+      { question: 'Do Crypto QR codes expire or charge transaction fees?', answer: 'No. Static Crypto QR codes generated on QR Generator Online have permanent validity and zero fees. Standard blockchain network gas fees apply only when payers submit transactions.' },
       { question: 'Where do I find my public wallet receive address?', answer: 'Open your crypto wallet app, navigate to Receive, select your coin, and copy the alphanumeric public address shown.' },
-      { question: 'Can I embed the official Bitcoin or Ethereum logo in the QR code?', answer: 'Yes! QR Maker Studio uses Level H error correction, allowing you to embed official cryptocurrency logos in the center without affecting scanning reliability.' },
-      { question: 'Are my wallet addresses stored on QR Maker Studio servers?', answer: 'No. All QR code generation executes 100% client-side in your web browser memory. Your wallet addresses are never uploaded, logged, or tracked.' }
+      { question: 'Can I embed the official Bitcoin or Ethereum logo in the QR code?', answer: 'Yes! QR Generator Online uses Level H error correction, allowing you to embed official cryptocurrency logos in the center without affecting scanning reliability.' },
+      { question: 'Are my wallet addresses stored on QR Generator Online servers?', answer: 'No. All QR code generation executes 100% client-side in your web browser memory. Your wallet addresses are never uploaded, logged, or tracked.' }
     ]
   },
 
@@ -644,10 +644,10 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     faqs: [
       { question: 'How do I obtain the correct public Google Form link for my QR code?', answer: 'Open your form in Google Forms, click the purple "Send" button at the top right, select the Link icon, check the "Shorten URL" box, and copy the resulting link to paste into our generator.' },
       { question: 'Do respondents need a Google account to fill out the form?', answer: 'No. As long as you have disabled "Limit to 1 response" and file upload questions in your Google Form settings, anyone can complete the form on their mobile browser without logging into Google.' },
-      { question: 'Do Google Forms QR codes expire or charge fees?', answer: 'No. Static Google Forms QR codes generated on QR Maker Studio have permanent validity, unlimited scans, and zero recurring fees.' },
+      { question: 'Do Google Forms QR codes expire or charge fees?', answer: 'No. Static Google Forms QR codes generated on QR Generator Online have permanent validity, unlimited scans, and zero recurring fees.' },
       { question: 'Can I link to a Google Form that automatically populates certain fields?', answer: 'Yes! In Google Forms, click the three dots menu > "Get pre-filled link", fill in default fields, copy the link, and generate your QR code. Scanners will see those fields pre-populated.' },
       { question: 'Where do the submitted responses go?', answer: 'All responses appear instantly in your Google Forms "Responses" tab and automatically sync in real-time to your linked Google Sheets spreadsheet.' },
-      { question: 'Can I embed my school or company logo in the QR code?', answer: 'Yes! QR Maker Studio uses Level H error correction, allowing you to embed a Google Forms icon or your custom logo in the center without affecting scanning reliability.' },
+      { question: 'Can I embed my school or company logo in the QR code?', answer: 'Yes! QR Generator Online uses Level H error correction, allowing you to embed a Google Forms icon or your custom logo in the center without affecting scanning reliability.' },
       { question: 'What file format is best for printing table tents and flyers?', answer: 'Download the vector SVG file for crisp commercial printing or high-resolution PNG for digital presentation slides and documents.' },
       { question: 'Is my survey link data kept private during generation?', answer: 'Yes. All QR code generation executes 100% client-side in your web browser memory. No form URLs or survey data are ever uploaded or stored on external servers.' }
     ]
@@ -666,7 +666,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     introParagraphs: [
       'An Instagram QR Code is a scannable barcode that directs smartphone users directly to your Instagram profile, post, reel, or story without having to manually search your username.',
       'By placing an Instagram QR code on your product packaging, business cards, store windows, restaurant menus, or event flyers, you can seamlessly convert offline customers into engaged online followers with a single camera scan.',
-      'QR Maker Studio allows you to create high-resolution Instagram QR codes with official Instagram brand colors, custom center logos, and downloadable vector SVG or PNG files — 100% free with unlimited scans.'
+      'QR Generator Online allows you to create high-resolution Instagram QR codes with official Instagram brand colors, custom center logos, and downloadable vector SVG or PNG files — 100% free with unlimited scans.'
     ],
     stepsTitle: 'How to Make an Instagram QR Code in 3 Steps',
     steps: [
@@ -674,7 +674,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { number: 2, title: 'Customize Colors & Add Logo', description: 'Select vibrant Instagram gradient colors, customize pattern dots, and embed an Instagram icon.' },
       { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for print on business cards, stickers, and merchandise.' }
     ],
-    featuresTitle: 'Why Use QR Maker Studio for Instagram QR Codes?',
+    featuresTitle: 'Why Use QR Generator Online for Instagram QR Codes?',
     features: [
       { title: 'One-Tap App Launch', description: 'When scanned on mobile, opens the Instagram app directly to your profile page for instant following.' },
       { title: 'Permanent & Free Forever', description: 'Static Instagram QR codes never expire and support unlimited lifetime scans with zero fees.' },
@@ -692,7 +692,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'How do I create a QR code for my Instagram profile?', answer: 'Simply enter your Instagram username (without the @ symbol) or paste your full profile URL into the generator above, customize your design, and click download.' },
       { question: 'Does scanning open the Instagram app directly?', answer: 'Yes! On modern iOS and Android smartphones with Instagram installed, scanning the QR code triggers a deep link opening your profile directly in the Instagram app.' },
       { question: 'Can I add the official Instagram logo to the QR code?', answer: 'Yes, you can upload an Instagram icon or your own brand logo to embed in the center of your QR code using our Level H error correction.' },
-      { question: 'Do Instagram QR codes expire?', answer: 'No. Static Instagram QR codes generated on QR Maker Studio are permanent and work forever with unlimited scans.' },
+      { question: 'Do Instagram QR codes expire?', answer: 'No. Static Instagram QR codes generated on QR Generator Online are permanent and work forever with unlimited scans.' },
       { question: 'Can I link to a specific Instagram post or Reel instead of a profile?', answer: 'Yes! Simply copy the URL of the specific post, Reel, or Story from Instagram and paste the complete URL into the URL generator tool.' },
       { question: 'What is the best size for printing Instagram QR codes?', answer: 'For business cards, print at a minimum of 2 x 2 cm (0.8 x 0.8 in). For flyers and posters, 3 x 3 cm or larger is recommended.' },
       { question: 'Is this Instagram QR code generator completely free?', answer: 'Yes, 100% free with no watermarks, no account signup required, and no hidden fees.' },
@@ -713,7 +713,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     introParagraphs: [
       'A YouTube QR Code links scanners directly to your YouTube channel, a specific video, a curated playlist, or a YouTube Shorts clip. Scanning the code opens the video or channel instantly in the YouTube app or mobile browser.',
       'Content creators, educators, brands, and marketers use YouTube QR codes on flyers, product packaging, user manuals, and presentation slides to drive video engagement and subscriber growth without requiring users to search for video titles.',
-      'With QR Maker Studio, you can customize your YouTube QR codes with signature red branding, custom logos, and vector SVG exports for crystal-clear printing at any scale.'
+      'With QR Generator Online, you can customize your YouTube QR codes with signature red branding, custom logos, and vector SVG exports for crystal-clear printing at any scale.'
     ],
     stepsTitle: 'How to Create a YouTube QR Code in 3 Steps',
     steps: [
@@ -721,7 +721,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { number: 2, title: 'Customize Design & Red Accents', description: 'Choose YouTube red (#FF0000) or your brand colors, customize corner styles, and embed a play button logo.' },
       { number: 3, title: 'Download Vector or PNG', description: 'Download your high-resolution QR code ready for video promotion on flyers, posters, and merchandise.' }
     ],
-    featuresTitle: 'Why Generate YouTube QR Codes with QR Maker Studio?',
+    featuresTitle: 'Why Generate YouTube QR Codes with QR Generator Online?',
     features: [
       { title: 'Direct YouTube App Launch', description: 'Scanners are redirected seamlessly into the native YouTube mobile app for optimal viewing.' },
       { title: 'Unlimited Views & Scans', description: 'Permanent static QR codes with zero scan limits and lifetime operational validity.' },
@@ -740,7 +740,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'Can I create a QR code that auto-prompts users to subscribe?', answer: 'Yes! Append ?sub_confirmation=1 to your YouTube channel URL (e.g. https://youtube.com/@yourchannel?sub_confirmation=1) so desktop scanners see a subscribe popup.' },
       { question: 'Does scanning open the native YouTube app?', answer: 'Yes, on both iOS and Android, scanning the YouTube QR code automatically opens the target video or channel in the YouTube app if installed.' },
       { question: 'Can I link to a specific timestamp in a YouTube video?', answer: 'Yes! Add &t=XmYs (or ?t=XmYs) to your video URL to start video playback at a precise second.' },
-      { question: 'Do YouTube QR codes expire?', answer: 'No, static YouTube QR codes created on QR Maker Studio are permanent and work as long as the YouTube video remains online.' },
+      { question: 'Do YouTube QR codes expire?', answer: 'No, static YouTube QR codes created on QR Generator Online are permanent and work as long as the YouTube video remains online.' },
       { question: 'Can I add the YouTube play button logo to the center?', answer: 'Yes! You can upload a YouTube play icon or your own channel avatar to embed in the center of the QR code.' },
       { question: 'Are there any scan limits on free YouTube QR codes?', answer: 'No. All static QR codes have unlimited scans forever with no subscriptions or fees.' },
       { question: 'What formats can I download?', answer: 'You can export in high-resolution PNG, vector SVG, and modern WebP formats.' }
@@ -760,7 +760,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     introParagraphs: [
       'A LinkedIn QR Code connects smartphone users straight to your LinkedIn profile, personal resume, or company page with a quick camera scan. It eliminates spelling mistakes and makes networking at business events effortless.',
       'Instead of handing out traditional paper business cards that end up misplaced, a LinkedIn QR code allows prospective employers, clients, and partners to connect with you on LinkedIn instantly while the conversation is active.',
-      'QR Maker Studio allows professionals to generate sleek, brand-aligned LinkedIn QR codes with custom colors, professional frame styling, and vector SVG exports for premium business card printing.'
+      'QR Generator Online allows professionals to generate sleek, brand-aligned LinkedIn QR codes with custom colors, professional frame styling, and vector SVG exports for premium business card printing.'
     ],
     stepsTitle: 'How to Create a LinkedIn QR Code in 3 Steps',
     steps: [
@@ -768,7 +768,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { number: 2, title: 'Customize Professional Styling', description: 'Choose professional LinkedIn blue (#0A66C2), stylish dot patterns, and embed the LinkedIn logo.' },
       { number: 3, title: 'Download in SVG or PNG', description: 'Export your print-ready vector file for luxury business cards, conference badges, and resumes.' }
     ],
-    featuresTitle: 'Why Use QR Maker Studio for LinkedIn QR Codes?',
+    featuresTitle: 'Why Use QR Generator Online for LinkedIn QR Codes?',
     features: [
       { title: 'Instant Mobile Networking', description: 'Launches the LinkedIn mobile app directly to your profile for one-click connection requests.' },
       { title: 'Permanent & Free Forever', description: 'Your static LinkedIn QR code never expires and supports unlimited connections at zero cost.' },
@@ -807,7 +807,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     introParagraphs: [
       'A Twitter / X QR Code is a scannable barcode that directs scanners directly to your Twitter/X profile, a specific tweet, a thread, or an X List without manual handle typing.',
       'Whether you are an author, tech founder, journalist, or brand, displaying a Twitter QR code on presentation decks, event flyers, product packaging, and printed articles connects offline audiences directly to your digital commentary.',
-      'QR Maker Studio provides free, customizable Twitter/X QR codes with dark/light presets, custom logos, and high-resolution SVG/PNG downloads with unlimited scans.'
+      'QR Generator Online provides free, customizable Twitter/X QR codes with dark/light presets, custom logos, and high-resolution SVG/PNG downloads with unlimited scans.'
     ],
     stepsTitle: 'How to Create a Twitter / X QR Code in 3 Steps',
     steps: [
@@ -815,7 +815,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { number: 2, title: 'Style & Add X Logo', description: 'Customize colors, dot patterns, eye shapes, and embed an X or Twitter bird logo.' },
       { number: 3, title: 'Download in High Resolution', description: 'Export your QR code in vector SVG or PNG format ready for print and digital publishing.' }
     ],
-    featuresTitle: 'Why Use QR Maker Studio for Twitter / X QR Codes?',
+    featuresTitle: 'Why Use QR Generator Online for Twitter / X QR Codes?',
     features: [
       { title: 'Direct X App Integration', description: 'Seamlessly launches the official X / Twitter mobile app directly to your profile.' },
       { title: 'Permanent & Lifetime Validity', description: 'Static QR codes never expire and support unlimited lifetime scans with zero fees.' },
@@ -834,7 +834,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'Does the QR code work with both x.com and twitter.com links?', answer: 'Yes! Both x.com and twitter.com URLs are fully supported and seamlessly redirect scanners to your profile.' },
       { question: 'Does scanning open the X app on mobile phones?', answer: 'Yes! On devices with the X/Twitter app installed, scanning opens your profile directly within the app.' },
       { question: 'Can I link a QR code to a specific Tweet or Thread?', answer: 'Yes! Simply copy the link to the specific tweet from X and paste it into the URL generator.' },
-      { question: 'Do Twitter QR codes expire or have scan limits?', answer: 'No. Static Twitter QR codes generated on QR Maker Studio have permanent validity and unlimited scans forever.' },
+      { question: 'Do Twitter QR codes expire or have scan limits?', answer: 'No. Static Twitter QR codes generated on QR Generator Online have permanent validity and unlimited scans forever.' },
       { question: 'Can I embed the X or Twitter logo in the center?', answer: 'Yes! You can upload an X icon, the classic bird logo, or your brand avatar to display in the center.' },
       { question: 'What formats are available for download?', answer: 'You can download high-resolution PNG, vector SVG, and WebP formats.' },
       { question: 'Is there any fee to create Twitter QR codes?', answer: 'No, our generator is 100% free with no watermarks and no registration required.' }
@@ -854,7 +854,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     introParagraphs: [
       'A TikTok QR Code is a specialized barcode that links smartphone users directly to your TikTok profile, a viral video, a branded hashtag challenge, or a live stream.',
       'Content creators, retail brands, musicians, and influencers place TikTok QR codes on stickers, clothing tags, in-store displays, posters, and packaging to bridge physical customer interactions into viral digital views and follows.',
-      'With QR Maker Studio, you can generate TikTok QR codes with vibrant cyan and magenta styling, custom logos, and print-ready SVG/PNG files — completely free with unlimited scans.'
+      'With QR Generator Online, you can generate TikTok QR codes with vibrant cyan and magenta styling, custom logos, and print-ready SVG/PNG files — completely free with unlimited scans.'
     ],
     stepsTitle: 'How to Make a TikTok QR Code in 3 Steps',
     steps: [
@@ -862,7 +862,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { number: 2, title: 'Customize Neon Styling', description: 'Select TikTok vibrant colors (#00F2EA, #FF0050), customize patterns, and embed the TikTok logo.' },
       { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for stickers, flyers, product tags, and packaging.' }
     ],
-    featuresTitle: 'Why Use QR Maker Studio for TikTok QR Codes?',
+    featuresTitle: 'Why Use QR Generator Online for TikTok QR Codes?',
     features: [
       { title: 'Direct TikTok App Launch', description: 'Instantly opens the native TikTok app on iOS and Android for one-tap following.' },
       { title: 'Permanent & Free Forever', description: 'Static TikTok QR codes never expire and support unlimited lifetime scans with zero fees.' },
@@ -880,7 +880,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'How do I create a QR code for my TikTok account?', answer: 'Enter your TikTok handle (without @) or paste your complete profile URL (https://www.tiktok.com/@yourname), customize the design, and download your QR code.' },
       { question: 'Does scanning open the TikTok mobile app directly?', answer: 'Yes! When scanned on a mobile device with TikTok installed, the QR code opens your profile directly in the TikTok app for instant following.' },
       { question: 'Can I link to a specific TikTok video or sound?', answer: 'Yes! Simply copy the share link of the specific TikTok video or sound and paste it into the URL generator.' },
-      { question: 'Do TikTok QR codes expire?', answer: 'No. Static TikTok QR codes generated on QR Maker Studio are permanent and work indefinitely with unlimited scans.' },
+      { question: 'Do TikTok QR codes expire?', answer: 'No. Static TikTok QR codes generated on QR Generator Online are permanent and work indefinitely with unlimited scans.' },
       { question: 'Can I embed the TikTok music note logo in the center?', answer: 'Yes! You can upload the TikTok logo or your creator avatar to embed in the center of the QR code.' },
       { question: 'What is the best format for printing on stickers and clothing?', answer: 'Download the vector SVG format for screen printing and vinyl sticker cutters, or PNG for standard digital printing.' },
       { question: 'Are there any scan limits on free TikTok QR codes?', answer: 'No. There are zero scan limits, no watermarks, and no subscription fees.' },
@@ -901,7 +901,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     introParagraphs: [
       'A Telegram QR Code links smartphone users directly to a Telegram personal chat, public channel, private group, or automated Telegram bot using the standard t.me deep link protocol.',
       'Community managers, crypto projects, content publishers, and customer support teams use Telegram QR codes on websites, flyers, packaging, and social media to invite users into discussions and broadcast channels without typing invite links.',
-      'QR Maker Studio generates high-resolution Telegram QR codes with official blue styling, center logos, and downloadable SVG/PNG files with unlimited lifetime scans.'
+      'QR Generator Online generates high-resolution Telegram QR codes with official blue styling, center logos, and downloadable SVG/PNG files with unlimited lifetime scans.'
     ],
     stepsTitle: 'How to Make a Telegram QR Code in 3 Steps',
     steps: [
@@ -909,7 +909,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { number: 2, title: 'Customize Telegram Blue Styling', description: 'Choose Telegram signature blue (#0088CC), custom dot styles, and embed the paper plane logo.' },
       { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for website placement, flyers, and event signage.' }
     ],
-    featuresTitle: 'Why Use QR Maker Studio for Telegram QR Codes?',
+    featuresTitle: 'Why Use QR Generator Online for Telegram QR Codes?',
     features: [
       { title: 'One-Tap Telegram App Launch', description: 'Launches the native Telegram app directly to the chat, group, or channel.' },
       { title: 'Permanent & Free Forever', description: 'Static Telegram QR codes never expire and support unlimited lifetime scans with zero fees.' },
@@ -948,7 +948,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     introParagraphs: [
       'A PayPal QR Code provides a fast, contactless way to receive payments from customers, clients, and donors. Scanning the code opens PayPal.me directly on the user phone with your account pre-filled for instant checkout.',
       'Freelancers, small business owners, market vendors, and non-profits use PayPal QR codes on invoices, shop counters, donation jars, and service menus to accept cashless payments without expensive card terminal hardware.',
-      'QR Maker Studio generates crisp, brand-aligned PayPal QR codes with custom colors, PayPal logos, and vector SVG exports for professional signage — 100% free with zero platform transaction markup.'
+      'QR Generator Online generates crisp, brand-aligned PayPal QR codes with custom colors, PayPal logos, and vector SVG exports for professional signage — 100% free with zero platform transaction markup.'
     ],
     stepsTitle: 'How to Make a PayPal QR Code in 3 Steps',
     steps: [
@@ -956,7 +956,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { number: 2, title: 'Style & Add PayPal Logo', description: 'Select PayPal blue (#003087, #0079C1), choose dot patterns, and embed the PayPal logo.' },
       { number: 3, title: 'Download in SVG or PNG', description: 'Export your high-resolution QR code ready for print on invoices, counter displays, and stickers.' }
     ],
-    featuresTitle: 'Why Use QR Maker Studio for PayPal QR Codes?',
+    featuresTitle: 'Why Use QR Generator Online for PayPal QR Codes?',
     features: [
       { title: 'Zero Platform Fees', description: 'Our generator is 100% free with zero transaction fees or commissions added to your payments.' },
       { title: 'Instant Mobile Checkout', description: 'Opens the PayPal app or mobile web checkout directly for fast, frictionless payment.' },
@@ -974,7 +974,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'How do I create a PayPal.me QR code?', answer: 'Enter your PayPal.me username (e.g. yourbusiness) or paste your full PayPal link (https://paypal.me/yourbusiness), customize your styling, and click download.' },
       { question: 'Can I set a fixed payment amount in the QR code?', answer: 'Yes! Append the amount to your PayPal.me link (e.g. https://paypal.me/yourbusiness/25 for $25) so scanners see the exact amount pre-filled.' },
       { question: 'Does the customer need a PayPal account to pay?', answer: 'Customers with a PayPal account can pay instantly with one tap. Those without an account can pay using their credit/debit card on PayPal secure mobile guest checkout.' },
-      { question: 'Are there any transaction fees from QR Maker Studio?', answer: 'None! QR Maker Studio charges 0% fees. Standard PayPal transaction fees apply as per your PayPal merchant agreement.' },
+      { question: 'Are there any transaction fees from QR Generator Online?', answer: 'None! QR Generator Online charges 0% fees. Standard PayPal transaction fees apply as per your PayPal merchant agreement.' },
       { question: 'Do PayPal QR codes expire?', answer: 'No. Static PayPal QR codes are permanent and work as long as your PayPal.me account is active.' },
       { question: 'Can I embed the PayPal logo in the center of the QR code?', answer: 'Yes! You can embed the PayPal "PP" icon or your own company logo in the center.' },
       { question: 'What is the best format for printing counter display signs?', answer: 'Download the vector SVG file for large acrylic counter stands and banners, or PNG for printed invoice headers.' },
@@ -995,7 +995,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
     introParagraphs: [
       'A UPI QR Code (Unified Payments Interface Quick Response Code) is a standardized payment barcode recognized across India by the National Payments Corporation of India (NPCI).',
       'When scanned by any UPI app — including Google Pay, PhonePe, Paytm, BHIM, Amazon Pay, or banking apps — it instantly initiates a direct bank-to-bank transfer with the payee VPA, name, and optional amount pre-filled.',
-      'QR Maker Studio allows Indian merchants, freelancers, and businesses to generate high-resolution UPI QR codes with custom styling, logos, and vector SVG exports for professional shop counter displays — 100% free with unlimited scans.'
+      'QR Generator Online allows Indian merchants, freelancers, and businesses to generate high-resolution UPI QR codes with custom styling, logos, and vector SVG exports for professional shop counter displays — 100% free with unlimited scans.'
     ],
     stepsTitle: 'How to Make a UPI QR Code in 3 Steps',
     steps: [
@@ -1003,7 +1003,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { number: 2, title: 'Customize Colors & Logo', description: 'Choose vibrant colors, customize corner eyes, and embed a UPI or business logo in the center.' },
       { number: 3, title: 'Download in SVG or PNG', description: 'Export your print-ready QR code for shop counters, billing receipts, and digital invoices.' }
     ],
-    featuresTitle: 'Why Use QR Maker Studio for UPI QR Codes?',
+    featuresTitle: 'Why Use QR Generator Online for UPI QR Codes?',
     features: [
       { title: 'Universal UPI App Compatibility', description: 'Works seamlessly with Google Pay, PhonePe, Paytm, BHIM, Amazon Pay, and all Indian banking apps.' },
       { title: 'Zero Platform Fees', description: '100% free with zero transaction fees, setup charges, or monthly subscriptions.' },
@@ -1021,7 +1021,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'What is a UPI ID (VPA) and where do I find it?', answer: 'Your UPI ID (Virtual Payment Address) is a unique identifier linked to your bank account (e.g. yourname@oksbi, mobile@paytm). You can find it in your Google Pay, PhonePe, or Paytm profile.' },
       { question: 'Which payment apps can scan this UPI QR code?', answer: 'All UPI-enabled apps in India can scan this QR code, including Google Pay (GPay), PhonePe, Paytm, BHIM, Amazon Pay, CRED, and all mobile banking apps.' },
       { question: 'Can I pre-fill a fixed payment amount in the QR code?', answer: 'Yes! Enter an amount in the generator form, and the payer app will automatically display that exact amount when scanned.' },
-      { question: 'Are there any platform charges for using this UPI QR code generator?', answer: 'No. QR Maker Studio is 100% free with zero transaction fees or recurring charges.' },
+      { question: 'Are there any platform charges for using this UPI QR code generator?', answer: 'No. QR Generator Online is 100% free with zero transaction fees or recurring charges.' },
       { question: 'Do UPI QR codes expire?', answer: 'No. Static UPI QR codes have permanent validity and work indefinitely as long as your linked UPI ID is active.' },
       { question: 'Can I add my shop or company logo to the UPI QR code?', answer: 'Yes! You can embed your shop logo or the official UPI icon in the center of the QR code.' },
       { question: 'What format should I download for printing counter stands?', answer: 'Download the vector SVG format for crisp large-scale printing on acrylic stands, sunboard signs, and vinyl stickers.' },

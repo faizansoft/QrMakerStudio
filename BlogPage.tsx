@@ -10,7 +10,7 @@ const BlogPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
-    document.title = "QR Code Blog & Guides | QR Maker Studio";
+    document.title = "QR Code Blog & Guides | QR Generator Online";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.setAttribute('content', 'Explore QR Code guides, printing standards, restaurant menu tips, real estate marketing strategies, and digital business card tutorials.');

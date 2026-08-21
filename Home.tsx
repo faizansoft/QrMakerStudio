@@ -369,8 +369,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     
     // 1. Update Title & Meta Description
     document.title = isRoot 
-      ? "QR Maker Studio: Create Free QR Codes" 
-      : `${currentSeo.metaTitle} | QR Maker Studio`;
+      ? "QR Generator Online: Create Free QR Codes" 
+      : `${currentSeo.metaTitle} | QR Generator Online`;
 
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
@@ -1387,7 +1387,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
               <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5zm-1 14-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9z" />
             </svg>
             <p className="text-lg font-medium leading-7 text-gray-500 text-center sm:text-left">
-              QR Maker Studio protects your data — all processing happens locally in your browser
+              QR Generator Online protects your data — all processing happens locally in your browser
             </p>
           </div>
           <div className="flex items-center gap-6">

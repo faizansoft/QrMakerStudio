@@ -1,5 +1,5 @@
 /**
- * SEO & Structured Data (JSON-LD) Utilities for QrMakerStudio
+ * SEO & Structured Data (JSON-LD) Utilities for QRGeneratorOnline
  */
 
 export interface BreadcrumbItem {
@@ -45,7 +45,7 @@ export const removeJSONLD = (id: string) => {
 export const getOrganizationSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'QR Maker Studio',
+  name: 'QR Generator Online',
   url: 'https://qr-generator.online',
   logo: 'https://qr-generator.online/og-image.png',
   description: 'Create free static and dynamic QR Codes using custom logos and colors.',
@@ -60,7 +60,7 @@ export const getOrganizationSchema = () => ({
 export const getWebSiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'QR Maker Studio',
+  name: 'QR Generator Online',
   url: 'https://qr-generator.online',
   potentialAction: {
     '@type': 'SearchAction',
@@ -109,7 +109,7 @@ export const getToolSoftwareSchema = (
 ) => ({
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: `${toolName} - QR Maker Studio`,
+  name: `${toolName} - QR Generator Online`,
   url: `https://qr-generator.online${toolPath}`,
   description: description,
   applicationCategory: 'DesignApplication',

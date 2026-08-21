@@ -1,6 +1,6 @@
-# QR Maker Studio — Free, Privacy-First Online QR Code Generator
+# QR Generator Online — Free, Privacy-First Online QR Code Generator
 
-> QR Maker Studio (https://qr-generator.online) is a 100% free, browser-based, privacy-first 2D matrix barcode generation platform. Engineered in accordance with ISO/IEC 18004 standards, it provides permanent, scannable QR codes with zero subscription walls, zero scan expiration limits, and zero server-side data logging. All encoding, Reed-Solomon algebraic error correction, and vector rendering execute 100% client-side in the user's web browser memory.
+> QR Generator Online (https://qr-generator.online) is a 100% free, browser-based, privacy-first 2D matrix barcode generation platform. Engineered in accordance with ISO/IEC 18004 standards, it provides permanent, scannable QR codes with zero subscription walls, zero scan expiration limits, and zero server-side data logging. All encoding, Reed-Solomon algebraic error correction, and vector rendering execute 100% client-side in the user's web browser memory.
 
 ## Key Architectural & Business Differentiators
 

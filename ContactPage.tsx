@@ -8,10 +8,10 @@ const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.title = "Contact Support & Technical Support | QR Maker Studio";
+    document.title = "Contact Support & Technical Support | QR Generator Online";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Get in touch with the QR Maker Studio support team. Technical support for SVG print exports, custom branding, and general inquiries.');
+      metaDesc.setAttribute('content', 'Get in touch with the QR Generator Online support team. Technical support for SVG print exports, custom branding, and general inquiries.');
     }
 
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([

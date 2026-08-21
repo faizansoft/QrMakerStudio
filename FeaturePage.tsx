@@ -20,7 +20,7 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
 
   useEffect(() => {
     // 1. Title and Meta Description
-    document.title = `${featureSeo.metaTitle} | QR Maker Studio`;
+    document.title = `${featureSeo.metaTitle} | QR Generator Online`;
 
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {

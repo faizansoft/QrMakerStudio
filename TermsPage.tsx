@@ -7,10 +7,10 @@ const TermsPage: React.FC = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = "Terms of Service & Commercial Usage Ownership | QR Maker Studio";
+    document.title = "Terms of Service & Commercial Usage Ownership | QR Generator Online";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Terms of Service for QR Maker Studio. Enjoy 100% full commercial ownership of all generated QR code images (PNG, SVG, WebP) with zero attribution fees or scan limits.');
+      metaDesc.setAttribute('content', 'Terms of Service for QR Generator Online. Enjoy 100% full commercial ownership of all generated QR code images (PNG, SVG, WebP) with zero attribution fees or scan limits.');
     }
 
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
@@ -52,7 +52,7 @@ const TermsPage: React.FC = () => {
             1. Unrestricted Commercial Ownership & Royalty-Free Rights
           </h2>
           <p>
-            You hold <strong>100% full, perpetual, worldwide commercial ownership rights</strong> to all QR Code graphic assets (PNG, SVG, WebP) generated through <strong>QR Maker Studio</strong>.
+            You hold <strong>100% full, perpetual, worldwide commercial ownership rights</strong> to all QR Code graphic assets (PNG, SVG, WebP) generated through <strong>QR Generator Online</strong>.
           </p>
           <p>
             You are free to print, publish, broadcast, distribute, or sell marketing collateral, product packaging, corporate stationery, clothing, and digital media containing QR codes created on our platform. We impose zero mandatory attribution requirements, zero licensing fees, and zero scan limits.
@@ -108,7 +108,7 @@ const TermsPage: React.FC = () => {
             3. Static QR Code Payload Modification Limitations
           </h2>
           <p>
-            QR Maker Studio produces <strong>Static QR Codes</strong>. In a static QR code, your payload data (such as a <Link to="/url-qr-code-generator" className="text-accent font-bold hover:underline">URL link</Link>, <Link to="/wifi-qr-code-generator" className="text-accent font-bold hover:underline">WiFi passphrase</Link>, or <Link to="/vcard-qr-code-generator" className="text-accent font-bold hover:underline">vCard record</Link>) is hardcoded directly into the geometric module pattern.
+            QR Generator Online produces <strong>Static QR Codes</strong>. In a static QR code, your payload data (such as a <Link to="/url-qr-code-generator" className="text-accent font-bold hover:underline">URL link</Link>, <Link to="/wifi-qr-code-generator" className="text-accent font-bold hover:underline">WiFi passphrase</Link>, or <Link to="/vcard-qr-code-generator" className="text-accent font-bold hover:underline">vCard record</Link>) is hardcoded directly into the geometric module pattern.
           </p>
           <p>
             Once a static QR code image is generated and printed on physical media, the payload content encoded within that physical pattern cannot be edited or redirected on our server. Users are responsible for verifying all payload URLs, phone numbers, and text for accuracy prior to physical print execution.
@@ -121,7 +121,7 @@ const TermsPage: React.FC = () => {
             4. Acceptable Use Policy & Prohibited Conduct
           </h2>
           <p>
-            You agree to use QR Maker Studio exclusively for lawful business and personal purposes. You are strictly prohibited from generating QR codes that link to or promote:
+            You agree to use QR Generator Online exclusively for lawful business and personal purposes. You are strictly prohibited from generating QR codes that link to or promote:
           </p>
           <ul className="list-disc pl-6 space-y-2 text-gray-600">
             <li>Malicious software, phishing schemes, ransomware, or spyware distribution.</li>
@@ -140,7 +140,7 @@ const TermsPage: React.FC = () => {
             5. Intellectual Property & Brand Trademarks
           </h2>
           <p>
-            The software, visual styling, logo assets, UI component design, and underlying client-side codebase of <strong>QR Maker Studio</strong> are protected by international copyright and intellectual property laws. Users may not clone, scrape, reverse-engineer, or rebrand our web platform without explicit prior written authorization.
+            The software, visual styling, logo assets, UI component design, and underlying client-side codebase of <strong>QR Generator Online</strong> are protected by international copyright and intellectual property laws. Users may not clone, scrape, reverse-engineer, or rebrand our web platform without explicit prior written authorization.
           </p>
         </section>
 
@@ -150,7 +150,7 @@ const TermsPage: React.FC = () => {
             6. Disclaimer of Warranties
           </h2>
           <p>
-            QR Maker Studio is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
+            QR Generator Online is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
           </p>
           <p>
             While we strive for 100% application uptime and client-side rendering accuracy, we do not warrant that our web application will be uninterrupted, error-free, or entirely free of client-side browser rendering anomalies.
@@ -163,7 +163,7 @@ const TermsPage: React.FC = () => {
             7. Limitation of Liability
           </h2>
           <p>
-            In no event shall QR Maker Studio, its developers, partners, or affiliates be held liable for any indirect, incidental, consequential, special, or punitive damages (including loss of business profits, print material costs, or marketing expenses) arising out of or related to your use of, or inability to use, our generator tools or printed QR code images.
+            In no event shall QR Generator Online, its developers, partners, or affiliates be held liable for any indirect, incidental, consequential, special, or punitive damages (including loss of business profits, print material costs, or marketing expenses) arising out of or related to your use of, or inability to use, our generator tools or printed QR code images.
           </p>
         </section>
 

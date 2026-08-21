@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
                 </svg>
               </div>
-              <span className="text-lg font-bold text-white">QR Maker Studio</span>
+              <span className="text-lg font-bold text-white">QR Generator Online</span>
             </div>
             <h2 className="mb-3 text-xl font-bold text-white">
               {t('home_cta_primary')}
@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
             <p className="text-sm text-neutral-400">
               © {new Date().getFullYear()}{' '}
-              <span className="hover:text-white transition-colors">QR Maker Studio</span>
+              <span className="hover:text-white transition-colors">QR Generator Online</span>
             </p>
 
             {/* Social Icons */}

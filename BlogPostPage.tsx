@@ -16,7 +16,7 @@ const BlogPostPage: React.FC = () => {
     if (!post) return;
 
     // 1. Title and Meta Description
-    document.title = `${post.title} | QR Maker Studio Blog`;
+    document.title = `${post.title} | QR Generator Online Blog`;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.setAttribute('content', post.description);
@@ -36,7 +36,7 @@ const BlogPostPage: React.FC = () => {
       },
       publisher: {
         '@type': 'Organization',
-        name: 'QR Maker Studio',
+        name: 'QR Generator Online',
         logo: 'https://qr-generator.online/og-image.png'
       },
       mainEntityOfPage: `https://qr-generator.online/blog/${post.slug}`

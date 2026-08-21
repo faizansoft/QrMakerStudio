@@ -43,7 +43,7 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
     introParagraphs: [
       'A plain black-and-white QR code can look generic or even suspicious to security-conscious mobile users. Adding your official company logo or brand image to the center of your QR Code immediately establishes authenticity, trust, and brand identity.',
       'Studies show that branded QR codes featuring a recognizable logo achieve up to 35% higher scan engagement rates compared to unbranded barcodes because users feel confident knowing who published the code and where scanning it will lead.',
-      'With QR Maker Studio, uploading your custom logo is fast and 100% browser-based. Our intelligent error correction algorithm (Level H) automatically shields your logo with clean margins so your QR code remains 100% scannable on all mobile devices.'
+      'With QR Generator Online, uploading your custom logo is fast and 100% browser-based. Our intelligent error correction algorithm (Level H) automatically shields your logo with clean margins so your QR code remains 100% scannable on all mobile devices.'
     ],
     stepsTitle: 'How to Add a Logo to Your QR Code in 3 Simple Steps',
     steps: [
@@ -68,9 +68,9 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
     faqs: [
       { question: 'Why does adding a logo not break the QR code scannability?', answer: 'QR codes utilize Reed-Solomon algebraic error correction (Level H), which duplicates up to 30% of the data payload. When a logo covers the center modules, camera decoders reconstruct the hidden data from surrounding redundant parity blocks.' },
       { question: 'What image formats can I upload for the central logo?', answer: 'You can upload PNG (with transparency), SVG vector files, or JPEG images. Transparent PNG and vector SVG files yield the cleanest, most professional visual results.' },
-      { question: 'How large should the logo be relative to the QR code?', answer: 'The logo should occupy between 15% and 25% of the total QR code width and height. QR Maker Studio automatically scales your logo to the optimal mathematical proportion.' },
-      { question: 'Do QR codes with custom logos cost money or require subscriptions?', answer: 'No. Creating branded QR codes with logos on QR Maker Studio is 100% free with unlimited scans, permanent lifetime validity, and zero paywalls.' },
-      { question: 'Can I add social media icons (Instagram, Facebook, WhatsApp, WiFi) instead of a company logo?', answer: 'Yes! QR Maker Studio includes a built-in library of popular platform icon presets, or you can upload your own custom artwork.' },
+      { question: 'How large should the logo be relative to the QR code?', answer: 'The logo should occupy between 15% and 25% of the total QR code width and height. QR Generator Online automatically scales your logo to the optimal mathematical proportion.' },
+      { question: 'Do QR codes with custom logos cost money or require subscriptions?', answer: 'No. Creating branded QR codes with logos on QR Generator Online is 100% free with unlimited scans, permanent lifetime validity, and zero paywalls.' },
+      { question: 'Can I add social media icons (Instagram, Facebook, WhatsApp, WiFi) instead of a company logo?', answer: 'Yes! QR Generator Online includes a built-in library of popular platform icon presets, or you can upload your own custom artwork.' },
       { question: 'Will a logo QR code scan reliably on older smartphone cameras?', answer: 'Yes. As long as Level H error correction is maintained and the logo does not exceed 30% of the surface area, all smartphone cameras will decode the code instantly.' },
       { question: 'Which export format is best for commercial printing with a logo?', answer: 'Download the vector SVG file. SVG maintains vector clarity for both the QR module matrix and the embedded vector logo at any print scale.' },
       { question: 'Is my uploaded logo image stored on your web servers?', answer: 'No. All image composition and QR rendering execute 100% client-side inside your web browser. Your logos and links are never uploaded or stored.' }
@@ -91,7 +91,7 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
     introParagraphs: [
       'A Custom Design QR Code goes beyond primitive square pixels by allowing you to customize the geometry of the pattern dots (rounded, dots, classy, smooth) as well as the outer corner square frames and inner corner eyes.',
       'Matching your QR code visual geometry to your brand aesthetics creates a cohesive, modern visual experience that elevates your physical marketing materials and digital assets.',
-      'QR Maker Studio provides an interactive real-time customizer where you can experiment with aesthetic templates, dot shapes, corner eye styles, and custom brand accents.'
+      'QR Generator Online provides an interactive real-time customizer where you can experiment with aesthetic templates, dot shapes, corner eye styles, and custom brand accents.'
     ],
     stepsTitle: 'How to Create Custom Designed QR Codes',
     steps: [
@@ -99,7 +99,7 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
       { number: 2, title: 'Select Pattern & Eye Shapes', description: 'Choose from 6 dot patterns (rounded, extra-rounded, dots, classy) and corner eye shapes.' },
       { number: 3, title: 'Download Custom Vector File', description: 'Export your designer QR code in crisp vector SVG or high-resolution PNG format.' }
     ],
-    featuresTitle: 'Design Options in QR Maker Studio',
+    featuresTitle: 'Design Options in QR Generator Online',
     features: [
       { title: '6 Custom Dot Patterns', description: 'Choose between Square, Rounded, Extra-Rounded, Dots, Classy, and Smooth patterns.' },
       { title: 'Custom Corner Outer Frames', description: 'Style the four corner locator squares with rounded corners, circles, or sharp geometric borders.' },
@@ -114,10 +114,10 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
       { title: 'Gala Invitations & Wedding Stationery', description: 'Design elegant QR codes with rounded corners and gold accents that blend with formal event stationery.' }
     ],
     faqs: [
-      { question: 'Do custom styled QR codes scan as quickly as standard black-and-white codes?', answer: 'Yes! QR Maker Studio styles codes within strict ISO/IEC 18004 tolerances. As long as color contrast and quiet zone rules are respected, decoding speed is identical.' },
-      { question: 'What styling elements can I customize on QR Maker Studio?', answer: 'You can customize: (1) module dot styles (rounded, classy, dots, smooth), (2) outer corner square shapes, (3) inner corner eye dots, (4) foreground and background colors, and (5) center embedded logos.' },
+      { question: 'Do custom styled QR codes scan as quickly as standard black-and-white codes?', answer: 'Yes! QR Generator Online styles codes within strict ISO/IEC 18004 tolerances. As long as color contrast and quiet zone rules are respected, decoding speed is identical.' },
+      { question: 'What styling elements can I customize on QR Generator Online?', answer: 'You can customize: (1) module dot styles (rounded, classy, dots, smooth), (2) outer corner square shapes, (3) inner corner eye dots, (4) foreground and background colors, and (5) center embedded logos.' },
       { question: 'Can I export custom QR codes in vector SVG format?', answer: 'Yes! Vector SVG export is standard on all custom designs, ensuring razor-sharp reproduction for commercial printing, laser engraving, and vinyl cutting.' },
-      { question: 'Do custom QR codes expire or require paid subscriptions?', answer: 'No. All custom QR codes generated on QR Maker Studio are 100% free with unlimited scans and permanent lifetime validity.' },
+      { question: 'Do custom QR codes expire or require paid subscriptions?', answer: 'No. All custom QR codes generated on QR Generator Online are 100% free with unlimited scans and permanent lifetime validity.' },
       { question: 'Can I use custom QR codes for commercial product packaging?', answer: 'Yes! Thousands of businesses use our custom vector QR codes on retail packaging, food labels, and apparel tags worldwide.' },
       { question: 'How does Error Correction Level H help custom designs?', answer: 'Level H error correction provides 30% mathematical data recovery, allowing artistic modifications and center logos without risking scan failure.' },
       { question: 'What is the minimum recommended size for custom styled QR codes?', answer: 'A minimum size of 30 mm x 30 mm (1.2" x 1.2") is recommended for custom designs to ensure distinct module separation on all camera sensors.' },
@@ -138,7 +138,7 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
     introTitle: 'Why Choose Colored QR Codes?',
     introParagraphs: [
       'A QR code does not have to be boring black and white. Using your corporate brand colors on QR codes creates an instant visual connection, enhances brand recall, and increases scan rates on marketing flyers, retail packaging, and store displays.',
-      'QR Maker Studio gives you complete creative control over the color palette: choose independent colors for the main pattern modules, background canvas, outer corner frames, and inner eye accents.',
+      'QR Generator Online gives you complete creative control over the color palette: choose independent colors for the main pattern modules, background canvas, outer corner frames, and inner eye accents.',
       'Our generator ensures your color combinations maintain the strict contrast ratios required by optical camera sensors, guaranteeing 100% scan reliability on all smartphones.'
     ],
     stepsTitle: 'How to Make a Colored QR Code',
@@ -165,10 +165,10 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
       { question: 'Can a QR code be any color and still work reliably?', answer: 'Yes, provided that the foreground color is significantly darker than the background color (contrast ratio > 4.5:1). Dark navy, deep green, purple, and maroon work exceptionally well.' },
       { question: 'Why should I avoid white QR codes on dark backgrounds (inverted colors)?', answer: 'Standard QR decoding algorithms expect dark modules on a light background. While modern flagship iPhones can decode inverted codes, many Android devices and handheld scanners struggle or fail completely.' },
       { question: 'How do I check if my color combination is scannable?', answer: 'Convert your design to grayscale in an image viewer. If the QR pattern remains clearly and sharply distinguishable from the background, the contrast is sufficient.' },
-      { question: 'Can I use multiple colors (e.g. different colors for corner eyes)?', answer: 'Yes! QR Maker Studio lets you set different colors for the outer corner frames, inner corner dots, and body modules while preserving optical scannability.' },
-      { question: 'Do colored QR codes expire or cost extra money?', answer: 'No. Colored QR codes generated on QR Maker Studio are 100% free with unlimited scans, permanent lifetime validity, and zero paywalls.' },
+      { question: 'Can I use multiple colors (e.g. different colors for corner eyes)?', answer: 'Yes! QR Generator Online lets you set different colors for the outer corner frames, inner corner dots, and body modules while preserving optical scannability.' },
+      { question: 'Do colored QR codes expire or cost extra money?', answer: 'No. Colored QR codes generated on QR Generator Online are 100% free with unlimited scans, permanent lifetime validity, and zero paywalls.' },
       { question: 'What format should I download for professional color-matched printing?', answer: 'Export the vector SVG file. Vector SVG preserves exact Hex and RGB color definitions and can be converted to CMYK swatches in Adobe InDesign or Illustrator.' },
-      { question: 'Can I add a logo to a colored QR code?', answer: 'Yes! QR Maker Studio supports simultaneous color customization and central logo embedding with Level H error correction.' },
+      { question: 'Can I add a logo to a colored QR code?', answer: 'Yes! QR Generator Online supports simultaneous color customization and central logo embedding with Level H error correction.' },
       { question: 'Is my color design data stored on external servers?', answer: 'No. All color rendering and SVG generation execute 100% client-side in your browser memory. No data is stored externally.' }
     ]
   },
@@ -187,7 +187,7 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
     introParagraphs: [
       'Raster image formats (like PNG and JPEG) consist of a fixed pixel grid. When enlarged for large-format printing on posters, trade show banners, or billboards, raster images pixelate, blur, and become unreadable to mobile smartphone cameras.',
       'An SVG (Scalable Vector Graphics) QR Code uses mathematical geometric coordinate paths. This allows the vector barcode to be enlarged to any physical size — from a tiny 1 cm product sticker to a 50-meter stadium billboard — with 100% razor-sharp edge precision.',
-      'SVG QR codes generated on QR Maker Studio import cleanly into Adobe Illustrator, InDesign, Photoshop, Figma, CorelDRAW, and laser cutting or CNC vinyl plotting software.'
+      'SVG QR codes generated on QR Generator Online import cleanly into Adobe Illustrator, InDesign, Photoshop, Figma, CorelDRAW, and laser cutting or CNC vinyl plotting software.'
     ],
     stepsTitle: 'How to Generate a Vector SVG QR Code',
     steps: [
@@ -213,11 +213,11 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
       { question: 'What is an SVG QR code and why is it better for printing?', answer: 'SVG stands for Scalable Vector Graphics. Unlike PNG or JPEG images made of pixels, SVG files define shapes using mathematical formulas. This allows the QR code to be scaled to any size without losing quality or becoming blurry.' },
       { question: 'Can I open and edit SVG QR codes in Adobe Illustrator or Figma?', answer: 'Yes! SVG files are standard vector graphics that open seamlessly in Adobe Illustrator, InDesign, Photoshop, Figma, CorelDRAW, and Inkscape for prepress adjustments.' },
       { question: 'Is SVG compatible with laser engraving and CNC machines?', answer: 'Yes! Laser cutters and CNC plotters read vector SVG path contours directly to guide the laser beam or cutting blade.' },
-      { question: 'Do SVG QR codes expire or have scan limits?', answer: 'No. Static SVG QR codes generated on QR Maker Studio have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
+      { question: 'Do SVG QR codes expire or have scan limits?', answer: 'No. Static SVG QR codes generated on QR Generator Online have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
       { question: 'How large can I scale an SVG QR code without quality loss?', answer: 'You can scale an SVG QR code infinitely — from a 1 cm postage stamp to a 50-meter stadium banner — with 100% mathematical precision.' },
-      { question: 'Can I embed my company logo inside an SVG QR code?', answer: 'Yes! QR Maker Studio allows you to embed your logo in the center of the vector matrix using Level H error correction.' },
+      { question: 'Can I embed my company logo inside an SVG QR code?', answer: 'Yes! QR Generator Online allows you to embed your logo in the center of the vector matrix using Level H error correction.' },
       { question: 'Can I use SVG QR codes on websites and mobile apps?', answer: 'Yes! Modern web browsers render SVG files natively. SVG QR codes load instantly with minimal bandwidth (under 5 KB) and look razor-sharp on high-density Retina displays.' },
-      { question: 'Are SVG QR codes free to generate on QR Maker Studio?', answer: 'Yes! Downloading high-resolution vector SVG QR codes is 100% free with no account creation or subscription required.' }
+      { question: 'Are SVG QR codes free to generate on QR Generator Online?', answer: 'Yes! Downloading high-resolution vector SVG QR codes is 100% free with no account creation or subscription required.' }
     ]
   },
 
@@ -234,7 +234,7 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
     introTitle: 'Why High Resolution is Crucial for QR Codes',
     introParagraphs: [
       'Standard web-generated QR codes are often rendered at 72 DPI (around 200x200 pixels). When printed on physical paper or merchandise, low-resolution barcodes become blurry and pixelated, causing smartphone cameras to fail or experience severe focus delays.',
-      'A High-Resolution QR Code from QR Maker Studio is generated with ultra-dense pixel dimensions (2048x2048 pixels at 300 to 600 DPI) or as a resolution-independent vector SVG file.',
+      'A High-Resolution QR Code from QR Generator Online is generated with ultra-dense pixel dimensions (2048x2048 pixels at 300 to 600 DPI) or as a resolution-independent vector SVG file.',
       'Our high-resolution output ensures razor-sharp module contrast and crisp corner eye boundaries, meeting the strict standards of commercial print shops, magazine publishers, and packaging manufacturers.'
     ],
     stepsTitle: 'How to Generate High Resolution QR Codes',
@@ -259,9 +259,9 @@ export const FEATURE_SEO_DATA: Record<string, FeatureSeoContent> = {
     ],
     faqs: [
       { question: 'Why is high resolution essential for printing QR codes?', answer: 'Low-resolution images blur at the module edges when printed. Camera sensors need sharp contrast boundaries to decode the binary data. High resolution (300+ DPI) ensures instant, error-free scanning.' },
-      { question: 'What resolution does QR Maker Studio export for PNG files?', answer: 'Our platform exports high-resolution 2048x2048 pixel PNG files at 300 DPI, suitable for physical printing up to 7x7 inches without any quality loss.' },
+      { question: 'What resolution does QR Generator Online export for PNG files?', answer: 'Our platform exports high-resolution 2048x2048 pixel PNG files at 300 DPI, suitable for physical printing up to 7x7 inches without any quality loss.' },
       { question: 'When should I use vector SVG instead of high-res PNG?', answer: 'Use vector SVG for any large-format printing (posters, banners, billboards), professional print shop workflows (Illustrator, InDesign), or when laser engraving or cutting vinyl.' },
-      { question: 'Do high-resolution QR codes cost money or require a Pro account?', answer: 'No. All high-resolution PNG and vector SVG downloads on QR Maker Studio are 100% free with unlimited scans and no watermarks.' },
+      { question: 'Do high-resolution QR codes cost money or require a Pro account?', answer: 'No. All high-resolution PNG and vector SVG downloads on QR Generator Online are 100% free with unlimited scans and no watermarks.' },
       { question: 'How do I know what size to print my QR code?', answer: 'Apply the 10:1 scanning ratio: Distance to scanner / 10 = Minimum QR width. For example, a poster scanned from 1 meter away needs a minimum QR code width of 10 cm (4 inches).' },
       { question: 'Can I generate high-resolution QR codes with custom colors and logos?', answer: 'Yes! You can customize colors, dot patterns, corner shapes, and embed your logo, and export the final result in 4K PNG or vector SVG.' },
       { question: 'Why do commercial print shops reject 72 DPI images?', answer: 'Commercial printing presses operate at 2400+ DPI. A 72 DPI image contains insufficient pixel data, resulting in visible pixel blocks that fail prepress quality inspections.' },

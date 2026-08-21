@@ -1,5 +1,5 @@
 /**
- * Centralized Route Metadata Dictionary for QrMakerStudio (31 Routes)
+ * Centralized Route Metadata Dictionary for QRGeneratorOnline (31 Routes)
  * 
  * Strict SEO Constraints (verified against Ahrefs guidelines):
  * 1. Title is unique for every route.
@@ -22,7 +22,7 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
   // ── 1. Homepage ──
   '/': {
     path: '/',
-    title: 'Free QR Code Generator with Logo & Colors | QR Maker Studio',
+    title: 'Free QR Code Generator with Logo & Colors | QR Generator Online',
     description: 'Create free static and dynamic QR codes with custom logos and colors. Generate, customize and download professional QR codes in high resolution.',
     canonical: 'https://qr-generator.online/',
     h1: 'Free Custom QR Code Generator with Logo & Vector SVG Export',
@@ -72,7 +72,7 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
   },
   '/facebook-qr-code-generator': {
     path: '/facebook-qr-code-generator',
-    title: 'Free Social Media & Facebook QR Code Generator | QR Studio',
+    title: 'Free Social Media & Facebook QR Code Generator | QR Generator Online',
     description: 'Create free QR codes for Facebook pages, Instagram, TikTok, and social profiles. Grow your followers with custom branded QR codes in SVG & PNG.',
     canonical: 'https://qr-generator.online/facebook-qr-code-generator',
     h1: 'Free Social Media & Facebook QR Code Generator for Profiles',
@@ -104,7 +104,7 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
   },
   '/location-qr-code-generator': {
     path: '/location-qr-code-generator',
-    title: 'Free Location & Google Maps QR Code Generator | QR Studio',
+    title: 'Free Location & Google Maps QR Code Generator | QR Generator Online',
     description: 'Create Google Maps location QR codes with custom coordinates. Guide customers directly to your store, office, or event venue with one scan.',
     canonical: 'https://qr-generator.online/location-qr-code-generator',
     h1: 'Free Location & Google Maps QR Code Generator for Directions',
@@ -268,7 +268,7 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
   // ── 4. Main Site Pages (6 Pages) ──
   '/pricing': {
     path: '/pricing',
-    title: 'Free vs Pro QR Code Generator Pricing | QR Maker Studio',
+    title: 'Free vs Pro QR Code Generator Pricing | QR Generator Online',
     description: 'Explore 100% free QR code creation with unlimited scans and transparent Pro features for high-volume enterprise campaigns and dynamic links.',
     canonical: 'https://qr-generator.online/pricing',
     h1: 'Simple, Transparent Pricing with 100% Free Core Features',
@@ -284,35 +284,35 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
   },
   '/about': {
     path: '/about',
-    title: 'About QR Maker Studio | Free, Secure & High-Res QR Creator',
+    title: 'About QR Generator Online | Free, Secure & High-Res QR Creator',
     description: 'Learn about our mission to make high-resolution, privacy-focused, and beautiful QR code generation free and accessible to businesses worldwide.',
     canonical: 'https://qr-generator.online/about',
-    h1: 'About QR Maker Studio — Free & Professional QR Code Solutions',
-    keywords: ['about qr maker studio', 'qr code company', 'secure qr code generator']
+    h1: 'About QR Generator Online — Free & Professional QR Code Solutions',
+    keywords: ['about qr generator online', 'qr code company', 'secure qr code generator']
   },
   '/contact': {
     path: '/contact',
-    title: 'Contact Support & Inquiries | QR Maker Studio Team',
-    description: 'Have questions, feature requests, or enterprise inquiries? Contact the QR Maker Studio support team for prompt assistance and technical help.',
+    title: 'Contact Support & Inquiries | QR Generator Online Team',
+    description: 'Have questions, feature requests, or enterprise inquiries? Contact the QR Generator Online support team for prompt assistance and technical help.',
     canonical: 'https://qr-generator.online/contact',
-    h1: 'Contact QR Maker Studio Support & Inquiries',
-    keywords: ['contact qr maker studio', 'qr code support', 'qr generator help']
+    h1: 'Contact QR Generator Online Support & Inquiries',
+    keywords: ['contact qr generator online', 'qr code support', 'qr generator help']
   },
   '/privacy': {
     path: '/privacy',
-    title: 'Privacy Policy | QR Maker Studio Data Protection & Security',
-    description: 'Read how QR Maker Studio protects your privacy. We process QR codes securely in your browser with zero tracking of personal encoded data.',
+    title: 'Privacy Policy | QR Generator Online Data Protection & Security',
+    description: 'Read how QR Generator Online protects your privacy. We process QR codes securely in your browser with zero tracking of personal encoded data.',
     canonical: 'https://qr-generator.online/privacy',
-    h1: 'Privacy Policy & Data Protection at QR Maker Studio',
+    h1: 'Privacy Policy & Data Protection at QR Generator Online',
     keywords: ['privacy policy qr generator', 'secure qr code data protection']
   },
   '/terms': {
     path: '/terms',
-    title: 'Terms of Service | QR Maker Studio Fair Usage Agreement',
-    description: 'Review our terms of service and usage guidelines for generating free and commercial QR codes on the QR Maker Studio platform.',
+    title: 'Terms of Service | QR Generator Online Fair Usage Agreement',
+    description: 'Review our terms of service and usage guidelines for generating free and commercial QR codes on the QR Generator Online platform.',
     canonical: 'https://qr-generator.online/terms',
     h1: 'Terms of Service & Platform Usage Guidelines',
-    keywords: ['terms of service qr maker studio', 'qr code generator usage terms']
+    keywords: ['terms of service qr generator online', 'qr code generator usage terms']
   },
 
   // ── 5. Blog Hub & Posts (6 Pages) ──
@@ -326,7 +326,7 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
   },
   '/blog/qr-codes-for-restaurants': {
     path: '/blog/qr-codes-for-restaurants',
-    title: 'QR Code Menus for Restaurants: Complete 2026 Guide | QR Studio',
+    title: 'QR Code Menus for Restaurants: Complete 2026 Guide | QR Generator Online',
     description: 'Learn how digital QR menus cut printing costs by 90%, increase average order values by 15%, and boost table turnover rates for restaurants.',
     canonical: 'https://qr-generator.online/blog/qr-codes-for-restaurants',
     h1: 'How Restaurants & Cafes Increase Table Turnover with QR Code Menus',
@@ -371,7 +371,7 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
   },
   '/dashboard': {
     path: '/dashboard',
-    title: 'Dynamic QR Code Studio & Analytics Dashboard | QR Maker Studio',
+    title: 'Dynamic QR Code Studio & Analytics Dashboard | QR Generator Online',
     description: 'Manage all your editable dynamic QR codes, change destination links in real time, and monitor live scan metrics, devices, and geographic data.',
     canonical: 'https://qr-generator.online/dashboard',
     h1: 'Dynamic QR Code Studio & Real-Time Management Dashboard',
@@ -379,18 +379,18 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
   },
   '/login': {
     path: '/login',
-    title: 'Log In to Dynamic QR Studio | QR Maker Studio',
-    description: 'Log in to your free QR Maker Studio account to manage dynamic QR codes, update landing pages, and track scan performance.',
+    title: 'Log In to Dynamic QR Generator Online | QR Generator Online',
+    description: 'Log in to your free QR Generator Online account to manage dynamic QR codes, update landing pages, and track scan performance.',
     canonical: 'https://qr-generator.online/login',
-    h1: 'Log In to Your Dynamic QR Maker Studio Account',
+    h1: 'Log In to Your Dynamic QR Generator Online Account',
     keywords: ['qr code login', 'dynamic qr studio sign in']
   },
   '/signup': {
     path: '/signup',
     title: 'Create Free Account | Unlimited Dynamic QR Codes & Analytics',
-    description: 'Sign up for a 100% free QR Maker Studio account. Create permanent dynamic QR codes with live destination editing and scan analytics.',
+    description: 'Sign up for a 100% free QR Generator Online account. Create permanent dynamic QR codes with live destination editing and scan analytics.',
     canonical: 'https://qr-generator.online/signup',
-    h1: 'Create Your Free Dynamic QR Maker Account',
+    h1: 'Create Your Free Dynamic QR Generator Online Account',
     keywords: ['free dynamic qr code sign up', 'create dynamic qr account free']
   }
 };
@@ -409,7 +409,7 @@ export const getRouteMeta = (pathname: string): RouteMeta => {
   if (cleanPath.startsWith('/analytics/')) {
     return {
       path: cleanPath,
-      title: 'Real-Time QR Analytics & Scan Intelligence | QR Maker Studio',
+      title: 'Real-Time QR Analytics & Scan Intelligence | QR Generator Online',
       description: 'Track real-time scans, geographic location, device types, and visitor engagement metrics for your dynamic QR campaign.',
       canonical: `https://qr-generator.online${cleanPath}`,
       h1: 'Dynamic QR Code Real-Time Analytics Dashboard',
@@ -419,7 +419,7 @@ export const getRouteMeta = (pathname: string): RouteMeta => {
   if (cleanPath.startsWith('/r/')) {
     return {
       path: cleanPath,
-      title: 'Redirecting to Destination... | QR Maker Studio',
+      title: 'Redirecting to Destination... | QR Generator Online',
       description: 'Redirecting your smartphone to the verified campaign destination.',
       canonical: `https://qr-generator.online${cleanPath}`,
       h1: 'Dynamic QR Code High-Speed Redirection',
@@ -429,7 +429,7 @@ export const getRouteMeta = (pathname: string): RouteMeta => {
   // 404 fallback
   return {
     path: cleanPath,
-    title: 'Page Not Found | QR Maker Studio',
+    title: 'Page Not Found | QR Generator Online',
     description: 'The requested QR code generator page could not be found. Explore our free QR maker tools, vCard creator, and WiFi generators on the homepage.',
     canonical: `https://qr-generator.online${cleanPath}`,
     h1: '404 - Page Not Found'

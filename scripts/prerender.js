@@ -21,7 +21,7 @@ const distDir = path.resolve(__dirname, '../dist');
 const ROUTES = [
   {
     path: '/',
-    title: 'Free QR Code Generator with Logo & Colors | QR Maker Studio',
+    title: 'Free QR Code Generator with Logo & Colors | QR Generator Online',
     description: 'Create free static and dynamic QR codes with custom logos and colors. Generate, customize and download professional QR codes in high resolution.',
     canonical: 'https://qr-generator.online/',
     h1: 'Free Custom QR Code Generator with Logo & Vector SVG Export',
@@ -29,10 +29,10 @@ const ROUTES = [
     lead: 'Generate high-resolution QR codes with custom colors, dot patterns, frames, and company logos. 100% free with unlimited scans and zero expiration.',
     sections: [
       {
-        title: 'Why Choose QR Maker Studio?',
+        title: 'Why Choose QR Generator Online?',
         paragraphs: [
-          'QR Maker Studio is the web’s most flexible, privacy-focused, and 100% free QR code generator. Whether you need a simple link for a marketing flyer, a digital business card, or instant guest WiFi access, our platform creates professional, scannable QR codes in seconds.',
-          'Unlike other tools that lock high-resolution downloads behind paywalls or expire your codes after 14 days, all static QR codes created on QR Maker Studio remain permanent and functional forever with unlimited scans.'
+          'QR Generator Online is the web’s most flexible, privacy-focused, and 100% free QR code generator. Whether you need a simple link for a marketing flyer, a digital business card, or instant guest WiFi access, our platform creates professional, scannable QR codes in seconds.',
+          'Unlike other tools that lock high-resolution downloads behind paywalls or expire your codes after 14 days, all static QR codes created on QR Generator Online remain permanent and functional forever with unlimited scans.'
         ]
       },
       {
@@ -136,7 +136,7 @@ const ROUTES = [
   },
   {
     path: '/facebook-qr-code-generator',
-    title: 'Free Social Media & Facebook QR Code Generator | QR Studio',
+    title: 'Free Social Media & Facebook QR Code Generator | QR Generator Online',
     description: 'Create free QR codes for Facebook pages, Instagram, TikTok, and social profiles. Grow your followers with custom branded QR codes in SVG & PNG.',
     canonical: 'https://qr-generator.online/facebook-qr-code-generator',
     h1: 'Free Social Media & Facebook QR Code Generator for Profiles',
@@ -208,7 +208,7 @@ const ROUTES = [
   },
   {
     path: '/location-qr-code-generator',
-    title: 'Free Location & Google Maps QR Code Generator | QR Studio',
+    title: 'Free Location & Google Maps QR Code Generator | QR Generator Online',
     description: 'Create Google Maps location QR codes with custom coordinates. Guide customers directly to your store, office, or event venue with one scan.',
     canonical: 'https://qr-generator.online/location-qr-code-generator',
     h1: 'Free Location & Google Maps QR Code Generator for Directions',
@@ -502,7 +502,7 @@ const ROUTES = [
   },
   {
     path: '/pricing',
-    title: 'Free vs Pro QR Code Generator Pricing | QR Maker Studio',
+    title: 'Free vs Pro QR Code Generator Pricing | QR Generator Online',
     description: 'Explore 100% free QR code creation with unlimited scans and transparent Pro features for high-volume enterprise campaigns and dynamic links.',
     canonical: 'https://qr-generator.online/pricing',
     h1: 'Simple, Transparent Pricing with 100% Free Core Features',
@@ -530,7 +530,7 @@ const ROUTES = [
       {
         title: 'Frequently Asked Questions & Technical Advice',
         paragraphs: [
-          'Do static QR codes expire? No, static QR codes created on QR Maker Studio contain raw data and will never expire as long as your destination link remains active.',
+          'Do static QR codes expire? No, static QR codes created on QR Generator Online contain raw data and will never expire as long as your destination link remains active.',
           'What is the best format for print? Vector SVG is the recommended format for commercial printing as it scales to any physical dimension without pixelation or quality loss.'
         ]
       }
@@ -538,17 +538,17 @@ const ROUTES = [
   },
   {
     path: '/about',
-    title: 'About QR Maker Studio | Free, Secure & High-Res QR Creator',
+    title: 'About QR Generator Online | Free, Secure & High-Res QR Creator',
     description: 'Learn about our mission to make high-resolution, privacy-focused, and beautiful QR code generation free and accessible to businesses worldwide.',
     canonical: 'https://qr-generator.online/about',
-    h1: 'About QR Maker Studio — Free & Professional QR Code Solutions',
+    h1: 'About QR Generator Online — Free & Professional QR Code Solutions',
     badge: 'Our Mission & Story',
     lead: 'Our mission is to empower individuals and businesses with fast, secure, beautiful, and completely free QR code creation tools.',
     sections: [
       {
         title: 'Building Privacy-First Barcode Technology',
         paragraphs: [
-          'QR Maker Studio was built to solve the frustration of paywalled, predatory QR generators that hold user links hostage after free trials.',
+          'QR Generator Online was built to solve the frustration of paywalled, predatory QR generators that hold user links hostage after free trials.',
           'All static generation is processed 100% in your browser without logging personal contact info or sensitive WiFi credentials on our servers.'
         ]
       }
@@ -556,10 +556,10 @@ const ROUTES = [
   },
   {
     path: '/contact',
-    title: 'Contact Support & Inquiries | QR Maker Studio Team',
-    description: 'Have questions, feature requests, or enterprise inquiries? Contact the QR Maker Studio support team for prompt assistance and technical help.',
+    title: 'Contact Support & Inquiries | QR Generator Online Team',
+    description: 'Have questions, feature requests, or enterprise inquiries? Contact the QR Generator Online support team for prompt assistance and technical help.',
     canonical: 'https://qr-generator.online/contact',
-    h1: 'Contact QR Maker Studio Support & Inquiries',
+    h1: 'Contact QR Generator Online Support & Inquiries',
     badge: 'Support & Inquiries',
     lead: 'We are here to help with questions about custom designs, vector printing formats, enterprise integrations, or feature requests.',
     sections: [
@@ -574,17 +574,17 @@ const ROUTES = [
   },
   {
     path: '/privacy',
-    title: 'Privacy Policy | QR Maker Studio Data Protection & Security',
-    description: 'Read how QR Maker Studio protects your privacy. We process QR codes securely in your browser with zero tracking of personal encoded data.',
+    title: 'Privacy Policy | QR Generator Online Data Protection & Security',
+    description: 'Read how QR Generator Online protects your privacy. We process QR codes securely in your browser with zero tracking of personal encoded data.',
     canonical: 'https://qr-generator.online/privacy',
-    h1: 'Privacy Policy & Data Protection at QR Maker Studio',
+    h1: 'Privacy Policy & Data Protection at QR Generator Online',
     badge: 'Privacy & Security',
     lead: 'Your privacy is paramount. Learn how our client-side generator ensures your contact details, passwords, and link data remain secure.',
     sections: [
       {
         title: 'Client-Side Data Processing & Zero Storage',
         paragraphs: [
-          'QR Maker Studio processes static QR code generation locally in your web browser. We do not store, harvest, or sell the text, passwords, or contact info you encode.',
+          'QR Generator Online processes static QR code generation locally in your web browser. We do not store, harvest, or sell the text, passwords, or contact info you encode.',
           'We adhere strictly to international data privacy regulations including GDPR and CCPA.'
         ]
       }
@@ -592,17 +592,17 @@ const ROUTES = [
   },
   {
     path: '/terms',
-    title: 'Terms of Service | QR Maker Studio Fair Usage Agreement',
-    description: 'Review our terms of service and usage guidelines for generating free and commercial QR codes on the QR Maker Studio platform.',
+    title: 'Terms of Service | QR Generator Online Fair Usage Agreement',
+    description: 'Review our terms of service and usage guidelines for generating free and commercial QR codes on the QR Generator Online platform.',
     canonical: 'https://qr-generator.online/terms',
     h1: 'Terms of Service & Platform Usage Guidelines',
     badge: 'Terms of Service',
-    lead: 'Review terms and conditions governing the generation, distribution, and commercial usage of QR codes created on QR Maker Studio.',
+    lead: 'Review terms and conditions governing the generation, distribution, and commercial usage of QR codes created on QR Generator Online.',
     sections: [
       {
         title: 'Fair Usage & Commercial Distribution Terms',
         paragraphs: [
-          'Static QR codes generated through QR Maker Studio can be used freely for both personal and commercial purposes across print and digital media.',
+          'Static QR codes generated through QR Generator Online can be used freely for both personal and commercial purposes across print and digital media.',
           'Users are responsible for ensuring that encoded content complies with applicable legal standards.'
         ]
       }
@@ -628,7 +628,7 @@ const ROUTES = [
   },
   {
     path: '/blog/qr-codes-for-restaurants',
-    title: 'QR Code Menus for Restaurants: Complete 2026 Guide | QR Studio',
+    title: 'QR Code Menus for Restaurants: Complete 2026 Guide | QR Generator Online',
     description: 'Learn how digital QR menus cut printing costs by 90%, increase average order values by 15%, and boost table turnover rates for restaurants.',
     canonical: 'https://qr-generator.online/blog/qr-codes-for-restaurants',
     h1: 'How Restaurants & Cafes Increase Table Turnover with QR Code Menus',
@@ -696,7 +696,7 @@ const ROUTES = [
         title: 'Design Tips for Business Cards with QR Codes',
         paragraphs: [
           'Place the QR code on the reverse side of your business card with a clear call-to-action such as "Scan to save my contact." Keep the code at least 2.5 cm × 2.5 cm (1 inch × 1 inch) for reliable scanning. Leave a white quiet zone border of at least 4 modules around all four edges. Embedding your professional headshot or company logo in the center boosts confidence and scan rates.',
-          'Use QR Maker Studio to encode your full vCard 3.0 profile including first name, last name, job title, company, work phone, mobile phone, email, website, and postal address. Export in vector SVG to ensure flawless quality at any card print size. Premium business card stock with a matte finish provides the highest scan reliability compared to glossy laminate, which can create lens glare under bright lighting.'
+          'Use QR Generator Online to encode your full vCard 3.0 profile including first name, last name, job title, company, work phone, mobile phone, email, website, and postal address. Export in vector SVG to ensure flawless quality at any card print size. Premium business card stock with a matte finish provides the highest scan reliability compared to glossy laminate, which can create lens glare under bright lighting.'
         ]
       }
     ]
@@ -753,10 +753,10 @@ const ROUTES = [
   },
   {
     path: '/login',
-    title: 'Log In to Dynamic QR Studio | QR Maker Studio',
-    description: 'Log in to your free QR Maker Studio account to manage dynamic QR codes, update landing pages, and track scan performance.',
+    title: 'Log In to Dynamic QR Generator Online | QR Generator Online',
+    description: 'Log in to your free QR Generator Online account to manage dynamic QR codes, update landing pages, and track scan performance.',
     canonical: 'https://qr-generator.online/login',
-    h1: 'Log In to Your Dynamic QR Maker Studio Account',
+    h1: 'Log In to Your Dynamic QR Generator Online Account',
     badge: 'Account Access',
     lead: 'Access your dynamic QR codes, edit destination URLs, and monitor real-time scan analytics.',
     sections: [
@@ -772,9 +772,9 @@ const ROUTES = [
   {
     path: '/signup',
     title: 'Create Free Account | Unlimited Dynamic QR Codes & Analytics',
-    description: 'Sign up for a 100% free QR Maker Studio account. Create permanent dynamic QR codes with live destination editing and scan analytics.',
+    description: 'Sign up for a 100% free QR Generator Online account. Create permanent dynamic QR codes with live destination editing and scan analytics.',
     canonical: 'https://qr-generator.online/signup',
-    h1: 'Create Your Free Dynamic QR Maker Account',
+    h1: 'Create Your Free Dynamic QR Generator Online Account',
     badge: '100% Free Forever',
     lead: 'Create unlimited editable dynamic QR codes with real-time analytics and zero fees.',
     sections: [
@@ -789,7 +789,7 @@ const ROUTES = [
   },
   {
     path: '/dashboard',
-    title: 'Dynamic QR Code Dashboard & Studio | QR Maker Studio',
+    title: 'Dynamic QR Code Dashboard & Studio | QR Generator Online',
     description: 'Manage all your dynamic QR codes, change target landing pages in real time, and monitor scan performance analytics from your personal dashboard.',
     canonical: 'https://qr-generator.online/dashboard',
     h1: 'Dynamic QR Code Management Studio & Dashboard',
@@ -843,7 +843,7 @@ const ROUTES = [
   },
   {
     path: '/social-media-qr-code',
-    title: 'Free All-in-One Social Media QR Code Generator | QR Maker Studio',
+    title: 'Free All-in-One Social Media QR Code Generator | QR Generator Online',
     description: 'Create a single bio-link QR code connecting all your social profiles: Instagram, YouTube, TikTok, LinkedIn, Twitter, Facebook, and Telegram.',
     canonical: 'https://qr-generator.online/social-media-qr-code',
     h1: 'Free All-in-One Multi-Link Social Media QR Code Generator',
@@ -861,7 +861,7 @@ const ROUTES = [
   },
   {
     path: '/r',
-    title: 'Redirecting to Destination... | QR Maker Studio',
+    title: 'Redirecting to Destination... | QR Generator Online',
     description: 'Redirecting to your campaign destination.',
     canonical: 'https://qr-generator.online/r',
     h1: 'Redirecting to Destination...',
@@ -871,7 +871,7 @@ const ROUTES = [
   },
   {
     path: '/analytics',
-    title: 'Dynamic QR Analytics & Scan Intelligence | QR Maker Studio',
+    title: 'Dynamic QR Analytics & Scan Intelligence | QR Generator Online',
     description: 'Real-time scan intelligence and visitor telemetry.',
     canonical: 'https://qr-generator.online/analytics',
     h1: 'Dynamic QR Code Real-Time Analytics Dashboard',
@@ -933,7 +933,7 @@ function buildHeaderHtml() {
       <div style="max-width:1280px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
         <a href="/" style="display:flex; align-items:center; gap:8px; font-weight:800; font-size:20px; color:#111827; text-decoration:none;">
           <span style="display:inline-block; width:28px; height:28px; background:#2B6F53; border-radius:6px;"></span>
-          QR Maker Studio
+          QR Generator Online
         </a>
         <nav style="display:flex; gap:16px; flex-wrap:wrap; font-size:14px; font-weight:600;">
           <a href="/" style="color:#2B6F53; text-decoration:none;">Home</a>
@@ -986,7 +986,7 @@ function buildFooterHtml() {
           </div>
         </div>
         <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; text-align:center; color:#9ca3af; font-size:13px;">
-          <p>© ${new Date().getFullYear()} QR Maker Studio. All rights reserved. Free QR Code Generator.</p>
+          <p>© ${new Date().getFullYear()} QR Generator Online. All rights reserved. Free QR Code Generator.</p>
         </div>
       </div>
     </footer>
@@ -1177,7 +1177,7 @@ function buildBodyHtml(route) {
         <section style="margin-top:48px; padding:32px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:16px;">
           <h3 style="font-size:20px; font-weight:800; color:#166534; margin-bottom:12px;">Explore Related Free QR Code Generators &amp; Guides</h3>
           <p style="color:#15803d; font-size:14px; line-height:1.6; margin-bottom:18px;">
-            Enhance your workflow with complementary tools from QR Maker Studio. Create high-resolution vector assets with zero scan caps:
+            Enhance your workflow with complementary tools from QR Generator Online. Create high-resolution vector assets with zero scan caps:
           </p>
           <div style="display:flex; flex-wrap:wrap; gap:10px;">
             <a href="/url-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">URL QR Generator</a>
@@ -1195,7 +1195,7 @@ function buildBodyHtml(route) {
         <section style="margin-top:36px; padding:24px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px;">
           <h4 style="font-size:15px; font-weight:700; color:#1e293b; margin-bottom:8px;">Cite or Link to this Free Resource</h4>
           <p style="font-size:13px; color:#64748b; margin-bottom:12px;">Webmasters, educators, and designers can cite or link to this tool using the HTML snippet below:</p>
-          <textarea readonly style="width:100%; height:54px; font-family:monospace; font-size:12px; padding:8px; border:1px solid #cbd5e1; border-radius:6px; background:#ffffff; color:#334155; resize:none;" onclick="this.select()">&lt;a href="${route.canonical}" target="_blank" rel="noopener"&gt;Free ${route.badge || 'QR Code Generator'} by QR Maker Studio&lt;/a&gt;</textarea>
+          <textarea readonly style="width:100%; height:54px; font-family:monospace; font-size:12px; padding:8px; border:1px solid #cbd5e1; border-radius:6px; background:#ffffff; color:#334155; resize:none;" onclick="this.select()">&lt;a href="${route.canonical}" target="_blank" rel="noopener"&gt;Free ${route.badge || 'QR Code Generator'} by QR Generator Online&lt;/a&gt;</textarea>
         </section>
       </main>
       ${buildFooterHtml()}
@@ -1222,7 +1222,7 @@ function buildJsonLd(route, rich) {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "QR Maker Studio",
+      "name": "QR Generator Online",
       "url": "https://qr-generator.online"
     }
   });
@@ -1256,7 +1256,7 @@ function buildJsonLd(route, rich) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "HowTo",
-      "name": `How to Create a ${route.badge || 'QR Code'} with QR Maker Studio`,
+      "name": `How to Create a ${route.badge || 'QR Code'} with QR Generator Online`,
       "description": route.lead || route.description,
       "step": rich.steps.map((s, idx) => ({
         "@type": "HowToStep",

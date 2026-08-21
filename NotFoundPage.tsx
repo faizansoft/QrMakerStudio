@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NotFoundPage: React.FC = () => {
   useEffect(() => {
-    document.title = 'Page Not Found (404) | QR Maker Studio';
+    document.title = 'Page Not Found (404) | QR Generator Online';
     
     // Add noindex meta tag for 404 page
     let robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement;

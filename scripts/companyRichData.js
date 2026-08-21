@@ -8,14 +8,14 @@ export const COMPANY_RICH_DATA = {
     technicalOverview: {
       title: 'The Enterprise Standard for Free, Privacy-First QR Code Generation',
       paragraphs: [
-        'QR Maker Studio is the web’s premier client-side 2D barcode generation platform, engineered from the ground up to deliver uncompromising visual customization, industrial-grade Reed-Solomon error correction, and 100% cryptographic data sovereignty. Standardized globally under ISO/IEC 18004, our platform enables individuals, design agencies, small businesses, and multinational enterprises to generate permanent, scannable QR codes for 13 distinct data schemas with zero subscription walls and zero scan expiration limits.',
-        'Unlike predatory QR generator services that quietly route your traffic through proprietary redirect servers (only to hostage your printed marketing materials behind sudden $30/month subscription paywalls after 14 days), QR Maker Studio operates on a direct-encode static architecture. When you generate a URL, vCard, WiFi, or text QR code on our platform, the raw data is compiled directly into the visual matrix modules in your web browser memory. This guarantees that your physical marketing assets remain functional permanently for the entire lifetime of your printed materials.',
-        'With support for Level H error correction (30% algebraic recovery), multi-color gradient palettes, custom module geometries, independent corner eye styling, and lossless vector SVG/EPS exports, QR Maker Studio provides the complete toolkit required for luxury packaging, commercial prepress, restaurant tabletop ordering, and digital contact networking.'
+        'QR Generator Online is the web’s premier client-side 2D barcode generation platform, engineered from the ground up to deliver uncompromising visual customization, industrial-grade Reed-Solomon error correction, and 100% cryptographic data sovereignty. Standardized globally under ISO/IEC 18004, our platform enables individuals, design agencies, small businesses, and multinational enterprises to generate permanent, scannable QR codes for 13 distinct data schemas with zero subscription walls and zero scan expiration limits.',
+        'Unlike predatory QR generator services that quietly route your traffic through proprietary redirect servers (only to hostage your printed marketing materials behind sudden $30/month subscription paywalls after 14 days), QR Generator Online operates on a direct-encode static architecture. When you generate a URL, vCard, WiFi, or text QR code on our platform, the raw data is compiled directly into the visual matrix modules in your web browser memory. This guarantees that your physical marketing assets remain functional permanently for the entire lifetime of your printed materials.',
+        'With support for Level H error correction (30% algebraic recovery), multi-color gradient palettes, custom module geometries, independent corner eye styling, and lossless vector SVG/EPS exports, QR Generator Online provides the complete toolkit required for luxury packaging, commercial prepress, restaurant tabletop ordering, and digital contact networking.'
       ]
     },
     comparisonTable: {
-      title: 'QR Maker Studio vs. Subscription-Gated QR Platforms',
-      headers: ['Platform Feature / Policy', 'QR Maker Studio (100% Free & Open)', 'Traditional Subscription QR Services'],
+      title: 'QR Generator Online vs. Subscription-Gated QR Platforms',
+      headers: ['Platform Feature / Policy', 'QR Generator Online (100% Free & Open)', 'Traditional Subscription QR Services'],
       rows: [
         ['Lifetime Expiration', 'Never expires (Permanent static validity)', 'Expires after 14-day trial unless paid'],
         ['Scan Limitations', 'Unlimited lifetime scans (0 cost forever)', 'Capped at 50 - 100 scans/month on free tiers'],
@@ -67,11 +67,11 @@ export const COMPANY_RICH_DATA = {
       ]
     },
     faqs: [
-      { q: 'Are QR codes generated on QR Maker Studio really 100% free forever?', a: 'Yes! All static QR codes generated on QR Maker Studio are 100% free with unlimited scans, permanent lifetime validity, and zero subscription paywalls.' },
-      { q: 'Why do other QR generator websites expire my codes after 14 days?', a: 'Many commercial QR platforms use dynamic redirect links that route your scans through their servers. After a trial period, they deactivate the redirect until you pay an expensive monthly subscription ($15 - $40/mo). QR Maker Studio creates permanent static codes that encode data directly into the barcode, meaning they can never be held hostage.' },
-      { q: 'What file formats can I download from QR Maker Studio?', a: 'You can download print-ready vector SVG files (infinitely scalable for commercial prepress) and ultra-high-resolution 2048x2048px PNG raster images at 300 DPI.' },
+      { q: 'Are QR codes generated on QR Generator Online really 100% free forever?', a: 'Yes! All static QR codes generated on QR Generator Online are 100% free with unlimited scans, permanent lifetime validity, and zero subscription paywalls.' },
+      { q: 'Why do other QR generator websites expire my codes after 14 days?', a: 'Many commercial QR platforms use dynamic redirect links that route your scans through their servers. After a trial period, they deactivate the redirect until you pay an expensive monthly subscription ($15 - $40/mo). QR Generator Online creates permanent static codes that encode data directly into the barcode, meaning they can never be held hostage.' },
+      { q: 'What file formats can I download from QR Generator Online?', a: 'You can download print-ready vector SVG files (infinitely scalable for commercial prepress) and ultra-high-resolution 2048x2048px PNG raster images at 300 DPI.' },
       { q: 'Can I add my company logo to the center of any QR code?', a: 'Yes! You can upload custom PNG, SVG, or JPEG logos across all 13 QR generator types. Our engine automatically applies Level H (30%) error correction and a quiet mask buffer around your logo.' },
-      { q: 'Is my data secure and private when using QR Maker Studio?', a: 'Yes. All QR generation algorithms execute locally inside your web browser memory via client-side JavaScript. Your URLs, passwords, contact details, and images are never uploaded or stored on external servers.' },
+      { q: 'Is my data secure and private when using QR Generator Online?', a: 'Yes. All QR generation algorithms execute locally inside your web browser memory via client-side JavaScript. Your URLs, passwords, contact details, and images are never uploaded or stored on external servers.' },
       { q: 'Do I need to install an app on my phone to scan these QR codes?', a: 'No. All modern iPhones running iOS 11+ and Android devices running Android 9+ scan QR codes natively using the built-in camera app without any third-party software.' },
       { q: 'How large should I print my QR code for a banner or poster?', a: 'Apply the 10:1 optical rule: Distance to user / 10 = Minimum QR width. For a poster viewed from 1.5 meters away, print the code at least 15 cm x 15 cm.' },
       { q: 'Can I generate QR codes for commercial products and merchandise?', a: 'Yes! You have full commercial ownership and licensing rights to use all QR codes generated on our platform across retail packaging, books, apparel, and signage worldwide.' }
@@ -84,13 +84,13 @@ export const COMPANY_RICH_DATA = {
       title: 'Transparent, 100% Free Architecture — The Anti-Subscription Manifesto',
       paragraphs: [
         'The commercial QR code generator market is plagued by deceptive subscription models. Hundreds of thousands of business owners, graphic designers, and event planners have fallen victim to the "Free Trial Trap": they create what they believe is a free QR code, spend thousands of dollars printing it on physical packaging, business cards, or vehicle wraps, only to find the QR code deactivated 14 days later when the third-party service demands a recurring $35/month subscription fee.',
-        'At QR Maker Studio, we believe basic 2D barcode generation is an open mathematical standard (ISO/IEC 18004) that should never be held hostage behind artificial paywalls. Our platform is architected around 100% client-side static compilation: your browser directly computes the Reed-Solomon error correction polynomials, compiles the matrix modules, and renders vector SVG assets locally without requiring intermediary tracking servers.',
+        'At QR Generator Online, we believe basic 2D barcode generation is an open mathematical standard (ISO/IEC 18004) that should never be held hostage behind artificial paywalls. Our platform is architected around 100% client-side static compilation: your browser directly computes the Reed-Solomon error correction polynomials, compiles the matrix modules, and renders vector SVG assets locally without requiring intermediary tracking servers.',
         'Below is our complete, transparent pricing schedule: zero hidden fees, zero scan caps, zero credit card requirements, and zero expiration dates — guaranteed for life.'
       ]
     },
     comparisonTable: {
-      title: 'QR Maker Studio Feature & Pricing Tier Matrix',
-      headers: ['Feature / Capability', 'QR Maker Studio (Forever Free)', 'Competitor "Pro" Plans ($35/mo)'],
+      title: 'QR Generator Online Feature & Pricing Tier Matrix',
+      headers: ['Feature / Capability', 'QR Generator Online (Forever Free)', 'Competitor "Pro" Plans ($35/mo)'],
       rows: [
         ['Monthly Subscription Cost', '$0.00 / month (100% Free Forever)', '$15.00 - $45.00 / month ($180 - $540/yr)'],
         ['QR Code Expiration', 'Never (Permanent static lifetime validity)', 'Deactivated if monthly payment lapses'],
@@ -137,15 +137,15 @@ export const COMPANY_RICH_DATA = {
       points: [
         'Always Verify Direct vs. Redirect Encoding: Check if the QR code encodes your direct URL or a third-party intermediary domain (e.g. `qr-service.com/x9f2`). Never print dynamic links from unknown services.',
         'Avoid Services Requesting Credit Cards for "Free Trials": If a QR generator requires a credit card up front, your codes will likely expire when the trial ends.',
-        'Verify Vector SVG Download Availability: Professional printers require vector SVG or EPS. If a platform charges $20+ for SVG downloads, use QR Maker Studio instead.',
-        'Check for Hidden Scan Limits: Some free tiers stop working after the 50th or 100th scan. QR Maker Studio static codes support unlimited scans forever.',
+        'Verify Vector SVG Download Availability: Professional printers require vector SVG or EPS. If a platform charges $20+ for SVG downloads, use QR Generator Online instead.',
+        'Check for Hidden Scan Limits: Some free tiers stop working after the 50th or 100th scan. QR Generator Online static codes support unlimited scans forever.',
         'Insist on Client-Side Generation: Platforms that process codes locally in your browser memory guarantee that no company can ever turn off your codes.'
       ]
     },
     faqs: [
-      { q: 'Is QR Maker Studio really 100% free with no hidden charges?', a: 'Yes! There are no hidden fees, no subscription tiers, no scan limits, and no credit card required. All static QR code generators and vector downloads are completely free for personal and commercial use.' },
-      { q: 'How does QR Maker Studio sustain its service without charging subscription fees?', a: 'Our platform is engineered to run lightweight client-side algorithms directly in your web browser, keeping server infrastructure overhead minimal. We are committed to keeping core QR generation permanently free and open.' },
-      { q: 'Do QR codes created on QR Maker Studio ever expire?', a: 'No. Static QR codes encode your data directly into the visual matrix modules. They have permanent validity and will work forever as long as your destination content remains active.' },
+      { q: 'Is QR Generator Online really 100% free with no hidden charges?', a: 'Yes! There are no hidden fees, no subscription tiers, no scan limits, and no credit card required. All static QR code generators and vector downloads are completely free for personal and commercial use.' },
+      { q: 'How does QR Generator Online sustain its service without charging subscription fees?', a: 'Our platform is engineered to run lightweight client-side algorithms directly in your web browser, keeping server infrastructure overhead minimal. We are committed to keeping core QR generation permanently free and open.' },
+      { q: 'Do QR codes created on QR Generator Online ever expire?', a: 'No. Static QR codes encode your data directly into the visual matrix modules. They have permanent validity and will work forever as long as your destination content remains active.' },
       { q: 'Are there any limits on how many times my QR codes can be scanned?', a: 'There are zero scan limits. Your QR codes can receive millions of scans without hitting any bandwidth caps or paywalls.' },
       { q: 'Can I use these QR codes on commercial products that I sell?', a: 'Yes! You have full commercial ownership and licensing rights to use all generated QR codes on retail packaging, merchandise, books, and promotional materials worldwide.' },
       { q: 'Do you watermark my QR codes on the free plan?', a: 'No! We never add watermarks, promotional logos, or third-party branding to your QR codes. Your designs belong 100% to you.' },
@@ -159,7 +159,7 @@ export const COMPANY_RICH_DATA = {
     technicalOverview: {
       title: 'The Master Technical & Practical FAQ for Optical 2D Barcodes',
       paragraphs: [
-        'Welcome to the comprehensive QR Maker Studio Knowledge Base. This master FAQ addresses every technical, operational, design, prepress, and security question regarding two-dimensional matrix barcodes standardized under ISO/IEC 18004.',
+        'Welcome to the comprehensive QR Generator Online Knowledge Base. This master FAQ addresses every technical, operational, design, prepress, and security question regarding two-dimensional matrix barcodes standardized under ISO/IEC 18004.',
         'From the mathematical mechanics of Reed-Solomon algebraic error correction to mobile camera binarization algorithms, optical distance-to-size ratios ($S = D / 10$), and GDPR/CCPA privacy compliance, our technical specialists have compiled the definitive answers required by developers, marketing directors, prepress technicians, and business owners.',
         'Browse our structured categories below for instant clarity on creating, customizing, printing, and deploying scannable QR codes worldwide.'
       ]
@@ -219,13 +219,13 @@ export const COMPANY_RICH_DATA = {
     },
     faqs: [
       { q: 'What is the difference between a static and a dynamic QR Code?', a: 'A static QR code encodes the raw data (URL, vCard, WiFi, text) directly into the visual matrix modules. It never expires and works forever with zero server dependency. A dynamic QR code encodes an intermediate redirect URL on a third-party server, allowing the destination to be edited later, but creating a recurring subscription dependency.' },
-      { q: 'Do QR codes created on QR Maker Studio ever expire?', a: 'No. All static QR codes generated on QR Maker Studio have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
+      { q: 'Do QR codes created on QR Generator Online ever expire?', a: 'No. All static QR codes generated on QR Generator Online have permanent lifetime validity, unlimited scans, and zero recurring fees.' },
       { q: 'What is the minimum physical size a QR code can be printed?', a: 'For short URLs scanned at close range (15-20 cm), the absolute minimum print size is 20 mm x 20 mm (0.8" x 0.8"). For commercial packaging and business cards, 25 mm x 25 mm (1.0" x 1.0") is the recommended industry safety standard.' },
       { q: 'How does Error Correction Level H protect my QR code with a logo?', a: 'Level H error correction employs Reed-Solomon algebraic redundancy algorithms to duplicate up to 30% of the encoded payload. This allows you to overlay a central brand logo over the center modules without corrupting the scanner ability to reconstruct the full data.' },
       { q: 'Can I customize QR code colors to match my brand identity?', a: 'Yes! You can customize foreground modules, background canvas, corner frames, and corner dots independently, provided the contrast ratio between dark modules and light background exceeds 4.5:1.' },
       { q: 'Why is SVG format recommended over PNG for commercial printing?', a: 'SVG (Scalable Vector Graphics) defines geometric shapes using mathematical coordinates rather than fixed pixel grids. SVG lines remain razor-sharp at any print scale (from business cards to billboards) with zero pixelation.' },
       { q: 'Are QR codes safe from malware and phishing ("quishing")?', a: 'Static QR codes simply encode plain text or URLs. To protect users from phishing (quishing), always display your verified brand logo in the center and print human-readable destination domain text alongside the code.' },
-      { q: 'Is my personal data stored or tracked on QR Maker Studio servers?', a: 'No. All QR code generation executes 100% client-side inside your web browser memory. Your links, passwords, contact cards, and uploaded logos are never transmitted or stored on external servers.' }
+      { q: 'Is my personal data stored or tracked on QR Generator Online servers?', a: 'No. All QR code generation executes 100% client-side inside your web browser memory. Your links, passwords, contact cards, and uploaded logos are never transmitted or stored on external servers.' }
     ],
     bestPractices: 'Always maintain high contrast (> 4.5:1), preserve the 4-module quiet zone, export in vector SVG for physical printing, and test scan physical proofs before approving volume print production.'
   },
@@ -234,14 +234,14 @@ export const COMPANY_RICH_DATA = {
     technicalOverview: {
       title: 'Our Architectural Mission — Open, Private & Permanent QR Technology',
       paragraphs: [
-        'QR Maker Studio was founded by a team of software engineers, typography designers, and privacy advocates frustrated by the predatory state of the commercial QR code software industry. Over the past decade, 2D barcode generation — an open mathematical standard published by Denso Wave and ISO/IEC in 2000 — was co-opted by subscription-gated platforms that hold physical print marketing materials hostage behind recurring $30/month fees.',
-        'We built QR Maker Studio on a fundamentally different engineering philosophy: 100% Client-Side Cryptographic Data Sovereignty. By running all Reed-Solomon algebraic polynomial computations, matrix assembly algorithms, and vector path rendering directly in the user web browser memory using modern WebAssembly and JavaScript, we eliminated the need for tracking proxy servers entirely.',
-        'Today, QR Maker Studio serves millions of users across 190 countries — from boutique coffee shops and independent artists to Fortune 500 enterprises and commercial prepress houses — providing permanent, high-resolution vector QR code generation with zero paywalls, zero scan limits, and complete data privacy.'
+        'QR Generator Online was founded by a team of software engineers, typography designers, and privacy advocates frustrated by the predatory state of the commercial QR code software industry. Over the past decade, 2D barcode generation — an open mathematical standard published by Denso Wave and ISO/IEC in 2000 — was co-opted by subscription-gated platforms that hold physical print marketing materials hostage behind recurring $30/month fees.',
+        'We built QR Generator Online on a fundamentally different engineering philosophy: 100% Client-Side Cryptographic Data Sovereignty. By running all Reed-Solomon algebraic polynomial computations, matrix assembly algorithms, and vector path rendering directly in the user web browser memory using modern WebAssembly and JavaScript, we eliminated the need for tracking proxy servers entirely.',
+        'Today, QR Generator Online serves millions of users across 190 countries — from boutique coffee shops and independent artists to Fortune 500 enterprises and commercial prepress houses — providing permanent, high-resolution vector QR code generation with zero paywalls, zero scan limits, and complete data privacy.'
       ]
     },
     comparisonTable: {
       title: 'Our Architectural Philosophy vs. Traditional Commercial SaaS',
-      headers: ['Core Value / Pillar', 'QR Maker Studio', 'Traditional Commercial QR SaaS'],
+      headers: ['Core Value / Pillar', 'QR Generator Online', 'Traditional Commercial QR SaaS'],
       rows: [
         ['Pricing Model', '100% Free Forever (Zero paywalls, zero subscriptions)', 'Recurring monthly subscription ($15 - $45/mo)'],
         ['Data Architecture', '100% Client-Side (All processing in browser memory)', 'Centralized server proxy logging all scan traffic'],
@@ -264,7 +264,7 @@ export const COMPANY_RICH_DATA = {
     ],
     sizingMatrix: {
       title: 'Our Global Scale & Performance Benchmarks',
-      description: 'Key metrics reflecting the reliability and global reach of the QR Maker Studio platform.',
+      description: 'Key metrics reflecting the reliability and global reach of the QR Generator Online platform.',
       headers: ['Benchmark / Metric', 'Performance Standard', 'Technical Architecture', 'User Benefit'],
       rows: [
         ['Generation Latency', '< 50 milliseconds', 'Local WebAssembly / JS execution in browser', 'Instant real-time preview updates'],
@@ -292,23 +292,23 @@ export const COMPANY_RICH_DATA = {
       ]
     },
     faqs: [
-      { q: 'What is the mission of QR Maker Studio?', a: 'Our mission is to provide the global community with permanent, privacy-first, commercial-grade QR code generation tools that are 100% free with zero subscription paywalls.' },
-      { q: 'Who founded QR Maker Studio?', a: 'QR Maker Studio was built by a team of software engineers, prepress designers, and privacy advocates dedicated to creating an honest, open alternative to predatory subscription QR services.' },
+      { q: 'What is the mission of QR Generator Online?', a: 'Our mission is to provide the global community with permanent, privacy-first, commercial-grade QR code generation tools that are 100% free with zero subscription paywalls.' },
+      { q: 'Who founded QR Generator Online?', a: 'QR Generator Online was built by a team of software engineers, prepress designers, and privacy advocates dedicated to creating an honest, open alternative to predatory subscription QR services.' },
       { q: 'How does your client-side architecture protect user privacy?', a: 'All QR generation algorithms execute locally inside your web browser memory using JavaScript. Your destination URLs, contact information, and WiFi passwords are never sent to or stored on our servers.' },
-      { q: 'Can enterprise businesses use QR Maker Studio for commercial packaging?', a: 'Yes! Thousands of commercial brands and prepress departments use our vector SVG QR codes on packaging, retail displays, books, and advertising campaigns worldwide.' },
+      { q: 'Can enterprise businesses use QR Generator Online for commercial packaging?', a: 'Yes! Thousands of commercial brands and prepress departments use our vector SVG QR codes on packaging, retail displays, books, and advertising campaigns worldwide.' },
       { q: 'Are there any hidden costs, pro accounts, or credit card requirements?', a: 'None. All 13 QR generator tools, custom styling options, logo embeddings, and vector SVG downloads are 100% free for all users.' },
       { q: 'How do you ensure generated QR codes scan reliably on all devices?', a: 'Our generation engine strictly enforces ISO/IEC 18004 standards, mandatory 4-module quiet zones, and Level H Reed-Solomon error correction for logo embeds.' },
       { q: 'Can I contribute feedback or suggest new features?', a: 'Yes! We love hearing from our community. Visit our Contact page to share feedback, feature requests, or prepress suggestions.' },
       { q: 'Where are your servers hosted?', a: 'Our static web assets are served via high-speed global edge Content Delivery Networks (CDNs) for rapid loading across North America, Europe, Asia, and worldwide.' }
     ],
-    bestPractices: 'Support the open web by sharing QR Maker Studio with fellow designers, small business owners, and marketing teams.'
+    bestPractices: 'Support the open web by sharing QR Generator Online with fellow designers, small business owners, and marketing teams.'
   },
 
   '/contact': {
     technicalOverview: {
       title: 'Enterprise Technical Support, Inquiries & Community Assistance',
       paragraphs: [
-        'Need assistance with commercial prepress specifications, high-volume batch barcode generation, vector SVG integration in Adobe InDesign, or enterprise data formatting? The QR Maker Studio engineering and support team is here to assist you.',
+        'Need assistance with commercial prepress specifications, high-volume batch barcode generation, vector SVG integration in Adobe InDesign, or enterprise data formatting? The QR Generator Online engineering and support team is here to assist you.',
         'Our technical specialists have extensive experience across ISO/IEC 18004 barcode standards, flexographic packaging prepress, optical scanning physics, and mobile operating system camera decoders (iOS AVFoundation and Android Google ML Kit). We assist graphic designers, commercial printers, marketing executives, and developers worldwide.',
         'Reach out to our dedicated support team using the contact channels below. We respond to all technical and commercial inquiries within 24 business hours.'
       ]
@@ -364,12 +364,12 @@ export const COMPANY_RICH_DATA = {
       ]
     },
     faqs: [
-      { q: 'How quickly does the QR Maker Studio support team respond?', a: 'Our engineering and technical support team responds to all inquiries within 24 business hours (and typically in under 12 hours on business days).' },
+      { q: 'How quickly does the QR Generator Online support team respond?', a: 'Our engineering and technical support team responds to all inquiries within 24 business hours (and typically in under 12 hours on business days).' },
       { q: 'What is the primary support email address?', a: 'You can reach our dedicated technical support team directly at support@qr-generator.online.' },
       { q: 'Do you offer phone or live chat support?', a: 'To keep our service 100% free with zero subscription fees, we provide support primarily via email and our comprehensive Knowledge Base documentation.' },
       { q: 'Can you help review my commercial print artwork before going to press?', a: 'Yes! Email your vector SVG or PDF proof to support@qr-generator.online, and our prepress team will verify quiet zone margins, contrast ratios, and module geometry.' },
       { q: 'Can I request a custom feature or new QR code type?', a: 'Yes! We actively welcome community feature suggestions. Email your ideas to our product team at support@qr-generator.online.' },
-      { q: 'Do you charge consulting or support fees?', a: 'No. All technical assistance, prepress reviews, and how-to guidance provided by QR Maker Studio are 100% free.' },
+      { q: 'Do you charge consulting or support fees?', a: 'No. All technical assistance, prepress reviews, and how-to guidance provided by QR Generator Online are 100% free.' },
       { q: 'Where can I find self-service guides and tutorials?', a: 'Explore our Blog and FAQ pages for comprehensive guides on print sizing, restaurant menus, vCard contacts, and WiFi access.' },
       { q: 'Is customer contact information kept confidential?', a: 'Yes. We strictly respect your privacy. Any emails, contact details, or artwork shared with our support team remain 100% confidential and are never shared or sold.' }
     ],
@@ -380,14 +380,14 @@ export const COMPANY_RICH_DATA = {
     technicalOverview: {
       title: 'Our Cryptographic Privacy Architecture & Data Sovereignty Policy',
       paragraphs: [
-        'At QR Maker Studio, we believe privacy is a fundamental human right. In an era where commercial SaaS platforms harvest personal data, track user IP addresses, and monetize browsing habits, our service is architected on the principle of Zero Knowledge and Complete Data Sovereignty.',
-        'When you use QR Maker Studio to generate a QR code, all data processing, Reed-Solomon algebraic encoding, matrix rasterization, and vector path generation occur 100% client-side inside your web browser memory using local JavaScript and WebAssembly. No URLs, text strings, vCard contact profiles, wireless network passwords, or uploaded logos are ever transmitted across the network or stored in external databases.',
+        'At QR Generator Online, we believe privacy is a fundamental human right. In an era where commercial SaaS platforms harvest personal data, track user IP addresses, and monetize browsing habits, our service is architected on the principle of Zero Knowledge and Complete Data Sovereignty.',
+        'When you use QR Generator Online to generate a QR code, all data processing, Reed-Solomon algebraic encoding, matrix rasterization, and vector path generation occur 100% client-side inside your web browser memory using local JavaScript and WebAssembly. No URLs, text strings, vCard contact profiles, wireless network passwords, or uploaded logos are ever transmitted across the network or stored in external databases.',
         'This policy document outlines our strict technical standards, zero-tracking commitments, and full compliance with global privacy regulations including GDPR (General Data Protection Regulation), CCPA (California Consumer Privacy Act), and ISO/IEC privacy frameworks.'
       ]
     },
     comparisonTable: {
-      title: 'QR Maker Studio Privacy Architecture vs. Traditional QR SaaS Platforms',
-      headers: ['Privacy & Data Metric', 'QR Maker Studio (Zero Knowledge)', 'Traditional Commercial QR Platforms'],
+      title: 'QR Generator Online Privacy Architecture vs. Traditional QR SaaS Platforms',
+      headers: ['Privacy & Data Metric', 'QR Generator Online (Zero Knowledge)', 'Traditional Commercial QR Platforms'],
       rows: [
         ['Data Processing Location', '100% Client-Side (Inside your browser memory)', 'Centralized external server databases'],
         ['Destination URL Logging', 'Zero logging (We never see your destination URL)', 'Logs and stores full destination URLs in cloud'],
@@ -410,7 +410,7 @@ export const COMPANY_RICH_DATA = {
     ],
     sizingMatrix: {
       title: 'Data Flow & Transmission Security Breakdown',
-      description: 'Technical verification of how data is handled across every QR generator type on QR Maker Studio.',
+      description: 'Technical verification of how data is handled across every QR generator type on QR Generator Online.',
       headers: ['QR Generator Type', 'Input Data Scope', 'Processing Method', 'Server Storage Status'],
       rows: [
         ['URL QR Generator', 'Target Web Address & UTMs', 'Client-side UTF-8 compilation', '0 bytes stored (Zero server transmission)'],
@@ -432,37 +432,37 @@ export const COMPANY_RICH_DATA = {
       title: 'How to Verify Client-Side Privacy in Your Browser',
       points: [
         'Inspect Network Activity: Open your browser Developer Tools (F12) > Network tab. Notice that when you generate a QR code or upload a logo, zero outbound POST or GET API requests are sent with your data.',
-        'Works Completely Offline: Load the QR Maker Studio page, disconnect your computer from WiFi/cellular internet, and generate a QR code. It generates instantly offline, proving 100% client-side execution.',
+        'Works Completely Offline: Load the QR Generator Online page, disconnect your computer from WiFi/cellular internet, and generate a QR code. It generates instantly offline, proving 100% client-side execution.',
         'Direct Link Verification: Scan your generated URL QR code with a barcode reader app. Notice that the decoded text is your exact target URL, with no intermediate redirect domain.',
         'No Third-Party Advertising Trackers: We do not load intrusive behavioral tracking pixels or data-broker scripts on our generator pages.',
         'Complete Data Erasure on Tab Close: Because all data is held in volatile browser RAM, closing your browser tab permanently clears all entered information.'
       ]
     },
     faqs: [
-      { q: 'Does QR Maker Studio store my URLs, passwords, or contact details?', a: 'No. All QR code generation is performed 100% client-side inside your web browser memory. No data entered into our generator is ever transmitted to or stored on our servers.' },
+      { q: 'Does QR Generator Online store my URLs, passwords, or contact details?', a: 'No. All QR code generation is performed 100% client-side inside your web browser memory. No data entered into our generator is ever transmitted to or stored on our servers.' },
       { q: 'Do you track how many people scan my QR codes?', a: 'No. Because our static QR codes link directly to your target destination without passing through intermediate redirect servers, we do not track, log, or monitor who scans your codes.' },
-      { q: 'Is QR Maker Studio compliant with GDPR and CCPA regulations?', a: 'Yes! Because our platform does not collect, store, or process any Personally Identifiable Information (PII) or scanner IP addresses, we are fully compliant with GDPR, CCPA, and global data privacy standards.' },
+      { q: 'Is QR Generator Online compliant with GDPR and CCPA regulations?', a: 'Yes! Because our platform does not collect, store, or process any Personally Identifiable Information (PII) or scanner IP addresses, we are fully compliant with GDPR, CCPA, and global data privacy standards.' },
       { q: 'Are my uploaded logo images stored on your web servers?', a: 'No. When you upload a logo to embed in a QR code, it is rendered locally using the HTML5 Canvas API in your browser memory. Your images are never uploaded to any external server.' },
       { q: 'Is it safe to generate WiFi QR codes containing my router password?', a: 'Yes. Your WiFi network name and password are compiled locally in your browser and encoded directly into the visual barcode pattern. They are never sent across the internet.' },
       { q: 'Do you sell user data to third-party advertisers or data brokers?', a: 'Never. We have no user databases, no account profiles, and no tracking data to sell or share with anyone.' },
-      { q: 'Do you use cookies on QR Maker Studio?', a: 'We use only minimal, non-tracking technical cookies necessary for basic site functionality and performance. We do not use third-party behavioral advertising cookies.' },
+      { q: 'Do you use cookies on QR Generator Online?', a: 'We use only minimal, non-tracking technical cookies necessary for basic site functionality and performance. We do not use third-party behavioral advertising cookies.' },
       { q: 'Who can I contact regarding privacy inquiries?', a: 'For any privacy-related questions or technical compliance inquiries, contact our data protection team directly at support@qr-generator.online.' }
     ],
-    bestPractices: 'Enjoy complete peace of mind knowing that all QR generation on QR Maker Studio is 100% private, client-side, and permanently independent of third-party servers.'
+    bestPractices: 'Enjoy complete peace of mind knowing that all QR generation on QR Generator Online is 100% private, client-side, and permanently independent of third-party servers.'
   },
 
   '/terms': {
     technicalOverview: {
       title: 'Terms of Service, Commercial Licensing & Usage Framework',
       paragraphs: [
-        'Welcome to QR Maker Studio. By accessing or using our website and 2D barcode generation tools, you agree to be bound by the following Terms of Service, Commercial Licensing Agreement, and Acceptable Use Policy.',
-        'Our platform provides free, client-side generation of two-dimensional barcodes standardized under ISO/IEC 18004. All barcodes generated on QR Maker Studio are created with full, unrestricted, royalty-free commercial and personal usage rights granted to you in perpetuity.',
+        'Welcome to QR Generator Online. By accessing or using our website and 2D barcode generation tools, you agree to be bound by the following Terms of Service, Commercial Licensing Agreement, and Acceptable Use Policy.',
+        'Our platform provides free, client-side generation of two-dimensional barcodes standardized under ISO/IEC 18004. All barcodes generated on QR Generator Online are created with full, unrestricted, royalty-free commercial and personal usage rights granted to you in perpetuity.',
         'Please review the complete terms below regarding intellectual property rights, acceptable use guidelines, limitation of liability, and commercial print production disclaimers.'
       ]
     },
     comparisonTable: {
       title: 'Commercial Licensing Terms Summary',
-      headers: ['Licensing Category', 'Terms & Permissions on QR Maker Studio', 'Traditional Commercial Barcode Services'],
+      headers: ['Licensing Category', 'Terms & Permissions on QR Generator Online', 'Traditional Commercial Barcode Services'],
       rows: [
         ['Commercial Usage Rights', '100% Unrestricted, royalty-free commercial rights', 'Requires paid commercial licensing tier ($300+/yr)'],
         ['Royalty / Scan Fees', '$0.00 (Zero royalties or per-scan charges)', 'Overage fees when scan volume exceeds monthly caps'],
@@ -484,7 +484,7 @@ export const COMPANY_RICH_DATA = {
     ],
     sizingMatrix: {
       title: 'Permitted Commercial Use Cases & Applications',
-      description: 'Comprehensive overview of permitted commercial applications on QR Maker Studio.',
+      description: 'Comprehensive overview of permitted commercial applications on QR Generator Online.',
       headers: ['Commercial Application', 'Licensing Status', 'Permitted Scope', 'Royalties Required'],
       rows: [
         ['Retail Product Packaging & Food Labels', 'Permitted in Perpetuity', 'Unlimited global unit distribution', '$0.00 (None)'],
@@ -509,17 +509,17 @@ export const COMPANY_RICH_DATA = {
         'Prepress Verification Responsibility: You are responsible for test scanning physical printed proofs before approving volume print manufacturing runs.',
         'Destination URL Maintenance: You are responsible for ensuring that your destination web domain and URLs remain active and accessible online.',
         'Trademark & Copyright Compliance: When embedding logos in QR codes, you must possess the necessary legal rights or authorization to use the trademarked artwork.',
-        'Service Provided "As-Is": While we strictly follow ISO/IEC 18004 standards, QR Maker Studio provides tools without express warranty regarding third-party printer calibration.'
+        'Service Provided "As-Is": While we strictly follow ISO/IEC 18004 standards, QR Generator Online provides tools without express warranty regarding third-party printer calibration.'
       ]
     },
     faqs: [
-      { q: 'Can I use QR codes generated on QR Maker Studio for commercial products?', a: 'Yes! You have full, unrestricted, royalty-free commercial rights to use all QR codes generated on our platform across physical product packaging, books, retail displays, and digital media worldwide.' },
+      { q: 'Can I use QR codes generated on QR Generator Online for commercial products?', a: 'Yes! You have full, unrestricted, royalty-free commercial rights to use all QR codes generated on our platform across physical product packaging, books, retail displays, and digital media worldwide.' },
       { q: 'Do I owe any royalties or per-scan fees as my business grows?', a: 'No. All barcodes generated on our platform are 100% free with zero royalties, zero scan caps, and zero ongoing fees forever.' },
       { q: 'Who owns the intellectual property of the generated QR code?', a: 'You retain complete ownership of your generated barcode assets and any custom logos or text embedded within them.' },
       { q: 'Can I generate QR codes for my design clients and charge them?', a: 'Yes! Graphic design agencies, freelance designers, and marketing consultants may freely generate QR codes for commercial client projects.' },
-      { q: 'What happens if QR Maker Studio ever changes in the future?', a: 'Because static QR codes encode your data directly into the visual matrix modules (with no dependency on our servers), any QR codes you have already downloaded and printed will continue to work forever regardless of our platform.' },
+      { q: 'What happens if QR Generator Online ever changes in the future?', a: 'Because static QR codes encode your data directly into the visual matrix modules (with no dependency on our servers), any QR codes you have already downloaded and printed will continue to work forever regardless of our platform.' },
       { q: 'Are there any restrictions on what content I can encode?', a: 'You may not use our service to encode links to malware, phishing schemes, fraudulent scams, or illegal material as outlined in our Acceptable Use Policy.' },
-      { q: 'What is your limitation of liability regarding commercial print runs?', a: 'As standard in the software industry, QR Maker Studio provides its tools on an "as-is" basis. We strongly advise conducting physical proof test scans prior to approving large commercial print orders.' },
+      { q: 'What is your limitation of liability regarding commercial print runs?', a: 'As standard in the software industry, QR Generator Online provides its tools on an "as-is" basis. We strongly advise conducting physical proof test scans prior to approving large commercial print orders.' },
       { q: 'How do I contact your legal or licensing team?', a: 'For any legal or licensing inquiries, contact us directly at support@qr-generator.online.' }
     ],
     bestPractices: 'Always conduct a physical test scan on a printed proof before approving high-volume manufacturing runs, and ensure destination URLs remain active.'

@@ -46,7 +46,7 @@ const SignupPage: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
               </svg>
             </div>
-            <span className="text-base font-bold text-slate-900">QR Maker Studio</span>
+            <span className="text-base font-bold text-slate-900">QR Generator Online</span>
           </Link>
           <h1 className="text-xl font-bold text-slate-900">
             Create Your Free Account

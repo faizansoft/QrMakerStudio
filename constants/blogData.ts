@@ -1,5 +1,5 @@
 /**
- * Structured & Extended Blog Posts Dataset for QrMakerStudio Blog Engine
+ * Structured & Extended Blog Posts Dataset for QRGeneratorOnline Blog Engine
  * Ultra-Rich, Comprehensive, High-Keyword SEO Long-Form Articles
  */
 
@@ -71,7 +71,7 @@ export const BLOG_POSTS: BlogPost[] = [
         sectionTitle: '3. Step-by-Step Implementation Strategy for Restaurant Owners',
         paragraphs: [
           'Step 1: Host Your Digital Menu Online: Upload your menu as an optimized mobile webpage or high-definition PDF on your official website domain.',
-          'Step 2: Generate a Branded QR Code: Use QR Maker Studio to paste your menu link, apply your restaurant brand colors (e.g. warm mahogany or emerald green), select elegant rounded dot patterns, and embed your logo in the center.',
+          'Step 2: Generate a Branded QR Code: Use QR Generator Online to paste your menu link, apply your restaurant brand colors (e.g. warm mahogany or emerald green), select elegant rounded dot patterns, and embed your logo in the center.',
           'Step 3: Print on High-Durability Table Display Materials: Export your QR code in Scalable Vector Graphics (SVG) format for commercial printing on acrylic table displays, laser-engraved wooden table blocks, or washable vinyl coasters.',
           'Step 4: Add a Clear Call to Action (CTA): Never print a bare QR code without text. Include explicit instructional copy such as "Scan with Phone Camera for Food & Drink Menu" to guide first-time guests.'
         ]
@@ -151,7 +151,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         sectionTitle: '4. Level H Error Correction for Branded Logos',
         paragraphs: [
-          'QR codes feature built-in Reed-Solomon error correction algorithms. When embedding a brand logo in the center of a QR code, QR Maker Studio utilizes Level H error correction, allowing up to 30% of the code area to be covered while retaining full data recovery and scannability.'
+          'QR codes feature built-in Reed-Solomon error correction algorithms. When embedding a brand logo in the center of a QR code, QR Generator Online utilizes Level H error correction, allowing up to 30% of the code area to be covered while retaining full data recovery and scannability.'
         ]
       }
     ],
@@ -164,7 +164,7 @@ export const BLOG_POSTS: BlogPost[] = [
     faqs: [
       { question: 'Why does my printed QR code fail to scan on mobile cameras?', answer: 'Primary causes include low optical contrast (light pattern on light paper), printing below 2cm minimum width, pixelated raster resolution, or graphics overlapping the outer Quiet Zone.' },
       { question: 'Can I print QR codes on transparent stickers or clear glass windows?', answer: 'Yes, but you must ensure a solid opaque white box is printed underneath the QR code to maintain contrast against dark backgrounds behind the glass.' },
-      { question: 'Are SVG vector downloads free for commercial printing on QR Maker Studio?', answer: 'Yes! Vector SVG exports are 100% free with zero licensing restrictions or scan limits.' }
+      { question: 'Are SVG vector downloads free for commercial printing on QR Generator Online?', answer: 'Yes! Vector SVG exports are 100% free with zero licensing restrictions or scan limits.' }
     ],
     relatedToolSlug: '/svg-qr-code-generator',
     relatedToolName: 'Vector SVG QR Generator'

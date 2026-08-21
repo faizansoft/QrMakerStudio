@@ -7,10 +7,10 @@ const AboutPage: React.FC = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = "About QR Maker Studio | Free Custom QR Code Generator & Platform";
+    document.title = "About QR Generator Online | Free Custom QR Code Generator & Platform";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Discover the story behind QR Maker Studio: Our privacy-first mission to provide free, permanent, high-resolution QR codes for websites, WiFi, vCards, social media, and commercial print without subscriptions.');
+      metaDesc.setAttribute('content', 'Discover the story behind QR Generator Online: Our privacy-first mission to provide free, permanent, high-resolution QR codes for websites, WiFi, vCards, social media, and commercial print without subscriptions.');
     }
 
     injectJSONLD('jsonld-organization', getOrganizationSchema());
@@ -44,7 +44,7 @@ const AboutPage: React.FC = () => {
       {/* ═══════════════════════════ MAIN CONTENT CONTAINER ═══════════════════════════ */}
       <div className="max-w-5xl mx-auto px-6 py-16 space-y-20">
 
-        {/* ──── SECTION 1: THE STORY BEHIND QR MAKER STUDIO ──── */}
+        {/* ──── SECTION 1: THE STORY BEHIND QR GENERATOR ONLINE ──── */}
         <section className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <div className="inline-block px-3 py-1 bg-green-100 text-accent text-xs font-bold uppercase rounded-md">
@@ -57,7 +57,7 @@ const AboutPage: React.FC = () => {
               For years, the QR code generator industry has been dominated by predatory subscription models. Small business owners, event organizers, and creators print QR codes on thousands of flyers, business cards, or product packaging, only to find their codes deactivated months later when a trial ends or a billing credit card changes.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              At <strong>QR Maker Studio</strong>, we specialize in <strong>Static QR Codes</strong>. A static QR code mathematically encodes your payload—whether a <Link to="/url-qr-code-generator" className="text-accent font-bold hover:underline">website URL</Link>, <Link to="/vcard-qr-code-generator" className="text-accent font-bold hover:underline">vCard digital business card</Link>, or <Link to="/wifi-qr-code-generator" className="text-accent font-bold hover:underline">WiFi network password</Link>—directly into the physical barcode matrix.
+              At <strong>QR Generator Online</strong>, we specialize in <strong>Static QR Codes</strong>. A static QR code mathematically encodes your payload—whether a <Link to="/url-qr-code-generator" className="text-accent font-bold hover:underline">website URL</Link>, <Link to="/vcard-qr-code-generator" className="text-accent font-bold hover:underline">vCard digital business card</Link>, or <Link to="/wifi-qr-code-generator" className="text-accent font-bold hover:underline">WiFi network password</Link>—directly into the physical barcode matrix.
             </p>
             <p className="text-gray-600 leading-relaxed">
               Because the data is self-contained within the visual modules, your QR code will work for as long as your printed media exists—with zero scan caps, zero redirects, and zero hidden recurring fees.
@@ -221,7 +221,7 @@ const AboutPage: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <h2 className="text-3xl font-bold text-gray-900">Advanced Design & Export Engine</h2>
             <p className="text-gray-600 text-base">
-              QR Maker Studio gives designers and marketers full creative control over barcode aesthetics:
+              QR Generator Online gives designers and marketers full creative control over barcode aesthetics:
             </p>
           </div>
 
@@ -290,7 +290,7 @@ const AboutPage: React.FC = () => {
             </div>
             <h2 className="text-3xl font-bold text-white">Browser-Based Local Processing</h2>
             <p className="text-white/80 leading-relaxed text-base">
-              Unlike web platforms that process data on remote cloud servers, all barcode matrix compilation in QR Maker Studio occurs locally inside your web browser via client-side JavaScript.
+              Unlike web platforms that process data on remote cloud servers, all barcode matrix compilation in QR Generator Online occurs locally inside your web browser via client-side JavaScript.
             </p>
             <p className="text-white/70 leading-relaxed text-sm">
               Your sensitive website URLs, confidential WiFi passphrases, personal vCard phone numbers, and customer data never leave your computer or phone. We do not track, log, or store your payload content in external databases.

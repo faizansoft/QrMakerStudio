@@ -7,10 +7,10 @@ const PricingPage: React.FC = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = "Free & Enterprise Pricing Plans | QR Maker Studio";
+    document.title = "Free & Enterprise Pricing Plans | QR Generator Online";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Explore QR Maker Studio pricing. 100% Free static QR Code generation forever with high-resolution vector SVG exports, custom logos, and no limits.');
+      metaDesc.setAttribute('content', 'Explore QR Generator Online pricing. 100% Free static QR Code generation forever with high-resolution vector SVG exports, custom logos, and no limits.');
     }
 
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
