@@ -56,6 +56,8 @@ export const Header: React.FC = () => {
   const activeLangData = languageMeta.find(l => l.code === language) || languageMeta[0];
 
   const qrTypes = [
+    { label: 'PDF to QR Code', href: '/pdf-qr-code-generator' },
+    { label: 'App Store Multi-Link', href: '/app-store-qr-code-generator' },
     { label: t('tool_url') || 'URL', href: '/url-qr-code-generator' },
     { label: t('tool_text') || 'Plain Text', href: '/text-qr-code-generator' },
     { label: t('tool_vcard') || 'vCard Contact', href: '/vcard-qr-code-generator' },
@@ -80,6 +82,8 @@ export const Header: React.FC = () => {
   ];
 
   const features = [
+    { label: 'PDF to QR Code', href: '/pdf-qr-code-generator' },
+    { label: 'App Store QR Generator', href: '/app-store-qr-code-generator' },
     { label: 'Bulk QR Generator', href: '/bulk-qr-code-generator' },
     { label: 'QR Code Scanner', href: '/qr-code-scanner' },
     { label: 'Social Media QR Hub', href: '/social-media-qr-code' },

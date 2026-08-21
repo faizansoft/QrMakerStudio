@@ -18,6 +18,8 @@ import NotFoundPage from './NotFoundPage';
 import BulkGeneratorPage from './BulkGeneratorPage';
 import QRScannerPage from './QRScannerPage';
 import SocialMediaQRPage from './SocialMediaQRPage';
+import PDFToQRPage from './PDFToQRPage';
+import AppStoreQRPage from './AppStoreQRPage';
 import DashboardPage from './DashboardPage';
 import AnalyticsPage from './AnalyticsPage';
 import LoginPage from './LoginPage';
@@ -175,6 +177,8 @@ const App: React.FC = () => {
                 <Route path="/upi-qr-code-generator" element={<ToolRouteHandler toolId="upi" />} />
 
                 {/* Utility Pages */}
+                <Route path="/pdf-qr-code-generator" element={<PDFToQRPage />} />
+                <Route path="/app-store-qr-code-generator" element={<AppStoreQRPage />} />
                 <Route path="/bulk-qr-code-generator" element={<BulkGeneratorPage />} />
                 <Route path="/qr-code-scanner" element={<QRScannerPage />} />
                 <Route path="/social-media-qr-code" element={<SocialMediaQRPage />} />

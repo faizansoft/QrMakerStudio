@@ -198,6 +198,22 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
     h1: 'Free UPI QR Code Generator for Google Pay, PhonePe & Paytm Payments',
     keywords: ['upi qr code generator', 'gpay qr code', 'phonePe qr code', 'upi payment qr free']
   },
+  '/pdf-qr-code-generator': {
+    path: '/pdf-qr-code-generator',
+    title: 'Free PDF to QR Code Generator | Convert Menus & Documents to QR Codes',
+    description: 'Convert PDF menus, brochures, catalogs, and documents into custom branded QR codes. Free vector SVG and PNG downloads with editable dynamic destination links.',
+    canonical: 'https://qr-generator.online/pdf-qr-code-generator',
+    h1: 'Free PDF to QR Code Generator for Menus, Catalogs & Documents',
+    keywords: ['pdf to qr code', 'pdf qr code generator', 'restaurant menu qr code', 'qr code for pdf document', 'upload pdf qr code']
+  },
+  '/app-store-qr-code-generator': {
+    path: '/app-store-qr-code-generator',
+    title: 'Free App Store QR Code Generator | One QR Code for iOS & Android',
+    description: 'Create a single intelligent App Store QR code that auto-detects iOS & Android devices. Redirect iPhone users to Apple App Store and Android users to Google Play with live scan tracking.',
+    canonical: 'https://qr-generator.online/app-store-qr-code-generator',
+    h1: 'Free App Store QR Code Generator for iOS & Android App Downloads',
+    keywords: ['app store qr code', 'app store qr code generator', 'single qr code for ios and android', 'google play qr code', 'smart app qr']
+  },
   '/bulk-qr-code-generator': {
     path: '/bulk-qr-code-generator',
     title: 'Free Bulk QR Code Generator | Batch Create from CSV or Text List',

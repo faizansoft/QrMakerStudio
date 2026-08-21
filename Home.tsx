@@ -359,8 +359,37 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
   const [activeTemplate, setActiveTemplate] = useState('emerald');
 
+  // Frame & Badge Customization State
+  const [selectedFrame, setSelectedFrame] = useState<'none' | 'bottom-ribbon' | 'top-header' | 'badge-pill'>('none');
+  const [frameText, setFrameText] = useState('SCAN ME');
+
   // Customization drawer/modal toggle
   const [showCustomize, setShowCustomize] = useState(false);
+
+  // Optical Contrast / Scannability Score Calculation
+  const scannabilityInfo = useMemo(() => {
+    const getLuminance = (hex: string) => {
+      const clean = hex.replace('#', '');
+      const full = clean.length === 3 ? clean.split('').map(c => c + c).join('') : clean;
+      const rgb = full.match(/.{2}/g)?.map(x => parseInt(x, 16) / 255) || [0, 0, 0];
+      const a = rgb.map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+      return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+    };
+    try {
+      const l1 = getLuminance(fgColor);
+      const l2 = getLuminance(bgColor);
+      const ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+      if (ratio >= 7) {
+        return { score: 100, label: '100% Optical Score', badge: 'Ultra-Fast Scan', color: 'text-emerald-400 border-emerald-500/30 bg-emerald-950/40' };
+      } else if (ratio >= 4.5) {
+        return { score: 85, label: '85% Optical Score', badge: 'Standard Contrast', color: 'text-blue-400 border-blue-500/30 bg-blue-950/40' };
+      } else {
+        return { score: 50, label: 'Low Contrast Warning', badge: 'May Fail on Dim Cameras', color: 'text-amber-400 border-amber-500/30 bg-amber-950/40' };
+      }
+    } catch {
+      return { score: 100, label: '100% Optical Score', badge: 'Ultra-Fast Scan', color: 'text-emerald-400 border-emerald-500/30 bg-emerald-950/40' };
+    }
+  }, [fgColor, bgColor]);
 
   // Form Fields per QR Type
   const [urlInput, setUrlInput] = useState('');
@@ -582,11 +611,99 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     setCornerDotStyle(tpl.cornerDotType);
   };
 
-  // Download Handler
-  const handleDownload = (format: 'png' | 'svg' | 'webp') => {
+  // Download Handler (supports crisp framed composition export)
+  const handleDownload = async (format: 'png' | 'svg' | 'webp') => {
     if (!generated) return;
-    const namePrefix = activeDynamicShortCode ? `dynamic-qr-${activeDynamicShortCode}` : `qrmaker-${activeTab}`;
-    qrCode.download({ name: namePrefix, extension: format });
+    const namePrefix = activeDynamicShortCode ? `dynamic-qr-${activeDynamicShortCode}` : `qr-generator-${activeTab}`;
+
+    if (selectedFrame === 'none' || format === 'svg') {
+      qrCode.download({ name: namePrefix, extension: format });
+      return;
+    }
+
+    try {
+      const rawBlob = await qrCode.getRawData('png');
+      if (!rawBlob) {
+        qrCode.download({ name: namePrefix, extension: format });
+        return;
+      }
+
+      const img = new Image();
+      img.src = URL.createObjectURL(rawBlob);
+      await new Promise((res) => { img.onload = res; });
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      if (!ctx) {
+        qrCode.download({ name: namePrefix, extension: format });
+        return;
+      }
+
+      const qrSize = 1000;
+      const padding = 80;
+      const headerHeight = selectedFrame === 'top-header' ? 160 : 0;
+      const footerHeight = selectedFrame === 'bottom-ribbon' || selectedFrame === 'badge-pill' ? 160 : 0;
+      
+      canvas.width = qrSize + padding * 2;
+      canvas.height = qrSize + padding * 2 + headerHeight + footerHeight;
+
+      // Background
+      ctx.fillStyle = bgColor || '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw Top Header
+      if (selectedFrame === 'top-header') {
+        ctx.fillStyle = fgColor || '#1E1E1E';
+        ctx.fillRect(16, 16, canvas.width - 32, headerHeight);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 54px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText((frameText || 'SCAN ME').toUpperCase(), canvas.width / 2, 16 + headerHeight / 2);
+      }
+
+      // Draw QR Code
+      const qrY = padding + headerHeight;
+      ctx.drawImage(img, padding, qrY, qrSize, qrSize);
+
+      // Draw Bottom Ribbon / Badge
+      if (selectedFrame === 'bottom-ribbon') {
+        ctx.fillStyle = fgColor || '#1E1E1E';
+        ctx.fillRect(16, canvas.height - footerHeight - 16, canvas.width - 32, footerHeight);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 54px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText((frameText || 'SCAN ME').toUpperCase(), canvas.width / 2, canvas.height - footerHeight / 2 - 16);
+      } else if (selectedFrame === 'badge-pill') {
+        const badgeW = 600;
+        const badgeH = 100;
+        const badgeX = (canvas.width - badgeW) / 2;
+        const badgeY = canvas.height - footerHeight + 20;
+        ctx.fillStyle = fgColor || '#1E1E1E';
+        ctx.beginPath();
+        ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 50);
+        ctx.fill();
+        ctx.fillStyle = '#BEF392';
+        ctx.font = 'bold 44px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText((frameText || 'SCAN ME').toUpperCase(), canvas.width / 2, badgeY + badgeH / 2);
+      }
+
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${namePrefix}-framed.${format}`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }, 'image/png');
+    } catch (err) {
+      console.error('Framed export fallback:', err);
+      qrCode.download({ name: namePrefix, extension: format });
+    }
   };
 
   // Copy Handler
@@ -1234,15 +1351,47 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
 
                   {/* RIGHT PANEL: QR Preview + Templates Carousel + Custom Options */}
                   <div className="w-full min-[700px]:w-[36.7%] px-6 min-[700px]:px-6 pt-[14px] pb-6 flex flex-col items-center justify-between border-t min-[700px]:border-t-0 min-[700px]:border-l border-white/10">
-                    <p className="text-xs text-white/70 font-medium mb-2 text-center">
-                      QR Code Preview & Templates
-                    </p>
+                    
+                    {/* Live Scannability & Contrast Quality Score Badge */}
+                    <div className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl border text-[11px] font-medium mb-3 transition-all">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-white/90 font-semibold">{scannabilityInfo.label}</span>
+                      </div>
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${scannabilityInfo.color}`}>
+                        {scannabilityInfo.badge}
+                      </span>
+                    </div>
 
                     {/* QR Canvas + Template Mini-QR Carousel */}
                     <div className="flex items-center justify-between w-full gap-3">
-                      {/* Canvas Container */}
-                      <div className="relative bg-white border-2 border-black/10 rounded-xl p-3 aspect-square flex items-center justify-center shadow-lg" style={{ width: '72%', maxWidth: '230px' }}>
+                      {/* Canvas Container with Frame Simulation */}
+                      <div className={`relative bg-white border-2 border-black/10 rounded-2xl p-2.5 flex flex-col items-center justify-center shadow-lg transition-all ${
+                        selectedFrame === 'bottom-ribbon' ? 'pb-3' : selectedFrame === 'top-header' ? 'pt-3' : ''
+                      }`} style={{ width: '72%', maxWidth: '230px' }}>
+                        
+                        {/* Top Header Frame Badge */}
+                        {selectedFrame === 'top-header' && (
+                          <div className="w-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-wider text-center py-1 rounded-t-lg mb-1 shadow-2xs">
+                            {frameText || 'SCAN ME'}
+                          </div>
+                        )}
+
                         <div ref={qrContainerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />
+
+                        {/* Bottom Ribbon Frame Badge */}
+                        {selectedFrame === 'bottom-ribbon' && (
+                          <div className="w-full bg-accent text-white text-[10px] font-black uppercase tracking-wider text-center py-1 rounded-b-lg mt-1 shadow-2xs">
+                            {frameText || 'SCAN ME'}
+                          </div>
+                        )}
+
+                        {/* Pill Badge Frame */}
+                        {selectedFrame === 'badge-pill' && (
+                          <div className="inline-block bg-slate-900 text-[#BEF392] text-[9px] font-black uppercase tracking-widest px-3 py-0.5 rounded-full mt-1 border border-white/20 shadow-xs">
+                            {frameText || 'SCAN ME'}
+                          </div>
+                        )}
                       </div>
 
                       {/* Template Selector Vertical Carousel with Mini-QR Vector Previews */}
@@ -1350,7 +1499,32 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                     <h3 className="text-sm font-bold text-[#BEF392] uppercase tracking-wider mb-4 flex items-center gap-2">
                       🎨 Custom Design Options
                     </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5">
+
+                      {/* Frame & CTA Badge */}
+                      <div className="space-y-3">
+                        <label className="text-xs font-bold text-white/80 block">CTA Frame Style</label>
+                        <select
+                          value={selectedFrame}
+                          onChange={(e) => setSelectedFrame(e.target.value as any)}
+                          className="w-full bg-white/10 text-white rounded-lg p-2 text-xs outline-none border border-white/10"
+                        >
+                          <option value="none" className="bg-gray-900 text-white">No Frame (Clean)</option>
+                          <option value="bottom-ribbon" className="bg-gray-900 text-white">Bottom Ribbon</option>
+                          <option value="top-header" className="bg-gray-900 text-white">Top Header</option>
+                          <option value="badge-pill" className="bg-gray-900 text-white">Pill Badge</option>
+                        </select>
+                        {selectedFrame !== 'none' && (
+                          <input
+                            type="text"
+                            value={frameText}
+                            onChange={(e) => setFrameText(e.target.value)}
+                            placeholder="e.g. SCAN ME"
+                            maxLength={20}
+                            className="w-full bg-white/10 text-white rounded-lg px-2.5 py-1.5 text-xs outline-none border border-white/10 font-bold tracking-wider uppercase placeholder:text-white/40"
+                          />
+                        )}
+                      </div>
 
                       {/* Colors */}
                       <div className="space-y-3">

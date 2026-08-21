@@ -806,6 +806,69 @@ const ROUTES = [
     ]
   },
   {
+    path: '/pdf-qr-code-generator',
+    title: 'Free PDF to QR Code Generator | Convert Menus & Documents to QR Codes',
+    description: 'Convert PDF menus, brochures, catalogs, and documents into custom branded QR codes. Free vector SVG and PNG downloads with editable dynamic destination links.',
+    canonical: 'https://qr-generator.online/pdf-qr-code-generator',
+    h1: 'Free PDF to QR Code Generator for Menus, Catalogs & Documents',
+    badge: 'Document & Menu Suite',
+    lead: 'Convert digital menus, brochures, product catalogs, and whitepapers into branded, high-resolution QR codes with instant smartphone viewing and editable dynamic destination links.',
+    sections: [
+      {
+        title: 'The Modern PDF QR Revolution for Menus & Brochures',
+        paragraphs: [
+          'In commercial dining, trade conferences, real estate sales, and corporate education, printing physical multi-page paper catalogs or laminated restaurant menus is expensive, environmentally wasteful, and impossible to update once printed. A single price modification or seasonal menu overhaul previously required thousands of dollars in complete reprint runs.',
+          'A PDF to QR Code bridges the physical world to rich, high-resolution digital documents. When placed on table tents, product packaging, exhibition booths, or storefront windows, customers simply aim their smartphone cameras to open your full PDF brochure, digital menu, or technical instruction manual in seconds.'
+        ]
+      },
+      {
+        title: 'Static vs. Dynamic PDF QR Codes: Updating Menus Without Reprinting',
+        paragraphs: [
+          'Static PDF QR codes encode permanent links directly into the pixel matrix. If your Google Drive URL changes, the printed code breaks permanently. Dynamic PDF QR codes, by contrast, encode short redirect links (qr-generator.online/r/menu).',
+          'Whenever you update weekly specials, adjust beverage pricing, or release a new product catalog edition, you update the target URL in your dashboard. Physical table stands remain 100% functional with zero reprint expense.'
+        ]
+      },
+      {
+        title: 'Industry Applications for PDF QR Codes',
+        paragraphs: [
+          'Restaurants display contactless table QR stands linking to food and cocktail PDF menus with allergy warnings and photography. Real estate agents add PDF QR codes to yard signs for architectural blueprints and HOA disclosures.',
+          'Manufacturers replace bulky paper manuals with compact product packaging QR codes linking to interactive PDF user guides.'
+        ]
+      }
+    ]
+  },
+  {
+    path: '/app-store-qr-code-generator',
+    title: 'Free App Store QR Code Generator | One QR Code for iOS & Android',
+    description: 'Create a single intelligent App Store QR code that auto-detects iOS & Android devices. Redirect iPhone users to Apple App Store and Android users to Google Play with live scan tracking.',
+    canonical: 'https://qr-generator.online/app-store-qr-code-generator',
+    h1: 'Free App Store QR Code Generator for iOS & Android App Downloads',
+    badge: 'Smart App Routing',
+    lead: 'Create a single smart QR code for iOS and Android. Automatically route iPhone scanners to the Apple App Store and Android scanners to Google Play with real-time install telemetry.',
+    sections: [
+      {
+        title: 'Smart App Store QR Codes & Mobile Acquisition',
+        paragraphs: [
+          'In physical app marketing—whether on subway billboards, product packaging, TV commercials, trade show exhibits, or direct mailers—asking potential users to open their phone, launch an app store, type your exact app title, and sift through competitor search results creates severe friction. Over 65% of potential users drop off during manual app store searching.',
+          'A single smart App Store QR Code eliminates friction completely. By utilizing intelligent device routing, one scannable barcode automatically directs iOS users to the Apple App Store and Android users to Google Play with zero human decision-making required.'
+        ]
+      },
+      {
+        title: 'Why Dual QR Codes Fail vs Unified Smart QR',
+        paragraphs: [
+          'Printing two separate QR codes (one for iOS and one for Android) creates visual clutter, confuses consumers, and causes camera cross-scanning errors when phones capture the wrong adjacent barcode.',
+          'A single smart App Store QR code provides a frictionless 1-second scan-and-install experience for 100% of smartphone users, with fallback routing to desktop promotional websites.'
+        ]
+      },
+      {
+        title: 'Real-Time App Install Telemetry & Attribution',
+        paragraphs: [
+          'When managing dynamic App Store QR codes through our platform, you gain complete visibility into real-world conversion funnels, including iOS vs. Android market share, regional geographic hotspots, and hourly scan volume.'
+        ]
+      }
+    ]
+  },
+  {
     path: '/bulk-qr-code-generator',
     title: 'Free Bulk QR Code Generator | Generate Batch QR Codes with ZIP Export',
     description: 'Batch generate hundreds of custom QR codes from CSV or text lists. Download all codes in high resolution ZIP archive 100% free with customizable colors and vector SVG export.',
