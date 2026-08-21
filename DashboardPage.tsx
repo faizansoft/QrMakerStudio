@@ -201,7 +201,7 @@ const DashboardPage: React.FC = () => {
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-4">
         <div className="w-8 h-8 border-2 border-slate-200 border-t-accent rounded-full animate-spin mb-3" />
-        <p className="text-xs font-semibold text-slate-500">Loading your Dynamic QR studio...</p>
+        <p className="text-xs font-semibold text-slate-500">Loading My QR Codes...</p>
       </div>
     );
   }
@@ -214,7 +214,7 @@ const DashboardPage: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
           <div>
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
-              Dynamic QR Code Studio
+              My QR Codes
             </h1>
             <p className="text-xs text-slate-500 mt-1">
               Manage editable QR codes, update destination URLs in real time, and monitor live scan performance.

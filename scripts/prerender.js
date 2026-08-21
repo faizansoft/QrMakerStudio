@@ -753,10 +753,10 @@ const ROUTES = [
   },
   {
     path: '/login',
-    title: 'Log In to Dynamic QR Generator Online | QR Generator Online',
+    title: 'Log In to My QR Codes | QR Generator Online',
     description: 'Log in to your free QR Generator Online account to manage dynamic QR codes, update landing pages, and track scan performance.',
     canonical: 'https://qr-generator.online/login',
-    h1: 'Log In to Your Dynamic QR Generator Online Account',
+    h1: 'Log In to My QR Codes',
     badge: 'Account Access',
     lead: 'Access your dynamic QR codes, edit destination URLs, and monitor real-time scan analytics.',
     sections: [
@@ -789,10 +789,10 @@ const ROUTES = [
   },
   {
     path: '/dashboard',
-    title: 'Dynamic QR Code Dashboard & Studio | QR Generator Online',
+    title: 'My QR Codes & Real-Time Analytics Dashboard | QR Generator Online',
     description: 'Manage all your dynamic QR codes, change target landing pages in real time, and monitor scan performance analytics from your personal dashboard.',
     canonical: 'https://qr-generator.online/dashboard',
-    h1: 'Dynamic QR Code Management Studio & Dashboard',
+    h1: 'My QR Codes & Real-Time Management Dashboard',
     badge: 'Management Console',
     lead: 'Manage all your dynamic QR codes, update destination URLs in real time, and monitor live scan performance.',
     sections: [

@@ -97,7 +97,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             {title || (mode === 'signup' ? 'Create Your Account' : mode === 'signin' ? 'Welcome Back' : 'Reset Password')}
           </h3>
           <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
-            {subtitle || (mode === 'signup' ? 'Create editable dynamic QR codes & track real-time scans.' : 'Access your dynamic QR studio and analytics.')}
+            {subtitle || (mode === 'signup' ? 'Create editable dynamic QR codes & track real-time scans.' : 'Access My QR Codes and analytics dashboard.')}
           </p>
         </div>
 

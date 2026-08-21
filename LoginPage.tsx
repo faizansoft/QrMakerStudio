@@ -52,7 +52,7 @@ const LoginPage: React.FC = () => {
             <span className="text-base font-bold text-slate-900">QR Generator Online</span>
           </Link>
           <h1 className="text-xl font-bold text-slate-900">
-            {isForgot ? 'Reset Your Password' : 'Sign In to Dynamic Studio'}
+            {isForgot ? 'Reset Your Password' : 'Sign In to My QR Codes'}
           </h1>
           <p className="text-xs text-slate-500 mt-1">
             {isForgot ? 'Enter your email to receive recovery instructions' : 'Manage your dynamic QR codes and view real-time analytics'}

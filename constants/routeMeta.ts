@@ -371,19 +371,19 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
   },
   '/dashboard': {
     path: '/dashboard',
-    title: 'Dynamic QR Code Studio & Analytics Dashboard | QR Generator Online',
+    title: 'My QR Codes & Real-Time Analytics Dashboard | QR Generator Online',
     description: 'Manage all your editable dynamic QR codes, change destination links in real time, and monitor live scan metrics, devices, and geographic data.',
     canonical: 'https://qr-generator.online/dashboard',
-    h1: 'Dynamic QR Code Studio & Real-Time Management Dashboard',
-    keywords: ['dynamic qr dashboard', 'editable qr codes manager', 'qr code campaign management']
+    h1: 'My QR Codes & Real-Time Analytics Dashboard',
+    keywords: ['dynamic qr dashboard', 'editable qr codes manager', 'my qr codes', 'qr code campaign management']
   },
   '/login': {
     path: '/login',
-    title: 'Log In to Dynamic QR Generator Online | QR Generator Online',
+    title: 'Log In to My QR Codes | QR Generator Online',
     description: 'Log in to your free QR Generator Online account to manage dynamic QR codes, update landing pages, and track scan performance.',
     canonical: 'https://qr-generator.online/login',
-    h1: 'Log In to Your Dynamic QR Generator Online Account',
-    keywords: ['qr code login', 'dynamic qr studio sign in']
+    h1: 'Log In to My QR Codes',
+    keywords: ['qr code login', 'my qr codes login', 'dynamic qr sign in']
   },
   '/signup': {
     path: '/signup',

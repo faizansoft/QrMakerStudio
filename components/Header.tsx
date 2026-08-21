@@ -181,7 +181,7 @@ export const Header: React.FC = () => {
                 )}
               </div>
 
-              {/* Dynamic QR Generator Online Link */}
+              {/* My QR Codes Link */}
               <Link
                 to={user ? "/dashboard" : "/login"}
                 className="whitespace-nowrap text-sm xl:text-base transition-colors text-emerald-700 hover:text-emerald-800 font-semibold flex items-center gap-1.5"
@@ -189,7 +189,7 @@ export const Header: React.FC = () => {
                 <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-                Dynamic Studio
+                My QR Codes
               </Link>
 
               {/* Resources Dropdown */}
@@ -294,7 +294,7 @@ export const Header: React.FC = () => {
                       <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                       </svg>
-                      Dynamic QR Generator Online
+                      My QR Codes
                     </Link>
                     <Link
                       to="/"
@@ -374,7 +374,7 @@ export const Header: React.FC = () => {
               QR Code Generator
             </Link>
             <Link to={user ? "/dashboard" : "/login"} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-bold text-emerald-700 hover:bg-emerald-50 rounded-lg">
-              ⚡ Dynamic QR Generator Online & Analytics
+              ⚡ My QR Codes & Analytics
             </Link>
             <div className="px-3 py-2">
               <p className="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2">QR Code Types</p>
