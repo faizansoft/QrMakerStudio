@@ -109,7 +109,7 @@ const BulkGeneratorPage: React.FC = () => {
       const blob = await qr.getRawData(format);
       document.body.removeChild(tempDiv);
 
-      results.push({ ...item, blob: blob || undefined });
+      results.push({ ...item, blob: (blob as Blob) || undefined });
     }
 
     setItems(results);

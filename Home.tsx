@@ -356,6 +356,347 @@ const DynamicModalQrPreview: React.FC<{ link: DynamicLink }> = ({ link }) => {
   return <div ref={containerRef} className="w-36 h-36 flex items-center justify-center rounded-xl bg-white p-1 border border-slate-200 shadow-2xs mb-3" />;
 };
 
+// ── Frame Styles & Customization ──
+export type FrameStyle = 'none' | 'bottom-badge' | 'top-header' | 'polaroid-card' | 'phone-mockup' | 'speech-bubble' | 'minimal-border';
+
+export const FRAME_OPTIONS: { id: FrameStyle; label: string; icon: string; desc: string }[] = [
+  { id: 'none', label: 'No Frame', icon: '◻️', desc: 'Clean, minimalist QR code' },
+  { id: 'bottom-badge', label: 'Modern Pill', icon: '🏷️', desc: 'Bottom pill badge with scan icon' },
+  { id: 'top-header', label: 'Banner Header', icon: '📌', desc: 'Top colored banner header' },
+  { id: 'polaroid-card', label: 'Polaroid Card', icon: '📷', desc: 'Photo card with bold caption' },
+  { id: 'phone-mockup', label: 'Smartphone', icon: '📱', desc: 'Realistic smartphone frame' },
+  { id: 'speech-bubble', label: 'Chat Bubble', icon: '💬', desc: 'Speech bubble with directional tail' },
+  { id: 'minimal-border', label: 'Accent Border', icon: '🖼️', desc: 'Double border with floating tag' },
+];
+
+function drawRoundedRect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number | number[]
+) {
+  ctx.beginPath();
+  if (typeof ctx.roundRect === 'function') {
+    ctx.roundRect(x, y, w, h, r);
+  } else {
+    const radius = typeof r === 'number' ? r : r[0] || 0;
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + w - radius, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + radius);
+    ctx.lineTo(x + w, y + h - radius);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+    ctx.lineTo(x + radius, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+  }
+}
+
+async function renderFramedCanvas(
+  rawPngBlob: Blob,
+  frame: FrameStyle,
+  text: string,
+  fg: string,
+  bg: string,
+  cornerSq: string
+): Promise<HTMLCanvasElement> {
+  const img = new Image();
+  img.src = URL.createObjectURL(rawPngBlob);
+  await new Promise((res) => { img.onload = res; });
+
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d')!;
+  const ctaText = (text || 'SCAN ME').toUpperCase();
+  const brandColor = fg || '#2B6F53';
+  const bgColorVal = bg || '#ffffff';
+
+  if (frame === 'bottom-badge') {
+    canvas.width = 1200;
+    canvas.height = 1440;
+
+    ctx.fillStyle = bgColorVal;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawRoundedRect(ctx, 40, 40, 1120, 1360, 48);
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = brandColor + '30';
+    ctx.stroke();
+
+    ctx.drawImage(img, 150, 100, 900, 900);
+
+    const badgeW = 740;
+    const badgeH = 140;
+    const badgeX = (1200 - badgeW) / 2;
+    const badgeY = 1130;
+    drawRoundedRect(ctx, badgeX, badgeY, badgeW, badgeH, 70);
+    ctx.fillStyle = brandColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 48px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`📷  ${ctaText}`, 1200 / 2, badgeY + badgeH / 2);
+  } else if (frame === 'top-header') {
+    canvas.width = 1200;
+    canvas.height = 1440;
+
+    ctx.fillStyle = bgColorVal;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawRoundedRect(ctx, 40, 40, 1120, 1360, 48);
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = brandColor + '30';
+    ctx.stroke();
+
+    drawRoundedRect(ctx, 40, 40, 1120, 190, [48, 48, 0, 0]);
+    ctx.fillStyle = brandColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 54px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 1200 / 2, 40 + 190 / 2);
+
+    ctx.drawImage(img, 150, 340, 900, 900);
+  } else if (frame === 'polaroid-card') {
+    canvas.width = 1200;
+    canvas.height = 1520;
+
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawRoundedRect(ctx, 50, 50, 1100, 1420, 36);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.stroke();
+
+    ctx.drawImage(img, 150, 130, 900, 900);
+
+    ctx.strokeStyle = '#f1f5f9';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(180, 1100);
+    ctx.lineTo(1020, 1100);
+    ctx.stroke();
+
+    ctx.fillStyle = brandColor;
+    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 1200 / 2, 1220);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 32px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('Point your smartphone camera to scan', 1200 / 2, 1320);
+  } else if (frame === 'phone-mockup') {
+    canvas.width = 1200;
+    canvas.height = 1660;
+
+    ctx.fillStyle = '#f1f5f9';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawRoundedRect(ctx, 80, 40, 1040, 1580, 96);
+    ctx.fillStyle = '#0f172a';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = '#334155';
+    ctx.stroke();
+
+    drawRoundedRect(ctx, 116, 80, 968, 1500, 72);
+    ctx.fillStyle = bgColorVal;
+    ctx.fill();
+
+    drawRoundedRect(ctx, 470, 110, 260, 38, 19);
+    ctx.fillStyle = '#0f172a';
+    ctx.fill();
+
+    ctx.drawImage(img, 150, 260, 900, 900);
+
+    const badgeW = 680;
+    const badgeH = 130;
+    const badgeX = (1200 - badgeW) / 2;
+    const badgeY = 1280;
+    drawRoundedRect(ctx, badgeX, badgeY, badgeW, badgeH, 65);
+    ctx.fillStyle = brandColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 44px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 1200 / 2, badgeY + badgeH / 2);
+
+    drawRoundedRect(ctx, 450, 1530, 300, 10, 5);
+    ctx.fillStyle = '#94a3b8';
+    ctx.fill();
+  } else if (frame === 'speech-bubble') {
+    canvas.width = 1200;
+    canvas.height = 1500;
+
+    ctx.fillStyle = bgColorVal;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawRoundedRect(ctx, 40, 40, 1120, 1260, 48);
+    ctx.fillStyle = bgColorVal;
+    ctx.fill();
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = brandColor;
+    ctx.stroke();
+
+    ctx.drawImage(img, 150, 120, 900, 900);
+
+    ctx.fillStyle = brandColor;
+    ctx.beginPath();
+    ctx.moveTo(560, 1300);
+    ctx.lineTo(600, 1340);
+    ctx.lineTo(640, 1300);
+    ctx.closePath();
+    ctx.fill();
+
+    const bubbleW = 720;
+    const bubbleH = 130;
+    const bubbleX = (1200 - bubbleW) / 2;
+    const bubbleY = 1330;
+    drawRoundedRect(ctx, bubbleX, bubbleY, bubbleW, bubbleH, 65);
+    ctx.fillStyle = brandColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 46px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`💬  ${ctaText}`, 1200 / 2, bubbleY + bubbleH / 2);
+  } else if (frame === 'minimal-border') {
+    canvas.width = 1200;
+    canvas.height = 1440;
+
+    ctx.fillStyle = bgColorVal;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawRoundedRect(ctx, 40, 40, 1120, 1340, 40);
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = brandColor;
+    ctx.stroke();
+
+    ctx.drawImage(img, 150, 140, 900, 900);
+
+    const tagW = 620;
+    const tagH = 130;
+    const tagX = (1200 - tagW) / 2;
+    const tagY = 1315;
+    drawRoundedRect(ctx, tagX, tagY, tagW, tagH, 28);
+    ctx.fillStyle = brandColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 46px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 1200 / 2, tagY + tagH / 2);
+  }
+
+  URL.revokeObjectURL(img.src);
+  return canvas;
+}
+
+function buildFramedSvg(
+  rawSvgText: string,
+  frame: FrameStyle,
+  text: string,
+  fg: string,
+  bg: string,
+  cornerSq: string
+): string {
+  const ctaText = (text || 'SCAN ME').toUpperCase();
+  const brandColor = fg || '#2B6F53';
+  const bgColorVal = bg || '#ffffff';
+
+  let cleanSvg = rawSvgText;
+  const svgMatch = rawSvgText.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
+  if (svgMatch) {
+    cleanSvg = svgMatch[1];
+  }
+
+  if (frame === 'bottom-badge') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1440" width="1200" height="1440">
+  <rect width="1200" height="1440" fill="${bgColorVal}"/>
+  <rect x="40" y="40" width="1120" height="1360" rx="48" fill="${bgColorVal}" stroke="${brandColor}" stroke-opacity="0.25" stroke-width="8"/>
+  <g transform="translate(150, 100) scale(3.214)">
+    ${cleanSvg}
+  </g>
+  <rect x="230" y="1130" width="740" height="140" rx="70" fill="${brandColor}"/>
+  <text x="600" y="1218" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">📷 ${ctaText}</text>
+</svg>`;
+  } else if (frame === 'top-header') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1440" width="1200" height="1440">
+  <rect width="1200" height="1440" fill="${bgColorVal}"/>
+  <rect x="40" y="40" width="1120" height="1360" rx="48" fill="${bgColorVal}" stroke="${brandColor}" stroke-opacity="0.25" stroke-width="8"/>
+  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 230 L 40 230 Z" fill="${brandColor}"/>
+  <text x="600" y="152" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">${ctaText}</text>
+  <g transform="translate(150, 340) scale(3.214)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  } else if (frame === 'polaroid-card') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
+  <rect width="1200" height="1520" fill="#f8fafc"/>
+  <rect x="50" y="50" width="1100" height="1420" rx="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="4"/>
+  <g transform="translate(150, 130) scale(3.214)">
+    ${cleanSvg}
+  </g>
+  <line x1="180" y1="1100" x2="1020" y2="1100" stroke="#f1f5f9" stroke-width="3"/>
+  <text x="600" y="1225" fill="${brandColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText}</text>
+  <text x="600" y="1320" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="32" text-anchor="middle">Point your smartphone camera to scan</text>
+</svg>`;
+  } else if (frame === 'phone-mockup') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1660" width="1200" height="1660">
+  <rect width="1200" height="1660" fill="#f1f5f9"/>
+  <rect x="80" y="40" width="1040" height="1580" rx="96" fill="#0f172a" stroke="#334155" stroke-width="6"/>
+  <rect x="116" y="80" width="968" height="1500" rx="72" fill="${bgColorVal}"/>
+  <rect x="470" y="110" width="260" height="38" rx="19" fill="#0f172a"/>
+  <g transform="translate(150, 260) scale(3.214)">
+    ${cleanSvg}
+  </g>
+  <rect x="260" y="1280" width="680" height="130" rx="65" fill="${brandColor}"/>
+  <text x="600" y="1362" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" text-anchor="middle">${ctaText}</text>
+  <rect x="450" y="1530" width="300" height="10" rx="5" fill="#94a3b8"/>
+</svg>`;
+  } else if (frame === 'speech-bubble') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500">
+  <rect width="1200" height="1500" fill="${bgColorVal}"/>
+  <rect x="40" y="40" width="1120" height="1260" rx="48" fill="${bgColorVal}" stroke="${brandColor}" stroke-width="8"/>
+  <g transform="translate(150, 120) scale(3.214)">
+    ${cleanSvg}
+  </g>
+  <polygon points="560,1300 600,1340 640,1300" fill="${brandColor}"/>
+  <rect x="240" y="1330" width="720" height="130" rx="65" fill="${brandColor}"/>
+  <text x="600" y="1410" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" text-anchor="middle">💬 ${ctaText}</text>
+</svg>`;
+  } else if (frame === 'minimal-border') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1440" width="1200" height="1440">
+  <rect width="1200" height="1440" fill="${bgColorVal}"/>
+  <rect x="40" y="40" width="1120" height="1340" rx="40" fill="${bgColorVal}" stroke="${brandColor}" stroke-width="10"/>
+  <g transform="translate(150, 140) scale(3.214)">
+    ${cleanSvg}
+  </g>
+  <rect x="290" y="1315" width="620" height="130" rx="28" fill="${brandColor}"/>
+  <text x="600" y="1395" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" text-anchor="middle">${ctaText}</text>
+</svg>`;
+  }
+  return rawSvgText;
+}
+
+export interface HomeProps {
+  initialTab?: string;
+}
+
 const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   const { language, t } = useLanguage();
   const [activeTab, setActiveTab] = useState(initialTab);
@@ -372,8 +713,19 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   const [activeTemplate, setActiveTemplate] = useState('emerald');
 
   // Frame & Badge Customization State
-  const [selectedFrame, setSelectedFrame] = useState<'none' | 'bottom-ribbon' | 'top-header' | 'badge-pill'>('none');
+  const [selectedFrame, setSelectedFrame] = useState<FrameStyle>('none');
   const [frameText, setFrameText] = useState('SCAN ME');
+
+  // Toast State
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [copiedToast, setCopiedToast] = useState(false);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 2800);
+  };
 
   // Customization drawer/modal toggle
   const [showCustomize, setShowCustomize] = useState(false);
@@ -686,113 +1038,104 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     setCornerDotStyle(tpl.cornerDotType);
   };
 
-  // Download Handler (supports crisp framed composition export)
+  // Download Handler (supports crisp framed PNG, WebP, and vector SVG composition export)
   const handleDownload = async (format: 'png' | 'svg' | 'webp') => {
     if (!generated) return;
     const namePrefix = activeDynamicShortCode ? `dynamic-qr-${activeDynamicShortCode}` : `qr-generator-${activeTab}`;
 
-    if (selectedFrame === 'none' || format === 'svg') {
+    if (selectedFrame === 'none') {
       qrCode.download({ name: namePrefix, extension: format });
+      showToast(`✓ Downloaded ${format.toUpperCase()} successfully!`);
       return;
     }
 
     try {
-      const rawBlob = await qrCode.getRawData('png');
+      if (format === 'svg') {
+        const rawSvgBlob = (await qrCode.getRawData('svg')) as Blob | null;
+        if (!rawSvgBlob) {
+          qrCode.download({ name: namePrefix, extension: 'svg' });
+          return;
+        }
+        const rawSvgText = await rawSvgBlob.text();
+        const framedSvg = buildFramedSvg(rawSvgText, selectedFrame, frameText, fgColor, bgColor, cornerSquareColor);
+        const svgBlob = new Blob([framedSvg], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(svgBlob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${namePrefix}-framed.svg`;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('✓ Downloaded framed SVG vector!');
+        return;
+      }
+
+      // PNG or WEBP export
+      const rawBlob = (await qrCode.getRawData('png')) as Blob | null;
       if (!rawBlob) {
         qrCode.download({ name: namePrefix, extension: format });
         return;
       }
 
-      const img = new Image();
-      img.src = URL.createObjectURL(rawBlob);
-      await new Promise((res) => { img.onload = res; });
-
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      if (!ctx) {
-        qrCode.download({ name: namePrefix, extension: format });
-        return;
-      }
-
-      const qrSize = 1000;
-      const padding = 80;
-      const headerHeight = selectedFrame === 'top-header' ? 160 : 0;
-      const footerHeight = selectedFrame === 'bottom-ribbon' || selectedFrame === 'badge-pill' ? 160 : 0;
+      const canvas = await renderFramedCanvas(rawBlob, selectedFrame, frameText, fgColor, bgColor, cornerSquareColor);
+      const mimeType = format === 'webp' ? 'image/webp' : 'image/png';
       
-      canvas.width = qrSize + padding * 2;
-      canvas.height = qrSize + padding * 2 + headerHeight + footerHeight;
-
-      // Background
-      ctx.fillStyle = bgColor || '#ffffff';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Draw Top Header
-      if (selectedFrame === 'top-header') {
-        ctx.fillStyle = fgColor || '#1E1E1E';
-        ctx.fillRect(16, 16, canvas.width - 32, headerHeight);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 54px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText((frameText || 'SCAN ME').toUpperCase(), canvas.width / 2, 16 + headerHeight / 2);
-      }
-
-      // Draw QR Code
-      const qrY = padding + headerHeight;
-      ctx.drawImage(img, padding, qrY, qrSize, qrSize);
-
-      // Draw Bottom Ribbon / Badge
-      if (selectedFrame === 'bottom-ribbon') {
-        ctx.fillStyle = fgColor || '#1E1E1E';
-        ctx.fillRect(16, canvas.height - footerHeight - 16, canvas.width - 32, footerHeight);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 54px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText((frameText || 'SCAN ME').toUpperCase(), canvas.width / 2, canvas.height - footerHeight / 2 - 16);
-      } else if (selectedFrame === 'badge-pill') {
-        const badgeW = 600;
-        const badgeH = 100;
-        const badgeX = (canvas.width - badgeW) / 2;
-        const badgeY = canvas.height - footerHeight + 20;
-        ctx.fillStyle = fgColor || '#1E1E1E';
-        ctx.beginPath();
-        ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 50);
-        ctx.fill();
-        ctx.fillStyle = '#BEF392';
-        ctx.font = 'bold 44px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText((frameText || 'SCAN ME').toUpperCase(), canvas.width / 2, badgeY + badgeH / 2);
-      }
-
       canvas.toBlob((blob) => {
-        if (!blob) return;
+        if (!blob) {
+          qrCode.download({ name: namePrefix, extension: format });
+          return;
+        }
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
         a.download = `${namePrefix}-framed.${format}`;
         a.click();
         URL.revokeObjectURL(url);
-      }, 'image/png');
+        showToast(`✓ Downloaded framed ${format.toUpperCase()}!`);
+      }, mimeType, 0.95);
     } catch (err) {
       console.error('Framed export fallback:', err);
       qrCode.download({ name: namePrefix, extension: format });
     }
   };
 
-  // Copy Handler
+  // Copy Handler (copies framed PNG or raw PNG image with fallback to text)
   const handleCopy = async () => {
     if (!generated) return;
     try {
-      const blob = await qrCode.getRawData('png');
-      if (blob) {
+      let blob: Blob | null = null;
+      if (selectedFrame === 'none') {
+        blob = (await qrCode.getRawData('png')) as Blob | null;
+      } else {
+        const rawBlob = (await qrCode.getRawData('png')) as Blob | null;
+        if (rawBlob) {
+          const canvas = await renderFramedCanvas(rawBlob, selectedFrame, frameText, fgColor, bgColor, cornerSquareColor);
+          blob = await new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/png'));
+        }
+      }
+
+      if (blob && navigator.clipboard && typeof ClipboardItem !== 'undefined') {
         await navigator.clipboard.write([
           new ClipboardItem({ 'image/png': blob })
         ]);
+        setCopiedToast(true);
+        showToast('✓ QR Code image copied to clipboard!');
+        setTimeout(() => setCopiedToast(false), 2200);
+      } else {
+        await navigator.clipboard.writeText(effectiveQrData);
+        setCopiedToast(true);
+        showToast('✓ QR Code data copied to clipboard!');
+        setTimeout(() => setCopiedToast(false), 2200);
       }
     } catch (err) {
-      console.error('Copy failed:', err);
+      console.warn('Image clipboard write failed, falling back to text:', err);
+      try {
+        await navigator.clipboard.writeText(effectiveQrData);
+        setCopiedToast(true);
+        showToast('✓ QR Code data copied to clipboard!');
+        setTimeout(() => setCopiedToast(false), 2200);
+      } catch (copyErr) {
+        showToast('⚠️ Could not access clipboard');
+      }
     }
   };
 
@@ -1560,30 +1903,73 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
 
                     {/* QR Canvas + Template Mini-QR Carousel */}
                     <div className="flex items-center justify-between w-full gap-3">
-                      {/* Canvas Container with Frame Simulation */}
-                      <div className={`relative bg-white border-2 border-black/10 rounded-2xl p-2.5 flex flex-col items-center justify-center shadow-lg transition-all ${
-                        selectedFrame === 'bottom-ribbon' ? 'pb-3' : selectedFrame === 'top-header' ? 'pt-3' : ''
-                      }`} style={{ width: '72%', maxWidth: '230px' }}>
+                      {/* Canvas Container with Live Accurate Frame Simulation */}
+                      <div className={`relative bg-white transition-all shadow-xl flex flex-col items-center justify-center ${
+                        selectedFrame === 'none' ? 'rounded-2xl p-2.5 border-2 border-black/10' :
+                        selectedFrame === 'bottom-badge' ? 'rounded-3xl p-2.5 pt-3 pb-3 border-2 border-black/10' :
+                        selectedFrame === 'top-header' ? 'rounded-3xl p-0 overflow-hidden border-2 border-black/10' :
+                        selectedFrame === 'polaroid-card' ? 'rounded-2xl p-2.5 pb-4 border border-slate-200 shadow-2xl' :
+                        selectedFrame === 'phone-mockup' ? 'rounded-[28px] p-2 pt-2.5 pb-2.5 bg-slate-900 border-4 border-slate-800 shadow-2xl' :
+                        selectedFrame === 'speech-bubble' ? 'rounded-3xl p-2.5 pb-3 border-2 shadow-lg relative' :
+                        selectedFrame === 'minimal-border' ? 'rounded-2xl p-2.5 pb-3 border-4 border-dashed shadow-lg' :
+                        'rounded-2xl p-2.5 border-2 border-black/10'
+                      }`} style={{
+                        width: '74%',
+                        maxWidth: '235px',
+                        borderColor: (selectedFrame === 'speech-bubble' || selectedFrame === 'minimal-border') ? fgColor : undefined
+                      }}>
                         
-                        {/* Top Header Frame Badge */}
+                        {/* Top Header Frame Banner */}
                         {selectedFrame === 'top-header' && (
-                          <div className="w-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-wider text-center py-1 rounded-t-lg mb-1 shadow-2xs">
+                          <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-1.5 px-2 shadow-2xs mb-1.5" style={{ backgroundColor: fgColor }}>
                             {frameText || 'SCAN ME'}
                           </div>
                         )}
 
-                        <div ref={qrContainerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />
+                        {/* Phone Mockup Notch */}
+                        {selectedFrame === 'phone-mockup' && (
+                          <div className="w-14 h-1.5 bg-slate-800 rounded-full mx-auto mb-1.5" />
+                        )}
 
-                        {/* Bottom Ribbon Frame Badge */}
-                        {selectedFrame === 'bottom-ribbon' && (
-                          <div className="w-full bg-accent text-white text-[10px] font-black uppercase tracking-wider text-center py-1 rounded-b-lg mt-1 shadow-2xs">
-                            {frameText || 'SCAN ME'}
+                        {/* Inner Screen for Phone Mockup or Direct QR Container */}
+                        <div className={selectedFrame === 'phone-mockup' ? 'bg-white rounded-xl p-1.5 w-full flex flex-col items-center' : 'w-full flex items-center justify-center'}>
+                          <div ref={qrContainerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />
+                          
+                          {/* Phone Mockup Screen Button */}
+                          {selectedFrame === 'phone-mockup' && (
+                            <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 rounded-md mt-1.5 shadow-xs" style={{ backgroundColor: fgColor }}>
+                              {frameText || 'SCAN ME'}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Bottom Pill Badge */}
+                        {selectedFrame === 'bottom-badge' && (
+                          <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 rounded-full mt-1.5 shadow-xs flex items-center justify-center gap-1" style={{ backgroundColor: fgColor }}>
+                            <span>📷</span>
+                            <span>{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
-                        {/* Pill Badge Frame */}
-                        {selectedFrame === 'badge-pill' && (
-                          <div className="inline-block bg-slate-900 text-[#BEF392] text-[9px] font-black uppercase tracking-widest px-3 py-0.5 rounded-full mt-1 border border-white/20 shadow-xs">
+                        {/* Polaroid Card Caption */}
+                        {selectedFrame === 'polaroid-card' && (
+                          <div className="text-center mt-1.5 w-full">
+                            <p className="text-[11px] font-black uppercase tracking-wider truncate" style={{ color: fgColor }}>{frameText || 'SCAN WITH PHONE'}</p>
+                            <p className="text-[8px] text-gray-400 font-medium mt-0.5">Point camera to scan</p>
+                          </div>
+                        )}
+
+                        {/* Speech Bubble Tail & Badge */}
+                        {selectedFrame === 'speech-bubble' && (
+                          <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 rounded-xl mt-1.5 shadow-xs flex items-center justify-center gap-1" style={{ backgroundColor: fgColor }}>
+                            <span>💬</span>
+                            <span>{frameText || 'SCAN ME!'}</span>
+                          </div>
+                        )}
+
+                        {/* Minimal Border Floating Tag */}
+                        {selectedFrame === 'minimal-border' && (
+                          <div className="text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-md mt-1.5 shadow-xs" style={{ backgroundColor: fgColor }}>
                             {frameText || 'SCAN ME'}
                           </div>
                         )}
@@ -1641,7 +2027,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                         <button
                           onClick={() => handleDownload('svg')}
                           disabled={!generated}
-                          title="Download SVG"
+                          title="Download SVG Vector"
                           className={`h-10 px-3 rounded-lg text-xs font-bold text-white transition-colors ${generated ? 'bg-accent/80 hover:bg-accent' : 'bg-[#C7C7C7] cursor-not-allowed'}`}
                         >
                           SVG
@@ -1649,12 +2035,27 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                         <button
                           onClick={handleCopy}
                           disabled={!generated}
-                          title="Copy to clipboard"
-                          className={`h-10 px-3 rounded-lg transition-colors text-white ${generated ? 'bg-white/10 hover:bg-white/20' : 'bg-[#C7C7C7] cursor-not-allowed'}`}
+                          title="Copy QR to clipboard"
+                          className={`h-10 px-3 rounded-lg transition-all text-white flex items-center justify-center gap-1 text-xs font-bold ${
+                            copiedToast
+                              ? 'bg-emerald-600 ring-2 ring-emerald-400 scale-105'
+                              : generated
+                              ? 'bg-white/10 hover:bg-white/20'
+                              : 'bg-[#C7C7C7] cursor-not-allowed'
+                          }`}
                         >
-                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m0 16H8V7h11z" />
-                          </svg>
+                          {copiedToast ? (
+                            <>
+                              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span className="hidden sm:inline">Copied!</span>
+                            </>
+                          ) : (
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m0 16H8V7h11z" />
+                            </svg>
+                          )}
                         </button>
                       </div>
 
@@ -1682,7 +2083,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                         </svg>
-                        <span>{showCustomize ? 'Hide Custom Options' : 'Custom QR Options & Logo'}</span>
+                        <span>{showCustomize ? 'Hide Custom Options' : 'Custom QR Options & Frames'}</span>
                       </button>
                     </div>
                   </div>
@@ -1692,34 +2093,72 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                 {showCustomize && (
                   <div className="bg-[#141414] border-t border-white/10 p-6 text-white animate-in">
                     <h3 className="text-sm font-bold text-[#BEF392] uppercase tracking-wider mb-4 flex items-center gap-2">
-                      🎨 Custom Design Options
+                      🎨 Custom Design & Frame Options
                     </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5">
+                    <div className="space-y-6">
 
-                      {/* Frame & CTA Badge */}
-                      <div className="space-y-3">
-                        <label className="text-xs font-bold text-white/80 block">CTA Frame Style</label>
-                        <select
-                          value={selectedFrame}
-                          onChange={(e) => setSelectedFrame(e.target.value as any)}
-                          className="w-full bg-white/10 text-white rounded-lg p-2 text-xs outline-none border border-white/10"
-                        >
-                          <option value="none" className="bg-gray-900 text-white">No Frame (Clean)</option>
-                          <option value="bottom-ribbon" className="bg-gray-900 text-white">Bottom Ribbon</option>
-                          <option value="top-header" className="bg-gray-900 text-white">Top Header</option>
-                          <option value="badge-pill" className="bg-gray-900 text-white">Pill Badge</option>
-                        </select>
+                      {/* Frame & CTA Badge Selection Box */}
+                      <div className="bg-white/5 p-4 rounded-2xl border border-white/10 space-y-4">
+                        <div className="flex flex-wrap items-center justify-between gap-3">
+                          <div>
+                            <label className="text-xs font-bold text-[#BEF392] uppercase tracking-wider block">1. Choose CTA Frame Style</label>
+                            <span className="text-[11px] text-white/60">Select a high-converting frame for flyers, signs, and menus</span>
+                          </div>
+                          {selectedFrame !== 'none' && (
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs text-white/70 font-semibold">Frame Text:</span>
+                              <input
+                                type="text"
+                                value={frameText}
+                                onChange={(e) => setFrameText(e.target.value)}
+                                placeholder="e.g. SCAN ME"
+                                maxLength={24}
+                                className="bg-white/10 text-white rounded-lg px-3 py-1.5 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-accent w-48"
+                              />
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Visual Frame Options Grid */}
+                        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5">
+                          {FRAME_OPTIONS.map((f) => (
+                            <button
+                              key={f.id}
+                              onClick={() => setSelectedFrame(f.id)}
+                              className={`p-2.5 rounded-xl border text-center transition-all flex flex-col items-center justify-center gap-1 ${
+                                selectedFrame === f.id
+                                  ? 'border-accent bg-accent/25 text-[#BEF392] ring-2 ring-accent/50 scale-105 shadow-md font-bold'
+                                  : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
+                              }`}
+                            >
+                              <span className="text-xl">{f.icon}</span>
+                              <span className="text-[11px] font-bold block">{f.label}</span>
+                            </button>
+                          ))}
+                        </div>
+
+                        {/* Quick CTA Presets */}
                         {selectedFrame !== 'none' && (
-                          <input
-                            type="text"
-                            value={frameText}
-                            onChange={(e) => setFrameText(e.target.value)}
-                            placeholder="e.g. SCAN ME"
-                            maxLength={20}
-                            className="w-full bg-white/10 text-white rounded-lg px-2.5 py-1.5 text-xs outline-none border border-white/10 font-bold tracking-wider uppercase placeholder:text-white/40"
-                          />
+                          <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                            <span className="text-[10px] text-white/50 font-semibold mr-1">Quick Presets:</span>
+                            {['SCAN ME', 'SCAN FOR MENU', 'VISIT WEBSITE', 'CONNECT WIFI', 'PAY HERE', 'ADD CONTACT'].map((preset) => (
+                              <button
+                                key={preset}
+                                onClick={() => setFrameText(preset)}
+                                className={`text-[10px] px-2.5 py-1 rounded-full border transition-all ${
+                                  frameText === preset
+                                    ? 'bg-accent text-white border-accent'
+                                    : 'bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white'
+                                }`}
+                              >
+                                {preset}
+                              </button>
+                            ))}
+                          </div>
                         )}
                       </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
 
                       {/* Colors */}
                       <div className="space-y-3">
@@ -1797,9 +2236,10 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                       </div>
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
+          </div>
 
             {/* ──── SOCIAL PROOF BANNER ──── */}
             <div className="order-3 w-full max-w-[1205px]">
@@ -2284,6 +2724,24 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
         title="Create Account for Dynamic QR"
         subtitle="Sign in or register to change your destination link anytime and track live scan analytics."
       />
+
+      {/* ═══════════════════════════ FLOATING TOAST NOTIFICATION ═══════════════════════════ */}
+      {toastMessage && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700/60 backdrop-blur-md animate-slideUp">
+          <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <span className="text-sm font-semibold tracking-wide text-slate-100">{toastMessage}</span>
+          <button
+            onClick={() => setToastMessage(null)}
+            className="ml-2 text-slate-400 hover:text-white text-xs p-1"
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </div>
   );
 };
