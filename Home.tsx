@@ -356,17 +356,36 @@ const DynamicModalQrPreview: React.FC<{ link: DynamicLink }> = ({ link }) => {
   return <div ref={containerRef} className="w-36 h-36 flex items-center justify-center rounded-xl bg-white p-1 border border-slate-200 shadow-2xs mb-3" />;
 };
 
-// ── Frame Styles & Customization ──
-export type FrameStyle = 'none' | 'bottom-badge' | 'top-header' | 'polaroid-card' | 'phone-mockup' | 'speech-bubble' | 'minimal-border';
+// ── Frame Styles & Customization (Bitly-Grade Premium Frames) ──
+export type FrameStyle = 
+  | 'none'
+  | 'bitly-bottom-bar'
+  | 'bitly-top-bar'
+  | 'bitly-floating-badge'
+  | 'bitly-speech-bubble'
+  | 'bitly-restaurant-menu'
+  | 'bitly-wifi-access'
+  | 'bitly-social-follow'
+  | 'bitly-review-star'
+  | 'bitly-voucher-ticket'
+  | 'bitly-app-download'
+  | 'bitly-luxury-gold'
+  | 'bitly-browser-window';
 
-export const FRAME_OPTIONS: { id: FrameStyle; label: string; icon: string; desc: string }[] = [
-  { id: 'none', label: 'No Frame', icon: '◻️', desc: 'Clean, minimalist QR code' },
-  { id: 'bottom-badge', label: 'Modern Pill', icon: '🏷️', desc: 'Bottom pill badge with scan icon' },
-  { id: 'top-header', label: 'Banner Header', icon: '📌', desc: 'Top colored banner header' },
-  { id: 'polaroid-card', label: 'Polaroid Card', icon: '📷', desc: 'Photo card with bold caption' },
-  { id: 'phone-mockup', label: 'Smartphone', icon: '📱', desc: 'Realistic smartphone frame' },
-  { id: 'speech-bubble', label: 'Chat Bubble', icon: '💬', desc: 'Speech bubble with directional tail' },
-  { id: 'minimal-border', label: 'Accent Border', icon: '🖼️', desc: 'Double border with floating tag' },
+export const FRAME_OPTIONS: { id: FrameStyle; label: string; icon: string; category: string; defaultText: string; subText?: string }[] = [
+  { id: 'none', label: 'No Frame', icon: '◻️', category: 'Basic', defaultText: '' },
+  { id: 'bitly-bottom-bar', label: 'Bitly Bottom Banner', icon: '🏷️', category: 'Popular', defaultText: 'SCAN ME' },
+  { id: 'bitly-top-bar', label: 'Bitly Top Header', icon: '📌', category: 'Popular', defaultText: 'SCAN ME' },
+  { id: 'bitly-floating-badge', label: 'Floating Pill Badge', icon: '🔘', category: 'Popular', defaultText: 'SCAN ME' },
+  { id: 'bitly-speech-bubble', label: 'Chat Speech Bubble', icon: '💬', category: 'Popular', defaultText: 'SCAN ME!' },
+  { id: 'bitly-restaurant-menu', label: 'Restaurant Menu', icon: '🍽️', category: 'Business', defaultText: 'SCAN FOR MENU', subText: 'Point camera to view menu' },
+  { id: 'bitly-wifi-access', label: 'WiFi Connect', icon: '📶', category: 'Utility', defaultText: 'CONNECT TO WI-FI', subText: 'Scan to join network instantly' },
+  { id: 'bitly-social-follow', label: 'Social & Follow', icon: '⭐', category: 'Marketing', defaultText: 'FOLLOW US', subText: 'Scan to visit our socials' },
+  { id: 'bitly-review-star', label: '5-Star Review', icon: '🌟', category: 'Marketing', defaultText: 'LEAVE A REVIEW', subText: 'Rate us on Google' },
+  { id: 'bitly-voucher-ticket', label: 'Coupon Voucher', icon: '🎟️', category: 'Marketing', defaultText: 'GET 20% DISCOUNT', subText: 'Scan to redeem coupon' },
+  { id: 'bitly-app-download', label: 'App Store Card', icon: '📲', category: 'App', defaultText: 'DOWNLOAD OUR APP', subText: 'Available on iOS & Android' },
+  { id: 'bitly-luxury-gold', label: 'Luxury VIP Frame', icon: '✨', category: 'Luxury', defaultText: 'VIP EXCLUSIVE ACCESS', subText: 'Scan for member privileges' },
+  { id: 'bitly-browser-window', label: 'Modern Window', icon: '💻', category: 'Tech', defaultText: 'VISIT WEBSITE', subText: 'Tap or scan with camera' },
 ];
 
 function drawRoundedRect(
@@ -410,196 +429,421 @@ async function renderFramedCanvas(
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d')!;
   const ctaText = (text || 'SCAN ME').toUpperCase();
-  const brandColor = fg || '#2B6F53';
-  const bgColorVal = bg || '#ffffff';
+  const fColor = fg || '#2B6F53';
+  const bColor = bg || '#ffffff';
 
-  if (frame === 'bottom-badge') {
+  if (frame === 'bitly-bottom-bar') {
     canvas.width = 1200;
-    canvas.height = 1440;
+    canvas.height = 1460;
 
-    ctx.fillStyle = bgColorVal;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    drawRoundedRect(ctx, 40, 40, 1120, 1360, 48);
-    ctx.lineWidth = 8;
-    ctx.strokeStyle = brandColor + '30';
-    ctx.stroke();
-
-    ctx.drawImage(img, 150, 100, 900, 900);
-
-    const badgeW = 740;
-    const badgeH = 140;
-    const badgeX = (1200 - badgeW) / 2;
-    const badgeY = 1130;
-    drawRoundedRect(ctx, badgeX, badgeY, badgeW, badgeH, 70);
-    ctx.fillStyle = brandColor;
-    ctx.fill();
-
+    // Outer Card
+    drawRoundedRect(ctx, 40, 40, 1120, 1380, 48);
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 48px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(`📷  ${ctaText}`, 1200 / 2, badgeY + badgeH / 2);
-  } else if (frame === 'top-header') {
-    canvas.width = 1200;
-    canvas.height = 1440;
-
-    ctx.fillStyle = bgColorVal;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    drawRoundedRect(ctx, 40, 40, 1120, 1360, 48);
-    ctx.lineWidth = 8;
-    ctx.strokeStyle = brandColor + '30';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = fColor + '20';
     ctx.stroke();
 
-    drawRoundedRect(ctx, 40, 40, 1120, 190, [48, 48, 0, 0]);
-    ctx.fillStyle = brandColor;
+    // QR Image
+    ctx.drawImage(img, 170, 140, 860, 860);
+
+    // Bottom Banner
+    drawRoundedRect(ctx, 40, 1260, 1120, 160, [0, 0, 48, 48]);
+    ctx.fillStyle = fColor;
     ctx.fill();
 
+    // Text
     ctx.fillStyle = '#ffffff';
     ctx.font = '900 54px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText, 1200 / 2, 40 + 190 / 2);
-
-    ctx.drawImage(img, 150, 340, 900, 900);
-  } else if (frame === 'polaroid-card') {
+    ctx.fillText(`📷  ${ctaText}`, 600, 1340);
+  } else if (frame === 'bitly-top-bar') {
     canvas.width = 1200;
-    canvas.height = 1520;
+    canvas.height = 1460;
 
-    ctx.fillStyle = '#f8fafc';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    drawRoundedRect(ctx, 50, 50, 1100, 1420, 36);
+    // Outer Card
+    drawRoundedRect(ctx, 40, 40, 1120, 1380, 48);
     ctx.fillStyle = '#ffffff';
     ctx.fill();
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = fColor + '20';
     ctx.stroke();
 
-    ctx.drawImage(img, 150, 130, 900, 900);
+    // Top Banner
+    drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
+    ctx.fillStyle = fColor;
+    ctx.fill();
 
-    ctx.strokeStyle = '#f1f5f9';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(180, 1100);
-    ctx.lineTo(1020, 1100);
+    // Top Text
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 54px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 600, 125);
+
+    // QR Image
+    ctx.drawImage(img, 170, 310, 860, 860);
+
+    // Subtitle
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 32px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('Point your smartphone camera to scan', 600, 1280);
+  } else if (frame === 'bitly-floating-badge') {
+    canvas.width = 1200;
+    canvas.height = 1480;
+
+    // Card
+    drawRoundedRect(ctx, 50, 50, 1100, 1280, 48);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = fColor + '25';
     ctx.stroke();
 
-    ctx.fillStyle = brandColor;
+    // QR Image
+    ctx.drawImage(img, 170, 150, 860, 860);
+
+    // Floating Pill Badge
+    drawRoundedRect(ctx, 200, 1260, 800, 150, 75);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = '#ffffff';
+    ctx.stroke();
+
+    // Text
+    ctx.fillStyle = '#ffffff';
     ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText, 1200 / 2, 1220);
+    ctx.fillText(`📷  ${ctaText}`, 600, 1335);
+  } else if (frame === 'bitly-speech-bubble') {
+    canvas.width = 1200;
+    canvas.height = 1540;
+
+    // Top Speech Bubble
+    drawRoundedRect(ctx, 160, 40, 880, 150, 40);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    // Pointer tail pointing down to QR
+    ctx.beginPath();
+    ctx.moveTo(570, 190);
+    ctx.lineTo(600, 230);
+    ctx.lineTo(630, 190);
+    ctx.closePath();
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    // Bubble Text
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 50px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`💬  ${ctaText}`, 600, 115);
+
+    // QR Card
+    drawRoundedRect(ctx, 50, 250, 1100, 1240, 48);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = fColor + '30';
+    ctx.stroke();
+
+    ctx.drawImage(img, 170, 340, 860, 860);
 
     ctx.fillStyle = '#64748b';
     ctx.font = '600 32px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('Point your smartphone camera to scan', 1200 / 2, 1320);
-  } else if (frame === 'phone-mockup') {
+    ctx.fillText('Scan with your smartphone camera', 600, 1330);
+  } else if (frame === 'bitly-restaurant-menu') {
     canvas.width = 1200;
-    canvas.height = 1660;
+    canvas.height = 1520;
 
-    ctx.fillStyle = '#f1f5f9';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    drawRoundedRect(ctx, 80, 40, 1040, 1580, 96);
-    ctx.fillStyle = '#0f172a';
+    drawRoundedRect(ctx, 40, 40, 1120, 1440, 48);
+    ctx.fillStyle = '#ffffff';
     ctx.fill();
     ctx.lineWidth = 6;
-    ctx.strokeStyle = '#334155';
+    ctx.strokeStyle = fColor + '25';
     ctx.stroke();
 
-    drawRoundedRect(ctx, 116, 80, 968, 1500, 72);
-    ctx.fillStyle = bgColorVal;
+    // Header
+    drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
+    ctx.fillStyle = fColor;
     ctx.fill();
 
-    drawRoundedRect(ctx, 470, 110, 260, 38, 19);
-    ctx.fillStyle = '#0f172a';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`🍽️  ${ctaText || 'SCAN FOR MENU'}`, 600, 125);
+
+    ctx.drawImage(img, 170, 310, 860, 860);
+
+    // Footer
+    drawRoundedRect(ctx, 200, 1270, 800, 110, 30);
+    ctx.fillStyle = fColor + '15';
     ctx.fill();
 
-    ctx.drawImage(img, 150, 260, 900, 900);
+    ctx.fillStyle = fColor;
+    ctx.font = '700 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('Point camera to view menu & order', 600, 1325);
+  } else if (frame === 'bitly-wifi-access') {
+    canvas.width = 1200;
+    canvas.height = 1520;
 
-    const badgeW = 680;
-    const badgeH = 130;
-    const badgeX = (1200 - badgeW) / 2;
-    const badgeY = 1280;
-    drawRoundedRect(ctx, badgeX, badgeY, badgeW, badgeH, 65);
-    ctx.fillStyle = brandColor;
+    drawRoundedRect(ctx, 40, 40, 1120, 1440, 48);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = fColor + '25';
+    ctx.stroke();
+
+    drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`📶  ${ctaText || 'CONNECT TO WI-FI'}`, 600, 125);
+
+    ctx.drawImage(img, 170, 310, 860, 860);
+
+    drawRoundedRect(ctx, 200, 1270, 800, 110, 30);
+    ctx.fillStyle = fColor + '15';
+    ctx.fill();
+
+    ctx.fillStyle = fColor;
+    ctx.font = '700 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('Scan to join high-speed network instantly', 600, 1325);
+  } else if (frame === 'bitly-social-follow') {
+    canvas.width = 1200;
+    canvas.height = 1520;
+
+    drawRoundedRect(ctx, 40, 40, 1120, 1440, 48);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = fColor + '25';
+    ctx.stroke();
+
+    drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`⭐  ${ctaText || 'FOLLOW US'}`, 600, 125);
+
+    ctx.drawImage(img, 170, 310, 860, 860);
+
+    drawRoundedRect(ctx, 240, 1270, 720, 110, 55);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '800 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('Connect with us on Social Media', 600, 1325);
+  } else if (frame === 'bitly-review-star') {
+    canvas.width = 1200;
+    canvas.height = 1560;
+
+    drawRoundedRect(ctx, 40, 40, 1120, 1480, 48);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = fColor + '25';
+    ctx.stroke();
+
+    // 5 Stars
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = '900 68px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('★★★★★', 600, 120);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '800 28px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('YOUR REVIEW MATTERS', 600, 180);
+
+    ctx.drawImage(img, 170, 260, 860, 860);
+
+    // CTA Button
+    drawRoundedRect(ctx, 200, 1240, 800, 140, 70);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 48px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText(`⭐  ${ctaText || 'LEAVE A REVIEW'}`, 600, 1310);
+  } else if (frame === 'bitly-voucher-ticket') {
+    canvas.width = 1200;
+    canvas.height = 1520;
+
+    // Outer Ticket
+    drawRoundedRect(ctx, 40, 40, 1120, 1440, 40);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    // Circular Cutouts
+    ctx.fillStyle = '#f8fafc';
+    ctx.beginPath();
+    ctx.arc(40, 1180, 45, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(1160, 1180, 45, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Dashed divider line
+    ctx.strokeStyle = fColor + '60';
+    ctx.lineWidth = 4;
+    ctx.setLineDash([16, 12]);
+    ctx.beginPath();
+    ctx.moveTo(120, 1180);
+    ctx.lineTo(1080, 1180);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Header badge
+    drawRoundedRect(ctx, 250, 80, 700, 110, 24);
+    ctx.fillStyle = fColor;
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';
     ctx.font = '900 44px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText, 1200 / 2, badgeY + badgeH / 2);
+    ctx.fillText('🎟️  SPECIAL PROMOTION', 600, 135);
 
-    drawRoundedRect(ctx, 450, 1530, 300, 10, 5);
-    ctx.fillStyle = '#94a3b8';
-    ctx.fill();
-  } else if (frame === 'speech-bubble') {
+    ctx.drawImage(img, 170, 240, 860, 860);
+
+    ctx.fillStyle = fColor;
+    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText(ctaText || 'GET 20% DISCOUNT', 600, 1280);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 30px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('Scan with smartphone camera to redeem', 600, 1360);
+  } else if (frame === 'bitly-app-download') {
     canvas.width = 1200;
-    canvas.height = 1500;
+    canvas.height = 1540;
 
-    ctx.fillStyle = bgColorVal;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    drawRoundedRect(ctx, 40, 40, 1120, 1260, 48);
-    ctx.fillStyle = bgColorVal;
+    drawRoundedRect(ctx, 40, 40, 1120, 1460, 48);
+    ctx.fillStyle = '#ffffff';
     ctx.fill();
-    ctx.lineWidth = 8;
-    ctx.strokeStyle = brandColor;
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = fColor + '25';
     ctx.stroke();
 
-    ctx.drawImage(img, 150, 120, 900, 900);
+    drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
+    ctx.fillStyle = fColor;
+    ctx.fill();
 
-    ctx.fillStyle = brandColor;
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 50px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`📲  ${ctaText || 'DOWNLOAD OUR APP'}`, 600, 125);
+
+    ctx.drawImage(img, 170, 310, 860, 860);
+
+    drawRoundedRect(ctx, 180, 1260, 840, 110, 24);
+    ctx.fillStyle = '#0f172a';
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '800 36px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('Available on iOS App Store & Google Play', 600, 1315);
+  } else if (frame === 'bitly-luxury-gold') {
+    canvas.width = 1200;
+    canvas.height = 1520;
+
+    drawRoundedRect(ctx, 40, 40, 1120, 1440, 36);
+    ctx.fillStyle = '#0f172a';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = '#ca8a04';
+    ctx.stroke();
+
+    drawRoundedRect(ctx, 70, 70, 1060, 1380, 24);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#ca8a04';
+    ctx.stroke();
+
+    ctx.fillStyle = '#facc15';
+    ctx.font = '900 46px serif, system-ui';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`◆  ${ctaText || 'VIP EXCLUSIVE ACCESS'}  ◆`, 600, 150);
+
+    drawRoundedRect(ctx, 170, 240, 860, 860, 20);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+
+    ctx.drawImage(img, 170, 240, 860, 860);
+
+    ctx.fillStyle = '#f8fafc';
+    ctx.font = '700 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('Scan with phone for member privileges', 600, 1280);
+  } else if (frame === 'bitly-browser-window') {
+    canvas.width = 1200;
+    canvas.height = 1540;
+
+    drawRoundedRect(ctx, 40, 40, 1120, 1460, 36);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = '#334155';
+    ctx.stroke();
+
+    // Title bar
+    drawRoundedRect(ctx, 40, 40, 1120, 110, [36, 36, 0, 0]);
+    ctx.fillStyle = '#0f172a';
+    ctx.fill();
+
+    // 3 Window Dots
+    ctx.fillStyle = '#ef4444';
     ctx.beginPath();
-    ctx.moveTo(560, 1300);
-    ctx.lineTo(600, 1340);
-    ctx.lineTo(640, 1300);
-    ctx.closePath();
+    ctx.arc(90, 95, 14, 0, Math.PI * 2);
     ctx.fill();
 
-    const bubbleW = 720;
-    const bubbleH = 130;
-    const bubbleX = (1200 - bubbleW) / 2;
-    const bubbleY = 1330;
-    drawRoundedRect(ctx, bubbleX, bubbleY, bubbleW, bubbleH, 65);
-    ctx.fillStyle = brandColor;
+    ctx.fillStyle = '#eab308';
+    ctx.beginPath();
+    ctx.arc(130, 95, 14, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '900 46px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(`💬  ${ctaText}`, 1200 / 2, bubbleY + bubbleH / 2);
-  } else if (frame === 'minimal-border') {
-    canvas.width = 1200;
-    canvas.height = 1440;
+    ctx.fillStyle = '#22c55e';
+    ctx.beginPath();
+    ctx.arc(170, 95, 14, 0, Math.PI * 2);
+    ctx.fill();
 
-    ctx.fillStyle = bgColorVal;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // URL bar
+    drawRoundedRect(ctx, 240, 65, 870, 60, 12);
+    ctx.fillStyle = '#1e293b';
+    ctx.fill();
 
-    drawRoundedRect(ctx, 40, 40, 1120, 1340, 40);
-    ctx.lineWidth = 10;
-    ctx.strokeStyle = brandColor;
-    ctx.stroke();
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '700 28px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('🔒 https://qr-generator.online', 270, 103);
 
-    ctx.drawImage(img, 150, 140, 900, 900);
+    ctx.drawImage(img, 170, 240, 860, 860);
 
-    const tagW = 620;
-    const tagH = 130;
-    const tagX = (1200 - tagW) / 2;
-    const tagY = 1315;
-    drawRoundedRect(ctx, tagX, tagY, tagW, tagH, 28);
-    ctx.fillStyle = brandColor;
+    drawRoundedRect(ctx, 220, 1230, 760, 130, 24);
+    ctx.fillStyle = fColor;
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 46px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = '900 48px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText, 1200 / 2, tagY + tagH / 2);
+    ctx.fillText(`🌐  ${ctaText || 'VISIT WEBSITE'}`, 600, 1295);
   }
 
   URL.revokeObjectURL(img.src);
@@ -615,8 +859,8 @@ function buildFramedSvg(
   cornerSq: string
 ): string {
   const ctaText = (text || 'SCAN ME').toUpperCase();
-  const brandColor = fg || '#2B6F53';
-  const bgColorVal = bg || '#ffffff';
+  const fColor = fg || '#2B6F53';
+  const bColor = bg || '#ffffff';
 
   let cleanSvg = rawSvgText;
   const svgMatch = rawSvgText.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
@@ -624,70 +868,151 @@ function buildFramedSvg(
     cleanSvg = svgMatch[1];
   }
 
-  if (frame === 'bottom-badge') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1440" width="1200" height="1440">
-  <rect width="1200" height="1440" fill="${bgColorVal}"/>
-  <rect x="40" y="40" width="1120" height="1360" rx="48" fill="${bgColorVal}" stroke="${brandColor}" stroke-opacity="0.25" stroke-width="8"/>
-  <g transform="translate(150, 100) scale(3.214)">
+  if (frame === 'bitly-bottom-bar') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
+  <rect width="1200" height="1460" fill="#f8fafc"/>
+  <rect x="40" y="40" width="1120" height="1380" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.2" stroke-width="6"/>
+  <g transform="translate(170, 140) scale(3.07)">
     ${cleanSvg}
   </g>
-  <rect x="230" y="1130" width="740" height="140" rx="70" fill="${brandColor}"/>
-  <text x="600" y="1218" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">📷 ${ctaText}</text>
+  <path d="M 40 1260 L 1160 1260 L 1160 1372 A 48 48 0 0 1 1112 1420 L 88 1420 A 48 48 0 0 1 40 1372 Z" fill="${fColor}"/>
+  <text x="600" y="1355" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">📷 ${ctaText}</text>
 </svg>`;
-  } else if (frame === 'top-header') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1440" width="1200" height="1440">
-  <rect width="1200" height="1440" fill="${bgColorVal}"/>
-  <rect x="40" y="40" width="1120" height="1360" rx="48" fill="${bgColorVal}" stroke="${brandColor}" stroke-opacity="0.25" stroke-width="8"/>
-  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 230 L 40 230 Z" fill="${brandColor}"/>
-  <text x="600" y="152" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">${ctaText}</text>
-  <g transform="translate(150, 340) scale(3.214)">
+  } else if (frame === 'bitly-top-bar') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
+  <rect width="1200" height="1460" fill="#f8fafc"/>
+  <rect x="40" y="40" width="1120" height="1380" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.2" stroke-width="6"/>
+  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
+  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">${ctaText}</text>
+  <g transform="translate(170, 310) scale(3.07)">
     ${cleanSvg}
   </g>
+  <text x="600" y="1285" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="32" text-anchor="middle">Point your smartphone camera to scan</text>
 </svg>`;
-  } else if (frame === 'polaroid-card') {
+  } else if (frame === 'bitly-floating-badge') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1480" width="1200" height="1480">
+  <rect width="1200" height="1480" fill="#f8fafc"/>
+  <rect x="50" y="50" width="1100" height="1280" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
+  <g transform="translate(170, 150) scale(3.07)">
+    ${cleanSvg}
+  </g>
+  <rect x="200" y="1260" width="800" height="150" rx="75" fill="${fColor}" stroke="#ffffff" stroke-width="8"/>
+  <text x="600" y="1350" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">📷 ${ctaText}</text>
+</svg>`;
+  } else if (frame === 'bitly-speech-bubble') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1540" width="1200" height="1540">
+  <rect width="1200" height="1540" fill="#f8fafc"/>
+  <rect x="160" y="40" width="880" height="150" rx="40" fill="${fColor}"/>
+  <polygon points="570,190 600,230 630,190" fill="${fColor}"/>
+  <text x="600" y="130" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="50" text-anchor="middle">💬 ${ctaText}</text>
+  <rect x="50" y="250" width="1100" height="1240" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.3" stroke-width="6"/>
+  <g transform="translate(170, 340) scale(3.07)">
+    ${cleanSvg}
+  </g>
+  <text x="600" y="1335" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="32" text-anchor="middle">Scan with your smartphone camera</text>
+</svg>`;
+  } else if (frame === 'bitly-restaurant-menu') {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
   <rect width="1200" height="1520" fill="#f8fafc"/>
-  <rect x="50" y="50" width="1100" height="1420" rx="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="4"/>
-  <g transform="translate(150, 130) scale(3.214)">
+  <rect x="40" y="40" width="1120" height="1440" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
+  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
+  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">🍽️ ${ctaText || 'SCAN FOR MENU'}</text>
+  <g transform="translate(170, 310) scale(3.07)">
     ${cleanSvg}
   </g>
-  <line x1="180" y1="1100" x2="1020" y2="1100" stroke="#f1f5f9" stroke-width="3"/>
-  <text x="600" y="1225" fill="${brandColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText}</text>
-  <text x="600" y="1320" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="32" text-anchor="middle">Point your smartphone camera to scan</text>
+  <rect x="200" y="1270" width="800" height="110" rx="30" fill="${fColor}" fill-opacity="0.15"/>
+  <text x="600" y="1338" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="34" text-anchor="middle">Point camera to view menu &amp; order</text>
 </svg>`;
-  } else if (frame === 'phone-mockup') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1660" width="1200" height="1660">
-  <rect width="1200" height="1660" fill="#f1f5f9"/>
-  <rect x="80" y="40" width="1040" height="1580" rx="96" fill="#0f172a" stroke="#334155" stroke-width="6"/>
-  <rect x="116" y="80" width="968" height="1500" rx="72" fill="${bgColorVal}"/>
-  <rect x="470" y="110" width="260" height="38" rx="19" fill="#0f172a"/>
-  <g transform="translate(150, 260) scale(3.214)">
+  } else if (frame === 'bitly-wifi-access') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
+  <rect width="1200" height="1520" fill="#f8fafc"/>
+  <rect x="40" y="40" width="1120" height="1440" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
+  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
+  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">📶 ${ctaText || 'CONNECT TO WI-FI'}</text>
+  <g transform="translate(170, 310) scale(3.07)">
     ${cleanSvg}
   </g>
-  <rect x="260" y="1280" width="680" height="130" rx="65" fill="${brandColor}"/>
-  <text x="600" y="1362" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" text-anchor="middle">${ctaText}</text>
-  <rect x="450" y="1530" width="300" height="10" rx="5" fill="#94a3b8"/>
+  <rect x="200" y="1270" width="800" height="110" rx="30" fill="${fColor}" fill-opacity="0.15"/>
+  <text x="600" y="1338" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="34" text-anchor="middle">Scan to join high-speed network instantly</text>
 </svg>`;
-  } else if (frame === 'speech-bubble') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500">
-  <rect width="1200" height="1500" fill="${bgColorVal}"/>
-  <rect x="40" y="40" width="1120" height="1260" rx="48" fill="${bgColorVal}" stroke="${brandColor}" stroke-width="8"/>
-  <g transform="translate(150, 120) scale(3.214)">
+  } else if (frame === 'bitly-social-follow') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
+  <rect width="1200" height="1520" fill="#f8fafc"/>
+  <rect x="40" y="40" width="1120" height="1440" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
+  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
+  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">⭐ ${ctaText || 'FOLLOW US'}</text>
+  <g transform="translate(170, 310) scale(3.07)">
     ${cleanSvg}
   </g>
-  <polygon points="560,1300 600,1340 640,1300" fill="${brandColor}"/>
-  <rect x="240" y="1330" width="720" height="130" rx="65" fill="${brandColor}"/>
-  <text x="600" y="1410" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" text-anchor="middle">💬 ${ctaText}</text>
+  <rect x="240" y="1270" width="720" height="110" rx="55" fill="${fColor}"/>
+  <text x="600" y="1338" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="34" text-anchor="middle">Connect with us on Social Media</text>
 </svg>`;
-  } else if (frame === 'minimal-border') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1440" width="1200" height="1440">
-  <rect width="1200" height="1440" fill="${bgColorVal}"/>
-  <rect x="40" y="40" width="1120" height="1340" rx="40" fill="${bgColorVal}" stroke="${brandColor}" stroke-width="10"/>
-  <g transform="translate(150, 140) scale(3.214)">
+  } else if (frame === 'bitly-review-star') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1560" width="1200" height="1560">
+  <rect width="1200" height="1560" fill="#f8fafc"/>
+  <rect x="40" y="40" width="1120" height="1480" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
+  <text x="600" y="130" fill="#f59e0b" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">★★★★★</text>
+  <text x="600" y="185" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="28" text-anchor="middle">YOUR REVIEW MATTERS</text>
+  <g transform="translate(170, 260) scale(3.07)">
     ${cleanSvg}
   </g>
-  <rect x="290" y="1315" width="620" height="130" rx="28" fill="${brandColor}"/>
-  <text x="600" y="1395" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" text-anchor="middle">${ctaText}</text>
+  <rect x="200" y="1240" width="800" height="140" rx="70" fill="${fColor}"/>
+  <text x="600" y="1325" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">⭐ ${ctaText || 'LEAVE A REVIEW'}</text>
+</svg>`;
+  } else if (frame === 'bitly-voucher-ticket') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
+  <rect width="1200" height="1520" fill="#f8fafc"/>
+  <rect x="40" y="40" width="1120" height="1440" rx="40" fill="#ffffff" stroke="${fColor}" stroke-width="6"/>
+  <circle cx="40" cy="1180" r="45" fill="#f8fafc"/>
+  <circle cx="1160" cy="1180" r="45" fill="#f8fafc"/>
+  <line x1="120" y1="1180" x2="1080" y2="1180" stroke="${fColor}" stroke-opacity="0.6" stroke-width="4" stroke-dasharray="16 12"/>
+  <rect x="250" y="80" width="700" height="110" rx="24" fill="${fColor}"/>
+  <text x="600" y="150" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" text-anchor="middle">🎟️ SPECIAL PROMOTION</text>
+  <g transform="translate(170, 240) scale(3.07)">
+    ${cleanSvg}
+  </g>
+  <text x="600" y="1295" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText || 'GET 20% DISCOUNT'}</text>
+  <text x="600" y="1370" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="30" text-anchor="middle">Scan with smartphone camera to redeem</text>
+</svg>`;
+  } else if (frame === 'bitly-app-download') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1540" width="1200" height="1540">
+  <rect width="1200" height="1540" fill="#f8fafc"/>
+  <rect x="40" y="40" width="1120" height="1460" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
+  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
+  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="50" text-anchor="middle">📲 ${ctaText || 'DOWNLOAD OUR APP'}</text>
+  <g transform="translate(170, 310) scale(3.07)">
+    ${cleanSvg}
+  </g>
+  <rect x="180" y="1260" width="840" height="110" rx="24" fill="#0f172a"/>
+  <text x="600" y="1330" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="36" text-anchor="middle">Available on iOS App Store &amp; Google Play</text>
+</svg>`;
+  } else if (frame === 'bitly-luxury-gold') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
+  <rect width="1200" height="1520" fill="#0f172a"/>
+  <rect x="40" y="40" width="1120" height="1440" rx="36" fill="#0f172a" stroke="#ca8a04" stroke-width="6"/>
+  <rect x="70" y="70" width="1060" height="1380" rx="24" fill="none" stroke="#ca8a04" stroke-width="3"/>
+  <text x="600" y="160" fill="#facc15" font-family="serif, system-ui" font-weight="900" font-size="46" text-anchor="middle">◆ ${ctaText || 'VIP EXCLUSIVE ACCESS'} ◆</text>
+  <rect x="170" y="240" width="860" height="860" rx="20" fill="#ffffff"/>
+  <g transform="translate(170, 240) scale(3.07)">
+    ${cleanSvg}
+  </g>
+  <text x="600" y="1295" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="34" text-anchor="middle">Scan with phone for member privileges</text>
+</svg>`;
+  } else if (frame === 'bitly-browser-window') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1540" width="1200" height="1540">
+  <rect width="1200" height="1540" fill="#f8fafc"/>
+  <rect x="40" y="40" width="1120" height="1460" rx="36" fill="#ffffff" stroke="#334155" stroke-width="6"/>
+  <path d="M 40 76 A 36 36 0 0 1 76 40 L 1124 40 A 36 36 0 0 1 1160 76 L 1160 150 L 40 150 Z" fill="#0f172a"/>
+  <circle cx="90" cy="95" r="14" fill="#ef4444"/>
+  <circle cx="130" cy="95" r="14" fill="#eab308"/>
+  <circle cx="170" cy="95" r="14" fill="#22c55e"/>
+  <rect x="240" y="65" width="870" height="60" rx="12" fill="#1e293b"/>
+  <text x="270" y="105" fill="#94a3b8" font-family="monospace" font-weight="700" font-size="28">🔒 https://qr-generator.online</text>
+  <g transform="translate(170, 240) scale(3.07)">
+    ${cleanSvg}
+  </g>
+  <rect x="220" y="1230" width="760" height="130" rx="24" fill="${fColor}"/>
+  <text x="600" y="1310" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">🌐 ${ctaText || 'VISIT WEBSITE'}</text>
 </svg>`;
   }
   return rawSvgText;
@@ -715,6 +1040,15 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   // Frame & Badge Customization State
   const [selectedFrame, setSelectedFrame] = useState<FrameStyle>('none');
   const [frameText, setFrameText] = useState('SCAN ME');
+  const [frameCategory, setFrameCategory] = useState<string>('All');
+
+  const handleSelectFrame = (style: FrameStyle) => {
+    setSelectedFrame(style);
+    const found = FRAME_OPTIONS.find(f => f.id === style);
+    if (found && found.defaultText && (!frameText || frameText === 'SCAN ME')) {
+      setFrameText(found.defaultText);
+    }
+  };
 
   // Toast State
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -1903,74 +2237,154 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
 
                     {/* QR Canvas + Template Mini-QR Carousel */}
                     <div className="flex items-center justify-between w-full gap-3">
-                      {/* Canvas Container with Live Accurate Frame Simulation */}
-                      <div className={`relative bg-white transition-all shadow-xl flex flex-col items-center justify-center ${
-                        selectedFrame === 'none' ? 'rounded-2xl p-2.5 border-2 border-black/10' :
-                        selectedFrame === 'bottom-badge' ? 'rounded-3xl p-2.5 pt-3 pb-3 border-2 border-black/10' :
-                        selectedFrame === 'top-header' ? 'rounded-3xl p-0 overflow-hidden border-2 border-black/10' :
-                        selectedFrame === 'polaroid-card' ? 'rounded-2xl p-2.5 pb-4 border border-slate-200 shadow-2xl' :
-                        selectedFrame === 'phone-mockup' ? 'rounded-[28px] p-2 pt-2.5 pb-2.5 bg-slate-900 border-4 border-slate-800 shadow-2xl' :
-                        selectedFrame === 'speech-bubble' ? 'rounded-3xl p-2.5 pb-3 border-2 shadow-lg relative' :
-                        selectedFrame === 'minimal-border' ? 'rounded-2xl p-2.5 pb-3 border-4 border-dashed shadow-lg' :
-                        'rounded-2xl p-2.5 border-2 border-black/10'
+                      {/* Canvas Container with Live Bitly-Grade Frame Simulation */}
+                      <div className={`relative transition-all shadow-xl flex flex-col items-center justify-center overflow-hidden ${
+                        selectedFrame === 'none' ? 'bg-white rounded-2xl p-2.5 border-2 border-black/10' :
+                        selectedFrame === 'bitly-bottom-bar' ? 'bg-white rounded-2xl pt-2.5 pb-0 border-2 border-black/10' :
+                        selectedFrame === 'bitly-top-bar' ? 'bg-white rounded-2xl p-0 border-2 border-black/10' :
+                        selectedFrame === 'bitly-floating-badge' ? 'bg-white rounded-2xl p-2.5 pb-4 border-2 border-black/10' :
+                        selectedFrame === 'bitly-speech-bubble' ? 'bg-transparent p-0 flex flex-col items-center' :
+                        selectedFrame === 'bitly-restaurant-menu' ? 'bg-white rounded-2xl p-0 border-2 border-black/10' :
+                        selectedFrame === 'bitly-wifi-access' ? 'bg-white rounded-2xl p-0 border-2 border-black/10' :
+                        selectedFrame === 'bitly-social-follow' ? 'bg-white rounded-2xl p-0 border-2 border-black/10' :
+                        selectedFrame === 'bitly-review-star' ? 'bg-white rounded-2xl p-2.5 pb-3 border-2 border-black/10' :
+                        selectedFrame === 'bitly-voucher-ticket' ? 'bg-white rounded-2xl p-2 pb-2.5 border-2 relative' :
+                        selectedFrame === 'bitly-app-download' ? 'bg-white rounded-2xl p-0 border-2 border-black/10' :
+                        selectedFrame === 'bitly-luxury-gold' ? 'bg-[#0f172a] rounded-2xl p-2.5 border-2 border-[#ca8a04]' :
+                        selectedFrame === 'bitly-browser-window' ? 'bg-white rounded-2xl p-0 border-2 border-[#334155]' :
+                        'bg-white rounded-2xl p-2.5 border-2 border-black/10'
                       }`} style={{
                         width: '74%',
                         maxWidth: '235px',
-                        borderColor: (selectedFrame === 'speech-bubble' || selectedFrame === 'minimal-border') ? fgColor : undefined
+                        borderColor: selectedFrame === 'bitly-voucher-ticket' ? fgColor : undefined
                       }}>
                         
-                        {/* Top Header Frame Banner */}
-                        {selectedFrame === 'top-header' && (
-                          <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-1.5 px-2 shadow-2xs mb-1.5" style={{ backgroundColor: fgColor }}>
-                            {frameText || 'SCAN ME'}
+                        {/* Top Header Frame Banner (Top-bar, Restaurant, WiFi, Social, App) */}
+                        {(selectedFrame === 'bitly-top-bar' || selectedFrame === 'bitly-restaurant-menu' || selectedFrame === 'bitly-wifi-access' || selectedFrame === 'bitly-social-follow' || selectedFrame === 'bitly-app-download') && (
+                          <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-1.5 px-2 shadow-2xs mb-1.5 flex items-center justify-center gap-1" style={{ backgroundColor: fgColor }}>
+                            <span>
+                              {selectedFrame === 'bitly-restaurant-menu' ? '🍽️' :
+                               selectedFrame === 'bitly-wifi-access' ? '📶' :
+                               selectedFrame === 'bitly-social-follow' ? '⭐' :
+                               selectedFrame === 'bitly-app-download' ? '📲' : '📌'}
+                            </span>
+                            <span className="truncate">{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
-                        {/* Phone Mockup Notch */}
-                        {selectedFrame === 'phone-mockup' && (
-                          <div className="w-14 h-1.5 bg-slate-800 rounded-full mx-auto mb-1.5" />
+                        {/* Top Speech Bubble */}
+                        {selectedFrame === 'bitly-speech-bubble' && (
+                          <div className="w-full mb-1 flex flex-col items-center">
+                            <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 px-2 rounded-xl shadow-xs" style={{ backgroundColor: fgColor }}>
+                              💬 {frameText || 'SCAN ME!'}
+                            </div>
+                            <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px]" style={{ borderTopColor: fgColor }} />
+                          </div>
                         )}
 
-                        {/* Inner Screen for Phone Mockup or Direct QR Container */}
-                        <div className={selectedFrame === 'phone-mockup' ? 'bg-white rounded-xl p-1.5 w-full flex flex-col items-center' : 'w-full flex items-center justify-center'}>
-                          <div ref={qrContainerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />
-                          
-                          {/* Phone Mockup Screen Button */}
-                          {selectedFrame === 'phone-mockup' && (
-                            <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 rounded-md mt-1.5 shadow-xs" style={{ backgroundColor: fgColor }}>
-                              {frameText || 'SCAN ME'}
+                        {/* Browser Window Bar */}
+                        {selectedFrame === 'bitly-browser-window' && (
+                          <div className="w-full bg-[#0f172a] text-white py-1 px-2 flex items-center gap-1 mb-1.5">
+                            <div className="flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                             </div>
-                          )}
+                            <div className="flex-1 bg-[#1e293b] rounded px-1.5 py-0.5 text-[8px] text-slate-400 font-mono truncate text-center">
+                              🔒 qr-generator.online
+                            </div>
+                          </div>
+                        )}
+
+                        {/* 5-Star Review Top Header */}
+                        {selectedFrame === 'bitly-review-star' && (
+                          <div className="text-center mb-1">
+                            <div className="text-amber-400 text-xs font-black tracking-widest leading-none">★★★★★</div>
+                            <div className="text-[7px] text-gray-400 font-bold uppercase tracking-wider">Your Review Matters</div>
+                          </div>
+                        )}
+
+                        {/* Luxury Frame Top Title */}
+                        {selectedFrame === 'bitly-luxury-gold' && (
+                          <div className="text-[#facc15] text-[9px] font-bold uppercase tracking-wider text-center mb-1 truncate px-1">
+                            ◆ {frameText || 'VIP EXCLUSIVE ACCESS'} ◆
+                          </div>
+                        )}
+
+                        {/* Ticket Voucher Top Header */}
+                        {selectedFrame === 'bitly-voucher-ticket' && (
+                          <div className="text-white text-[8px] font-black uppercase px-2 py-0.5 rounded-md mb-1 shadow-2xs" style={{ backgroundColor: fgColor }}>
+                            🎟️ SPECIAL PROMO
+                          </div>
+                        )}
+
+                        {/* Inner QR Container with Quiet Zone */}
+                        <div className={`w-full flex items-center justify-center ${selectedFrame === 'bitly-luxury-gold' ? 'bg-white rounded-xl p-1' : selectedFrame === 'bitly-speech-bubble' ? 'bg-white rounded-2xl p-2 border-2 border-black/10 shadow-md' : 'p-1'}`}>
+                          <div ref={qrContainerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />
                         </div>
 
-                        {/* Bottom Pill Badge */}
-                        {selectedFrame === 'bottom-badge' && (
-                          <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 rounded-full mt-1.5 shadow-xs flex items-center justify-center gap-1" style={{ backgroundColor: fgColor }}>
+                        {/* Bottom Full-Width Banner (Bitly Bottom Bar) */}
+                        {selectedFrame === 'bitly-bottom-bar' && (
+                          <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-2 px-2 shadow-2xs mt-1 flex items-center justify-center gap-1.5" style={{ backgroundColor: fgColor }}>
                             <span>📷</span>
-                            <span>{frameText || 'SCAN ME'}</span>
+                            <span className="truncate">{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
-                        {/* Polaroid Card Caption */}
-                        {selectedFrame === 'polaroid-card' && (
-                          <div className="text-center mt-1.5 w-full">
-                            <p className="text-[11px] font-black uppercase tracking-wider truncate" style={{ color: fgColor }}>{frameText || 'SCAN WITH PHONE'}</p>
-                            <p className="text-[8px] text-gray-400 font-medium mt-0.5">Point camera to scan</p>
+                        {/* Floating Pill Badge */}
+                        {selectedFrame === 'bitly-floating-badge' && (
+                          <div className="text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-full mt-1.5 shadow-md flex items-center justify-center gap-1 border-2 border-white" style={{ backgroundColor: fgColor }}>
+                            <span>📷</span>
+                            <span className="truncate">{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
-                        {/* Speech Bubble Tail & Badge */}
-                        {selectedFrame === 'speech-bubble' && (
-                          <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 rounded-xl mt-1.5 shadow-xs flex items-center justify-center gap-1" style={{ backgroundColor: fgColor }}>
-                            <span>💬</span>
-                            <span>{frameText || 'SCAN ME!'}</span>
+                        {/* Subtitle Hints for Category Frames */}
+                        {(selectedFrame === 'bitly-top-bar' || selectedFrame === 'bitly-restaurant-menu' || selectedFrame === 'bitly-wifi-access') && (
+                          <div className="text-[8px] text-gray-400 font-medium text-center py-1 truncate px-2">
+                            {selectedFrame === 'bitly-restaurant-menu' ? 'Point camera to view menu' :
+                             selectedFrame === 'bitly-wifi-access' ? 'Scan to join Wi-Fi instantly' :
+                             'Point camera to scan'}
                           </div>
                         )}
 
-                        {/* Minimal Border Floating Tag */}
-                        {selectedFrame === 'minimal-border' && (
-                          <div className="text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-md mt-1.5 shadow-xs" style={{ backgroundColor: fgColor }}>
-                            {frameText || 'SCAN ME'}
+                        {/* Social / Review / App / Window / Ticket CTA Buttons */}
+                        {selectedFrame === 'bitly-social-follow' && (
+                          <div className="text-white text-[8px] font-bold px-3 py-1 rounded-full mt-1 mb-1 shadow-2xs" style={{ backgroundColor: fgColor }}>
+                            Connect on Social Media
+                          </div>
+                        )}
+
+                        {selectedFrame === 'bitly-review-star' && (
+                          <div className="text-white text-[9px] font-black uppercase px-3 py-1 rounded-full mt-1 shadow-xs" style={{ backgroundColor: fgColor }}>
+                            ⭐ {frameText || 'LEAVE A REVIEW'}
+                          </div>
+                        )}
+
+                        {selectedFrame === 'bitly-voucher-ticket' && (
+                          <div className="w-full mt-1 pt-1 border-t border-dashed border-gray-300 text-center">
+                            <div className="text-[10px] font-black uppercase truncate" style={{ color: fgColor }}>
+                              {frameText || 'GET 20% DISCOUNT'}
+                            </div>
+                            <div className="text-[7px] text-gray-400">Scan to redeem at checkout</div>
+                          </div>
+                        )}
+
+                        {selectedFrame === 'bitly-app-download' && (
+                          <div className="bg-[#0f172a] text-white text-[8px] font-bold py-1 px-2 rounded-md mt-1 mb-1">
+                            Available on iOS & Android
+                          </div>
+                        )}
+
+                        {selectedFrame === 'bitly-luxury-gold' && (
+                          <div className="text-slate-300 text-[8px] font-medium text-center mt-1">
+                            Scan for VIP Privileges
+                          </div>
+                        )}
+
+                        {selectedFrame === 'bitly-browser-window' && (
+                          <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1.5 rounded-b-xl mt-1 shadow-xs" style={{ backgroundColor: fgColor }}>
+                            🌐 {frameText || 'VISIT WEBSITE'}
                           </div>
                         )}
                       </div>
@@ -2097,12 +2511,15 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                     </h3>
                     <div className="space-y-6">
 
-                      {/* Frame & CTA Badge Selection Box */}
-                      <div className="bg-white/5 p-4 rounded-2xl border border-white/10 space-y-4">
+                      {/* Frame & CTA Badge Selection Box (Bitly-Grade) */}
+                      <div className="bg-white/5 p-5 rounded-2xl border border-white/10 space-y-4">
                         <div className="flex flex-wrap items-center justify-between gap-3">
                           <div>
-                            <label className="text-xs font-bold text-[#BEF392] uppercase tracking-wider block">1. Choose CTA Frame Style</label>
-                            <span className="text-[11px] text-white/60">Select a high-converting frame for flyers, signs, and menus</span>
+                            <div className="flex items-center gap-2">
+                              <label className="text-xs font-bold text-[#BEF392] uppercase tracking-wider block">1. Choose Bitly-Style CTA Frame</label>
+                              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">12 Premium Styles</span>
+                            </div>
+                            <span className="text-[11px] text-white/60">High-converting call-to-action frames designed for menus, flyers, storefronts, and campaigns</span>
                           </div>
                           {selectedFrame !== 'none' && (
                             <div className="flex items-center gap-2">
@@ -2112,42 +2529,77 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                 value={frameText}
                                 onChange={(e) => setFrameText(e.target.value)}
                                 placeholder="e.g. SCAN ME"
-                                maxLength={24}
-                                className="bg-white/10 text-white rounded-lg px-3 py-1.5 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-accent w-48"
+                                maxLength={28}
+                                className="bg-white/10 text-white rounded-lg px-3 py-1.5 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-accent w-52"
                               />
                             </div>
                           )}
                         </div>
 
-                        {/* Visual Frame Options Grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5">
-                          {FRAME_OPTIONS.map((f) => (
+                        {/* Category Filter Tabs */}
+                        <div className="flex flex-wrap items-center gap-1.5 border-b border-white/10 pb-3">
+                          {['All', 'Popular', 'Business', 'Marketing', 'Utility', 'Luxury', 'Tech'].map((cat) => (
                             <button
-                              key={f.id}
-                              onClick={() => setSelectedFrame(f.id)}
-                              className={`p-2.5 rounded-xl border text-center transition-all flex flex-col items-center justify-center gap-1 ${
-                                selectedFrame === f.id
-                                  ? 'border-accent bg-accent/25 text-[#BEF392] ring-2 ring-accent/50 scale-105 shadow-md font-bold'
-                                  : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
+                              key={cat}
+                              onClick={() => setFrameCategory(cat)}
+                              className={`text-xs px-3 py-1 rounded-lg font-semibold transition-all ${
+                                frameCategory === cat
+                                  ? 'bg-[#BEF392] text-slate-950 shadow-xs'
+                                  : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
                               }`}
                             >
-                              <span className="text-xl">{f.icon}</span>
-                              <span className="text-[11px] font-bold block">{f.label}</span>
+                              {cat}
                             </button>
                           ))}
                         </div>
 
+                        {/* Visual Frame Options Grid */}
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                          {FRAME_OPTIONS
+                            .filter(f => frameCategory === 'All' || f.category === frameCategory || (frameCategory === 'Popular' && (f.id === 'bitly-bottom-bar' || f.id === 'bitly-top-bar' || f.id === 'bitly-floating-badge' || f.id === 'bitly-speech-bubble')))
+                            .map((f) => (
+                              <button
+                                key={f.id}
+                                onClick={() => handleSelectFrame(f.id)}
+                                className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center gap-1.5 relative group ${
+                                  selectedFrame === f.id
+                                    ? 'border-accent bg-accent/25 text-[#BEF392] ring-2 ring-accent/50 scale-[1.03] shadow-lg font-bold'
+                                    : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
+                                }`}
+                              >
+                                {selectedFrame === f.id && (
+                                  <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#BEF392]" />
+                                )}
+                                <span className="text-2xl">{f.icon}</span>
+                                <span className="text-xs font-bold block leading-tight">{f.label}</span>
+                                <span className="text-[9px] text-white/40 uppercase tracking-widest block font-medium">{f.category}</span>
+                              </button>
+                            ))}
+                        </div>
+
                         {/* Quick CTA Presets */}
                         {selectedFrame !== 'none' && (
-                          <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                            <span className="text-[10px] text-white/50 font-semibold mr-1">Quick Presets:</span>
-                            {['SCAN ME', 'SCAN FOR MENU', 'VISIT WEBSITE', 'CONNECT WIFI', 'PAY HERE', 'ADD CONTACT'].map((preset) => (
+                          <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-white/10">
+                            <span className="text-[10px] text-white/50 font-semibold mr-1">Quick CTA Presets:</span>
+                            {[
+                              'SCAN ME',
+                              'SCAN FOR MENU',
+                              'CONNECT TO WI-FI',
+                              'FOLLOW US',
+                              'LEAVE A REVIEW',
+                              'GET 20% OFF',
+                              'DOWNLOAD OUR APP',
+                              'VIP EXCLUSIVE ACCESS',
+                              'VISIT WEBSITE',
+                              'PAY HERE',
+                              'SAVE CONTACT'
+                            ].map((preset) => (
                               <button
                                 key={preset}
                                 onClick={() => setFrameText(preset)}
                                 className={`text-[10px] px-2.5 py-1 rounded-full border transition-all ${
                                   frameText === preset
-                                    ? 'bg-accent text-white border-accent'
+                                    ? 'bg-accent text-white border-accent shadow-xs'
                                     : 'bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white'
                                 }`}
                               >
