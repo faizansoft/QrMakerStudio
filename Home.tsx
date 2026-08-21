@@ -357,6 +357,7 @@ const DynamicModalQrPreview: React.FC<{ link: DynamicLink }> = ({ link }) => {
 };
 
 // ── Frame Styles & Customization (Bitly-Grade Premium Frames) ──
+// ── Frame Styles & Customization (Bitly-Grade Clean Vector Frames) ──
 export type FrameStyle = 
   | 'none'
   | 'bitly-bottom-bar'
@@ -372,20 +373,20 @@ export type FrameStyle =
   | 'bitly-luxury-gold'
   | 'bitly-browser-window';
 
-export const FRAME_OPTIONS: { id: FrameStyle; label: string; icon: string; category: string; defaultText: string; subText?: string }[] = [
-  { id: 'none', label: 'No Frame', icon: '◻️', category: 'Basic', defaultText: '' },
-  { id: 'bitly-bottom-bar', label: 'Bitly Bottom Banner', icon: '🏷️', category: 'Popular', defaultText: 'SCAN ME' },
-  { id: 'bitly-top-bar', label: 'Bitly Top Header', icon: '📌', category: 'Popular', defaultText: 'SCAN ME' },
-  { id: 'bitly-floating-badge', label: 'Floating Pill Badge', icon: '🔘', category: 'Popular', defaultText: 'SCAN ME' },
-  { id: 'bitly-speech-bubble', label: 'Chat Speech Bubble', icon: '💬', category: 'Popular', defaultText: 'SCAN ME!' },
-  { id: 'bitly-restaurant-menu', label: 'Restaurant Menu', icon: '🍽️', category: 'Business', defaultText: 'SCAN FOR MENU', subText: 'Point camera to view menu' },
-  { id: 'bitly-wifi-access', label: 'WiFi Connect', icon: '📶', category: 'Utility', defaultText: 'CONNECT TO WI-FI', subText: 'Scan to join network instantly' },
-  { id: 'bitly-social-follow', label: 'Social & Follow', icon: '⭐', category: 'Marketing', defaultText: 'FOLLOW US', subText: 'Scan to visit our socials' },
-  { id: 'bitly-review-star', label: '5-Star Review', icon: '🌟', category: 'Marketing', defaultText: 'LEAVE A REVIEW', subText: 'Rate us on Google' },
-  { id: 'bitly-voucher-ticket', label: 'Coupon Voucher', icon: '🎟️', category: 'Marketing', defaultText: 'GET 20% DISCOUNT', subText: 'Scan to redeem coupon' },
-  { id: 'bitly-app-download', label: 'App Store Card', icon: '📲', category: 'App', defaultText: 'DOWNLOAD OUR APP', subText: 'Available on iOS & Android' },
-  { id: 'bitly-luxury-gold', label: 'Luxury VIP Frame', icon: '✨', category: 'Luxury', defaultText: 'VIP EXCLUSIVE ACCESS', subText: 'Scan for member privileges' },
-  { id: 'bitly-browser-window', label: 'Modern Window', icon: '💻', category: 'Tech', defaultText: 'VISIT WEBSITE', subText: 'Tap or scan with camera' },
+export const FRAME_OPTIONS: { id: FrameStyle; label: string; iconType: string; category: string; defaultText: string; subText?: string }[] = [
+  { id: 'none', label: 'No Frame', iconType: 'none', category: 'Basic', defaultText: '' },
+  { id: 'bitly-bottom-bar', label: 'Bottom Banner', iconType: 'bottom-bar', category: 'Popular', defaultText: 'SCAN ME' },
+  { id: 'bitly-top-bar', label: 'Top Header', iconType: 'top-bar', category: 'Popular', defaultText: 'SCAN ME' },
+  { id: 'bitly-floating-badge', label: 'Floating Pill', iconType: 'pill', category: 'Popular', defaultText: 'SCAN ME' },
+  { id: 'bitly-speech-bubble', label: 'Chat Bubble', iconType: 'bubble', category: 'Popular', defaultText: 'SCAN ME!' },
+  { id: 'bitly-restaurant-menu', label: 'Restaurant Menu', iconType: 'menu', category: 'Business', defaultText: 'SCAN FOR MENU', subText: 'Point camera to view menu' },
+  { id: 'bitly-wifi-access', label: 'WiFi Connect', iconType: 'wifi', category: 'Utility', defaultText: 'CONNECT TO WI-FI', subText: 'Scan to join network instantly' },
+  { id: 'bitly-social-follow', label: 'Social & Follow', iconType: 'social', category: 'Marketing', defaultText: 'FOLLOW US', subText: 'Scan to visit our socials' },
+  { id: 'bitly-review-star', label: 'Customer Review', iconType: 'review', category: 'Marketing', defaultText: 'LEAVE A REVIEW', subText: 'Rate us on Google' },
+  { id: 'bitly-voucher-ticket', label: 'Coupon Ticket', iconType: 'ticket', category: 'Marketing', defaultText: 'GET 20% DISCOUNT', subText: 'Scan to redeem coupon' },
+  { id: 'bitly-app-download', label: 'App Store Card', iconType: 'app', category: 'App', defaultText: 'DOWNLOAD OUR APP', subText: 'Available on iOS & Android' },
+  { id: 'bitly-luxury-gold', label: 'Luxury VIP Frame', iconType: 'luxury', category: 'Luxury', defaultText: 'VIP EXCLUSIVE ACCESS', subText: 'Scan for member privileges' },
+  { id: 'bitly-browser-window', label: 'Modern Window', iconType: 'window', category: 'Tech', defaultText: 'VISIT WEBSITE', subText: 'Tap or scan with camera' },
 ];
 
 function drawRoundedRect(
@@ -436,7 +437,6 @@ async function renderFramedCanvas(
     canvas.width = 1200;
     canvas.height = 1460;
 
-    // Outer Card
     drawRoundedRect(ctx, 40, 40, 1120, 1380, 48);
     ctx.fillStyle = '#ffffff';
     ctx.fill();
@@ -444,25 +444,21 @@ async function renderFramedCanvas(
     ctx.strokeStyle = fColor + '20';
     ctx.stroke();
 
-    // QR Image
     ctx.drawImage(img, 170, 140, 860, 860);
 
-    // Bottom Banner
     drawRoundedRect(ctx, 40, 1260, 1120, 160, [0, 0, 48, 48]);
     ctx.fillStyle = fColor;
     ctx.fill();
 
-    // Text
     ctx.fillStyle = '#ffffff';
     ctx.font = '900 54px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(`📷  ${ctaText}`, 600, 1340);
+    ctx.fillText(ctaText, 600, 1340);
   } else if (frame === 'bitly-top-bar') {
     canvas.width = 1200;
     canvas.height = 1460;
 
-    // Outer Card
     drawRoundedRect(ctx, 40, 40, 1120, 1380, 48);
     ctx.fillStyle = '#ffffff';
     ctx.fill();
@@ -470,22 +466,18 @@ async function renderFramedCanvas(
     ctx.strokeStyle = fColor + '20';
     ctx.stroke();
 
-    // Top Banner
     drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
     ctx.fillStyle = fColor;
     ctx.fill();
 
-    // Top Text
     ctx.fillStyle = '#ffffff';
     ctx.font = '900 54px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(ctaText, 600, 125);
 
-    // QR Image
     ctx.drawImage(img, 170, 310, 860, 860);
 
-    // Subtitle
     ctx.fillStyle = '#64748b';
     ctx.font = '600 32px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.fillText('Point your smartphone camera to scan', 600, 1280);
@@ -493,7 +485,6 @@ async function renderFramedCanvas(
     canvas.width = 1200;
     canvas.height = 1480;
 
-    // Card
     drawRoundedRect(ctx, 50, 50, 1100, 1280, 48);
     ctx.fillStyle = '#ffffff';
     ctx.fill();
@@ -501,10 +492,8 @@ async function renderFramedCanvas(
     ctx.strokeStyle = fColor + '25';
     ctx.stroke();
 
-    // QR Image
     ctx.drawImage(img, 170, 150, 860, 860);
 
-    // Floating Pill Badge
     drawRoundedRect(ctx, 200, 1260, 800, 150, 75);
     ctx.fillStyle = fColor;
     ctx.fill();
@@ -512,22 +501,19 @@ async function renderFramedCanvas(
     ctx.strokeStyle = '#ffffff';
     ctx.stroke();
 
-    // Text
     ctx.fillStyle = '#ffffff';
     ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(`📷  ${ctaText}`, 600, 1335);
+    ctx.fillText(ctaText, 600, 1335);
   } else if (frame === 'bitly-speech-bubble') {
     canvas.width = 1200;
     canvas.height = 1540;
 
-    // Top Speech Bubble
     drawRoundedRect(ctx, 160, 40, 880, 150, 40);
     ctx.fillStyle = fColor;
     ctx.fill();
 
-    // Pointer tail pointing down to QR
     ctx.beginPath();
     ctx.moveTo(570, 190);
     ctx.lineTo(600, 230);
@@ -536,14 +522,12 @@ async function renderFramedCanvas(
     ctx.fillStyle = fColor;
     ctx.fill();
 
-    // Bubble Text
     ctx.fillStyle = '#ffffff';
     ctx.font = '900 50px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(`💬  ${ctaText}`, 600, 115);
+    ctx.fillText(ctaText, 600, 115);
 
-    // QR Card
     drawRoundedRect(ctx, 50, 250, 1100, 1240, 48);
     ctx.fillStyle = '#ffffff';
     ctx.fill();
@@ -567,7 +551,6 @@ async function renderFramedCanvas(
     ctx.strokeStyle = fColor + '25';
     ctx.stroke();
 
-    // Header
     drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
     ctx.fillStyle = fColor;
     ctx.fill();
@@ -576,11 +559,10 @@ async function renderFramedCanvas(
     ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(`🍽️  ${ctaText || 'SCAN FOR MENU'}`, 600, 125);
+    ctx.fillText(ctaText || 'SCAN FOR MENU', 600, 125);
 
     ctx.drawImage(img, 170, 310, 860, 860);
 
-    // Footer
     drawRoundedRect(ctx, 200, 1270, 800, 110, 30);
     ctx.fillStyle = fColor + '15';
     ctx.fill();
@@ -607,7 +589,7 @@ async function renderFramedCanvas(
     ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(`📶  ${ctaText || 'CONNECT TO WI-FI'}`, 600, 125);
+    ctx.fillText(ctaText || 'CONNECT TO WI-FI', 600, 125);
 
     ctx.drawImage(img, 170, 310, 860, 860);
 
@@ -637,7 +619,7 @@ async function renderFramedCanvas(
     ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(`⭐  ${ctaText || 'FOLLOW US'}`, 600, 125);
+    ctx.fillText(ctaText || 'FOLLOW US', 600, 125);
 
     ctx.drawImage(img, 170, 310, 860, 860);
 
@@ -659,32 +641,29 @@ async function renderFramedCanvas(
     ctx.strokeStyle = fColor + '25';
     ctx.stroke();
 
-    // 5 Stars
-    ctx.fillStyle = '#f59e0b';
-    ctx.font = '900 68px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillStyle = fColor;
+    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('★★★★★', 600, 120);
+    ctx.fillText('CUSTOMER REVIEWS', 600, 120);
 
     ctx.fillStyle = '#64748b';
     ctx.font = '800 28px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('YOUR REVIEW MATTERS', 600, 180);
+    ctx.fillText('YOUR FEEDBACK HELPS US GROW', 600, 180);
 
     ctx.drawImage(img, 170, 260, 860, 860);
 
-    // CTA Button
     drawRoundedRect(ctx, 200, 1240, 800, 140, 70);
     ctx.fillStyle = fColor;
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';
     ctx.font = '900 48px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText(`⭐  ${ctaText || 'LEAVE A REVIEW'}`, 600, 1310);
+    ctx.fillText(ctaText || 'LEAVE A REVIEW', 600, 1310);
   } else if (frame === 'bitly-voucher-ticket') {
     canvas.width = 1200;
     canvas.height = 1520;
 
-    // Outer Ticket
     drawRoundedRect(ctx, 40, 40, 1120, 1440, 40);
     ctx.fillStyle = '#ffffff';
     ctx.fill();
@@ -692,7 +671,6 @@ async function renderFramedCanvas(
     ctx.strokeStyle = fColor;
     ctx.stroke();
 
-    // Circular Cutouts
     ctx.fillStyle = '#f8fafc';
     ctx.beginPath();
     ctx.arc(40, 1180, 45, 0, Math.PI * 2);
@@ -701,7 +679,6 @@ async function renderFramedCanvas(
     ctx.arc(1160, 1180, 45, 0, Math.PI * 2);
     ctx.fill();
 
-    // Dashed divider line
     ctx.strokeStyle = fColor + '60';
     ctx.lineWidth = 4;
     ctx.setLineDash([16, 12]);
@@ -711,7 +688,6 @@ async function renderFramedCanvas(
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // Header badge
     drawRoundedRect(ctx, 250, 80, 700, 110, 24);
     ctx.fillStyle = fColor;
     ctx.fill();
@@ -720,7 +696,7 @@ async function renderFramedCanvas(
     ctx.font = '900 44px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('🎟️  SPECIAL PROMOTION', 600, 135);
+    ctx.fillText('SPECIAL PROMOTION', 600, 135);
 
     ctx.drawImage(img, 170, 240, 860, 860);
 
@@ -750,7 +726,7 @@ async function renderFramedCanvas(
     ctx.font = '900 50px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(`📲  ${ctaText || 'DOWNLOAD OUR APP'}`, 600, 125);
+    ctx.fillText(ctaText || 'DOWNLOAD OUR APP', 600, 125);
 
     ctx.drawImage(img, 170, 310, 860, 860);
 
@@ -781,7 +757,7 @@ async function renderFramedCanvas(
     ctx.font = '900 46px serif, system-ui';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(`◆  ${ctaText || 'VIP EXCLUSIVE ACCESS'}  ◆`, 600, 150);
+    ctx.fillText(ctaText || 'VIP EXCLUSIVE ACCESS', 600, 150);
 
     drawRoundedRect(ctx, 170, 240, 860, 860, 20);
     ctx.fillStyle = '#ffffff';
@@ -803,12 +779,10 @@ async function renderFramedCanvas(
     ctx.strokeStyle = '#334155';
     ctx.stroke();
 
-    // Title bar
     drawRoundedRect(ctx, 40, 40, 1120, 110, [36, 36, 0, 0]);
     ctx.fillStyle = '#0f172a';
     ctx.fill();
 
-    // 3 Window Dots
     ctx.fillStyle = '#ef4444';
     ctx.beginPath();
     ctx.arc(90, 95, 14, 0, Math.PI * 2);
@@ -824,7 +798,6 @@ async function renderFramedCanvas(
     ctx.arc(170, 95, 14, 0, Math.PI * 2);
     ctx.fill();
 
-    // URL bar
     drawRoundedRect(ctx, 240, 65, 870, 60, 12);
     ctx.fillStyle = '#1e293b';
     ctx.fill();
@@ -832,7 +805,7 @@ async function renderFramedCanvas(
     ctx.fillStyle = '#94a3b8';
     ctx.font = '700 28px monospace';
     ctx.textAlign = 'left';
-    ctx.fillText('🔒 https://qr-generator.online', 270, 103);
+    ctx.fillText('https://qr-generator.online', 270, 103);
 
     ctx.drawImage(img, 170, 240, 860, 860);
 
@@ -843,7 +816,7 @@ async function renderFramedCanvas(
     ctx.fillStyle = '#ffffff';
     ctx.font = '900 48px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText(`🌐  ${ctaText || 'VISIT WEBSITE'}`, 600, 1295);
+    ctx.fillText(ctaText || 'VISIT WEBSITE', 600, 1295);
   }
 
   URL.revokeObjectURL(img.src);
@@ -876,7 +849,7 @@ function buildFramedSvg(
     ${cleanSvg}
   </g>
   <path d="M 40 1260 L 1160 1260 L 1160 1372 A 48 48 0 0 1 1112 1420 L 88 1420 A 48 48 0 0 1 40 1372 Z" fill="${fColor}"/>
-  <text x="600" y="1355" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">📷 ${ctaText}</text>
+  <text x="600" y="1355" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">${ctaText}</text>
 </svg>`;
   } else if (frame === 'bitly-top-bar') {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
@@ -897,14 +870,14 @@ function buildFramedSvg(
     ${cleanSvg}
   </g>
   <rect x="200" y="1260" width="800" height="150" rx="75" fill="${fColor}" stroke="#ffffff" stroke-width="8"/>
-  <text x="600" y="1350" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">📷 ${ctaText}</text>
+  <text x="600" y="1350" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText}</text>
 </svg>`;
   } else if (frame === 'bitly-speech-bubble') {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1540" width="1200" height="1540">
   <rect width="1200" height="1540" fill="#f8fafc"/>
   <rect x="160" y="40" width="880" height="150" rx="40" fill="${fColor}"/>
   <polygon points="570,190 600,230 630,190" fill="${fColor}"/>
-  <text x="600" y="130" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="50" text-anchor="middle">💬 ${ctaText}</text>
+  <text x="600" y="130" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="50" text-anchor="middle">${ctaText}</text>
   <rect x="50" y="250" width="1100" height="1240" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.3" stroke-width="6"/>
   <g transform="translate(170, 340) scale(3.07)">
     ${cleanSvg}
@@ -916,7 +889,7 @@ function buildFramedSvg(
   <rect width="1200" height="1520" fill="#f8fafc"/>
   <rect x="40" y="40" width="1120" height="1440" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
   <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
-  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">🍽️ ${ctaText || 'SCAN FOR MENU'}</text>
+  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText || 'SCAN FOR MENU'}</text>
   <g transform="translate(170, 310) scale(3.07)">
     ${cleanSvg}
   </g>
@@ -928,7 +901,7 @@ function buildFramedSvg(
   <rect width="1200" height="1520" fill="#f8fafc"/>
   <rect x="40" y="40" width="1120" height="1440" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
   <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
-  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">📶 ${ctaText || 'CONNECT TO WI-FI'}</text>
+  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText || 'CONNECT TO WI-FI'}</text>
   <g transform="translate(170, 310) scale(3.07)">
     ${cleanSvg}
   </g>
@@ -940,7 +913,7 @@ function buildFramedSvg(
   <rect width="1200" height="1520" fill="#f8fafc"/>
   <rect x="40" y="40" width="1120" height="1440" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
   <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
-  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">⭐ ${ctaText || 'FOLLOW US'}</text>
+  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText || 'FOLLOW US'}</text>
   <g transform="translate(170, 310) scale(3.07)">
     ${cleanSvg}
   </g>
@@ -951,13 +924,13 @@ function buildFramedSvg(
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1560" width="1200" height="1560">
   <rect width="1200" height="1560" fill="#f8fafc"/>
   <rect x="40" y="40" width="1120" height="1480" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
-  <text x="600" y="130" fill="#f59e0b" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">★★★★★</text>
-  <text x="600" y="185" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="28" text-anchor="middle">YOUR REVIEW MATTERS</text>
+  <text x="600" y="130" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">CUSTOMER REVIEWS</text>
+  <text x="600" y="185" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="28" text-anchor="middle">YOUR FEEDBACK HELPS US GROW</text>
   <g transform="translate(170, 260) scale(3.07)">
     ${cleanSvg}
   </g>
   <rect x="200" y="1240" width="800" height="140" rx="70" fill="${fColor}"/>
-  <text x="600" y="1325" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">⭐ ${ctaText || 'LEAVE A REVIEW'}</text>
+  <text x="600" y="1325" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">${ctaText || 'LEAVE A REVIEW'}</text>
 </svg>`;
   } else if (frame === 'bitly-voucher-ticket') {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
@@ -967,7 +940,7 @@ function buildFramedSvg(
   <circle cx="1160" cy="1180" r="45" fill="#f8fafc"/>
   <line x1="120" y1="1180" x2="1080" y2="1180" stroke="${fColor}" stroke-opacity="0.6" stroke-width="4" stroke-dasharray="16 12"/>
   <rect x="250" y="80" width="700" height="110" rx="24" fill="${fColor}"/>
-  <text x="600" y="150" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" text-anchor="middle">🎟️ SPECIAL PROMOTION</text>
+  <text x="600" y="150" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" text-anchor="middle">SPECIAL PROMOTION</text>
   <g transform="translate(170, 240) scale(3.07)">
     ${cleanSvg}
   </g>
@@ -979,7 +952,7 @@ function buildFramedSvg(
   <rect width="1200" height="1540" fill="#f8fafc"/>
   <rect x="40" y="40" width="1120" height="1460" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
   <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
-  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="50" text-anchor="middle">📲 ${ctaText || 'DOWNLOAD OUR APP'}</text>
+  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="50" text-anchor="middle">${ctaText || 'DOWNLOAD OUR APP'}</text>
   <g transform="translate(170, 310) scale(3.07)">
     ${cleanSvg}
   </g>
@@ -991,7 +964,7 @@ function buildFramedSvg(
   <rect width="1200" height="1520" fill="#0f172a"/>
   <rect x="40" y="40" width="1120" height="1440" rx="36" fill="#0f172a" stroke="#ca8a04" stroke-width="6"/>
   <rect x="70" y="70" width="1060" height="1380" rx="24" fill="none" stroke="#ca8a04" stroke-width="3"/>
-  <text x="600" y="160" fill="#facc15" font-family="serif, system-ui" font-weight="900" font-size="46" text-anchor="middle">◆ ${ctaText || 'VIP EXCLUSIVE ACCESS'} ◆</text>
+  <text x="600" y="160" fill="#facc15" font-family="serif, system-ui" font-weight="900" font-size="46" text-anchor="middle">${ctaText || 'VIP EXCLUSIVE ACCESS'}</text>
   <rect x="170" y="240" width="860" height="860" rx="20" fill="#ffffff"/>
   <g transform="translate(170, 240) scale(3.07)">
     ${cleanSvg}
@@ -1007,12 +980,12 @@ function buildFramedSvg(
   <circle cx="130" cy="95" r="14" fill="#eab308"/>
   <circle cx="170" cy="95" r="14" fill="#22c55e"/>
   <rect x="240" y="65" width="870" height="60" rx="12" fill="#1e293b"/>
-  <text x="270" y="105" fill="#94a3b8" font-family="monospace" font-weight="700" font-size="28">🔒 https://qr-generator.online</text>
+  <text x="270" y="105" fill="#94a3b8" font-family="monospace" font-weight="700" font-size="28">https://qr-generator.online</text>
   <g transform="translate(170, 240) scale(3.07)">
     ${cleanSvg}
   </g>
   <rect x="220" y="1230" width="760" height="130" rx="24" fill="${fColor}"/>
-  <text x="600" y="1310" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">🌐 ${ctaText || 'VISIT WEBSITE'}</text>
+  <text x="600" y="1310" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">${ctaText || 'VISIT WEBSITE'}</text>
 </svg>`;
   }
   return rawSvgText;
@@ -1061,8 +1034,9 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     }, 2800);
   };
 
-  // Customization drawer/modal toggle
+  // Customization step-by-step modal toggle & step index
   const [showCustomize, setShowCustomize] = useState(false);
+  const [customStep, setCustomStep] = useState<number>(1);
 
   // Optical Contrast / Scannability Score Calculation
   const scannabilityInfo = useMemo(() => {
@@ -2261,13 +2235,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                         
                         {/* Top Header Frame Banner (Top-bar, Restaurant, WiFi, Social, App) */}
                         {(selectedFrame === 'bitly-top-bar' || selectedFrame === 'bitly-restaurant-menu' || selectedFrame === 'bitly-wifi-access' || selectedFrame === 'bitly-social-follow' || selectedFrame === 'bitly-app-download') && (
-                          <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-1.5 px-2 shadow-2xs mb-1.5 flex items-center justify-center gap-1" style={{ backgroundColor: fgColor }}>
-                            <span>
-                              {selectedFrame === 'bitly-restaurant-menu' ? '🍽️' :
-                               selectedFrame === 'bitly-wifi-access' ? '📶' :
-                               selectedFrame === 'bitly-social-follow' ? '⭐' :
-                               selectedFrame === 'bitly-app-download' ? '📲' : '📌'}
-                            </span>
+                          <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-1.5 px-2 shadow-2xs mb-1.5" style={{ backgroundColor: fgColor }}>
                             <span className="truncate">{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
@@ -2276,7 +2244,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                         {selectedFrame === 'bitly-speech-bubble' && (
                           <div className="w-full mb-1 flex flex-col items-center">
                             <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 px-2 rounded-xl shadow-xs" style={{ backgroundColor: fgColor }}>
-                              💬 {frameText || 'SCAN ME!'}
+                              {frameText || 'SCAN ME!'}
                             </div>
                             <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px]" style={{ borderTopColor: fgColor }} />
                           </div>
@@ -2291,30 +2259,30 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                             </div>
                             <div className="flex-1 bg-[#1e293b] rounded px-1.5 py-0.5 text-[8px] text-slate-400 font-mono truncate text-center">
-                              🔒 qr-generator.online
+                              https://qr-generator.online
                             </div>
                           </div>
                         )}
 
-                        {/* 5-Star Review Top Header */}
+                        {/* Review Top Header */}
                         {selectedFrame === 'bitly-review-star' && (
                           <div className="text-center mb-1">
-                            <div className="text-amber-400 text-xs font-black tracking-widest leading-none">★★★★★</div>
-                            <div className="text-[7px] text-gray-400 font-bold uppercase tracking-wider">Your Review Matters</div>
+                            <div className="text-[9px] font-black uppercase tracking-wider" style={{ color: fgColor }}>CUSTOMER REVIEWS</div>
+                            <div className="text-[7px] text-gray-400 font-bold uppercase tracking-wider">Your Feedback Helps Us Grow</div>
                           </div>
                         )}
 
                         {/* Luxury Frame Top Title */}
                         {selectedFrame === 'bitly-luxury-gold' && (
                           <div className="text-[#facc15] text-[9px] font-bold uppercase tracking-wider text-center mb-1 truncate px-1">
-                            ◆ {frameText || 'VIP EXCLUSIVE ACCESS'} ◆
+                            {frameText || 'VIP EXCLUSIVE ACCESS'}
                           </div>
                         )}
 
                         {/* Ticket Voucher Top Header */}
                         {selectedFrame === 'bitly-voucher-ticket' && (
                           <div className="text-white text-[8px] font-black uppercase px-2 py-0.5 rounded-md mb-1 shadow-2xs" style={{ backgroundColor: fgColor }}>
-                            🎟️ SPECIAL PROMO
+                            SPECIAL PROMOTION
                           </div>
                         )}
 
@@ -2325,16 +2293,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
 
                         {/* Bottom Full-Width Banner (Bitly Bottom Bar) */}
                         {selectedFrame === 'bitly-bottom-bar' && (
-                          <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-2 px-2 shadow-2xs mt-1 flex items-center justify-center gap-1.5" style={{ backgroundColor: fgColor }}>
-                            <span>📷</span>
+                          <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-2 px-2 shadow-2xs mt-1" style={{ backgroundColor: fgColor }}>
                             <span className="truncate">{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
                         {/* Floating Pill Badge */}
                         {selectedFrame === 'bitly-floating-badge' && (
-                          <div className="text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-full mt-1.5 shadow-md flex items-center justify-center gap-1 border-2 border-white" style={{ backgroundColor: fgColor }}>
-                            <span>📷</span>
+                          <div className="text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-full mt-1.5 shadow-md flex items-center justify-center border-2 border-white" style={{ backgroundColor: fgColor }}>
                             <span className="truncate">{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
@@ -2357,7 +2323,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
 
                         {selectedFrame === 'bitly-review-star' && (
                           <div className="text-white text-[9px] font-black uppercase px-3 py-1 rounded-full mt-1 shadow-xs" style={{ backgroundColor: fgColor }}>
-                            ⭐ {frameText || 'LEAVE A REVIEW'}
+                            {frameText || 'LEAVE A REVIEW'}
                           </div>
                         )}
 
@@ -2366,7 +2332,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                             <div className="text-[10px] font-black uppercase truncate" style={{ color: fgColor }}>
                               {frameText || 'GET 20% DISCOUNT'}
                             </div>
-                            <div className="text-[7px] text-gray-400">Scan to redeem at checkout</div>
+                            <div className="text-[7px] text-gray-400">Scan with phone to redeem</div>
                           </div>
                         )}
 
@@ -2384,7 +2350,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
 
                         {selectedFrame === 'bitly-browser-window' && (
                           <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1.5 rounded-b-xl mt-1 shadow-xs" style={{ backgroundColor: fgColor }}>
-                            🌐 {frameText || 'VISIT WEBSITE'}
+                            {frameText || 'VISIT WEBSITE'}
                           </div>
                         )}
                       </div>
@@ -2489,207 +2455,489 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                         <span>Save as Dynamic QR (Track & Edit)</span>
                       </button>
 
-                      {/* Customize Options Button */}
+                      {/* Customize Options Button (Opens Step-by-Step Modal) */}
                       <button
-                        onClick={() => setShowCustomize(!showCustomize)}
-                        className="w-full py-2.5 bg-white/10 hover:bg-white/20 text-[#BEF392] font-semibold rounded-lg text-xs flex items-center justify-center gap-2 border border-white/10 transition-colors"
+                        onClick={() => setShowCustomize(true)}
+                        className="w-full py-2.5 bg-white/10 hover:bg-white/20 text-[#BEF392] font-semibold rounded-lg text-xs flex items-center justify-center gap-2 border border-white/15 transition-all shadow-xs"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                         </svg>
-                        <span>{showCustomize ? 'Hide Custom Options' : 'Custom QR Options & Frames'}</span>
+                        <span>Customize Design &amp; Frames (Step-by-Step)</span>
                       </button>
                     </div>
                   </div>
                 </div>
 
-                {/* ──── CUSTOM QR OPTIONS EXPANDABLE PANEL ──── */}
+                {/* ════════ STEP-BY-STEP QR CUSTOMIZATION MODAL ════════ */}
                 {showCustomize && (
-                  <div className="bg-[#141414] border-t border-white/10 p-6 text-white animate-in">
-                    <h3 className="text-sm font-bold text-[#BEF392] uppercase tracking-wider mb-4 flex items-center gap-2">
-                      🎨 Custom Design & Frame Options
-                    </h3>
-                    <div className="space-y-6">
-
-                      {/* Frame & CTA Badge Selection Box (Bitly-Grade) */}
-                      <div className="bg-white/5 p-5 rounded-2xl border border-white/10 space-y-4">
-                        <div className="flex flex-wrap items-center justify-between gap-3">
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <label className="text-xs font-bold text-[#BEF392] uppercase tracking-wider block">1. Choose Bitly-Style CTA Frame</label>
-                              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">12 Premium Styles</span>
-                            </div>
-                            <span className="text-[11px] text-white/60">High-converting call-to-action frames designed for menus, flyers, storefronts, and campaigns</span>
+                  <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-in">
+                    <div className="bg-[#141414] border border-white/15 rounded-3xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+                      
+                      {/* Modal Header */}
+                      <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#1a1a1a]">
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-xl bg-accent/20 border border-accent/40 flex items-center justify-center text-accent">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                            </svg>
                           </div>
-                          {selectedFrame !== 'none' && (
-                            <div className="flex items-center gap-2">
-                              <span className="text-xs text-white/70 font-semibold">Frame Text:</span>
-                              <input
-                                type="text"
-                                value={frameText}
-                                onChange={(e) => setFrameText(e.target.value)}
-                                placeholder="e.g. SCAN ME"
-                                maxLength={28}
-                                className="bg-white/10 text-white rounded-lg px-3 py-1.5 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-accent w-52"
+                          <div>
+                            <h3 className="text-base font-bold text-white leading-tight">Customize QR Design</h3>
+                            <p className="text-xs text-white/50">
+                              Step {customStep} of 4: {customStep === 1 ? 'Frame & CTA Banner' : customStep === 2 ? 'Colors & Theme' : customStep === 3 ? 'Shapes & Patterns' : 'Logo & Branding'}
+                            </p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => setShowCustomize(false)}
+                          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center text-sm font-bold transition-colors"
+                        >
+                          ✕
+                        </button>
+                      </div>
+
+                      {/* Step Indicator Tabs */}
+                      <div className="grid grid-cols-4 border-b border-white/10 bg-black/30 text-xs font-semibold">
+                        {[
+                          { step: 1, label: '1. Frame & CTA', icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z' },
+                          { step: 2, label: '2. Colors', icon: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01' },
+                          { step: 3, label: '3. Shapes', icon: 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z' },
+                          { step: 4, label: '4. Logo', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+                        ].map((s) => (
+                          <button
+                            key={s.step}
+                            onClick={() => setCustomStep(s.step)}
+                            className={`py-3 px-2 flex items-center justify-center gap-1.5 transition-colors border-b-2 ${
+                              customStep === s.step
+                                ? 'border-[#BEF392] text-[#BEF392] bg-white/5 font-bold'
+                                : 'border-transparent text-white/60 hover:text-white hover:bg-white/5'
+                            }`}
+                          >
+                            <svg className="w-3.5 h-3.5 hidden sm:inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={s.icon} />
+                            </svg>
+                            <span className="truncate">{s.label}</span>
+                          </button>
+                        ))}
+                      </div>
+
+                      {/* Modal Body: Two Columns */}
+                      <div className="flex-1 overflow-y-auto p-5 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-6">
+                        
+                        {/* Left Controls Area (8 cols) */}
+                        <div className="md:col-span-8 space-y-5">
+                          
+                          {/* ──────── STEP 1: FRAMES & CTA ──────── */}
+                          {customStep === 1 && (
+                            <div className="space-y-4 animate-in">
+                              <div className="flex items-center justify-between">
+                                <div>
+                                  <h4 className="text-sm font-bold text-white">Select a Frame Style</h4>
+                                  <p className="text-xs text-white/50">Clean commercial frames designed to maximize QR scan conversions</p>
+                                </div>
+                                {selectedFrame !== 'none' && (
+                                  <button
+                                    onClick={() => setSelectedFrame('none')}
+                                    className="text-xs text-white/50 hover:text-white font-medium underline"
+                                  >
+                                    Clear Frame
+                                  </button>
+                                )}
+                              </div>
+
+                              {/* Category Filter Pills */}
+                              <div className="flex flex-wrap items-center gap-1.5 pb-1">
+                                {['All', 'Popular', 'Business', 'Marketing', 'Utility', 'Tech'].map((cat) => (
+                                  <button
+                                    key={cat}
+                                    onClick={() => setFrameCategory(cat)}
+                                    className={`text-xs px-3 py-1 rounded-full font-semibold transition-all ${
+                                      frameCategory === cat
+                                        ? 'bg-[#BEF392] text-slate-950 shadow-xs'
+                                        : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
+                                    }`}
+                                  >
+                                    {cat}
+                                  </button>
+                                ))}
+                              </div>
+
+                              {/* Frame Cards Grid (Clean Vector Cards - NO EMOJIS) */}
+                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-[260px] overflow-y-auto pr-1">
+                                {FRAME_OPTIONS
+                                  .filter(f => frameCategory === 'All' || f.category === frameCategory || (frameCategory === 'Popular' && (f.id === 'bitly-bottom-bar' || f.id === 'bitly-top-bar' || f.id === 'bitly-floating-badge' || f.id === 'bitly-speech-bubble')))
+                                  .map((f) => (
+                                    <button
+                                      key={f.id}
+                                      onClick={() => handleSelectFrame(f.id)}
+                                      className={`p-3 rounded-xl border text-left transition-all flex flex-col justify-between gap-2 relative ${
+                                        selectedFrame === f.id
+                                          ? 'border-accent bg-accent/20 text-[#BEF392] ring-2 ring-accent/40 shadow-md font-bold'
+                                          : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
+                                      }`}
+                                    >
+                                      <div className="flex items-center justify-between">
+                                        <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-xs font-mono font-bold text-white">
+                                          {f.iconType === 'bottom-bar' ? '▼' :
+                                           f.iconType === 'top-bar' ? '▲' :
+                                           f.iconType === 'pill' ? '●' :
+                                           f.iconType === 'bubble' ? '🗨' :
+                                           f.iconType === 'menu' ? '≡' :
+                                           f.iconType === 'wifi' ? '📶' :
+                                           f.iconType === 'social' ? '♥' :
+                                           f.iconType === 'review' ? '★' :
+                                           f.iconType === 'ticket' ? '✂' :
+                                           f.iconType === 'app' ? '📱' :
+                                           f.iconType === 'luxury' ? '◆' :
+                                           f.iconType === 'window' ? '▣' : '◻'}
+                                        </div>
+                                        {selectedFrame === f.id && (
+                                          <span className="w-2 h-2 rounded-full bg-[#BEF392]" />
+                                        )}
+                                      </div>
+                                      <div>
+                                        <span className="text-xs font-bold block leading-tight">{f.label}</span>
+                                        <span className="text-[10px] text-white/40 uppercase tracking-wider block font-medium mt-0.5">{f.category}</span>
+                                      </div>
+                                    </button>
+                                  ))}
+                              </div>
+
+                              {/* Frame Text & Presets */}
+                              {selectedFrame !== 'none' && (
+                                <div className="space-y-3 pt-3 border-t border-white/10">
+                                  <div className="flex items-center justify-between">
+                                    <label className="text-xs font-bold text-white/80">Frame Call-to-Action Text</label>
+                                    <span className="text-[10px] text-white/40">{frameText.length}/28 chars</span>
+                                  </div>
+                                  <input
+                                    type="text"
+                                    value={frameText}
+                                    onChange={(e) => setFrameText(e.target.value)}
+                                    placeholder="e.g. SCAN ME"
+                                    maxLength={28}
+                                    className="w-full bg-white/10 text-white rounded-xl px-3.5 py-2 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-accent"
+                                  />
+                                  
+                                  {/* Quick CTA Presets */}
+                                  <div className="space-y-1.5">
+                                    <span className="text-[10px] text-white/40 font-semibold block">Quick CTA Presets:</span>
+                                    <div className="flex flex-wrap gap-1.5">
+                                      {[
+                                        'SCAN ME',
+                                        'SCAN FOR MENU',
+                                        'CONNECT TO WI-FI',
+                                        'FOLLOW US',
+                                        'LEAVE A REVIEW',
+                                        'GET 20% OFF',
+                                        'DOWNLOAD OUR APP',
+                                        'VISIT WEBSITE'
+                                      ].map((preset) => (
+                                        <button
+                                          key={preset}
+                                          onClick={() => setFrameText(preset)}
+                                          className={`text-[10px] px-2.5 py-1 rounded-full border transition-all ${
+                                            frameText === preset
+                                              ? 'bg-accent text-white border-accent shadow-xs font-bold'
+                                              : 'bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white'
+                                          }`}
+                                        >
+                                          {preset}
+                                        </button>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          )}
+
+                          {/* ──────── STEP 2: COLORS & PALETTE ──────── */}
+                          {customStep === 2 && (
+                            <div className="space-y-5 animate-in">
+                              <div>
+                                <h4 className="text-sm font-bold text-white">Color Palette &amp; Contrast</h4>
+                                <p className="text-xs text-white/50">Choose a high-contrast palette for guaranteed scanning on all devices</p>
+                              </div>
+
+                              {/* Curated 1-Click Themes */}
+                              <div className="space-y-2">
+                                <label className="text-xs font-bold text-white/80 block">Curated High-Contrast Palettes</label>
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                  {[
+                                    { name: 'Emerald', fg: '#2B6F53', bg: '#ffffff', sq: '#1E1E1E', dot: '#2B6F53' },
+                                    { name: 'Obsidian', fg: '#0f172a', bg: '#ffffff', sq: '#0f172a', dot: '#0f172a' },
+                                    { name: 'Indigo', fg: '#4338ca', bg: '#ffffff', sq: '#312e81', dot: '#4338ca' },
+                                    { name: 'Crimson', fg: '#be123c', bg: '#ffffff', sq: '#881337', dot: '#be123c' },
+                                    { name: 'Amber', fg: '#b45309', bg: '#ffffff', sq: '#78350f', dot: '#b45309' },
+                                    { name: 'Royal Gold', fg: '#854d0e', bg: '#ffffff', sq: '#713f12', dot: '#ca8a04' },
+                                    { name: 'Ocean Blue', fg: '#0369a1', bg: '#ffffff', sq: '#0c4a6e', dot: '#0284c7' },
+                                    { name: 'Purple Night', fg: '#6b21a8', bg: '#ffffff', sq: '#581c87', dot: '#9333ea' },
+                                  ].map((pal) => (
+                                    <button
+                                      key={pal.name}
+                                      onClick={() => {
+                                        setFgColor(pal.fg);
+                                        setBgColor(pal.bg);
+                                        setCornerSquareColor(pal.sq);
+                                        setCornerDotColor(pal.dot);
+                                      }}
+                                      className={`p-2.5 rounded-xl border text-left flex items-center justify-between transition-all ${
+                                        fgColor === pal.fg
+                                          ? 'border-accent bg-accent/20 ring-1 ring-accent'
+                                          : 'border-white/10 bg-white/5 hover:bg-white/10'
+                                      }`}
+                                    >
+                                      <span className="text-xs font-semibold text-white truncate">{pal.name}</span>
+                                      <div className="flex items-center gap-1 shrink-0">
+                                        <span className="w-3.5 h-3.5 rounded-full border border-white/20" style={{ backgroundColor: pal.fg }} />
+                                        <span className="w-3.5 h-3.5 rounded-full border border-white/20" style={{ backgroundColor: pal.dot }} />
+                                      </div>
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Custom Precision Color Pickers */}
+                              <div className="space-y-3 pt-2 border-t border-white/10">
+                                <label className="text-xs font-bold text-white/80 block">Custom Precision Colors</label>
+                                <div className="grid grid-cols-2 gap-3">
+                                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
+                                    <div>
+                                      <span className="text-xs font-semibold text-white block">Pattern Color</span>
+                                      <span className="text-[10px] text-white/40">{fgColor}</span>
+                                    </div>
+                                    <input type="color" value={fgColor} onChange={(e) => setFgColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
+                                  </div>
+
+                                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
+                                    <div>
+                                      <span className="text-xs font-semibold text-white block">Background</span>
+                                      <span className="text-[10px] text-white/40">{bgColor}</span>
+                                    </div>
+                                    <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
+                                  </div>
+
+                                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
+                                    <div>
+                                      <span className="text-xs font-semibold text-white block">Corner Frame</span>
+                                      <span className="text-[10px] text-white/40">{cornerSquareColor}</span>
+                                    </div>
+                                    <input type="color" value={cornerSquareColor} onChange={(e) => setCornerSquareColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
+                                  </div>
+
+                                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
+                                    <div>
+                                      <span className="text-xs font-semibold text-white block">Corner Dot Eye</span>
+                                      <span className="text-[10px] text-white/40">{cornerDotColor}</span>
+                                    </div>
+                                    <input type="color" value={cornerDotColor} onChange={(e) => setCornerDotColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* ──────── STEP 3: SHAPES & PATTERNS ──────── */}
+                          {customStep === 3 && (
+                            <div className="space-y-5 animate-in">
+                              <div>
+                                <h4 className="text-sm font-bold text-white">QR Shapes &amp; Dot Patterns</h4>
+                                <p className="text-xs text-white/50">Customize the pattern geometry and corner detection eye shapes</p>
+                              </div>
+
+                              {/* Dot Patterns */}
+                              <div className="space-y-2">
+                                <label className="text-xs font-bold text-white/80 block">Pattern Matrix Style</label>
+                                <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                                  {DOT_STYLES.map((s) => (
+                                    <button
+                                      key={s.value}
+                                      onClick={() => setDotStyle(s.value as DotType)}
+                                      className={`p-3 rounded-xl border text-center transition-all ${
+                                        dotStyle === s.value
+                                          ? 'border-accent bg-accent/20 text-[#BEF392] font-bold shadow-md'
+                                          : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10'
+                                      }`}
+                                    >
+                                      <span className="text-xs block capitalize">{s.label}</span>
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Corner Square Styles */}
+                              <div className="space-y-2 pt-2 border-t border-white/10">
+                                <label className="text-xs font-bold text-white/80 block">Corner Square Frame Style</label>
+                                <div className="grid grid-cols-3 gap-2">
+                                  {CORNER_SQUARE_STYLES.map((s) => (
+                                    <button
+                                      key={s.value}
+                                      onClick={() => setCornerSquareStyle(s.value as CornerSquareType)}
+                                      className={`p-3 rounded-xl border text-center transition-all ${
+                                        cornerSquareStyle === s.value
+                                          ? 'border-accent bg-accent/20 text-[#BEF392] font-bold shadow-md'
+                                          : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10'
+                                      }`}
+                                    >
+                                      <span className="text-xs block">{s.label}</span>
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Corner Dot Styles */}
+                              <div className="space-y-2 pt-2 border-t border-white/10">
+                                <label className="text-xs font-bold text-white/80 block">Corner Dot Eye Style</label>
+                                <div className="grid grid-cols-2 gap-2">
+                                  {CORNER_DOT_STYLES.map((s) => (
+                                    <button
+                                      key={s.value}
+                                      onClick={() => setCornerDotStyle(s.value as CornerDotType)}
+                                      className={`p-3 rounded-xl border text-center transition-all ${
+                                        cornerDotStyle === s.value
+                                          ? 'border-accent bg-accent/20 text-[#BEF392] font-bold shadow-md'
+                                          : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10'
+                                      }`}
+                                    >
+                                      <span className="text-xs block">{s.label}</span>
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* ──────── STEP 4: LOGO & BRANDING ──────── */}
+                          {customStep === 4 && (
+                            <div className="space-y-5 animate-in">
+                              <div>
+                                <h4 className="text-sm font-bold text-white">Center Logo &amp; Branding</h4>
+                                <p className="text-xs text-white/50">Add a custom company logo or popular social platform icon</p>
+                              </div>
+
+                              {/* Custom Upload */}
+                              <div className="space-y-2">
+                                <label className="text-xs font-bold text-white/80 block">Upload Your Logo</label>
+                                <label className="block w-full cursor-pointer bg-white/5 hover:bg-white/10 border-2 border-white/20 border-dashed rounded-2xl p-5 text-center transition-colors">
+                                  <svg className="w-8 h-8 mx-auto text-accent mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                  </svg>
+                                  <span className="text-xs text-[#BEF392] block font-bold">Click to Upload Logo Image</span>
+                                  <span className="text-[10px] text-white/40 block mt-0.5">Supports PNG, JPG, SVG, WebP (Square ratio recommended)</span>
+                                  <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
+                                </label>
+
+                                {logoSrc && (
+                                  <div className="flex items-center justify-between bg-emerald-950/40 border border-emerald-500/30 p-3 rounded-xl text-xs">
+                                    <div className="flex items-center gap-2 text-emerald-300 font-semibold">
+                                      <span>✓</span>
+                                      <span>Custom Logo Active</span>
+                                    </div>
+                                    <button
+                                      onClick={() => setLogoSrc(null)}
+                                      className="text-xs text-red-400 hover:text-red-300 font-bold underline"
+                                    >
+                                      Remove Logo
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          )}
+
+                        </div>
+
+                        {/* Right Sticky Preview Card (4 cols) */}
+                        <div className="md:col-span-4 flex flex-col items-center justify-center bg-black/40 border border-white/10 rounded-2xl p-4">
+                          <div className="w-full flex items-center justify-between mb-3 text-xs">
+                            <span className="text-white/60 font-semibold">Live Simulation</span>
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${scannabilityInfo.color}`}>
+                              {scannabilityInfo.score}% Scan Score
+                            </span>
+                          </div>
+
+                          <div className="w-48 h-48 bg-white rounded-xl p-2 flex items-center justify-center shadow-lg">
+                            <div className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full">
+                              <DynamicQrPreview
+                                link={getQrContentString() || 'https://qr-generator.online'}
+                                fgColor={fgColor}
+                                bgColor={bgColor}
+                                cornerSquareColor={cornerSquareColor}
+                                cornerDotColor={cornerDotColor}
+                                dotStyle={dotStyle}
+                                cornerSquareStyle={cornerSquareStyle}
+                                cornerDotStyle={cornerDotStyle}
+                                logoSrc={logoSrc}
                               />
+                            </div>
+                          </div>
+
+                          {selectedFrame !== 'none' && (
+                            <div className="mt-3 text-center">
+                              <span className="text-[10px] text-white/50 block font-mono">Frame active:</span>
+                              <span className="text-xs font-bold text-[#BEF392] block">{frameText || 'SCAN ME'}</span>
                             </div>
                           )}
                         </div>
 
-                        {/* Category Filter Tabs */}
-                        <div className="flex flex-wrap items-center gap-1.5 border-b border-white/10 pb-3">
-                          {['All', 'Popular', 'Business', 'Marketing', 'Utility', 'Luxury', 'Tech'].map((cat) => (
+                      </div>
+
+                      {/* Modal Footer: Navigation */}
+                      <div className="flex items-center justify-between px-6 py-4 border-t border-white/10 bg-[#1a1a1a]">
+                        <div>
+                          <button
+                            onClick={() => {
+                              setSelectedFrame('none');
+                              setFgColor('#2B6F53');
+                              setBgColor('#ffffff');
+                              setCornerSquareColor('#1E1E1E');
+                              setCornerDotColor('#2B6F53');
+                              setDotStyle('rounded');
+                              setCornerSquareStyle('extra-rounded');
+                              setCornerDotStyle('dot');
+                              setLogoSrc(null);
+                              setFrameText('SCAN ME');
+                            }}
+                            className="text-xs text-white/50 hover:text-white font-medium transition-colors"
+                          >
+                            Reset All
+                          </button>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          {customStep > 1 && (
                             <button
-                              key={cat}
-                              onClick={() => setFrameCategory(cat)}
-                              className={`text-xs px-3 py-1 rounded-lg font-semibold transition-all ${
-                                frameCategory === cat
-                                  ? 'bg-[#BEF392] text-slate-950 shadow-xs'
-                                  : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
-                              }`}
+                              onClick={() => setCustomStep(customStep - 1)}
+                              className="px-4 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white transition-colors"
                             >
-                              {cat}
+                              ← Back
                             </button>
-                          ))}
-                        </div>
+                          )}
 
-                        {/* Visual Frame Options Grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-                          {FRAME_OPTIONS
-                            .filter(f => frameCategory === 'All' || f.category === frameCategory || (frameCategory === 'Popular' && (f.id === 'bitly-bottom-bar' || f.id === 'bitly-top-bar' || f.id === 'bitly-floating-badge' || f.id === 'bitly-speech-bubble')))
-                            .map((f) => (
-                              <button
-                                key={f.id}
-                                onClick={() => handleSelectFrame(f.id)}
-                                className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center gap-1.5 relative group ${
-                                  selectedFrame === f.id
-                                    ? 'border-accent bg-accent/25 text-[#BEF392] ring-2 ring-accent/50 scale-[1.03] shadow-lg font-bold'
-                                    : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
-                                }`}
-                              >
-                                {selectedFrame === f.id && (
-                                  <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#BEF392]" />
-                                )}
-                                <span className="text-2xl">{f.icon}</span>
-                                <span className="text-xs font-bold block leading-tight">{f.label}</span>
-                                <span className="text-[9px] text-white/40 uppercase tracking-widest block font-medium">{f.category}</span>
-                              </button>
-                            ))}
-                        </div>
-
-                        {/* Quick CTA Presets */}
-                        {selectedFrame !== 'none' && (
-                          <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-white/10">
-                            <span className="text-[10px] text-white/50 font-semibold mr-1">Quick CTA Presets:</span>
-                            {[
-                              'SCAN ME',
-                              'SCAN FOR MENU',
-                              'CONNECT TO WI-FI',
-                              'FOLLOW US',
-                              'LEAVE A REVIEW',
-                              'GET 20% OFF',
-                              'DOWNLOAD OUR APP',
-                              'VIP EXCLUSIVE ACCESS',
-                              'VISIT WEBSITE',
-                              'PAY HERE',
-                              'SAVE CONTACT'
-                            ].map((preset) => (
-                              <button
-                                key={preset}
-                                onClick={() => setFrameText(preset)}
-                                className={`text-[10px] px-2.5 py-1 rounded-full border transition-all ${
-                                  frameText === preset
-                                    ? 'bg-accent text-white border-accent shadow-xs'
-                                    : 'bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white'
-                                }`}
-                              >
-                                {preset}
-                              </button>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-
-                      {/* Colors */}
-                      <div className="space-y-3">
-                        <label className="text-xs font-bold text-white/80 block">Color Palette</label>
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between text-xs text-white/60">
-                            <span>Pattern Color</span>
-                            <input type="color" value={fgColor} onChange={(e) => setFgColor(e.target.value)} className="w-7 h-7 rounded cursor-pointer border-none bg-transparent" />
-                          </div>
-                          <div className="flex items-center justify-between text-xs text-white/60">
-                            <span>Background</span>
-                            <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="w-7 h-7 rounded cursor-pointer border-none bg-transparent" />
-                          </div>
-                          <div className="flex items-center justify-between text-xs text-white/60">
-                            <span>Corner Frame</span>
-                            <input type="color" value={cornerSquareColor} onChange={(e) => setCornerSquareColor(e.target.value)} className="w-7 h-7 rounded cursor-pointer border-none bg-transparent" />
-                          </div>
-                          <div className="flex items-center justify-between text-xs text-white/60">
-                            <span>Corner Eye</span>
-                            <input type="color" value={cornerDotColor} onChange={(e) => setCornerDotColor(e.target.value)} className="w-7 h-7 rounded cursor-pointer border-none bg-transparent" />
-                          </div>
+                          {customStep < 4 ? (
+                            <button
+                              onClick={() => setCustomStep(customStep + 1)}
+                              className="px-5 py-2 rounded-xl text-xs font-bold bg-[#BEF392] text-slate-950 hover:bg-[#a8e775] transition-all shadow-md flex items-center gap-1"
+                            >
+                              <span>Next Step</span>
+                              <span>→</span>
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => setShowCustomize(false)}
+                              className="px-5 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-white hover:bg-emerald-400 transition-all shadow-md flex items-center gap-1"
+                            >
+                              <span>✓ Done &amp; Apply</span>
+                            </button>
+                          )}
                         </div>
                       </div>
 
-                      {/* Dot Styles */}
-                      <div className="space-y-3">
-                        <label className="text-xs font-bold text-white/80 block">Dot Pattern</label>
-                        <select
-                          value={dotStyle}
-                          onChange={(e) => setDotStyle(e.target.value as DotType)}
-                          className="w-full bg-white/10 text-white rounded-lg p-2 text-xs outline-none border border-white/10"
-                        >
-                          {DOT_STYLES.map(s => (
-                            <option key={s.value} value={s.value} className="bg-gray-900 text-white">{s.label}</option>
-                          ))}
-                        </select>
-                      </div>
-
-                      {/* Corner Shapes */}
-                      <div className="space-y-3">
-                        <label className="text-xs font-bold text-white/80 block">Corner Frame & Eye</label>
-                        <select
-                          value={cornerSquareStyle}
-                          onChange={(e) => setCornerSquareStyle(e.target.value as CornerSquareType)}
-                          className="w-full bg-white/10 text-white rounded-lg p-2 text-xs outline-none border border-white/10 mb-2"
-                        >
-                          {CORNER_SQUARE_STYLES.map(s => (
-                            <option key={s.value} value={s.value} className="bg-gray-900 text-white">{s.label}</option>
-                          ))}
-                        </select>
-                        <select
-                          value={cornerDotStyle}
-                          onChange={(e) => setCornerDotStyle(e.target.value as CornerDotType)}
-                          className="w-full bg-white/10 text-white rounded-lg p-2 text-xs outline-none border border-white/10"
-                        >
-                          {CORNER_DOT_STYLES.map(s => (
-                            <option key={s.value} value={s.value} className="bg-gray-900 text-white">{s.label}</option>
-                          ))}
-                        </select>
-                      </div>
-
-                      {/* Logo Upload */}
-                      <div className="space-y-3">
-                        <label className="text-xs font-bold text-white/80 block">Add Center Logo</label>
-                        <label className="block w-full cursor-pointer bg-white/10 hover:bg-white/20 border border-white/20 border-dashed rounded-lg p-3 text-center transition-colors">
-                          <span className="text-xs text-[#BEF392] block font-medium">Upload Logo (PNG/JPEG)</span>
-                          <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
-                        </label>
-                        {logoSrc && (
-                          <div className="flex items-center justify-between bg-white/5 p-2 rounded-lg text-xs">
-                            <span className="text-white/80">Logo Loaded</span>
-                            <button onClick={() => setLogoSrc(null)} className="text-red-400 hover:text-red-300 font-bold">Remove</button>
-                          </div>
-                        )}
-                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
             </div>
           </div>
 
