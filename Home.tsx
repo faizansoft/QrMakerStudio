@@ -1060,26 +1060,7 @@ async function renderFramedCanvas(
 
     ctx.fillStyle = '#ffffff';
     ctx.font = '900 96px system-ui, -apple-system, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('SCAN', 320, 480);
-    ctx.fillText('ME', 320, 640);
-
-    // Right QR frame
-    drawRoundedRect(ctx, 640, 120, 1000, 880, 48);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.lineWidth = 16;
-    ctx.strokeStyle = fColor;
-    ctx.stroke();
-
-    ctx.drawImage(img, 720, 170, 780, 780);
-  }
-
-  URL.revokeObjectURL(img.src);
-  return canvas;
-}
-
+// ── Unified Vector Frame Generator (100% Pixel-Accurate WYSIWYG for Preview & Export) ──
 function buildFramedSvg(
   rawSvgText: string,
   frame: FrameStyle,
@@ -1101,199 +1082,311 @@ function buildFramedSvg(
     cleanSvg = svgMatch[1];
   }
 
-  if (frame === 'frame-bottom-bar') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
-  <rect width="1200" height="1460" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1380" rx="48" fill="#ffffff" stroke="${fColor}" stroke-width="14"/>
-  <g transform="translate(170, 140) scale(3.07)">
+  if (frame === 'none') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <rect width="1000" height="1000" fill="${bColor}" rx="40"/>
+  <g transform="translate(100, 100) scale(2.85)">
     ${cleanSvg}
   </g>
-  <path d="M 40 1260 L 1160 1260 L 1160 1372 A 48 48 0 0 1 1112 1420 L 88 1420 A 48 48 0 0 1 40 1372 Z" fill="${fColor}"/>
-  <text x="600" y="1355" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">${ctaText}</text>
-</svg>`;
-  } else if (frame === 'frame-top-bar') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
-  <rect width="1200" height="1460" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1380" rx="48" fill="#ffffff" stroke="${fColor}" stroke-width="14"/>
-  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 220 L 40 220 Z" fill="${fColor}"/>
-  <text x="600" y="145" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">${ctaText}</text>
-  <g transform="translate(170, 320) scale(3.07)">
-    ${cleanSvg}
-  </g>
-</svg>`;
-  } else if (frame === 'frame-focus-corners-bottom') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1480" width="1200" height="1480">
-  <rect width="1200" height="1480" fill="#ffffff"/>
-  <path d="M 100 240 L 100 100 L 240 100 M 1100 240 L 1100 100 L 960 100 M 100 900 L 100 1040 L 240 1040 M 1100 900 L 1100 1040 L 960 1040" stroke="${fColor}" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <g transform="translate(170, 140) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <rect x="300" y="1140" width="600" height="220" rx="48" fill="${fColor}"/>
-  <text x="600" y="1270" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">${ctaText}</text>
-</svg>`;
-  } else if (frame === 'frame-focus-corners-top') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
-  <rect width="1200" height="1520" fill="#ffffff"/>
-  <rect x="250" y="40" width="700" height="180" rx="48" fill="${fColor}"/>
-  <polygon points="560,220 600,270 640,220" fill="${fColor}"/>
-  <text x="600" y="150" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="62" text-anchor="middle">${ctaText}</text>
-  <path d="M 100 480 L 100 340 L 240 340 M 1100 480 L 1100 340 L 960 340 M 100 1100 L 100 1240 L 240 1240 M 1100 1100 L 1100 1240 L 960 1240" stroke="${fColor}" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <g transform="translate(170, 360) scale(3.07)">
-    ${cleanSvg}
-  </g>
-</svg>`;
-  } else if (frame === 'frame-phone-portrait') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
-  <rect width="1200" height="1800" fill="#ffffff"/>
-  <rect x="150" y="60" width="900" height="1680" rx="90" fill="#ffffff" stroke="${fColor}" stroke-width="24"/>
-  <rect x="450" y="110" width="300" height="30" rx="15" fill="${fColor}"/>
-  <line x1="1050" y1="400" x2="1050" y2="600" stroke="${fColor}" stroke-width="32" stroke-linecap="round"/>
-  <g transform="translate(220, 280) scale(2.71)">
-    ${cleanSvg}
-  </g>
-  <polygon points="600,1280 550,1360 650,1360" fill="${fColor}"/>
-  <text x="600" y="1510" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="76" text-anchor="middle">${ctaText}</text>
-</svg>`;
-  } else if (frame === 'frame-speech-bubble-bottom') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
-  <rect width="1200" height="1460" fill="#ffffff"/>
-  <rect x="50" y="50" width="1100" height="1260" rx="56" fill="#ffffff" stroke="${fColor}" stroke-width="18"/>
-  <polygon points="850,1310 970,1420 970,1310" fill="#ffffff" stroke="${fColor}" stroke-width="18"/>
-  <g transform="translate(170, 170) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <text x="600" y="1200" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" text-anchor="middle">${ctaText}</text>
-</svg>`;
-  } else if (frame === 'frame-top-arrow') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
-  <rect width="1200" height="1460" fill="#ffffff"/>
-  <rect x="280" y="40" width="640" height="160" rx="32" fill="${fColor}"/>
-  <polygon points="560,200 600,260 640,200" fill="${fColor}"/>
-  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">${ctaText}</text>
-  <rect x="50" y="260" width="1100" height="1150" rx="56" fill="#ffffff" stroke="${fColor}" stroke-width="16"/>
-  <g transform="translate(170, 400) scale(3.07)">
-    ${cleanSvg}
-  </g>
-</svg>`;
-  } else if (frame === 'frame-corner-peel') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
-  <rect width="1200" height="1460" fill="#ffffff"/>
-  <path d="M 50 100 A 50 50 0 0 1 100 50 L 1100 50 A 50 50 0 0 1 1150 100 L 1150 1150 L 900 1400 L 100 1400 A 50 50 0 0 1 50 1350 Z" fill="#ffffff" stroke="${fColor}" stroke-width="18"/>
-  <polygon points="900,1150 1150,1150 900,1400" fill="${fColor}"/>
-  <g transform="translate(170, 150) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <text x="500" y="1280" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" text-anchor="middle">${ctaText}</text>
-</svg>`;
-  } else if (frame === 'frame-vertical-right') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1380 1200" width="1380" height="1200">
-  <rect width="1380" height="1200" fill="#ffffff"/>
-  <rect x="40" y="40" width="1300" height="1120" rx="48" fill="#ffffff" stroke="${fColor}" stroke-width="16"/>
-  <path d="M 1120 40 L 1292 40 A 48 48 0 0 1 1340 88 L 1340 1112 A 48 48 0 0 1 1292 1160 L 1120 1160 Z" fill="${fColor}"/>
-  <g transform="translate(150, 170) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <text x="1230" y="240" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">S</text>
-  <text x="1230" y="360" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">C</text>
-  <text x="1230" y="480" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">A</text>
-  <text x="1230" y="600" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">N</text>
-  <text x="1230" y="800" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">M</text>
-  <text x="1230" y="920" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">E</text>
 </svg>`;
   }
+
+  if (frame === 'frame-bottom-bar') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="1000" height="1200">
+  <rect width="1000" height="1200" fill="${bColor}" rx="40" stroke="${fColor}" stroke-width="18"/>
+  <g transform="translate(100, 60) scale(2.85)">
+    ${cleanSvg}
+  </g>
+  <path d="M 0 1040 L 1000 1040 L 1000 1160 A 40 40 0 0 1 960 1200 L 40 1200 A 40 40 0 0 1 0 1160 Z" fill="${fColor}"/>
+  <text x="500" y="1135" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+</svg>`;
+  }
+
+  if (frame === 'frame-top-bar') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="1000" height="1200">
+  <rect width="1000" height="1200" fill="${bColor}" rx="40" stroke="${fColor}" stroke-width="18"/>
+  <path d="M 0 40 A 40 40 0 0 1 40 0 L 960 0 A 40 40 0 0 1 1000 40 L 1000 160 L 0 160 Z" fill="${fColor}"/>
+  <text x="500" y="105" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <g transform="translate(100, 240) scale(2.85)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  }
+
+  if (frame === 'frame-focus-corners-bottom') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1240" width="1000" height="1240">
+  <rect width="1000" height="1240" fill="${bColor}" rx="40"/>
+  <path d="M 80 180 L 80 80 L 180 80 M 920 180 L 920 80 L 820 80 M 80 820 L 80 920 L 180 920 M 920 820 L 920 920 L 820 920" stroke="${fColor}" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g transform="translate(100, 100) scale(2.85)">
+    ${cleanSvg}
+  </g>
+  <rect x="160" y="1020" width="680" height="140" rx="32" fill="${fColor}"/>
+  <text x="500" y="1108" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle" letter-spacing="1">${ctaText}</text>
+</svg>`;
+  }
+
+  if (frame === 'frame-focus-corners-top') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1240" width="1000" height="1240">
+  <rect width="1000" height="1240" fill="${bColor}" rx="40"/>
+  <rect x="160" y="40" width="680" height="130" rx="28" fill="${fColor}"/>
+  <polygon points="470,170 500,205 530,170" fill="${fColor}"/>
+  <text x="500" y="122" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle" letter-spacing="1">${ctaText}</text>
+  <path d="M 80 340 L 80 240 L 180 240 M 920 340 L 920 240 L 820 240 M 80 980 L 80 1080 L 180 1080 M 920 980 L 920 1080 L 820 1080" stroke="${fColor}" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g transform="translate(100, 260) scale(2.85)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  }
+
+  if (frame === 'frame-focus-corners-arrow') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000" width="1200" height="1000">
+  <rect width="1200" height="1000" fill="${bColor}" rx="40"/>
+  <path d="M 60 160 L 60 60 L 160 60 M 840 160 L 840 60 L 740 60 M 60 840 L 60 940 L 160 940 M 840 840 L 840 940 L 740 940" stroke="${fColor}" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g transform="translate(50, 100) scale(2.85)">
+    ${cleanSvg}
+  </g>
+  <rect x="880" y="320" width="280" height="360" rx="36" fill="${fColor}"/>
+  <text x="1020" y="440" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">SCAN</text>
+  <text x="1020" y="530" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" text-anchor="middle">➔</text>
+  <text x="1020" y="620" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">ME</text>
+</svg>`;
+  }
+
+  if (frame === 'frame-focus-corners-speech') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000" width="1200" height="1000">
+  <rect width="1200" height="1000" fill="${bColor}" rx="40"/>
+  <path d="M 60 160 L 60 60 L 160 60 M 840 160 L 840 60 L 740 60 M 60 840 L 60 940 L 160 940 M 840 840 L 840 940 L 740 940" stroke="${fColor}" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g transform="translate(50, 100) scale(2.85)">
+    ${cleanSvg}
+  </g>
+  <polygon points="850,500 890,460 890,540" fill="${fColor}"/>
+  <rect x="890" y="280" width="270" height="440" rx="36" fill="${fColor}"/>
+  <text x="1025" y="460" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">SCAN</text>
+  <text x="1025" y="560" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">ME</text>
+</svg>`;
+  }
+
+  if (frame === 'frame-phone-portrait') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1440" width="1000" height="1440">
+  <rect width="1000" height="1440" fill="${bColor}" rx="64" stroke="${fColor}" stroke-width="24"/>
+  <rect x="360" y="32" width="280" height="24" rx="12" fill="${fColor}"/>
+  <line x1="976" y1="280" x2="976" y2="440" stroke="${fColor}" stroke-width="24" stroke-linecap="round"/>
+  <g transform="translate(100, 140) scale(2.85)">
+    ${cleanSvg}
+  </g>
+  <polygon points="470,1160 500,1120 530,1160" fill="${fColor}"/>
+  <text x="500" y="1270" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+</svg>`;
+  }
+
+  if (frame === 'frame-phone-landscape') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1340 1000" width="1340" height="1000">
+  <rect width="1340" height="1000" fill="${bColor}" rx="64" stroke="${fColor}" stroke-width="24"/>
+  <g transform="translate(60, 100) scale(2.85)">
+    ${cleanSvg}
+  </g>
+  <rect x="920" y="240" width="360" height="520" rx="36" fill="${fColor}"/>
+  <text x="1100" y="460" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">SCAN</text>
+  <text x="1100" y="580" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">◀ ME</text>
+</svg>`;
+  }
+
+  if (frame === 'frame-speech-bubble-bottom') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="1000" height="1200">
+  <rect width="1000" height="1080" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
+  <polygon points="760,1080 880,1180 880,1080" fill="${bColor}" stroke="${fColor}" stroke-width="18"/>
+  <line x1="770" y1="1080" x2="870" y2="1080" stroke="${bColor}" stroke-width="24"/>
+  <g transform="translate(100, 60) scale(2.85)">
+    ${cleanSvg}
+  </g>
+  <text x="500" y="1000" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+</svg>`;
+  }
+
+  if (frame === 'frame-speech-tab-top') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="1000" height="1200">
+  <rect x="0" y="120" width="1000" height="1080" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
+  <path d="M 40 0 L 480 0 A 32 32 0 0 1 512 32 L 512 120 L 0 120 L 0 40 A 40 40 0 0 1 40 0 Z" fill="${fColor}"/>
+  <text x="256" y="80" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" text-anchor="middle" letter-spacing="1">${ctaText}</text>
+  <g transform="translate(100, 240) scale(2.85)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  }
+
+  if (frame === 'frame-speech-bubble-right') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 1000" width="1260" height="1000">
+  <rect width="1000" height="1000" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
+  <polygon points="1000,440 1050,480 1000,520" fill="${fColor}"/>
+  <rect x="1050" y="260" width="180" height="480" rx="32" fill="${fColor}"/>
+  <text x="1140" y="460" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">S</text>
+  <text x="1140" y="540" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">C</text>
+  <text x="1140" y="620" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">A</text>
+  <text x="1140" y="700" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">N</text>
+  <g transform="translate(100, 100) scale(2.85)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  }
+
+  if (frame === 'frame-top-arrow') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1240" width="1000" height="1240">
+  <rect x="160" y="0" width="680" height="140" rx="32" fill="${fColor}"/>
+  <polygon points="460,140 500,185 540,140" fill="${fColor}"/>
+  <text x="500" y="90" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="50" text-anchor="middle" letter-spacing="1">${ctaText}</text>
+  <rect y="180" width="1000" height="1060" rx="48" fill="${bColor}" stroke="${fColor}" stroke-width="16"/>
+  <g transform="translate(100, 290) scale(2.85)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  }
+
+  if (frame === 'frame-top-roof') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="1000" height="1200">
+  <path d="M 0 160 L 0 60 L 500 0 L 1000 60 L 1000 160 Z" fill="${fColor}"/>
+  <text x="500" y="115" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <rect y="160" width="1000" height="1040" rx="0" fill="${bColor}" stroke="${fColor}" stroke-width="16"/>
+  <g transform="translate(100, 260) scale(2.85)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  }
+
+  if (frame === 'frame-trapezoid') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1220" width="1000" height="1220">
+  <polygon points="120,40 880,40 1000,1180 0,1180" fill="${bColor}" stroke="${fColor}" stroke-width="18" stroke-linejoin="round"/>
+  <rect x="220" y="60" width="560" height="110" rx="24" fill="${fColor}"/>
+  <text x="500" y="135" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <g transform="translate(120, 250) scale(2.7)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  }
+
+  if (frame === 'frame-corner-peel') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="1000" height="1200">
+  <path d="M 0 48 A 48 48 0 0 1 48 0 L 952 0 A 48 48 0 0 1 1000 48 L 1000 960 L 760 1200 L 48 1200 A 48 48 0 0 1 0 1152 Z" fill="${bColor}" stroke="${fColor}" stroke-width="18"/>
+  <polygon points="760,960 1000,960 760,1200" fill="${fColor}"/>
+  <g transform="translate(100, 80) scale(2.85)">
+    ${cleanSvg}
+  </g>
+  <text x="380" y="1080" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+</svg>`;
+  }
+
+  if (frame === 'frame-vertical-right') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1000" width="1240" height="1000">
+  <rect width="1240" height="1000" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
+  <path d="M 1000 0 L 1192 0 A 48 48 0 0 1 1240 48 L 1240 952 A 48 48 0 0 1 1192 1000 L 1000 1000 Z" fill="${fColor}"/>
+  <text x="1120" y="240" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">S</text>
+  <text x="1120" y="360" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">C</text>
+  <text x="1120" y="480" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">A</text>
+  <text x="1120" y="600" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">N</text>
+  <text x="1120" y="760" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">M</text>
+  <text x="1120" y="880" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">E</text>
+  <g transform="translate(80, 100) scale(2.85)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  }
+
+  if (frame === 'frame-vertical-dual') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1000" width="1280" height="1000">
+  <rect width="1280" height="1000" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
+  <path d="M 0 48 A 48 48 0 0 1 48 0 L 160 0 L 160 1000 L 48 1000 A 48 48 0 0 1 0 952 Z" fill="${fColor}"/>
+  <path d="M 1120 0 L 1232 0 A 48 48 0 0 1 1280 48 L 1280 952 A 48 48 0 0 1 1232 1000 L 1120 1000 Z" fill="${fColor}"/>
+  <text x="80" y="320" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">S</text>
+  <text x="80" y="440" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">C</text>
+  <text x="80" y="560" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">A</text>
+  <text x="80" y="680" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">N</text>
+  <text x="1200" y="440" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">M</text>
+  <text x="1200" y="560" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">E</text>
+  <g transform="translate(240, 100) scale(2.85)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  }
+
+  if (frame === 'frame-horizontal-left') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1340 1000" width="1340" height="1000">
+  <rect width="1340" height="1000" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
+  <path d="M 0 48 A 48 48 0 0 1 48 0 L 360 0 L 360 1000 L 48 1000 A 48 48 0 0 1 0 952 Z" fill="${fColor}"/>
+  <text x="180" y="460" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" text-anchor="middle">SCAN</text>
+  <text x="180" y="580" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" text-anchor="middle">ME</text>
+  <g transform="translate(440, 100) scale(2.85)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  }
+
   return rawSvgText;
 }
 
-// ── Real-time Interactive QR Code Preview Component ──
-const DynamicQrPreview: React.FC<{
-  link: string;
-  fgColor: string;
-  bgColor: string;
-  cornerSquareColor: string;
-  cornerDotColor: string;
-  dotStyle: DotType;
-  cornerSquareStyle: CornerSquareType;
-  cornerDotStyle: CornerDotType;
-  logoSrc: string | null;
-}> = ({
-  link,
-  fgColor,
-  bgColor,
-  cornerSquareColor,
-  cornerDotColor,
-  dotStyle,
-  cornerSquareStyle,
-  cornerDotStyle,
-  logoSrc,
-}) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const qrCodeRef = useRef<QRCodeStyling | null>(null);
+// ── Ultra-Accurate Canvas Rasterizer (Converts Vector Framed SVG directly to sharp PNG/WebP Canvas) ──
+async function renderFramedCanvas(
+  rawPngBlob: Blob,
+  frame: FrameStyle,
+  text: string,
+  fg: string,
+  bg: string,
+  cornerSq: string,
+  frameCol?: string,
+  frameTextCol?: string
+): Promise<HTMLCanvasElement> {
+  const ctaText = (text || 'SCAN ME').toUpperCase();
+  const fColor = frameCol || fg || '#1E1E1E';
+  const tColor = frameTextCol || '#ffffff';
+  const bColor = bg || '#ffffff';
 
-  useEffect(() => {
-    const dataString = link && link.trim().length > 0 ? link : 'https://qr-generator.online';
-    if (!qrCodeRef.current) {
-      qrCodeRef.current = new QRCodeStyling({
-        width: 190,
-        height: 190,
-        type: 'svg',
-        data: dataString,
-        image: logoSrc || undefined,
-        dotsOptions: {
-          color: fgColor,
-          type: dotStyle,
-        },
-        backgroundOptions: {
-          color: bgColor,
-        },
-        cornersSquareOptions: {
-          color: cornerSquareColor,
-          type: cornerSquareStyle,
-        },
-        cornersDotOptions: {
-          color: cornerDotColor,
-          type: cornerDotStyle,
-        },
-        imageOptions: {
-          crossOrigin: 'anonymous',
-          margin: 4,
-        },
-      });
-      if (containerRef.current) {
-        containerRef.current.innerHTML = '';
-        qrCodeRef.current.append(containerRef.current);
-      }
-    } else {
-      qrCodeRef.current.update({
-        data: dataString,
-        image: logoSrc || undefined,
-        dotsOptions: {
-          color: fgColor,
-          type: dotStyle,
-        },
-        backgroundOptions: {
-          color: bgColor,
-        },
-        cornersSquareOptions: {
-          color: cornerSquareColor,
-          type: cornerSquareStyle,
-        },
-        cornersDotOptions: {
-          color: cornerDotColor,
-          type: cornerDotStyle,
-        },
-      });
-    }
-  }, [link, fgColor, bgColor, cornerSquareColor, cornerDotColor, dotStyle, cornerSquareStyle, cornerDotStyle, logoSrc]);
+  // Convert rawPngBlob into data URL to embed in SVG
+  const pngDataUrl = await new Promise<string>((resolve) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.readAsDataURL(rawPngBlob);
+  });
 
-  return <div ref={containerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />;
-};
+  const innerImageTag = `<image href="${pngDataUrl}" width="280" height="280" />`;
+  const framedSvgString = buildFramedSvg(innerImageTag, frame, ctaText, fg, bColor, cornerSq, fColor, tColor);
 
-// ── Real-time Framed QR Container with Live Frame Geometry & Typography ──
+  const svgBlob = new Blob([framedSvgString], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(svgBlob);
+  const img = new Image();
+  img.src = url;
+
+  await new Promise((res) => {
+    img.onload = () => res(true);
+    img.onerror = () => res(true);
+  });
+
+  const canvas = document.createElement('canvas');
+  // Match the SVG coordinate resolution
+  const w = img.naturalWidth || 1200;
+  const h = img.naturalHeight || 1200;
+  canvas.width = w;
+  canvas.height = h;
+
+  const ctx = canvas.getContext('2d')!;
+  ctx.drawImage(img, 0, 0, w, h);
+  URL.revokeObjectURL(url);
+
+  return canvas;
+}
+
+// ── Real-time Interactive Dynamic Framed QR Preview (True WYSIWYG) ──
 const FramedQrView: React.FC<{
   frame: FrameStyle;
   text: string;
   frameColor: string;
   frameTextColor: string;
+  fgColor?: string;
+  bgColor?: string;
+  cornerSquareColor?: string;
+  cornerDotColor?: string;
+  dotStyle?: DotType;
+  cornerSquareStyle?: CornerSquareType;
+  cornerDotStyle?: CornerDotType;
+  logoSrc?: string | null;
+  link?: string;
   isThumbnail?: boolean;
   children?: React.ReactNode;
 }> = ({
@@ -1301,302 +1394,94 @@ const FramedQrView: React.FC<{
   text,
   frameColor,
   frameTextColor,
+  fgColor = '#2B6F53',
+  bgColor = '#ffffff',
+  cornerSquareColor = '#1E1E1E',
+  cornerDotColor = '#2B6F53',
+  dotStyle = 'rounded',
+  cornerSquareStyle = 'extra-rounded',
+  cornerDotStyle = 'dot',
+  logoSrc = null,
+  link = 'https://qr-generator.online',
   isThumbnail = false,
-  children,
 }) => {
-  const ctaText = (text || 'SCAN ME').toUpperCase();
-  const fColor = frameColor || '#1E1E1E';
-  const tColor = frameTextColor || '#ffffff';
+  const [svgHtml, setSvgHtml] = useState<string>('');
 
-  // If thumbnail in the selector list, render a sleek miniature vector QR pattern
-  const qrContent = isThumbnail ? (
-    <svg viewBox="0 0 40 40" className="w-full h-full p-0.5" fill="none">
-      <rect x="2" y="2" width="11" height="11" rx="2.5" stroke="#1E1E1E" strokeWidth="2.5" />
-      <rect x="5.5" y="5.5" width="4" height="4" rx="1" fill="#1E1E1E" />
-      <rect x="27" y="2" width="11" height="11" rx="2.5" stroke="#1E1E1E" strokeWidth="2.5" />
-      <rect x="30.5" y="5.5" width="4" height="4" rx="1" fill="#1E1E1E" />
-      <rect x="2" y="27" width="11" height="11" rx="2.5" stroke="#1E1E1E" strokeWidth="2.5" />
-      <rect x="5.5" y="30.5" width="4" height="4" rx="1" fill="#1E1E1E" />
-      <rect x="16" y="4" width="3" height="3" rx="0.8" fill="#1E1E1E" />
-      <rect x="21" y="4" width="3" height="3" rx="0.8" fill="#1E1E1E" />
-      <rect x="16" y="9" width="3" height="3" rx="0.8" fill="#1E1E1E" />
-      <rect x="4" y="16" width="3" height="3" rx="0.8" fill="#1E1E1E" />
-      <rect x="9" y="16" width="3" height="3" rx="0.8" fill="#1E1E1E" />
-      <rect x="15" y="15" width="10" height="10" rx="1.5" fill="#1E1E1E" />
-      <rect x="28" y="16" width="3" height="3" rx="0.8" fill="#1E1E1E" />
-      <rect x="33" y="16" width="3" height="3" rx="0.8" fill="#1E1E1E" />
-      <rect x="16" y="28" width="3" height="3" rx="0.8" fill="#1E1E1E" />
-      <rect x="21" y="28" width="3" height="3" rx="0.8" fill="#1E1E1E" />
-      <rect x="28" y="28" width="8" height="8" rx="1.5" fill="#1E1E1E" />
-    </svg>
-  ) : (
-    children
-  );
+  useEffect(() => {
+    if (isThumbnail) {
+      // Lightweight clean sample vector matrix for selector cards
+      const sampleMatrix = `
+        <rect x="10" y="10" width="70" height="70" rx="16" stroke="${fgColor}" stroke-width="14" fill="none" />
+        <rect x="30" y="30" width="30" height="30" rx="8" fill="${fgColor}" />
+        <rect x="200" y="10" width="70" height="70" rx="16" stroke="${fgColor}" stroke-width="14" fill="none" />
+        <rect x="220" y="30" width="30" height="30" rx="8" fill="${fgColor}" />
+        <rect x="10" y="200" width="70" height="70" rx="16" stroke="${fgColor}" stroke-width="14" fill="none" />
+        <rect x="30" y="220" width="30" height="30" rx="8" fill="${fgColor}" />
+        <circle cx="140" cy="40" r="14" fill="${fgColor}" />
+        <circle cx="140" cy="100" r="14" fill="${fgColor}" />
+        <circle cx="140" cy="160" r="14" fill="${fgColor}" />
+        <circle cx="140" cy="220" r="14" fill="${fgColor}" />
+        <circle cx="40" cy="140" r="14" fill="${fgColor}" />
+        <circle cx="100" cy="140" r="14" fill="${fgColor}" />
+        <circle cx="200" cy="140" r="14" fill="${fgColor}" />
+        <circle cx="240" cy="140" r="14" fill="${fgColor}" />
+        <circle cx="200" cy="200" r="14" fill="${fgColor}" />
+        <circle cx="240" cy="240" r="14" fill="${fgColor}" />
+      `;
+      const framedSvg = buildFramedSvg(sampleMatrix, frame, text, fgColor, bgColor, cornerSquareColor, frameColor, frameTextColor);
+      setSvgHtml(framedSvg);
+      return;
+    }
 
-  const containerClasses = isThumbnail 
-    ? "w-full h-24 flex items-center justify-center relative overflow-hidden select-none" 
-    : "w-full min-h-[220px] flex items-center justify-center relative overflow-hidden";
+    const dataString = link && link.trim().length > 0 ? link : 'https://qr-generator.online';
+    const qr = new QRCodeStyling({
+      width: 280,
+      height: 280,
+      type: 'svg',
+      data: dataString,
+      image: logoSrc || undefined,
+      dotsOptions: { color: fgColor, type: dotStyle },
+      backgroundOptions: { color: bgColor },
+      cornersSquareOptions: { color: cornerSquareColor, type: cornerSquareStyle },
+      cornersDotOptions: { color: cornerDotColor, type: cornerDotStyle },
+      imageOptions: { crossOrigin: 'anonymous', margin: 4, imageSize: 0.35, hideBackgroundDots: true },
+      qrOptions: { errorCorrectionLevel: 'H' },
+    });
 
-  if (frame === 'none') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl p-2 border-2 border-black/10`}>
-        <div className="w-full h-full flex items-center justify-center">{qrContent}</div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-bottom-bar') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2`} style={{ borderColor: fColor }}>
-        <div className="w-full flex-1 flex items-center justify-center p-1.5">{qrContent}</div>
-        <div className="w-full py-1.5 px-2 text-center font-black tracking-wider shadow-xs" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '8px' : '11px' }}>
-          <span className="truncate block">{ctaText}</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-top-bar') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2`} style={{ borderColor: fColor }}>
-        <div className="w-full py-1.5 px-2 text-center font-black tracking-wider shadow-xs" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '8px' : '11px' }}>
-          <span className="truncate block">{ctaText}</span>
-        </div>
-        <div className="w-full flex-1 flex items-center justify-center p-1.5">{qrContent}</div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-focus-corners-bottom') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between p-2`}>
-        <div className="w-full flex-1 flex items-center justify-center relative p-1">
-          <div className="absolute top-0 left-0 w-3.5 h-3.5 border-t-2 border-l-2" style={{ borderColor: fColor }} />
-          <div className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2" style={{ borderColor: fColor }} />
-          <div className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2" style={{ borderColor: fColor }} />
-          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-2 border-r-2" style={{ borderColor: fColor }} />
-          {qrContent}
-        </div>
-        <div className="px-3 py-1 rounded-md font-black tracking-wider text-center shadow-xs mt-1" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-          <span className="truncate block">{ctaText}</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-focus-corners-top') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between p-2`}>
-        <div className="flex flex-col items-center mb-1">
-          <div className="px-3 py-1 rounded-xl font-black tracking-wider text-center shadow-xs" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-            <span className="truncate block">{ctaText}</span>
-          </div>
-          <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px]" style={{ borderTopColor: fColor }} />
-        </div>
-        <div className="w-full flex-1 flex items-center justify-center relative p-1">
-          <div className="absolute top-0 left-0 w-3.5 h-3.5 border-t-2 border-l-2" style={{ borderColor: fColor }} />
-          <div className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2" style={{ borderColor: fColor }} />
-          <div className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2" style={{ borderColor: fColor }} />
-          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-2 border-r-2" style={{ borderColor: fColor }} />
-          {qrContent}
-        </div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-focus-corners-arrow') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-row items-center justify-between p-2 gap-1.5`}>
-        <div className="flex-1 h-full flex items-center justify-center relative p-1">
-          <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2" style={{ borderColor: fColor }} />
-          <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2" style={{ borderColor: fColor }} />
-          <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2" style={{ borderColor: fColor }} />
-          <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2" style={{ borderColor: fColor }} />
-          {qrContent}
-        </div>
-        <div className="px-2 py-2 rounded-xl font-black flex flex-col items-center justify-center text-center shadow-xs shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-          <span>SCAN</span>
-          <span className="text-[10px] leading-none my-0.5">➔</span>
-          <span>ME</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-focus-corners-speech') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-row items-center justify-between p-2 gap-1.5`}>
-        <div className="flex-1 h-full flex items-center justify-center relative p-1">
-          <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2" style={{ borderColor: fColor }} />
-          <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2" style={{ borderColor: fColor }} />
-          <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2" style={{ borderColor: fColor }} />
-          <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2" style={{ borderColor: fColor }} />
-          {qrContent}
-        </div>
-        <div className="px-2 py-2.5 rounded-xl font-black flex flex-col items-center justify-center text-center relative shadow-xs shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-          <div className="absolute left-[-4px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-r-[4px]" style={{ borderRightColor: fColor }} />
-          <span>SCAN</span>
-          <span>ME</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-phone-portrait') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-3xl flex-col justify-between p-2 border-4`} style={{ borderColor: fColor }}>
-        <div className="w-8 h-1 rounded-full mb-0.5 mx-auto" style={{ backgroundColor: fColor }} />
-        <div className="w-full flex-1 flex items-center justify-center p-1">{qrContent}</div>
-        <div className="flex flex-col items-center">
-          <span className="leading-none text-[8px]" style={{ color: fColor }}>▲</span>
-          <span className="font-black tracking-wider uppercase truncate max-w-full" style={{ color: fColor, fontSize: isThumbnail ? '7px' : '10px' }}>{ctaText}</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-phone-landscape') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-3xl flex-row justify-between p-2 border-4 gap-1.5`} style={{ borderColor: fColor }}>
-        <div className="flex-1 h-full flex items-center justify-center p-1">{qrContent}</div>
-        <div className="flex flex-col items-center justify-center pr-1 shrink-0">
-          <span className="font-black tracking-wider" style={{ color: fColor, fontSize: isThumbnail ? '8px' : '11px' }}>SCAN</span>
-          <span className="font-black tracking-wider flex items-center gap-0.5" style={{ color: fColor, fontSize: isThumbnail ? '8px' : '11px' }}>
-            <span>◀</span><span>ME</span>
-          </span>
-        </div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-speech-bubble-bottom') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between p-2 border-2 relative`} style={{ borderColor: fColor }}>
-        <div className="w-full flex-1 flex items-center justify-center p-1">{qrContent}</div>
-        <div className="w-full text-center font-black tracking-wider uppercase truncate" style={{ color: fColor, fontSize: isThumbnail ? '8px' : '11px' }}>
-          {ctaText}
-        </div>
-        <div className="absolute right-3 -bottom-2 w-0 h-0 border-l-[6px] border-l-transparent border-t-[8px]" style={{ borderTopColor: fColor }} />
-      </div>
-    );
-  }
-
-  if (frame === 'frame-speech-tab-top') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2 relative`} style={{ borderColor: fColor }}>
-        <div className="w-full flex justify-start">
-          <div className="px-2.5 py-0.5 rounded-br-xl font-black uppercase tracking-wider" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-            {ctaText}
-          </div>
-        </div>
-        <div className="w-full flex-1 flex items-center justify-center p-1.5">{qrContent}</div>
-        <div className="absolute right-3 -bottom-2 w-0 h-0 border-l-[6px] border-l-transparent border-t-[8px]" style={{ borderTopColor: fColor }} />
-      </div>
-    );
-  }
-
-  if (frame === 'frame-speech-bubble-right') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-row justify-between p-2 border-2 gap-1.5 relative`} style={{ borderColor: fColor }}>
-        <div className="flex-1 h-full flex items-center justify-center p-1">{qrContent}</div>
-        <div className="px-2 py-2 rounded-xl font-black flex flex-col items-center justify-center text-center shadow-xs shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-          <span>SCAN</span>
-          <span>ME</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-top-arrow') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2 pt-1`} style={{ borderColor: fColor }}>
-        <div className="flex flex-col items-center mb-0.5">
-          <div className="px-3 py-0.5 rounded-xl font-black uppercase tracking-wider text-center" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-            {ctaText}
-          </div>
-          <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[4px]" style={{ borderTopColor: fColor }} />
-        </div>
-        <div className="w-full flex-1 flex items-center justify-center p-1">{qrContent}</div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-top-roof') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2 pt-0`} style={{ borderColor: fColor }}>
-        <div className="w-full py-1 text-center font-black uppercase tracking-wider" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px', clipPath: 'polygon(0% 100%, 0% 40%, 50% 0%, 100% 40%, 100% 100%)' }}>
-          {ctaText}
-        </div>
-        <div className="w-full flex-1 flex items-center justify-center p-1.5">{qrContent}</div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-trapezoid') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2 p-1.5`} style={{ borderColor: fColor }}>
-        <div className="w-4/5 mx-auto py-0.5 text-center font-black uppercase tracking-wider rounded-lg shadow-xs" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-          {ctaText}
-        </div>
-        <div className="w-full flex-1 flex items-center justify-center p-1">{qrContent}</div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-corner-peel') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2 p-2 relative`} style={{ borderColor: fColor }}>
-        <div className="w-full flex-1 flex items-center justify-center p-1">{qrContent}</div>
-        <div className="w-full text-left font-black uppercase tracking-wider truncate" style={{ color: fColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-          {ctaText}
-        </div>
-        <div className="absolute right-0 bottom-0 w-0 h-0 border-b-[18px] border-l-[18px] border-l-transparent" style={{ borderBottomColor: fColor }} />
-      </div>
-    );
-  }
-
-  if (frame === 'frame-vertical-right') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-row justify-between border-2`} style={{ borderColor: fColor }}>
-        <div className="flex-1 h-full flex items-center justify-center p-1.5">{qrContent}</div>
-        <div className="w-7 h-full flex flex-col items-center justify-around py-2 text-center font-black leading-none shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-          <span>S</span><span>C</span><span>A</span><span>N</span>
-          <span className="mt-0.5">M</span><span>E</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-vertical-dual') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-row justify-between border-2`} style={{ borderColor: fColor }}>
-        <div className="w-6 h-full flex flex-col items-center justify-around py-2 text-center font-black leading-none shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-          <span>S</span><span>C</span><span>A</span><span>N</span>
-        </div>
-        <div className="flex-1 h-full flex items-center justify-center p-1">{qrContent}</div>
-        <div className="w-6 h-full flex flex-col items-center justify-around py-2 text-center font-black leading-none shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
-          <span>M</span><span>E</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (frame === 'frame-horizontal-left') {
-    return (
-      <div className={`${containerClasses} bg-white rounded-2xl flex-row justify-between border-2 gap-1.5`} style={{ borderColor: fColor }}>
-        <div className="w-14 h-full flex flex-col items-center justify-center font-black leading-tight text-center shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '8px' : '11px' }}>
-          <span>SCAN</span>
-          <span>ME</span>
-        </div>
-        <div className="flex-1 h-full flex items-center justify-center p-1.5">{qrContent}</div>
-      </div>
-    );
-  }
+    qr.getRawData('svg').then((blob) => {
+      if (!blob) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const rawSvg = reader.result as string;
+        const framedSvg = buildFramedSvg(rawSvg, frame, text, fgColor, bgColor, cornerSquareColor, frameColor, frameTextColor);
+        setSvgHtml(framedSvg);
+      };
+      reader.readAsText(blob);
+    });
+  }, [
+    frame,
+    text,
+    frameColor,
+    frameTextColor,
+    fgColor,
+    bgColor,
+    cornerSquareColor,
+    cornerDotColor,
+    dotStyle,
+    cornerSquareStyle,
+    cornerDotStyle,
+    logoSrc,
+    link,
+    isThumbnail,
+  ]);
 
   return (
-    <div className={`${containerClasses} bg-white rounded-2xl p-2 border-2 border-black/10`}>
-      <div className="w-full h-full flex items-center justify-center">{qrContent}</div>
-    </div>
+    <div
+      className={`w-full flex items-center justify-center select-none transition-all ${
+        isThumbnail ? 'h-24' : 'max-h-[260px]'
+      } [&>svg]:w-full [&>svg]:h-auto [&>svg]:max-h-full [&>svg]:drop-shadow-sm`}
+      dangerouslySetInnerHTML={{ __html: svgHtml }}
+    />
   );
 };
 
@@ -2829,19 +2714,16 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                           text={frameText}
                           frameColor={frameColor}
                           frameTextColor={frameTextColor}
-                        >
-                          <DynamicQrPreview
-                            link={effectiveQrData || 'https://qr-generator.online'}
-                            fgColor={fgColor}
-                            bgColor={bgColor}
-                            cornerSquareColor={cornerSquareColor}
-                            cornerDotColor={cornerDotColor}
-                            dotStyle={dotStyle}
-                            cornerSquareStyle={cornerSquareStyle}
-                            cornerDotStyle={cornerDotStyle}
-                            logoSrc={logoSrc}
-                          />
-                        </FramedQrView>
+                          fgColor={fgColor}
+                          bgColor={bgColor}
+                          cornerSquareColor={cornerSquareColor}
+                          cornerDotColor={cornerDotColor}
+                          dotStyle={dotStyle}
+                          cornerSquareStyle={cornerSquareStyle}
+                          cornerDotStyle={cornerDotStyle}
+                          logoSrc={logoSrc}
+                          link={effectiveQrData}
+                        />
                       </div>
 
                       {/* Template Selector Vertical Carousel with Mini-QR Vector Previews */}
@@ -3465,19 +3347,16 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                               text={frameText}
                               frameColor={frameColor}
                               frameTextColor={frameTextColor}
-                            >
-                              <DynamicQrPreview
-                                link={effectiveQrData || 'https://qr-generator.online'}
-                                fgColor={fgColor}
-                                bgColor={bgColor}
-                                cornerSquareColor={cornerSquareColor}
-                                cornerDotColor={cornerDotColor}
-                                dotStyle={dotStyle}
-                                cornerSquareStyle={cornerSquareStyle}
-                                cornerDotStyle={cornerDotStyle}
-                                logoSrc={logoSrc}
-                              />
-                            </FramedQrView>
+                              fgColor={fgColor}
+                              bgColor={bgColor}
+                              cornerSquareColor={cornerSquareColor}
+                              cornerDotColor={cornerDotColor}
+                              dotStyle={dotStyle}
+                              cornerSquareStyle={cornerSquareStyle}
+                              cornerDotStyle={cornerDotStyle}
+                              logoSrc={logoSrc}
+                              link={effectiveQrData}
+                            />
                           </div>
 
                           {selectedFrame !== 'none' && (
