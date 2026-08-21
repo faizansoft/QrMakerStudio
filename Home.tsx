@@ -242,8 +242,8 @@ const TABS = [
 
 // Template Presets
 const TEMPLATES = [
-  { id: 'emerald', name: 'Emerald', fgColor: '#2B6F53', bgColor: '#ffffff', cornerSquareColor: '#1E1E1E', cornerDotColor: '#2B6F53', dotType: 'rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
-  { id: 'classic', name: 'Classic Black', fgColor: '#000000', bgColor: '#ffffff', cornerSquareColor: '#000000', cornerDotColor: '#000000', dotType: 'square' as DotType, cornerSquareType: 'square' as CornerSquareType, cornerDotType: 'square' as CornerDotType },
+  { id: 'default', name: 'Default Standard', fgColor: '#000000', bgColor: '#ffffff', cornerSquareColor: '#000000', cornerDotColor: '#000000', dotType: 'square' as DotType, cornerSquareType: 'square' as CornerSquareType, cornerDotType: 'square' as CornerDotType },
+  { id: 'emerald', name: 'Emerald Green', fgColor: '#2B6F53', bgColor: '#ffffff', cornerSquareColor: '#1E1E1E', cornerDotColor: '#2B6F53', dotType: 'rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
   { id: 'ocean', name: 'Deep Ocean', fgColor: '#0284c7', bgColor: '#f0f9ff', cornerSquareColor: '#0369a1', cornerDotColor: '#0284c7', dotType: 'classy-rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
   { id: 'midnight', name: 'Dark Luxe', fgColor: '#f8fafc', bgColor: '#0f172a', cornerSquareColor: '#38bdf8', cornerDotColor: '#38bdf8', dotType: 'dots' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
   { id: 'sunset', name: 'Sunset Amber', fgColor: '#d97706', bgColor: '#fffbeb', cornerSquareColor: '#b45309', cornerDotColor: '#d97706', dotType: 'extra-rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
@@ -317,13 +317,13 @@ const DynamicModalQrPreview: React.FC<{ link: DynamicLink }> = ({ link }) => {
         text={style.frameText || 'SCAN ME'}
         frameColor={style.frameColor || style.fgColor || '#1E1E1E'}
         frameTextColor={style.frameTextColor || '#ffffff'}
-        fgColor={style.fgColor || '#2B6F53'}
+        fgColor={style.fgColor || '#000000'}
         bgColor={style.bgColor || '#ffffff'}
-        cornerSquareColor={style.cornerSquareColor || style.fgColor || '#1E1E1E'}
-        cornerDotColor={style.cornerDotColor || style.fgColor || '#2B6F53'}
-        dotStyle={style.dotStyle || 'rounded'}
-        cornerSquareStyle={style.cornerSquareStyle || 'extra-rounded'}
-        cornerDotStyle={style.cornerDotStyle || 'dot'}
+        cornerSquareColor={style.cornerSquareColor || style.fgColor || '#000000'}
+        cornerDotColor={style.cornerDotColor || style.fgColor || '#000000'}
+        dotStyle={style.dotStyle || 'square'}
+        cornerSquareStyle={style.cornerSquareStyle || 'square'}
+        cornerDotStyle={style.cornerDotStyle || 'square'}
         logoSrc={style.logoSrc || null}
         link={qrUrl}
       />
@@ -710,13 +710,13 @@ const FramedQrView: React.FC<{
   text,
   frameColor,
   frameTextColor,
-  fgColor = '#2B6F53',
+  fgColor = '#000000',
   bgColor = '#ffffff',
-  cornerSquareColor = '#1E1E1E',
-  cornerDotColor = '#2B6F53',
-  dotStyle = 'rounded',
-  cornerSquareStyle = 'extra-rounded',
-  cornerDotStyle = 'dot',
+  cornerSquareColor = '#000000',
+  cornerDotColor = '#000000',
+  dotStyle = 'square',
+  cornerSquareStyle = 'square',
+  cornerDotStyle = 'square',
   logoSrc = null,
   link = 'https://qr-generator.online',
   isThumbnail = false,
@@ -810,15 +810,15 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   const [activeTab, setActiveTab] = useState(initialTab);
   
   // Custom QR Styling Options State
-  const [fgColor, setFgColor] = useState('#2B6F53');
+  const [fgColor, setFgColor] = useState('#000000');
   const [bgColor, setBgColor] = useState('#ffffff');
-  const [cornerSquareColor, setCornerSquareColor] = useState('#1E1E1E');
-  const [cornerDotColor, setCornerDotColor] = useState('#2B6F53');
-  const [dotStyle, setDotStyle] = useState<DotType>('rounded');
-  const [cornerSquareStyle, setCornerSquareStyle] = useState<CornerSquareType>('extra-rounded');
-  const [cornerDotStyle, setCornerDotStyle] = useState<CornerDotType>('dot');
+  const [cornerSquareColor, setCornerSquareColor] = useState('#000000');
+  const [cornerDotColor, setCornerDotColor] = useState('#000000');
+  const [dotStyle, setDotStyle] = useState<DotType>('square');
+  const [cornerSquareStyle, setCornerSquareStyle] = useState<CornerSquareType>('square');
+  const [cornerDotStyle, setCornerDotStyle] = useState<CornerDotType>('square');
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
-  const [activeTemplate, setActiveTemplate] = useState('emerald');
+  const [activeTemplate, setActiveTemplate] = useState('default');
 
   // Frame & Badge Customization State
   const [selectedFrame, setSelectedFrame] = useState<FrameStyle>('none');
@@ -2128,16 +2128,28 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                             {/* Mini QR Code Vector Preview */}
                             <svg viewBox="0 0 24 24" className="w-full h-full" fill="none">
                               {/* Top Left Eye */}
-                              <rect x="2" y="2" width="6" height="6" rx={tpl.cornerSquareType === 'extra-rounded' ? '2' : tpl.cornerSquareType === 'dot' ? '3' : '0.5'} stroke={tpl.cornerSquareColor} strokeWidth="1.5" fill="none" />
-                              <circle cx="5" cy="5" r={tpl.cornerDotType === 'dot' ? '1.5' : '1'} fill={tpl.cornerDotColor} />
+                              <rect x="2" y="2" width="6" height="6" rx={tpl.cornerSquareType === 'extra-rounded' ? '2' : tpl.cornerSquareType === 'dot' ? '3' : '0'} stroke={tpl.cornerSquareColor} strokeWidth="1.5" fill="none" />
+                              {tpl.cornerDotType === 'dot' ? (
+                                <circle cx="5" cy="5" r="1.5" fill={tpl.cornerDotColor} />
+                              ) : (
+                                <rect x="3.5" y="3.5" width="3" height="3" fill={tpl.cornerDotColor} />
+                              )}
                               
                               {/* Top Right Eye */}
-                              <rect x="16" y="2" width="6" height="6" rx={tpl.cornerSquareType === 'extra-rounded' ? '2' : tpl.cornerSquareType === 'dot' ? '3' : '0.5'} stroke={tpl.cornerSquareColor} strokeWidth="1.5" fill="none" />
-                              <circle cx="19" cy="5" r={tpl.cornerDotType === 'dot' ? '1.5' : '1'} fill={tpl.cornerDotColor} />
+                              <rect x="16" y="2" width="6" height="6" rx={tpl.cornerSquareType === 'extra-rounded' ? '2' : tpl.cornerSquareType === 'dot' ? '3' : '0'} stroke={tpl.cornerSquareColor} strokeWidth="1.5" fill="none" />
+                              {tpl.cornerDotType === 'dot' ? (
+                                <circle cx="19" cy="5" r="1.5" fill={tpl.cornerDotColor} />
+                              ) : (
+                                <rect x="17.5" y="3.5" width="3" height="3" fill={tpl.cornerDotColor} />
+                              )}
                               
                               {/* Bottom Left Eye */}
-                              <rect x="2" y="16" width="6" height="6" rx={tpl.cornerSquareType === 'extra-rounded' ? '2' : tpl.cornerSquareType === 'dot' ? '3' : '0.5'} stroke={tpl.cornerSquareColor} strokeWidth="1.5" fill="none" />
-                              <circle cx="5" cy="19" r={tpl.cornerDotType === 'dot' ? '1.5' : '1'} fill={tpl.cornerDotColor} />
+                              <rect x="2" y="16" width="6" height="6" rx={tpl.cornerSquareType === 'extra-rounded' ? '2' : tpl.cornerSquareType === 'dot' ? '3' : '0'} stroke={tpl.cornerSquareColor} strokeWidth="1.5" fill="none" />
+                              {tpl.cornerDotType === 'dot' ? (
+                                <circle cx="5" cy="19" r="1.5" fill={tpl.cornerDotColor} />
+                              ) : (
+                                <rect x="3.5" y="17.5" width="3" height="3" fill={tpl.cornerDotColor} />
+                              )}
 
                               {/* Matrix Dots */}
                               <rect x="10" y="3" width="2" height="2" rx={tpl.dotType === 'dots' || tpl.dotType === 'rounded' ? '1' : '0'} fill={tpl.fgColor} />
@@ -2755,15 +2767,18 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                           <button
                             onClick={() => {
                               setSelectedFrame('none');
-                              setFgColor('#2B6F53');
+                              setFgColor('#000000');
                               setBgColor('#ffffff');
-                              setCornerSquareColor('#1E1E1E');
-                              setCornerDotColor('#2B6F53');
-                              setDotStyle('rounded');
-                              setCornerSquareStyle('extra-rounded');
-                              setCornerDotStyle('dot');
+                              setCornerSquareColor('#000000');
+                              setCornerDotColor('#000000');
+                              setDotStyle('square');
+                              setCornerSquareStyle('square');
+                              setCornerDotStyle('square');
                               setLogoSrc(null);
                               setFrameText('SCAN ME');
+                              setFrameColor('#1E1E1E');
+                              setFrameTextColor('#ffffff');
+                              setActiveTemplate('default');
                             }}
                             className="text-xs text-white/50 hover:text-white font-medium transition-colors"
                           >
