@@ -294,9 +294,55 @@ const INDUSTRIES = [
 ];
 
 
-interface HomeProps {
-  initialTab?: string;
-}
+// Custom Dynamic QR Modal Preview Component preserving full custom colors, dot styles, and uploaded logo
+const DynamicModalQrPreview: React.FC<{ link: DynamicLink }> = ({ link }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    containerRef.current.innerHTML = '';
+
+    const qrUrl = `https://qr-generator.online/r/${link.short_code}`;
+    const style = link.qr_style || {};
+
+    const qr = new QRCodeStyling({
+      width: 150,
+      height: 150,
+      data: qrUrl,
+      margin: 4,
+      dotsOptions: {
+        color: style.fgColor || '#1E1E1E',
+        type: (style.dotStyle as any) || 'rounded',
+      },
+      backgroundOptions: {
+        color: style.bgColor || '#ffffff',
+      },
+      cornersSquareOptions: {
+        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        type: (style.cornerSquareStyle as any) || 'extra-rounded',
+      },
+      cornersDotOptions: {
+        color: style.cornerDotColor || style.fgColor || '#2B6F53',
+        type: (style.cornerDotStyle as any) || 'dot',
+      },
+      image: style.logoSrc || undefined,
+      imageOptions: {
+        crossOrigin: 'anonymous',
+        margin: 3,
+        imageSize: 0.35,
+        hideBackgroundDots: true,
+      },
+      qrOptions: {
+        errorCorrectionLevel: 'H',
+      },
+      type: 'svg',
+    });
+
+    qr.append(containerRef.current);
+  }, [link]);
+
+  return <div ref={containerRef} className="w-36 h-36 flex items-center justify-center rounded-xl bg-white p-1 border border-slate-200 shadow-2xs mb-3" />;
+};
 
 const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   const { language, t } = useLanguage();
@@ -607,6 +653,46 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     navigator.clipboard.writeText(url);
     setCopyShortUrlSuccess(true);
     setTimeout(() => setCopyShortUrlSuccess(false), 2000);
+  };
+
+  const handleDownloadSavedDynamic = (format: 'png' | 'svg') => {
+    if (!savedDynamicLink) return;
+    const qrUrl = `https://qr-generator.online/r/${savedDynamicLink.short_code}`;
+    const style = savedDynamicLink.qr_style || {};
+    const qr = new QRCodeStyling({
+      width: 1200,
+      height: 1200,
+      data: qrUrl,
+      margin: 12,
+      dotsOptions: {
+        color: style.fgColor || '#1E1E1E',
+        type: (style.dotStyle as any) || 'rounded',
+      },
+      backgroundOptions: {
+        color: style.bgColor || '#ffffff',
+      },
+      cornersSquareOptions: {
+        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        type: (style.cornerSquareStyle as any) || 'extra-rounded',
+      },
+      cornersDotOptions: {
+        color: style.cornerDotColor || style.fgColor || '#2B6F53',
+        type: (style.cornerDotStyle as any) || 'dot',
+      },
+      image: style.logoSrc || undefined,
+      imageOptions: {
+        crossOrigin: 'anonymous',
+        margin: 6,
+        imageSize: 0.35,
+        hideBackgroundDots: true,
+      },
+      qrOptions: {
+        errorCorrectionLevel: 'H',
+      },
+      type: format === 'svg' ? 'svg' : 'canvas',
+    });
+
+    qr.download({ name: `dynamic_qr_${savedDynamicLink.short_code}`, extension: format });
   };
 
   // Logo File Upload
@@ -1665,28 +1751,24 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                   Destination can be changed anytime with zero reprinting.
                 </p>
 
-                {/* QR Preview Card */}
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl mb-4 flex flex-col items-center justify-center">
-                  <img
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://qr-generator.online/r/${savedDynamicLink.short_code}`}
-                    alt="Dynamic QR Code"
-                    className="w-36 h-36 object-contain rounded mb-3 bg-white p-2 border border-slate-200"
-                  />
+                {/* QR Preview Card with custom design & logo */}
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl mb-4 flex flex-col items-center justify-center">
+                  <DynamicModalQrPreview link={savedDynamicLink} />
                   <div className="flex gap-2 w-full max-w-xs">
                     <button
                       type="button"
-                      onClick={() => handleDownload('png')}
-                      className="flex-1 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1"
+                      onClick={() => handleDownloadSavedDynamic('png')}
+                      className="flex-1 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5 shadow-xs"
                     >
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
-                      PNG
+                      Download PNG
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleDownload('svg')}
-                      className="flex-1 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1"
+                      onClick={() => handleDownloadSavedDynamic('svg')}
+                      className="flex-1 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-semibold rounded-xl transition-colors flex items-center justify-center gap-1.5"
                     >
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
