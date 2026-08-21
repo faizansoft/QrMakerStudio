@@ -29,7 +29,7 @@ export const FRAME_OPTIONS: { id: FrameStyle; label: string; category: string; d
   { id: 'frame-top-bar', label: 'Top Header Tab', category: 'Popular', defaultText: 'SCAN ME' },
   { id: 'frame-focus-corners-bottom', label: 'Focus Corners Bottom', category: 'Focus', defaultText: 'SCAN ME' },
   { id: 'frame-focus-corners-top', label: 'Focus Corners Top', category: 'Focus', defaultText: 'SCAN ME' },
-  { id: 'frame-focus-corners-arrow', label: 'Focus Corners Arrow', category: 'Focus', defaultText: 'SCAN ➔ ME' },
+  { id: 'frame-focus-corners-arrow', label: 'Focus Corners Arrow', category: 'Focus', defaultText: 'SCAN ME' },
   { id: 'frame-focus-corners-speech', label: 'Focus Corners Speech', category: 'Focus', defaultText: 'SCAN ME' },
   { id: 'frame-phone-portrait', label: 'Phone Portrait', category: 'Device', defaultText: 'SCAN ME' },
   { id: 'frame-phone-landscape', label: 'Phone Landscape', category: 'Device', defaultText: 'SCAN ME' },
@@ -56,10 +56,15 @@ export function buildFramedSvg(
   frameCol?: string,
   frameTextCol?: string
 ): string {
-  const ctaText = (text || 'SCAN ME').toUpperCase();
+  const cleanText = (text || 'SCAN ME').trim().toUpperCase();
+  const ctaText = cleanText.length > 0 ? cleanText : 'SCAN ME';
   const fColor = frameCol || fg || '#1E1E1E';
   const tColor = frameTextCol || '#ffffff';
   const bColor = bg || '#ffffff';
+
+  const words = ctaText.split(/\s+/).filter(Boolean);
+  const line1 = words.length > 1 ? words.slice(0, Math.ceil(words.length / 2)).join(' ') : (words[0] || 'SCAN');
+  const line2 = words.length > 1 ? words.slice(Math.ceil(words.length / 2)).join(' ') : '';
 
   let cleanSvg = rawSvgText;
   const svgMatch = rawSvgText.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
@@ -83,7 +88,7 @@ export function buildFramedSvg(
     ${cleanSvg}
   </g>
   <path d="M 0 1040 L 1000 1040 L 1000 1160 A 40 40 0 0 1 960 1200 L 40 1200 A 40 40 0 0 1 0 1160 Z" fill="${fColor}"/>
-  <text x="500" y="1135" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="500" y="1135" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
 </svg>`;
   }
 
@@ -91,7 +96,7 @@ export function buildFramedSvg(
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="1000" height="1200">
   <rect width="1000" height="1200" fill="${bColor}" rx="40" stroke="${fColor}" stroke-width="18"/>
   <path d="M 0 40 A 40 40 0 0 1 40 0 L 960 0 A 40 40 0 0 1 1000 40 L 1000 160 L 0 160 Z" fill="${fColor}"/>
-  <text x="500" y="105" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="500" y="105" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
   <g transform="translate(100, 240) scale(2.85)">
     ${cleanSvg}
   </g>
@@ -106,7 +111,7 @@ export function buildFramedSvg(
     ${cleanSvg}
   </g>
   <rect x="160" y="1020" width="680" height="140" rx="32" fill="${fColor}"/>
-  <text x="500" y="1108" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle" letter-spacing="1">${ctaText}</text>
+  <text x="500" y="1108" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 38 : 48}" text-anchor="middle" letter-spacing="1">${ctaText}</text>
 </svg>`;
   }
 
@@ -115,7 +120,7 @@ export function buildFramedSvg(
   <rect width="1000" height="1240" fill="${bColor}" rx="40"/>
   <rect x="160" y="40" width="680" height="130" rx="28" fill="${fColor}"/>
   <polygon points="470,170 500,205 530,170" fill="${fColor}"/>
-  <text x="500" y="122" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle" letter-spacing="1">${ctaText}</text>
+  <text x="500" y="122" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 38 : 48}" text-anchor="middle" letter-spacing="1">${ctaText}</text>
   <path d="M 80 340 L 80 240 L 180 240 M 920 340 L 920 240 L 820 240 M 80 980 L 80 1080 L 180 1080 M 920 980 L 920 1080 L 820 1080" stroke="${fColor}" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   <g transform="translate(100, 260) scale(2.85)">
     ${cleanSvg}
@@ -130,10 +135,10 @@ export function buildFramedSvg(
   <g transform="translate(50, 100) scale(2.85)">
     ${cleanSvg}
   </g>
-  <rect x="880" y="320" width="280" height="360" rx="36" fill="${fColor}"/>
-  <text x="1020" y="440" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">SCAN</text>
-  <text x="1020" y="530" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" text-anchor="middle">➔</text>
-  <text x="1020" y="620" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">ME</text>
+  <rect x="880" y="260" width="280" height="480" rx="36" fill="${fColor}"/>
+  <text x="1020" y="${line2 ? 430 : 490}" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${line1.length > 8 ? 38 : 46}" text-anchor="middle">${line1}</text>
+  <text x="1020" y="${line2 ? 510 : 560}" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">➔</text>
+  ${line2 ? `<text x="1020" y="600" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${line2.length > 8 ? 38 : 46}" text-anchor="middle">${line2}</text>` : ''}
 </svg>`;
   }
 
@@ -146,8 +151,8 @@ export function buildFramedSvg(
   </g>
   <polygon points="850,500 890,460 890,540" fill="${fColor}"/>
   <rect x="890" y="280" width="270" height="440" rx="36" fill="${fColor}"/>
-  <text x="1025" y="460" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">SCAN</text>
-  <text x="1025" y="560" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">ME</text>
+  <text x="1025" y="${line2 ? 460 : 510}" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${line1.length > 8 ? 38 : 46}" text-anchor="middle">${line1}</text>
+  ${line2 ? `<text x="1025" y="550" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${line2.length > 8 ? 38 : 46}" text-anchor="middle">${line2}</text>` : ''}
 </svg>`;
   }
 
@@ -160,7 +165,7 @@ export function buildFramedSvg(
     ${cleanSvg}
   </g>
   <polygon points="470,1160 500,1120 530,1160" fill="${fColor}"/>
-  <text x="500" y="1270" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="500" y="1270" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 42 : 56}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
 </svg>`;
   }
 
@@ -171,8 +176,8 @@ export function buildFramedSvg(
     ${cleanSvg}
   </g>
   <rect x="920" y="240" width="360" height="520" rx="36" fill="${fColor}"/>
-  <text x="1100" y="460" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">SCAN</text>
-  <text x="1100" y="580" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">◀ ME</text>
+  <text x="1100" y="${line2 ? 450 : 500}" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${line1.length > 8 ? 40 : 50}" text-anchor="middle">${line1}</text>
+  ${line2 ? `<text x="1100" y="560" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${line2.length > 8 ? 40 : 50}" text-anchor="middle">◀ ${line2}</text>` : `<text x="1100" y="570" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">◀</text>`}
 </svg>`;
   }
 
@@ -184,7 +189,7 @@ export function buildFramedSvg(
   <g transform="translate(100, 60) scale(2.85)">
     ${cleanSvg}
   </g>
-  <text x="500" y="1000" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="500" y="1000" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
 </svg>`;
   }
 
@@ -192,7 +197,7 @@ export function buildFramedSvg(
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="1000" height="1200">
   <rect x="0" y="120" width="1000" height="1080" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
   <path d="M 40 0 L 480 0 A 32 32 0 0 1 512 32 L 512 120 L 0 120 L 0 40 A 40 40 0 0 1 40 0 Z" fill="${fColor}"/>
-  <text x="256" y="80" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" text-anchor="middle" letter-spacing="1">${ctaText}</text>
+  <text x="256" y="80" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 36 : 44}" text-anchor="middle" letter-spacing="1">${ctaText}</text>
   <g transform="translate(100, 240) scale(2.85)">
     ${cleanSvg}
   </g>
@@ -203,11 +208,8 @@ export function buildFramedSvg(
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 1000" width="1260" height="1000">
   <rect width="1000" height="1000" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
   <polygon points="1000,440 1050,480 1000,520" fill="${fColor}"/>
-  <rect x="1050" y="260" width="180" height="480" rx="32" fill="${fColor}"/>
-  <text x="1140" y="460" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">S</text>
-  <text x="1140" y="540" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">C</text>
-  <text x="1140" y="620" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">A</text>
-  <text x="1140" y="700" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">N</text>
+  <rect x="1050" y="160" width="180" height="680" rx="32" fill="${fColor}"/>
+  <text x="1140" y="500" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 10 ? 38 : 46}" text-anchor="middle" transform="rotate(90, 1140, 500)" letter-spacing="3">${ctaText}</text>
   <g transform="translate(100, 100) scale(2.85)">
     ${cleanSvg}
   </g>
@@ -218,7 +220,7 @@ export function buildFramedSvg(
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1240" width="1000" height="1240">
   <rect x="160" y="0" width="680" height="140" rx="32" fill="${fColor}"/>
   <polygon points="460,140 500,185 540,140" fill="${fColor}"/>
-  <text x="500" y="90" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="50" text-anchor="middle" letter-spacing="1">${ctaText}</text>
+  <text x="500" y="90" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 38 : 50}" text-anchor="middle" letter-spacing="1">${ctaText}</text>
   <rect y="180" width="1000" height="1060" rx="48" fill="${bColor}" stroke="${fColor}" stroke-width="16"/>
   <g transform="translate(100, 290) scale(2.85)">
     ${cleanSvg}
@@ -229,7 +231,7 @@ export function buildFramedSvg(
   if (frame === 'frame-top-roof') {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="1000" height="1200">
   <path d="M 0 160 L 0 60 L 500 0 L 1000 60 L 1000 160 Z" fill="${fColor}"/>
-  <text x="500" y="115" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="500" y="115" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 38 : 48}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
   <rect y="160" width="1000" height="1040" rx="0" fill="${bColor}" stroke="${fColor}" stroke-width="16"/>
   <g transform="translate(100, 260) scale(2.85)">
     ${cleanSvg}
@@ -241,7 +243,7 @@ export function buildFramedSvg(
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1220" width="1000" height="1220">
   <polygon points="120,40 880,40 1000,1180 0,1180" fill="${bColor}" stroke="${fColor}" stroke-width="18" stroke-linejoin="round"/>
   <rect x="220" y="60" width="560" height="110" rx="24" fill="${fColor}"/>
-  <text x="500" y="135" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="500" y="135" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 36 : 46}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
   <g transform="translate(120, 250) scale(2.7)">
     ${cleanSvg}
   </g>
@@ -255,20 +257,15 @@ export function buildFramedSvg(
   <g transform="translate(100, 80) scale(2.85)">
     ${cleanSvg}
   </g>
-  <text x="380" y="1080" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="380" y="1080" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
 </svg>`;
   }
 
   if (frame === 'frame-vertical-right') {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1000" width="1240" height="1000">
   <rect width="1240" height="1000" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
-  <rect x="1000" y="0" width="240" height="1000" rx="0" fill="${fColor}"/>
-  <text x="1120" y="240" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">S</text>
-  <text x="1120" y="360" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">C</text>
-  <text x="1120" y="480" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">A</text>
-  <text x="1120" y="600" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">N</text>
-  <text x="1120" y="780" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">M</text>
-  <text x="1120" y="900" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">E</text>
+  <path d="M 1000 0 L 1192 0 A 48 48 0 0 1 1240 48 L 1240 952 A 48 48 0 0 1 1192 1000 L 1000 1000 Z" fill="${fColor}"/>
+  <text x="1120" y="500" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 10 ? 42 : 52}" text-anchor="middle" transform="rotate(90, 1120, 500)" letter-spacing="4">${ctaText}</text>
   <g transform="translate(80, 100) scale(2.85)">
     ${cleanSvg}
   </g>
@@ -278,14 +275,10 @@ export function buildFramedSvg(
   if (frame === 'frame-vertical-dual') {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1000" width="1280" height="1000">
   <rect width="1280" height="1000" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
-  <rect x="0" y="0" width="160" height="1000" fill="${fColor}"/>
-  <rect x="1120" y="0" width="160" height="1000" fill="${fColor}"/>
-  <text x="80" y="320" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">S</text>
-  <text x="80" y="440" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">C</text>
-  <text x="80" y="560" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">A</text>
-  <text x="80" y="680" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">N</text>
-  <text x="1200" y="440" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">M</text>
-  <text x="1200" y="560" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">E</text>
+  <path d="M 0 48 A 48 48 0 0 1 48 0 L 160 0 L 160 1000 L 48 1000 A 48 48 0 0 1 0 952 Z" fill="${fColor}"/>
+  <path d="M 1120 0 L 1232 0 A 48 48 0 0 1 1280 48 L 1280 952 A 48 48 0 0 1 1232 1000 L 1120 1000 Z" fill="${fColor}"/>
+  <text x="80" y="500" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 10 ? 38 : 46}" text-anchor="middle" transform="rotate(270, 80, 500)" letter-spacing="3">${ctaText}</text>
+  <text x="1200" y="500" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 10 ? 38 : 46}" text-anchor="middle" transform="rotate(90, 1200, 500)" letter-spacing="3">${ctaText}</text>
   <g transform="translate(240, 100) scale(2.85)">
     ${cleanSvg}
   </g>
@@ -296,8 +289,8 @@ export function buildFramedSvg(
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1340 1000" width="1340" height="1000">
   <rect width="1340" height="1000" fill="${bColor}" rx="48" stroke="${fColor}" stroke-width="18"/>
   <path d="M 0 48 A 48 48 0 0 1 48 0 L 360 0 L 360 1000 L 48 1000 A 48 48 0 0 1 0 952 Z" fill="${fColor}"/>
-  <text x="180" y="460" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" text-anchor="middle">SCAN</text>
-  <text x="180" y="580" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" text-anchor="middle">ME</text>
+  <text x="180" y="${line2 ? 460 : 510}" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${line1.length > 8 ? 44 : 56}" text-anchor="middle">${line1}</text>
+  ${line2 ? `<text x="180" y="570" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${line2.length > 8 ? 44 : 56}" text-anchor="middle">${line2}</text>` : ''}
   <g transform="translate(440, 100) scale(2.85)">
     ${cleanSvg}
   </g>
