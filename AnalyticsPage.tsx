@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import QRCodeStyling from 'qr-code-styling';
 import { useAuth } from './context/AuthContext';
 import {
   getDynamicLinkById,
@@ -7,6 +8,56 @@ import {
   DynamicLink,
   AnalyticsSummary
 } from './services/dynamicQrService';
+
+// Custom QR Thumbnail Renderer preserving full styling, colors, dot styles, and logos
+const DynamicQrThumbnail: React.FC<{ link: DynamicLink; size?: number; className?: string }> = ({ link, size = 64, className = '' }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    containerRef.current.innerHTML = '';
+
+    const qrUrl = `https://qr-generator.online/r/${link.short_code}`;
+    const style = link.qr_style || {};
+
+    const qr = new QRCodeStyling({
+      width: size,
+      height: size,
+      data: qrUrl,
+      margin: size > 100 ? 8 : 2,
+      dotsOptions: {
+        color: style.fgColor || '#1E1E1E',
+        type: (style.dotStyle as any) || 'rounded',
+      },
+      backgroundOptions: {
+        color: style.bgColor || '#ffffff',
+      },
+      cornersSquareOptions: {
+        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        type: (style.cornerSquareStyle as any) || 'extra-rounded',
+      },
+      cornersDotOptions: {
+        color: style.cornerDotColor || style.fgColor || '#2B6F53',
+        type: (style.cornerDotStyle as any) || 'dot',
+      },
+      image: style.logoSrc || undefined,
+      imageOptions: {
+        crossOrigin: 'anonymous',
+        margin: size > 100 ? 4 : 1,
+        imageSize: 0.35,
+        hideBackgroundDots: true,
+      },
+      qrOptions: {
+        errorCorrectionLevel: 'H',
+      },
+      type: 'svg',
+    });
+
+    qr.append(containerRef.current);
+  }, [link, size]);
+
+  return <div ref={containerRef} className={`flex items-center justify-center overflow-hidden ${className}`} />;
+};
 
 const AnalyticsPage: React.FC = () => {
   const { linkId } = useParams<{ linkId: string }>();
@@ -18,6 +69,7 @@ const AnalyticsPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [timeRange, setTimeRange] = useState<'7d' | '30d' | 'all'>('30d');
   const [copySuccess, setCopySuccess] = useState(false);
+  const [showQrModal, setShowQrModal] = useState(false);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -155,6 +207,46 @@ const AnalyticsPage: React.FC = () => {
     );
   }
 
+  const handleDownload = (format: 'png' | 'svg') => {
+    if (!link) return;
+    const qrUrl = `https://qr-generator.online/r/${link.short_code}`;
+    const style = link.qr_style || {};
+    const qr = new QRCodeStyling({
+      width: 1200,
+      height: 1200,
+      data: qrUrl,
+      margin: 12,
+      dotsOptions: {
+        color: style.fgColor || '#1E1E1E',
+        type: (style.dotStyle as any) || 'rounded',
+      },
+      backgroundOptions: {
+        color: style.bgColor || '#ffffff',
+      },
+      cornersSquareOptions: {
+        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        type: (style.cornerSquareStyle as any) || 'extra-rounded',
+      },
+      cornersDotOptions: {
+        color: style.cornerDotColor || style.fgColor || '#2B6F53',
+        type: (style.cornerDotStyle as any) || 'dot',
+      },
+      image: style.logoSrc || undefined,
+      imageOptions: {
+        crossOrigin: 'anonymous',
+        margin: 6,
+        imageSize: 0.35,
+        hideBackgroundDots: true,
+      },
+      qrOptions: {
+        errorCorrectionLevel: 'H',
+      },
+      type: format === 'svg' ? 'svg' : 'canvas',
+    });
+
+    qr.download({ name: `dynamic_qr_${link.short_code}`, extension: format });
+  };
+
   const maxTimelineScans = Math.max(...filteredTimeline.map(t => t.scans), 1);
 
   return (
@@ -163,47 +255,58 @@ const AnalyticsPage: React.FC = () => {
         
         {/* Top Header Card */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <Link
-                to="/dashboard"
-                className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 font-medium transition-colors"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                Dynamic Studio
-              </Link>
-              <span className="text-slate-300">/</span>
-              <span className="text-xs text-slate-700 font-semibold truncate max-w-[200px]">
-                {link.title || link.short_code}
-              </span>
-            </div>
+          <div className="flex items-start sm:items-center gap-4 min-w-0">
+            {/* Custom Design QR Thumbnail */}
+            <button
+              onClick={() => setShowQrModal(true)}
+              className="w-16 h-16 shrink-0 bg-white hover:bg-slate-50 rounded-2xl p-1.5 border border-slate-200 flex items-center justify-center transition-all group shadow-2xs hover:shadow-xs"
+              title="Click to zoom custom QR design"
+            >
+              <DynamicQrThumbnail link={link} size={54} />
+            </button>
 
-            <div className="flex items-center gap-3 flex-wrap">
-              <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
-                {link.title || `Campaign: ${link.short_code}`}
-              </h1>
-              <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold ${
-                link.is_active !== false ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/60' : 'bg-slate-100 text-slate-600 border border-slate-200'
-              }`}>
-                <span className={`w-1.5 h-1.5 rounded-full ${link.is_active !== false ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'}`} />
-                {link.is_active !== false ? 'Live & Tracking' : 'Paused'}
-              </span>
-            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Link
+                  to="/dashboard"
+                  className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 font-medium transition-colors"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                  </svg>
+                  Dynamic Studio
+                </Link>
+                <span className="text-slate-300">/</span>
+                <span className="text-xs text-slate-700 font-semibold truncate max-w-[200px]">
+                  {link.title || link.short_code}
+                </span>
+              </div>
 
-            <div className="flex items-center gap-2 mt-2 text-xs text-slate-500 font-mono flex-wrap">
-              <span>https://qr-generator.online/r/{link.short_code}</span>
-              <button
-                onClick={handleCopyLink}
-                className="text-slate-400 hover:text-accent font-sans text-xs transition-colors"
-              >
-                {copySuccess ? '✓ Copied' : 'Copy link'}
-              </button>
-              <span className="text-slate-300 font-sans">•</span>
-              <span className="font-sans text-slate-400 truncate max-w-sm">
-                Target: <span className="text-slate-700 font-medium">{link.target_url}</span>
-              </span>
+              <div className="flex items-center gap-3 flex-wrap">
+                <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
+                  {link.title || `Campaign: ${link.short_code}`}
+                </h1>
+                <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold ${
+                  link.is_active !== false ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/60' : 'bg-slate-100 text-slate-600 border border-slate-200'
+                }`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${link.is_active !== false ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'}`} />
+                  {link.is_active !== false ? 'Live & Tracking' : 'Paused'}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2 mt-2 text-xs text-slate-500 font-mono flex-wrap">
+                <span>https://qr-generator.online/r/{link.short_code}</span>
+                <button
+                  onClick={handleCopyLink}
+                  className="text-slate-400 hover:text-accent font-sans text-xs transition-colors"
+                >
+                  {copySuccess ? '✓ Copied' : 'Copy link'}
+                </button>
+                <span className="text-slate-300 font-sans">•</span>
+                <span className="font-sans text-slate-400 truncate max-w-sm">
+                  Target: <span className="text-slate-700 font-medium">{link.target_url}</span>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -598,6 +701,48 @@ const AnalyticsPage: React.FC = () => {
             </div>
           )}
         </div>
+
+        {/* Custom Design QR Zoom / Download Modal */}
+        {showQrModal && link && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
+            <div className="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-slate-200 text-center">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-sm font-bold text-slate-900 truncate max-w-[220px]">
+                  {link.title || link.short_code}
+                </h3>
+                <button
+                  onClick={() => setShowQrModal(false)}
+                  className="text-slate-400 hover:text-slate-600 p-1 rounded-lg"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="p-6 bg-white border border-slate-200 rounded-2xl mb-4 flex items-center justify-center shadow-xs">
+                <DynamicQrThumbnail link={link} size={220} />
+              </div>
+
+              <p className="text-xs text-slate-400 font-mono mb-4 truncate">
+                https://qr-generator.online/r/{link.short_code}
+              </p>
+
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleDownload('png')}
+                  className="flex-1 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl transition-colors shadow-xs"
+                >
+                  Download PNG
+                </button>
+                <button
+                  onClick={() => handleDownload('svg')}
+                  className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-colors"
+                >
+                  Download SVG
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>

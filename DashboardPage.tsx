@@ -9,6 +9,56 @@ import {
   DynamicLink
 } from './services/dynamicQrService';
 
+// Custom QR Thumbnail Renderer preserving full styling, colors, dot styles, and logos
+const DynamicQrThumbnail: React.FC<{ link: DynamicLink; size?: number; className?: string }> = ({ link, size = 56, className = '' }) => {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (!containerRef.current) return;
+    containerRef.current.innerHTML = '';
+
+    const qrUrl = `https://qr-generator.online/r/${link.short_code}`;
+    const style = link.qr_style || {};
+
+    const qr = new QRCodeStyling({
+      width: size,
+      height: size,
+      data: qrUrl,
+      margin: size > 100 ? 8 : 2,
+      dotsOptions: {
+        color: style.fgColor || '#1E1E1E',
+        type: (style.dotStyle as any) || 'rounded',
+      },
+      backgroundOptions: {
+        color: style.bgColor || '#ffffff',
+      },
+      cornersSquareOptions: {
+        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        type: (style.cornerSquareStyle as any) || 'extra-rounded',
+      },
+      cornersDotOptions: {
+        color: style.cornerDotColor || style.fgColor || '#2B6F53',
+        type: (style.cornerDotStyle as any) || 'dot',
+      },
+      image: style.logoSrc || undefined,
+      imageOptions: {
+        crossOrigin: 'anonymous',
+        margin: size > 100 ? 4 : 1,
+        imageSize: 0.35,
+        hideBackgroundDots: true,
+      },
+      qrOptions: {
+        errorCorrectionLevel: 'H',
+      },
+      type: 'svg',
+    });
+
+    qr.append(containerRef.current);
+  }, [link, size]);
+
+  return <div ref={containerRef} className={`flex items-center justify-center overflow-hidden ${className}`} />;
+};
+
 const DashboardPage: React.FC = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
@@ -91,19 +141,41 @@ const DashboardPage: React.FC = () => {
     setTimeout(() => setCopySuccess(null), 2000);
   };
 
-  // Download QR Code
+  // Download QR Code with full custom design & logo
   const handleDownload = (link: DynamicLink, format: 'png' | 'svg') => {
     const qrUrl = `https://qr-generator.online/r/${link.short_code}`;
+    const style = link.qr_style || {};
     const qr = new QRCodeStyling({
-      width: 1000,
-      height: 1000,
+      width: 1200,
+      height: 1200,
       data: qrUrl,
-      dotsOptions: { color: link.qr_style?.fgColor || '#1E1E1E', type: link.qr_style?.dotStyle || 'rounded' },
-      backgroundOptions: { color: link.qr_style?.bgColor || '#ffffff' },
-      cornersSquareOptions: { color: link.qr_style?.cornerSquareColor || '#1E1E1E', type: link.qr_style?.cornerSquareStyle || 'extra-rounded' },
-      cornersDotOptions: { color: link.qr_style?.cornerDotColor || '#2B6F53', type: link.qr_style?.cornerDotStyle || 'dot' },
-      qrOptions: { errorCorrectionLevel: 'H' },
-      type: 'svg',
+      margin: 12,
+      dotsOptions: {
+        color: style.fgColor || '#1E1E1E',
+        type: (style.dotStyle as any) || 'rounded',
+      },
+      backgroundOptions: {
+        color: style.bgColor || '#ffffff',
+      },
+      cornersSquareOptions: {
+        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        type: (style.cornerSquareStyle as any) || 'extra-rounded',
+      },
+      cornersDotOptions: {
+        color: style.cornerDotColor || style.fgColor || '#2B6F53',
+        type: (style.cornerDotStyle as any) || 'dot',
+      },
+      image: style.logoSrc || undefined,
+      imageOptions: {
+        crossOrigin: 'anonymous',
+        margin: 6,
+        imageSize: 0.35,
+        hideBackgroundDots: true,
+      },
+      qrOptions: {
+        errorCorrectionLevel: 'H',
+      },
+      type: format === 'svg' ? 'svg' : 'canvas',
     });
 
     qr.download({ name: `dynamic_qr_${link.short_code}`, extension: format });
@@ -298,14 +370,10 @@ const DashboardPage: React.FC = () => {
                 <div className="flex items-start sm:items-center gap-4 min-w-0 flex-1">
                   <button
                     onClick={() => setPreviewQrLink(link)}
-                    className="w-14 h-14 shrink-0 bg-slate-50 hover:bg-slate-100 rounded-xl p-1 border border-slate-200 flex items-center justify-center transition-colors group relative"
-                    title="Click to preview QR code"
+                    className="w-14 h-14 shrink-0 bg-white hover:bg-slate-50 rounded-xl p-1 border border-slate-200 flex items-center justify-center transition-all group shadow-2xs hover:shadow-xs"
+                    title="Click to preview custom QR design"
                   >
-                    <img
-                      src={`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://qr-generator.online/r/${link.short_code}`}
-                      alt="QR Preview"
-                      className="w-full h-full object-contain rounded"
-                    />
+                    <DynamicQrThumbnail link={link} size={50} />
                   </button>
                   
                   <div className="min-w-0 flex-1">
@@ -516,12 +584,8 @@ const DashboardPage: React.FC = () => {
                 </button>
               </div>
 
-              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl mb-4 flex items-center justify-center">
-                <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://qr-generator.online/r/${previewQrLink.short_code}`}
-                  alt="High Res QR"
-                  className="w-48 h-48 object-contain"
-                />
+              <div className="p-6 bg-white border border-slate-200 rounded-2xl mb-4 flex items-center justify-center shadow-xs">
+                <DynamicQrThumbnail link={previewQrLink} size={220} />
               </div>
 
               <p className="text-xs text-slate-400 font-mono mb-4 truncate">
