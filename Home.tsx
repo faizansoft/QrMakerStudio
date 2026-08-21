@@ -2046,8 +2046,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
       <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-200">
         <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">All 13 QR Code Generators</h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">Explore all specialized QR Code generators to convert websites, WiFi, vCards, emails, and locations into scannable barcodes.</p>
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">All {TABS.length} QR Code Generators</h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">Explore all {TABS.length} specialized QR Code generators to convert websites, WiFi, vCards, documents, social media, payment links, and locations into scannable barcodes.</p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">

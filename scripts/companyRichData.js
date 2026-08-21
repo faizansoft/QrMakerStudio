@@ -8,7 +8,7 @@ export const COMPANY_RICH_DATA = {
     technicalOverview: {
       title: 'The Enterprise Standard for Free, Privacy-First QR Code Generation',
       paragraphs: [
-        'QR Generator Online is the web’s premier client-side 2D barcode generation platform, engineered from the ground up to deliver uncompromising visual customization, industrial-grade Reed-Solomon error correction, and 100% cryptographic data sovereignty. Standardized globally under ISO/IEC 18004, our platform enables individuals, design agencies, small businesses, and multinational enterprises to generate permanent, scannable QR codes for 13 distinct data schemas with zero subscription walls and zero scan expiration limits.',
+        'QR Generator Online is the web’s premier client-side 2D barcode generation platform, engineered from the ground up to deliver uncompromising visual customization, industrial-grade Reed-Solomon error correction, and 100% cryptographic data sovereignty. Standardized globally under ISO/IEC 18004, our platform enables individuals, design agencies, small businesses, and multinational enterprises to generate permanent, scannable QR codes for all specialized data schemas with zero subscription walls and zero scan expiration limits.',
         'Unlike predatory QR generator services that quietly route your traffic through proprietary redirect servers (only to hostage your printed marketing materials behind sudden $30/month subscription paywalls after 14 days), QR Generator Online operates on a direct-encode static architecture. When you generate a URL, vCard, WiFi, or text QR code on our platform, the raw data is compiled directly into the visual matrix modules in your web browser memory. This guarantees that your physical marketing assets remain functional permanently for the entire lifetime of your printed materials.',
         'With support for Level H error correction (30% algebraic recovery), multi-color gradient palettes, custom module geometries, independent corner eye styling, and lossless vector SVG/EPS exports, QR Generator Online provides the complete toolkit required for luxury packaging, commercial prepress, restaurant tabletop ordering, and digital contact networking.'
       ]
@@ -26,12 +26,12 @@ export const COMPANY_RICH_DATA = {
       ]
     },
     steps: [
-      { number: 1, title: 'Select Data Type & Input Content', description: 'Choose from 13 specialized QR generators (URL, WiFi, vCard, WhatsApp, Facebook, Email, SMS, Phone, Location, Event, Crypto, Text, Google Forms) and enter your data payload.' },
+      { number: 1, title: 'Select Data Type & Input Content', description: 'Choose from our specialized QR generators (URL, WiFi, vCard, PDF, WhatsApp, Social Media, Email, SMS, Phone, Location, Event, Crypto, Text, Google Forms, Payments) and enter your data payload.' },
       { number: 2, title: 'Customize Visual Geometry, Colors & Brand Logo', description: 'Apply your corporate palette, select rounded or classy dot patterns, style corner eyes independently, and upload your central brand logo.' },
       { number: 3, title: 'Export Lossless Vector SVG or 4K PNG', description: 'Download print-ready vector SVG for commercial offset printing, packaging, and banners, or 2048x2048px PNG at 300 DPI for web and digital channels.' }
     ],
     features: [
-      { title: '13 Specialized QR Generator Tools', description: 'Complete support for web URLs, WiFi networks, vCard 3.0 contacts, WhatsApp chats, GPS navigation, cryptocurrency, and more.' },
+      { title: 'Complete Suite of QR Generator Tools', description: 'Complete support for web URLs, WiFi networks, vCard 3.0 contacts, PDF documents, WhatsApp chats, GPS navigation, payments, and more.' },
       { title: 'Level H Reed-Solomon Error Correction', description: 'Embed your company logo or profile icon with 30% mathematical data recovery redundancy.' },
       { title: 'Lossless Vector SVG & EPS Print Downloads', description: 'Scale your QR graphics infinitely from tiny business cards to giant building murals with razor-sharp precision.' },
       { title: '100% Client-Side Cryptographic Privacy', description: 'All QR generation algorithms execute locally in your web browser memory. Your links, credentials, and parameters are never uploaded.' }
@@ -70,7 +70,7 @@ export const COMPANY_RICH_DATA = {
       { q: 'Are QR codes generated on QR Generator Online really 100% free forever?', a: 'Yes! All static QR codes generated on QR Generator Online are 100% free with unlimited scans, permanent lifetime validity, and zero subscription paywalls.' },
       { q: 'Why do other QR generator websites expire my codes after 14 days?', a: 'Many commercial QR platforms use dynamic redirect links that route your scans through their servers. After a trial period, they deactivate the redirect until you pay an expensive monthly subscription ($15 - $40/mo). QR Generator Online creates permanent static codes that encode data directly into the barcode, meaning they can never be held hostage.' },
       { q: 'What file formats can I download from QR Generator Online?', a: 'You can download print-ready vector SVG files (infinitely scalable for commercial prepress) and ultra-high-resolution 2048x2048px PNG raster images at 300 DPI.' },
-      { q: 'Can I add my company logo to the center of any QR code?', a: 'Yes! You can upload custom PNG, SVG, or JPEG logos across all 13 QR generator types. Our engine automatically applies Level H (30%) error correction and a quiet mask buffer around your logo.' },
+      { q: 'Can I add my company logo to the center of any QR code?', a: 'Yes! You can upload custom PNG, SVG, or JPEG logos across all specialized QR generator types. Our engine automatically applies Level H (30%) error correction and a quiet mask buffer around your logo.' },
       { q: 'Is my data secure and private when using QR Generator Online?', a: 'Yes. All QR generation algorithms execute locally inside your web browser memory via client-side JavaScript. Your URLs, passwords, contact details, and images are never uploaded or stored on external servers.' },
       { q: 'Do I need to install an app on my phone to scan these QR codes?', a: 'No. All modern iPhones running iOS 11+ and Android devices running Android 9+ scan QR codes natively using the built-in camera app without any third-party software.' },
       { q: 'How large should I print my QR code for a banner or poster?', a: 'Apply the 10:1 optical rule: Distance to user / 10 = Minimum QR width. For a poster viewed from 1.5 meters away, print the code at least 15 cm x 15 cm.' },
@@ -103,7 +103,7 @@ export const COMPANY_RICH_DATA = {
       ]
     },
     steps: [
-      { number: 1, title: 'Choose Any of Our 13 Specialized QR Tools', description: 'Select URL, vCard, WiFi, WhatsApp, Facebook, Email, SMS, Phone, Location, Event, Crypto, Text, or Google Forms with full enterprise feature access.' },
+      { number: 1, title: 'Choose Any Specialized QR Tool', description: 'Select URL, vCard, WiFi, PDF, WhatsApp, Social Media, Email, SMS, Phone, Location, Event, Crypto, Text, Payments, or Google Forms with full enterprise feature access.' },
       { number: 2, title: 'Customize Visual Branding & Embed Your Logo', description: 'Apply brand colors, customize dot patterns, style corner eyes independently, and upload your central logo using Level H error correction.' },
       { number: 3, title: 'Download Production-Ready Vector SVG Files', description: 'Click Download SVG or PNG to instantly receive your high-resolution assets with zero payment prompts or account creation barriers.' }
     ],
@@ -118,7 +118,7 @@ export const COMPANY_RICH_DATA = {
       description: 'Every advanced feature is available to 100% of users with zero paywalls.',
       headers: ['Capability Area', 'Inclusion Status', 'Technical Specifications', 'Commercial Scope'],
       rows: [
-        ['All 13 QR Data Generators', '100% Free & Uncapped', 'ISO/IEC 18004, RFC 2426, RFC 5545, BIP-0021', 'Unlimited Personal & Commercial'],
+        ['All Specialized QR Data Generators', '100% Free & Uncapped', 'ISO/IEC 18004, RFC 2426, RFC 5545, BIP-0021', 'Unlimited Personal & Commercial'],
         ['Vector SVG & EPS Export', '100% Free & Uncapped', 'Lossless mathematical vector paths', 'Commercial Prepress, Packaging, CNC'],
         ['Ultra-HD 4K PNG Output', '100% Free & Uncapped', '2048 x 2048 px at 300+ DPI', 'Digital Marketing, 4K Displays, Web'],
         ['Level H Logo Embedding', '100% Free & Uncapped', '30% Reed-Solomon algebraic redundancy', 'Branded Packaging & Luxury Cards'],
@@ -296,7 +296,7 @@ export const COMPANY_RICH_DATA = {
       { q: 'Who founded QR Generator Online?', a: 'QR Generator Online was built by a team of software engineers, prepress designers, and privacy advocates dedicated to creating an honest, open alternative to predatory subscription QR services.' },
       { q: 'How does your client-side architecture protect user privacy?', a: 'All QR generation algorithms execute locally inside your web browser memory using JavaScript. Your destination URLs, contact information, and WiFi passwords are never sent to or stored on our servers.' },
       { q: 'Can enterprise businesses use QR Generator Online for commercial packaging?', a: 'Yes! Thousands of commercial brands and prepress departments use our vector SVG QR codes on packaging, retail displays, books, and advertising campaigns worldwide.' },
-      { q: 'Are there any hidden costs, pro accounts, or credit card requirements?', a: 'None. All 13 QR generator tools, custom styling options, logo embeddings, and vector SVG downloads are 100% free for all users.' },
+      { q: 'Are there any hidden costs, pro accounts, or credit card requirements?', a: 'None. All specialized QR generator tools, custom styling options, logo embeddings, and vector SVG downloads are 100% free for all users.' },
       { q: 'How do you ensure generated QR codes scan reliably on all devices?', a: 'Our generation engine strictly enforces ISO/IEC 18004 standards, mandatory 4-module quiet zones, and Level H Reed-Solomon error correction for logo embeds.' },
       { q: 'Can I contribute feedback or suggest new features?', a: 'Yes! We love hearing from our community. Visit our Contact page to share feedback, feature requests, or prepress suggestions.' },
       { q: 'Where are your servers hosted?', a: 'Our static web assets are served via high-speed global edge Content Delivery Networks (CDNs) for rapid loading across North America, Europe, Asia, and worldwide.' }
@@ -472,7 +472,7 @@ export const COMPANY_RICH_DATA = {
       ]
     },
     steps: [
-      { number: 1, title: 'Generate Your Custom QR Code Artwork', description: 'Create your barcode using any of our 13 generator tools with full styling and logo embedding capabilities.' },
+      { number: 1, title: 'Generate Your Custom QR Code Artwork', description: 'Create your barcode using any of our specialized generator tools with full styling and logo embedding capabilities.' },
       { number: 2, title: 'Obtain Instant Worldwide Commercial License', description: 'Upon generation, you automatically receive a perpetual, royalty-free, worldwide license to use the barcode on any physical or digital medium.' },
       { number: 3, title: 'Deploy Across Commercial Products & Campaigns', description: 'Incorporate your QR codes into product packaging, television broadcasts, retail displays, and commercial advertising with zero licensing fees.' }
     ],

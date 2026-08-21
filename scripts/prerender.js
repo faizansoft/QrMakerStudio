@@ -512,7 +512,7 @@ const ROUTES = [
       {
         title: 'Free Forever vs Enterprise Pro Features',
         paragraphs: [
-          'Our Core Free Plan provides unlimited static QR code generation across all 13 tool types with no scan limits, no watermarks, and vector SVG exports at zero cost.',
+          'Our Core Free Plan provides unlimited static QR code generation across all specialized tool types with no scan limits, no watermarks, and vector SVG exports at zero cost.',
           'For marketing teams and enterprises needing editable dynamic URLs, password protection, and detailed scan analytics, our Pro tier offers flexible, affordable billing.'
         ]
       }

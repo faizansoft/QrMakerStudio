@@ -87,12 +87,12 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
 
-        {/* ──── SECTION 2: COMPLETE INDEX OF ALL 13 QR CODE TYPES ──── */}
+        {/* ──── SECTION 2: COMPLETE INDEX OF ALL SPECIALIZED QR CODE TYPES ──── */}
         <section className="space-y-8 bg-gray-50 p-8 md:p-12 rounded-3xl border border-neutral-200">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <h2 className="text-3xl font-bold text-gray-900">Supported Specialized QR Code Types</h2>
             <p className="text-gray-600 text-base">
-              Explore our 13 specialized QR Code generators, each engineered for a specific communication channel:
+              Explore our complete suite of specialized QR Code generators, each engineered for a specific communication channel:
             </p>
           </div>
 
