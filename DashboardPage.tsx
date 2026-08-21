@@ -8,55 +8,33 @@ import {
   deleteDynamicLink,
   DynamicLink
 } from './services/dynamicQrService';
+import { FramedQrView, buildFramedSvg, renderFramedCanvas, FrameStyle } from './components/FramedQrView';
 
-// Custom QR Thumbnail Renderer preserving full styling, colors, dot styles, and logos
-const DynamicQrThumbnail: React.FC<{ link: DynamicLink; size?: number; className?: string }> = ({ link, size = 56, className = '' }) => {
-  const containerRef = React.useRef<HTMLDivElement>(null);
+// Custom QR Thumbnail / Preview Renderer preserving full styling, colors, dot styles, logos, and custom frames
+const DynamicQrThumbnail: React.FC<{ link: DynamicLink; isModal?: boolean; className?: string }> = ({ link, isModal = false, className = '' }) => {
+  const qrUrl = `https://qr-generator.online/r/${link.short_code}`;
+  const style = link.qr_style || {};
 
-  React.useEffect(() => {
-    if (!containerRef.current) return;
-    containerRef.current.innerHTML = '';
-
-    const qrUrl = `https://qr-generator.online/r/${link.short_code}`;
-    const style = link.qr_style || {};
-
-    const qr = new QRCodeStyling({
-      width: size,
-      height: size,
-      data: qrUrl,
-      margin: size > 100 ? 8 : 2,
-      dotsOptions: {
-        color: style.fgColor || '#1E1E1E',
-        type: (style.dotStyle as any) || 'rounded',
-      },
-      backgroundOptions: {
-        color: style.bgColor || '#ffffff',
-      },
-      cornersSquareOptions: {
-        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
-        type: (style.cornerSquareStyle as any) || 'extra-rounded',
-      },
-      cornersDotOptions: {
-        color: style.cornerDotColor || style.fgColor || '#2B6F53',
-        type: (style.cornerDotStyle as any) || 'dot',
-      },
-      image: style.logoSrc || undefined,
-      imageOptions: {
-        crossOrigin: 'anonymous',
-        margin: size > 100 ? 4 : 1,
-        imageSize: 0.35,
-        hideBackgroundDots: true,
-      },
-      qrOptions: {
-        errorCorrectionLevel: 'H',
-      },
-      type: 'svg',
-    });
-
-    qr.append(containerRef.current);
-  }, [link, size]);
-
-  return <div ref={containerRef} className={`flex items-center justify-center overflow-hidden ${className}`} />;
+  return (
+    <div className={`w-full flex items-center justify-center overflow-hidden select-none ${isModal ? 'h-[230px] max-h-[240px]' : 'h-12 w-12'} ${className}`}>
+      <FramedQrView
+        frame={style.frame || 'none'}
+        text={style.frameText || 'SCAN ME'}
+        frameColor={style.frameColor || style.fgColor || '#1E1E1E'}
+        frameTextColor={style.frameTextColor || '#ffffff'}
+        fgColor={style.fgColor || '#2B6F53'}
+        bgColor={style.bgColor || '#ffffff'}
+        cornerSquareColor={style.cornerSquareColor || style.fgColor || '#1E1E1E'}
+        cornerDotColor={style.cornerDotColor || style.fgColor || '#2B6F53'}
+        dotStyle={style.dotStyle || 'rounded'}
+        cornerSquareStyle={style.cornerSquareStyle || 'extra-rounded'}
+        cornerDotStyle={style.cornerDotStyle || 'dot'}
+        logoSrc={style.logoSrc || null}
+        link={qrUrl}
+        isThumbnail={!isModal}
+      />
+    </div>
+  );
 };
 
 const DashboardPage: React.FC = () => {
@@ -141,10 +119,12 @@ const DashboardPage: React.FC = () => {
     setTimeout(() => setCopySuccess(null), 2000);
   };
 
-  // Download QR Code with full custom design & logo
-  const handleDownload = (link: DynamicLink, format: 'png' | 'svg') => {
+  // Download QR Code with full custom design, frame & logo
+  const handleDownload = async (link: DynamicLink, format: 'png' | 'svg') => {
     const qrUrl = `https://qr-generator.online/r/${link.short_code}`;
     const style = link.qr_style || {};
+    const namePrefix = `dynamic_qr_${link.short_code}`;
+
     const qr = new QRCodeStyling({
       width: 1200,
       height: 1200,
@@ -178,7 +158,72 @@ const DashboardPage: React.FC = () => {
       type: format === 'svg' ? 'svg' : 'canvas',
     });
 
-    qr.download({ name: `dynamic_qr_${link.short_code}`, extension: format });
+    const frame = (style.frame || 'none') as FrameStyle;
+    if (frame === 'none') {
+      qr.download({ name: namePrefix, extension: format });
+      return;
+    }
+
+    try {
+      if (format === 'svg') {
+        const rawSvgBlob = (await qr.getRawData('svg')) as Blob | null;
+        if (!rawSvgBlob) {
+          qr.download({ name: namePrefix, extension: 'svg' });
+          return;
+        }
+        const rawSvgText = await rawSvgBlob.text();
+        const framedSvg = buildFramedSvg(
+          rawSvgText,
+          frame,
+          style.frameText || 'SCAN ME',
+          style.fgColor || '#2B6F53',
+          style.bgColor || '#ffffff',
+          style.cornerSquareColor || style.fgColor || '#1E1E1E',
+          style.frameColor || style.fgColor || '#1E1E1E',
+          style.frameTextColor || '#ffffff'
+        );
+        const svgBlob = new Blob([framedSvg], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(svgBlob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${namePrefix}-framed.svg`;
+        a.click();
+        URL.revokeObjectURL(url);
+        return;
+      }
+
+      const rawBlob = (await qr.getRawData('png')) as Blob | null;
+      if (!rawBlob) {
+        qr.download({ name: namePrefix, extension: format });
+        return;
+      }
+
+      const canvas = await renderFramedCanvas(
+        rawBlob,
+        frame,
+        style.frameText || 'SCAN ME',
+        style.fgColor || '#2B6F53',
+        style.bgColor || '#ffffff',
+        style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        style.frameColor || style.fgColor || '#1E1E1E',
+        style.frameTextColor || '#ffffff'
+      );
+      
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          qr.download({ name: namePrefix, extension: format });
+          return;
+        }
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${namePrefix}-framed.${format}`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }, 'image/png', 0.95);
+    } catch {
+      qr.download({ name: namePrefix, extension: format });
+    }
   };
 
   const totalScans = links.reduce((acc, l) => acc + (l.total_clicks || 0), 0);
@@ -373,7 +418,7 @@ const DashboardPage: React.FC = () => {
                     className="w-14 h-14 shrink-0 bg-white hover:bg-slate-50 rounded-xl p-1 border border-slate-200 flex items-center justify-center transition-all group shadow-2xs hover:shadow-xs"
                     title="Click to preview custom QR design"
                   >
-                    <DynamicQrThumbnail link={link} size={50} />
+                    <DynamicQrThumbnail link={link} />
                   </button>
                   
                   <div className="min-w-0 flex-1">
@@ -584,8 +629,8 @@ const DashboardPage: React.FC = () => {
                 </button>
               </div>
 
-              <div className="p-6 bg-white border border-slate-200 rounded-2xl mb-4 flex items-center justify-center shadow-xs">
-                <DynamicQrThumbnail link={previewQrLink} size={220} />
+              <div className="p-4 bg-white border border-slate-200 rounded-2xl mb-4 flex items-center justify-center shadow-xs">
+                <DynamicQrThumbnail link={previewQrLink} isModal={true} />
               </div>
 
               <p className="text-xs text-slate-400 font-mono mb-4 truncate">

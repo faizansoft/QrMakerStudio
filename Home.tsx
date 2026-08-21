@@ -305,55 +305,30 @@ const INDUSTRIES = [
   { title: 'Events & Conferences', description: 'Streamline event check-ins, share schedules, and connect attendees to registration forms.' },
 ];
 
-
-// Custom Dynamic QR Modal Preview Component preserving full custom colors, dot styles, and uploaded logo
+// Custom Dynamic QR Modal Preview Component preserving full custom frame, colors, dot styles, and uploaded logo
 const DynamicModalQrPreview: React.FC<{ link: DynamicLink }> = ({ link }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const qrUrl = `https://qr-generator.online/r/${link.short_code}`;
+  const style = link.qr_style || {};
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-    containerRef.current.innerHTML = '';
-
-    const qrUrl = `https://qr-generator.online/r/${link.short_code}`;
-    const style = link.qr_style || {};
-
-    const qr = new QRCodeStyling({
-      width: 150,
-      height: 150,
-      data: qrUrl,
-      margin: 4,
-      dotsOptions: {
-        color: style.fgColor || '#1E1E1E',
-        type: (style.dotStyle as any) || 'rounded',
-      },
-      backgroundOptions: {
-        color: style.bgColor || '#ffffff',
-      },
-      cornersSquareOptions: {
-        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
-        type: (style.cornerSquareStyle as any) || 'extra-rounded',
-      },
-      cornersDotOptions: {
-        color: style.cornerDotColor || style.fgColor || '#2B6F53',
-        type: (style.cornerDotStyle as any) || 'dot',
-      },
-      image: style.logoSrc || undefined,
-      imageOptions: {
-        crossOrigin: 'anonymous',
-        margin: 3,
-        imageSize: 0.35,
-        hideBackgroundDots: true,
-      },
-      qrOptions: {
-        errorCorrectionLevel: 'H',
-      },
-      type: 'svg',
-    });
-
-    qr.append(containerRef.current);
-  }, [link]);
-
-  return <div ref={containerRef} className="w-36 h-36 flex items-center justify-center rounded-xl bg-white p-1 border border-slate-200 shadow-2xs mb-3" />;
+  return (
+    <div className="w-full max-w-[200px] h-[210px] flex items-center justify-center p-2 rounded-2xl bg-white border border-slate-200 shadow-2xs mb-3">
+      <FramedQrView
+        frame={style.frame || 'none'}
+        text={style.frameText || 'SCAN ME'}
+        frameColor={style.frameColor || style.fgColor || '#1E1E1E'}
+        frameTextColor={style.frameTextColor || '#ffffff'}
+        fgColor={style.fgColor || '#2B6F53'}
+        bgColor={style.bgColor || '#ffffff'}
+        cornerSquareColor={style.cornerSquareColor || style.fgColor || '#1E1E1E'}
+        cornerDotColor={style.cornerDotColor || style.fgColor || '#2B6F53'}
+        dotStyle={style.dotStyle || 'rounded'}
+        cornerSquareStyle={style.cornerSquareStyle || 'extra-rounded'}
+        cornerDotStyle={style.cornerDotStyle || 'dot'}
+        logoSrc={style.logoSrc || null}
+        link={qrUrl}
+      />
+    </div>
+  );
 };
 
 // ── Frame Styles & Customization (Bitly-Grade Premium Frames) ──
@@ -820,7 +795,7 @@ const FramedQrView: React.FC<{
     <div
       className={`w-full flex items-center justify-center select-none overflow-hidden transition-all ${
         isThumbnail ? 'h-20 max-h-20' : 'h-[230px] max-h-[240px]'
-      } [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:w-auto [&>svg]:h-auto [&>svg]:object-contain [&>svg]:drop-shadow-sm`}
+      } [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:w-auto [&>svg]:h-auto [&>svg]:object-contain`}
       dangerouslySetInnerHTML={{ __html: svgHtml }}
     />
   );
@@ -1307,6 +1282,10 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
       title: dynamicTitle.trim() || `${currentSeo.title} Campaign`,
       qrType: activeTab,
       qrStyle: {
+        frame: selectedFrame,
+        frameText,
+        frameColor,
+        frameTextColor,
         fgColor,
         bgColor,
         cornerSquareColor,
@@ -1335,10 +1314,12 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     setTimeout(() => setCopyShortUrlSuccess(false), 2000);
   };
 
-  const handleDownloadSavedDynamic = (format: 'png' | 'svg') => {
+  const handleDownloadSavedDynamic = async (format: 'png' | 'svg') => {
     if (!savedDynamicLink) return;
     const qrUrl = `https://qr-generator.online/r/${savedDynamicLink.short_code}`;
     const style = savedDynamicLink.qr_style || {};
+    const namePrefix = `dynamic_qr_${savedDynamicLink.short_code}`;
+
     const qr = new QRCodeStyling({
       width: 1200,
       height: 1200,
@@ -1372,7 +1353,72 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
       type: format === 'svg' ? 'svg' : 'canvas',
     });
 
-    qr.download({ name: `dynamic_qr_${savedDynamicLink.short_code}`, extension: format });
+    const frame = (style.frame || 'none') as FrameStyle;
+    if (frame === 'none') {
+      qr.download({ name: namePrefix, extension: format });
+      return;
+    }
+
+    try {
+      if (format === 'svg') {
+        const rawSvgBlob = (await qr.getRawData('svg')) as Blob | null;
+        if (!rawSvgBlob) {
+          qr.download({ name: namePrefix, extension: 'svg' });
+          return;
+        }
+        const rawSvgText = await rawSvgBlob.text();
+        const framedSvg = buildFramedSvg(
+          rawSvgText,
+          frame,
+          style.frameText || 'SCAN ME',
+          style.fgColor || '#2B6F53',
+          style.bgColor || '#ffffff',
+          style.cornerSquareColor || style.fgColor || '#1E1E1E',
+          style.frameColor || style.fgColor || '#1E1E1E',
+          style.frameTextColor || '#ffffff'
+        );
+        const svgBlob = new Blob([framedSvg], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(svgBlob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${namePrefix}-framed.svg`;
+        a.click();
+        URL.revokeObjectURL(url);
+        return;
+      }
+
+      const rawBlob = (await qr.getRawData('png')) as Blob | null;
+      if (!rawBlob) {
+        qr.download({ name: namePrefix, extension: format });
+        return;
+      }
+
+      const canvas = await renderFramedCanvas(
+        rawBlob,
+        frame,
+        style.frameText || 'SCAN ME',
+        style.fgColor || '#2B6F53',
+        style.bgColor || '#ffffff',
+        style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        style.frameColor || style.fgColor || '#1E1E1E',
+        style.frameTextColor || '#ffffff'
+      );
+      
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          qr.download({ name: namePrefix, extension: format });
+          return;
+        }
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${namePrefix}-framed.${format}`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }, 'image/png', 0.95);
+    } catch {
+      qr.download({ name: namePrefix, extension: format });
+    }
   };
 
   // Logo File Upload
