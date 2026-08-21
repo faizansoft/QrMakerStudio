@@ -374,7 +374,7 @@ export const Header: React.FC = () => {
               QR Code Generator
             </Link>
             <Link to={user ? "/dashboard" : "/login"} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-bold text-emerald-700 hover:bg-emerald-50 rounded-lg">
-              ⚡ My QR Codes & Analytics
+              My QR Codes & Analytics
             </Link>
             <div className="px-3 py-2">
               <p className="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2">QR Code Types</p>

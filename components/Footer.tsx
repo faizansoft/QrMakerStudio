@@ -76,9 +76,9 @@ export const Footer: React.FC = () => {
             <div>
               <h4 className="text-sm font-bold text-white mb-4 tracking-wide">Free Tools & Features</h4>
               <ul className="space-y-2.5">
-                <li><Link to="/bulk-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">⚡ Bulk QR Generator</Link></li>
-                <li><Link to="/qr-code-scanner" className="text-sm text-neutral-400 hover:text-white transition-colors">📷 QR Code Scanner</Link></li>
-                <li><Link to="/social-media-qr-code" className="text-sm text-neutral-400 hover:text-white transition-colors">🌐 Social Media QR</Link></li>
+                <li><Link to="/bulk-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">Bulk QR Generator</Link></li>
+                <li><Link to="/qr-code-scanner" className="text-sm text-neutral-400 hover:text-white transition-colors">QR Code Scanner</Link></li>
+                <li><Link to="/social-media-qr-code" className="text-sm text-neutral-400 hover:text-white transition-colors">Social Media QR</Link></li>
                 <li><Link to="/qr-code-with-logo" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_logo')}</Link></li>
                 <li><Link to="/custom-qr-codes" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_custom')}</Link></li>
                 <li><Link to="/colored-qr-code-generator" className="text-sm text-neutral-400 hover:text-white transition-colors">{t('feature_color')}</Link></li>
