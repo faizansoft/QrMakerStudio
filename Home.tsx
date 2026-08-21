@@ -8,6 +8,7 @@ import { useLanguage } from './context/LanguageContext';
 import { useAuth } from './context/AuthContext';
 import { AuthModal } from './components/AuthModal';
 import { createDynamicLink, DynamicLink } from './services/dynamicQrService';
+import { uploadPdfToSupabase } from './services/pdfStorageService';
 import { injectJSONLD, removeJSONLD, getToolSoftwareSchema, getFAQSchema, getBreadcrumbSchema } from './services/seoUtils';
 
 // ── Tab definitions with SVG Icon functions ──
@@ -409,12 +410,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     url: string;
     fileName: string;
     fileSize: number;
+    isUploading: boolean;
     fileError: string | null;
   }>({
     mode: 'gdrive',
     url: '',
     fileName: '',
     fileSize: 0,
+    isUploading: false,
     fileError: null
   });
   const [textInput, setTextInput] = useState('');
@@ -427,7 +430,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   const [locationInput, setLocationInput] = useState({ lat: '', lng: '', query: '' });
   const [eventInput, setEventInput] = useState({ title: '', location: '', start: '', end: '', description: '' });
   const [cryptoInput, setCryptoInput] = useState({ coin: 'Bitcoin', address: '', amount: '' });
-  const handlePdfFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handlePdfFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -438,19 +442,38 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
         ...prev,
         fileName: file.name,
         fileSize: file.size,
+        isUploading: false,
         fileError: `File size is ${sizeMB}MB (exceeds 10MB limit). Please compress your PDF or choose Google Drive.`
       }));
       return;
     }
 
-    const objectUrl = URL.createObjectURL(file);
     setPdfInput(prev => ({
       ...prev,
-      url: objectUrl,
       fileName: file.name,
       fileSize: file.size,
+      isUploading: true,
       fileError: null
     }));
+
+    const result = await uploadPdfToSupabase(file);
+
+    if (result.error || !result.url) {
+      const fallbackUrl = URL.createObjectURL(file);
+      setPdfInput(prev => ({
+        ...prev,
+        url: fallbackUrl,
+        isUploading: false,
+        fileError: result.error ? `Upload note: ${result.error}` : null
+      }));
+    } else {
+      setPdfInput(prev => ({
+        ...prev,
+        url: result.url,
+        isUploading: false,
+        fileError: null
+      }));
+    }
   };
 
   const [instagramInput, setInstagramInput] = useState('');
@@ -1030,27 +1053,42 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                             {pdfInput.mode === 'upload' && (
                               <div className="space-y-2">
                                 <label className="block w-full cursor-pointer bg-white/10 hover:bg-white/15 border border-white/20 border-dashed rounded-xl p-4 text-center transition-colors">
-                                  <svg className="w-8 h-8 text-[#BEF392] mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                                  </svg>
-                                  <span className="text-xs font-bold text-white block">
-                                    {pdfInput.fileName ? pdfInput.fileName : 'Choose a PDF file from your device'}
-                                  </span>
-                                  <span className="text-[10px] text-white/60 block mt-0.5">
-                                    Maximum file limit: <strong>10 MB</strong>
-                                  </span>
+                                  {pdfInput.isUploading ? (
+                                    <div className="flex flex-col items-center justify-center py-1 gap-2">
+                                      <div className="w-7 h-7 border-2 border-accent border-t-transparent rounded-full animate-spin"></div>
+                                      <span className="text-xs font-bold text-accent">Uploading PDF to Cloud Storage...</span>
+                                    </div>
+                                  ) : (
+                                    <>
+                                      <svg className="w-8 h-8 text-[#BEF392] mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                      </svg>
+                                      <span className="text-xs font-bold text-white block">
+                                        {pdfInput.fileName ? pdfInput.fileName : 'Choose a PDF file from your device'}
+                                      </span>
+                                      <span className="text-[10px] text-white/60 block mt-0.5">
+                                        Auto-hosted on Cloud • Maximum limit: <strong>10 MB</strong>
+                                      </span>
+                                    </>
+                                  )}
                                   <input
                                     type="file"
                                     accept=".pdf,application/pdf"
                                     onChange={handlePdfFileUpload}
+                                    disabled={pdfInput.isUploading}
                                     className="hidden"
                                   />
                                 </label>
 
-                                {pdfInput.fileSize > 0 && !pdfInput.fileError && (
-                                  <div className="flex items-center justify-between bg-emerald-950/40 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-xs text-emerald-300">
-                                    <span className="truncate">✓ {pdfInput.fileName}</span>
-                                    <span className="font-mono text-[10px] shrink-0">{(pdfInput.fileSize / (1024 * 1024)).toFixed(2)} MB</span>
+                                {pdfInput.fileSize > 0 && !pdfInput.fileError && !pdfInput.isUploading && (
+                                  <div className="flex items-center justify-between bg-emerald-950/40 border border-emerald-500/30 px-3 py-2 rounded-xl text-xs text-emerald-300">
+                                    <div className="flex items-center gap-2 truncate">
+                                      <span className="font-bold">✓ Cloud Hosted:</span>
+                                      <span className="truncate">{pdfInput.fileName}</span>
+                                    </div>
+                                    <span className="font-mono text-[10px] shrink-0 font-bold bg-emerald-900/60 px-1.5 py-0.5 rounded">
+                                      {(pdfInput.fileSize / (1024 * 1024)).toFixed(2)} MB
+                                    </span>
                                   </div>
                                 )}
 
