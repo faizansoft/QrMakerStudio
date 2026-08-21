@@ -858,6 +858,26 @@ const ROUTES = [
         ]
       }
     ]
+  },
+  {
+    path: '/r',
+    title: 'Redirecting to Destination... | QR Maker Studio',
+    description: 'Redirecting to your campaign destination.',
+    canonical: 'https://qr-generator.online/r',
+    h1: 'Redirecting to Destination...',
+    badge: 'Dynamic Redirect',
+    lead: 'Connecting you to your destination...',
+    sections: []
+  },
+  {
+    path: '/analytics',
+    title: 'Dynamic QR Analytics & Scan Intelligence | QR Maker Studio',
+    description: 'Real-time scan intelligence and visitor telemetry.',
+    canonical: 'https://qr-generator.online/analytics',
+    h1: 'Dynamic QR Code Real-Time Analytics Dashboard',
+    badge: 'Scan Intelligence',
+    lead: 'Monitor real-time scans and visitor engagement.',
+    sections: []
   }
 ];
 
