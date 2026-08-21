@@ -136,12 +136,13 @@ const App: React.FC = () => {
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:slug" element={<BlogPostPage />} />
 
-                {/* Auth & Dynamic QR Studio Routes */}
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/analytics/:linkId" element={<AnalyticsPage />} />
+                <Route path="/analytics/:linkId/*" element={<AnalyticsPage />} />
                 <Route path="/r/:shortCode" element={<RedirectHandler />} />
+                <Route path="/r/:shortCode/*" element={<RedirectHandler />} />
 
                 {/* Feature Dedicated Routes */}
                 <Route path="/qr-code-with-logo" element={<FeaturePage featureId="qr-code-with-logo" />} />

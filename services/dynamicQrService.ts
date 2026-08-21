@@ -182,11 +182,24 @@ export const getDynamicLinkById = async (linkId: string): Promise<{ data: Dynami
  */
 export const getLinkByShortCode = async (shortCode: string): Promise<{ data: DynamicLink | null; error: Error | null }> => {
   try {
-    const { data, error } = await supabase
+    const trimmed = shortCode.trim();
+    // 1. Try exact match
+    let { data, error } = await supabase
       .from('links')
       .select('*')
-      .eq('short_code', shortCode)
+      .eq('short_code', trimmed)
       .maybeSingle();
+
+    // 2. Try case-insensitive fallback if not found
+    if (!data) {
+      const fallback = await supabase
+        .from('links')
+        .select('*')
+        .ilike('short_code', trimmed)
+        .maybeSingle();
+      data = fallback.data;
+      error = fallback.error;
+    }
 
     if (error) throw error;
     return { data, error: null };

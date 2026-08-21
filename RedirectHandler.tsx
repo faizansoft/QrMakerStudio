@@ -9,7 +9,7 @@ const RedirectHandler: React.FC = () => {
 
   useEffect(() => {
     if (!shortCode) {
-      setError('not_found');
+      window.location.replace('/');
       return;
     }
 
@@ -36,27 +36,31 @@ const RedirectHandler: React.FC = () => {
         }
 
         let destination = link.target_url.trim();
-        if (!destination.startsWith('http://') && !destination.startsWith('https://') && !destination.startsWith('mailto:') && !destination.startsWith('tel:') && !destination.startsWith('upi:')) {
+        const hasProtocol = /^(https?:\/\/|mailto:|tel:|sms:|upi:)/i.test(destination);
+        if (!hasProtocol) {
           destination = `https://${destination}`;
         }
 
         setTargetUrl(destination);
 
-        // Record scan analytics event safely before window unloads
+        // Record scan analytics event safely
         try {
           await Promise.race([
             recordScanEvent({
               linkId: link.id,
               referrer: document.referrer,
             }),
-            new Promise((res) => setTimeout(res, 800))
+            new Promise((res) => setTimeout(res, 400))
           ]);
         } catch {
           // Continue redirect even if telemetry fails
         }
 
-        // Instant redirect
-        window.location.replace(destination);
+        // Fast browser redirect
+        window.location.href = destination;
+        setTimeout(() => {
+          window.location.replace(destination);
+        }, 150);
       } catch (err) {
         console.error('Redirect failed:', err);
         setError('not_found');
