@@ -1198,6 +1198,90 @@ function buildFramedSvg(
   return rawSvgText;
 }
 
+// ── Real-time Interactive QR Code Preview Component ──
+const DynamicQrPreview: React.FC<{
+  link: string;
+  fgColor: string;
+  bgColor: string;
+  cornerSquareColor: string;
+  cornerDotColor: string;
+  dotStyle: DotType;
+  cornerSquareStyle: CornerSquareType;
+  cornerDotStyle: CornerDotType;
+  logoSrc: string | null;
+}> = ({
+  link,
+  fgColor,
+  bgColor,
+  cornerSquareColor,
+  cornerDotColor,
+  dotStyle,
+  cornerSquareStyle,
+  cornerDotStyle,
+  logoSrc,
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const qrCodeRef = useRef<QRCodeStyling | null>(null);
+
+  useEffect(() => {
+    const dataString = link && link.trim().length > 0 ? link : 'https://qr-generator.online';
+    if (!qrCodeRef.current) {
+      qrCodeRef.current = new QRCodeStyling({
+        width: 190,
+        height: 190,
+        type: 'svg',
+        data: dataString,
+        image: logoSrc || undefined,
+        dotsOptions: {
+          color: fgColor,
+          type: dotStyle,
+        },
+        backgroundOptions: {
+          color: bgColor,
+        },
+        cornersSquareOptions: {
+          color: cornerSquareColor,
+          type: cornerSquareStyle,
+        },
+        cornersDotOptions: {
+          color: cornerDotColor,
+          type: cornerDotStyle,
+        },
+        imageOptions: {
+          crossOrigin: 'anonymous',
+          margin: 4,
+        },
+      });
+      if (containerRef.current) {
+        containerRef.current.innerHTML = '';
+        qrCodeRef.current.append(containerRef.current);
+      }
+    } else {
+      qrCodeRef.current.update({
+        data: dataString,
+        image: logoSrc || undefined,
+        dotsOptions: {
+          color: fgColor,
+          type: dotStyle,
+        },
+        backgroundOptions: {
+          color: bgColor,
+        },
+        cornersSquareOptions: {
+          color: cornerSquareColor,
+          type: cornerSquareStyle,
+        },
+        cornersDotOptions: {
+          color: cornerDotColor,
+          type: cornerDotStyle,
+        },
+      });
+    }
+  }, [link, fgColor, bgColor, cornerSquareColor, cornerDotColor, dotStyle, cornerSquareStyle, cornerDotStyle, logoSrc]);
+
+  return <div ref={containerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />;
+};
+
 export interface HomeProps {
   initialTab?: string;
 }
@@ -3166,7 +3250,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                           <div className="w-48 h-48 bg-white rounded-xl p-2 flex items-center justify-center shadow-lg">
                             <div className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full">
                               <DynamicQrPreview
-                                link={getQrContentString() || 'https://qr-generator.online'}
+                                link={effectiveQrData || 'https://qr-generator.online'}
                                 fgColor={fgColor}
                                 bgColor={bgColor}
                                 cornerSquareColor={cornerSquareColor}
