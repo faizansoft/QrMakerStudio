@@ -205,12 +205,21 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all md:col-span-2 lg:col-span-1">
+            <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
                 <Link to="/googleform-qr-code-generator" className="text-accent hover:underline">Google Forms Survey QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Direct customers and students to Google Forms surveys and feedback questionnaires.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all md:col-span-2 lg:col-span-1">
+              <h3 className="font-bold text-gray-900 text-base">
+                <Link to="/pdf-qr-code-generator" className="text-accent hover:underline">PDF Document & Menu QR Code</Link>
+              </h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                Connect digital menus, product catalogs, and brochures with Google Drive integration and 10MB limit.
               </p>
             </div>
           </div>

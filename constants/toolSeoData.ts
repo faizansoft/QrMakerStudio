@@ -1027,5 +1027,50 @@ export const TOOL_SEO_DATA: Record<string, ToolSeoContent> = {
       { question: 'What format should I download for printing counter stands?', answer: 'Download the vector SVG format for crisp large-scale printing on acrylic stands, sunboard signs, and vinyl stickers.' },
       { question: 'Is my banking information secure during generation?', answer: 'Yes. All QR code generation is performed locally in your web browser. No UPI IDs, names, or financial data are stored or sent to any server.' }
     ]
+  },
+  pdf: {
+    id: 'pdf',
+    slug: '/pdf-qr-code-generator',
+    title: 'PDF to QR Code Generator',
+    headline: 'Free PDF to QR Code Generator for Menus, Catalogs & Documents',
+    subheadline: 'Convert digital menus, brochures, product catalogs, and whitepapers into custom branded QR codes with Google Drive and cloud storage support.',
+    badge: 'PDF Document QR Code',
+    metaTitle: 'Free PDF to QR Code Generator | Convert Menus & Documents to QR Codes',
+    metaDescription: 'Convert PDF menus, brochures, catalogs, and documents into custom branded QR codes. Free vector SVG and PNG downloads with editable dynamic destination links.',
+    keywords: ['pdf to qr code', 'pdf qr code generator', 'restaurant menu qr code', 'qr code for pdf document', 'upload pdf qr code', 'google drive pdf qr code'],
+    introTitle: 'What is a PDF to QR Code Generator?',
+    introParagraphs: [
+      'A PDF to QR Code is a specialized two-dimensional barcode that connects physical printed materials directly to digital PDF documents hosted online (such as Google Drive, Dropbox, Microsoft OneDrive, or your company web server).',
+      'When scanned by any smartphone camera, the barcode automatically opens the PDF document in the visitor mobile browser with zero app installation required. This is the global standard for contactless restaurant menus, corporate product catalogs, real estate property brochures, and user instruction manuals.',
+      'With QR Generator Online, you can upload your PDF file (up to 10MB limit), connect a shareable Google Drive link, customize brand colors, embed your restaurant or business logo, and download high-resolution vector SVG and PNG files 100% free.'
+    ],
+    stepsTitle: 'How to Convert a PDF to a QR Code in 3 Steps',
+    steps: [
+      { number: 1, title: 'Upload PDF or Paste Google Drive Link', description: 'Select a PDF document from your device (under 10MB limit) or paste your shareable Google Drive / Dropbox link.' },
+      { number: 2, title: 'Customize Visual Design & Center Logo', description: 'Choose tailored brand color schemes, customize corner eye markers, and upload your restaurant or business logo in the center.' },
+      { number: 3, title: 'Download in High-Res SVG or PNG', description: 'Export your print-ready QR code in vector SVG or 1200x1200px PNG format for table tents, acrylic stands, and printed packaging.' }
+    ],
+    featuresTitle: 'Why Use QR Generator Online for PDF Documents?',
+    features: [
+      { title: 'Google Drive & Cloud Storage Support', description: 'Easily connect public Google Drive share links, Dropbox files, or custom CDN endpoints.' },
+      { title: '10MB File Upload Limit', description: 'Optimized file size guardrails ensure your PDF loads quickly on mobile cellular data without lag.' },
+      { title: 'Dynamic QR Code Option', description: 'Update your seasonal menu or product catalog anytime from your dashboard without reprinting existing table stands.' },
+      { title: 'Crisp Vector SVG for Table Displays', description: 'Scale your QR code to any physical dimensions without pixelation or scanning blur.' }
+    ],
+    useCasesTitle: 'Popular Uses for PDF QR Codes',
+    useCases: [
+      { title: 'Restaurants, Cafes & Bars', description: 'Place contactless acrylic table stands linking to full food and cocktail menus with allergen warnings.' },
+      { title: 'Real Estate Brochures & Floor Plans', description: 'Add QR codes on yard signs to provide buyers with downloadable architectural floor plans and HOA documents.' },
+      { title: 'Product Packaging User Manuals', description: 'Replace bulky paper booklets with a compact scannable link to an interactive multilingual PDF guide.' },
+      { title: 'Trade Show Catalogs & Price Lists', description: 'Share complete wholesale product line sheets with buyers at corporate expos and conventions.' }
+    ],
+    faqs: [
+      { question: 'How does a PDF to QR Code work?', answer: 'A PDF QR code connects physical materials to a digital PDF document hosted online (Google Drive, Dropbox, or your website). Scanning the code opens the PDF directly on smartphones.' },
+      { question: 'Can I change my PDF menu after printing the QR code?', answer: 'Yes! If you save your code as a Dynamic QR code, you can update your PDF link anytime from your dashboard with zero reprinting.' },
+      { question: 'How do I use Google Drive to host my PDF for the QR code?', answer: 'Upload your PDF to Google Drive, set sharing permissions to "Anyone with the link can view", copy the link, and paste it into our generator form.' },
+      { question: 'What is the maximum recommended PDF file size?', answer: 'We support files up to 10MB, though keeping files under 3MB ensures instant loading on mobile cellular networks.' },
+      { question: 'Can I customize the QR code with my restaurant logo?', answer: 'Yes! You can customize foreground and background colors, dot styles, corner shapes, and upload your high-resolution logo.' },
+      { question: 'Can I track how many people scan my PDF QR code?', answer: 'Yes! Dynamic QR codes provide live analytics tracking total scans, unique visitors, mobile devices (iOS vs Android), and geographic locations.' }
+    ]
   }
 };

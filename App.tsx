@@ -175,9 +175,9 @@ const App: React.FC = () => {
                 <Route path="/telegram-qr-code-generator" element={<ToolRouteHandler toolId="telegram" />} />
                 <Route path="/paypal-qr-code-generator" element={<ToolRouteHandler toolId="paypal" />} />
                 <Route path="/upi-qr-code-generator" element={<ToolRouteHandler toolId="upi" />} />
+                <Route path="/pdf-qr-code-generator" element={<ToolRouteHandler toolId="pdf" />} />
 
                 {/* Utility Pages */}
-                <Route path="/pdf-qr-code-generator" element={<PDFToQRPage />} />
                 <Route path="/app-store-qr-code-generator" element={<AppStoreQRPage />} />
                 <Route path="/bulk-qr-code-generator" element={<BulkGeneratorPage />} />
                 <Route path="/qr-code-scanner" element={<QRScannerPage />} />

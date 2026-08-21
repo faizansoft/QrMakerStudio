@@ -752,6 +752,37 @@ const ROUTES = [
     ]
   },
   {
+    path: '/pricing',
+    title: 'Transparent & Free Pricing Plans | QR Generator Online',
+    description: 'Explore QR Generator Online transparent pricing. 100% Free static QR Code generator forever with vector SVG exports, custom logos, dynamic editable links, and zero scan limits.',
+    canonical: 'https://qr-generator.online/pricing',
+    h1: '100% Free Forever with Vector SVG & Zero Hidden Paywalls',
+    badge: 'Radical Transparency',
+    lead: 'Generate unlimited static and dynamic QR codes with vector SVG downloads, custom brand palettes, editable destination links, and zero scan limits.',
+    sections: [
+      {
+        title: 'The Truth About QR Code Generator Pricing: No Free Trial Traps',
+        paragraphs: [
+          'Many predatory competitor services trick users into generating dynamic codes under free trial pretexts, only to deactivate the QR codes after 14 days unless paying expensive $35/month subscriptions.',
+          'At QR Generator Online, our static codes decode permanently offline with zero server dependency, and our dynamic platform provides free self-service tracking without extortionate lock-ins.'
+        ]
+      },
+      {
+        title: 'Business ROI: Eliminating Menu & Packaging Printing Waste',
+        paragraphs: [
+          'Restaurants updating seasonal menus 4 times per year save thousands of dollars annually by switching from disposable paper laminates to dynamic QR table stands with instant cloud updates.',
+          'CPG manufacturers protect product packaging runs by utilizing dynamic shortcodes that can be redirected to new promotions without reprinting physical packaging.'
+        ]
+      },
+      {
+        title: 'How Client-Side WebAssembly Architecture Powers Free Tools',
+        paragraphs: [
+          'Because optical barcode rendering happens directly inside your browser rather than consuming expensive cloud compute clusters, our infrastructure costs remain minimal, allowing us to pass 100% of those savings directly to creators, restaurants, and businesses for free.'
+        ]
+      }
+    ]
+  },
+  {
     path: '/login',
     title: 'Log In to My QR Codes | QR Generator Online',
     description: 'Log in to your free QR Generator Online account to manage dynamic QR codes, update landing pages, and track scan performance.',

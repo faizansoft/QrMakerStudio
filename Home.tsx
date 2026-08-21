@@ -23,6 +23,17 @@ const TABS = [
     )
   },
   {
+    id: 'pdf',
+    label: 'PDF Document',
+    description: 'Link or upload a PDF menu, brochure, or catalog',
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 13h6m-6 4h4" />
+      </svg>
+    )
+  },
+  {
     id: 'text',
     label: 'Plain Text',
     description: 'Encode plain text into a QR Code',
@@ -393,6 +404,19 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
 
   // Form Fields per QR Type
   const [urlInput, setUrlInput] = useState('');
+  const [pdfInput, setPdfInput] = useState<{
+    mode: 'gdrive' | 'upload' | 'url';
+    url: string;
+    fileName: string;
+    fileSize: number;
+    fileError: string | null;
+  }>({
+    mode: 'gdrive',
+    url: '',
+    fileName: '',
+    fileSize: 0,
+    fileError: null
+  });
   const [textInput, setTextInput] = useState('');
   const [vCardInput, setVCardInput] = useState({ firstName: '', lastName: '', phone: '', email: '', company: '', title: '', website: '' });
   const [wifiInput, setWifiInput] = useState({ ssid: '', password: '', encryption: 'WPA', hidden: false });
@@ -403,6 +427,32 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   const [locationInput, setLocationInput] = useState({ lat: '', lng: '', query: '' });
   const [eventInput, setEventInput] = useState({ title: '', location: '', start: '', end: '', description: '' });
   const [cryptoInput, setCryptoInput] = useState({ coin: 'Bitcoin', address: '', amount: '' });
+  const handlePdfFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const maxBytes = 10 * 1024 * 1024; // 10MB limit
+    if (file.size > maxBytes) {
+      const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+      setPdfInput(prev => ({
+        ...prev,
+        fileName: file.name,
+        fileSize: file.size,
+        fileError: `File size is ${sizeMB}MB (exceeds 10MB limit). Please compress your PDF or choose Google Drive.`
+      }));
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(file);
+    setPdfInput(prev => ({
+      ...prev,
+      url: objectUrl,
+      fileName: file.name,
+      fileSize: file.size,
+      fileError: null
+    }));
+  };
+
   const [instagramInput, setInstagramInput] = useState('');
   const [youtubeInput, setYoutubeInput] = useState('');
   const [linkedinInput, setLinkedinInput] = useState('');
@@ -490,6 +540,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
       case 'googleform':
       case 'facebook':
         return urlInput.trim();
+      case 'pdf':
+        return pdfInput.url.trim();
       case 'text':
         return textInput.trim();
       case 'vcard':
@@ -552,7 +604,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
       default:
         return urlInput.trim();
     }
-  }, [activeTab, urlInput, textInput, vCardInput, wifiInput, emailInput, smsInput, phoneInput, whatsappInput, locationInput, eventInput, cryptoInput, instagramInput, youtubeInput, linkedinInput, twitterInput, tiktokInput, telegramInput, paypalInput, upiInput]);
+  }, [activeTab, urlInput, pdfInput, textInput, vCardInput, wifiInput, emailInput, smsInput, phoneInput, whatsappInput, locationInput, eventInput, cryptoInput, instagramInput, youtubeInput, linkedinInput, twitterInput, tiktokInput, telegramInput, paypalInput, upiInput]);
 
   const generated = qrData.length > 0;
 
@@ -918,6 +970,111 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
                             />
                             <span className="text-xs text-white/70">Enter your full web address including https://</span>
+                          </div>
+                        )}
+
+                        {/* PDF DOCUMENT / MENU / GOOGLE DRIVE */}
+                        {activeTab === 'pdf' && (
+                          <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            {/* Mode Selector */}
+                            <div className="flex bg-black/30 p-1 rounded-xl border border-white/10 text-xs">
+                              <button
+                                type="button"
+                                onClick={() => setPdfInput(prev => ({ ...prev, mode: 'gdrive' }))}
+                                className={`flex-1 py-1.5 px-2 rounded-lg font-semibold transition-all ${
+                                  pdfInput.mode === 'gdrive' ? 'bg-accent text-white shadow-xs' : 'text-white/70 hover:text-white'
+                                }`}
+                              >
+                                Google Drive (Cloud)
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => setPdfInput(prev => ({ ...prev, mode: 'upload' }))}
+                                className={`flex-1 py-1.5 px-2 rounded-lg font-semibold transition-all ${
+                                  pdfInput.mode === 'upload' ? 'bg-accent text-white shadow-xs' : 'text-white/70 hover:text-white'
+                                }`}
+                              >
+                                Upload PDF File
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => setPdfInput(prev => ({ ...prev, mode: 'url' }))}
+                                className={`flex-1 py-1.5 px-2 rounded-lg font-semibold transition-all ${
+                                  pdfInput.mode === 'url' ? 'bg-accent text-white shadow-xs' : 'text-white/70 hover:text-white'
+                                }`}
+                              >
+                                Direct PDF URL
+                              </button>
+                            </div>
+
+                            {/* Google Drive Option */}
+                            {pdfInput.mode === 'gdrive' && (
+                              <div className="space-y-2">
+                                <div className="text-[11px] text-white/80 leading-relaxed bg-black/20 p-2.5 rounded-xl border border-white/5">
+                                  <strong>How to use Google Drive for your PDF:</strong><br />
+                                  1. Upload your PDF to Google Drive.<br />
+                                  2. Right-click ➔ Share ➔ Set to <strong>"Anyone with the link can view"</strong>.<br />
+                                  3. Paste the share link below:
+                                </div>
+                                <input
+                                  type="url"
+                                  placeholder="https://drive.google.com/file/d/.../view?usp=sharing"
+                                  value={pdfInput.url}
+                                  onChange={(e) => setPdfInput(prev => ({ ...prev, url: e.target.value }))}
+                                  className="w-full rounded-xl bg-white text-black px-4 py-2.5 text-xs font-mono outline-none focus:ring-2 focus:ring-accent"
+                                />
+                              </div>
+                            )}
+
+                            {/* Upload PDF Option */}
+                            {pdfInput.mode === 'upload' && (
+                              <div className="space-y-2">
+                                <label className="block w-full cursor-pointer bg-white/10 hover:bg-white/15 border border-white/20 border-dashed rounded-xl p-4 text-center transition-colors">
+                                  <svg className="w-8 h-8 text-[#BEF392] mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                  </svg>
+                                  <span className="text-xs font-bold text-white block">
+                                    {pdfInput.fileName ? pdfInput.fileName : 'Choose a PDF file from your device'}
+                                  </span>
+                                  <span className="text-[10px] text-white/60 block mt-0.5">
+                                    Maximum file limit: <strong>10 MB</strong>
+                                  </span>
+                                  <input
+                                    type="file"
+                                    accept=".pdf,application/pdf"
+                                    onChange={handlePdfFileUpload}
+                                    className="hidden"
+                                  />
+                                </label>
+
+                                {pdfInput.fileSize > 0 && !pdfInput.fileError && (
+                                  <div className="flex items-center justify-between bg-emerald-950/40 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-xs text-emerald-300">
+                                    <span className="truncate">✓ {pdfInput.fileName}</span>
+                                    <span className="font-mono text-[10px] shrink-0">{(pdfInput.fileSize / (1024 * 1024)).toFixed(2)} MB</span>
+                                  </div>
+                                )}
+
+                                {pdfInput.fileError && (
+                                  <div className="p-2.5 bg-red-950/50 border border-red-500/50 rounded-xl text-red-300 text-xs font-medium">
+                                    ⚠️ {pdfInput.fileError}
+                                  </div>
+                                )}
+                              </div>
+                            )}
+
+                            {/* Direct URL Option */}
+                            {pdfInput.mode === 'url' && (
+                              <div className="space-y-1.5">
+                                <input
+                                  type="url"
+                                  placeholder="https://yoursite.com/menu.pdf or Dropbox PDF link"
+                                  value={pdfInput.url}
+                                  onChange={(e) => setPdfInput(prev => ({ ...prev, url: e.target.value }))}
+                                  className="w-full rounded-xl bg-white text-black px-4 py-2.5 text-xs font-mono outline-none focus:ring-2 focus:ring-accent"
+                                />
+                                <span className="text-[11px] text-white/60 block">Enter any direct PDF link or public document endpoint.</span>
+                              </div>
+                            )}
                           </div>
                         )}
 
