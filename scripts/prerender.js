@@ -1378,7 +1378,8 @@ function buildJsonLd(route, rich) {
     "publisher": {
       "@type": "Organization",
       "name": "QR Generator Online",
-      "url": "https://qr-generator.online"
+      "url": "https://qr-generator.online",
+      "logo": "https://qr-generator.online/logo.png"
     }
   });
 

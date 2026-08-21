@@ -47,7 +47,7 @@ export const getOrganizationSchema = () => ({
   '@type': 'Organization',
   name: 'QR Generator Online',
   url: 'https://qr-generator.online',
-  logo: 'https://qr-generator.online/og-image.png',
+  logo: 'https://qr-generator.online/logo.png',
   description: 'Create free static and dynamic QR Codes using custom logos and colors.',
   sameAs: [
     'https://qr-generator.online'
