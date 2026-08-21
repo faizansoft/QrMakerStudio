@@ -357,36 +357,48 @@ const DynamicModalQrPreview: React.FC<{ link: DynamicLink }> = ({ link }) => {
 };
 
 // ── Frame Styles & Customization (Bitly-Grade Premium Frames) ──
-// ── Frame Styles & Customization (Bitly-Grade Clean Vector Frames) ──
+// ── Frame Styles Matching Industry Benchmark Reference ──
 export type FrameStyle = 
   | 'none'
-  | 'bitly-bottom-bar'
-  | 'bitly-top-bar'
-  | 'bitly-floating-badge'
-  | 'bitly-speech-bubble'
-  | 'bitly-restaurant-menu'
-  | 'bitly-wifi-access'
-  | 'bitly-social-follow'
-  | 'bitly-review-star'
-  | 'bitly-voucher-ticket'
-  | 'bitly-app-download'
-  | 'bitly-luxury-gold'
-  | 'bitly-browser-window';
+  | 'frame-bottom-bar'
+  | 'frame-top-bar'
+  | 'frame-focus-corners-bottom'
+  | 'frame-focus-corners-top'
+  | 'frame-focus-corners-arrow'
+  | 'frame-focus-corners-speech'
+  | 'frame-phone-portrait'
+  | 'frame-phone-landscape'
+  | 'frame-speech-bubble-bottom'
+  | 'frame-speech-tab-top'
+  | 'frame-speech-bubble-right'
+  | 'frame-top-arrow'
+  | 'frame-top-roof'
+  | 'frame-trapezoid'
+  | 'frame-corner-peel'
+  | 'frame-vertical-right'
+  | 'frame-vertical-dual'
+  | 'frame-horizontal-left';
 
-export const FRAME_OPTIONS: { id: FrameStyle; label: string; iconType: string; category: string; defaultText: string; subText?: string }[] = [
-  { id: 'none', label: 'No Frame', iconType: 'none', category: 'Basic', defaultText: '' },
-  { id: 'bitly-bottom-bar', label: 'Bottom Banner', iconType: 'bottom-bar', category: 'Popular', defaultText: 'SCAN ME' },
-  { id: 'bitly-top-bar', label: 'Top Header', iconType: 'top-bar', category: 'Popular', defaultText: 'SCAN ME' },
-  { id: 'bitly-floating-badge', label: 'Floating Pill', iconType: 'pill', category: 'Popular', defaultText: 'SCAN ME' },
-  { id: 'bitly-speech-bubble', label: 'Chat Bubble', iconType: 'bubble', category: 'Popular', defaultText: 'SCAN ME!' },
-  { id: 'bitly-restaurant-menu', label: 'Restaurant Menu', iconType: 'menu', category: 'Business', defaultText: 'SCAN FOR MENU', subText: 'Point camera to view menu' },
-  { id: 'bitly-wifi-access', label: 'WiFi Connect', iconType: 'wifi', category: 'Utility', defaultText: 'CONNECT TO WI-FI', subText: 'Scan to join network instantly' },
-  { id: 'bitly-social-follow', label: 'Social & Follow', iconType: 'social', category: 'Marketing', defaultText: 'FOLLOW US', subText: 'Scan to visit our socials' },
-  { id: 'bitly-review-star', label: 'Customer Review', iconType: 'review', category: 'Marketing', defaultText: 'LEAVE A REVIEW', subText: 'Rate us on Google' },
-  { id: 'bitly-voucher-ticket', label: 'Coupon Ticket', iconType: 'ticket', category: 'Marketing', defaultText: 'GET 20% DISCOUNT', subText: 'Scan to redeem coupon' },
-  { id: 'bitly-app-download', label: 'App Store Card', iconType: 'app', category: 'App', defaultText: 'DOWNLOAD OUR APP', subText: 'Available on iOS & Android' },
-  { id: 'bitly-luxury-gold', label: 'Luxury VIP Frame', iconType: 'luxury', category: 'Luxury', defaultText: 'VIP EXCLUSIVE ACCESS', subText: 'Scan for member privileges' },
-  { id: 'bitly-browser-window', label: 'Modern Window', iconType: 'window', category: 'Tech', defaultText: 'VISIT WEBSITE', subText: 'Tap or scan with camera' },
+export const FRAME_OPTIONS: { id: FrameStyle; label: string; category: string; defaultText: string }[] = [
+  { id: 'none', label: 'No Frame', category: 'Basic', defaultText: '' },
+  { id: 'frame-bottom-bar', label: 'Bottom Banner', category: 'Popular', defaultText: 'SCAN ME' },
+  { id: 'frame-top-bar', label: 'Top Header Tab', category: 'Popular', defaultText: 'SCAN ME' },
+  { id: 'frame-focus-corners-bottom', label: 'Focus Corners Bottom', category: 'Focus', defaultText: 'SCAN ME' },
+  { id: 'frame-focus-corners-top', label: 'Focus Corners Top', category: 'Focus', defaultText: 'SCAN ME' },
+  { id: 'frame-focus-corners-arrow', label: 'Focus Corners Arrow', category: 'Focus', defaultText: 'SCAN ➔ ME' },
+  { id: 'frame-focus-corners-speech', label: 'Focus Corners Speech', category: 'Focus', defaultText: 'SCAN ME' },
+  { id: 'frame-phone-portrait', label: 'Phone Portrait', category: 'Device', defaultText: 'SCAN ME' },
+  { id: 'frame-phone-landscape', label: 'Phone Landscape', category: 'Device', defaultText: 'SCAN ME' },
+  { id: 'frame-speech-bubble-bottom', label: 'Speech Bubble Bottom', category: 'Speech', defaultText: 'SCAN ME' },
+  { id: 'frame-speech-tab-top', label: 'Speech Tab Top', category: 'Speech', defaultText: 'SCAN ME' },
+  { id: 'frame-speech-bubble-right', label: 'Speech Bubble Right', category: 'Speech', defaultText: 'SCAN ME' },
+  { id: 'frame-top-arrow', label: 'Top Arrow Badge', category: 'Popular', defaultText: 'SCAN ME' },
+  { id: 'frame-top-roof', label: 'Rooftop Banner', category: 'Popular', defaultText: 'SCAN ME' },
+  { id: 'frame-trapezoid', label: 'Trapezoid Kiosk', category: 'Modern', defaultText: 'SCAN ME' },
+  { id: 'frame-corner-peel', label: 'Corner Fold / Peel', category: 'Modern', defaultText: 'SCAN ME' },
+  { id: 'frame-vertical-right', label: 'Vertical Right Sidebar', category: 'Modern', defaultText: 'SCAN ME' },
+  { id: 'frame-vertical-dual', label: 'Dual Vertical Sidebars', category: 'Modern', defaultText: 'SCAN ME' },
+  { id: 'frame-horizontal-left', label: 'Horizontal Split Card', category: 'Modern', defaultText: 'SCAN ME' },
 ];
 
 function drawRoundedRect(
@@ -430,18 +442,18 @@ async function renderFramedCanvas(
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d')!;
   const ctaText = (text || 'SCAN ME').toUpperCase();
-  const fColor = fg || '#2B6F53';
+  const fColor = fg || '#1E1E1E';
   const bColor = bg || '#ffffff';
 
-  if (frame === 'bitly-bottom-bar') {
+  if (frame === 'frame-bottom-bar') {
     canvas.width = 1200;
     canvas.height = 1460;
 
     drawRoundedRect(ctx, 40, 40, 1120, 1380, 48);
     ctx.fillStyle = '#ffffff';
     ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = fColor + '20';
+    ctx.lineWidth = 14;
+    ctx.strokeStyle = fColor;
     ctx.stroke();
 
     ctx.drawImage(img, 170, 140, 860, 860);
@@ -451,372 +463,614 @@ async function renderFramedCanvas(
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 54px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = '900 56px system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(ctaText, 600, 1340);
-  } else if (frame === 'bitly-top-bar') {
+  } else if (frame === 'frame-top-bar') {
     canvas.width = 1200;
     canvas.height = 1460;
 
     drawRoundedRect(ctx, 40, 40, 1120, 1380, 48);
     ctx.fillStyle = '#ffffff';
     ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = fColor + '20';
+    ctx.lineWidth = 14;
+    ctx.strokeStyle = fColor;
     ctx.stroke();
 
-    drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
+    drawRoundedRect(ctx, 40, 40, 1120, 180, [48, 48, 0, 0]);
     ctx.fillStyle = fColor;
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 54px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = '900 56px system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText, 600, 125);
+    ctx.fillText(ctaText, 600, 130);
 
-    ctx.drawImage(img, 170, 310, 860, 860);
-
-    ctx.fillStyle = '#64748b';
-    ctx.font = '600 32px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('Point your smartphone camera to scan', 600, 1280);
-  } else if (frame === 'bitly-floating-badge') {
+    ctx.drawImage(img, 170, 320, 860, 860);
+  } else if (frame === 'frame-focus-corners-bottom') {
     canvas.width = 1200;
     canvas.height = 1480;
 
-    drawRoundedRect(ctx, 50, 50, 1100, 1280, 48);
     ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = fColor + '25';
+    ctx.fillRect(0, 0, 1200, 1480);
+
+    ctx.drawImage(img, 170, 140, 860, 860);
+
+    // 4 Thick Corner Focus Brackets
+    ctx.strokeStyle = fColor;
+    ctx.lineWidth = 24;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    // Top-Left
+    ctx.beginPath();
+    ctx.moveTo(100, 240);
+    ctx.lineTo(100, 100);
+    ctx.lineTo(240, 100);
     ctx.stroke();
 
-    ctx.drawImage(img, 170, 150, 860, 860);
+    // Top-Right
+    ctx.beginPath();
+    ctx.moveTo(1100, 240);
+    ctx.lineTo(1100, 100);
+    ctx.lineTo(960, 100);
+    ctx.stroke();
 
-    drawRoundedRect(ctx, 200, 1260, 800, 150, 75);
+    // Bottom-Left
+    ctx.beginPath();
+    ctx.moveTo(100, 900);
+    ctx.lineTo(100, 1040);
+    ctx.lineTo(240, 1040);
+    ctx.stroke();
+
+    // Bottom-Right
+    ctx.beginPath();
+    ctx.moveTo(1100, 900);
+    ctx.lineTo(1100, 1040);
+    ctx.lineTo(960, 1040);
+    ctx.stroke();
+
+    // Bottom Badge
+    drawRoundedRect(ctx, 300, 1140, 600, 220, 48);
     ctx.fillStyle = fColor;
     ctx.fill();
-    ctx.lineWidth = 8;
-    ctx.strokeStyle = '#ffffff';
-    ctx.stroke();
 
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = '900 68px system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText, 600, 1335);
-  } else if (frame === 'bitly-speech-bubble') {
+    ctx.fillText(ctaText, 600, 1250);
+  } else if (frame === 'frame-focus-corners-top') {
     canvas.width = 1200;
-    canvas.height = 1540;
+    canvas.height = 1520;
 
-    drawRoundedRect(ctx, 160, 40, 880, 150, 40);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, 1200, 1520);
+
+    // Top Speech Bubble
+    drawRoundedRect(ctx, 250, 40, 700, 180, 48);
     ctx.fillStyle = fColor;
     ctx.fill();
 
     ctx.beginPath();
-    ctx.moveTo(570, 190);
-    ctx.lineTo(600, 230);
-    ctx.lineTo(630, 190);
+    ctx.moveTo(560, 220);
+    ctx.lineTo(600, 270);
+    ctx.lineTo(640, 220);
     ctx.closePath();
     ctx.fillStyle = fColor;
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 50px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = '900 62px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 600, 130);
+
+    ctx.drawImage(img, 170, 360, 860, 860);
+
+    // 4 Corner Brackets
+    ctx.strokeStyle = fColor;
+    ctx.lineWidth = 24;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    ctx.beginPath();
+    ctx.moveTo(100, 480);
+    ctx.lineTo(100, 340);
+    ctx.lineTo(240, 340);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(1100, 480);
+    ctx.lineTo(1100, 340);
+    ctx.lineTo(960, 340);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(100, 1100);
+    ctx.lineTo(100, 1240);
+    ctx.lineTo(240, 1240);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(1100, 1100);
+    ctx.lineTo(1100, 1240);
+    ctx.lineTo(960, 1240);
+    ctx.stroke();
+  } else if (frame === 'frame-focus-corners-arrow') {
+    canvas.width = 1600;
+    canvas.height = 1200;
+
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, 1600, 1200);
+
+    ctx.drawImage(img, 140, 170, 860, 860);
+
+    // 4 Corner Focus Brackets
+    ctx.strokeStyle = fColor;
+    ctx.lineWidth = 24;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    ctx.beginPath(); ctx.moveTo(80, 280); ctx.lineTo(80, 140); ctx.lineTo(220, 140); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(1060, 280); ctx.lineTo(1060, 140); ctx.lineTo(920, 140); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(80, 920); ctx.lineTo(80, 1060); ctx.lineTo(220, 1060); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(1060, 920); ctx.lineTo(1060, 1060); ctx.lineTo(920, 1060); ctx.stroke();
+
+    // Right Arrow Box
+    drawRoundedRect(ctx, 1140, 420, 380, 360, 40);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 64px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('SCAN', 1330, 520);
+
+    // Arrow
+    ctx.beginPath();
+    ctx.moveTo(1260, 600);
+    ctx.lineTo(1400, 600);
+    ctx.lineTo(1370, 570);
+    ctx.moveTo(1400, 600);
+    ctx.lineTo(1370, 630);
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 14;
+    ctx.stroke();
+
+    ctx.fillText('ME', 1330, 690);
+  } else if (frame === 'frame-focus-corners-speech') {
+    canvas.width = 1600;
+    canvas.height = 1200;
+
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, 1600, 1200);
+
+    ctx.drawImage(img, 140, 170, 860, 860);
+
+    ctx.strokeStyle = fColor;
+    ctx.lineWidth = 24;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    ctx.beginPath(); ctx.moveTo(80, 280); ctx.lineTo(80, 140); ctx.lineTo(220, 140); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(1060, 280); ctx.lineTo(1060, 140); ctx.lineTo(920, 140); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(80, 920); ctx.lineTo(80, 1060); ctx.lineTo(220, 1060); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(1060, 920); ctx.lineTo(1060, 1060); ctx.lineTo(920, 1060); ctx.stroke();
+
+    // Right Speech Bubble
+    drawRoundedRect(ctx, 1140, 360, 400, 480, 48);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(1140, 560);
+    ctx.lineTo(1080, 600);
+    ctx.lineTo(1140, 640);
+    ctx.closePath();
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 80px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('SCAN', 1340, 540);
+    ctx.fillText('ME', 1340, 660);
+  } else if (frame === 'frame-phone-portrait') {
+    canvas.width = 1200;
+    canvas.height = 1800;
+
+    // Phone outline
+    drawRoundedRect(ctx, 150, 60, 900, 1680, 90);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 24;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    // Notch
+    drawRoundedRect(ctx, 450, 110, 300, 30, 15);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    // Side power button
+    ctx.beginPath();
+    ctx.moveTo(1050, 400);
+    ctx.lineTo(1050, 600);
+    ctx.strokeStyle = fColor;
+    ctx.lineWidth = 32;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    ctx.drawImage(img, 220, 280, 760, 760);
+
+    // Bottom Arrow & Text
+    ctx.beginPath();
+    ctx.moveTo(600, 1280);
+    ctx.lineTo(550, 1360);
+    ctx.lineTo(650, 1360);
+    ctx.closePath();
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = fColor;
+    ctx.font = '900 76px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 600, 1490);
+  } else if (frame === 'frame-phone-landscape') {
+    canvas.width = 1800;
+    canvas.height = 1200;
+
+    drawRoundedRect(ctx, 60, 150, 1680, 900, 90);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 24;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    // Top button
+    ctx.beginPath();
+    ctx.moveTo(400, 150);
+    ctx.lineTo(600, 150);
+    ctx.strokeStyle = fColor;
+    ctx.lineWidth = 32;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    ctx.drawImage(img, 160, 220, 760, 760);
+
+    ctx.fillStyle = fColor;
+    ctx.font = '900 86px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('SCAN', 1340, 520);
+
+    ctx.beginPath();
+    ctx.moveTo(1200, 640);
+    ctx.lineTo(1270, 590);
+    ctx.lineTo(1270, 690);
+    ctx.closePath();
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillText('ME', 1380, 640);
+  } else if (frame === 'frame-speech-bubble-bottom') {
+    canvas.width = 1200;
+    canvas.height = 1460;
+
+    drawRoundedRect(ctx, 50, 50, 1100, 1260, 56);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 18;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    // Bottom pointer
+    ctx.beginPath();
+    ctx.moveTo(850, 1310);
+    ctx.lineTo(970, 1420);
+    ctx.lineTo(970, 1310);
+    ctx.closePath();
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.strokeStyle = fColor;
+    ctx.lineWidth = 18;
+    ctx.stroke();
+
+    ctx.drawImage(img, 170, 170, 860, 860);
+
+    ctx.fillStyle = fColor;
+    ctx.font = '900 64px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 600, 1180);
+  } else if (frame === 'frame-speech-tab-top') {
+    canvas.width = 1200;
+    canvas.height = 1460;
+
+    // Top-left attached tab
+    drawRoundedRect(ctx, 60, 30, 420, 140, [28, 28, 0, 0]);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 52px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 270, 100);
+
+    drawRoundedRect(ctx, 50, 170, 1100, 1140, 56);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 18;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    // Bottom-right pointer
+    ctx.beginPath();
+    ctx.moveTo(850, 1310);
+    ctx.lineTo(970, 1420);
+    ctx.lineTo(970, 1310);
+    ctx.closePath();
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.strokeStyle = fColor;
+    ctx.lineWidth = 18;
+    ctx.stroke();
+
+    ctx.drawImage(img, 170, 310, 860, 860);
+  } else if (frame === 'frame-speech-bubble-right') {
+    canvas.width = 1540;
+    canvas.height = 1200;
+
+    drawRoundedRect(ctx, 60, 60, 1080, 1080, 56);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 18;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    // Pointer to right
+    ctx.beginPath();
+    ctx.moveTo(1140, 500);
+    ctx.lineTo(1240, 600);
+    ctx.lineTo(1140, 600);
+    ctx.closePath();
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.strokeStyle = fColor;
+    ctx.lineWidth = 18;
+    ctx.stroke();
+
+    ctx.drawImage(img, 170, 170, 860, 860);
+
+    ctx.fillStyle = fColor;
+    ctx.font = '900 80px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('SCAN', 1380, 520);
+    ctx.fillText('ME', 1380, 660);
+  } else if (frame === 'frame-top-arrow') {
+    canvas.width = 1200;
+    canvas.height = 1460;
+
+    // Top banner
+    drawRoundedRect(ctx, 280, 40, 640, 160, 32);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    // Downward arrow
+    ctx.beginPath();
+    ctx.moveTo(560, 200);
+    ctx.lineTo(600, 260);
+    ctx.lineTo(640, 200);
+    ctx.closePath();
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 56px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 600, 120);
+
+    drawRoundedRect(ctx, 50, 260, 1100, 1150, 56);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 16;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    ctx.drawImage(img, 170, 400, 860, 860);
+  } else if (frame === 'frame-top-roof') {
+    canvas.width = 1200;
+    canvas.height = 1460;
+
+    // House-notched top banner
+    ctx.beginPath();
+    ctx.moveTo(250, 200);
+    ctx.lineTo(250, 100);
+    ctx.lineTo(600, 30);
+    ctx.lineTo(950, 100);
+    ctx.lineTo(950, 200);
+    ctx.closePath();
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 56px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ctaText, 600, 125);
+
+    drawRoundedRect(ctx, 50, 200, 1100, 1210, 56);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 16;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    ctx.drawImage(img, 170, 370, 860, 860);
+  } else if (frame === 'frame-trapezoid') {
+    canvas.width = 1200;
+    canvas.height = 1460;
+
+    // Trapezoid outline (wider bottom, narrower top)
+    ctx.beginPath();
+    ctx.moveTo(200, 180);
+    ctx.lineTo(1000, 180);
+    ctx.lineTo(1120, 1380);
+    ctx.lineTo(80, 1380);
+    ctx.closePath();
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 20;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    // Top ribbon
+    drawRoundedRect(ctx, 300, 50, 600, 130, 28);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 52px system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(ctaText, 600, 115);
 
-    drawRoundedRect(ctx, 50, 250, 1100, 1240, 48);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = fColor + '30';
-    ctx.stroke();
-
-    ctx.drawImage(img, 170, 340, 860, 860);
-
-    ctx.fillStyle = '#64748b';
-    ctx.font = '600 32px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('Scan with your smartphone camera', 600, 1330);
-  } else if (frame === 'bitly-restaurant-menu') {
+    ctx.drawImage(img, 170, 360, 860, 860);
+  } else if (frame === 'frame-corner-peel') {
     canvas.width = 1200;
-    canvas.height = 1520;
+    canvas.height = 1460;
 
-    drawRoundedRect(ctx, 40, 40, 1120, 1440, 48);
+    // Card with corner cutout
+    ctx.beginPath();
+    ctx.moveTo(50, 100);
+    ctx.quadraticCurveTo(50, 50, 100, 50);
+    ctx.lineTo(1100, 50);
+    ctx.quadraticCurveTo(1150, 50, 1150, 100);
+    ctx.lineTo(1150, 1150);
+    ctx.lineTo(900, 1400);
+    ctx.lineTo(100, 1400);
+    ctx.quadraticCurveTo(50, 1400, 50, 1350);
+    ctx.closePath();
     ctx.fillStyle = '#ffffff';
     ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = fColor + '25';
-    ctx.stroke();
-
-    drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
-    ctx.fillStyle = fColor;
-    ctx.fill();
-
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText || 'SCAN FOR MENU', 600, 125);
-
-    ctx.drawImage(img, 170, 310, 860, 860);
-
-    drawRoundedRect(ctx, 200, 1270, 800, 110, 30);
-    ctx.fillStyle = fColor + '15';
-    ctx.fill();
-
-    ctx.fillStyle = fColor;
-    ctx.font = '700 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('Point camera to view menu & order', 600, 1325);
-  } else if (frame === 'bitly-wifi-access') {
-    canvas.width = 1200;
-    canvas.height = 1520;
-
-    drawRoundedRect(ctx, 40, 40, 1120, 1440, 48);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = fColor + '25';
-    ctx.stroke();
-
-    drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
-    ctx.fillStyle = fColor;
-    ctx.fill();
-
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText || 'CONNECT TO WI-FI', 600, 125);
-
-    ctx.drawImage(img, 170, 310, 860, 860);
-
-    drawRoundedRect(ctx, 200, 1270, 800, 110, 30);
-    ctx.fillStyle = fColor + '15';
-    ctx.fill();
-
-    ctx.fillStyle = fColor;
-    ctx.font = '700 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('Scan to join high-speed network instantly', 600, 1325);
-  } else if (frame === 'bitly-social-follow') {
-    canvas.width = 1200;
-    canvas.height = 1520;
-
-    drawRoundedRect(ctx, 40, 40, 1120, 1440, 48);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = fColor + '25';
-    ctx.stroke();
-
-    drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
-    ctx.fillStyle = fColor;
-    ctx.fill();
-
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText || 'FOLLOW US', 600, 125);
-
-    ctx.drawImage(img, 170, 310, 860, 860);
-
-    drawRoundedRect(ctx, 240, 1270, 720, 110, 55);
-    ctx.fillStyle = fColor;
-    ctx.fill();
-
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '800 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('Connect with us on Social Media', 600, 1325);
-  } else if (frame === 'bitly-review-star') {
-    canvas.width = 1200;
-    canvas.height = 1560;
-
-    drawRoundedRect(ctx, 40, 40, 1120, 1480, 48);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = fColor + '25';
-    ctx.stroke();
-
-    ctx.fillStyle = fColor;
-    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('CUSTOMER REVIEWS', 600, 120);
-
-    ctx.fillStyle = '#64748b';
-    ctx.font = '800 28px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('YOUR FEEDBACK HELPS US GROW', 600, 180);
-
-    ctx.drawImage(img, 170, 260, 860, 860);
-
-    drawRoundedRect(ctx, 200, 1240, 800, 140, 70);
-    ctx.fillStyle = fColor;
-    ctx.fill();
-
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '900 48px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText(ctaText || 'LEAVE A REVIEW', 600, 1310);
-  } else if (frame === 'bitly-voucher-ticket') {
-    canvas.width = 1200;
-    canvas.height = 1520;
-
-    drawRoundedRect(ctx, 40, 40, 1120, 1440, 40);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.lineWidth = 6;
+    ctx.lineWidth = 18;
     ctx.strokeStyle = fColor;
     ctx.stroke();
 
-    ctx.fillStyle = '#f8fafc';
+    // Peeling triangle
     ctx.beginPath();
-    ctx.arc(40, 1180, 45, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(1160, 1180, 45, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.strokeStyle = fColor + '60';
-    ctx.lineWidth = 4;
-    ctx.setLineDash([16, 12]);
-    ctx.beginPath();
-    ctx.moveTo(120, 1180);
-    ctx.lineTo(1080, 1180);
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    drawRoundedRect(ctx, 250, 80, 700, 110, 24);
+    ctx.moveTo(900, 1150);
+    ctx.lineTo(1150, 1150);
+    ctx.lineTo(900, 1400);
+    ctx.closePath();
     ctx.fillStyle = fColor;
     ctx.fill();
 
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '900 44px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.drawImage(img, 170, 150, 860, 860);
+
+    ctx.fillStyle = fColor;
+    ctx.font = '900 64px system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('SPECIAL PROMOTION', 600, 135);
+    ctx.fillText(ctaText, 500, 1260);
+  } else if (frame === 'frame-vertical-right') {
+    canvas.width = 1380;
+    canvas.height = 1200;
 
-    ctx.drawImage(img, 170, 240, 860, 860);
-
-    ctx.fillStyle = fColor;
-    ctx.font = '900 52px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText(ctaText || 'GET 20% DISCOUNT', 600, 1280);
-
-    ctx.fillStyle = '#64748b';
-    ctx.font = '600 30px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('Scan with smartphone camera to redeem', 600, 1360);
-  } else if (frame === 'bitly-app-download') {
-    canvas.width = 1200;
-    canvas.height = 1540;
-
-    drawRoundedRect(ctx, 40, 40, 1120, 1460, 48);
+    drawRoundedRect(ctx, 40, 40, 1300, 1120, 48);
     ctx.fillStyle = '#ffffff';
     ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = fColor + '25';
+    ctx.lineWidth = 16;
+    ctx.strokeStyle = fColor;
     ctx.stroke();
 
-    drawRoundedRect(ctx, 40, 40, 1120, 170, [48, 48, 0, 0]);
+    // Right vertical sidebar
+    drawRoundedRect(ctx, 1120, 40, 220, 1120, [0, 48, 48, 0]);
     ctx.fillStyle = fColor;
     ctx.fill();
 
+    ctx.drawImage(img, 150, 170, 860, 860);
+
+    // Vertical text
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 50px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = '900 68px system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText || 'DOWNLOAD OUR APP', 600, 125);
+    ctx.fillText('S', 1230, 240);
+    ctx.fillText('C', 1230, 360);
+    ctx.fillText('A', 1230, 480);
+    ctx.fillText('N', 1230, 600);
+    ctx.fillText('M', 1230, 800);
+    ctx.fillText('E', 1230, 920);
+  } else if (frame === 'frame-vertical-dual') {
+    canvas.width = 1540;
+    canvas.height = 1200;
 
-    ctx.drawImage(img, 170, 310, 860, 860);
-
-    drawRoundedRect(ctx, 180, 1260, 840, 110, 24);
-    ctx.fillStyle = '#0f172a';
+    drawRoundedRect(ctx, 40, 40, 1460, 1120, 48);
+    ctx.fillStyle = '#ffffff';
     ctx.fill();
+    ctx.lineWidth = 16;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    // Left vertical sidebar
+    drawRoundedRect(ctx, 40, 40, 200, 1120, [48, 0, 0, 48]);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    // Right vertical sidebar
+    drawRoundedRect(ctx, 1300, 40, 200, 1120, [0, 48, 48, 0]);
+    ctx.fillStyle = fColor;
+    ctx.fill();
+
+    ctx.drawImage(img, 340, 170, 860, 860);
 
     ctx.fillStyle = '#ffffff';
-    ctx.font = '800 36px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('Available on iOS App Store & Google Play', 600, 1315);
-  } else if (frame === 'bitly-luxury-gold') {
-    canvas.width = 1200;
-    canvas.height = 1520;
-
-    drawRoundedRect(ctx, 40, 40, 1120, 1440, 36);
-    ctx.fillStyle = '#0f172a';
-    ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = '#ca8a04';
-    ctx.stroke();
-
-    drawRoundedRect(ctx, 70, 70, 1060, 1380, 24);
-    ctx.lineWidth = 3;
-    ctx.strokeStyle = '#ca8a04';
-    ctx.stroke();
-
-    ctx.fillStyle = '#facc15';
-    ctx.font = '900 46px serif, system-ui';
+    ctx.font = '900 64px system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(ctaText || 'VIP EXCLUSIVE ACCESS', 600, 150);
 
-    drawRoundedRect(ctx, 170, 240, 860, 860, 20);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
+    ctx.fillText('S', 140, 340);
+    ctx.fillText('C', 140, 480);
+    ctx.fillText('A', 140, 620);
+    ctx.fillText('N', 140, 760);
 
-    ctx.drawImage(img, 170, 240, 860, 860);
+    ctx.fillText('M', 1400, 480);
+    ctx.fillText('E', 1400, 620);
+  } else if (frame === 'frame-horizontal-left') {
+    canvas.width = 1680;
+    canvas.height = 1120;
 
-    ctx.fillStyle = '#f8fafc';
-    ctx.font = '700 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillText('Scan with phone for member privileges', 600, 1280);
-  } else if (frame === 'bitly-browser-window') {
-    canvas.width = 1200;
-    canvas.height = 1540;
-
-    drawRoundedRect(ctx, 40, 40, 1120, 1460, 36);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = '#334155';
-    ctx.stroke();
-
-    drawRoundedRect(ctx, 40, 40, 1120, 110, [36, 36, 0, 0]);
-    ctx.fillStyle = '#0f172a';
-    ctx.fill();
-
-    ctx.fillStyle = '#ef4444';
-    ctx.beginPath();
-    ctx.arc(90, 95, 14, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = '#eab308';
-    ctx.beginPath();
-    ctx.arc(130, 95, 14, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = '#22c55e';
-    ctx.beginPath();
-    ctx.arc(170, 95, 14, 0, Math.PI * 2);
-    ctx.fill();
-
-    drawRoundedRect(ctx, 240, 65, 870, 60, 12);
-    ctx.fillStyle = '#1e293b';
-    ctx.fill();
-
-    ctx.fillStyle = '#94a3b8';
-    ctx.font = '700 28px monospace';
-    ctx.textAlign = 'left';
-    ctx.fillText('https://qr-generator.online', 270, 103);
-
-    ctx.drawImage(img, 170, 240, 860, 860);
-
-    drawRoundedRect(ctx, 220, 1230, 760, 130, 24);
+    // Left card
+    drawRoundedRect(ctx, 40, 120, 560, 880, 48);
     ctx.fillStyle = fColor;
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 48px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = '900 96px system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText(ctaText || 'VISIT WEBSITE', 600, 1295);
+    ctx.textBaseline = 'middle';
+    ctx.fillText('SCAN', 320, 480);
+    ctx.fillText('ME', 320, 640);
+
+    // Right QR frame
+    drawRoundedRect(ctx, 640, 120, 1000, 880, 48);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.lineWidth = 16;
+    ctx.strokeStyle = fColor;
+    ctx.stroke();
+
+    ctx.drawImage(img, 720, 170, 780, 780);
   }
 
   URL.revokeObjectURL(img.src);
@@ -832,7 +1086,7 @@ function buildFramedSvg(
   cornerSq: string
 ): string {
   const ctaText = (text || 'SCAN ME').toUpperCase();
-  const fColor = fg || '#2B6F53';
+  const fColor = fg || '#1E1E1E';
   const bColor = bg || '#ffffff';
 
   let cleanSvg = rawSvgText;
@@ -841,151 +1095,104 @@ function buildFramedSvg(
     cleanSvg = svgMatch[1];
   }
 
-  if (frame === 'bitly-bottom-bar') {
+  if (frame === 'frame-bottom-bar') {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
   <rect width="1200" height="1460" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1380" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.2" stroke-width="6"/>
+  <rect x="40" y="40" width="1120" height="1380" rx="48" fill="#ffffff" stroke="${fColor}" stroke-width="14"/>
   <g transform="translate(170, 140) scale(3.07)">
     ${cleanSvg}
   </g>
   <path d="M 40 1260 L 1160 1260 L 1160 1372 A 48 48 0 0 1 1112 1420 L 88 1420 A 48 48 0 0 1 40 1372 Z" fill="${fColor}"/>
-  <text x="600" y="1355" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">${ctaText}</text>
+  <text x="600" y="1355" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">${ctaText}</text>
 </svg>`;
-  } else if (frame === 'bitly-top-bar') {
+  } else if (frame === 'frame-top-bar') {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
   <rect width="1200" height="1460" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1380" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.2" stroke-width="6"/>
-  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
-  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="54" text-anchor="middle">${ctaText}</text>
-  <g transform="translate(170, 310) scale(3.07)">
+  <rect x="40" y="40" width="1120" height="1380" rx="48" fill="#ffffff" stroke="${fColor}" stroke-width="14"/>
+  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 220 L 40 220 Z" fill="${fColor}"/>
+  <text x="600" y="145" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">${ctaText}</text>
+  <g transform="translate(170, 320) scale(3.07)">
     ${cleanSvg}
   </g>
-  <text x="600" y="1285" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="32" text-anchor="middle">Point your smartphone camera to scan</text>
 </svg>`;
-  } else if (frame === 'bitly-floating-badge') {
+  } else if (frame === 'frame-focus-corners-bottom') {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1480" width="1200" height="1480">
-  <rect width="1200" height="1480" fill="#f8fafc"/>
-  <rect x="50" y="50" width="1100" height="1280" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
+  <rect width="1200" height="1480" fill="#ffffff"/>
+  <path d="M 100 240 L 100 100 L 240 100 M 1100 240 L 1100 100 L 960 100 M 100 900 L 100 1040 L 240 1040 M 1100 900 L 1100 1040 L 960 1040" stroke="${fColor}" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g transform="translate(170, 140) scale(3.07)">
+    ${cleanSvg}
+  </g>
+  <rect x="300" y="1140" width="600" height="220" rx="48" fill="${fColor}"/>
+  <text x="600" y="1270" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">${ctaText}</text>
+</svg>`;
+  } else if (frame === 'frame-focus-corners-top') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
+  <rect width="1200" height="1520" fill="#ffffff"/>
+  <rect x="250" y="40" width="700" height="180" rx="48" fill="${fColor}"/>
+  <polygon points="560,220 600,270 640,220" fill="${fColor}"/>
+  <text x="600" y="150" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="62" text-anchor="middle">${ctaText}</text>
+  <path d="M 100 480 L 100 340 L 240 340 M 1100 480 L 1100 340 L 960 340 M 100 1100 L 100 1240 L 240 1240 M 1100 1100 L 1100 1240 L 960 1240" stroke="${fColor}" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g transform="translate(170, 360) scale(3.07)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  } else if (frame === 'frame-phone-portrait') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <rect width="1200" height="1800" fill="#ffffff"/>
+  <rect x="150" y="60" width="900" height="1680" rx="90" fill="#ffffff" stroke="${fColor}" stroke-width="24"/>
+  <rect x="450" y="110" width="300" height="30" rx="15" fill="${fColor}"/>
+  <line x1="1050" y1="400" x2="1050" y2="600" stroke="${fColor}" stroke-width="32" stroke-linecap="round"/>
+  <g transform="translate(220, 280) scale(2.71)">
+    ${cleanSvg}
+  </g>
+  <polygon points="600,1280 550,1360 650,1360" fill="${fColor}"/>
+  <text x="600" y="1510" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="76" text-anchor="middle">${ctaText}</text>
+</svg>`;
+  } else if (frame === 'frame-speech-bubble-bottom') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
+  <rect width="1200" height="1460" fill="#ffffff"/>
+  <rect x="50" y="50" width="1100" height="1260" rx="56" fill="#ffffff" stroke="${fColor}" stroke-width="18"/>
+  <polygon points="850,1310 970,1420 970,1310" fill="#ffffff" stroke="${fColor}" stroke-width="18"/>
+  <g transform="translate(170, 170) scale(3.07)">
+    ${cleanSvg}
+  </g>
+  <text x="600" y="1200" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" text-anchor="middle">${ctaText}</text>
+</svg>`;
+  } else if (frame === 'frame-top-arrow') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
+  <rect width="1200" height="1460" fill="#ffffff"/>
+  <rect x="280" y="40" width="640" height="160" rx="32" fill="${fColor}"/>
+  <polygon points="560,200 600,260 640,200" fill="${fColor}"/>
+  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" text-anchor="middle">${ctaText}</text>
+  <rect x="50" y="260" width="1100" height="1150" rx="56" fill="#ffffff" stroke="${fColor}" stroke-width="16"/>
+  <g transform="translate(170, 400) scale(3.07)">
+    ${cleanSvg}
+  </g>
+</svg>`;
+  } else if (frame === 'frame-corner-peel') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1460" width="1200" height="1460">
+  <rect width="1200" height="1460" fill="#ffffff"/>
+  <path d="M 50 100 A 50 50 0 0 1 100 50 L 1100 50 A 50 50 0 0 1 1150 100 L 1150 1150 L 900 1400 L 100 1400 A 50 50 0 0 1 50 1350 Z" fill="#ffffff" stroke="${fColor}" stroke-width="18"/>
+  <polygon points="900,1150 1150,1150 900,1400" fill="${fColor}"/>
   <g transform="translate(170, 150) scale(3.07)">
     ${cleanSvg}
   </g>
-  <rect x="200" y="1260" width="800" height="150" rx="75" fill="${fColor}" stroke="#ffffff" stroke-width="8"/>
-  <text x="600" y="1350" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText}</text>
+  <text x="500" y="1280" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" text-anchor="middle">${ctaText}</text>
 </svg>`;
-  } else if (frame === 'bitly-speech-bubble') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1540" width="1200" height="1540">
-  <rect width="1200" height="1540" fill="#f8fafc"/>
-  <rect x="160" y="40" width="880" height="150" rx="40" fill="${fColor}"/>
-  <polygon points="570,190 600,230 630,190" fill="${fColor}"/>
-  <text x="600" y="130" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="50" text-anchor="middle">${ctaText}</text>
-  <rect x="50" y="250" width="1100" height="1240" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.3" stroke-width="6"/>
-  <g transform="translate(170, 340) scale(3.07)">
+  } else if (frame === 'frame-vertical-right') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1380 1200" width="1380" height="1200">
+  <rect width="1380" height="1200" fill="#ffffff"/>
+  <rect x="40" y="40" width="1300" height="1120" rx="48" fill="#ffffff" stroke="${fColor}" stroke-width="16"/>
+  <path d="M 1120 40 L 1292 40 A 48 48 0 0 1 1340 88 L 1340 1112 A 48 48 0 0 1 1292 1160 L 1120 1160 Z" fill="${fColor}"/>
+  <g transform="translate(150, 170) scale(3.07)">
     ${cleanSvg}
   </g>
-  <text x="600" y="1335" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="32" text-anchor="middle">Scan with your smartphone camera</text>
-</svg>`;
-  } else if (frame === 'bitly-restaurant-menu') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
-  <rect width="1200" height="1520" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1440" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
-  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
-  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText || 'SCAN FOR MENU'}</text>
-  <g transform="translate(170, 310) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <rect x="200" y="1270" width="800" height="110" rx="30" fill="${fColor}" fill-opacity="0.15"/>
-  <text x="600" y="1338" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="34" text-anchor="middle">Point camera to view menu &amp; order</text>
-</svg>`;
-  } else if (frame === 'bitly-wifi-access') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
-  <rect width="1200" height="1520" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1440" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
-  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
-  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText || 'CONNECT TO WI-FI'}</text>
-  <g transform="translate(170, 310) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <rect x="200" y="1270" width="800" height="110" rx="30" fill="${fColor}" fill-opacity="0.15"/>
-  <text x="600" y="1338" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="34" text-anchor="middle">Scan to join high-speed network instantly</text>
-</svg>`;
-  } else if (frame === 'bitly-social-follow') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
-  <rect width="1200" height="1520" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1440" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
-  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
-  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText || 'FOLLOW US'}</text>
-  <g transform="translate(170, 310) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <rect x="240" y="1270" width="720" height="110" rx="55" fill="${fColor}"/>
-  <text x="600" y="1338" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="34" text-anchor="middle">Connect with us on Social Media</text>
-</svg>`;
-  } else if (frame === 'bitly-review-star') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1560" width="1200" height="1560">
-  <rect width="1200" height="1560" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1480" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
-  <text x="600" y="130" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">CUSTOMER REVIEWS</text>
-  <text x="600" y="185" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="28" text-anchor="middle">YOUR FEEDBACK HELPS US GROW</text>
-  <g transform="translate(170, 260) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <rect x="200" y="1240" width="800" height="140" rx="70" fill="${fColor}"/>
-  <text x="600" y="1325" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">${ctaText || 'LEAVE A REVIEW'}</text>
-</svg>`;
-  } else if (frame === 'bitly-voucher-ticket') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
-  <rect width="1200" height="1520" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1440" rx="40" fill="#ffffff" stroke="${fColor}" stroke-width="6"/>
-  <circle cx="40" cy="1180" r="45" fill="#f8fafc"/>
-  <circle cx="1160" cy="1180" r="45" fill="#f8fafc"/>
-  <line x1="120" y1="1180" x2="1080" y2="1180" stroke="${fColor}" stroke-opacity="0.6" stroke-width="4" stroke-dasharray="16 12"/>
-  <rect x="250" y="80" width="700" height="110" rx="24" fill="${fColor}"/>
-  <text x="600" y="150" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" text-anchor="middle">SPECIAL PROMOTION</text>
-  <g transform="translate(170, 240) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <text x="600" y="1295" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle">${ctaText || 'GET 20% DISCOUNT'}</text>
-  <text x="600" y="1370" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="30" text-anchor="middle">Scan with smartphone camera to redeem</text>
-</svg>`;
-  } else if (frame === 'bitly-app-download') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1540" width="1200" height="1540">
-  <rect width="1200" height="1540" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1460" rx="48" fill="#ffffff" stroke="${fColor}" stroke-opacity="0.25" stroke-width="6"/>
-  <path d="M 40 88 A 48 48 0 0 1 88 40 L 1112 40 A 48 48 0 0 1 1160 88 L 1160 210 L 40 210 Z" fill="${fColor}"/>
-  <text x="600" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="50" text-anchor="middle">${ctaText || 'DOWNLOAD OUR APP'}</text>
-  <g transform="translate(170, 310) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <rect x="180" y="1260" width="840" height="110" rx="24" fill="#0f172a"/>
-  <text x="600" y="1330" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="36" text-anchor="middle">Available on iOS App Store &amp; Google Play</text>
-</svg>`;
-  } else if (frame === 'bitly-luxury-gold') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1520" width="1200" height="1520">
-  <rect width="1200" height="1520" fill="#0f172a"/>
-  <rect x="40" y="40" width="1120" height="1440" rx="36" fill="#0f172a" stroke="#ca8a04" stroke-width="6"/>
-  <rect x="70" y="70" width="1060" height="1380" rx="24" fill="none" stroke="#ca8a04" stroke-width="3"/>
-  <text x="600" y="160" fill="#facc15" font-family="serif, system-ui" font-weight="900" font-size="46" text-anchor="middle">${ctaText || 'VIP EXCLUSIVE ACCESS'}</text>
-  <rect x="170" y="240" width="860" height="860" rx="20" fill="#ffffff"/>
-  <g transform="translate(170, 240) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <text x="600" y="1295" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="34" text-anchor="middle">Scan with phone for member privileges</text>
-</svg>`;
-  } else if (frame === 'bitly-browser-window') {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1540" width="1200" height="1540">
-  <rect width="1200" height="1540" fill="#f8fafc"/>
-  <rect x="40" y="40" width="1120" height="1460" rx="36" fill="#ffffff" stroke="#334155" stroke-width="6"/>
-  <path d="M 40 76 A 36 36 0 0 1 76 40 L 1124 40 A 36 36 0 0 1 1160 76 L 1160 150 L 40 150 Z" fill="#0f172a"/>
-  <circle cx="90" cy="95" r="14" fill="#ef4444"/>
-  <circle cx="130" cy="95" r="14" fill="#eab308"/>
-  <circle cx="170" cy="95" r="14" fill="#22c55e"/>
-  <rect x="240" y="65" width="870" height="60" rx="12" fill="#1e293b"/>
-  <text x="270" y="105" fill="#94a3b8" font-family="monospace" font-weight="700" font-size="28">https://qr-generator.online</text>
-  <g transform="translate(170, 240) scale(3.07)">
-    ${cleanSvg}
-  </g>
-  <rect x="220" y="1230" width="760" height="130" rx="24" fill="${fColor}"/>
-  <text x="600" y="1310" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" text-anchor="middle">${ctaText || 'VISIT WEBSITE'}</text>
+  <text x="1230" y="240" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">S</text>
+  <text x="1230" y="360" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">C</text>
+  <text x="1230" y="480" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">A</text>
+  <text x="1230" y="600" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">N</text>
+  <text x="1230" y="800" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">M</text>
+  <text x="1230" y="920" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" text-anchor="middle">E</text>
 </svg>`;
   }
   return rawSvgText;
@@ -2210,147 +2417,152 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                     </div>
 
                     {/* QR Canvas + Template Mini-QR Carousel */}
+                    {/* QR Canvas + Template Mini-QR Carousel */}
                     <div className="flex items-center justify-between w-full gap-3">
-                      {/* Canvas Container with Live Bitly-Grade Frame Simulation */}
+                      {/* Canvas Container with Live Benchmark-Grade Frame Simulation */}
                       <div className={`relative transition-all shadow-xl flex flex-col items-center justify-center overflow-hidden ${
                         selectedFrame === 'none' ? 'bg-white rounded-2xl p-2.5 border-2 border-black/10' :
-                        selectedFrame === 'bitly-bottom-bar' ? 'bg-white rounded-2xl pt-2.5 pb-0 border-2 border-black/10' :
-                        selectedFrame === 'bitly-top-bar' ? 'bg-white rounded-2xl p-0 border-2 border-black/10' :
-                        selectedFrame === 'bitly-floating-badge' ? 'bg-white rounded-2xl p-2.5 pb-4 border-2 border-black/10' :
-                        selectedFrame === 'bitly-speech-bubble' ? 'bg-transparent p-0 flex flex-col items-center' :
-                        selectedFrame === 'bitly-restaurant-menu' ? 'bg-white rounded-2xl p-0 border-2 border-black/10' :
-                        selectedFrame === 'bitly-wifi-access' ? 'bg-white rounded-2xl p-0 border-2 border-black/10' :
-                        selectedFrame === 'bitly-social-follow' ? 'bg-white rounded-2xl p-0 border-2 border-black/10' :
-                        selectedFrame === 'bitly-review-star' ? 'bg-white rounded-2xl p-2.5 pb-3 border-2 border-black/10' :
-                        selectedFrame === 'bitly-voucher-ticket' ? 'bg-white rounded-2xl p-2 pb-2.5 border-2 relative' :
-                        selectedFrame === 'bitly-app-download' ? 'bg-white rounded-2xl p-0 border-2 border-black/10' :
-                        selectedFrame === 'bitly-luxury-gold' ? 'bg-[#0f172a] rounded-2xl p-2.5 border-2 border-[#ca8a04]' :
-                        selectedFrame === 'bitly-browser-window' ? 'bg-white rounded-2xl p-0 border-2 border-[#334155]' :
+                        selectedFrame === 'frame-bottom-bar' ? 'bg-white rounded-2xl pt-2.5 pb-0 border-2' :
+                        selectedFrame === 'frame-top-bar' ? 'bg-white rounded-2xl p-0 border-2' :
+                        selectedFrame === 'frame-focus-corners-bottom' ? 'bg-white rounded-2xl p-2 pb-3 border-2 border-dashed border-black/10' :
+                        selectedFrame === 'frame-focus-corners-top' ? 'bg-white rounded-2xl p-2 pt-1 border-2 border-dashed border-black/10' :
+                        selectedFrame === 'frame-phone-portrait' ? 'bg-white rounded-3xl pt-3 pb-3 px-2 border-4' :
+                        selectedFrame === 'frame-phone-landscape' ? 'bg-white rounded-3xl p-2 border-4 flex-row' :
+                        selectedFrame === 'frame-speech-bubble-bottom' ? 'bg-white rounded-2xl p-2 pb-3 border-2' :
+                        selectedFrame === 'frame-speech-tab-top' ? 'bg-white rounded-2xl p-0 border-2' :
+                        selectedFrame === 'frame-top-arrow' ? 'bg-white rounded-2xl p-0 border-2' :
+                        selectedFrame === 'frame-top-roof' ? 'bg-white rounded-2xl p-0 border-2' :
+                        selectedFrame === 'frame-trapezoid' ? 'bg-white rounded-2xl p-2 border-2' :
+                        selectedFrame === 'frame-corner-peel' ? 'bg-white rounded-2xl p-2 border-2 relative' :
+                        selectedFrame === 'frame-vertical-right' ? 'bg-white rounded-2xl p-0 border-2 flex-row' :
+                        selectedFrame === 'frame-vertical-dual' ? 'bg-white rounded-2xl p-0 border-2 flex-row' :
+                        selectedFrame === 'frame-horizontal-left' ? 'bg-white rounded-2xl p-0 border-2 flex-row' :
                         'bg-white rounded-2xl p-2.5 border-2 border-black/10'
                       }`} style={{
                         width: '74%',
                         maxWidth: '235px',
-                        borderColor: selectedFrame === 'bitly-voucher-ticket' ? fgColor : undefined
+                        borderColor: selectedFrame !== 'none' ? fgColor : undefined
                       }}>
                         
-                        {/* Top Header Frame Banner (Top-bar, Restaurant, WiFi, Social, App) */}
-                        {(selectedFrame === 'bitly-top-bar' || selectedFrame === 'bitly-restaurant-menu' || selectedFrame === 'bitly-wifi-access' || selectedFrame === 'bitly-social-follow' || selectedFrame === 'bitly-app-download') && (
+                        {/* Top Header Banner (Top-bar, Speech Tab, Top Arrow, Top Roof) */}
+                        {selectedFrame === 'frame-top-bar' && (
                           <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-1.5 px-2 shadow-2xs mb-1.5" style={{ backgroundColor: fgColor }}>
                             <span className="truncate">{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
-                        {/* Top Speech Bubble */}
-                        {selectedFrame === 'bitly-speech-bubble' && (
+                        {selectedFrame === 'frame-speech-tab-top' && (
+                          <div className="w-full flex items-center justify-between mb-1">
+                            <div className="text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-br-lg shadow-2xs" style={{ backgroundColor: fgColor }}>
+                              {frameText || 'SCAN ME'}
+                            </div>
+                          </div>
+                        )}
+
+                        {selectedFrame === 'frame-focus-corners-top' && (
                           <div className="w-full mb-1 flex flex-col items-center">
                             <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 px-2 rounded-xl shadow-xs" style={{ backgroundColor: fgColor }}>
-                              {frameText || 'SCAN ME!'}
+                              {frameText || 'SCAN ME'}
                             </div>
                             <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px]" style={{ borderTopColor: fgColor }} />
                           </div>
                         )}
 
-                        {/* Browser Window Bar */}
-                        {selectedFrame === 'bitly-browser-window' && (
-                          <div className="w-full bg-[#0f172a] text-white py-1 px-2 flex items-center gap-1 mb-1.5">
-                            <div className="flex items-center gap-1">
-                              <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
-                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        {selectedFrame === 'frame-top-arrow' && (
+                          <div className="w-full mb-1 flex flex-col items-center">
+                            <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 px-2 rounded-xl shadow-xs" style={{ backgroundColor: fgColor }}>
+                              {frameText || 'SCAN ME'}
                             </div>
-                            <div className="flex-1 bg-[#1e293b] rounded px-1.5 py-0.5 text-[8px] text-slate-400 font-mono truncate text-center">
-                              https://qr-generator.online
-                            </div>
+                            <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px]" style={{ borderTopColor: fgColor }} />
                           </div>
                         )}
 
-                        {/* Review Top Header */}
-                        {selectedFrame === 'bitly-review-star' && (
-                          <div className="text-center mb-1">
-                            <div className="text-[9px] font-black uppercase tracking-wider" style={{ color: fgColor }}>CUSTOMER REVIEWS</div>
-                            <div className="text-[7px] text-gray-400 font-bold uppercase tracking-wider">Your Feedback Helps Us Grow</div>
+                        {selectedFrame === 'frame-top-roof' && (
+                          <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 px-2 shadow-xs mb-1" style={{ backgroundColor: fgColor, clipPath: 'polygon(0% 100%, 0% 40%, 50% 0%, 100% 40%, 100% 100%)' }}>
+                            <span className="truncate">{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
-                        {/* Luxury Frame Top Title */}
-                        {selectedFrame === 'bitly-luxury-gold' && (
-                          <div className="text-[#facc15] text-[9px] font-bold uppercase tracking-wider text-center mb-1 truncate px-1">
-                            {frameText || 'VIP EXCLUSIVE ACCESS'}
+                        {selectedFrame === 'frame-phone-portrait' && (
+                          <div className="w-8 h-1 rounded-full mb-1" style={{ backgroundColor: fgColor }} />
+                        )}
+
+                        {/* Dual Vertical Sidebar: Left Column */}
+                        {selectedFrame === 'frame-vertical-dual' && (
+                          <div className="w-6 py-2 flex flex-col items-center justify-center text-white text-[9px] font-black tracking-widest leading-3" style={{ backgroundColor: fgColor }}>
+                            <span>S</span><span>C</span><span>A</span><span>N</span>
                           </div>
                         )}
 
-                        {/* Ticket Voucher Top Header */}
-                        {selectedFrame === 'bitly-voucher-ticket' && (
-                          <div className="text-white text-[8px] font-black uppercase px-2 py-0.5 rounded-md mb-1 shadow-2xs" style={{ backgroundColor: fgColor }}>
-                            SPECIAL PROMOTION
+                        {/* Horizontal Split Left Card */}
+                        {selectedFrame === 'frame-horizontal-left' && (
+                          <div className="w-16 py-3 px-1 flex flex-col items-center justify-center text-white text-[10px] font-black tracking-wider leading-4 text-center" style={{ backgroundColor: fgColor }}>
+                            <span>SCAN</span><span>ME</span>
                           </div>
                         )}
 
                         {/* Inner QR Container with Quiet Zone */}
-                        <div className={`w-full flex items-center justify-center ${selectedFrame === 'bitly-luxury-gold' ? 'bg-white rounded-xl p-1' : selectedFrame === 'bitly-speech-bubble' ? 'bg-white rounded-2xl p-2 border-2 border-black/10 shadow-md' : 'p-1'}`}>
+                        <div className="w-full flex-1 flex items-center justify-center p-1 relative">
+                          {/* 4 Focus Corner Accents */}
+                          {(selectedFrame === 'frame-focus-corners-bottom' || selectedFrame === 'frame-focus-corners-top' || selectedFrame === 'frame-focus-corners-arrow' || selectedFrame === 'frame-focus-corners-speech') && (
+                            <>
+                              <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2" style={{ borderColor: fgColor }} />
+                              <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2" style={{ borderColor: fgColor }} />
+                              <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2" style={{ borderColor: fgColor }} />
+                              <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2" style={{ borderColor: fgColor }} />
+                            </>
+                          )}
                           <div ref={qrContainerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />
                         </div>
 
-                        {/* Bottom Full-Width Banner (Bitly Bottom Bar) */}
-                        {selectedFrame === 'bitly-bottom-bar' && (
+                        {/* Vertical Right Sidebar */}
+                        {selectedFrame === 'frame-vertical-right' && (
+                          <div className="w-7 py-2 flex flex-col items-center justify-center text-white text-[8px] font-black tracking-widest leading-3" style={{ backgroundColor: fgColor }}>
+                            <span>S</span><span>C</span><span>A</span><span>N</span>
+                            <span className="mt-1">M</span><span>E</span>
+                          </div>
+                        )}
+
+                        {/* Dual Vertical Sidebar: Right Column */}
+                        {selectedFrame === 'frame-vertical-dual' && (
+                          <div className="w-6 py-2 flex flex-col items-center justify-center text-white text-[9px] font-black tracking-widest leading-3" style={{ backgroundColor: fgColor }}>
+                            <span>M</span><span>E</span>
+                          </div>
+                        )}
+
+                        {/* Bottom Full-Width Banner (Bottom Bar) */}
+                        {selectedFrame === 'frame-bottom-bar' && (
                           <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-2 px-2 shadow-2xs mt-1" style={{ backgroundColor: fgColor }}>
                             <span className="truncate">{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
-                        {/* Floating Pill Badge */}
-                        {selectedFrame === 'bitly-floating-badge' && (
-                          <div className="text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-full mt-1.5 shadow-md flex items-center justify-center border-2 border-white" style={{ backgroundColor: fgColor }}>
+                        {/* Bottom Floating Badge / Focus Badge */}
+                        {selectedFrame === 'frame-focus-corners-bottom' && (
+                          <div className="text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-md mt-1.5 shadow-md flex items-center justify-center" style={{ backgroundColor: fgColor }}>
                             <span className="truncate">{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
-                        {/* Subtitle Hints for Category Frames */}
-                        {(selectedFrame === 'bitly-top-bar' || selectedFrame === 'bitly-restaurant-menu' || selectedFrame === 'bitly-wifi-access') && (
-                          <div className="text-[8px] text-gray-400 font-medium text-center py-1 truncate px-2">
-                            {selectedFrame === 'bitly-restaurant-menu' ? 'Point camera to view menu' :
-                             selectedFrame === 'bitly-wifi-access' ? 'Scan to join Wi-Fi instantly' :
-                             'Point camera to scan'}
+                        {/* Phone Portrait Bottom Arrow & Text */}
+                        {selectedFrame === 'frame-phone-portrait' && (
+                          <div className="flex flex-col items-center mt-1">
+                            <span className="text-[10px] font-bold" style={{ color: fgColor }}>▲</span>
+                            <span className="text-[9px] font-black uppercase tracking-wider" style={{ color: fgColor }}>{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
-                        {/* Social / Review / App / Window / Ticket CTA Buttons */}
-                        {selectedFrame === 'bitly-social-follow' && (
-                          <div className="text-white text-[8px] font-bold px-3 py-1 rounded-full mt-1 mb-1 shadow-2xs" style={{ backgroundColor: fgColor }}>
-                            Connect on Social Media
+                        {/* Speech Bubble Bottom Pointer */}
+                        {selectedFrame === 'frame-speech-bubble-bottom' && (
+                          <div className="w-full text-center mt-1">
+                            <span className="text-[9px] font-black uppercase tracking-wider" style={{ color: fgColor }}>{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
 
-                        {selectedFrame === 'bitly-review-star' && (
-                          <div className="text-white text-[9px] font-black uppercase px-3 py-1 rounded-full mt-1 shadow-xs" style={{ backgroundColor: fgColor }}>
-                            {frameText || 'LEAVE A REVIEW'}
-                          </div>
-                        )}
-
-                        {selectedFrame === 'bitly-voucher-ticket' && (
-                          <div className="w-full mt-1 pt-1 border-t border-dashed border-gray-300 text-center">
-                            <div className="text-[10px] font-black uppercase truncate" style={{ color: fgColor }}>
-                              {frameText || 'GET 20% DISCOUNT'}
-                            </div>
-                            <div className="text-[7px] text-gray-400">Scan with phone to redeem</div>
-                          </div>
-                        )}
-
-                        {selectedFrame === 'bitly-app-download' && (
-                          <div className="bg-[#0f172a] text-white text-[8px] font-bold py-1 px-2 rounded-md mt-1 mb-1">
-                            Available on iOS & Android
-                          </div>
-                        )}
-
-                        {selectedFrame === 'bitly-luxury-gold' && (
-                          <div className="text-slate-300 text-[8px] font-medium text-center mt-1">
-                            Scan for VIP Privileges
-                          </div>
-                        )}
-
-                        {selectedFrame === 'bitly-browser-window' && (
-                          <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1.5 rounded-b-xl mt-1 shadow-xs" style={{ backgroundColor: fgColor }}>
-                            {frameText || 'VISIT WEBSITE'}
+                        {/* Corner Peel Subtext */}
+                        {selectedFrame === 'frame-corner-peel' && (
+                          <div className="w-full text-left pl-1 mt-1">
+                            <span className="text-[9px] font-black uppercase tracking-wider" style={{ color: fgColor }}>{frameText || 'SCAN ME'}</span>
                           </div>
                         )}
                       </div>
@@ -2452,7 +2664,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
-                        <span>Save as Dynamic QR (Track & Edit)</span>
+                        <span>Save as Dynamic QR (Track &amp; Edit)</span>
                       </button>
 
                       {/* Customize Options Button (Opens Step-by-Step Modal) */}
@@ -2534,7 +2746,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                               <div className="flex items-center justify-between">
                                 <div>
                                   <h4 className="text-sm font-bold text-white">Select a Frame Style</h4>
-                                  <p className="text-xs text-white/50">Clean commercial frames designed to maximize QR scan conversions</p>
+                                  <p className="text-xs text-white/50">Industry standard frames matching reference design for high scan rates</p>
                                 </div>
                                 {selectedFrame !== 'none' && (
                                   <button
@@ -2548,7 +2760,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
 
                               {/* Category Filter Pills */}
                               <div className="flex flex-wrap items-center gap-1.5 pb-1">
-                                {['All', 'Popular', 'Business', 'Marketing', 'Utility', 'Tech'].map((cat) => (
+                                {['All', 'Popular', 'Focus', 'Device', 'Speech', 'Modern'].map((cat) => (
                                   <button
                                     key={cat}
                                     onClick={() => setFrameCategory(cat)}
@@ -2563,10 +2775,10 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                 ))}
                               </div>
 
-                              {/* Frame Cards Grid (Clean Vector Cards - NO EMOJIS) */}
-                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-[260px] overflow-y-auto pr-1">
+                              {/* Frame Cards Grid with Accurate Vector Silhouettes */}
+                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-[290px] overflow-y-auto pr-1">
                                 {FRAME_OPTIONS
-                                  .filter(f => frameCategory === 'All' || f.category === frameCategory || (frameCategory === 'Popular' && (f.id === 'bitly-bottom-bar' || f.id === 'bitly-top-bar' || f.id === 'bitly-floating-badge' || f.id === 'bitly-speech-bubble')))
+                                  .filter(f => frameCategory === 'All' || f.category === frameCategory)
                                   .map((f) => (
                                     <button
                                       key={f.id}
@@ -2578,19 +2790,112 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                       }`}
                                     >
                                       <div className="flex items-center justify-between">
-                                        <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-xs font-mono font-bold text-white">
-                                          {f.iconType === 'bottom-bar' ? '▼' :
-                                           f.iconType === 'top-bar' ? '▲' :
-                                           f.iconType === 'pill' ? '●' :
-                                           f.iconType === 'bubble' ? '🗨' :
-                                           f.iconType === 'menu' ? '≡' :
-                                           f.iconType === 'wifi' ? '📶' :
-                                           f.iconType === 'social' ? '♥' :
-                                           f.iconType === 'review' ? '★' :
-                                           f.iconType === 'ticket' ? '✂' :
-                                           f.iconType === 'app' ? '📱' :
-                                           f.iconType === 'luxury' ? '◆' :
-                                           f.iconType === 'window' ? '▣' : '◻'}
+                                        <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center p-1">
+                                          {f.id === 'frame-bottom-bar' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="4" y="3" width="36" height="42" rx="6" strokeWidth="2.5" />
+                                              <rect x="9" y="8" width="26" height="23" rx="2" strokeWidth="1.5" strokeDasharray="2 2" />
+                                              <rect x="4" y="34" width="36" height="11" rx="4" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-top-bar' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="4" y="3" width="36" height="42" rx="6" strokeWidth="2.5" />
+                                              <rect x="4" y="3" width="36" height="11" rx="4" fill="currentColor" />
+                                              <rect x="9" y="17" width="26" height="23" rx="2" strokeWidth="1.5" strokeDasharray="2 2" />
+                                            </svg>
+                                          ) : f.id === 'frame-focus-corners-bottom' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <path d="M 5 12 L 5 5 L 12 5 M 39 12 L 39 5 L 32 5 M 5 28 L 5 35 L 12 35 M 39 28 L 39 35 L 32 35" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                                              <rect x="11" y="11" width="22" height="18" rx="2" strokeWidth="1.5" strokeDasharray="2 2" />
+                                              <rect x="10" y="33" width="24" height="11" rx="3" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-focus-corners-top' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="8" y="2" width="28" height="11" rx="3" fill="currentColor" />
+                                              <polygon points="20,13 24,16 24,13" fill="currentColor" />
+                                              <path d="M 5 24 L 5 17 L 12 17 M 39 24 L 39 17 L 32 17 M 5 39 L 5 46 L 12 46 M 39 39 L 39 46 L 32 46" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                                              <rect x="11" y="22" width="22" height="19" rx="2" strokeWidth="1.5" strokeDasharray="2 2" />
+                                            </svg>
+                                          ) : f.id === 'frame-focus-corners-arrow' ? (
+                                            <svg viewBox="0 0 48 44" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <path d="M 4 11 L 4 5 L 10 5 M 28 11 L 28 5 L 22 5 M 4 33 L 4 39 L 10 39 M 28 33 L 28 39 L 22 39" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                              <rect x="30" y="14" width="16" height="16" rx="3" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-focus-corners-speech' ? (
+                                            <svg viewBox="0 0 48 44" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <path d="M 4 11 L 4 5 L 10 5 M 26 11 L 26 5 L 20 5 M 4 33 L 4 39 L 10 39 M 26 33 L 26 39 L 20 39" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                              <rect x="29" y="8" width="17" height="28" rx="4" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-phone-portrait' ? (
+                                            <svg viewBox="0 0 36 50" className="w-7 h-9" fill="none" stroke="currentColor">
+                                              <rect x="4" y="3" width="28" height="44" rx="5" strokeWidth="2.5" />
+                                              <line x1="32" y1="12" x2="32" y2="18" strokeWidth="2.5" strokeLinecap="round" />
+                                              <line x1="14" y1="6" x2="22" y2="6" strokeWidth="2" strokeLinecap="round" />
+                                              <polygon points="18,33 14,37 22,37" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-phone-landscape' ? (
+                                            <svg viewBox="0 0 50 34" className="w-9 h-7" fill="none" stroke="currentColor">
+                                              <rect x="3" y="4" width="44" height="26" rx="5" strokeWidth="2.5" />
+                                              <line x1="14" y1="4" x2="20" y2="4" strokeWidth="2.5" strokeLinecap="round" />
+                                            </svg>
+                                          ) : f.id === 'frame-speech-bubble-bottom' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="4" y="4" width="36" height="34" rx="6" strokeWidth="2.5" />
+                                              <polygon points="32,38 38,44 38,38" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                                            </svg>
+                                          ) : f.id === 'frame-speech-tab-top' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="4" y="2" width="16" height="10" rx="3" fill="currentColor" />
+                                              <rect x="4" y="8" width="36" height="34" rx="6" strokeWidth="2.5" />
+                                            </svg>
+                                          ) : f.id === 'frame-speech-bubble-right' ? (
+                                            <svg viewBox="0 0 48 44" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="3" y="4" width="30" height="36" rx="5" strokeWidth="2.5" />
+                                              <rect x="37" y="12" width="10" height="20" rx="2" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-top-arrow' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="4" y="8" width="36" height="36" rx="6" strokeWidth="2.5" />
+                                              <rect x="8" y="2" width="28" height="11" rx="3" fill="currentColor" />
+                                              <polygon points="22,17 18,13 26,13" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-top-roof' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="4" y="10" width="36" height="35" rx="6" strokeWidth="2.5" />
+                                              <path d="M 8 10 L 8 6 L 22 2 L 36 6 L 36 10 Z" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-trapezoid' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <polygon points="9,6 35,6 40,42 4,42" strokeWidth="2.5" strokeLinejoin="round" />
+                                              <rect x="10" y="2" width="24" height="7" rx="2" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-corner-peel' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <path d="M 4 10 A 6 6 0 0 1 10 4 L 34 4 A 6 6 0 0 1 40 10 L 40 32 L 30 42 L 10 42 A 6 6 0 0 1 4 36 Z" strokeWidth="2.5" strokeLinejoin="round" />
+                                              <polygon points="30,32 40,32 30,42" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" />
+                                            </svg>
+                                          ) : f.id === 'frame-vertical-right' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="4" y="4" width="36" height="40" rx="5" strokeWidth="2.5" />
+                                              <rect x="29" y="4" width="11" height="40" rx="3" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-vertical-dual' ? (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="4" y="4" width="36" height="40" rx="5" strokeWidth="2.5" />
+                                              <rect x="4" y="4" width="9" height="40" rx="2" fill="currentColor" />
+                                              <rect x="31" y="4" width="9" height="40" rx="2" fill="currentColor" />
+                                            </svg>
+                                          ) : f.id === 'frame-horizontal-left' ? (
+                                            <svg viewBox="0 0 48 40" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="3" y="5" width="20" height="30" rx="4" fill="currentColor" />
+                                              <rect x="25" y="5" width="20" height="30" rx="4" strokeWidth="2" />
+                                            </svg>
+                                          ) : (
+                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
+                                              <rect x="6" y="6" width="32" height="36" rx="5" strokeWidth="2.5" />
+                                              <rect x="11" y="11" width="22" height="26" rx="2" strokeWidth="1.5" strokeDasharray="2 2" />
+                                            </svg>
+                                          )}
                                         </div>
                                         {selectedFrame === f.id && (
                                           <span className="w-2 h-2 rounded-full bg-[#BEF392]" />
