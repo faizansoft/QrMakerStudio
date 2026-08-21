@@ -818,9 +818,9 @@ const FramedQrView: React.FC<{
 
   return (
     <div
-      className={`w-full flex items-center justify-center select-none transition-all ${
-        isThumbnail ? 'h-24' : 'max-h-[260px]'
-      } [&>svg]:w-full [&>svg]:h-auto [&>svg]:max-h-full [&>svg]:drop-shadow-sm`}
+      className={`w-full flex items-center justify-center select-none overflow-hidden transition-all ${
+        isThumbnail ? 'h-20 max-h-20' : 'h-[230px] max-h-[240px]'
+      } [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:w-auto [&>svg]:h-auto [&>svg]:object-contain [&>svg]:drop-shadow-sm`}
       dangerouslySetInnerHTML={{ __html: svgHtml }}
     />
   );
@@ -2049,7 +2049,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                     {/* QR Canvas + Template Mini-QR Carousel */}
                     <div className="flex items-center justify-between w-full gap-3">
                       {/* Canvas Container with Live Reactive Framed QR View */}
-                      <div className="w-[74%] max-w-[235px] flex items-center justify-center">
+                      <div className="w-[74%] max-w-[235px] h-[240px] flex items-center justify-center p-1">
                         <FramedQrView
                           frame={selectedFrame}
                           text={frameText}
@@ -2341,8 +2341,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                         }`}
                                       >
                                         {/* Live Miniature Framed QR Preview Card */}
-                                        <div className="w-full rounded-xl overflow-hidden shadow-inner bg-slate-900/40 p-1 flex items-center justify-center">
-                                          <div className="w-full max-w-[120px]">
+                                        <div className="w-full h-24 rounded-xl overflow-hidden shadow-inner bg-slate-900/60 p-1 flex items-center justify-center">
+                                          <div className="w-full h-full flex items-center justify-center">
                                             <FramedQrView
                                               frame={f.id}
                                               text={frameText}
@@ -2682,7 +2682,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                           </div>
 
                           {/* Dynamic Framed QR Live Simulation Container */}
-                          <div className="w-full max-w-[210px] flex items-center justify-center">
+                          <div className="w-full max-w-[220px] h-[240px] flex items-center justify-center p-1.5 bg-slate-900/50 rounded-2xl border border-white/5 shadow-inner">
                             <FramedQrView
                               frame={selectedFrame}
                               text={frameText}
@@ -2699,13 +2699,6 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                               link={effectiveQrData}
                             />
                           </div>
-
-                          {selectedFrame !== 'none' && (
-                            <div className="mt-3 text-center bg-white/5 border border-white/10 rounded-xl px-3 py-1.5 w-full">
-                              <span className="text-[10px] text-white/50 block font-mono">Frame active:</span>
-                              <span className="text-xs font-bold text-[#BEF392] block truncate">{frameText || 'SCAN ME'}</span>
-                            </div>
-                          )}
                         </div>
 
                       </div>
