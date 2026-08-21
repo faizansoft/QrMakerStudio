@@ -496,7 +496,7 @@ function buildFramedSvg(
     ${cleanSvg}
   </g>
   <polygon points="470,1160 500,1120 530,1160" fill="${fColor}"/>
-  <text x="500" y="1270" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 42 : 56}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="500" y="1270" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 42 : 56}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
 </svg>`;
   }
 
@@ -520,7 +520,7 @@ function buildFramedSvg(
   <g transform="translate(100, 60) scale(2.85)">
     ${cleanSvg}
   </g>
-  <text x="500" y="1000" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="500" y="1000" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
 </svg>`;
   }
 
@@ -588,7 +588,7 @@ function buildFramedSvg(
   <g transform="translate(100, 80) scale(2.85)">
     ${cleanSvg}
   </g>
-  <text x="380" y="1080" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="380" y="1080" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
 </svg>`;
   }
 
@@ -2558,26 +2558,48 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                   </div>
 
                                   {/* Frame Text Color */}
-                                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2.5">
                                     <div className="flex items-center justify-between">
                                       <div>
                                         <span className="text-xs font-bold text-white block">Frame Text Color</span>
                                         <span className="text-[10px] text-white/40 font-mono">{frameTextColor}</span>
                                       </div>
-                                      <input
-                                        type="color"
-                                        value={frameTextColor}
-                                        onChange={(e) => setFrameTextColor(e.target.value)}
-                                        className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent"
-                                      />
+                                      <div className="flex items-center gap-2">
+                                        <div 
+                                          className="w-6 h-6 rounded-full border border-white/20 shadow-xs" 
+                                          style={{ backgroundColor: frameTextColor }}
+                                        />
+                                        <input
+                                          type="color"
+                                          value={frameTextColor && frameTextColor.startsWith('#') && frameTextColor.length === 7 ? frameTextColor : '#ffffff'}
+                                          onChange={(e) => setFrameTextColor(e.target.value)}
+                                          className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent"
+                                        />
+                                      </div>
                                     </div>
                                     
+                                    {/* Palette Swatches */}
+                                    <div className="flex items-center gap-1.5 pt-0.5">
+                                      {['#ffffff', '#000000', '#BEF392', '#fbbf24', '#f87171', '#60a5fa', '#34d399', '#e879f9'].map((c) => (
+                                        <button
+                                          key={c}
+                                          onClick={() => setFrameTextColor(c)}
+                                          className={`w-6 h-6 rounded-full border transition-all ${
+                                            frameTextColor.toLowerCase() === c.toLowerCase()
+                                              ? 'scale-125 ring-2 ring-white border-transparent'
+                                              : 'border-white/20 hover:scale-110'
+                                          }`}
+                                          style={{ backgroundColor: c }}
+                                        />
+                                      ))}
+                                    </div>
+
                                     {/* Quick White / Black / Accent toggles */}
-                                    <div className="flex items-center gap-2 pt-1">
+                                    <div className="flex items-center gap-1.5 pt-0.5">
                                       <button
                                         onClick={() => setFrameTextColor('#ffffff')}
-                                        className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
-                                          frameTextColor === '#ffffff'
+                                        className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                          frameTextColor.toLowerCase() === '#ffffff'
                                             ? 'bg-white text-slate-950 border-white'
                                             : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
                                         }`}
@@ -2586,8 +2608,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                       </button>
                                       <button
                                         onClick={() => setFrameTextColor('#000000')}
-                                        className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
-                                          frameTextColor === '#000000'
+                                        className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                          frameTextColor.toLowerCase() === '#000000'
                                             ? 'bg-black text-white border-white/40'
                                             : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
                                         }`}
@@ -2596,8 +2618,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                       </button>
                                       <button
                                         onClick={() => setFrameTextColor('#BEF392')}
-                                        className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
-                                          frameTextColor === '#BEF392'
+                                        className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                          frameTextColor.toLowerCase() === '#bef392'
                                             ? 'bg-[#BEF392] text-slate-950 border-[#BEF392]'
                                             : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
                                         }`}

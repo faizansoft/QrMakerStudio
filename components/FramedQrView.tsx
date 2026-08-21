@@ -165,7 +165,7 @@ export function buildFramedSvg(
     ${cleanSvg}
   </g>
   <polygon points="470,1160 500,1120 530,1160" fill="${fColor}"/>
-  <text x="500" y="1270" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 42 : 56}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="500" y="1270" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 42 : 56}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
 </svg>`;
   }
 
@@ -189,7 +189,7 @@ export function buildFramedSvg(
   <g transform="translate(100, 60) scale(2.85)">
     ${cleanSvg}
   </g>
-  <text x="500" y="1000" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="500" y="1000" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
 </svg>`;
   }
 
@@ -257,7 +257,7 @@ export function buildFramedSvg(
   <g transform="translate(100, 80) scale(2.85)">
     ${cleanSvg}
   </g>
-  <text x="380" y="1080" fill="${fColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
+  <text x="380" y="1080" fill="${tColor}" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="${ctaText.length > 14 ? 40 : 52}" text-anchor="middle" letter-spacing="2">${ctaText}</text>
 </svg>`;
   }
 
