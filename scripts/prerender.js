@@ -807,54 +807,115 @@ const ROUTES = [
   },
   {
     path: '/bulk-qr-code-generator',
-    title: 'Free Bulk QR Code Generator | Generate Multiple QR Codes at Once',
-    description: 'Batch generate hundreds of custom QR codes from CSV or Excel data. Download all codes in high resolution ZIP archive 100% free.',
+    title: 'Free Bulk QR Code Generator | Generate Batch QR Codes with ZIP Export',
+    description: 'Batch generate hundreds of custom QR codes from CSV or text lists. Download all codes in high resolution ZIP archive 100% free with customizable colors and vector SVG export.',
     canonical: 'https://qr-generator.online/bulk-qr-code-generator',
     h1: 'Free Bulk & Batch QR Code Generator with ZIP Export',
-    badge: 'Batch QR Generator',
-    lead: 'Generate dozens or hundreds of custom QR codes simultaneously from text lists or CSV uploads and download all files in a single ZIP.',
+    badge: 'Batch Production Suite',
+    lead: 'Generate dozens or hundreds of custom QR codes simultaneously from text lists or CSV uploads and download all files in a single organized ZIP archive.',
     sections: [
       {
-        title: 'High-Volume Batch QR Code Production',
+        title: 'High-Volume Bulk QR Code Generation Architecture',
         paragraphs: [
-          'Upload your CSV or enter a list of URLs to generate dozens of high-resolution QR codes simultaneously.',
-          'Download all generated QR codes packaged in a single organized ZIP archive.'
+          'In modern industrial logistics, event management, retail commerce, and enterprise marketing, generating QR codes one-by-one is inefficient and error-prone. Whether producing 50 unique table ordering codes for a restaurant, 5,000 serialized product authentication labels for manufacturing packaging, or 10,000 personalized badge credentials for an international convention, bulk QR code generation is an indispensable capability.',
+          'Our free bulk generator operates entirely on a high-performance client-side rendering pipeline. Rather than routing your private data through remote server queues—which introduces latency, rate limits, and privacy vulnerabilities—our tool compiles mathematical 2D matrix symbologies directly inside your browser engine. This architecture ensures zero server roundtrips, instantaneous processing of hundreds of rows, and complete confidentiality.'
+        ]
+      },
+      {
+        title: 'Static vs. Dynamic QR Codes in Bulk Production',
+        paragraphs: [
+          'Static bulk codes encode text or URLs permanently into the barcode pattern. Once printed onto physical cardboard boxes or aluminum nameplates, the encoded data cannot be altered. Dynamic QR codes, by contrast, encode short redirect URLs (qr-generator.online/r/xyz) pointing to a cloud-managed routing table.',
+          'When managing hundreds or thousands of physical marketing assets, Dynamic QR codes allow marketing teams to update landing pages, correct broken URLs, and swap promotional offers in real time without incurring thousands of dollars in reprinting and physical re-labeling costs. Dynamic QR codes also provide detailed scan analytics including device types, operating systems, browsers, and geographic visitor locations.'
+        ]
+      },
+      {
+        title: 'Industrial & Enterprise Bulk QR Applications',
+        paragraphs: [
+          'Hospitality and dining establishments generate individualized table ordering codes so waitstaff can route contactless digital orders directly to the kitchen POS with precise table numbers.',
+          'Event coordinators produce unique scannable attendee credentials encoded with cryptographic ticket validation hashes for lightning-fast turnstile check-ins. Manufacturing facilities serialize asset tracking labels for instant field maintenance and warranty verification.'
+        ]
+      },
+      {
+        title: 'Print Standards, Quiet Zones & Error Correction',
+        paragraphs: [
+          'When printing bulk barcodes on physical media, maintaining a clear border of at least 4 module widths (the quiet zone) around the barcode prevents surrounding graphic elements from confusing optical sensors.',
+          'Our generator applies Reed-Solomon Level H error correction (30% data redundancy) to ensure barcodes remain 100% scannable even on textured packaging, curved bottles, or scratched surfaces.'
         ]
       }
     ]
   },
   {
     path: '/qr-code-scanner',
-    title: 'Free Online QR Code Scanner | Scan QR Codes via Web Camera or Image',
-    description: 'Scan QR codes directly from your browser using your webcam, mobile camera, or by uploading an image file. 100% free with instant decoding.',
+    title: 'Free Online QR Code Scanner & Reader | Scan via Camera or Image Upload',
+    description: 'Free online QR code scanner and reader. Decode QR codes directly from your browser using your webcam, mobile camera, or image upload with instant URL previews and zero app installation.',
     canonical: 'https://qr-generator.online/qr-code-scanner',
     h1: 'Free Online QR Code Scanner via Camera & Image Upload',
-    badge: 'Browser QR Scanner',
-    lead: 'Scan and decode any QR code directly in your browser using your webcam, phone camera, or by uploading an image file.',
+    badge: 'Browser Optical Decoder',
+    lead: 'Scan and decode any QR code directly in your browser using your webcam, mobile camera, or image upload with instant plaintext link previews and zero app installation.',
     sections: [
       {
-        title: 'Instant In-Browser Optical QR Scanning',
+        title: 'In-Browser Optical Barcode Recognition Mechanics',
         paragraphs: [
-          'No app download required. Decode URLs, WiFi credentials, vCards, and plain text barcodes directly in your browser.',
-          'Supports live video feed scanning or drag-and-drop image file analysis.'
+          'For years, scanning a QR code required downloading third-party mobile applications cluttered with invasive ads, subscription paywalls, and telemetry trackers. Today, advances in WebAssembly (WASM) and browser standard APIs enable optical barcode recognition directly within standard web browsers with desktop-grade accuracy and zero app installation.',
+          'Our free online QR scanner operates on a high-speed JavaScript and WebAssembly binary matrix decoder. When camera access is granted, the application samples the live video feed at 12–15 frames per second, runs edge-detection algorithms to locate the three universal corner finder patterns, corrects optical perspective distortions, and parses data modules in milliseconds.'
+        ]
+      },
+      {
+        title: 'Decoding Dynamic vs. Static QR Codes & Link Safety',
+        paragraphs: [
+          'One of the greatest security hazards of blind barcode scanning is QR phishing (quishing), where malicious actors paste fraudulent stickers over authentic restaurant menus or payment terminals. Our scanner acts as an intelligent firewall by giving you a clear plaintext preview of the encoded link before navigating to the website.',
+          'Static codes reveal their complete final URL or raw text string immediately. Dynamic QR codes route through clean shortlinks (qr-generator.online/r/h9K7WX), allowing you to verify the destination endpoint in real time and ensure legitimate routing before opening.'
+        ]
+      },
+      {
+        title: 'Supported Payload Standards & Automatic Format Parsing',
+        paragraphs: [
+          'Our online scanner recognizes and decodes WiFi credentials (WIFI:S:MyNetwork;P:pass;T:WPA;;), vCard 3.0 digital business card contacts (BEGIN:VCARD), cryptocurrency wallet addresses (Bitcoin, Ethereum, Solana), Google Maps geo-coordinates (geo:lat,lng), and calendar event schedules (BEGIN:VEVENT).'
+        ]
+      },
+      {
+        title: 'Troubleshooting Optical Scanning Failures',
+        paragraphs: [
+          'Scanning failures typically occur due to insufficient ambient lighting, lens glare on glossy surfaces, inverted barcode colors (light dots on dark background without proper contrast), or violated quiet zones.',
+          'Overcrowded data density in static barcodes with 250+ character URLs also causes camera blur. Using Dynamic QR shortlinks eliminates data overcrowding, guaranteeing fast optical detection.'
         ]
       }
     ]
   },
   {
     path: '/social-media-qr-code',
-    title: 'Free All-in-One Social Media QR Code Generator | QR Generator Online',
-    description: 'Create a single bio-link QR code connecting all your social profiles: Instagram, YouTube, TikTok, LinkedIn, Twitter, Facebook, and Telegram.',
+    title: 'Free Social Media QR Code Generator | Connect All Social Profiles',
+    description: 'Generate branded QR codes for Instagram, YouTube, TikTok, LinkedIn, Twitter, Facebook, and WhatsApp. Color-matched vector SVG and PNG downloads 100% free.',
     canonical: 'https://qr-generator.online/social-media-qr-code',
     h1: 'Free All-in-One Multi-Link Social Media QR Code Generator',
-    badge: 'Multi-Link Social QR',
-    lead: 'Connect all your social profiles, channel links, and messaging apps into a single beautiful multi-link bio landing page.',
+    badge: 'Omnichannel Social Hub',
+    lead: 'Connect all your social profiles, channel links, and messaging apps into beautiful branded QR codes to bridge physical audiences to your digital follower channels.',
     sections: [
       {
-        title: 'One QR Code for All Your Social Profiles',
+        title: 'Omnichannel Social Media Growth & Friction Reduction',
         paragraphs: [
-          'Combine Instagram, TikTok, YouTube, LinkedIn, X/Twitter, and Telegram under one scannable QR code.',
-          'Perfect for printed marketing materials, product packaging, business cards, and event banners.'
+          'In an era where consumer attention is fragmented across dozens of digital ecosystems—from TikTok reels and Instagram stories to LinkedIn networks, YouTube channels, and WhatsApp VIP groups—forcing physical audiences to manually type usernames and search handles results in an immediate 70%+ conversion drop-off.',
+          'A branded Social Media QR code completely dissolves friction between physical touchpoints and digital followers. Scanning a high-contrast, visually tailored barcode on packaging, table cards, or storefront glass immediately triggers native application deep-links directly to your verified profile.'
+        ]
+      },
+      {
+        title: 'Individual Platform Codes vs. Dynamic Multi-Link Bio Pages',
+        paragraphs: [
+          'Individual platform codes generate focused, single-purpose QR codes color-matched to specific platform palettes (YouTube red, Instagram gradient, LinkedIn navy). Best for dedicated collateral like a "Follow us on Instagram" table tent or a "Subscribe on YouTube" end-card on physical merchandise.',
+          'Dynamic multi-link bio hub codes encode a single shortlink routing visitors to a clean mobile landing page housing all your social links simultaneously. Powered by our dynamic engine, you can add new profiles, update links, and view live geographic scan analytics anytime without reprinting.'
+        ]
+      },
+      {
+        title: 'Strategic Physical Placements for Follower Conversion',
+        paragraphs: [
+          'E-commerce brands place unboxing cards inside customer packages with a bold CTA: "Scan & tag us on Instagram for a 15% discount on your next order." Restaurants display wooden table stands linking to Instagram food reels and Google review pages.',
+          'B2B executives print vector SVG QR codes on business cards and presentation keynote slides for instant LinkedIn networking.'
+        ]
+      },
+      {
+        title: 'Real-Time Scan Analytics & Audience Telemetry',
+        paragraphs: [
+          'When managing dynamic social media QR codes through our platform, you unlock comprehensive real-time intelligence into your offline audience behavior, including scan velocity graphs, geographic audience distribution across countries and cities, and mobile device breakdowns (iOS vs Android).'
         ]
       }
     ]

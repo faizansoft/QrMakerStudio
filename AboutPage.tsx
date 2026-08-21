@@ -99,7 +99,7 @@ const AboutPage: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                🔗 <Link to="/url-qr-code-generator" className="text-accent hover:underline">URL Website Link QR Code</Link>
+                <Link to="/url-qr-code-generator" className="text-accent hover:underline">URL Website Link QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Convert web links, portfolios, and landing pages into scannable barcodes.
@@ -108,7 +108,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                📶 <Link to="/wifi-qr-code-generator" className="text-accent hover:underline">WiFi Network QR Code</Link>
+                <Link to="/wifi-qr-code-generator" className="text-accent hover:underline">WiFi Network QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Share guest WPA2/WPA3 WiFi credentials without typing long passwords.
@@ -117,7 +117,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                📇 <Link to="/vcard-qr-code-generator" className="text-accent hover:underline">vCard Digital Business Card</Link>
+                <Link to="/vcard-qr-code-generator" className="text-accent hover:underline">vCard Digital Business Card</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Save phone numbers, emails, titles, and company details directly into phone contacts.
@@ -126,7 +126,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                💬 <Link to="/whatsapp-qr-code-generator" className="text-accent hover:underline">WhatsApp Chat QR Code</Link>
+                <Link to="/whatsapp-qr-code-generator" className="text-accent hover:underline">WhatsApp Chat QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Start instant WhatsApp conversations with pre-filled customer service messages.
@@ -135,7 +135,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                📝 <Link to="/text-qr-code-generator" className="text-accent hover:underline">Plain Text QR Code</Link>
+                <Link to="/text-qr-code-generator" className="text-accent hover:underline">Plain Text QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Encode raw text, promo codes, and instructions that display completely offline.
@@ -144,7 +144,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                ✉️ <Link to="/email-qr-code-generator" className="text-accent hover:underline">Email Message QR Code</Link>
+                <Link to="/email-qr-code-generator" className="text-accent hover:underline">Email Message QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Pre-fill recipient email addresses, subject lines, and feedback copy.
@@ -153,7 +153,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                💬 <Link to="/sms-qr-code-generator" className="text-accent hover:underline">SMS Text Message QR Code</Link>
+                <Link to="/sms-qr-code-generator" className="text-accent hover:underline">SMS Text Message QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Trigger opt-in SMS keywords and mobile text subscriptions with one tap.
@@ -162,7 +162,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                📞 <Link to="/phone-qr-code-generator" className="text-accent hover:underline">Phone Call QR Code</Link>
+                <Link to="/phone-qr-code-generator" className="text-accent hover:underline">Phone Call QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Trigger one-tap mobile telephone dialing for service trucks and hotline posters.
@@ -171,7 +171,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                🌐 <Link to="/facebook-qr-code-generator" className="text-accent hover:underline">Social Media QR Code</Link>
+                <Link to="/facebook-qr-code-generator" className="text-accent hover:underline">Social Media QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Direct foot traffic straight to your Facebook, Instagram, or social channels.
@@ -180,7 +180,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                📍 <Link to="/location-qr-code-generator" className="text-accent hover:underline">Google Maps Location QR Code</Link>
+                <Link to="/location-qr-code-generator" className="text-accent hover:underline">Google Maps Location QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Guide visitors to your store, open house, or wedding venue via GPS navigation.
@@ -189,7 +189,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                📅 <Link to="/event-qr-code-generator" className="text-accent hover:underline">iCalendar Event QR Code</Link>
+                <Link to="/event-qr-code-generator" className="text-accent hover:underline">iCalendar Event QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Add conference dates, concerts, and parties directly to smartphone calendars.
@@ -198,7 +198,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all">
               <h3 className="font-bold text-gray-900 text-base">
-                🪙 <Link to="/crypto-qr-code-generator" className="text-accent hover:underline">Crypto Payment QR Code</Link>
+                <Link to="/crypto-qr-code-generator" className="text-accent hover:underline">Crypto Payment QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Receive Bitcoin, Ethereum, and USDT crypto wallet payments without typing errors.
@@ -207,7 +207,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-white p-6 rounded-2xl border border-neutral-200 space-y-2 hover:shadow-md transition-all md:col-span-2 lg:col-span-1">
               <h3 className="font-bold text-gray-900 text-base">
-                📋 <Link to="/googleform-qr-code-generator" className="text-accent hover:underline">Google Forms Survey QR Code</Link>
+                <Link to="/googleform-qr-code-generator" className="text-accent hover:underline">Google Forms Survey QR Code</Link>
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 Direct customers and students to Google Forms surveys and feedback questionnaires.
