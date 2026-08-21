@@ -2830,7 +2830,17 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                           frameColor={frameColor}
                           frameTextColor={frameTextColor}
                         >
-                          <div ref={qrContainerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />
+                          <DynamicQrPreview
+                            link={effectiveQrData || 'https://qr-generator.online'}
+                            fgColor={fgColor}
+                            bgColor={bgColor}
+                            cornerSquareColor={cornerSquareColor}
+                            cornerDotColor={cornerDotColor}
+                            dotStyle={dotStyle}
+                            cornerSquareStyle={cornerSquareStyle}
+                            cornerDotStyle={cornerDotStyle}
+                            logoSrc={logoSrc}
+                          />
                         </FramedQrView>
                       </div>
 
@@ -3010,222 +3020,134 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                           {/* ──────── STEP 1: FRAMES & CTA ──────── */}
                           {customStep === 1 && (
                             <div className="space-y-4 animate-in">
-                              <div className="flex items-center justify-between">
-                                <div>
-                                  <h4 className="text-sm font-bold text-white">Select a Frame Style</h4>
-                                  <p className="text-xs text-white/50">Industry standard frames matching reference design for high scan rates</p>
+                              
+                              {/* 1. Frame Call-to-Action Text (Moved to TOP of Step 1) */}
+                              <div className="space-y-2.5 p-4 rounded-2xl bg-white/5 border border-white/10">
+                                <div className="flex items-center justify-between">
+                                  <label className="text-xs font-bold text-white flex items-center gap-1.5">
+                                    <span>Frame Call-to-Action Text</span>
+                                    <span className="text-[10px] font-normal text-white/50">(Updates all frames below)</span>
+                                  </label>
+                                  <span className="text-[10px] text-white/40 font-mono">{frameText.length}/28 chars</span>
                                 </div>
-                                {selectedFrame !== 'none' && (
-                                  <button
-                                    onClick={() => setSelectedFrame('none')}
-                                    className="text-xs text-white/50 hover:text-white font-medium underline"
-                                  >
-                                    Clear Frame
-                                  </button>
-                                )}
+                                <input
+                                  type="text"
+                                  value={frameText}
+                                  onChange={(e) => setFrameText(e.target.value)}
+                                  placeholder="e.g. SCAN ME"
+                                  maxLength={28}
+                                  className="w-full bg-white/10 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-[#BEF392]"
+                                />
+                                
+                                {/* Quick CTA Presets */}
+                                <div className="space-y-1.5 pt-1">
+                                  <span className="text-[10px] text-white/40 font-semibold block">Quick CTA Presets:</span>
+                                  <div className="flex flex-wrap gap-1.5">
+                                    {[
+                                      'SCAN ME',
+                                      'SCAN FOR MENU',
+                                      'CONNECT TO WI-FI',
+                                      'FOLLOW US',
+                                      'LEAVE A REVIEW',
+                                      'GET 20% OFF',
+                                      'DOWNLOAD OUR APP',
+                                      'VISIT WEBSITE'
+                                    ].map((preset) => (
+                                      <button
+                                        key={preset}
+                                        onClick={() => setFrameText(preset)}
+                                        className={`text-[10px] px-2.5 py-1 rounded-full border transition-all ${
+                                          frameText === preset
+                                            ? 'bg-[#BEF392] text-slate-950 border-[#BEF392] shadow-xs font-bold'
+                                            : 'bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white'
+                                        }`}
+                                      >
+                                        {preset}
+                                      </button>
+                                    ))}
+                                  </div>
+                                </div>
                               </div>
 
-                              {/* Category Filter Pills */}
-                              <div className="flex flex-wrap items-center gap-1.5 pb-1">
-                                {['All', 'Popular', 'Focus', 'Device', 'Speech', 'Modern'].map((cat) => (
-                                  <button
-                                    key={cat}
-                                    onClick={() => setFrameCategory(cat)}
-                                    className={`text-xs px-3 py-1 rounded-full font-semibold transition-all ${
-                                      frameCategory === cat
-                                        ? 'bg-[#BEF392] text-slate-950 shadow-xs'
-                                        : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
-                                    }`}
-                                  >
-                                    {cat}
-                                  </button>
-                                ))}
-                              </div>
-
-                              {/* Frame Cards Grid with Live Miniature Visual Previews */}
-                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[310px] overflow-y-auto pr-1 pb-1">
-                                {FRAME_OPTIONS
-                                  .filter(f => frameCategory === 'All' || f.category === frameCategory)
-                                  .map((f) => (
+                              {/* 2. Frame Style Selector Grid */}
+                              <div className="space-y-3 pt-1">
+                                <div className="flex items-center justify-between">
+                                  <div>
+                                    <h4 className="text-sm font-bold text-white">Select a Frame Style</h4>
+                                    <p className="text-xs text-white/50">Choose how your QR code and CTA badge are presented</p>
+                                  </div>
+                                  {selectedFrame !== 'none' && (
                                     <button
-                                      key={f.id}
-                                      onClick={() => handleSelectFrame(f.id)}
-                                      className={`p-2.5 rounded-2xl border text-left transition-all flex flex-col justify-between gap-2 relative group ${
-                                        selectedFrame === f.id
-                                          ? 'border-[#BEF392] bg-[#BEF392]/10 ring-2 ring-[#BEF392]/40 shadow-lg'
-                                          : 'border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20'
+                                      onClick={() => setSelectedFrame('none')}
+                                      className="text-xs text-white/50 hover:text-white font-medium underline"
+                                    >
+                                      Clear Frame
+                                    </button>
+                                  )}
+                                </div>
+
+                                {/* Category Filter Pills */}
+                                <div className="flex flex-wrap items-center gap-1.5 pb-1">
+                                  {['All', 'Popular', 'Focus', 'Device', 'Speech', 'Modern'].map((cat) => (
+                                    <button
+                                      key={cat}
+                                      onClick={() => setFrameCategory(cat)}
+                                      className={`text-xs px-3 py-1 rounded-full font-semibold transition-all ${
+                                        frameCategory === cat
+                                          ? 'bg-[#BEF392] text-slate-950 shadow-xs'
+                                          : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
                                       }`}
                                     >
-                                      {/* Live Miniature Framed QR Preview Card */}
-                                      <div className="w-full rounded-xl overflow-hidden shadow-inner bg-slate-900/40 p-1 flex items-center justify-center">
-                                        <div className="w-full max-w-[120px]">
-                                          <FramedQrView
-                                            frame={f.id}
-                                            text={frameText}
-                                            frameColor={frameColor}
-                                            frameTextColor={frameTextColor}
-                                            isThumbnail={true}
-                                          />
-                                        </div>
-                                      </div>
-
-                                      <div className="flex items-center justify-between w-full px-0.5">
-                                        <div className="truncate">
-                                          <span className={`text-xs font-bold block leading-tight truncate ${selectedFrame === f.id ? 'text-[#BEF392]' : 'text-white'}`}>
-                                            {f.label}
-                                          </span>
-                                          <span className="text-[10px] text-white/40 uppercase tracking-wider block font-medium mt-0.5">
-                                            {f.category}
-                                          </span>
-                                        </div>
-                                        {selectedFrame === f.id && (
-                                          <span className="w-2.5 h-2.5 rounded-full bg-[#BEF392] shrink-0 ml-1 shadow-sm shadow-[#BEF392]/50" />
-                                        )}
-                                      </div>
+                                      {cat}
                                     </button>
                                   ))}
+                                </div>
+
+                                {/* Frame Cards Grid with Live Miniature Visual Previews */}
+                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[300px] overflow-y-auto pr-1 pb-1">
+                                  {FRAME_OPTIONS
+                                    .filter(f => frameCategory === 'All' || f.category === frameCategory)
+                                    .map((f) => (
+                                      <button
+                                        key={f.id}
+                                        onClick={() => handleSelectFrame(f.id)}
+                                        className={`p-2.5 rounded-2xl border text-left transition-all flex flex-col justify-between gap-2 relative group ${
+                                          selectedFrame === f.id
+                                            ? 'border-[#BEF392] bg-[#BEF392]/10 ring-2 ring-[#BEF392]/40 shadow-lg'
+                                            : 'border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20'
+                                        }`}
+                                      >
+                                        {/* Live Miniature Framed QR Preview Card */}
+                                        <div className="w-full rounded-xl overflow-hidden shadow-inner bg-slate-900/40 p-1 flex items-center justify-center">
+                                          <div className="w-full max-w-[120px]">
+                                            <FramedQrView
+                                              frame={f.id}
+                                              text={frameText}
+                                              frameColor={frameColor}
+                                              frameTextColor={frameTextColor}
+                                              isThumbnail={true}
+                                            />
+                                          </div>
+                                        </div>
+
+                                        <div className="flex items-center justify-between w-full px-0.5">
+                                          <div className="truncate">
+                                            <span className={`text-xs font-bold block leading-tight truncate ${selectedFrame === f.id ? 'text-[#BEF392]' : 'text-white'}`}>
+                                              {f.label}
+                                            </span>
+                                            <span className="text-[10px] text-white/40 uppercase tracking-wider block font-medium mt-0.5">
+                                              {f.category}
+                                            </span>
+                                          </div>
+                                          {selectedFrame === f.id && (
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#BEF392] shrink-0 ml-1 shadow-sm shadow-[#BEF392]/50" />
+                                          )}
+                                        </div>
+                                      </button>
+                                    ))}
+                                </div>
                               </div>
 
-                              {/* Frame Text & Color Customizers */}
-                              {selectedFrame !== 'none' && (
-                                <div className="space-y-4 pt-3 border-t border-white/10">
-                                  {/* 1. Frame CTA Text */}
-                                  <div className="space-y-2">
-                                    <div className="flex items-center justify-between">
-                                      <label className="text-xs font-bold text-white/90">Frame Call-to-Action Text</label>
-                                      <span className="text-[10px] text-white/40 font-mono">{frameText.length}/28 chars</span>
-                                    </div>
-                                    <input
-                                      type="text"
-                                      value={frameText}
-                                      onChange={(e) => setFrameText(e.target.value)}
-                                      placeholder="e.g. SCAN ME"
-                                      maxLength={28}
-                                      className="w-full bg-white/10 text-white rounded-xl px-3.5 py-2 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-accent"
-                                    />
-                                    
-                                    {/* Quick CTA Presets */}
-                                    <div className="flex flex-wrap gap-1.5 pt-1">
-                                      {[
-                                        'SCAN ME',
-                                        'SCAN FOR MENU',
-                                        'CONNECT TO WI-FI',
-                                        'FOLLOW US',
-                                        'LEAVE A REVIEW',
-                                        'GET 20% OFF',
-                                        'DOWNLOAD OUR APP',
-                                        'VISIT WEBSITE'
-                                      ].map((preset) => (
-                                        <button
-                                          key={preset}
-                                          onClick={() => setFrameText(preset)}
-                                          className={`text-[10px] px-2.5 py-1 rounded-full border transition-all ${
-                                            frameText === preset
-                                              ? 'bg-accent text-white border-accent shadow-xs font-bold'
-                                              : 'bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white'
-                                          }`}
-                                        >
-                                          {preset}
-                                        </button>
-                                      ))}
-                                    </div>
-                                  </div>
-
-                                  {/* 2. Frame Color & Text Color Controls */}
-                                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-white/10">
-                                    {/* Frame Body / Border Color */}
-                                    <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
-                                      <div className="flex items-center justify-between">
-                                        <div>
-                                          <span className="text-xs font-bold text-white block">Frame Color</span>
-                                          <span className="text-[10px] text-white/40 font-mono">{frameColor}</span>
-                                        </div>
-                                        <input
-                                          type="color"
-                                          value={frameColor}
-                                          onChange={(e) => setFrameColor(e.target.value)}
-                                          className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent"
-                                        />
-                                      </div>
-                                      
-                                      {/* Quick Frame Color Swatches */}
-                                      <div className="flex items-center gap-1.5 pt-1">
-                                        {[
-                                          '#1E1E1E',
-                                          '#2B6F53',
-                                          '#4338CA',
-                                          '#BE123C',
-                                          '#B45309',
-                                          '#0369A1',
-                                          '#6B21A8',
-                                          '#CA8A04'
-                                        ].map((c) => (
-                                          <button
-                                            key={c}
-                                            onClick={() => setFrameColor(c)}
-                                            className={`w-5 h-5 rounded-full border transition-transform ${
-                                              frameColor.toLowerCase() === c.toLowerCase()
-                                                ? 'scale-125 ring-2 ring-white border-transparent'
-                                                : 'border-white/20 hover:scale-110'
-                                            }`}
-                                            style={{ backgroundColor: c }}
-                                          />
-                                        ))}
-                                      </div>
-                                    </div>
-
-                                    {/* Frame Text Color */}
-                                    <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
-                                      <div className="flex items-center justify-between">
-                                        <div>
-                                          <span className="text-xs font-bold text-white block">Frame Text Color</span>
-                                          <span className="text-[10px] text-white/40 font-mono">{frameTextColor}</span>
-                                        </div>
-                                        <input
-                                          type="color"
-                                          value={frameTextColor}
-                                          onChange={(e) => setFrameTextColor(e.target.value)}
-                                          className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent"
-                                        />
-                                      </div>
-                                      
-                                      {/* Quick White / Black / Accent toggles */}
-                                      <div className="flex items-center gap-2 pt-1">
-                                        <button
-                                          onClick={() => setFrameTextColor('#ffffff')}
-                                          className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
-                                            frameTextColor === '#ffffff'
-                                              ? 'bg-white text-slate-950 border-white'
-                                              : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
-                                          }`}
-                                        >
-                                          White Text
-                                        </button>
-                                        <button
-                                          onClick={() => setFrameTextColor('#000000')}
-                                          className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
-                                            frameTextColor === '#000000'
-                                              ? 'bg-black text-white border-white/40'
-                                              : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
-                                          }`}
-                                        >
-                                          Black Text
-                                        </button>
-                                        <button
-                                          onClick={() => setFrameTextColor('#BEF392')}
-                                          className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
-                                            frameTextColor === '#BEF392'
-                                              ? 'bg-[#BEF392] text-slate-950 border-[#BEF392]'
-                                              : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
-                                          }`}
-                                        >
-                                          Lime Accent
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
                             </div>
                           )}
 
@@ -3234,7 +3156,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                             <div className="space-y-5 animate-in">
                               <div>
                                 <h4 className="text-sm font-bold text-white">Color Palette &amp; Contrast</h4>
-                                <p className="text-xs text-white/50">Choose a high-contrast palette for guaranteed scanning on all devices</p>
+                                <p className="text-xs text-white/50">Customize your QR code patterns, backgrounds, and frame colors</p>
                               </div>
 
                               {/* Curated 1-Click Themes */}
@@ -3275,7 +3197,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                 </div>
                               </div>
 
-                              {/* Custom Precision Color Pickers */}
+                              {/* Custom Precision QR Color Pickers */}
                               <div className="space-y-3 pt-2 border-t border-white/10">
                                 <label className="text-xs font-bold text-white/80 block">Custom Precision Colors</label>
                                 <div className="grid grid-cols-2 gap-3">
@@ -3312,6 +3234,108 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                   </div>
                                 </div>
                               </div>
+
+                              {/* Frame & CTA Banner Colors (Moved to Step 2) */}
+                              <div className="space-y-3 pt-2 border-t border-white/10">
+                                <div>
+                                  <label className="text-xs font-bold text-white block">Frame &amp; CTA Banner Colors</label>
+                                  <span className="text-[10px] text-white/40">Applies to the active frame outline and CTA badge</span>
+                                </div>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                  {/* Frame Body / Border Color */}
+                                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                                    <div className="flex items-center justify-between">
+                                      <div>
+                                        <span className="text-xs font-bold text-white block">Frame Color</span>
+                                        <span className="text-[10px] text-white/40 font-mono">{frameColor}</span>
+                                      </div>
+                                      <input
+                                        type="color"
+                                        value={frameColor}
+                                        onChange={(e) => setFrameColor(e.target.value)}
+                                        className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent"
+                                      />
+                                    </div>
+                                    
+                                    {/* Quick Frame Color Swatches */}
+                                    <div className="flex items-center gap-1.5 pt-1">
+                                      {[
+                                        '#1E1E1E',
+                                        '#2B6F53',
+                                        '#4338CA',
+                                        '#BE123C',
+                                        '#B45309',
+                                        '#0369A1',
+                                        '#6B21A8',
+                                        '#CA8A04'
+                                      ].map((c) => (
+                                        <button
+                                          key={c}
+                                          onClick={() => setFrameColor(c)}
+                                          className={`w-5 h-5 rounded-full border transition-transform ${
+                                            frameColor.toLowerCase() === c.toLowerCase()
+                                              ? 'scale-125 ring-2 ring-white border-transparent'
+                                              : 'border-white/20 hover:scale-110'
+                                          }`}
+                                          style={{ backgroundColor: c }}
+                                        />
+                                      ))}
+                                    </div>
+                                  </div>
+
+                                  {/* Frame Text Color */}
+                                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                                    <div className="flex items-center justify-between">
+                                      <div>
+                                        <span className="text-xs font-bold text-white block">Frame Text Color</span>
+                                        <span className="text-[10px] text-white/40 font-mono">{frameTextColor}</span>
+                                      </div>
+                                      <input
+                                        type="color"
+                                        value={frameTextColor}
+                                        onChange={(e) => setFrameTextColor(e.target.value)}
+                                        className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent"
+                                      />
+                                    </div>
+                                    
+                                    {/* Quick White / Black / Accent toggles */}
+                                    <div className="flex items-center gap-2 pt-1">
+                                      <button
+                                        onClick={() => setFrameTextColor('#ffffff')}
+                                        className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                          frameTextColor === '#ffffff'
+                                            ? 'bg-white text-slate-950 border-white'
+                                            : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
+                                        }`}
+                                      >
+                                        White Text
+                                      </button>
+                                      <button
+                                        onClick={() => setFrameTextColor('#000000')}
+                                        className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                          frameTextColor === '#000000'
+                                            ? 'bg-black text-white border-white/40'
+                                            : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
+                                        }`}
+                                      >
+                                        Black Text
+                                      </button>
+                                      <button
+                                        onClick={() => setFrameTextColor('#BEF392')}
+                                        className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                          frameTextColor === '#BEF392'
+                                            ? 'bg-[#BEF392] text-slate-950 border-[#BEF392]'
+                                            : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
+                                        }`}
+                                      >
+                                        Lime Accent
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
                             </div>
                           )}
 
