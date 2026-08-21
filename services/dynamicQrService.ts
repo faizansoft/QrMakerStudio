@@ -282,6 +282,81 @@ export const parseUserAgent = (uaString: string) => {
 };
 
 /**
+ * Resolve client geolocation via timezone + high-speed CORS IP API
+ */
+const getBrowserLocationFallback = () => {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    if (!tz) return { country: 'Global Visitor', city: 'Online' };
+
+    const parts = tz.split('/');
+    const rawCity = parts[parts.length - 1] || '';
+    const city = rawCity.replace(/_/g, ' ') || 'Direct';
+
+    const tzCountryMap: Record<string, string> = {
+      'Karachi': 'Pakistan',
+      'Lahore': 'Pakistan',
+      'Islamabad': 'Pakistan',
+      'Kolkata': 'India',
+      'Delhi': 'India',
+      'Mumbai': 'India',
+      'New_York': 'United States',
+      'Los_Angeles': 'United States',
+      'Chicago': 'United States',
+      'Denver': 'United States',
+      'Phoenix': 'United States',
+      'Detroit': 'United States',
+      'London': 'United Kingdom',
+      'Paris': 'France',
+      'Berlin': 'Germany',
+      'Madrid': 'Spain',
+      'Rome': 'Italy',
+      'Dubai': 'United Arab Emirates',
+      'Riyadh': 'Saudi Arabia',
+      'Singapore': 'Singapore',
+      'Tokyo': 'Japan',
+      'Seoul': 'South Korea',
+      'Sydney': 'Australia',
+      'Melbourne': 'Australia',
+      'Toronto': 'Canada',
+      'Vancouver': 'Canada',
+      'Montreal': 'Canada',
+      'Sao_Paulo': 'Brazil',
+      'Johannesburg': 'South Africa',
+      'Cairo': 'Egypt',
+      'Istanbul': 'Turkey',
+      'Dhaka': 'Bangladesh',
+      'Jakarta': 'Indonesia',
+      'Bangkok': 'Thailand',
+      'Kuala_Lumpur': 'Malaysia',
+      'Hong_Kong': 'Hong Kong',
+      'Amsterdam': 'Netherlands',
+      'Brussels': 'Belgium',
+      'Stockholm': 'Sweden',
+      'Oslo': 'Norway',
+      'Zurich': 'Switzerland',
+      'Vienna': 'Austria',
+      'Warsaw': 'Poland',
+      'Dublin': 'Ireland',
+      'Lisbon': 'Portugal',
+      'Athens': 'Greece',
+      'Moscow': 'Russia',
+      'Mexico_City': 'Mexico',
+      'Buenos_Aires': 'Argentina',
+      'Santiago': 'Chile',
+      'Bogota': 'Colombia',
+      'Lima': 'Peru',
+      'Auckland': 'New Zealand',
+    };
+
+    const country = tzCountryMap[rawCity] || (parts[0] ? parts[0].replace(/_/g, ' ') : 'Worldwide');
+    return { country, city };
+  } catch {
+    return { country: 'Worldwide', city: 'Online' };
+  }
+};
+
+/**
  * Record a QR Code Scan Click Event
  */
 export const recordScanEvent = async (params: {
@@ -300,20 +375,24 @@ export const recordScanEvent = async (params: {
     } catch {}
 
     const now = new Date();
-    const day = now.toISOString().split('T')[0];
 
-    // Try to get country/city via free client IP geolocation API if available
-    let country = 'Unknown';
-    let city = 'Unknown';
+    // 1. Start with instant timezone geolocation
+    const tzGeo = getBrowserLocationFallback();
+    let country = tzGeo.country;
+    let city = tzGeo.city;
+
+    // 2. Enhance with high-accuracy fast IP lookup via ipwho.is (CORS enabled)
     try {
-      const geoRes = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(800) });
+      const geoRes = await fetch('https://ipwho.is/', { signal: AbortSignal.timeout(600) });
       if (geoRes.ok) {
         const geoData = await geoRes.json();
-        country = geoData.country_name || geoData.country_code || 'Unknown';
-        city = geoData.city || 'Unknown';
+        if (geoData && geoData.success !== false) {
+          if (geoData.country) country = geoData.country;
+          if (geoData.city) city = geoData.city;
+        }
       }
     } catch {
-      // Fallback
+      // Fast fallback to timezone values
     }
 
     await supabase.from('clicks').insert({
