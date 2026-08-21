@@ -433,7 +433,9 @@ async function renderFramedCanvas(
   text: string,
   fg: string,
   bg: string,
-  cornerSq: string
+  cornerSq: string,
+  frameCol?: string,
+  frameTextCol?: string
 ): Promise<HTMLCanvasElement> {
   const img = new Image();
   img.src = URL.createObjectURL(rawPngBlob);
@@ -442,7 +444,8 @@ async function renderFramedCanvas(
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d')!;
   const ctaText = (text || 'SCAN ME').toUpperCase();
-  const fColor = fg || '#1E1E1E';
+  const fColor = frameCol || fg || '#1E1E1E';
+  const tColor = frameTextCol || '#ffffff';
   const bColor = bg || '#ffffff';
 
   if (frame === 'frame-bottom-bar') {
@@ -1083,10 +1086,13 @@ function buildFramedSvg(
   text: string,
   fg: string,
   bg: string,
-  cornerSq: string
+  cornerSq: string,
+  frameCol?: string,
+  frameTextCol?: string
 ): string {
   const ctaText = (text || 'SCAN ME').toUpperCase();
-  const fColor = fg || '#1E1E1E';
+  const fColor = frameCol || fg || '#1E1E1E';
+  const tColor = frameTextCol || '#ffffff';
   const bColor = bg || '#ffffff';
 
   let cleanSvg = rawSvgText;
@@ -1282,6 +1288,318 @@ const DynamicQrPreview: React.FC<{
   return <div ref={containerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />;
 };
 
+// ── Real-time Framed QR Container with Live Frame Geometry & Typography ──
+const FramedQrView: React.FC<{
+  frame: FrameStyle;
+  text: string;
+  frameColor: string;
+  frameTextColor: string;
+  isThumbnail?: boolean;
+  children?: React.ReactNode;
+}> = ({
+  frame,
+  text,
+  frameColor,
+  frameTextColor,
+  isThumbnail = false,
+  children,
+}) => {
+  const ctaText = (text || 'SCAN ME').toUpperCase();
+  const fColor = frameColor || '#1E1E1E';
+  const tColor = frameTextColor || '#ffffff';
+
+  // If thumbnail in the selector list, render a sleek miniature vector QR pattern
+  const qrContent = isThumbnail ? (
+    <svg viewBox="0 0 40 40" className="w-full h-full p-0.5" fill="none">
+      <rect x="2" y="2" width="11" height="11" rx="2.5" stroke="#1E1E1E" strokeWidth="2.5" />
+      <rect x="5.5" y="5.5" width="4" height="4" rx="1" fill="#1E1E1E" />
+      <rect x="27" y="2" width="11" height="11" rx="2.5" stroke="#1E1E1E" strokeWidth="2.5" />
+      <rect x="30.5" y="5.5" width="4" height="4" rx="1" fill="#1E1E1E" />
+      <rect x="2" y="27" width="11" height="11" rx="2.5" stroke="#1E1E1E" strokeWidth="2.5" />
+      <rect x="5.5" y="30.5" width="4" height="4" rx="1" fill="#1E1E1E" />
+      <rect x="16" y="4" width="3" height="3" rx="0.8" fill="#1E1E1E" />
+      <rect x="21" y="4" width="3" height="3" rx="0.8" fill="#1E1E1E" />
+      <rect x="16" y="9" width="3" height="3" rx="0.8" fill="#1E1E1E" />
+      <rect x="4" y="16" width="3" height="3" rx="0.8" fill="#1E1E1E" />
+      <rect x="9" y="16" width="3" height="3" rx="0.8" fill="#1E1E1E" />
+      <rect x="15" y="15" width="10" height="10" rx="1.5" fill="#1E1E1E" />
+      <rect x="28" y="16" width="3" height="3" rx="0.8" fill="#1E1E1E" />
+      <rect x="33" y="16" width="3" height="3" rx="0.8" fill="#1E1E1E" />
+      <rect x="16" y="28" width="3" height="3" rx="0.8" fill="#1E1E1E" />
+      <rect x="21" y="28" width="3" height="3" rx="0.8" fill="#1E1E1E" />
+      <rect x="28" y="28" width="8" height="8" rx="1.5" fill="#1E1E1E" />
+    </svg>
+  ) : (
+    children
+  );
+
+  const containerClasses = isThumbnail 
+    ? "w-full h-24 flex items-center justify-center relative overflow-hidden select-none" 
+    : "w-full min-h-[220px] flex items-center justify-center relative overflow-hidden";
+
+  if (frame === 'none') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl p-2 border-2 border-black/10`}>
+        <div className="w-full h-full flex items-center justify-center">{qrContent}</div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-bottom-bar') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2`} style={{ borderColor: fColor }}>
+        <div className="w-full flex-1 flex items-center justify-center p-1.5">{qrContent}</div>
+        <div className="w-full py-1.5 px-2 text-center font-black tracking-wider shadow-xs" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '8px' : '11px' }}>
+          <span className="truncate block">{ctaText}</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-top-bar') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2`} style={{ borderColor: fColor }}>
+        <div className="w-full py-1.5 px-2 text-center font-black tracking-wider shadow-xs" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '8px' : '11px' }}>
+          <span className="truncate block">{ctaText}</span>
+        </div>
+        <div className="w-full flex-1 flex items-center justify-center p-1.5">{qrContent}</div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-focus-corners-bottom') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between p-2`}>
+        <div className="w-full flex-1 flex items-center justify-center relative p-1">
+          <div className="absolute top-0 left-0 w-3.5 h-3.5 border-t-2 border-l-2" style={{ borderColor: fColor }} />
+          <div className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2" style={{ borderColor: fColor }} />
+          <div className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2" style={{ borderColor: fColor }} />
+          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-2 border-r-2" style={{ borderColor: fColor }} />
+          {qrContent}
+        </div>
+        <div className="px-3 py-1 rounded-md font-black tracking-wider text-center shadow-xs mt-1" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+          <span className="truncate block">{ctaText}</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-focus-corners-top') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between p-2`}>
+        <div className="flex flex-col items-center mb-1">
+          <div className="px-3 py-1 rounded-xl font-black tracking-wider text-center shadow-xs" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+            <span className="truncate block">{ctaText}</span>
+          </div>
+          <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px]" style={{ borderTopColor: fColor }} />
+        </div>
+        <div className="w-full flex-1 flex items-center justify-center relative p-1">
+          <div className="absolute top-0 left-0 w-3.5 h-3.5 border-t-2 border-l-2" style={{ borderColor: fColor }} />
+          <div className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2" style={{ borderColor: fColor }} />
+          <div className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2" style={{ borderColor: fColor }} />
+          <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-2 border-r-2" style={{ borderColor: fColor }} />
+          {qrContent}
+        </div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-focus-corners-arrow') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-row items-center justify-between p-2 gap-1.5`}>
+        <div className="flex-1 h-full flex items-center justify-center relative p-1">
+          <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2" style={{ borderColor: fColor }} />
+          <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2" style={{ borderColor: fColor }} />
+          <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2" style={{ borderColor: fColor }} />
+          <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2" style={{ borderColor: fColor }} />
+          {qrContent}
+        </div>
+        <div className="px-2 py-2 rounded-xl font-black flex flex-col items-center justify-center text-center shadow-xs shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+          <span>SCAN</span>
+          <span className="text-[10px] leading-none my-0.5">➔</span>
+          <span>ME</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-focus-corners-speech') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-row items-center justify-between p-2 gap-1.5`}>
+        <div className="flex-1 h-full flex items-center justify-center relative p-1">
+          <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2" style={{ borderColor: fColor }} />
+          <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2" style={{ borderColor: fColor }} />
+          <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2" style={{ borderColor: fColor }} />
+          <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2" style={{ borderColor: fColor }} />
+          {qrContent}
+        </div>
+        <div className="px-2 py-2.5 rounded-xl font-black flex flex-col items-center justify-center text-center relative shadow-xs shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+          <div className="absolute left-[-4px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-r-[4px]" style={{ borderRightColor: fColor }} />
+          <span>SCAN</span>
+          <span>ME</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-phone-portrait') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-3xl flex-col justify-between p-2 border-4`} style={{ borderColor: fColor }}>
+        <div className="w-8 h-1 rounded-full mb-0.5 mx-auto" style={{ backgroundColor: fColor }} />
+        <div className="w-full flex-1 flex items-center justify-center p-1">{qrContent}</div>
+        <div className="flex flex-col items-center">
+          <span className="leading-none text-[8px]" style={{ color: fColor }}>▲</span>
+          <span className="font-black tracking-wider uppercase truncate max-w-full" style={{ color: fColor, fontSize: isThumbnail ? '7px' : '10px' }}>{ctaText}</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-phone-landscape') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-3xl flex-row justify-between p-2 border-4 gap-1.5`} style={{ borderColor: fColor }}>
+        <div className="flex-1 h-full flex items-center justify-center p-1">{qrContent}</div>
+        <div className="flex flex-col items-center justify-center pr-1 shrink-0">
+          <span className="font-black tracking-wider" style={{ color: fColor, fontSize: isThumbnail ? '8px' : '11px' }}>SCAN</span>
+          <span className="font-black tracking-wider flex items-center gap-0.5" style={{ color: fColor, fontSize: isThumbnail ? '8px' : '11px' }}>
+            <span>◀</span><span>ME</span>
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-speech-bubble-bottom') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between p-2 border-2 relative`} style={{ borderColor: fColor }}>
+        <div className="w-full flex-1 flex items-center justify-center p-1">{qrContent}</div>
+        <div className="w-full text-center font-black tracking-wider uppercase truncate" style={{ color: fColor, fontSize: isThumbnail ? '8px' : '11px' }}>
+          {ctaText}
+        </div>
+        <div className="absolute right-3 -bottom-2 w-0 h-0 border-l-[6px] border-l-transparent border-t-[8px]" style={{ borderTopColor: fColor }} />
+      </div>
+    );
+  }
+
+  if (frame === 'frame-speech-tab-top') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2 relative`} style={{ borderColor: fColor }}>
+        <div className="w-full flex justify-start">
+          <div className="px-2.5 py-0.5 rounded-br-xl font-black uppercase tracking-wider" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+            {ctaText}
+          </div>
+        </div>
+        <div className="w-full flex-1 flex items-center justify-center p-1.5">{qrContent}</div>
+        <div className="absolute right-3 -bottom-2 w-0 h-0 border-l-[6px] border-l-transparent border-t-[8px]" style={{ borderTopColor: fColor }} />
+      </div>
+    );
+  }
+
+  if (frame === 'frame-speech-bubble-right') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-row justify-between p-2 border-2 gap-1.5 relative`} style={{ borderColor: fColor }}>
+        <div className="flex-1 h-full flex items-center justify-center p-1">{qrContent}</div>
+        <div className="px-2 py-2 rounded-xl font-black flex flex-col items-center justify-center text-center shadow-xs shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+          <span>SCAN</span>
+          <span>ME</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-top-arrow') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2 pt-1`} style={{ borderColor: fColor }}>
+        <div className="flex flex-col items-center mb-0.5">
+          <div className="px-3 py-0.5 rounded-xl font-black uppercase tracking-wider text-center" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+            {ctaText}
+          </div>
+          <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[4px]" style={{ borderTopColor: fColor }} />
+        </div>
+        <div className="w-full flex-1 flex items-center justify-center p-1">{qrContent}</div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-top-roof') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2 pt-0`} style={{ borderColor: fColor }}>
+        <div className="w-full py-1 text-center font-black uppercase tracking-wider" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px', clipPath: 'polygon(0% 100%, 0% 40%, 50% 0%, 100% 40%, 100% 100%)' }}>
+          {ctaText}
+        </div>
+        <div className="w-full flex-1 flex items-center justify-center p-1.5">{qrContent}</div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-trapezoid') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2 p-1.5`} style={{ borderColor: fColor }}>
+        <div className="w-4/5 mx-auto py-0.5 text-center font-black uppercase tracking-wider rounded-lg shadow-xs" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+          {ctaText}
+        </div>
+        <div className="w-full flex-1 flex items-center justify-center p-1">{qrContent}</div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-corner-peel') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-col justify-between border-2 p-2 relative`} style={{ borderColor: fColor }}>
+        <div className="w-full flex-1 flex items-center justify-center p-1">{qrContent}</div>
+        <div className="w-full text-left font-black uppercase tracking-wider truncate" style={{ color: fColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+          {ctaText}
+        </div>
+        <div className="absolute right-0 bottom-0 w-0 h-0 border-b-[18px] border-l-[18px] border-l-transparent" style={{ borderBottomColor: fColor }} />
+      </div>
+    );
+  }
+
+  if (frame === 'frame-vertical-right') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-row justify-between border-2`} style={{ borderColor: fColor }}>
+        <div className="flex-1 h-full flex items-center justify-center p-1.5">{qrContent}</div>
+        <div className="w-7 h-full flex flex-col items-center justify-around py-2 text-center font-black leading-none shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+          <span>S</span><span>C</span><span>A</span><span>N</span>
+          <span className="mt-0.5">M</span><span>E</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-vertical-dual') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-row justify-between border-2`} style={{ borderColor: fColor }}>
+        <div className="w-6 h-full flex flex-col items-center justify-around py-2 text-center font-black leading-none shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+          <span>S</span><span>C</span><span>A</span><span>N</span>
+        </div>
+        <div className="flex-1 h-full flex items-center justify-center p-1">{qrContent}</div>
+        <div className="w-6 h-full flex flex-col items-center justify-around py-2 text-center font-black leading-none shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '7px' : '10px' }}>
+          <span>M</span><span>E</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (frame === 'frame-horizontal-left') {
+    return (
+      <div className={`${containerClasses} bg-white rounded-2xl flex-row justify-between border-2 gap-1.5`} style={{ borderColor: fColor }}>
+        <div className="w-14 h-full flex flex-col items-center justify-center font-black leading-tight text-center shrink-0" style={{ backgroundColor: fColor, color: tColor, fontSize: isThumbnail ? '8px' : '11px' }}>
+          <span>SCAN</span>
+          <span>ME</span>
+        </div>
+        <div className="flex-1 h-full flex items-center justify-center p-1.5">{qrContent}</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${containerClasses} bg-white rounded-2xl p-2 border-2 border-black/10`}>
+      <div className="w-full h-full flex items-center justify-center">{qrContent}</div>
+    </div>
+  );
+};
+
 export interface HomeProps {
   initialTab?: string;
 }
@@ -1304,6 +1622,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
   // Frame & Badge Customization State
   const [selectedFrame, setSelectedFrame] = useState<FrameStyle>('none');
   const [frameText, setFrameText] = useState('SCAN ME');
+  const [frameColor, setFrameColor] = useState('#1E1E1E');
+  const [frameTextColor, setFrameTextColor] = useState('#ffffff');
   const [frameCategory, setFrameCategory] = useState<string>('All');
 
   const handleSelectFrame = (style: FrameStyle) => {
@@ -1656,7 +1976,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
           return;
         }
         const rawSvgText = await rawSvgBlob.text();
-        const framedSvg = buildFramedSvg(rawSvgText, selectedFrame, frameText, fgColor, bgColor, cornerSquareColor);
+        const framedSvg = buildFramedSvg(rawSvgText, selectedFrame, frameText, fgColor, bgColor, cornerSquareColor, frameColor, frameTextColor);
         const svgBlob = new Blob([framedSvg], { type: 'image/svg+xml;charset=utf-8' });
         const url = URL.createObjectURL(svgBlob);
         const a = document.createElement('a');
@@ -1675,7 +1995,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
         return;
       }
 
-      const canvas = await renderFramedCanvas(rawBlob, selectedFrame, frameText, fgColor, bgColor, cornerSquareColor);
+      const canvas = await renderFramedCanvas(rawBlob, selectedFrame, frameText, fgColor, bgColor, cornerSquareColor, frameColor, frameTextColor);
       const mimeType = format === 'webp' ? 'image/webp' : 'image/png';
       
       canvas.toBlob((blob) => {
@@ -1707,7 +2027,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
       } else {
         const rawBlob = (await qrCode.getRawData('png')) as Blob | null;
         if (rawBlob) {
-          const canvas = await renderFramedCanvas(rawBlob, selectedFrame, frameText, fgColor, bgColor, cornerSquareColor);
+          const canvas = await renderFramedCanvas(rawBlob, selectedFrame, frameText, fgColor, bgColor, cornerSquareColor, frameColor, frameTextColor);
           blob = await new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/png'));
         }
       }
@@ -2501,154 +2821,17 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                     </div>
 
                     {/* QR Canvas + Template Mini-QR Carousel */}
-                    {/* QR Canvas + Template Mini-QR Carousel */}
                     <div className="flex items-center justify-between w-full gap-3">
-                      {/* Canvas Container with Live Benchmark-Grade Frame Simulation */}
-                      <div className={`relative transition-all shadow-xl flex flex-col items-center justify-center overflow-hidden ${
-                        selectedFrame === 'none' ? 'bg-white rounded-2xl p-2.5 border-2 border-black/10' :
-                        selectedFrame === 'frame-bottom-bar' ? 'bg-white rounded-2xl pt-2.5 pb-0 border-2' :
-                        selectedFrame === 'frame-top-bar' ? 'bg-white rounded-2xl p-0 border-2' :
-                        selectedFrame === 'frame-focus-corners-bottom' ? 'bg-white rounded-2xl p-2 pb-3 border-2 border-dashed border-black/10' :
-                        selectedFrame === 'frame-focus-corners-top' ? 'bg-white rounded-2xl p-2 pt-1 border-2 border-dashed border-black/10' :
-                        selectedFrame === 'frame-phone-portrait' ? 'bg-white rounded-3xl pt-3 pb-3 px-2 border-4' :
-                        selectedFrame === 'frame-phone-landscape' ? 'bg-white rounded-3xl p-2 border-4 flex-row' :
-                        selectedFrame === 'frame-speech-bubble-bottom' ? 'bg-white rounded-2xl p-2 pb-3 border-2' :
-                        selectedFrame === 'frame-speech-tab-top' ? 'bg-white rounded-2xl p-0 border-2' :
-                        selectedFrame === 'frame-top-arrow' ? 'bg-white rounded-2xl p-0 border-2' :
-                        selectedFrame === 'frame-top-roof' ? 'bg-white rounded-2xl p-0 border-2' :
-                        selectedFrame === 'frame-trapezoid' ? 'bg-white rounded-2xl p-2 border-2' :
-                        selectedFrame === 'frame-corner-peel' ? 'bg-white rounded-2xl p-2 border-2 relative' :
-                        selectedFrame === 'frame-vertical-right' ? 'bg-white rounded-2xl p-0 border-2 flex-row' :
-                        selectedFrame === 'frame-vertical-dual' ? 'bg-white rounded-2xl p-0 border-2 flex-row' :
-                        selectedFrame === 'frame-horizontal-left' ? 'bg-white rounded-2xl p-0 border-2 flex-row' :
-                        'bg-white rounded-2xl p-2.5 border-2 border-black/10'
-                      }`} style={{
-                        width: '74%',
-                        maxWidth: '235px',
-                        borderColor: selectedFrame !== 'none' ? fgColor : undefined
-                      }}>
-                        
-                        {/* Top Header Banner (Top-bar, Speech Tab, Top Arrow, Top Roof) */}
-                        {selectedFrame === 'frame-top-bar' && (
-                          <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-1.5 px-2 shadow-2xs mb-1.5" style={{ backgroundColor: fgColor }}>
-                            <span className="truncate">{frameText || 'SCAN ME'}</span>
-                          </div>
-                        )}
-
-                        {selectedFrame === 'frame-speech-tab-top' && (
-                          <div className="w-full flex items-center justify-between mb-1">
-                            <div className="text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-br-lg shadow-2xs" style={{ backgroundColor: fgColor }}>
-                              {frameText || 'SCAN ME'}
-                            </div>
-                          </div>
-                        )}
-
-                        {selectedFrame === 'frame-focus-corners-top' && (
-                          <div className="w-full mb-1 flex flex-col items-center">
-                            <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 px-2 rounded-xl shadow-xs" style={{ backgroundColor: fgColor }}>
-                              {frameText || 'SCAN ME'}
-                            </div>
-                            <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px]" style={{ borderTopColor: fgColor }} />
-                          </div>
-                        )}
-
-                        {selectedFrame === 'frame-top-arrow' && (
-                          <div className="w-full mb-1 flex flex-col items-center">
-                            <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 px-2 rounded-xl shadow-xs" style={{ backgroundColor: fgColor }}>
-                              {frameText || 'SCAN ME'}
-                            </div>
-                            <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px]" style={{ borderTopColor: fgColor }} />
-                          </div>
-                        )}
-
-                        {selectedFrame === 'frame-top-roof' && (
-                          <div className="w-full text-white text-[9px] font-black uppercase tracking-wider text-center py-1 px-2 shadow-xs mb-1" style={{ backgroundColor: fgColor, clipPath: 'polygon(0% 100%, 0% 40%, 50% 0%, 100% 40%, 100% 100%)' }}>
-                            <span className="truncate">{frameText || 'SCAN ME'}</span>
-                          </div>
-                        )}
-
-                        {selectedFrame === 'frame-phone-portrait' && (
-                          <div className="w-8 h-1 rounded-full mb-1" style={{ backgroundColor: fgColor }} />
-                        )}
-
-                        {/* Dual Vertical Sidebar: Left Column */}
-                        {selectedFrame === 'frame-vertical-dual' && (
-                          <div className="w-6 py-2 flex flex-col items-center justify-center text-white text-[9px] font-black tracking-widest leading-3" style={{ backgroundColor: fgColor }}>
-                            <span>S</span><span>C</span><span>A</span><span>N</span>
-                          </div>
-                        )}
-
-                        {/* Horizontal Split Left Card */}
-                        {selectedFrame === 'frame-horizontal-left' && (
-                          <div className="w-16 py-3 px-1 flex flex-col items-center justify-center text-white text-[10px] font-black tracking-wider leading-4 text-center" style={{ backgroundColor: fgColor }}>
-                            <span>SCAN</span><span>ME</span>
-                          </div>
-                        )}
-
-                        {/* Inner QR Container with Quiet Zone */}
-                        <div className="w-full flex-1 flex items-center justify-center p-1 relative">
-                          {/* 4 Focus Corner Accents */}
-                          {(selectedFrame === 'frame-focus-corners-bottom' || selectedFrame === 'frame-focus-corners-top' || selectedFrame === 'frame-focus-corners-arrow' || selectedFrame === 'frame-focus-corners-speech') && (
-                            <>
-                              <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2" style={{ borderColor: fgColor }} />
-                              <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2" style={{ borderColor: fgColor }} />
-                              <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2" style={{ borderColor: fgColor }} />
-                              <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2" style={{ borderColor: fgColor }} />
-                            </>
-                          )}
+                      {/* Canvas Container with Live Reactive Framed QR View */}
+                      <div className="w-[74%] max-w-[235px] flex items-center justify-center">
+                        <FramedQrView
+                          frame={selectedFrame}
+                          text={frameText}
+                          frameColor={frameColor}
+                          frameTextColor={frameTextColor}
+                        >
                           <div ref={qrContainerRef} className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" />
-                        </div>
-
-                        {/* Vertical Right Sidebar */}
-                        {selectedFrame === 'frame-vertical-right' && (
-                          <div className="w-7 py-2 flex flex-col items-center justify-center text-white text-[8px] font-black tracking-widest leading-3" style={{ backgroundColor: fgColor }}>
-                            <span>S</span><span>C</span><span>A</span><span>N</span>
-                            <span className="mt-1">M</span><span>E</span>
-                          </div>
-                        )}
-
-                        {/* Dual Vertical Sidebar: Right Column */}
-                        {selectedFrame === 'frame-vertical-dual' && (
-                          <div className="w-6 py-2 flex flex-col items-center justify-center text-white text-[9px] font-black tracking-widest leading-3" style={{ backgroundColor: fgColor }}>
-                            <span>M</span><span>E</span>
-                          </div>
-                        )}
-
-                        {/* Bottom Full-Width Banner (Bottom Bar) */}
-                        {selectedFrame === 'frame-bottom-bar' && (
-                          <div className="w-full text-white text-[10px] font-black uppercase tracking-wider text-center py-2 px-2 shadow-2xs mt-1" style={{ backgroundColor: fgColor }}>
-                            <span className="truncate">{frameText || 'SCAN ME'}</span>
-                          </div>
-                        )}
-
-                        {/* Bottom Floating Badge / Focus Badge */}
-                        {selectedFrame === 'frame-focus-corners-bottom' && (
-                          <div className="text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-md mt-1.5 shadow-md flex items-center justify-center" style={{ backgroundColor: fgColor }}>
-                            <span className="truncate">{frameText || 'SCAN ME'}</span>
-                          </div>
-                        )}
-
-                        {/* Phone Portrait Bottom Arrow & Text */}
-                        {selectedFrame === 'frame-phone-portrait' && (
-                          <div className="flex flex-col items-center mt-1">
-                            <span className="text-[10px] font-bold" style={{ color: fgColor }}>▲</span>
-                            <span className="text-[9px] font-black uppercase tracking-wider" style={{ color: fgColor }}>{frameText || 'SCAN ME'}</span>
-                          </div>
-                        )}
-
-                        {/* Speech Bubble Bottom Pointer */}
-                        {selectedFrame === 'frame-speech-bubble-bottom' && (
-                          <div className="w-full text-center mt-1">
-                            <span className="text-[9px] font-black uppercase tracking-wider" style={{ color: fgColor }}>{frameText || 'SCAN ME'}</span>
-                          </div>
-                        )}
-
-                        {/* Corner Peel Subtext */}
-                        {selectedFrame === 'frame-corner-peel' && (
-                          <div className="w-full text-left pl-1 mt-1">
-                            <span className="text-[9px] font-black uppercase tracking-wider" style={{ color: fgColor }}>{frameText || 'SCAN ME'}</span>
-                          </div>
-                        )}
+                        </FramedQrView>
                       </div>
 
                       {/* Template Selector Vertical Carousel with Mini-QR Vector Previews */}
@@ -2859,160 +3042,70 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                 ))}
                               </div>
 
-                              {/* Frame Cards Grid with Accurate Vector Silhouettes */}
-                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-[290px] overflow-y-auto pr-1">
+                              {/* Frame Cards Grid with Live Miniature Visual Previews */}
+                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[310px] overflow-y-auto pr-1 pb-1">
                                 {FRAME_OPTIONS
                                   .filter(f => frameCategory === 'All' || f.category === frameCategory)
                                   .map((f) => (
                                     <button
                                       key={f.id}
                                       onClick={() => handleSelectFrame(f.id)}
-                                      className={`p-3 rounded-xl border text-left transition-all flex flex-col justify-between gap-2 relative ${
+                                      className={`p-2.5 rounded-2xl border text-left transition-all flex flex-col justify-between gap-2 relative group ${
                                         selectedFrame === f.id
-                                          ? 'border-accent bg-accent/20 text-[#BEF392] ring-2 ring-accent/40 shadow-md font-bold'
-                                          : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
+                                          ? 'border-[#BEF392] bg-[#BEF392]/10 ring-2 ring-[#BEF392]/40 shadow-lg'
+                                          : 'border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20'
                                       }`}
                                     >
-                                      <div className="flex items-center justify-between">
-                                        <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center p-1">
-                                          {f.id === 'frame-bottom-bar' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="4" y="3" width="36" height="42" rx="6" strokeWidth="2.5" />
-                                              <rect x="9" y="8" width="26" height="23" rx="2" strokeWidth="1.5" strokeDasharray="2 2" />
-                                              <rect x="4" y="34" width="36" height="11" rx="4" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-top-bar' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="4" y="3" width="36" height="42" rx="6" strokeWidth="2.5" />
-                                              <rect x="4" y="3" width="36" height="11" rx="4" fill="currentColor" />
-                                              <rect x="9" y="17" width="26" height="23" rx="2" strokeWidth="1.5" strokeDasharray="2 2" />
-                                            </svg>
-                                          ) : f.id === 'frame-focus-corners-bottom' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <path d="M 5 12 L 5 5 L 12 5 M 39 12 L 39 5 L 32 5 M 5 28 L 5 35 L 12 35 M 39 28 L 39 35 L 32 35" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                                              <rect x="11" y="11" width="22" height="18" rx="2" strokeWidth="1.5" strokeDasharray="2 2" />
-                                              <rect x="10" y="33" width="24" height="11" rx="3" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-focus-corners-top' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="8" y="2" width="28" height="11" rx="3" fill="currentColor" />
-                                              <polygon points="20,13 24,16 24,13" fill="currentColor" />
-                                              <path d="M 5 24 L 5 17 L 12 17 M 39 24 L 39 17 L 32 17 M 5 39 L 5 46 L 12 46 M 39 39 L 39 46 L 32 46" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                                              <rect x="11" y="22" width="22" height="19" rx="2" strokeWidth="1.5" strokeDasharray="2 2" />
-                                            </svg>
-                                          ) : f.id === 'frame-focus-corners-arrow' ? (
-                                            <svg viewBox="0 0 48 44" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <path d="M 4 11 L 4 5 L 10 5 M 28 11 L 28 5 L 22 5 M 4 33 L 4 39 L 10 39 M 28 33 L 28 39 L 22 39" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                                              <rect x="30" y="14" width="16" height="16" rx="3" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-focus-corners-speech' ? (
-                                            <svg viewBox="0 0 48 44" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <path d="M 4 11 L 4 5 L 10 5 M 26 11 L 26 5 L 20 5 M 4 33 L 4 39 L 10 39 M 26 33 L 26 39 L 20 39" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                                              <rect x="29" y="8" width="17" height="28" rx="4" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-phone-portrait' ? (
-                                            <svg viewBox="0 0 36 50" className="w-7 h-9" fill="none" stroke="currentColor">
-                                              <rect x="4" y="3" width="28" height="44" rx="5" strokeWidth="2.5" />
-                                              <line x1="32" y1="12" x2="32" y2="18" strokeWidth="2.5" strokeLinecap="round" />
-                                              <line x1="14" y1="6" x2="22" y2="6" strokeWidth="2" strokeLinecap="round" />
-                                              <polygon points="18,33 14,37 22,37" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-phone-landscape' ? (
-                                            <svg viewBox="0 0 50 34" className="w-9 h-7" fill="none" stroke="currentColor">
-                                              <rect x="3" y="4" width="44" height="26" rx="5" strokeWidth="2.5" />
-                                              <line x1="14" y1="4" x2="20" y2="4" strokeWidth="2.5" strokeLinecap="round" />
-                                            </svg>
-                                          ) : f.id === 'frame-speech-bubble-bottom' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="4" y="4" width="36" height="34" rx="6" strokeWidth="2.5" />
-                                              <polygon points="32,38 38,44 38,38" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-                                            </svg>
-                                          ) : f.id === 'frame-speech-tab-top' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="4" y="2" width="16" height="10" rx="3" fill="currentColor" />
-                                              <rect x="4" y="8" width="36" height="34" rx="6" strokeWidth="2.5" />
-                                            </svg>
-                                          ) : f.id === 'frame-speech-bubble-right' ? (
-                                            <svg viewBox="0 0 48 44" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="3" y="4" width="30" height="36" rx="5" strokeWidth="2.5" />
-                                              <rect x="37" y="12" width="10" height="20" rx="2" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-top-arrow' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="4" y="8" width="36" height="36" rx="6" strokeWidth="2.5" />
-                                              <rect x="8" y="2" width="28" height="11" rx="3" fill="currentColor" />
-                                              <polygon points="22,17 18,13 26,13" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-top-roof' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="4" y="10" width="36" height="35" rx="6" strokeWidth="2.5" />
-                                              <path d="M 8 10 L 8 6 L 22 2 L 36 6 L 36 10 Z" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-trapezoid' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <polygon points="9,6 35,6 40,42 4,42" strokeWidth="2.5" strokeLinejoin="round" />
-                                              <rect x="10" y="2" width="24" height="7" rx="2" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-corner-peel' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <path d="M 4 10 A 6 6 0 0 1 10 4 L 34 4 A 6 6 0 0 1 40 10 L 40 32 L 30 42 L 10 42 A 6 6 0 0 1 4 36 Z" strokeWidth="2.5" strokeLinejoin="round" />
-                                              <polygon points="30,32 40,32 30,42" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" />
-                                            </svg>
-                                          ) : f.id === 'frame-vertical-right' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="4" y="4" width="36" height="40" rx="5" strokeWidth="2.5" />
-                                              <rect x="29" y="4" width="11" height="40" rx="3" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-vertical-dual' ? (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="4" y="4" width="36" height="40" rx="5" strokeWidth="2.5" />
-                                              <rect x="4" y="4" width="9" height="40" rx="2" fill="currentColor" />
-                                              <rect x="31" y="4" width="9" height="40" rx="2" fill="currentColor" />
-                                            </svg>
-                                          ) : f.id === 'frame-horizontal-left' ? (
-                                            <svg viewBox="0 0 48 40" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="3" y="5" width="20" height="30" rx="4" fill="currentColor" />
-                                              <rect x="25" y="5" width="20" height="30" rx="4" strokeWidth="2" />
-                                            </svg>
-                                          ) : (
-                                            <svg viewBox="0 0 44 48" className="w-8 h-8" fill="none" stroke="currentColor">
-                                              <rect x="6" y="6" width="32" height="36" rx="5" strokeWidth="2.5" />
-                                              <rect x="11" y="11" width="22" height="26" rx="2" strokeWidth="1.5" strokeDasharray="2 2" />
-                                            </svg>
-                                          )}
+                                      {/* Live Miniature Framed QR Preview Card */}
+                                      <div className="w-full rounded-xl overflow-hidden shadow-inner bg-slate-900/40 p-1 flex items-center justify-center">
+                                        <div className="w-full max-w-[120px]">
+                                          <FramedQrView
+                                            frame={f.id}
+                                            text={frameText}
+                                            frameColor={frameColor}
+                                            frameTextColor={frameTextColor}
+                                            isThumbnail={true}
+                                          />
+                                        </div>
+                                      </div>
+
+                                      <div className="flex items-center justify-between w-full px-0.5">
+                                        <div className="truncate">
+                                          <span className={`text-xs font-bold block leading-tight truncate ${selectedFrame === f.id ? 'text-[#BEF392]' : 'text-white'}`}>
+                                            {f.label}
+                                          </span>
+                                          <span className="text-[10px] text-white/40 uppercase tracking-wider block font-medium mt-0.5">
+                                            {f.category}
+                                          </span>
                                         </div>
                                         {selectedFrame === f.id && (
-                                          <span className="w-2 h-2 rounded-full bg-[#BEF392]" />
+                                          <span className="w-2.5 h-2.5 rounded-full bg-[#BEF392] shrink-0 ml-1 shadow-sm shadow-[#BEF392]/50" />
                                         )}
-                                      </div>
-                                      <div>
-                                        <span className="text-xs font-bold block leading-tight">{f.label}</span>
-                                        <span className="text-[10px] text-white/40 uppercase tracking-wider block font-medium mt-0.5">{f.category}</span>
                                       </div>
                                     </button>
                                   ))}
                               </div>
 
-                              {/* Frame Text & Presets */}
+                              {/* Frame Text & Color Customizers */}
                               {selectedFrame !== 'none' && (
-                                <div className="space-y-3 pt-3 border-t border-white/10">
-                                  <div className="flex items-center justify-between">
-                                    <label className="text-xs font-bold text-white/80">Frame Call-to-Action Text</label>
-                                    <span className="text-[10px] text-white/40">{frameText.length}/28 chars</span>
-                                  </div>
-                                  <input
-                                    type="text"
-                                    value={frameText}
-                                    onChange={(e) => setFrameText(e.target.value)}
-                                    placeholder="e.g. SCAN ME"
-                                    maxLength={28}
-                                    className="w-full bg-white/10 text-white rounded-xl px-3.5 py-2 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-accent"
-                                  />
-                                  
-                                  {/* Quick CTA Presets */}
-                                  <div className="space-y-1.5">
-                                    <span className="text-[10px] text-white/40 font-semibold block">Quick CTA Presets:</span>
-                                    <div className="flex flex-wrap gap-1.5">
+                                <div className="space-y-4 pt-3 border-t border-white/10">
+                                  {/* 1. Frame CTA Text */}
+                                  <div className="space-y-2">
+                                    <div className="flex items-center justify-between">
+                                      <label className="text-xs font-bold text-white/90">Frame Call-to-Action Text</label>
+                                      <span className="text-[10px] text-white/40 font-mono">{frameText.length}/28 chars</span>
+                                    </div>
+                                    <input
+                                      type="text"
+                                      value={frameText}
+                                      onChange={(e) => setFrameText(e.target.value)}
+                                      placeholder="e.g. SCAN ME"
+                                      maxLength={28}
+                                      className="w-full bg-white/10 text-white rounded-xl px-3.5 py-2 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-accent"
+                                    />
+                                    
+                                    {/* Quick CTA Presets */}
+                                    <div className="flex flex-wrap gap-1.5 pt-1">
                                       {[
                                         'SCAN ME',
                                         'SCAN FOR MENU',
@@ -3035,6 +3128,100 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                           {preset}
                                         </button>
                                       ))}
+                                    </div>
+                                  </div>
+
+                                  {/* 2. Frame Color & Text Color Controls */}
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-white/10">
+                                    {/* Frame Body / Border Color */}
+                                    <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                                      <div className="flex items-center justify-between">
+                                        <div>
+                                          <span className="text-xs font-bold text-white block">Frame Color</span>
+                                          <span className="text-[10px] text-white/40 font-mono">{frameColor}</span>
+                                        </div>
+                                        <input
+                                          type="color"
+                                          value={frameColor}
+                                          onChange={(e) => setFrameColor(e.target.value)}
+                                          className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent"
+                                        />
+                                      </div>
+                                      
+                                      {/* Quick Frame Color Swatches */}
+                                      <div className="flex items-center gap-1.5 pt-1">
+                                        {[
+                                          '#1E1E1E',
+                                          '#2B6F53',
+                                          '#4338CA',
+                                          '#BE123C',
+                                          '#B45309',
+                                          '#0369A1',
+                                          '#6B21A8',
+                                          '#CA8A04'
+                                        ].map((c) => (
+                                          <button
+                                            key={c}
+                                            onClick={() => setFrameColor(c)}
+                                            className={`w-5 h-5 rounded-full border transition-transform ${
+                                              frameColor.toLowerCase() === c.toLowerCase()
+                                                ? 'scale-125 ring-2 ring-white border-transparent'
+                                                : 'border-white/20 hover:scale-110'
+                                            }`}
+                                            style={{ backgroundColor: c }}
+                                          />
+                                        ))}
+                                      </div>
+                                    </div>
+
+                                    {/* Frame Text Color */}
+                                    <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                                      <div className="flex items-center justify-between">
+                                        <div>
+                                          <span className="text-xs font-bold text-white block">Frame Text Color</span>
+                                          <span className="text-[10px] text-white/40 font-mono">{frameTextColor}</span>
+                                        </div>
+                                        <input
+                                          type="color"
+                                          value={frameTextColor}
+                                          onChange={(e) => setFrameTextColor(e.target.value)}
+                                          className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent"
+                                        />
+                                      </div>
+                                      
+                                      {/* Quick White / Black / Accent toggles */}
+                                      <div className="flex items-center gap-2 pt-1">
+                                        <button
+                                          onClick={() => setFrameTextColor('#ffffff')}
+                                          className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                            frameTextColor === '#ffffff'
+                                              ? 'bg-white text-slate-950 border-white'
+                                              : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
+                                          }`}
+                                        >
+                                          White Text
+                                        </button>
+                                        <button
+                                          onClick={() => setFrameTextColor('#000000')}
+                                          className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                            frameTextColor === '#000000'
+                                              ? 'bg-black text-white border-white/40'
+                                              : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
+                                          }`}
+                                        >
+                                          Black Text
+                                        </button>
+                                        <button
+                                          onClick={() => setFrameTextColor('#BEF392')}
+                                          className={`px-3 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                            frameTextColor === '#BEF392'
+                                              ? 'bg-[#BEF392] text-slate-950 border-[#BEF392]'
+                                              : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
+                                          }`}
+                                        >
+                                          Lime Accent
+                                        </button>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -3239,7 +3426,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                         </div>
 
                         {/* Right Sticky Preview Card (4 cols) */}
-                        <div className="md:col-span-4 flex flex-col items-center justify-center bg-black/40 border border-white/10 rounded-2xl p-4">
+                        <div className="md:col-span-4 flex flex-col items-center justify-start bg-black/40 border border-white/10 rounded-2xl p-4 sticky top-0">
                           <div className="w-full flex items-center justify-between mb-3 text-xs">
                             <span className="text-white/60 font-semibold">Live Simulation</span>
                             <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${scannabilityInfo.color}`}>
@@ -3247,8 +3434,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                             </span>
                           </div>
 
-                          <div className="w-48 h-48 bg-white rounded-xl p-2 flex items-center justify-center shadow-lg">
-                            <div className="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full">
+                          {/* Dynamic Framed QR Live Simulation Container */}
+                          <div className="w-full max-w-[210px] flex items-center justify-center">
+                            <FramedQrView
+                              frame={selectedFrame}
+                              text={frameText}
+                              frameColor={frameColor}
+                              frameTextColor={frameTextColor}
+                            >
                               <DynamicQrPreview
                                 link={effectiveQrData || 'https://qr-generator.online'}
                                 fgColor={fgColor}
@@ -3260,13 +3453,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
                                 cornerDotStyle={cornerDotStyle}
                                 logoSrc={logoSrc}
                               />
-                            </div>
+                            </FramedQrView>
                           </div>
 
                           {selectedFrame !== 'none' && (
-                            <div className="mt-3 text-center">
+                            <div className="mt-3 text-center bg-white/5 border border-white/10 rounded-xl px-3 py-1.5 w-full">
                               <span className="text-[10px] text-white/50 block font-mono">Frame active:</span>
-                              <span className="text-xs font-bold text-[#BEF392] block">{frameText || 'SCAN ME'}</span>
+                              <span className="text-xs font-bold text-[#BEF392] block truncate">{frameText || 'SCAN ME'}</span>
                             </div>
                           )}
                         </div>
