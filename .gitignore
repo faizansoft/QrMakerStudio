@@ -26,6 +26,8 @@ dist-ssr
 # Google API credentials & tokens — never commit these
 client_secret*.json
 *credentials*.json
+service-account*.json
 .gsc-token.json
+.google-indexing-token.json
 .env
 .env.*

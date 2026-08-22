@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "node scripts/extractPageContent.js && vite build && node scripts/prerender.js && node scripts/generateSitemap.js",
     "preview": "vite preview",
-    "indexnow": "node scripts/submitIndexNow.js"
+    "indexnow": "node scripts/submitIndexNow.js",
+    "index:google": "node scripts/submitGoogleIndexing.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.48.1",
