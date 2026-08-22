@@ -406,15 +406,26 @@ async function runPublish(type) {
     return;
   }
 
-  let ok = 0;
+  let recorded = 0;
+  let discarded = 0;
   const failures = [];
 
   for (const url of urls) {
     const { ok: success, status, body } = await publish(url, type);
     if (success) {
-      ok++;
-      const at = body?.urlNotificationMetadata?.latestUpdate?.notifyTime;
-      console.log(`  ✓ ${short(url).padEnd(38)} ${at ? at.slice(0, 19).replace('T', ' ') : 'accepted'}`);
+      // HTTP 200 alone means nothing. Google echoes back the URL for any
+      // request it accepts, but only *records* a notification for an eligible
+      // page — and a recorded one carries latestUpdate.notifyTime. A 200 with
+      // no notifyTime is a silent discard, which is what ordinary pages get.
+      const meta = body?.urlNotificationMetadata;
+      const at = (type === 'URL_DELETED' ? meta?.latestRemove : meta?.latestUpdate)?.notifyTime;
+      if (at) {
+        recorded++;
+        console.log(`  ✓ ${short(url).padEnd(38)} recorded ${at.slice(0, 19).replace('T', ' ')}`);
+      } else {
+        discarded++;
+        console.log(`  ⊘ ${short(url).padEnd(38)} HTTP 200 but not recorded — discarded`);
+      }
     } else {
       const message = body?.error?.message || `HTTP ${status}`;
       console.log(`  ✗ ${short(url).padEnd(38)} ${message}`);
@@ -433,15 +444,31 @@ async function runPublish(type) {
     await new Promise((r) => setTimeout(r, DELAY_MS));
   }
 
-  console.log(`\n${ok}/${urls.length} accepted.`);
+  console.log(
+    `\n${recorded} recorded, ${discarded} discarded, ${failures.length} failed ` +
+      `(of ${urls.length}).`
+  );
 
   if (failures.length) {
     const hint = explain(failures[0].status, failures[0].message);
     if (hint) console.error(`\n❌ ${hint}\n`);
     process.exitCode = 1;
-  } else {
+    return;
+  }
+
+  if (discarded) {
     console.log(
-      'Accepted ≠ indexed. Verify real index state with:\n' +
+      `\n⊘ Google took the call and kept no record for ${discarded} URL(s). That is\n` +
+        '  the documented behaviour for pages that are not JobPosting or\n' +
+        '  BroadcastEvent: the endpoint does not reject them, it ignores them.\n' +
+        '  Confirm for yourself with:  node scripts/submitGoogleIndexing.mjs status --all\n' +
+        '  For pages like these, use `npm run indexnow` and the sitemap instead.\n'
+    );
+  }
+
+  if (recorded) {
+    console.log(
+      'Recorded ≠ indexed. Verify real index state with:\n' +
         '  node scripts/gsc.mjs inspect\n'
     );
   }
