@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useDialogBehaviour } from './Modal';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -26,6 +27,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  // Escape-to-close, focus trap, scroll lock — see Modal.tsx.
+  const dlg = useDialogBehaviour(isOpen, onClose, 'auth-modal-title');
 
   if (!isOpen) return null;
 
@@ -72,8 +76,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-      <div className="relative w-full max-w-md bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden p-6 sm:p-7">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn" {...dlg.backdropProps}>
+      <div className="relative w-full max-w-md bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden p-6 sm:p-7" {...dlg.panelProps}>
         
         {/* Close Button */}
         <button
@@ -93,7 +97,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h3 className="text-lg font-bold text-slate-900">
+          <h3 id="auth-modal-title" className="text-lg font-bold text-slate-900">
             {title || (mode === 'signup' ? 'Create Your Account' : mode === 'signin' ? 'Welcome Back' : 'Reset Password')}
           </h3>
           <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">

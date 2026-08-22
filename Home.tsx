@@ -10,9 +10,11 @@ import { DotType, CornerSquareType, CornerDotType } from './types';
 import { useLanguage } from './context/LanguageContext';
 import { useAuth } from './context/AuthContext';
 import { AuthModal } from './components/AuthModal';
+import Modal from './components/Modal';
 import { createDynamicLink, DynamicLink } from './services/dynamicQrService';
 import { uploadPdfToSupabase } from './services/pdfStorageService';
 import { injectJSONLD, removeJSONLD, getToolSoftwareSchema, getFAQSchema, getBreadcrumbSchema } from './services/seoUtils';
+import { useDialogBehaviour } from './components/Modal';
 
 // ── Tab definitions with SVG Icon functions ──
 const TABS = [
@@ -786,7 +788,6 @@ const FramedQrView: React.FC<{
     link,
     isThumbnail,
   ]);
-
   return (
     <div
       className={`w-full flex items-center justify-center select-none overflow-hidden transition-all ${
@@ -967,6 +968,11 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
   const { user } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showDynamicSaveModal, setShowDynamicSaveModal] = useState(false);
+  // Escape-to-close, focus trap, scroll lock — see components/Modal.tsx.
+  const dlg_showDynamicSaveModal = useDialogBehaviour(
+    showDynamicSaveModal,
+    () => { setShowDynamicSaveModal(false); setSavedDynamicLink(null); }
+  );
   const [dynamicTitle, setDynamicTitle] = useState('');
   const [dynamicCustomCode, setDynamicCustomCode] = useState('');
   const [savedDynamicLink, setSavedDynamicLink] = useState<DynamicLink | null>(null);
@@ -1052,7 +1058,6 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
       breadcrumbs.push({ name: currentSeo.title, url: currentSeo.slug });
     }
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema(breadcrumbs));
-
     return () => {
       removeJSONLD('jsonld-tool');
       removeJSONLD('jsonld-faq');
@@ -1474,7 +1479,6 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
       reader.readAsDataURL(file);
     }
   };
-
   return (
     <div>
       {/* ═══════════════════════════ HERO SECTION ═══════════════════════════ */}
@@ -1622,7 +1626,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                 </div>
                                 <input
                                   type="url"
-                                  placeholder="https://drive.google.com/file/d/.../view?usp=sharing"
+                                  placeholder="https://drive.google.com/file/d/.../view?usp=sharing" aria-label="Google Drive PDF link"
                                   value={pdfInput.url}
                                   onChange={(e) => setPdfInput(prev => ({ ...prev, url: e.target.value }))}
                                   className="w-full rounded-xl bg-white text-black px-4 py-2.5 text-xs font-mono outline-none focus:ring-2 focus:ring-accent"
@@ -1647,7 +1651,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                       <span className="text-xs font-bold text-white block">
                                         {pdfInput.fileName ? pdfInput.fileName : 'Choose a PDF file from your device'}
                                       </span>
-                                      <span className="text-[10px] text-white/60 block mt-0.5">
+                                      <span className="text-[11px] text-white/60 block mt-0.5">
                                         Auto-hosted on Cloud • Maximum limit: <strong>10 MB</strong>
                                       </span>
                                     </>
@@ -1667,7 +1671,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                       <span className="font-bold">✓ Cloud Hosted:</span>
                                       <span className="truncate">{pdfInput.fileName}</span>
                                     </div>
-                                    <span className="font-mono text-[10px] shrink-0 font-bold bg-emerald-900/60 px-1.5 py-0.5 rounded">
+                                    <span className="font-mono text-[11px] shrink-0 font-bold bg-emerald-900/60 px-1.5 py-0.5 rounded">
                                       {(pdfInput.fileSize / (1024 * 1024)).toFixed(2)} MB
                                     </span>
                                   </div>
@@ -1686,7 +1690,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               <div className="space-y-1.5">
                                 <input
                                   type="url"
-                                  placeholder="https://yoursite.com/menu.pdf or Dropbox PDF link"
+                                  placeholder="https://yoursite.com/menu.pdf or Dropbox PDF link" aria-label="PDF file URL"
                                   value={pdfInput.url}
                                   onChange={(e) => setPdfInput(prev => ({ ...prev, url: e.target.value }))}
                                   className="w-full rounded-xl bg-white text-black px-4 py-2.5 text-xs font-mono outline-none focus:ring-2 focus:ring-accent"
@@ -1701,7 +1705,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         {activeTab === 'text' && (
                           <div className="flex flex-col gap-2">
                             <textarea
-                              placeholder="Enter message or notes to encode..."
+                              placeholder="Enter message or notes to encode..." aria-label="Enter message or notes to encode"
                               value={textInput}
                               onChange={(e) => setTextInput(e.target.value)}
                               rows={4}
@@ -1716,42 +1720,42 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="text"
-                              placeholder="First Name *"
+                              placeholder="First Name *" aria-label="First Name"
                               value={vCardInput.firstName}
                               onChange={(e) => setVCardInput({ ...vCardInput, firstName: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Last Name"
+                              placeholder="Last Name" aria-label="Last Name"
                               value={vCardInput.lastName}
                               onChange={(e) => setVCardInput({ ...vCardInput, lastName: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="tel"
-                              placeholder="Phone Number *"
+                              placeholder="Phone Number *" aria-label="Phone Number"
                               value={vCardInput.phone}
                               onChange={(e) => setVCardInput({ ...vCardInput, phone: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="email"
-                              placeholder="Email Address"
+                              placeholder="Email Address" aria-label="Email Address"
                               value={vCardInput.email}
                               onChange={(e) => setVCardInput({ ...vCardInput, email: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Company Name"
+                              placeholder="Company Name" aria-label="Company Name"
                               value={vCardInput.company}
                               onChange={(e) => setVCardInput({ ...vCardInput, company: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Job Title"
+                              placeholder="Job Title" aria-label="Job Title"
                               value={vCardInput.title}
                               onChange={(e) => setVCardInput({ ...vCardInput, title: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
@@ -1764,14 +1768,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="text"
-                              placeholder="WiFi SSID (Network Name) *"
+                              placeholder="WiFi SSID (Network Name) *" aria-label="WiFi SSID (Network Name)"
                               value={wifiInput.ssid}
                               onChange={(e) => setWifiInput({ ...wifiInput, ssid: e.target.value })}
                               className="sm:col-span-2 rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <input
                               type="password"
-                              placeholder="WiFi Password"
+                              placeholder="WiFi Password" aria-label="WiFi Password"
                               value={wifiInput.password}
                               onChange={(e) => setWifiInput({ ...wifiInput, password: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
@@ -1802,20 +1806,20 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="email"
-                              placeholder="Recipient Email Address *"
+                              placeholder="Recipient Email Address *" aria-label="Recipient Email Address"
                               value={emailInput.to}
                               onChange={(e) => setEmailInput({ ...emailInput, to: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Email Subject"
+                              placeholder="Email Subject" aria-label="Email Subject"
                               value={emailInput.subject}
                               onChange={(e) => setEmailInput({ ...emailInput, subject: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <textarea
-                              placeholder="Email Body Content..."
+                              placeholder="Email Body Content..." aria-label="Email Body Content"
                               value={emailInput.body}
                               onChange={(e) => setEmailInput({ ...emailInput, body: e.target.value })}
                               rows={2}
@@ -1829,13 +1833,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="tel"
-                              placeholder="Phone Number (+1 234 567 890) *"
+                              placeholder="Phone Number (+1 234 567 890) *" aria-label="Phone Number (+1 234 567 890)"
                               value={smsInput.phone}
                               onChange={(e) => setSmsInput({ ...smsInput, phone: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <textarea
-                              placeholder="Pre-filled SMS Message..."
+                              placeholder="Pre-filled SMS Message..." aria-label="Pre-filled SMS Message"
                               value={smsInput.message}
                               onChange={(e) => setSmsInput({ ...smsInput, message: e.target.value })}
                               rows={2}
@@ -1849,7 +1853,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="tel"
-                              placeholder="Enter Phone Number with country code (+1 234 567 890)"
+                              placeholder="Enter Phone Number with country code (+1 234 567 890)" aria-label="Enter Phone Number with country code (+1 234 567 890)"
                               value={phoneInput}
                               onChange={(e) => setPhoneInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -1863,13 +1867,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="tel"
-                              placeholder="WhatsApp Number with country code (e.g. 14155552671) *"
+                              placeholder="WhatsApp Number with country code (e.g. 14155552671) *" aria-label="WhatsApp Number with country code (e.g. 14155552671)"
                               value={whatsappInput.phone}
                               onChange={(e) => setWhatsappInput({ ...whatsappInput, phone: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <textarea
-                              placeholder="Pre-filled WhatsApp Message..."
+                              placeholder="Pre-filled WhatsApp Message..." aria-label="Pre-filled WhatsApp Message"
                               value={whatsappInput.message}
                               onChange={(e) => setWhatsappInput({ ...whatsappInput, message: e.target.value })}
                               rows={2}
@@ -1883,7 +1887,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="text"
-                              placeholder="Google Maps URL or Address"
+                              placeholder="Google Maps URL or Address" aria-label="Google Maps URL or Address"
                               value={locationInput.query}
                               onChange={(e) => setLocationInput({ ...locationInput, query: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
@@ -1891,14 +1895,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                             <div className="grid grid-cols-2 gap-2">
                               <input
                                 type="text"
-                                placeholder="Latitude (e.g. 40.7128)"
+                                placeholder="Latitude (e.g. 40.7128)" aria-label="Latitude (e.g. 40.7128)"
                                 value={locationInput.lat}
                                 onChange={(e) => setLocationInput({ ...locationInput, lat: e.target.value })}
                                 className="rounded-xl bg-white text-black px-3 py-2 text-xs outline-none"
                               />
                               <input
                                 type="text"
-                                placeholder="Longitude (e.g. -74.0060)"
+                                placeholder="Longitude (e.g. -74.0060)" aria-label="Longitude (e.g. -74.0060)"
                                 value={locationInput.lng}
                                 onChange={(e) => setLocationInput({ ...locationInput, lng: e.target.value })}
                                 className="rounded-xl bg-white text-black px-3 py-2 text-xs outline-none"
@@ -1912,20 +1916,20 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="text"
-                              placeholder="Event Title *"
+                              placeholder="Event Title *" aria-label="Event Title"
                               value={eventInput.title}
                               onChange={(e) => setEventInput({ ...eventInput, title: e.target.value })}
                               className="sm:col-span-2 rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Location / Venue"
+                              placeholder="Location / Venue" aria-label="Location / Venue"
                               value={eventInput.location}
                               onChange={(e) => setEventInput({ ...eventInput, location: e.target.value })}
                               className="sm:col-span-2 rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <div>
-                              <span className="text-[10px] text-white/70 block mb-1">Start Date & Time</span>
+                              <span className="text-[11px] text-white/70 block mb-1">Start Date & Time</span>
                               <input
                                 type="datetime-local"
                                 value={eventInput.start}
@@ -1934,7 +1938,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               />
                             </div>
                             <div>
-                              <span className="text-[10px] text-white/70 block mb-1">End Date & Time</span>
+                              <span className="text-[11px] text-white/70 block mb-1">End Date & Time</span>
                               <input
                                 type="datetime-local"
                                 value={eventInput.end}
@@ -1961,7 +1965,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               </select>
                               <input
                                 type="text"
-                                placeholder="Amount (optional)"
+                                placeholder="Amount (optional)" aria-label="Amount (optional)"
                                 value={cryptoInput.amount}
                                 onChange={(e) => setCryptoInput({ ...cryptoInput, amount: e.target.value })}
                                 className="flex-1 rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
@@ -1969,7 +1973,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                             </div>
                             <input
                               type="text"
-                              placeholder="Crypto Wallet Address *"
+                              placeholder="Crypto Wallet Address *" aria-label="Crypto Wallet Address"
                               value={cryptoInput.address}
                               onChange={(e) => setCryptoInput({ ...cryptoInput, address: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
@@ -1982,7 +1986,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="text"
-                              placeholder="Instagram username (without @)"
+                              placeholder="Instagram username (without @)" aria-label="Instagram username (without @)"
                               value={instagramInput}
                               onChange={(e) => setInstagramInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -1996,7 +2000,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="url"
-                              placeholder="https://youtube.com/@yourchannel or video URL"
+                              placeholder="https://youtube.com/@yourchannel or video URL" aria-label="YouTube channel or video URL"
                               value={youtubeInput}
                               onChange={(e) => setYoutubeInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2010,7 +2014,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="url"
-                              placeholder="https://linkedin.com/in/yourprofile"
+                              placeholder="https://linkedin.com/in/yourprofile" aria-label="LinkedIn profile URL"
                               value={linkedinInput}
                               onChange={(e) => setLinkedinInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2024,7 +2028,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="text"
-                              placeholder="Twitter/X handle (without @) or full URL"
+                              placeholder="Twitter/X handle (without @) or full URL" aria-label="Twitter/X handle (without @) or full URL"
                               value={twitterInput}
                               onChange={(e) => setTwitterInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2038,7 +2042,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="text"
-                              placeholder="TikTok username (without @)"
+                              placeholder="TikTok username (without @)" aria-label="TikTok username (without @)"
                               value={tiktokInput}
                               onChange={(e) => setTiktokInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2052,7 +2056,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="text"
-                              placeholder="Telegram username, group, or channel name"
+                              placeholder="Telegram username, group, or channel name" aria-label="Telegram username, group, or channel name"
                               value={telegramInput}
                               onChange={(e) => setTelegramInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2066,7 +2070,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="text"
-                              placeholder="PayPal.me username or full PayPal.me URL"
+                              placeholder="PayPal.me username or full PayPal.me URL" aria-label="PayPal.me username or full PayPal.me URL"
                               value={paypalInput}
                               onChange={(e) => setPaypalInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2080,21 +2084,21 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="text"
-                              placeholder="UPI ID (e.g., yourname@upi) *"
+                              placeholder="UPI ID (e.g., yourname@upi) *" aria-label="UPI ID (e.g., yourname@upi)"
                               value={upiInput.vpa}
                               onChange={(e) => setUpiInput({ ...upiInput, vpa: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Payee Name"
+                              placeholder="Payee Name" aria-label="Payee Name"
                               value={upiInput.name}
                               onChange={(e) => setUpiInput({ ...upiInput, name: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <input
                               type="number"
-                              placeholder="Amount (optional)"
+                              placeholder="Amount (optional)" aria-label="Amount (optional)"
                               value={upiInput.amount}
                               onChange={(e) => setUpiInput({ ...upiInput, amount: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
@@ -2134,7 +2138,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                         <span className="text-white/90 font-semibold">{scannabilityInfo.label}</span>
                       </div>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-lg border ${scannabilityInfo.color}`}>
+                      <span className={`text-[11px] font-bold px-2 py-0.5 rounded-lg border ${scannabilityInfo.color}`}>
                         {scannabilityInfo.badge}
                       </span>
                     </div>
@@ -2287,33 +2291,77 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                 </div>
 
                 {/* ════════ STEP-BY-STEP QR CUSTOMIZATION MODAL ════════ */}
-                {showCustomize && (
-                  <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-in">
-                    <div className="bg-[#141414] border border-white/15 rounded-2xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
-                      
-                      {/* Modal Header */}
-                      <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#1a1a1a]">
-                        <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-xl bg-accent/20 border border-accent/40 flex items-center justify-center text-accent">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                            </svg>
-                          </div>
-                          <div>
-                            <h3 className="text-base font-bold text-white leading-tight">Customize QR Design</h3>
-                            <p className="text-xs text-white/50">
-                              Step {customStep} of 4: {customStep === 1 ? 'Frame & CTA Banner' : customStep === 2 ? 'Colors & Theme' : customStep === 3 ? 'Shapes & Patterns' : 'Logo & Branding'}
-                            </p>
-                          </div>
+                {/* Customize dialog. Escape-to-close, focus trapping, scroll
+                    lock and dialog semantics come from components/Modal.tsx. */}
+                <Modal
+                  open={showCustomize}
+                  onClose={() => setShowCustomize(false)}
+                  size="xl"
+                  tone="dark"
+                  title="Customise QR design"
+                  subtitle={`Step ${customStep} of 4 — ${customStep === 1 ? 'Frame & CTA banner' : customStep === 2 ? 'Colours & theme' : customStep === 3 ? 'Shapes & patterns' : 'Logo & branding'}`}
+                  icon={
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/40 bg-accent/20 text-accent-light">
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                      </svg>
+                    </div>
+                  }
+                  footer={
+                    <div className="flex items-center justify-between">
+                        <div>
+                          <button
+                            onClick={() => {
+                              setSelectedFrame('none');
+                              setFgColor('#000000');
+                              setBgColor('#ffffff');
+                              setCornerSquareColor('#000000');
+                              setCornerDotColor('#000000');
+                              setDotStyle('square');
+                              setCornerSquareStyle('square');
+                              setCornerDotStyle('square');
+                              setLogoSrc(null);
+                              setFrameText('SCAN ME');
+                              setFrameColor('#0F172A');
+                              setFrameTextColor('#ffffff');
+                              setActiveTemplate('default');
+                            }}
+                            className="rounded-button px-2 py-1.5 text-xs font-medium text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
+                          >
+                            Reset All
+                          </button>
                         </div>
-                        <button
-                          onClick={() => setShowCustomize(false)}
-                          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center text-sm font-bold transition-colors"
-                        >
-                          ✕
-                        </button>
-                      </div>
 
+                        <div className="flex items-center gap-2">
+                          {customStep > 1 && (
+                            <button
+                              onClick={() => setCustomStep(customStep - 1)}
+                              className="px-4 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white transition-colors"
+                            >
+                              ← Back
+                            </button>
+                          )}
+
+                          {customStep < 4 ? (
+                            <button
+                              onClick={() => setCustomStep(customStep + 1)}
+                              className="px-5 py-2 rounded-xl text-xs font-bold bg-[#A8D5C2] text-slate-950 hover:bg-[#a8e775] transition-all shadow-md flex items-center gap-1"
+                            >
+                              <span>Next Step</span>
+                              <span>→</span>
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => setShowCustomize(false)}
+                              className="px-5 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-white hover:bg-emerald-400 transition-all shadow-md flex items-center gap-1"
+                            >
+                              <span>✓ Done &amp; Apply</span>
+                            </button>
+                          )}
+                        </div>
+                    </div>
+                  }
+                >
                       {/* Step Indicator Tabs */}
                       <div className="grid grid-cols-4 border-b border-white/10 bg-black/30 text-xs font-semibold">
                         {[
@@ -2354,22 +2402,22 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                 <div className="flex items-center justify-between">
                                   <label className="text-xs font-bold text-white flex items-center gap-1.5">
                                     <span>Frame Call-to-Action Text</span>
-                                    <span className="text-[10px] font-normal text-white/50">(Updates all frames below)</span>
+                                    <span className="text-[11px] font-normal text-white/50">(Updates all frames below)</span>
                                   </label>
-                                  <span className="text-[10px] text-white/40 font-mono">{frameText.length}/28 chars</span>
+                                  <span className="text-[11px] text-white/40 font-mono">{frameText.length}/28 chars</span>
                                 </div>
                                 <input
                                   type="text"
                                   value={frameText}
                                   onChange={(e) => setFrameText(e.target.value)}
-                                  placeholder="e.g. SCAN ME"
+                                  placeholder="e.g. SCAN ME" aria-label="Frame call-to-action text"
                                   maxLength={28}
                                   className="w-full bg-white/10 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-[#A8D5C2]"
                                 />
                                 
                                 {/* Quick CTA Presets */}
                                 <div className="space-y-1.5 pt-1">
-                                  <span className="text-[10px] text-white/40 font-semibold block">Quick CTA Presets:</span>
+                                  <span className="text-[11px] text-white/40 font-semibold block">Quick CTA Presets:</span>
                                   <div className="flex flex-wrap gap-1.5">
                                     {[
                                       'SCAN ME',
@@ -2384,7 +2432,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                       <button
                                         key={preset}
                                         onClick={() => setFrameText(preset)}
-                                        className={`text-[10px] px-2.5 py-1 rounded-full border transition-all ${
+                                        className={`text-[11px] px-2.5 py-1 rounded-full border transition-all ${
                                           frameText === preset
                                             ? 'bg-[#A8D5C2] text-slate-950 border-[#A8D5C2] shadow-xs font-bold'
                                             : 'bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white'
@@ -2463,7 +2511,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                             <span className={`text-xs font-bold block leading-tight truncate ${selectedFrame === f.id ? 'text-[#A8D5C2]' : 'text-white'}`}>
                                               {f.label}
                                             </span>
-                                            <span className="text-[10px] text-white/40 uppercase tracking-wider block font-medium mt-0.5">
+                                            <span className="text-[11px] text-white/40 uppercase tracking-wider block font-medium mt-0.5">
                                               {f.category}
                                             </span>
                                           </div>
@@ -2532,7 +2580,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
                                     <div>
                                       <span className="text-xs font-semibold text-white block">Pattern Color</span>
-                                      <span className="text-[10px] text-white/40">{fgColor}</span>
+                                      <span className="text-[11px] text-white/40">{fgColor}</span>
                                     </div>
                                     <input type="color" value={fgColor} onChange={(e) => setFgColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
                                   </div>
@@ -2540,7 +2588,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
                                     <div>
                                       <span className="text-xs font-semibold text-white block">Background</span>
-                                      <span className="text-[10px] text-white/40">{bgColor}</span>
+                                      <span className="text-[11px] text-white/40">{bgColor}</span>
                                     </div>
                                     <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
                                   </div>
@@ -2548,7 +2596,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
                                     <div>
                                       <span className="text-xs font-semibold text-white block">Corner Frame</span>
-                                      <span className="text-[10px] text-white/40">{cornerSquareColor}</span>
+                                      <span className="text-[11px] text-white/40">{cornerSquareColor}</span>
                                     </div>
                                     <input type="color" value={cornerSquareColor} onChange={(e) => setCornerSquareColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
                                   </div>
@@ -2556,7 +2604,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
                                     <div>
                                       <span className="text-xs font-semibold text-white block">Corner Dot Eye</span>
-                                      <span className="text-[10px] text-white/40">{cornerDotColor}</span>
+                                      <span className="text-[11px] text-white/40">{cornerDotColor}</span>
                                     </div>
                                     <input type="color" value={cornerDotColor} onChange={(e) => setCornerDotColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
                                   </div>
@@ -2567,7 +2615,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               <div className="space-y-3 pt-2 border-t border-white/10">
                                 <div>
                                   <label className="text-xs font-bold text-white block">Frame &amp; CTA Banner Colors</label>
-                                  <span className="text-[10px] text-white/40">Applies to the active frame outline and CTA badge</span>
+                                  <span className="text-[11px] text-white/40">Applies to the active frame outline and CTA badge</span>
                                 </div>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -2576,7 +2624,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                     <div className="flex items-center justify-between">
                                       <div>
                                         <span className="text-xs font-bold text-white block">Frame Color</span>
-                                        <span className="text-[10px] text-white/40 font-mono">{frameColor}</span>
+                                        <span className="text-[11px] text-white/40 font-mono">{frameColor}</span>
                                       </div>
                                       <input
                                         type="color"
@@ -2617,7 +2665,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                     <div className="flex items-center justify-between">
                                       <div>
                                         <span className="text-xs font-bold text-white block">Frame Text Color</span>
-                                        <span className="text-[10px] text-white/40 font-mono">{frameTextColor}</span>
+                                        <span className="text-[11px] text-white/40 font-mono">{frameTextColor}</span>
                                       </div>
                                       <div className="flex items-center gap-2">
                                         <div 
@@ -2653,7 +2701,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                     <div className="flex items-center gap-1.5 pt-0.5">
                                       <button
                                         onClick={() => setFrameTextColor('#ffffff')}
-                                        className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                        className={`px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all ${
                                           frameTextColor.toLowerCase() === '#ffffff'
                                             ? 'bg-white text-slate-950 border-white'
                                             : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
@@ -2663,7 +2711,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                       </button>
                                       <button
                                         onClick={() => setFrameTextColor('#000000')}
-                                        className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                        className={`px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all ${
                                           frameTextColor.toLowerCase() === '#000000'
                                             ? 'bg-black text-white border-white/40'
                                             : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
@@ -2673,7 +2721,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                       </button>
                                       <button
                                         onClick={() => setFrameTextColor('#A8D5C2')}
-                                        className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                                        className={`px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all ${
                                           frameTextColor.toLowerCase() === '#A8D5C2'
                                             ? 'bg-[#A8D5C2] text-slate-950 border-[#A8D5C2]'
                                             : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
@@ -2775,7 +2823,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                                   </svg>
                                   <span className="text-xs text-[#A8D5C2] block font-bold">Click to Upload Logo Image</span>
-                                  <span className="text-[10px] text-white/40 block mt-0.5">Supports PNG, JPG, SVG, WebP (Square ratio recommended)</span>
+                                  <span className="text-[11px] text-white/40 block mt-0.5">Supports PNG, JPG, SVG, WebP (Square ratio recommended)</span>
                                   <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
                                 </label>
 
@@ -2803,7 +2851,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         <div className="md:col-span-4 flex flex-col items-center justify-start bg-black/40 border border-white/10 rounded-2xl p-4 sticky top-0">
                           <div className="w-full flex items-center justify-between mb-3 text-xs">
                             <span className="text-white/60 font-semibold">Live Simulation</span>
-                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-lg border ${scannabilityInfo.color}`}>
+                            <span className={`text-[11px] font-bold px-2 py-0.5 rounded-lg border ${scannabilityInfo.color}`}>
                               {scannabilityInfo.score}% Scan Score
                             </span>
                           </div>
@@ -2830,63 +2878,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                       </div>
 
-                      {/* Modal Footer: Navigation */}
-                      <div className="flex items-center justify-between px-6 py-4 border-t border-white/10 bg-[#1a1a1a]">
-                        <div>
-                          <button
-                            onClick={() => {
-                              setSelectedFrame('none');
-                              setFgColor('#000000');
-                              setBgColor('#ffffff');
-                              setCornerSquareColor('#000000');
-                              setCornerDotColor('#000000');
-                              setDotStyle('square');
-                              setCornerSquareStyle('square');
-                              setCornerDotStyle('square');
-                              setLogoSrc(null);
-                              setFrameText('SCAN ME');
-                              setFrameColor('#0F172A');
-                              setFrameTextColor('#ffffff');
-                              setActiveTemplate('default');
-                            }}
-                            className="text-xs text-white/50 hover:text-white font-medium transition-colors"
-                          >
-                            Reset All
-                          </button>
-                        </div>
-
-                        <div className="flex items-center gap-2">
-                          {customStep > 1 && (
-                            <button
-                              onClick={() => setCustomStep(customStep - 1)}
-                              className="px-4 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white transition-colors"
-                            >
-                              ← Back
-                            </button>
-                          )}
-
-                          {customStep < 4 ? (
-                            <button
-                              onClick={() => setCustomStep(customStep + 1)}
-                              className="px-5 py-2 rounded-xl text-xs font-bold bg-[#A8D5C2] text-slate-950 hover:bg-[#a8e775] transition-all shadow-md flex items-center gap-1"
-                            >
-                              <span>Next Step</span>
-                              <span>→</span>
-                            </button>
-                          ) : (
-                            <button
-                              onClick={() => setShowCustomize(false)}
-                              className="px-5 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-white hover:bg-emerald-400 transition-all shadow-md flex items-center gap-1"
-                            >
-                              <span>✓ Done &amp; Apply</span>
-                            </button>
-                          )}
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                )}
+                </Modal>
             </div>
           </div>
 
@@ -2941,7 +2933,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <span className="text-[10px] font-bold text-slate-500 uppercase">Secure</span>
+              <span className="text-[11px] font-bold text-slate-500 uppercase">Secure</span>
             </div>
             <div className="flex flex-col items-center gap-1">
               <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600">
@@ -2949,7 +2941,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <span className="text-[10px] font-bold text-slate-500 uppercase">Global</span>
+              <span className="text-[11px] font-bold text-slate-500 uppercase">Global</span>
             </div>
             <div className="flex flex-col items-center gap-1">
               <div className="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600">
@@ -2957,7 +2949,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <span className="text-[10px] font-bold text-slate-500 uppercase">Fast</span>
+              <span className="text-[11px] font-bold text-slate-500 uppercase">Fast</span>
             </div>
           </div>
         </div>
@@ -3205,8 +3197,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
       {/* ═══════════════════════════ DYNAMIC QR SAVE MODAL ═══════════════════════════ */}
       {showDynamicSaveModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-          <div className="bg-white rounded-2xl p-6 sm:p-7 max-w-md w-full shadow-xl border border-slate-200 relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn" {...dlg_showDynamicSaveModal.backdropProps}>
+          <div {...dlg_showDynamicSaveModal.panelProps}  className="bg-white rounded-2xl p-6 sm:p-7 max-w-md w-full shadow-xl border border-slate-200 relative">
             <button
               onClick={() => { setShowDynamicSaveModal(false); setSavedDynamicLink(null); }}
               className="absolute top-4 right-4 text-slate-500 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
@@ -3257,7 +3249,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                 {/* Short link row */}
                 <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 text-left">
-                  <span className="text-[10px] uppercase font-semibold text-slate-500 tracking-wider block mb-1">
+                  <span className="text-[11px] uppercase font-semibold text-slate-500 tracking-wider block mb-1">
                     Short Redirect Link
                   </span>
                   <div className="flex items-center justify-between gap-2">
@@ -3331,7 +3323,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       required
                       value={dynamicTitle}
                       onChange={(e) => setDynamicTitle(e.target.value)}
-                      placeholder="e.g. Restaurant Promo Menu"
+                      placeholder="e.g. Restaurant Promo Menu" aria-label="QR code title"
                       className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-accent focus:bg-white outline-none transition-all"
                     />
                   </div>
@@ -3344,7 +3336,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       value={qrData}
                       className="w-full px-3.5 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-500 font-mono truncate"
                     />
-                    <span className="text-[10px] text-slate-500 block mt-1">
+                    <span className="text-[11px] text-slate-500 block mt-1">
                       You can change this target link at any time from your dashboard without reprinting.
                     </span>
                   </div>
@@ -3359,7 +3351,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         type="text"
                         value={dynamicCustomCode}
                         onChange={(e) => setDynamicCustomCode(e.target.value.replace(/[^a-zA-Z0-9-_]/g, ''))}
-                        placeholder="custom-slug"
+                        placeholder="custom-slug" aria-label="Custom short link slug"
                         className="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-r-xl text-xs font-mono focus:ring-2 focus:ring-accent focus:bg-white outline-none transition-all"
                       />
                     </div>

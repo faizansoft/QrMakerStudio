@@ -9,6 +9,7 @@ import {
   DynamicLink
 } from './services/dynamicQrService';
 import { FramedQrView, buildFramedSvg, renderFramedCanvas, FrameStyle } from './components/FramedQrView';
+import { useDialogBehaviour } from './components/Modal';
 
 // Custom QR Thumbnail / Preview Renderer preserving full styling, colors, dot styles, logos, and custom frames
 const DynamicQrThumbnail: React.FC<{ link: DynamicLink; isModal?: boolean; className?: string }> = ({ link, isModal = false, className = '' }) => {
@@ -46,11 +47,15 @@ const DashboardPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'paused'>('all');
   const [editingLink, setEditingLink] = useState<DynamicLink | null>(null);
+  // Escape-to-close, focus trap, scroll lock — see components/Modal.tsx.
+  const dlg_editingLink = useDialogBehaviour(!!editingLink, () => setEditingLink(null));
   const [newTargetUrl, setNewTargetUrl] = useState('');
   const [newTitle, setNewTitle] = useState('');
   const [saving, setSaving] = useState(false);
   const [copySuccess, setCopySuccess] = useState<string | null>(null);
   const [previewQrLink, setPreviewQrLink] = useState<DynamicLink | null>(null);
+  // Escape-to-close, focus trap, scroll lock — see components/Modal.tsx.
+  const dlg_previewQrLink = useDialogBehaviour(!!previewQrLink, () => setPreviewQrLink(null));
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -250,7 +255,6 @@ const DashboardPage: React.FC = () => {
       </div>
     );
   }
-
   return (
     <div className="min-h-screen bg-[#F8FAFC] py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-6">
@@ -548,8 +552,8 @@ const DashboardPage: React.FC = () => {
 
         {/* Edit Destination Modal */}
         {editingLink && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-            <div className="bg-white rounded-2xl p-6 sm:p-7 max-w-lg w-full shadow-xl border border-slate-200">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn" {...dlg_editingLink.backdropProps}>
+            <div {...dlg_editingLink.panelProps}  className="bg-white rounded-2xl p-6 sm:p-7 max-w-lg w-full shadow-xl border border-slate-200">
               <div className="flex items-center justify-between mb-5">
                 <div>
                   <h3 className="text-base font-bold text-slate-900">Edit Destination URL</h3>
@@ -615,8 +619,8 @@ const DashboardPage: React.FC = () => {
 
         {/* QR Zoom / Preview Modal */}
         {previewQrLink && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-            <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl border border-slate-200 text-center">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn" {...dlg_previewQrLink.backdropProps}>
+            <div {...dlg_previewQrLink.panelProps}  className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl border border-slate-200 text-center">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-sm font-bold text-slate-900 truncate max-w-[220px]">
                   {previewQrLink.title || previewQrLink.short_code}

@@ -5,6 +5,7 @@ import { useAuth } from './context/AuthContext';
 import { AuthModal } from './components/AuthModal';
 import { createDynamicLink } from './services/dynamicQrService';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema, getFAQSchema, getToolSoftwareSchema } from './services/seoUtils';
+import { useDialogBehaviour } from './components/Modal';
 
 const PDF_FAQS = [
   {
@@ -49,6 +50,8 @@ const PDFToQRPage: React.FC = () => {
   const { user } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showDynamicSaveModal, setShowDynamicSaveModal] = useState(false);
+  // Escape-to-close, focus trap, scroll lock — see components/Modal.tsx.
+  const dlg_showDynamicSaveModal = useDialogBehaviour(showDynamicSaveModal, () => setShowDynamicSaveModal(false));
   const [savingDynamic, setSavingDynamic] = useState(false);
   const [savedShortCode, setSavedShortCode] = useState<string | null>(null);
   const [dynamicError, setDynamicError] = useState<string | null>(null);
@@ -73,7 +76,6 @@ const PDFToQRPage: React.FC = () => {
       { name: 'PDF to QR Code Generator', url: '/pdf-qr-code-generator' }
     ]));
     injectJSONLD('jsonld-faq', getFAQSchema(PDF_FAQS.map(f => ({ question: f.q, answer: f.a }))));
-
     return () => {
       removeJSONLD('jsonld-software');
       removeJSONLD('jsonld-breadcrumbs');
@@ -537,8 +539,8 @@ const PDFToQRPage: React.FC = () => {
 
       {/* Dynamic Save Modal */}
       {showDynamicSaveModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-          <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl border border-slate-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn" {...dlg_showDynamicSaveModal.backdropProps}>
+          <div {...dlg_showDynamicSaveModal.panelProps}  className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl border border-slate-200">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base font-bold text-slate-900">
                 {savedShortCode ? 'Dynamic PDF QR Created!' : 'Save Dynamic PDF QR Code'}

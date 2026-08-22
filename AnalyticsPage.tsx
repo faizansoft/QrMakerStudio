@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import QRCodeStyling from 'qr-code-styling';
 import { useAuth } from './context/AuthContext';
+import { useDialogBehaviour } from './components/Modal';
 import {
   getDynamicLinkById,
   getLinkAnalytics,
@@ -70,6 +71,8 @@ const AnalyticsPage: React.FC = () => {
   const [timeRange, setTimeRange] = useState<'7d' | '30d' | 'all'>('30d');
   const [copySuccess, setCopySuccess] = useState(false);
   const [showQrModal, setShowQrModal] = useState(false);
+  // Escape-to-close, focus trap, scroll lock — see components/Modal.tsx.
+  const dlg_showQrModal = useDialogBehaviour(showQrModal, () => setShowQrModal(false));
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -704,8 +707,8 @@ const AnalyticsPage: React.FC = () => {
 
         {/* Custom Design QR Zoom / Download Modal */}
         {showQrModal && link && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-            <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl border border-slate-200 text-center">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn" {...dlg_showQrModal.backdropProps}>
+            <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl border border-slate-200 text-center" {...dlg_showQrModal.panelProps}>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-sm font-bold text-slate-900 truncate max-w-[220px]">
                   {link.title || link.short_code}
