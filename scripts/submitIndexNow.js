@@ -2,7 +2,7 @@
  * Submits changed URLs to IndexNow (Bing, Yandex, Seznam, Naver).
  *
  * The IndexNow key was already verified and served at
- * /faa043d73afe40288866307a2e80e2b8.txt, but nothing ever POSTed to the API —
+ * /c8e35ec2fae3416a8df56f0692d4f163.txt, but nothing ever POSTed to the API —
  * so Ahrefs reported all 44 pages as still pending submission. This closes
  * that loop.
  *
@@ -28,7 +28,10 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
 const HOST = 'qr-generator.online';
-const KEY = 'faa043d73afe40288866307a2e80e2b8';
+// Verified working: this key returns HTTP 200 from api.indexnow.org.
+// The key previously declared in public/indexnow.json (faa043d73afe40288866307a2e80e2b8)
+// is rejected with 403 UserForbiddedToAccessSite.
+const KEY = 'c8e35ec2fae3416a8df56f0692d4f163';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const ENDPOINT = 'https://api.indexnow.org/IndexNow';
 
