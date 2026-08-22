@@ -4,6 +4,8 @@ import { BLOG_POSTS } from './constants/blogData';
 import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 import { getRichContent, getRouteContent } from './constants/richContent';
+import { getLocalizedRouteMeta } from './constants/routeMetaI18n';
+import { useContentLocale } from './context/ContentLocaleContext';
 import RichSeoSections from './components/RichSeoSections';
 
 const BlogPostPage: React.FC = () => {
@@ -16,6 +18,11 @@ const BlogPostPage: React.FC = () => {
 
   // Long-form copy shared with scripts/prerender.js — see constants/richContent.ts.
   const richContent = useMemo(() => getRichContent(`/blog/${slug}`), [slug]);
+  const contentLocale = useContentLocale();
+  const localizedH1 = useMemo(
+    () => (contentLocale ? getLocalizedRouteMeta(contentLocale, `/blog/${slug}`)?.h1 : null),
+    [contentLocale, slug]
+  );
   const routeContent = useMemo(() => getRouteContent(`/blog/${slug}`), [slug]);
 
   useEffect(() => {
@@ -72,7 +79,7 @@ const BlogPostPage: React.FC = () => {
             {post.category}
           </div>
           <h1 className="h1-page max-w-3xl mx-auto">
-            {post.title}
+            {localizedH1 || post.title}
           </h1>
           <div className="flex items-center justify-center gap-4 text-xs md:text-sm text-slate-500 pt-2">
             <span>By <strong>{post.author.name}</strong> ({post.author.role})</span>

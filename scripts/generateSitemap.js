@@ -23,6 +23,7 @@ import { FEATURE_RICH_DATA } from './featureRichData.js';
 import { BLOG_RICH_DATA } from './blogRichData.js';
 import { COMPANY_RICH_DATA } from './companyRichData.js';
 import { GENERATED_PAGE_CONTENT } from './generatedPageContent.js';
+import { ROUTED_LOCALES, ROUTE_META_I18N } from './routeMetaI18nData.js';
 
 const ALL_RICH_DATA = {
   ...TOOL_RICH_DATA,
@@ -86,6 +87,27 @@ function generateSitemap() {
     return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
   });
 
+  // Phase-1 localized pages: only (locale, path) pairs that actually have
+  // translated content — see constants/routeMetaI18n.ts / ROUTE_META_I18N.
+  // Tracked under a separate state key (`locale:path`) so an English edit
+  // and a translation edit bump their own lastmod independently.
+  let localeCount = 0;
+  for (const route of routes) {
+    for (const locale of ROUTED_LOCALES) {
+      const localized = ROUTE_META_I18N[locale]?.[route.path];
+      if (!localized) continue;
+      const stateKey = `${locale}:${route.path}`;
+      const hash = crypto.createHash('sha1').update(JSON.stringify(localized)).digest('hex').slice(0, 16);
+      const prior = previous[stateKey];
+      const lastmod = prior && prior.hash === hash ? prior.lastmod : today();
+      if (!prior || prior.hash !== hash) changed++;
+      state[stateKey] = { hash, lastmod };
+      const localePath = route.path === '/' ? `/${locale}` : `/${locale}${route.path}`;
+      entries.push(`  <url>\n    <loc>${escapeXml(ORIGIN + localePath)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`);
+      localeCount++;
+    }
+  }
+
   const xml =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
@@ -103,7 +125,8 @@ function generateSitemap() {
 
   const excluded = ROUTE_CONTENT.filter((r) => r.noindex).map((r) => r.path);
   console.log(
-    `🗺️  Sitemap: ${entries.length} URLs (${changed} with a new lastmod). ` +
+    `🗺️  Sitemap: ${entries.length} URLs (${changed} with a new lastmod), ` +
+      `including ${localeCount} localized page(s). ` +
       `Excluded noindex: ${excluded.join(', ')}`
   );
 }

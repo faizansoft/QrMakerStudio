@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
+import { useContentLocale } from './context/ContentLocaleContext';
+import { getLocalizedRouteMeta } from './constants/routeMetaI18n';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema, getFAQSchema } from './services/seoUtils';
 
 const PRICING_FAQS = [
@@ -87,6 +89,8 @@ const FEATURE_MATRIX = [
 
 const PricingPage: React.FC = () => {
   const { t } = useLanguage();
+  const contentLocale = useContentLocale();
+  const localizedH1 = contentLocale ? getLocalizedRouteMeta(contentLocale, '/pricing')?.h1 : null;
 
   useEffect(() => {
     // Title, description and canonical are set centrally by SEOManager in
@@ -115,7 +119,7 @@ const PricingPage: React.FC = () => {
             Radical Transparency
           </div>
           <h1 className="h1-page mb-4">
-            100% Free Forever. No Hidden Paywalls.
+            {localizedH1 || '100% Free Forever. No Hidden Paywalls.'}
           </h1>
           <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Generate unlimited static and dynamic QR codes with vector SVG downloads, custom brand palettes, and zero expiration limits. No credit card required.

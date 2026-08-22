@@ -2,10 +2,14 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FAQ_ITEMS } from './constants';
 import { useLanguage } from './context/LanguageContext';
+import { useContentLocale } from './context/ContentLocaleContext';
+import { getLocalizedRouteMeta } from './constants/routeMetaI18n';
 import { injectJSONLD, removeJSONLD, getFAQSchema, getBreadcrumbSchema } from './services/seoUtils';
 
 const FAQPage: React.FC = () => {
   const { t } = useLanguage();
+  const contentLocale = useContentLocale();
+  const localizedH1 = contentLocale ? getLocalizedRouteMeta(contentLocale, '/faqs-qr-code-generator')?.h1 : null;
   const [search, setSearch] = useState('');
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -45,7 +49,7 @@ const FAQPage: React.FC = () => {
             Help & Knowledge Base
           </div>
           <h1 className="h1-page mb-4">
-            Frequently Asked Questions
+            {localizedH1 || 'Frequently Asked Questions'}
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Everything you need to know about creating, customizing, and printing professional QR Codes.

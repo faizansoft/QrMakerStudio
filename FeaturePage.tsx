@@ -8,6 +8,8 @@ import { injectJSONLD, removeJSONLD, getToolSoftwareSchema, getFAQSchema, getBre
 import { getRichContent, getRouteContent, getSectionHeadings } from './constants/richContent';
 import RichSeoSections from './components/RichSeoSections';
 import { getRouteMeta } from './constants/routeMeta';
+import { stripLocalePrefix, getLocalizedRouteMeta } from './constants/routeMetaI18n';
+import { useContentLocale } from './context/ContentLocaleContext';
 
 interface FeaturePageProps {
   featureId: string;
@@ -23,10 +25,17 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
   }, [featureId]);
 
   // Long-form copy shared with scripts/prerender.js — see constants/richContent.ts.
-  const pathname = location.pathname;
+  // location.pathname carries a /<locale>/ prefix on localized routes — every
+  // content lookup below is keyed by the plain English path.
+  const pathname = stripLocalePrefix(location.pathname);
+  const contentLocale = useContentLocale();
   const richContent = useMemo(() => getRichContent(pathname), [pathname]);
   const routeContent = useMemo(() => getRouteContent(pathname), [pathname]);
   const routeMeta = useMemo(() => getRouteMeta(pathname), [pathname]);
+  const localizedMeta = useMemo(
+    () => (contentLocale ? getLocalizedRouteMeta(contentLocale, pathname) : null),
+    [contentLocale, pathname]
+  );
 
   // Visible FAQ must match the FAQPage schema in the prerendered HTML.
   const faqItems = useMemo(() => {
@@ -76,13 +85,13 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
       <section className="bg-gradient-hero pt-10 pb-12 md:pt-16 md:pb-20 border-b border-slate-100 text-center">
         <div className="max-w-4xl mx-auto px-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
-            {routeContent?.badge || featureSeo.badge}
+            {localizedMeta?.badge || routeContent?.badge || featureSeo.badge}
           </div>
           <h1 className="h1-page mb-4">
-            {routeMeta.h1}
+            {localizedMeta?.h1 || routeMeta.h1}
           </h1>
           <p className="text-base md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            {routeContent?.lead || featureSeo.subheadline}
+            {localizedMeta?.lead || routeContent?.lead || featureSeo.subheadline}
           </p>
         </div>
       </section>

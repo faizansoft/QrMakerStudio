@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
+import { useContentLocale } from './context/ContentLocaleContext';
+import { getLocalizedRouteMeta } from './constants/routeMetaI18n';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 
 const PrivacyPage: React.FC = () => {
   const { t } = useLanguage();
+  const contentLocale = useContentLocale();
+  const localizedH1 = contentLocale ? getLocalizedRouteMeta(contentLocale, '/privacy')?.h1 : null;
 
   useEffect(() => {
     // Title, description and canonical are set centrally by SEOManager in
@@ -31,7 +35,7 @@ const PrivacyPage: React.FC = () => {
             Zero-Tracking Data Guarantee
           </div>
           <h1 className="h1-page">
-            Privacy Policy & Data Security
+            {localizedH1 || 'Privacy Policy & Data Security'}
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Your privacy is protected by design. Learn how our browser-based client-side architecture keeps your URLs, contacts, WiFi passwords, and files 100% private.

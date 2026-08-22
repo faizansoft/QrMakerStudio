@@ -4,6 +4,8 @@ import QRCodeStyling from 'qr-code-styling';
 import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS } from './constants';
 import { TOOL_SEO_DATA } from './constants/toolSeoData';
 import { getRichContent, getRouteContent, getSectionHeadings } from './constants/richContent';
+import { stripLocalePrefix, getLocalizedRouteMeta } from './constants/routeMetaI18n';
+import { useContentLocale } from './context/ContentLocaleContext';
 import RichSeoSections from './components/RichSeoSections';
 import { getRouteMeta } from './constants/routeMeta';
 import { DotType, CornerSquareType, CornerDotType } from './types';
@@ -996,13 +998,23 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
   // Long-form copy shared with the prerenderer, keyed by the real pathname so
   // the root page gets its own content instead of falling through to /url-*.
-  const pathname = location.pathname;
+  // location.pathname carries a /<locale>/ prefix on localized routes (e.g.
+  // /es/wifi-qr-code-generator) — every lookup below is keyed by the plain
+  // English path, so strip it first or every lookup here silently misses.
+  const pathname = stripLocalePrefix(location.pathname);
+  const contentLocale = useContentLocale();
   const richContent = useMemo(() => getRichContent(pathname), [pathname]);
   const routeContent = useMemo(() => getRouteContent(pathname), [pathname]);
 
   // Headline comes from routeMeta, the same dictionary the prerenderer reads,
   // so the H1 in the static HTML and the H1 after mount are identical.
+  // localizedMeta overrides it when this path has phase-1 translated content
+  // for the current URL locale — see constants/routeMetaI18n.ts.
   const routeMeta = useMemo(() => getRouteMeta(pathname), [pathname]);
+  const localizedMeta = useMemo(
+    () => (contentLocale ? getLocalizedRouteMeta(contentLocale, pathname) : null),
+    [contentLocale, pathname]
+  );
 
   // Prefer the prerendered FAQ set so the visible Q&A matches the FAQPage
   // schema emitted in the static HTML. Google requires those to agree.
@@ -1493,13 +1505,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
             {!embedded && (
               <div className="order-2 lg:order-1 text-center max-w-4xl mx-auto px-4">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-3 mt-6 lg:mt-0">
-                  {routeContent?.badge || currentSeo.badge}
+                  {localizedMeta?.badge || routeContent?.badge || currentSeo.badge}
                 </div>
                 <h1 className="h1-page mb-4">
-                  {routeMeta.h1}
+                  {localizedMeta?.h1 || routeMeta.h1}
                 </h1>
                 <p className="mb-8 text-base text-slate-600 md:text-lg max-w-2xl mx-auto leading-relaxed">
-                  {routeContent?.lead || currentSeo.subheadline}
+                  {localizedMeta?.lead || routeContent?.lead || currentSeo.subheadline}
                 </p>
               </div>
             )}

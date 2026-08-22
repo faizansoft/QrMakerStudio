@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
+import { useContentLocale } from './context/ContentLocaleContext';
+import { getLocalizedRouteMeta } from './constants/routeMetaI18n';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 
 const SUPPORT_EMAIL = 'support@qr-generator.online';
 
 const ContactPage: React.FC = () => {
   const { t } = useLanguage();
+  const contentLocale = useContentLocale();
+  const localizedH1 = contentLocale ? getLocalizedRouteMeta(contentLocale, '/contact')?.h1 : null;
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -70,7 +74,7 @@ const ContactPage: React.FC = () => {
             Responsive Support
           </div>
           <h1 className="h1-page mb-4">
-            Contact Our Support Team
+            {localizedH1 || 'Contact Our Support Team'}
           </h1>
           <p className="text-lg text-slate-600 max-w-xl mx-auto">
             Have questions about SVG vector printing, custom logo placement, or tool features? We are here to help.

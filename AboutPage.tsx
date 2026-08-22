@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
+import { useContentLocale } from './context/ContentLocaleContext';
+import { getLocalizedRouteMeta } from './constants/routeMetaI18n';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema, getOrganizationSchema } from './services/seoUtils';
 
 const AboutPage: React.FC = () => {
   const { t } = useLanguage();
+  const contentLocale = useContentLocale();
+  const localizedH1 = contentLocale ? getLocalizedRouteMeta(contentLocale, '/about')?.h1 : null;
 
   useEffect(() => {
     // Title, description and canonical are set centrally by SEOManager in
@@ -32,7 +36,7 @@ const AboutPage: React.FC = () => {
             Our Mission & Architecture
           </div>
           <h1 className="h1-page">
-            Democratizing Permanent, Custom QR Codes for Everyone
+            {localizedH1 || 'Democratizing Permanent, Custom QR Codes for Everyone'}
           </h1>
           <p className="text-lg md:text-xl text-slate-600 font-normal leading-relaxed max-w-3xl mx-auto">
             We believe a high-resolution, branded QR code is a permanent digital asset that should belong to you forever — without monthly subscription paywalls or scan limits.

@@ -57,7 +57,7 @@ body {
 /* ── Layout primitives ───────────────────────────────────────────────────
    Every page section used to pick its own vertical rhythm and container
    width. These three classes are the approved options; use them instead of
-   ad-hoc py-*/max-w-* pairs so pages line up with each other. */
+   ad-hoc padding/width pairs so pages line up with each other. */
 .section {
   padding-top: 4rem;
   padding-bottom: 4rem;

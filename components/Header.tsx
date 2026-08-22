@@ -4,11 +4,19 @@ import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import { AuthModal } from './AuthModal';
 import { languageMeta, SupportedLanguage } from '../translations';
+import { useContentLocale } from '../context/ContentLocaleContext';
+import { ROUTED_LOCALES, stripLocalePrefix, isRoutedLocale } from '../constants/routeMetaI18n';
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { language, setLanguage, t } = useLanguage();
+  const contentLocale = useContentLocale();
+  // Home link and the "active page" scroll-to-generator behaviour must
+  // resolve against the path WITHOUT any /<locale>/ prefix, and the home
+  // link itself must stay inside the current locale rather than dropping
+  // the visitor back onto the English homepage.
+  const homeHref = contentLocale ? `/${contentLocale}` : '/';
   const { user, signOut } = useAuth();
   const [showLang, setShowLang] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -38,7 +46,7 @@ export const Header: React.FC = () => {
 
   const handleCreateClick = (e: React.MouseEvent) => {
     setMobileMenuOpen(false);
-    if (location.pathname === '/') {
+    if (stripLocalePrefix(location.pathname) === '/') {
       e.preventDefault();
       const element = document.getElementById('qr-generator');
       if (element) {
@@ -116,7 +124,7 @@ export const Header: React.FC = () => {
         <div className="flex items-center justify-between px-4 py-3">
           {/* Left: Logo + Nav */}
           <div className="flex items-center gap-3 lg:gap-4 xl:gap-8">
-            <Link to="/" title="QR Generator Online Homepage" className="flex shrink-0 items-center gap-2">
+            <Link to={homeHref} title="QR Generator Online Homepage" className="flex shrink-0 items-center gap-2">
               <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
@@ -128,7 +136,7 @@ export const Header: React.FC = () => {
             {/* Desktop Nav */}
             <nav className="hidden items-center gap-3 lg:flex xl:gap-6" ref={dropdownRef}>
               <Link
-                to="/"
+                to={homeHref}
                 onClick={handleCreateClick}
                 className="whitespace-nowrap text-sm xl:text-base transition-colors text-slate-900 hover:text-accent font-medium"
               >
@@ -253,7 +261,21 @@ export const Header: React.FC = () => {
                   {languageMeta.map(lang => (
                     <button
                       key={lang.code}
-                      onClick={() => { setLanguage(lang.code as SupportedLanguage); setShowLang(false); }}
+                      onClick={() => {
+                        const code = lang.code as SupportedLanguage;
+                        setLanguage(code);
+                        setShowLang(false);
+                        // Routed locales are real URLs — follow the visitor
+                        // into (or out of) the localized site. The other 10
+                        // languages remain chrome-only, matching prior
+                        // behaviour: no page they have content for exists.
+                        const base = stripLocalePrefix(location.pathname);
+                        if (isRoutedLocale(code)) {
+                          navigate(`/${code}${base === '/' ? '' : base}`);
+                        } else if (ROUTED_LOCALES.includes(language as any)) {
+                          navigate(base);
+                        }
+                      }}
                       className={`flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-slate-50 transition-colors ${language === lang.code ? 'font-semibold text-accent' : 'text-slate-600 hover:text-slate-900'}`}
                     >
                       <span>{lang.native}</span>
@@ -301,7 +323,7 @@ export const Header: React.FC = () => {
                       My QR Codes
                     </Link>
                     <Link
-                      to="/"
+                      to={homeHref}
                       onClick={handleCreateClick}
                       className="flex items-center gap-2 px-4 py-2.5 text-xs text-slate-700 hover:bg-slate-50 hover:text-accent font-medium transition-colors"
                     >
@@ -374,7 +396,7 @@ export const Header: React.FC = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <nav className="lg:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1">
-            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-lg">
+            <Link to={homeHref} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-lg">
               QR Code Generator
             </Link>
             <Link to={user ? "/dashboard" : "/login"} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-bold text-emerald-700 hover:bg-emerald-50 rounded-lg">

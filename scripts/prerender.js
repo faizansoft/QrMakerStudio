@@ -12,6 +12,7 @@ import { getSectionHeadings } from './sectionHeadings.js';
 // Copy lifted from the utility page components at build time so the static
 // HTML matches what those pages actually render. See extractPageContent.js.
 import { GENERATED_PAGE_CONTENT } from './generatedPageContent.js';
+import { ROUTED_LOCALES, ROUTE_META_I18N } from './routeMetaI18nData.js';
 
 const ALL_RICH_DATA = {
   ...TOOL_RICH_DATA,
@@ -123,16 +124,20 @@ const FOOTER_GROUPS = [
   }
 ];
 
-function buildHeaderHtml() {
+function buildHeaderHtml(locale) {
+  // Deep links (tool/company pages) stay English in phase 1 — see the module
+  // header comment. Only the home link stays inside the current locale,
+  // matching the React header (components/Header.tsx `homeHref`).
+  const homeHref = locale ? `/${locale}` : '/';
   return `
     <header class="prerender-header" style="background:#ffffff; border-bottom:1px solid #E2E8F0; padding:16px 24px;">
       <div style="max-width:1280px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-        <a href="/" style="display:flex; align-items:center; gap:8px; font-weight:800; font-size:20px; color:#0F172A; text-decoration:none;">
+        <a href="${homeHref}" style="display:flex; align-items:center; gap:8px; font-weight:800; font-size:20px; color:#0F172A; text-decoration:none;">
           <span style="display:inline-block; width:28px; height:28px; background:#2B6F53; border-radius:6px;"></span>
           QR Generator Online
         </a>
         <nav style="display:flex; gap:16px; flex-wrap:wrap; font-size:14px; font-weight:600;">
-          <a href="/" style="color:#2B6F53; text-decoration:none;">Home</a>
+          <a href="${homeHref}" style="color:#2B6F53; text-decoration:none;">Home</a>
           <a href="/wifi-qr-code-generator" style="color:#475569; text-decoration:none;">WiFi QR</a>
           <a href="/url-qr-code-generator" style="color:#475569; text-decoration:none;">URL QR</a>
           <a href="/vcard-qr-code-generator" style="color:#475569; text-decoration:none;">vCard QR</a>
@@ -329,7 +334,7 @@ function buildBodyHtml(route) {
 
   return `
     <div id="app" class="min-h-screen flex flex-col">
-      ${buildHeaderHtml()}
+      ${buildHeaderHtml(route.locale)}
       <main id="router-view" class="flex-grow" style="padding:48px 24px; max-width:1120px; margin:0 auto; width:100%;">
         <div style="text-align:center; margin-bottom:40px;">
           <span style="display:inline-block; padding:6px 14px; background:rgba(43,111,83,0.1); color:#2B6F53; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; border-radius:9999px; margin-bottom:16px;">
@@ -456,14 +461,18 @@ function buildJsonLd(route, rich) {
         }
   );
 
-  // 2. BreadcrumbList Schema
+  // 2. BreadcrumbList Schema. On a localized route the "Home" crumb must
+  // point at that locale's homepage (/es, not /) — otherwise the breadcrumb
+  // rich result sends a Spanish visitor back to the English site.
+  const HOME_LABEL = { ar: 'الرئيسية', hi: 'होम', tr: 'Ana Sayfa', es: 'Inicio', vi: 'Trang chủ' };
+  const homeUrl = route.locale ? `https://qr-generator.online/${route.locale}` : 'https://qr-generator.online/';
   const pathSegments = route.path.split('/').filter(Boolean);
   const breadcrumbItems = [
     {
       "@type": "ListItem",
       "position": 1,
-      "name": "Home",
-      "item": "https://qr-generator.online/"
+      "name": route.locale ? (HOME_LABEL[route.locale] || 'Home') : 'Home',
+      "item": homeUrl
     }
   ];
   if (pathSegments.length > 0) {
@@ -485,7 +494,11 @@ function buildJsonLd(route, rich) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "HowTo",
-      "name": `How to Create a ${route.badge || 'QR Code'} with QR Generator Online`,
+      // route.h1 is a complete, already-localized sentence; the previous
+      // "How to Create a {badge} with QR Generator Online" template mixed
+      // languages on localized pages, since only {badge} was translated and
+      // the surrounding English words were not.
+      "name": route.h1,
       "description": route.lead || route.description,
       "step": rich.steps.map((s, idx) => ({
         "@type": "HowToStep",
@@ -527,98 +540,157 @@ function prerender() {
 
   let generatedCount = 0;
 
-  for (const route of ROUTES) {
+  /**
+   * Renders one page's HTML from the template. `content` supplies the
+   * fields that vary by locale (title/description/h1/badge/lead/canonical);
+   * `rich` is always looked up by the English path, since phase-1 body
+   * content (long-form sections, FAQs) is not translated — only the hero and
+   * <head> metadata are. `htmlLang`/`dir` set the document's language;
+   * `hreflangs` is the full cross-referenced alternate-language link set for
+   * this page (self included).
+   */
+  function renderRoute(content, rich, { htmlLang = 'en', dir = 'ltr', hreflangs }) {
     let html = template;
-    const rich = ALL_RICH_DATA[route.path] || null;
 
-    // 1. Update Title
-    html = html.replace(/<title>.*?<\/title>/i, `<title>${route.title}</title>`);
+    html = html.replace(/<html lang="[^"]*"/i, `<html lang="${htmlLang}" dir="${dir}"`);
 
-    // 2. Update Meta Description
+    html = html.replace(/<title>.*?<\/title>/i, `<title>${content.title}</title>`);
+
     html = html.replace(
       /<meta\s+name="description"\s+content=".*?"\s*\/?>/i,
-      `<meta name="description" content="${route.description}">`
+      `<meta name="description" content="${content.description}">`
     );
 
-    // 2b. Robots directive. Auth, dashboard, per-link analytics and the
+    // Robots directive. Auth, dashboard, per-link analytics and the
     // short-link redirector have no search value; /r/* in particular would
     // otherwise expose one thin indexable URL per dynamic QR code ever issued.
     html = html.replace(
       /<meta\s+name="robots"\s+content=".*?"\s*\/?>/i,
-      route.noindex
-        ? `<meta name="robots" content="noindex, ${route.nofollow ? 'nofollow' : 'follow'}">`
+      content.noindex
+        ? `<meta name="robots" content="noindex, ${content.nofollow ? 'nofollow' : 'follow'}">`
         : '<meta name="robots" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1">'
     );
 
-    // 3. Update Self-Referencing Canonical Tag
     html = html.replace(
       /<link\s+rel="canonical"\s+href=".*?"\s*\/?>/i,
-      `<link rel="canonical" href="${route.canonical}" />`
+      `<link rel="canonical" href="${content.canonical}" />`
     );
 
-    // 4. Update Self-Referencing Hreflang Tags (TASK 2)
+    // Hreflang: replace the template's two static tags (en + x-default) with
+    // the full alternate set for this page — every translated version plus
+    // itself, per Google's guidance that hreflang blocks should be symmetric.
+    const hreflangHtml = hreflangs
+      .map(({ code, href }) => `    <link rel="alternate" hreflang="${code}" href="${href}">`)
+      .join('\n');
     html = html.replace(
-      /<link\s+rel="alternate"\s+hreflang="en"\s+href=".*?"\s*\/?>/i,
-      `<link rel="alternate" hreflang="en" href="${route.canonical}">`
-    );
-    html = html.replace(
-      /<link\s+rel="alternate"\s+hreflang="x-default"\s+href=".*?"\s*\/?>/i,
-      `<link rel="alternate" hreflang="x-default" href="${route.canonical}">`
+      /\s*<link\s+rel="alternate"\s+hreflang="en"[\s\S]*?<link\s+rel="alternate"\s+hreflang="x-default"\s+href=".*?"\s*\/?>/i,
+      `\n${hreflangHtml}`
     );
 
-    // 5. Update OpenGraph Tags
     html = html.replace(
       /<meta\s+property="og:url"\s+content=".*?"\s*\/?>/i,
-      `<meta property="og:url" content="${route.canonical}">`
+      `<meta property="og:url" content="${content.canonical}">`
     );
     html = html.replace(
       /<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i,
-      `<meta property="og:title" content="${route.title}">`
+      `<meta property="og:title" content="${content.title}">`
     );
     html = html.replace(
       /<meta\s+property="og:description"\s+content=".*?"\s*\/?>/i,
-      `<meta property="og:description" content="${route.description}">`
+      `<meta property="og:description" content="${content.description}">`
     );
 
-    // 6. Update Twitter Tags
     html = html.replace(
       /<meta\s+property="twitter:url"\s+content=".*?"\s*\/?>/i,
-      `<meta property="twitter:url" content="${route.canonical}">`
+      `<meta property="twitter:url" content="${content.canonical}">`
     );
     html = html.replace(
       /<meta\s+property="twitter:title"\s+content=".*?"\s*\/?>/i,
-      `<meta property="twitter:title" content="${route.title}">`
+      `<meta property="twitter:title" content="${content.title}">`
     );
     html = html.replace(
       /<meta\s+property="twitter:description"\s+content=".*?"\s*\/?>/i,
-      `<meta property="twitter:description" content="${route.description}">`
+      `<meta property="twitter:description" content="${content.description}">`
     );
 
-    // 7. Inject Route-Specific JSON-LD Schemas (WebApplication, BreadcrumbList, HowTo, FAQPage)
-    const jsonLdHtml = buildJsonLd(route, rich);
+    const jsonLdHtml = buildJsonLd(content, rich);
     html = html.replace(
       /<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/i,
       jsonLdHtml
     );
 
-    // 8. Inject full semantic pre-rendered body into #app shell
-    const prerenderedBody = buildBodyHtml(route);
+    const prerenderedBody = buildBodyHtml(content);
     html = html.replace(
       /<div id="app"[\s\S]*?<\/footer>\s*<\/div>/i,
       prerenderedBody
     );
 
-    // 9. Write file to disk
-    if (route.path === '/') {
+    return html;
+  }
+
+  function writeRoute(outputPath, html) {
+    if (outputPath === '/') {
       fs.writeFileSync(templatePath, html, 'utf8');
-      generatedCount++;
     } else {
-      const targetDir = path.join(distDir, route.path.replace(/^\//, ''));
+      const targetDir = path.join(distDir, outputPath.replace(/^\//, ''));
       if (!fs.existsSync(targetDir)) {
         fs.mkdirSync(targetDir, { recursive: true });
       }
       fs.writeFileSync(path.join(targetDir, 'index.html'), html, 'utf8');
-      generatedCount++;
+    }
+    generatedCount++;
+  }
+
+  /** Full alternate-language link set for a path: itself, en, x-default, and
+   *  any routed locale that actually has translated content for it. */
+  function buildHreflangs(basePath) {
+    const enUrl = `https://qr-generator.online${basePath === '/' ? '/' : basePath}`;
+    const links = [
+      { code: 'en', href: enUrl },
+      { code: 'x-default', href: enUrl }
+    ];
+    for (const loc of ROUTED_LOCALES) {
+      if (ROUTE_META_I18N[loc]?.[basePath]) {
+        links.push({ code: loc, href: `https://qr-generator.online/${loc}${basePath === '/' ? '' : basePath}` });
+      }
+    }
+    return links;
+  }
+
+  for (const route of ROUTES) {
+    const rich = ALL_RICH_DATA[route.path] || null;
+    const hreflangs = buildHreflangs(route.path);
+
+    // English (or noindex/non-locale) route — unchanged output.
+    const html = renderRoute(route, rich, { htmlLang: 'en', dir: 'ltr', hreflangs });
+    writeRoute(route.path, html);
+
+    // Locale variants: only for routes that are indexable and have an actual
+    // translation. Skipping the rest is deliberate — a /es/... URL with
+    // untranslated English content would be thin, duplicate-content risk for
+    // zero benefit; better to have no URL there at all than a bad one.
+    if (route.noindex) continue;
+    for (const loc of ROUTED_LOCALES) {
+      const localized = ROUTE_META_I18N[loc]?.[route.path];
+      if (!localized) continue;
+
+      const outputPath = `/${loc}${route.path === '/' ? '' : route.path}`;
+      const localizedRoute = {
+        ...route,
+        title: localized.title,
+        description: localized.description,
+        h1: localized.h1,
+        badge: localized.badge,
+        lead: localized.lead,
+        canonical: `https://qr-generator.online${outputPath}`,
+        locale: loc
+      };
+      const localeHtml = renderRoute(localizedRoute, rich, {
+        htmlLang: loc,
+        dir: loc === 'ar' ? 'rtl' : 'ltr',
+        hreflangs
+      });
+      writeRoute(outputPath, localeHtml);
     }
   }
 
@@ -652,9 +724,14 @@ function verifyRouteCoverage() {
   const appPath = path.resolve(__dirname, '../App.tsx');
   if (!fs.existsSync(appPath)) return;
 
+  // AppRoutes declares its paths relative (no leading "/") so the same route
+  // table can be nested under both the unprefixed tree and each /<locale>/*
+  // mount — see App.tsx. Normalise here so this guard still finds them; it
+  // silently checked only 1 route instead of 42 for one build after that
+  // change, because this regex's filter required a leading slash.
   const declared = [...fs.readFileSync(appPath, 'utf8').matchAll(/<Route\s+path="([^"]+)"/g)]
-    .map((m) => m[1])
-    .filter((p) => p.startsWith('/') && !p.includes(':') && !p.includes('*'));
+    .map((m) => (m[1].startsWith('/') ? m[1] : `/${m[1]}`))
+    .filter((p) => p !== '/*' && !p.includes(':') && !p.includes('*'));
 
   const prerendered = new Set(ROUTES.map((r) => r.path));
   const missing = [...new Set(declared)].filter((p) => !prerendered.has(p));

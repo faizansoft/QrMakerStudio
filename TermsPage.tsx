@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
+import { useContentLocale } from './context/ContentLocaleContext';
+import { getLocalizedRouteMeta } from './constants/routeMetaI18n';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 
 const TermsPage: React.FC = () => {
   const { t } = useLanguage();
+  const contentLocale = useContentLocale();
+  const localizedH1 = contentLocale ? getLocalizedRouteMeta(contentLocale, '/terms')?.h1 : null;
 
   useEffect(() => {
     // Title, description and canonical are set centrally by SEOManager in
@@ -31,7 +35,7 @@ const TermsPage: React.FC = () => {
             Commercial Usage Governance
           </div>
           <h1 className="h1-page">
-            Terms of Service & Usage Rights
+            {localizedH1 || 'Terms of Service & Usage Rights'}
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Full commercial ownership, transparent governance, print scannability standards, and acceptable usage rules.

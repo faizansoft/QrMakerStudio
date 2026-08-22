@@ -211,6 +211,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'Códigos QR en Color',
     feature_svg: 'Exportación SVG Vectorial',
     feature_hd: 'Descargas Alta Res',
+    home_cta_primary: 'Crea Tu Primer Código QR Personalizado',
   },
   fr: {
     nav_tools: 'Types de Code QR',
@@ -257,6 +258,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'Codes QR en Couleur',
     feature_svg: 'Exportation SVG Vectoriel',
     feature_hd: 'Téléchargements Haute Rés',
+    home_cta_primary: 'Créez Votre Premier Code QR Personnalisé',
   },
   de: {
     nav_tools: 'QR-Code-Typen',
@@ -303,6 +305,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'Farbige QR-Codes',
     feature_svg: 'Vektor-SVG-Export',
     feature_hd: 'Hochauflösende Downloads',
+    home_cta_primary: 'Erstellen Sie Ihren Ersten Individuellen QR-Code',
   },
   it: {
     nav_tools: 'Tipi di Codice QR',
@@ -349,6 +352,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'Codici QR Colorati',
     feature_svg: 'Esportazione SVG Vettoriale',
     feature_hd: 'Download Alta Risoluzione',
+    home_cta_primary: 'Crea Il Tuo Primo Codice QR Personalizzato',
   },
   pt: {
     nav_tools: 'Tipos de Código QR',
@@ -395,6 +399,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'Códigos QR Coloridos',
     feature_svg: 'Exportação SVG Vetorial',
     feature_hd: 'Downloads de Alta Res',
+    home_cta_primary: 'Crie Seu Primeiro Código QR Personalizado',
   },
   ja: {
     nav_tools: 'QRコードの種類',
@@ -441,6 +446,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'カラーQRコード',
     feature_svg: 'ベクターSVG出力',
     feature_hd: '高解像度ダウンロード',
+    home_cta_primary: '最初のカスタムQRコードを作成',
   },
   zh: {
     nav_tools: '二维码类型',
@@ -487,6 +493,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: '彩色二维码',
     feature_svg: '矢量 SVG 导出',
     feature_hd: '高清分辨率下载',
+    home_cta_primary: '创建您的第一个自定义二维码',
   },
   ar: {
     nav_tools: 'أنواع رموز QR',
@@ -533,6 +540,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'رموز QR ملونة',
     feature_svg: 'تصدير SVG متجهات',
     feature_hd: 'تنزيلات عالية الدقة',
+    home_cta_primary: 'أنشئ رمز QR المخصص الأول الخاص بك',
   },
   hi: {
     nav_tools: 'QR कोड प्रकार',
@@ -579,6 +587,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'रंगीन QR कोड',
     feature_svg: 'वेक्टर SVG निर्यात',
     feature_hd: 'हाई-रेज़ डाउनलोड',
+    home_cta_primary: 'अपना पहला कस्टम क्यूआर कोड बनाएं',
   },
   ru: {
     nav_tools: 'Типы QR-кодов',
@@ -625,6 +634,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'Цветные QR-коды',
     feature_svg: 'Векторный экспорт SVG',
     feature_hd: 'Высокое разрешение',
+    home_cta_primary: 'Создайте Свой Первый Персональный QR-Код',
   },
   tr: {
     nav_tools: 'QR Kod Türleri',
@@ -671,6 +681,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'Renkli QR Kodlar',
     feature_svg: 'Vektör SVG Dışa Aktarımı',
     feature_hd: 'Yüksek Çözünürlüklü İndirme',
+    home_cta_primary: 'İlk Özel QR Kodunuzu Oluşturun',
   },
   ko: {
     nav_tools: 'QR 코드 유형',
@@ -717,6 +728,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: '컬러 QR 코드',
     feature_svg: '벡터 SVG 내보내기',
     feature_hd: '고해상도 다운로드',
+    home_cta_primary: '첫 번째 맞춤 QR 코드 만들기',
   },
   nl: {
     nav_tools: 'QR-codetypes',
@@ -763,6 +775,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'Gekleurde QR-codes',
     feature_svg: 'Vector SVG Export',
     feature_hd: 'Hoge Resolutie Downloads',
+    home_cta_primary: 'Maak Uw Eerste Aangepaste QR-Code',
   },
   vi: {
     nav_tools: 'Các Loại Mã QR',
@@ -809,6 +822,7 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     feature_color: 'Mã QR Màu Sắc',
     feature_svg: 'Xuất Vector SVG',
     feature_hd: 'Tải Về Độ Phân Giải Cao',
+    home_cta_primary: 'Tạo Mã QR Tùy Chỉnh Đầu Tiên Của Bạn',
   }
 };
 
