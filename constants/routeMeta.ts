@@ -20,8 +20,20 @@ export interface RouteMeta {
    * Keep the route out of the index. Gated, transient and utility routes
    * (auth, dashboard, per-link analytics, short-link redirector, 404s) carry
    * no search value and would otherwise be crawled as thin or duplicate pages.
+   *
+   * This emits `noindex, follow` — NOT `nofollow`. A page-level nofollow makes
+   * every link on the page nofollow, and these pages render the full 46-link
+   * footer, so it left every indexable page on the site receiving nofollow
+   * internal links. Use `nofollow` below only where following links is itself
+   * undesirable.
    */
   noindex?: boolean;
+  /**
+   * Additionally stop crawlers following links out of the page. Only the
+   * short-link redirector wants this: it forwards to arbitrary third-party
+   * destinations we do not vouch for.
+   */
+  nofollow?: boolean;
 }
 
 export const ROUTE_METADATA: Record<string, RouteMeta> = {
@@ -449,7 +461,8 @@ export const getRouteMeta = (pathname: string): RouteMeta => {
       description: 'Redirecting your smartphone to the verified campaign destination.',
       canonical: `https://qr-generator.online${cleanPath}`,
       h1: 'Dynamic QR Code High-Speed Redirection',
-      noindex: true
+      noindex: true,
+      nofollow: true
     };
   }
 

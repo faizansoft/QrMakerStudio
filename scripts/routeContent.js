@@ -871,7 +871,8 @@ export const ROUTE_CONTENT = [
     badge: 'Dynamic Redirect',
     lead: 'Connecting you to your destination...',
     sections: [],
-    noindex: true
+    noindex: true,
+    nofollow: true
   },
   {
     path: '/analytics',

@@ -79,7 +79,7 @@ const SEOManager = () => {
     robots.setAttribute(
       'content',
       meta.noindex
-        ? 'noindex, nofollow'
+        ? `noindex, ${meta.nofollow ? 'nofollow' : 'follow'}`
         : 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'
     );
 

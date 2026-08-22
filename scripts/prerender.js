@@ -506,7 +506,7 @@ function prerender() {
     html = html.replace(
       /<meta\s+name="robots"\s+content=".*?"\s*\/?>/i,
       route.noindex
-        ? '<meta name="robots" content="noindex, nofollow">'
+        ? `<meta name="robots" content="noindex, ${route.nofollow ? 'nofollow' : 'follow'}">`
         : '<meta name="robots" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1">'
     );
 
@@ -590,8 +590,10 @@ function prerender() {
   const notFound = template
     .replace(/<title>.*?<\/title>/i, '<title>Page Not Found (404) | QR Generator Online</title>')
     .replace(
+      // follow, not nofollow: the 404 page lists popular tools, and those
+      // recovery links are the whole point of serving a useful 404.
       /<meta\s+name="robots"\s+content=".*?"\s*\/?>/i,
-      '<meta name="robots" content="noindex, nofollow">'
+      '<meta name="robots" content="noindex, follow">'
     )
     .replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/i, '');
   fs.writeFileSync(path.join(distDir, '404.html'), notFound, 'utf8');
