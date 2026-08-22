@@ -391,30 +391,70 @@ function buildBodyHtml(route) {
   `;
 }
 
+/**
+ * Editorial/company routes: not the tool itself, so they must not claim
+ * WebApplication schema. Every route NOT listed here (the homepage, every
+ * tool/feature/utility page) genuinely is a page of the app and keeps it.
+ *
+ * This was previously unconditional — every route, including /terms and
+ * every blog post, was stamped WebApplication. That is a real type/content
+ * mismatch (Semrush's Site Audit flagged it as "structured data contains
+ * markup errors" on all 44 pages), not a false positive: Google's own
+ * structured-data guidelines require markup to be a true representation of
+ * the page, and a Terms of Service page is not a software application.
+ */
+const CONTENT_PAGE_PATHS = new Set([
+  '/about', '/contact', '/privacy', '/terms', '/faqs-qr-code-generator', '/pricing',
+  '/blog',
+  '/blog/qr-codes-for-restaurants', '/blog/printing-qr-codes-guide',
+  '/blog/vcard-qr-code-business-cards', '/blog/qr-codes-for-real-estate',
+  '/blog/wifi-qr-codes-for-hospitality'
+]);
+
 function buildJsonLd(route, rich) {
   const schemas = [];
+  const isContentPage = CONTENT_PAGE_PATHS.has(route.path);
 
-  // 1. WebApplication Schema
-  schemas.push({
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": route.title,
-    "url": route.canonical,
-    "description": route.description,
-    "applicationCategory": "DesignApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "QR Generator Online",
-      "url": "https://qr-generator.online",
-      "logo": "https://qr-generator.online/logo.png"
-    }
-  });
+  // 1. Top-level page schema: WebApplication for the tool itself, WebPage for
+  // editorial content. applicationCategory/operatingSystem/offers only belong
+  // on WebApplication — carrying them over to WebPage is exactly the kind of
+  // "property not recognised by this type" issue Semrush also flags.
+  schemas.push(
+    isContentPage
+      ? {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": route.title,
+          "url": route.canonical,
+          "description": route.description,
+          "publisher": {
+            "@type": "Organization",
+            "name": "QR Generator Online",
+            "url": "https://qr-generator.online",
+            "logo": "https://qr-generator.online/logo.png"
+          }
+        }
+      : {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": route.title,
+          "url": route.canonical,
+          "description": route.description,
+          "applicationCategory": "DesignApplication",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "QR Generator Online",
+            "url": "https://qr-generator.online",
+            "logo": "https://qr-generator.online/logo.png"
+          }
+        }
+  );
 
   // 2. BreadcrumbList Schema
   const pathSegments = route.path.split('/').filter(Boolean);
