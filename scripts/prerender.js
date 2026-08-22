@@ -39,13 +39,13 @@ const LINK_LABELS = {
   '/instagram-qr-code-generator': 'Instagram QR Code',
   '/youtube-qr-code-generator': 'YouTube QR Code',
   '/linkedin-qr-code-generator': 'LinkedIn QR Code',
-  '/twitter-qr-code-generator': 'Twitter / X QR Code',
+  '/twitter-qr-code-generator': 'Twitter / X QR',
   '/tiktok-qr-code-generator': 'TikTok QR Code',
   '/telegram-qr-code-generator': 'Telegram QR Code',
   '/paypal-qr-code-generator': 'PayPal Payment QR',
   '/upi-qr-code-generator': 'UPI Payment QR',
   '/pdf-qr-code-generator': 'PDF to QR Code',
-  '/app-store-qr-code-generator': 'App Store QR Code',
+  '/app-store-qr-code-generator': 'App Store QR',
   '/bulk-qr-code-generator': 'Bulk QR Generator',
   '/qr-code-scanner': 'QR Code Scanner',
   '/social-media-qr-code': 'Social Media QR',
@@ -83,27 +83,26 @@ const FOOTER_GROUPS = [
     heading: 'QR Code Tools',
     hrefs: [
       '/url-qr-code-generator', '/wifi-qr-code-generator', '/vcard-qr-code-generator',
-      '/googleform-qr-code-generator', '/whatsapp-qr-code-generator', '/text-qr-code-generator',
-      '/email-qr-code-generator', '/sms-qr-code-generator', '/phone-qr-code-generator',
-      '/location-qr-code-generator', '/crypto-qr-code-generator', '/event-qr-code-generator',
-      '/pdf-qr-code-generator', '/app-store-qr-code-generator'
+      '/text-qr-code-generator', '/email-qr-code-generator', '/sms-qr-code-generator',
+      '/phone-qr-code-generator', '/location-qr-code-generator', '/event-qr-code-generator',
+      '/crypto-qr-code-generator', '/googleform-qr-code-generator', '/whatsapp-qr-code-generator'
     ]
   },
   {
-    heading: 'Social & Payment QR',
+    heading: 'Social & Payment',
     hrefs: [
       '/facebook-qr-code-generator', '/instagram-qr-code-generator', '/youtube-qr-code-generator',
       '/linkedin-qr-code-generator', '/twitter-qr-code-generator', '/tiktok-qr-code-generator',
-      '/telegram-qr-code-generator', '/paypal-qr-code-generator', '/upi-qr-code-generator',
-      '/social-media-qr-code'
+      '/telegram-qr-code-generator', '/social-media-qr-code',
+      '/paypal-qr-code-generator', '/upi-qr-code-generator'
     ]
   },
   {
-    heading: 'Features & Utilities',
+    heading: 'Tools & Features',
     hrefs: [
-      '/qr-code-with-logo', '/custom-qr-codes', '/colored-qr-code-generator',
-      '/svg-qr-code-generator', '/high-resolution-qr-codes',
-      '/bulk-qr-code-generator', '/qr-code-scanner'
+      '/pdf-qr-code-generator', '/app-store-qr-code-generator', '/bulk-qr-code-generator',
+      '/qr-code-scanner', '/qr-code-with-logo', '/custom-qr-codes',
+      '/colored-qr-code-generator', '/svg-qr-code-generator', '/high-resolution-qr-codes'
     ]
   },
   {
