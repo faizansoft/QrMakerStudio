@@ -39,11 +39,10 @@ const QRScannerPage: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    document.title = "Free Online QR Code Scanner & Reader | Scan via Camera or Image Upload";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Free online QR code scanner and reader. Decode QR codes directly from your browser using your webcam, mobile camera, or image upload with instant URL previews and zero app installation.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     injectJSONLD('jsonld-software', getToolSoftwareSchema(
       'Online QR Code Scanner',

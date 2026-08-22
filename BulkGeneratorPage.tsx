@@ -47,11 +47,10 @@ const BulkGeneratorPage: React.FC = () => {
   const canvasRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.title = "Free Bulk QR Code Generator | Generate Batch QR Codes with ZIP Export";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Batch generate hundreds of custom QR codes from CSV or text lists. Download all codes in high resolution ZIP archive 100% free with customizable colors and vector SVG export.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     injectJSONLD('jsonld-software', getToolSoftwareSchema(
       'Bulk QR Code Generator',

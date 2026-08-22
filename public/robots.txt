@@ -2,6 +2,16 @@
 User-agent: *
 Allow: /
 
+# Short-link redirector: one URL per dynamic QR code ever issued, all of them
+# thin redirect stubs. Left crawlable this is an unbounded URL space.
+Disallow: /r/
+
+# Gated / account-only areas with no search value.
+Disallow: /dashboard
+Disallow: /analytics/
+Disallow: /login
+Disallow: /signup
+
 # Googlebot
 User-agent: Googlebot
 Allow: /

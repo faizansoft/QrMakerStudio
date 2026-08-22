@@ -51,11 +51,10 @@ const SocialMediaQRPage: React.FC = () => {
   const qrInstances = useRef<Record<string, QRCodeStyling>>({});
 
   useEffect(() => {
-    document.title = "Free Social Media QR Code Generator | Connect All Social Profiles";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Generate branded QR codes for Instagram, YouTube, TikTok, LinkedIn, Twitter, Facebook, and WhatsApp. Color-matched vector SVG and PNG downloads 100% free.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     injectJSONLD('jsonld-software', getToolSoftwareSchema(
       'Social Media QR Code Generator',

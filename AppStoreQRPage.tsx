@@ -61,11 +61,10 @@ const AppStoreQRPage: React.FC = () => {
   const qrInstanceRef = useRef<QRCodeStyling | null>(null);
 
   useEffect(() => {
-    document.title = "Free App Store QR Code Generator | One QR Code for iOS & Android";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Create a single intelligent App Store QR code that auto-detects iOS & Android devices. Redirect iPhone users to Apple App Store and Android users to Google Play with live scan tracking.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     injectJSONLD('jsonld-software', getToolSoftwareSchema(
       'App Store QR Code Generator',

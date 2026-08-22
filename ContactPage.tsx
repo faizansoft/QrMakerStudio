@@ -8,11 +8,10 @@ const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.title = "Contact Support & Technical Support | QR Generator Online";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Get in touch with the QR Generator Online support team. Technical support for SVG print exports, custom branding, and general inquiries.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
       { name: 'Home', url: '/' },

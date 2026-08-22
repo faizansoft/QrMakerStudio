@@ -10,11 +10,10 @@ const FAQPage: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   useEffect(() => {
-    document.title = "Help & FAQ | Free QR Code Generator Guide";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Answers to common QR code questions. Learn about SVG vector downloads, custom branding, WiFi QR codes, vCard business cards, and print scannability.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     // Structured Data (JSON-LD)
     injectJSONLD('jsonld-faq', getFAQSchema(FAQ_ITEMS));

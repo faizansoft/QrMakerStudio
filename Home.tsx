@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import QRCodeStyling from 'qr-code-styling';
 import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS } from './constants';
 import { TOOL_SEO_DATA } from './constants/toolSeoData';
+import { getRichContent, getRouteContent } from './constants/richContent';
+import RichSeoSections from './components/RichSeoSections';
+import { getRouteMeta } from './constants/routeMeta';
 import { DotType, CornerSquareType, CornerDotType } from './types';
 import { useLanguage } from './context/LanguageContext';
 import { useAuth } from './context/AuthContext';
@@ -796,10 +799,19 @@ const FramedQrView: React.FC<{
 
 export interface HomeProps {
   initialTab?: string;
+  /**
+   * True when <Home> is mounted purely as the generator widget inside another
+   * page (FeaturePage does this). In embedded mode Home renders no hero
+   * heading, no long-form sections and no JSON-LD, because the host page owns
+   * all three — otherwise the page ships two <h1>s, duplicate
+   * SoftwareApplication schema and every section twice.
+   */
+  embedded?: boolean;
 }
 
-const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
+const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => {
   const { language, t } = useLanguage();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState(initialTab);
   
   // Custom QR Styling Options State
@@ -976,24 +988,66 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
     return TOOL_SEO_DATA[activeTab] || TOOL_SEO_DATA.url;
   }, [activeTab]);
 
-  useEffect(() => {
-    const isRoot = activeTab === 'url' && window.location.pathname === '/';
-    
-    // 1. Update Title & Meta Description
-    document.title = isRoot 
-      ? "QR Generator Online: Create Free QR Codes" 
-      : `${currentSeo.metaTitle} | QR Generator Online`;
+  // Long-form copy shared with the prerenderer, keyed by the real pathname so
+  // the root page gets its own content instead of falling through to /url-*.
+  const pathname = location.pathname;
+  const richContent = useMemo(() => getRichContent(pathname), [pathname]);
+  const routeContent = useMemo(() => getRouteContent(pathname), [pathname]);
 
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', currentSeo.metaDescription);
+  // Headline comes from routeMeta, the same dictionary the prerenderer reads,
+  // so the H1 in the static HTML and the H1 after mount are identical.
+  const routeMeta = useMemo(() => getRouteMeta(pathname), [pathname]);
+
+  // Prefer the prerendered FAQ set so the visible Q&A matches the FAQPage
+  // schema emitted in the static HTML. Google requires those to agree.
+  const faqItems = useMemo(() => {
+    if (richContent?.faqs?.length) {
+      return richContent.faqs.map(f => ({ question: f.q, answer: f.a }));
     }
+    return currentSeo.faqs;
+  }, [richContent, currentSeo]);
 
-    // 2. Structured Data (JSON-LD)
+  // Steps / features / use cases exist in both datasets. The prerendered
+  // versions are the longer ones, so prefer them and keep the section headings
+  // the prerenderer uses — otherwise the static HTML and the rendered DOM
+  // describe the same page with different copy.
+  const stepsTitle = richContent?.steps?.length
+    ? 'How to Generate & Deploy (3-Step Practical Manual)'
+    : currentSeo.stepsTitle;
+  const stepItems = richContent?.steps?.length ? richContent.steps : currentSeo.steps;
+
+  const featuresTitle = richContent?.features?.length
+    ? 'Core Capabilities & Enterprise Advantages'
+    : currentSeo.featuresTitle;
+  const featureItems = richContent?.features?.length ? richContent.features : currentSeo.features;
+
+  const useCasesTitle = richContent?.useCases?.length
+    ? 'Cross-Industry Practical Applications'
+    : currentSeo.useCasesTitle;
+  const useCaseItems = richContent?.useCases?.length ? richContent.useCases : currentSeo.useCases;
+
+  // Intro prose: routeContent.sections is what the prerenderer emits.
+  const introSections = routeContent?.sections?.length
+    ? routeContent.sections
+    : [{ title: currentSeo.introTitle, paragraphs: currentSeo.introParagraphs }];
+
+  useEffect(() => {
+    // Title, description, canonical and social tags are owned exclusively by
+    // SEOManager in App.tsx (sourced from constants/routeMeta.ts). Setting them
+    // here too used to race it and overwrite the prerendered values.
+
+    // As an embedded widget the host page owns the page-level schema; emitting
+    // ours as well produced two SoftwareApplication entities on feature pages.
+    if (embedded) return;
+
+    // WebApplication, BreadcrumbList and FAQPage are already present in the
+    // prerendered HTML; injectJSONLD skips any @type already in the document,
+    // so these calls only fire on client-side navigations.
+    const isRoot = pathname === '/';
     const toolPath = isRoot ? '/' : currentSeo.slug;
-    
+
     injectJSONLD('jsonld-tool', getToolSoftwareSchema(currentSeo.title, toolPath, currentSeo.metaDescription));
-    injectJSONLD('jsonld-faq', getFAQSchema(currentSeo.faqs));
+    injectJSONLD('jsonld-faq', getFAQSchema(faqItems));
 
     const breadcrumbs = [
       { name: 'Home', url: '/' }
@@ -1008,7 +1062,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
       removeJSONLD('jsonld-faq');
       removeJSONLD('jsonld-breadcrumbs');
     };
-  }, [activeTab, currentSeo, language]);
+  }, [pathname, currentSeo, faqItems, language, embedded]);
 
   const activeTabData = TABS.find(t => t.id === activeTab) || TABS[0];
 
@@ -1432,18 +1486,23 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
         <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
           <div className="flex flex-col items-center gap-3">
 
-            {/* Title & Subtitle */}
-            <div className="order-2 lg:order-1 text-center max-w-4xl mx-auto px-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-3 mt-6 lg:mt-0">
-                {currentSeo.badge}
+            {/* Title & Subtitle. Not rendered at all when embedded: the host
+                page has already emitted the page's single <h1>, and a second
+                one (with identical text, since both read routeMeta) is a real
+                on-page SEO defect, not just redundant markup. */}
+            {!embedded && (
+              <div className="order-2 lg:order-1 text-center max-w-4xl mx-auto px-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-3 mt-6 lg:mt-0">
+                  {routeContent?.badge || currentSeo.badge}
+                </div>
+                <h1 className="mb-4 text-[26px] font-bold text-gray-900 leading-tight md:text-4xl lg:text-5xl">
+                  {routeMeta.h1}
+                </h1>
+                <p className="mb-8 text-base text-gray-600 md:text-lg max-w-2xl mx-auto leading-relaxed">
+                  {routeContent?.lead || currentSeo.subheadline}
+                </p>
               </div>
-              <h1 className="mb-4 text-[26px] font-bold text-gray-900 leading-tight md:text-4xl lg:text-5xl">
-                {currentSeo.headline}
-              </h1>
-              <p className="mb-8 text-base text-gray-600 md:text-lg max-w-2xl mx-auto leading-relaxed">
-                {currentSeo.subheadline}
-              </p>
-            </div>
+            )}
 
             {/* ──── DARK QR GENERATOR WIDGET ──── */}
             <div className="order-1 lg:order-2 w-full max-w-[1205px]" id="qr-generator">
@@ -2908,226 +2967,245 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url' }) => {
         </div>
       </section>
 
-      {/* ═══════════════════════════ EXPLANATORY GUIDE ARTICLE ═══════════════════════════ */}
-      <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
-        <div className="mx-auto max-w-4xl px-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
-            Comprehensive Guide
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            {currentSeo.introTitle}
-          </h2>
-          <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-4">
-            {currentSeo.introParagraphs.map((para, i) => (
-              <p key={i} className="text-base md:text-lg leading-relaxed text-gray-600">{para}</p>
+      {/* The long-form SEO block belongs to the page, not to the generator
+          widget. FeaturePage embeds <Home> purely for the widget and renders
+          its own copy of these sections from the same shared data, so leaving
+          them on would print every section twice. */}
+      {!embedded && (
+        <>
+        {/* ═══════════════════════════ EXPLANATORY GUIDE ARTICLE ═══════════════════════════ */}
+        <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
+          <div className="mx-auto max-w-4xl px-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
+              Comprehensive Guide
+            </div>
+            {introSections.map((section, si) => (
+              <div key={si} className={si > 0 ? 'mt-12' : undefined}>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                  {section.title}
+                </h2>
+                <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-4">
+                  {section.paragraphs.map((para, i) => (
+                    <p key={i} className="text-base md:text-lg leading-relaxed text-gray-600">{para}</p>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══════════════════════════ HOW TO: 3 STEPS ═══════════════════════════ */}
-      <section id="how-to-create" className="bg-gray-50 py-16 md:py-24 scroll-mt-24 border-t border-neutral-100">
-        <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
-          <div className="mb-12 flex flex-col items-center text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold leading-tight tracking-normal text-gray-900 text-balance">
-              {currentSeo.stepsTitle}
-            </h2>
-          </div>
+        {/* ═══════════════════════════ HOW TO: 3 STEPS ═══════════════════════════ */}
+        <section id="how-to-create" className="bg-gray-50 py-16 md:py-24 scroll-mt-24 border-t border-neutral-100">
+          <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
+            <div className="mb-12 flex flex-col items-center text-center">
+              <h2 className="text-3xl md:text-4xl font-semibold leading-tight tracking-normal text-gray-900 text-balance">
+                {stepsTitle}
+              </h2>
+            </div>
 
-          <div className="relative mx-auto max-w-4xl">
-            {/* Vertical timeline line */}
-            <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-neutral-200 md:block" />
+            <div className="relative mx-auto max-w-4xl">
+              {/* Vertical timeline line */}
+              <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-neutral-200 md:block" />
 
-            <div className="flex flex-col gap-12 md:gap-16">
-              {currentSeo.steps.map((step, idx) => (
-                <div key={step.number} className="relative grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-3 md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-8">
-                  {/* Step Number Circle */}
-                  <div className="row-start-1 col-start-1 self-start md:col-start-2 md:self-center relative z-10 flex h-10 w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-full bg-accent text-base md:text-lg font-bold text-white shadow-md">
-                    {step.number}
-                  </div>
-
-                  {/* Text Content */}
-                  <div className={`row-start-1 col-start-2 ${idx % 2 === 0 ? 'md:col-start-3 md:pl-4' : 'md:col-start-1 md:pr-4 md:text-right'}`}>
-                    <h3 className="mb-1 md:mb-2 text-xl md:text-2xl font-semibold text-gray-900">{step.title}</h3>
-                    <p className="text-base leading-relaxed text-gray-500">{step.description}</p>
-                  </div>
-
-                  {/* Icon Visual Card */}
-                  <div className={`row-start-2 col-span-full ${idx % 2 === 0 ? 'md:row-start-1 md:col-span-1 md:col-start-1 md:flex md:justify-end' : 'md:row-start-1 md:col-span-1 md:col-start-3 md:flex md:justify-start'}`}>
-                    <div className="w-full max-w-[340px] rounded-card bg-white border border-neutral-200 shadow-sm p-6 flex items-center justify-center text-accent">
-                      {step.number === 1 && (
-                        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
-                        </svg>
-                      )}
-                      {step.number === 2 && (
-                        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                        </svg>
-                      )}
-                      {step.number === 3 && (
-                        <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                      )}
+              <div className="flex flex-col gap-12 md:gap-16">
+                {stepItems.map((step, idx) => (
+                  <div key={step.number} className="relative grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-3 md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-8">
+                    {/* Step Number Circle */}
+                    <div className="row-start-1 col-start-1 self-start md:col-start-2 md:self-center relative z-10 flex h-10 w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-full bg-accent text-base md:text-lg font-bold text-white shadow-md">
+                      {step.number}
                     </div>
+
+                    {/* Text Content */}
+                    <div className={`row-start-1 col-start-2 ${idx % 2 === 0 ? 'md:col-start-3 md:pl-4' : 'md:col-start-1 md:pr-4 md:text-right'}`}>
+                      <h3 className="mb-1 md:mb-2 text-xl md:text-2xl font-semibold text-gray-900">{step.title}</h3>
+                      <p className="text-base leading-relaxed text-gray-500">{step.description}</p>
+                    </div>
+
+                    {/* Icon Visual Card */}
+                    <div className={`row-start-2 col-span-full ${idx % 2 === 0 ? 'md:row-start-1 md:col-span-1 md:col-start-1 md:flex md:justify-end' : 'md:row-start-1 md:col-span-1 md:col-start-3 md:flex md:justify-start'}`}>
+                      <div className="w-full max-w-[340px] rounded-card bg-white border border-neutral-200 shadow-sm p-6 flex items-center justify-center text-accent">
+                        {step.number === 1 && (
+                          <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                          </svg>
+                        )}
+                        {step.number === 2 && (
+                          <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                          </svg>
+                        )}
+                        {step.number === 3 && (
+                          <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                          </svg>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════ FEATURES & BENEFITS ═══════════════════════════ */}
+        <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
+          <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
+            <div className="mb-12 text-center">
+              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{featuresTitle}</h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {featureItems.map((feature, idx) => (
+                <div
+                  key={idx}
+                  className="bg-gray-50 rounded-2xl border border-neutral-100 p-6 hover:shadow-md hover:border-accent/20 transition-all duration-300 group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-colors">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-accent transition-colors">{feature.title}</h3>
+                  <p className="text-gray-500 leading-relaxed text-sm">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════ USE CASES SECTION ═══════════════════════════ */}
+        <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-100">
+          <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
+            <div className="mb-12 text-center">
+              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{useCasesTitle}</h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {useCaseItems.map((useCase, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-6 hover:bg-accent/5 hover:shadow-md transition-all duration-300 border border-neutral-200 hover:border-accent/10"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 font-bold text-base">
+                    {idx + 1}
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{useCase.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{useCase.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════ LONG-FORM SEO SECTIONS (shared with scripts/prerender.js) ═══════ */}
+        <RichSeoSections rich={richContent} />
+
+        {/* ═══════════════════════════ TOOL-SPECIFIC FAQ SECTION ═══════════════════════════ */}
+        <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
+          <div className="mx-auto max-w-4xl px-4">
+            <div className="mb-12 text-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-3">
+                Knowledge Base & FAQs
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Frequently Asked Questions about {currentSeo.title}
+              </h2>
+              <p className="text-gray-600 max-w-xl mx-auto text-base">
+                Everything you need to know about creating, customizing, and printing {currentSeo.title}s.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {faqItems.map((faq, idx) => (
+                <div
+                  key={idx}
+                  className={`border rounded-2xl transition-all overflow-hidden ${
+                    openFaqIndex === idx ? 'border-accent bg-accent/5' : 'border-neutral-200 bg-white hover:border-neutral-300'
+                  }`}
+                >
+                  <button
+                    onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+                    className="w-full flex items-center justify-between p-6 text-left outline-none"
+                  >
+                    <h3 className={`text-lg font-bold transition-colors ${openFaqIndex === idx ? 'text-accent' : 'text-gray-900'}`}>
+                      {faq.question}
+                    </h3>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${openFaqIndex === idx ? 'bg-accent text-white rotate-180' : 'bg-gray-100 text-gray-500'}`}>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </button>
+                  {/* Answers stay mounted and are toggled with CSS. Rendering
+                      them conditionally kept 7 of 8 answers out of the DOM
+                      entirely, so the FAQPage schema promised Google text that
+                      was nowhere on the page. */}
+                  <div
+                    className={`px-6 pb-6 pt-0 text-gray-600 leading-relaxed text-sm border-t border-neutral-100/50 pt-3 ${openFaqIndex === idx ? '' : 'hidden'}`}
+                  >
+                    <p>{faq.answer}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══════════════════════════ FEATURES & BENEFITS ═══════════════════════════ */}
-      <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
-        <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{currentSeo.featuresTitle}</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {currentSeo.features.map((feature, idx) => (
-              <div
-                key={idx}
-                className="bg-gray-50 rounded-2xl border border-neutral-100 p-6 hover:shadow-md hover:border-accent/20 transition-all duration-300 group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-accent transition-colors">{feature.title}</h3>
-                <p className="text-gray-500 leading-relaxed text-sm">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════ USE CASES SECTION ═══════════════════════════ */}
-      <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-100">
-        <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{currentSeo.useCasesTitle}</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {currentSeo.useCases.map((useCase, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-2xl p-6 hover:bg-accent/5 hover:shadow-md transition-all duration-300 border border-neutral-200 hover:border-accent/10"
-              >
-                <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 font-bold text-base">
-                  {idx + 1}
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{useCase.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{useCase.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════ TOOL-SPECIFIC FAQ SECTION ═══════════════════════════ */}
-      <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
-        <div className="mx-auto max-w-4xl px-4">
-          <div className="mb-12 text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-3">
-              Knowledge Base & FAQs
+        {/* ═══════════════════════════ QR CODE TYPES INTERLINKING MATRIX ═══════════════════════════ */}
+        <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-200">
+          <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
+            <div className="mb-12 text-center">
+              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">All {TABS.length} QR Code Generators</h2>
+              <p className="text-lg text-gray-500 max-w-2xl mx-auto">Explore all {TABS.length} specialized QR Code generators to convert websites, WiFi, vCards, documents, social media, payment links, and locations into scannable barcodes.</p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions about {currentSeo.title}
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              {TABS.map((tab) => {
+                const tabSeo = TOOL_SEO_DATA[tab.id] || TOOL_SEO_DATA.url;
+                return (
+                  <Link
+                    key={tab.id}
+                    to={tabSeo.slug}
+                    onClick={() => { setActiveTab(tab.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    className={`group relative bg-white rounded-2xl border p-5 text-left transition-all duration-200 ${
+                      activeTab === tab.id 
+                        ? 'border-accent ring-2 ring-accent/20 bg-accent/5' 
+                        : 'border-neutral-200 hover:border-accent hover:shadow-lg'
+                    }`}
+                  >
+                    <div className="text-accent mb-3 p-2 bg-accent/10 rounded-xl inline-block group-hover:bg-accent group-hover:text-white transition-colors">
+                      {tab.icon}
+                    </div>
+                    <h3 className="text-sm font-semibold text-gray-900 group-hover:text-accent transition-colors">{tab.label}</h3>
+                    <p className="text-xs text-gray-400 mt-1 line-clamp-2">{tab.description}</p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════ CTA SECTION ═══════════════════════════ */}
+        <section className="bg-[#1E1E1E] py-16 md:py-24">
+          <div className="mx-auto max-w-3xl px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
+              Ready to Create Your {currentSeo.title}?
             </h2>
-            <p className="text-gray-600 max-w-xl mx-auto text-base">
-              Everything you need to know about creating, customizing, and printing {currentSeo.title}s.
+            <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
+              Start generating professional, customizable QR Codes in seconds. No account needed, no fees — ever.
             </p>
+            <a
+              href="#qr-generator"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold rounded-button transition-all duration-200 border-2 border-transparent bg-accent text-white hover:bg-accent-dark px-8 py-3.5 text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            >
+              Create {currentSeo.title} — It's Free
+            </a>
+            <p className="text-sm text-white/40 mt-4">No sign-up required • Unlimited QR Codes • Download in PNG, SVG, WebP</p>
           </div>
-
-          <div className="space-y-4">
-            {currentSeo.faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className={`border rounded-2xl transition-all overflow-hidden ${
-                  openFaqIndex === idx ? 'border-accent bg-accent/5' : 'border-neutral-200 bg-white hover:border-neutral-300'
-                }`}
-              >
-                <button
-                  onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
-                  className="w-full flex items-center justify-between p-6 text-left outline-none"
-                >
-                  <h3 className={`text-lg font-bold transition-colors ${openFaqIndex === idx ? 'text-accent' : 'text-gray-900'}`}>
-                    {faq.question}
-                  </h3>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${openFaqIndex === idx ? 'bg-accent text-white rotate-180' : 'bg-gray-100 text-gray-500'}`}>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                </button>
-                {openFaqIndex === idx && (
-                  <div className="px-6 pb-6 pt-0 text-gray-600 leading-relaxed text-sm border-t border-neutral-100/50 pt-3">
-                    <p>{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════ QR CODE TYPES INTERLINKING MATRIX ═══════════════════════════ */}
-      <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-200">
-        <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">All {TABS.length} QR Code Generators</h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">Explore all {TABS.length} specialized QR Code generators to convert websites, WiFi, vCards, documents, social media, payment links, and locations into scannable barcodes.</p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {TABS.map((tab) => {
-              const tabSeo = TOOL_SEO_DATA[tab.id] || TOOL_SEO_DATA.url;
-              return (
-                <Link
-                  key={tab.id}
-                  to={tabSeo.slug}
-                  onClick={() => { setActiveTab(tab.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className={`group relative bg-white rounded-2xl border p-5 text-left transition-all duration-200 ${
-                    activeTab === tab.id 
-                      ? 'border-accent ring-2 ring-accent/20 bg-accent/5' 
-                      : 'border-neutral-200 hover:border-accent hover:shadow-lg'
-                  }`}
-                >
-                  <div className="text-accent mb-3 p-2 bg-accent/10 rounded-xl inline-block group-hover:bg-accent group-hover:text-white transition-colors">
-                    {tab.icon}
-                  </div>
-                  <h3 className="text-sm font-semibold text-gray-900 group-hover:text-accent transition-colors">{tab.label}</h3>
-                  <p className="text-xs text-gray-400 mt-1 line-clamp-2">{tab.description}</p>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════ CTA SECTION ═══════════════════════════ */}
-      <section className="bg-[#1E1E1E] py-16 md:py-24">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
-            Ready to Create Your {currentSeo.title}?
-          </h2>
-          <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
-            Start generating professional, customizable QR Codes in seconds. No account needed, no fees — ever.
-          </p>
-          <a
-            href="#qr-generator"
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold rounded-button transition-all duration-200 border-2 border-transparent bg-accent text-white hover:bg-accent-dark px-8 py-3.5 text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-          >
-            Create {currentSeo.title} — It's Free
-          </a>
-          <p className="text-sm text-white/40 mt-4">No sign-up required • Unlimited QR Codes • Download in PNG, SVG, WebP</p>
-        </div>
-      </section>
+        </section>
+        </>
+      )}
 
       {/* ═══════════════════════════ DYNAMIC QR SAVE MODAL ═══════════════════════════ */}
       {showDynamicSaveModal && (

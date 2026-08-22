@@ -3,6 +3,8 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { BLOG_POSTS } from './constants/blogData';
 import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
+import { getRichContent, getRouteContent } from './constants/richContent';
+import RichSeoSections from './components/RichSeoSections';
 
 const BlogPostPage: React.FC = () => {
   const { language, t } = useLanguage();
@@ -12,17 +14,17 @@ const BlogPostPage: React.FC = () => {
     return BLOG_POSTS.find((p) => p.slug === slug);
   }, [slug]);
 
+  // Long-form copy shared with scripts/prerender.js — see constants/richContent.ts.
+  const richContent = useMemo(() => getRichContent(`/blog/${slug}`), [slug]);
+  const routeContent = useMemo(() => getRouteContent(`/blog/${slug}`), [slug]);
+
   useEffect(() => {
     if (!post) return;
 
-    // 1. Title and Meta Description
-    document.title = `${post.title} | QR Generator Online Blog`;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', post.description);
-    }
+    // Title and meta description are owned by SEOManager in App.tsx, sourced
+    // from constants/routeMeta.ts — the same dictionary the prerenderer reads.
 
-    // 2. Structured Data (JSON-LD BlogPosting)
+    // Structured Data (JSON-LD BlogPosting)
     const blogPostingSchema = {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
@@ -151,6 +153,16 @@ const BlogPostPage: React.FC = () => {
             </div>
           </div>
         )}
+
+        {/* ═══ LONG-FORM SEO SECTIONS (shared with scripts/prerender.js) ═══ */}
+        {/* Blog posts have no layout of their own for steps/features/use
+            cases/FAQ, so this renders the complete set — otherwise six of the
+            prerendered sections never reach the DOM Google indexes. */}
+        <RichSeoSections
+          rich={richContent}
+          sections={routeContent?.sections}
+          includeSharedSections
+        />
 
         {/* Related Articles Footer */}
         <div className="border-t border-neutral-200 pt-12 space-y-6">

@@ -58,11 +58,10 @@ const PDFToQRPage: React.FC = () => {
   const qrInstanceRef = useRef<QRCodeStyling | null>(null);
 
   useEffect(() => {
-    document.title = "Free PDF to QR Code Generator | Convert Menus & Documents to QR Codes";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Convert PDF menus, brochures, catalogs, and documents into custom branded QR codes. Free vector SVG and PNG downloads with editable dynamic destination links.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     injectJSONLD('jsonld-software', getToolSoftwareSchema(
       'PDF to QR Code Generator',

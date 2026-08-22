@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FEATURE_SEO_DATA } from './constants/featureSeoData';
 import { TOOL_SEO_DATA } from './constants/toolSeoData';
 import Home from './Home';
 import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getToolSoftwareSchema, getFAQSchema, getBreadcrumbSchema } from './services/seoUtils';
+import { getRichContent, getRouteContent } from './constants/richContent';
+import RichSeoSections from './components/RichSeoSections';
+import { getRouteMeta } from './constants/routeMeta';
 
 interface FeaturePageProps {
   featureId: string;
@@ -12,24 +15,53 @@ interface FeaturePageProps {
 
 const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
   const { language, t } = useLanguage();
+  const location = useLocation();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const featureSeo = useMemo(() => {
     return FEATURE_SEO_DATA[featureId] || FEATURE_SEO_DATA['qr-code-with-logo'];
   }, [featureId]);
 
-  useEffect(() => {
-    // 1. Title and Meta Description
-    document.title = `${featureSeo.metaTitle} | QR Generator Online`;
+  // Long-form copy shared with scripts/prerender.js — see constants/richContent.ts.
+  const pathname = location.pathname;
+  const richContent = useMemo(() => getRichContent(pathname), [pathname]);
+  const routeContent = useMemo(() => getRouteContent(pathname), [pathname]);
+  const routeMeta = useMemo(() => getRouteMeta(pathname), [pathname]);
 
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', featureSeo.metaDescription);
+  // Visible FAQ must match the FAQPage schema in the prerendered HTML.
+  const faqItems = useMemo(() => {
+    if (richContent?.faqs?.length) {
+      return richContent.faqs.map(f => ({ question: f.q, answer: f.a }));
     }
+    return featureSeo.faqs;
+  }, [richContent, featureSeo]);
 
-    // 2. Structured Data (JSON-LD)
+  // Prefer the prerendered (longer) copy so the static HTML and the rendered
+  // DOM describe this page with the same words. See Home.tsx for the rationale.
+  const stepsTitle = richContent?.steps?.length
+    ? 'How to Generate & Deploy (3-Step Practical Manual)'
+    : featureSeo.stepsTitle;
+  const stepItems = richContent?.steps?.length ? richContent.steps : featureSeo.steps;
+
+  const featuresTitle = richContent?.features?.length
+    ? 'Core Capabilities & Enterprise Advantages'
+    : featureSeo.featuresTitle;
+  const featureItems = richContent?.features?.length ? richContent.features : featureSeo.features;
+
+  const useCasesTitle = richContent?.useCases?.length
+    ? 'Cross-Industry Practical Applications'
+    : featureSeo.useCasesTitle;
+  const useCaseItems = richContent?.useCases?.length ? richContent.useCases : featureSeo.useCases;
+
+  const introSections = routeContent?.sections?.length
+    ? routeContent.sections
+    : [{ title: featureSeo.introTitle, paragraphs: featureSeo.introParagraphs }];
+
+  useEffect(() => {
+    // Title/description/canonical are owned by SEOManager in App.tsx.
+    // injectJSONLD no-ops for any @type already present from the prerender.
     injectJSONLD('jsonld-feature', getToolSoftwareSchema(featureSeo.title, featureSeo.slug, featureSeo.metaDescription));
-    injectJSONLD('jsonld-faq', getFAQSchema(featureSeo.faqs));
+    injectJSONLD('jsonld-faq', getFAQSchema(faqItems));
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
       { name: 'Home', url: '/' },
       { name: featureSeo.title, url: featureSeo.slug }
@@ -40,7 +72,7 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
       removeJSONLD('jsonld-faq');
       removeJSONLD('jsonld-breadcrumbs');
     };
-  }, [featureSeo, language]);
+  }, [featureSeo, faqItems, language]);
 
   return (
     <div className="animate-in pb-24 bg-white">
@@ -48,20 +80,20 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
       <section className="bg-gradient-hero pt-10 pb-12 md:pt-16 md:pb-20 border-b border-neutral-100 text-center">
         <div className="max-w-4xl mx-auto px-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
-            {featureSeo.badge}
+            {routeContent?.badge || featureSeo.badge}
           </div>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 tracking-tight">
-            {featureSeo.headline}
+            {routeMeta.h1}
           </h1>
           <p className="text-base md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            {featureSeo.subheadline}
+            {routeContent?.lead || featureSeo.subheadline}
           </p>
         </div>
       </section>
 
       {/* ═══════════════════════════ LIVE GENERATOR WIDGET ═══════════════════════════ */}
       <div id="live-generator">
-        <Home initialTab="url" />
+        <Home initialTab="url" embedded />
       </div>
 
       {/* ═══════════════════════════ EXPLANATORY GUIDE ARTICLE ═══════════════════════════ */}
@@ -70,14 +102,18 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
             Feature Deep Dive
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            {featureSeo.introTitle}
-          </h2>
-          <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-4">
-            {featureSeo.introParagraphs.map((para, i) => (
-              <p key={i} className="text-base md:text-lg text-gray-600 leading-relaxed">{para}</p>
-            ))}
-          </div>
+          {introSections.map((section, si) => (
+            <div key={si} className={si > 0 ? 'mt-12' : undefined}>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                {section.title}
+              </h2>
+              <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-4">
+                {section.paragraphs.map((para, i) => (
+                  <p key={i} className="text-base md:text-lg text-gray-600 leading-relaxed">{para}</p>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -85,11 +121,11 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
       <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-100">
         <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{featureSeo.stepsTitle}</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{stepsTitle}</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {featureSeo.steps.map((step) => (
+            {stepItems.map((step) => (
               <div key={step.number} className="bg-white p-8 rounded-2xl border border-neutral-200 shadow-sm relative">
                 <div className="w-12 h-12 rounded-full bg-accent text-white font-bold text-lg flex items-center justify-center mb-6 shadow-md">
                   {step.number}
@@ -106,11 +142,11 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
       <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
         <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{featureSeo.featuresTitle}</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{featuresTitle}</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featureSeo.features.map((feat, idx) => (
+            {featureItems.map((feat, idx) => (
               <div key={idx} className="bg-gray-50 rounded-2xl border border-neutral-100 p-6 hover:shadow-md hover:border-accent/20 transition-all">
                 <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 font-bold">
                   ✓
@@ -127,11 +163,11 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
       <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-100">
         <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{featureSeo.useCasesTitle}</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{useCasesTitle}</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featureSeo.useCases.map((useCase, idx) => (
+            {useCaseItems.map((useCase, idx) => (
               <div key={idx} className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-200">
                 <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 font-bold">
                   {idx + 1}
@@ -143,6 +179,9 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
           </div>
         </div>
       </section>
+
+      {/* ═══════ LONG-FORM SEO SECTIONS (shared with scripts/prerender.js) ═══════ */}
+      <RichSeoSections rich={richContent} />
 
       {/* ═══════════════════════════ FEATURE FAQ ACCORDION ═══════════════════════════ */}
       <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
@@ -160,7 +199,7 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
           </div>
 
           <div className="space-y-4">
-            {featureSeo.faqs.map((faq, idx) => (
+            {faqItems.map((faq, idx) => (
               <div
                 key={idx}
                 className={`border rounded-2xl transition-all overflow-hidden ${
@@ -180,11 +219,12 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
                     </svg>
                   </div>
                 </button>
-                {openFaqIndex === idx && (
-                  <div className="px-6 pb-6 pt-0 text-gray-600 leading-relaxed text-sm border-t border-neutral-100/50 pt-3">
-                    <p>{faq.answer}</p>
-                  </div>
-                )}
+                {/* Answers stay mounted and are toggled with CSS — see Home.tsx. */}
+                <div
+                  className={`px-6 pb-6 pt-0 text-gray-600 leading-relaxed text-sm border-t border-neutral-100/50 pt-3 ${openFaqIndex === idx ? '' : 'hidden'}`}
+                >
+                  <p>{faq.answer}</p>
+                </div>
               </div>
             ))}
           </div>

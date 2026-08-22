@@ -7,11 +7,10 @@ const AboutPage: React.FC = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = "About QR Generator Online | Free Custom QR Code Generator & Platform";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Discover the story behind QR Generator Online: Our privacy-first mission to provide free, permanent, high-resolution QR codes for websites, WiFi, vCards, social media, and commercial print without subscriptions.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     injectJSONLD('jsonld-organization', getOrganizationSchema());
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([

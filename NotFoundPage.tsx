@@ -1,24 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NotFoundPage: React.FC = () => {
-  useEffect(() => {
-    document.title = 'Page Not Found (404) | QR Generator Online';
-    
-    // Add noindex meta tag for 404 page
-    let robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement;
-    if (!robotsMeta) {
-      robotsMeta = document.createElement('meta');
-      robotsMeta.name = 'robots';
-      document.head.appendChild(robotsMeta);
-    }
-    const originalRobots = robotsMeta.getAttribute('content') || 'index, follow';
-    robotsMeta.setAttribute('content', 'noindex, nofollow');
-
-    return () => {
-      robotsMeta.setAttribute('content', originalRobots);
-    };
-  }, []);
+  // Title and the noindex robots directive come from SEOManager in App.tsx via
+  // the 404 fallback in constants/routeMeta.ts. Handling them here as well
+  // fought that effect: the cleanup restored "index, follow" on unmount, which
+  // could leave a genuinely missing page marked indexable.
 
   const popularTools = [
     { title: 'WiFi QR Code Generator', path: '/wifi-qr-code-generator', desc: 'Connect to WiFi without typing passwords' },

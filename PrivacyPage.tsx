@@ -7,11 +7,10 @@ const PrivacyPage: React.FC = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = "Privacy Policy & Client-Side Data Security Standards | QR Generator Online";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Comprehensive Privacy Policy of QR Generator Online. Learn about our 100% browser-based client-side QR generation engine, zero server data logging, GDPR/CCPA compliance, and strict zero-tracking architecture.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
       { name: 'Home', url: '/' },

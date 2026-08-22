@@ -10,11 +10,10 @@ const BlogPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
-    document.title = "QR Code Blog & Guides | QR Generator Online";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Explore QR Code guides, printing standards, restaurant menu tips, real estate marketing strategies, and digital business card tutorials.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
       { name: 'Home', url: '/' },

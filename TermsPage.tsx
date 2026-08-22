@@ -7,11 +7,10 @@ const TermsPage: React.FC = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = "Terms of Service & Commercial Usage Ownership | QR Generator Online";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', 'Terms of Service for QR Generator Online. Enjoy 100% full commercial ownership of all generated QR code images (PNG, SVG, WebP) with zero attribution fees or scan limits.');
-    }
+    // Title, description and canonical are set centrally by SEOManager in
+    // App.tsx from constants/routeMeta.ts — the same dictionary
+    // scripts/prerender.js reads. Setting them here raced that effect and
+    // replaced the prerendered values with different text.
 
     injectJSONLD('jsonld-breadcrumbs', getBreadcrumbSchema([
       { name: 'Home', url: '/' },

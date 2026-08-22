@@ -16,6 +16,12 @@ export interface RouteMeta {
   h1: string;
   keywords?: string[];
   type?: 'website' | 'article';
+  /**
+   * Keep the route out of the index. Gated, transient and utility routes
+   * (auth, dashboard, per-link analytics, short-link redirector, 404s) carry
+   * no search value and would otherwise be crawled as thin or duplicate pages.
+   */
+  noindex?: boolean;
 }
 
 export const ROUTE_METADATA: Record<string, RouteMeta> = {
@@ -391,7 +397,8 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
     description: 'Manage all your editable dynamic QR codes, change destination links in real time, and monitor live scan metrics, devices, and geographic data.',
     canonical: 'https://qr-generator.online/dashboard',
     h1: 'My QR Codes & Real-Time Analytics Dashboard',
-    keywords: ['dynamic qr dashboard', 'editable qr codes manager', 'my qr codes', 'qr code campaign management']
+    keywords: ['dynamic qr dashboard', 'editable qr codes manager', 'my qr codes', 'qr code campaign management'],
+    noindex: true
   },
   '/login': {
     path: '/login',
@@ -399,7 +406,8 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
     description: 'Log in to your free QR Generator Online account to manage dynamic QR codes, update landing pages, and track scan performance.',
     canonical: 'https://qr-generator.online/login',
     h1: 'Log In to My QR Codes',
-    keywords: ['qr code login', 'my qr codes login', 'dynamic qr sign in']
+    keywords: ['qr code login', 'my qr codes login', 'dynamic qr sign in'],
+    noindex: true
   },
   '/signup': {
     path: '/signup',
@@ -407,7 +415,8 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
     description: 'Sign up for a 100% free QR Generator Online account. Create permanent dynamic QR codes with live destination editing and scan analytics.',
     canonical: 'https://qr-generator.online/signup',
     h1: 'Create Your Free Dynamic QR Generator Online Account',
-    keywords: ['free dynamic qr code sign up', 'create dynamic qr account free']
+    keywords: ['free dynamic qr code sign up', 'create dynamic qr account free'],
+    noindex: true
   }
 };
 
@@ -429,6 +438,7 @@ export const getRouteMeta = (pathname: string): RouteMeta => {
       description: 'Track real-time scans, geographic location, device types, and visitor engagement metrics for your dynamic QR campaign.',
       canonical: `https://qr-generator.online${cleanPath}`,
       h1: 'Dynamic QR Code Real-Time Analytics Dashboard',
+      noindex: true
     };
   }
 
@@ -439,6 +449,7 @@ export const getRouteMeta = (pathname: string): RouteMeta => {
       description: 'Redirecting your smartphone to the verified campaign destination.',
       canonical: `https://qr-generator.online${cleanPath}`,
       h1: 'Dynamic QR Code High-Speed Redirection',
+      noindex: true
     };
   }
 
@@ -448,6 +459,7 @@ export const getRouteMeta = (pathname: string): RouteMeta => {
     title: 'Page Not Found | QR Generator Online',
     description: 'The requested QR code generator page could not be found. Explore our free QR maker tools, vCard creator, and WiFi generators on the homepage.',
     canonical: `https://qr-generator.online${cleanPath}`,
-    h1: '404 - Page Not Found'
+    h1: '404 - Page Not Found',
+    noindex: true
   };
 };

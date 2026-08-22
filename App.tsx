@@ -27,13 +27,17 @@ import SignupPage from './SignupPage';
 import RedirectHandler from './RedirectHandler';
 import { LanguageProvider } from './context/LanguageContext';
 import { AuthProvider } from './context/AuthContext';
-import { injectJSONLD, getOrganizationSchema, getWebSiteSchema } from './services/seoUtils';
+import { injectJSONLD, purgeStalePrerenderedSchema, getOrganizationSchema, getWebSiteSchema } from './services/seoUtils';
 import { getRouteMeta } from './constants/routeMeta';
 
 const SEOManager = () => {
   const location = useLocation();
   
   useEffect(() => {
+    // 0. Prerendered JSON-LD only describes the URL the page was served for.
+    //    Once we navigate client-side it is stale, so drop it and take over.
+    purgeStalePrerenderedSchema(location.pathname);
+
     // 1. Base JSON-LD Organization & WebSite Schemas
     injectJSONLD('jsonld-organization', getOrganizationSchema());
     injectJSONLD('jsonld-website', getWebSiteSchema());
@@ -42,6 +46,10 @@ const SEOManager = () => {
     const meta = getRouteMeta(location.pathname);
 
     // 3. Set Document Title & Meta Description
+    //    This is the ONLY place titles are set. Page components used to set
+    //    their own, which raced this effect and overwrote the prerendered
+    //    values with different text — so the static HTML and the indexed
+    //    (rendered) DOM disagreed on title, description and H1.
     document.title = meta.title;
 
     let descTag = document.querySelector('meta[name="description"]') as HTMLMetaElement;
@@ -60,6 +68,20 @@ const SEOManager = () => {
       document.head.appendChild(canonical);
     }
     canonical.setAttribute("href", meta.canonical);
+
+    // 4b. Robots directive — gated/transient routes must stay out of the index.
+    let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement;
+    if (!robots) {
+      robots = document.createElement('meta');
+      robots.name = 'robots';
+      document.head.appendChild(robots);
+    }
+    robots.setAttribute(
+      'content',
+      meta.noindex
+        ? 'noindex, nofollow'
+        : 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'
+    );
 
     // 5. Manage Hreflang Tags (Self-referencing to own canonical)
     ['en', 'x-default'].forEach(lang => {
