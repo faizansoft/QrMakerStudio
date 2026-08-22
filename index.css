@@ -43,13 +43,88 @@ body {
 .animate-delay-200 { animation-delay: 200ms; }
 .animate-delay-300 { animation-delay: 300ms; }
 
-/* Gradient Hero Background */
+/* Hero background. Previously a saturated green wash (#f0fdf4 -> #ecfdf5);
+   now a near-neutral tint so hero sections read as part of the page rather
+   than as a coloured banner. */
 .bg-gradient-hero {
-  background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 40%, #ecfdf5 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 55%, #f1f5f9 100%);
 }
 
-.rounded-button { 
-  border-radius: 8px; 
+.rounded-button {
+  border-radius: 8px;
+}
+
+/* ── Layout primitives ───────────────────────────────────────────────────
+   Every page section used to pick its own vertical rhythm and container
+   width. These three classes are the approved options; use them instead of
+   ad-hoc py-*/max-w-* pairs so pages line up with each other. */
+.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .section { padding-top: 5rem; padding-bottom: 5rem; }
+}
+
+.container-page {
+  width: 100%;
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .container-page { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+
+.container-prose {
+  width: 100%;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .container-prose { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+
+/* ── Type scale ──────────────────────────────────────────────────────────
+   One H1 scale for the whole site. Pages previously ranged from
+   text-[26px] to text-6xl, so the same heading level changed size
+   page to page. */
+.h1-page {
+  font-size: 1.875rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+}
+@media (min-width: 768px) { .h1-page { font-size: 2.5rem; } }
+@media (min-width: 1024px) { .h1-page { font-size: 3rem; } }
+
+.h2-section {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #0F172A;
+}
+@media (min-width: 768px) { .h2-section { font-size: 1.875rem; } }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  background: #EEF6F2;
+  color: #2B6F53;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .toggle-track { transition: background-color 0.2s ease; }
@@ -57,4 +132,15 @@ body {
 
 [dir="rtl"] { 
   font-family: 'Roboto Flex', sans-serif; 
+}
+
+/* Screen-reader-only text (visually hidden, still announced). */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

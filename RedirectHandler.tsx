@@ -74,8 +74,8 @@ const RedirectHandler: React.FC = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 px-4 text-center">
         <div className="w-14 h-14 border-4 border-accent/20 border-t-accent rounded-full animate-spin mb-4" />
-        <h2 className="text-xl font-bold text-gray-800">Redirecting to destination...</h2>
-        <p className="text-sm text-gray-500 mt-1">Please wait a moment while we connect you.</p>
+        <h2 className="text-xl font-bold">Redirecting to destination...</h2>
+        <p className="text-sm text-slate-500 mt-1">Please wait a moment while we connect you.</p>
         {targetUrl && (
           <a
             href={targetUrl}
@@ -90,7 +90,7 @@ const RedirectHandler: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 px-4 text-center">
-      <div className="max-w-md w-full bg-white rounded-3xl p-8 shadow-xl border border-neutral-200">
+      <div className="max-w-md w-full bg-white rounded-2xl p-8 shadow-xl border border-slate-200">
         <div className="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mx-auto mb-4 border border-amber-200/60">
           {error === 'paused' ? (
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ const RedirectHandler: React.FC = () => {
             ? 'QR Code Expired'
             : 'QR Code Not Found'}
         </h1>
-        <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+        <p className="text-sm text-slate-600 mb-6 leading-relaxed">
           {error === 'paused'
             ? 'The owner of this dynamic QR code has temporarily paused access. Please check back later.'
             : error === 'expired'

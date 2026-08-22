@@ -38,7 +38,7 @@ const PDFToQRPage: React.FC = () => {
   const [docTitle, setDocTitle] = useState('');
   const [fgColor, setFgColor] = useState('#2B6F53');
   const [bgColor, setBgColor] = useState('#ffffff');
-  const [cornerSquareColor, setCornerSquareColor] = useState('#1E1E1E');
+  const [cornerSquareColor, setCornerSquareColor] = useState('#0F172A');
   const [cornerDotColor, setCornerDotColor] = useState('#2B6F53');
   const [dotStyle, setDotStyle] = useState<DotType>('rounded');
   const [cornerSquareStyle, setCornerSquareStyle] = useState<CornerSquareType>('extra-rounded');
@@ -183,7 +183,7 @@ const PDFToQRPage: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
             Document & Menu Suite
           </div>
-          <h1 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight leading-tight">
+          <h1 className="h1-page mb-4">
             Free PDF to QR Code Generator
           </h1>
           <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -193,9 +193,9 @@ const PDFToQRPage: React.FC = () => {
       </section>
 
       {/* ═══════════════════════════ GENERATOR INTERFACE ═══════════════════════════ */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-5xl mx-auto px-4">
-          <div className="bg-white rounded-3xl shadow-xl border border-slate-200/80 p-6 md:p-8 mb-16">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 p-6 md:p-8 mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               
               {/* Left Column: Form Controls (7 cols) */}
@@ -212,7 +212,7 @@ const PDFToQRPage: React.FC = () => {
                     placeholder="https://drive.google.com/file/... or https://yoursite.com/menu.pdf"
                     className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:ring-2 focus:ring-accent focus:bg-white outline-none transition-all"
                   />
-                  <span className="text-[11px] text-slate-400 block mt-1">
+                  <span className="text-[11px] text-slate-500 block mt-1">
                     Paste a direct PDF link, Google Drive share link, Dropbox link, or hosted document URL.
                   </span>
                 </div>
@@ -354,10 +354,10 @@ const PDFToQRPage: React.FC = () => {
             
             {/* Section 1: The Modern PDF QR Revolution */}
             <article className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase rounded-md">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase rounded-lg">
                 Document Digitalization
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 The Complete Guide to PDF QR Codes for Menus, Catalogs & Documents
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -369,11 +369,11 @@ const PDFToQRPage: React.FC = () => {
             </article>
 
             {/* Section 2: Static vs Dynamic PDF QR Codes */}
-            <article className="space-y-4 bg-white p-8 rounded-3xl border border-slate-200 shadow-xs">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase rounded-md">
+            <article className="space-y-4 bg-white p-8 rounded-2xl border border-slate-200 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase rounded-lg">
                 Menu Management
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Static vs. Dynamic PDF QR Codes: Updating Menus Without Reprinting
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -399,7 +399,7 @@ const PDFToQRPage: React.FC = () => {
 
             {/* Section 3: Industry Use Cases */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Industry Applications for PDF QR Codes
               </h2>
               <div className="grid md:grid-cols-3 gap-6">
@@ -444,7 +444,7 @@ const PDFToQRPage: React.FC = () => {
 
             {/* Section 4: Step-by-Step Hosting Tutorial */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Step-by-Step Tutorial: How to Host & Generate a PDF QR Code
               </h2>
               <div className="space-y-3">
@@ -476,7 +476,7 @@ const PDFToQRPage: React.FC = () => {
 
             {/* Section 5: Comparison Table */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Digital PDF QR Code vs. Traditional Paper Menus & Brochures
               </h2>
               <div className="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-2xs">
@@ -517,7 +517,7 @@ const PDFToQRPage: React.FC = () => {
             {/* Section 6: FAQ */}
             <article className="space-y-6">
               <div className="text-center max-w-2xl mx-auto space-y-2">
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">PDF QR Code FAQ</h2>
                 <p className="text-xs text-slate-500">Everything you need to know about creating PDF QR codes and digital menus.</p>
               </div>
 
@@ -538,12 +538,12 @@ const PDFToQRPage: React.FC = () => {
       {/* Dynamic Save Modal */}
       {showDynamicSaveModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-          <div className="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-200">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl border border-slate-200">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base font-bold text-slate-900">
                 {savedShortCode ? 'Dynamic PDF QR Created!' : 'Save Dynamic PDF QR Code'}
               </h3>
-              <button onClick={() => { setShowDynamicSaveModal(false); setSavedShortCode(null); }} className="text-slate-400 hover:text-slate-600 p-1 rounded-lg">✕</button>
+              <button onClick={() => { setShowDynamicSaveModal(false); setSavedShortCode(null); }} className="text-slate-500 hover:text-slate-600 p-1 rounded-lg">✕</button>
             </div>
 
             {savedShortCode ? (

@@ -26,14 +26,14 @@ const DynamicQrThumbnail: React.FC<{ link: DynamicLink; size?: number; className
       data: qrUrl,
       margin: size > 100 ? 8 : 2,
       dotsOptions: {
-        color: style.fgColor || '#1E1E1E',
+        color: style.fgColor || '#0F172A',
         type: (style.dotStyle as any) || 'rounded',
       },
       backgroundOptions: {
         color: style.bgColor || '#ffffff',
       },
       cornersSquareOptions: {
-        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        color: style.cornerSquareColor || style.fgColor || '#0F172A',
         type: (style.cornerSquareStyle as any) || 'extra-rounded',
       },
       cornersDotOptions: {
@@ -217,14 +217,14 @@ const AnalyticsPage: React.FC = () => {
       data: qrUrl,
       margin: 12,
       dotsOptions: {
-        color: style.fgColor || '#1E1E1E',
+        color: style.fgColor || '#0F172A',
         type: (style.dotStyle as any) || 'rounded',
       },
       backgroundOptions: {
         color: style.bgColor || '#ffffff',
       },
       cornersSquareOptions: {
-        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        color: style.cornerSquareColor || style.fgColor || '#0F172A',
         type: (style.cornerSquareStyle as any) || 'extra-rounded',
       },
       cornersDotOptions: {
@@ -705,7 +705,7 @@ const AnalyticsPage: React.FC = () => {
         {/* Custom Design QR Zoom / Download Modal */}
         {showQrModal && link && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-            <div className="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-slate-200 text-center">
+            <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl border border-slate-200 text-center">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-sm font-bold text-slate-900 truncate max-w-[220px]">
                   {link.title || link.short_code}

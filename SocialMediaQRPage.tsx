@@ -7,13 +7,13 @@ const SOCIAL_PLATFORMS = [
   { id: 'instagram', label: 'Instagram', prefix: 'https://instagram.com/', placeholder: 'username', color: '#E1306C' },
   { id: 'youtube', label: 'YouTube', prefix: '', placeholder: 'https://youtube.com/@channel', color: '#FF0000' },
   { id: 'linkedin', label: 'LinkedIn', prefix: '', placeholder: 'https://linkedin.com/in/name', color: '#0A66C2' },
-  { id: 'twitter', label: 'Twitter / X', prefix: 'https://x.com/', placeholder: 'handle', color: '#111827' },
+  { id: 'twitter', label: 'Twitter / X', prefix: 'https://x.com/', placeholder: 'handle', color: '#0F172A' },
   { id: 'tiktok', label: 'TikTok', prefix: 'https://tiktok.com/@', placeholder: 'username', color: '#000000' },
   { id: 'facebook', label: 'Facebook', prefix: '', placeholder: 'https://facebook.com/page', color: '#1877F2' },
   { id: 'telegram', label: 'Telegram', prefix: 'https://t.me/', placeholder: 'username', color: '#0088CC' },
   { id: 'whatsapp', label: 'WhatsApp', prefix: 'https://wa.me/', placeholder: 'phone number', color: '#25D366' },
   { id: 'website', label: 'Website', prefix: '', placeholder: 'https://yoursite.com', color: '#2B6F53' },
-  { id: 'email', label: 'Email', prefix: 'mailto:', placeholder: 'you@email.com', color: '#4B5563' },
+  { id: 'email', label: 'Email', prefix: 'mailto:', placeholder: 'you@email.com', color: '#475569' },
 ];
 
 const SOCIAL_FAQS = [
@@ -138,7 +138,7 @@ const SocialMediaQRPage: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
             Omnichannel Social Hub
           </div>
-          <h1 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight leading-tight">
+          <h1 className="h1-page mb-4">
             Free Social Media QR Code Generator
           </h1>
           <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -148,9 +148,9 @@ const SocialMediaQRPage: React.FC = () => {
       </section>
 
       {/* ═══════════════════════════ GENERATOR INTERFACE ═══════════════════════════ */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-5xl mx-auto px-4">
-          <div className="bg-white rounded-3xl shadow-xl border border-slate-200/80 p-6 md:p-8 mb-16">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 p-6 md:p-8 mb-16">
             
             {/* Display Name */}
             <div className="mb-6 pb-6 border-b border-slate-100 max-w-md">
@@ -165,7 +165,7 @@ const SocialMediaQRPage: React.FC = () => {
             </div>
 
             {/* Platform Grid */}
-            <h2 className="text-sm font-bold text-slate-900 mb-3">Configure Your Social Channels</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 mb-3">Configure Your Social Channels</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
               {SOCIAL_PLATFORMS.map(platform => (
                 <div key={platform.id} className="flex items-center gap-3 p-3 bg-slate-50 rounded-2xl border border-slate-200/80 hover:border-slate-300 transition-colors">
@@ -267,10 +267,10 @@ const SocialMediaQRPage: React.FC = () => {
             
             {/* Section 1: Omnichannel Audience Growth */}
             <article className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase rounded-md">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase rounded-lg">
                 Audience Acquisition
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 The Ultimate Guide to Social Media QR Codes & Audience Conversion
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -282,11 +282,11 @@ const SocialMediaQRPage: React.FC = () => {
             </article>
 
             {/* Section 2: Static Individual Codes vs Dynamic Bio Links */}
-            <article className="space-y-4 bg-white p-8 rounded-3xl border border-slate-200 shadow-xs">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase rounded-md">
+            <article className="space-y-4 bg-white p-8 rounded-2xl border border-slate-200 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase rounded-lg">
                 Strategy Comparison
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Individual Channel Codes vs. Dynamic Multi-Link Bio Pages
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -312,7 +312,7 @@ const SocialMediaQRPage: React.FC = () => {
 
             {/* Section 3: High-Converting Physical Placements */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Strategic Physical Placements for High Follower Conversion
               </h2>
               <div className="grid md:grid-cols-3 gap-6">
@@ -356,8 +356,8 @@ const SocialMediaQRPage: React.FC = () => {
             </article>
 
             {/* Section 4: Live Telemetry Analytics */}
-            <article className="space-y-4 bg-slate-900 text-white p-8 rounded-3xl">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">
+            <article className="space-y-4 bg-slate-900 text-white p-8 rounded-2xl">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
                 Live Scan Analytics & Audience Telemetry
               </h2>
               <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
@@ -385,7 +385,7 @@ const SocialMediaQRPage: React.FC = () => {
 
             {/* Section 5: Comparison Table */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Multi-Link Social QR Codes vs. Traditional Printed Handles
               </h2>
               <div className="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-2xs">
@@ -431,7 +431,7 @@ const SocialMediaQRPage: React.FC = () => {
             {/* Section 6: FAQ */}
             <article className="space-y-6">
               <div className="text-center max-w-2xl mx-auto space-y-2">
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">Social Media QR Code FAQ</h2>
                 <p className="text-xs text-slate-500">Everything you need to know about social media QR codes and multichannel marketing.</p>
               </div>
 

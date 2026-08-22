@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 
+const SUPPORT_EMAIL = 'support@qr-generator.online';
+
 const ContactPage: React.FC = () => {
   const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
@@ -23,23 +25,54 @@ const ContactPage: React.FC = () => {
     };
   }, [t]);
 
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    subject: 'General Support',
+    message: ''
+  });
+
+  const update = (field: keyof typeof form) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => setForm((prev) => ({ ...prev, [field]: e.target.value }));
+
+  /**
+   * There is no backend to post to, so the form hands the message off to the
+   * visitor's own mail client. Previously it discarded every field and showed
+   * "Message Sent!" regardless — people believed they had contacted support
+   * and never heard back, because nothing was ever sent anywhere.
+   */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      '',
+      form.message
+    ].join('\n');
+
+    const href =
+      `mailto:${SUPPORT_EMAIL}` +
+      `?subject=${encodeURIComponent(`[${form.subject}] Message from ${form.name || 'website visitor'}`)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    window.location.href = href;
     setSubmitted(true);
   };
 
   return (
     <div className="animate-in pb-24 bg-white">
       {/* Header Banner */}
-      <section className="bg-gradient-hero pt-16 pb-16 border-b border-neutral-100 text-center">
+      <section className="bg-gradient-hero pt-16 pb-16 border-b border-slate-100 text-center">
         <div className="max-w-4xl mx-auto px-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
             Responsive Support
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="h1-page mb-4">
             Contact Our Support Team
           </h1>
-          <p className="text-lg text-gray-600 max-w-xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-xl mx-auto">
             Have questions about SVG vector printing, custom logo placement, or tool features? We are here to help.
           </p>
         </div>
@@ -52,8 +85,8 @@ const ContactPage: React.FC = () => {
           {/* Info Side */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">We'd Love to Hear From You</h2>
-              <p className="text-gray-600 leading-relaxed">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-3">We'd Love to Hear From You</h2>
+              <p className="text-slate-600 leading-relaxed">
                 Whether you need advice on error correction levels for outdoor signs or want to request new QR code generator features, drop us a message.
               </p>
             </div>
@@ -66,8 +99,8 @@ const ContactPage: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Email Address</h4>
-                  <a href="mailto:support@qr-generator.online" className="text-base font-bold text-gray-900 hover:text-accent transition-colors">
+                  <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Email Address</h4>
+                  <a href="mailto:support@qr-generator.online" className="text-base font-bold text-slate-900 hover:text-accent transition-colors">
                     support@qr-generator.online
                   </a>
                 </div>
@@ -80,14 +113,14 @@ const ContactPage: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Support Response Time</h4>
-                  <p className="text-base font-bold text-gray-900">Within 24 Hours</p>
+                  <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Support Response Time</h4>
+                  <p className="text-base font-bold text-slate-900">Within 24 Hours</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-[#1E1E1E] text-white p-8 rounded-3xl border border-white/10">
-              <h3 className="text-lg font-bold text-[#BEF392] mb-2">Technical Assistance</h3>
+            <div className="bg-[#0F172A] text-white p-8 rounded-2xl border border-white/10">
+              <h3 className="text-lg font-bold text-[#A8D5C2] mb-2">Technical Assistance</h3>
               <p className="text-sm text-white/70 leading-relaxed">
                 For SVG vector print inquiries or high error correction level guidance, make sure to specify your intended printing medium in your message.
               </p>
@@ -95,46 +128,68 @@ const ContactPage: React.FC = () => {
           </div>
 
           {/* Form Side */}
-          <div className="bg-gray-50 p-8 md:p-10 rounded-3xl border border-neutral-200 shadow-sm">
+          <div className="bg-slate-50 p-8 md:p-10 rounded-2xl border border-slate-200 shadow-sm">
             {submitted ? (
-              <div className="text-center py-12 space-y-4">
+              <div className="text-center py-16 space-y-4">
                 <div className="w-16 h-16 bg-accent/20 text-accent rounded-full flex items-center justify-center mx-auto">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Message Sent!</h3>
-                <p className="text-gray-600">Thank you for reaching out. We will get back to you shortly.</p>
+                <h3 className="text-2xl font-bold text-slate-900">Your email is ready to send</h3>
+                <p className="text-slate-600">
+                  We opened your email app with the message filled in — press send there and it
+                  reaches us. If nothing opened, email us directly at{' '}
+                  <a href={`mailto:${SUPPORT_EMAIL}`} className="font-semibold text-accent hover:underline">
+                    {SUPPORT_EMAIL}
+                  </a>.
+                </p>
                 <button
                   onClick={() => setSubmitted(false)}
                   className="mt-4 px-6 py-2 bg-accent text-white font-bold rounded-xl text-sm hover:bg-accent-dark transition-colors"
                 >
-                  Send Another Message
+                  Write Another Message
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="text-xs font-bold text-gray-700 block mb-1">Full Name *</label>
+                  <label htmlFor="contact-name" className="text-xs font-bold text-slate-700 block mb-1">Full Name *</label>
                   <input
+                    id="contact-name"
+                    name="name"
                     required
                     type="text"
+                    autoComplete="name"
+                    value={form.name}
+                    onChange={update('name')}
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-300 focus:border-accent outline-none text-sm font-medium"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-accent outline-none text-sm font-medium"
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-bold text-gray-700 block mb-1">Email Address *</label>
+                  <label htmlFor="contact-email" className="text-xs font-bold text-slate-700 block mb-1">Email Address *</label>
                   <input
+                    id="contact-email"
+                    name="email"
                     required
                     type="email"
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={update('email')}
                     placeholder="you@example.com"
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-300 focus:border-accent outline-none text-sm font-medium"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-accent outline-none text-sm font-medium"
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-bold text-gray-700 block mb-1">Subject</label>
-                  <select className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-300 focus:border-accent outline-none text-sm font-medium">
+                  <label htmlFor="contact-subject" className="text-xs font-bold text-slate-700 block mb-1">Subject</label>
+                  <select
+                    id="contact-subject"
+                    name="subject"
+                    value={form.subject}
+                    onChange={update('subject')}
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-accent outline-none text-sm font-medium"
+                  >
                     <option>General Support</option>
                     <option>Technical Print / SVG Help</option>
                     <option>Feature Suggestion</option>
@@ -142,12 +197,16 @@ const ContactPage: React.FC = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs font-bold text-gray-700 block mb-1">Message *</label>
+                  <label htmlFor="contact-message" className="text-xs font-bold text-slate-700 block mb-1">Message *</label>
                   <textarea
+                    id="contact-message"
+                    name="message"
                     required
+                    value={form.message}
+                    onChange={update('message')}
                     placeholder="How can we help?"
                     rows={4}
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-300 focus:border-accent outline-none text-sm font-medium resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 focus:border-accent outline-none text-sm font-medium resize-none"
                   />
                 </div>
                 <button
@@ -156,6 +215,9 @@ const ContactPage: React.FC = () => {
                 >
                   Send Message
                 </button>
+                <p className="text-center text-xs text-slate-500">
+                  This opens your email app with the message ready to send.
+                </p>
               </form>
             )}
           </div>

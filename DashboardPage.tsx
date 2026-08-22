@@ -20,7 +20,7 @@ const DynamicQrThumbnail: React.FC<{ link: DynamicLink; isModal?: boolean; class
       <FramedQrView
         frame={style.frame || 'none'}
         text={style.frameText || 'SCAN ME'}
-        frameColor={style.frameColor || style.fgColor || '#1E1E1E'}
+        frameColor={style.frameColor || style.fgColor || '#0F172A'}
         frameTextColor={style.frameTextColor || '#ffffff'}
         fgColor={style.fgColor || '#000000'}
         bgColor={style.bgColor || '#ffffff'}
@@ -131,14 +131,14 @@ const DashboardPage: React.FC = () => {
       data: qrUrl,
       margin: 12,
       dotsOptions: {
-        color: style.fgColor || '#1E1E1E',
+        color: style.fgColor || '#0F172A',
         type: (style.dotStyle as any) || 'rounded',
       },
       backgroundOptions: {
         color: style.bgColor || '#ffffff',
       },
       cornersSquareOptions: {
-        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        color: style.cornerSquareColor || style.fgColor || '#0F172A',
         type: (style.cornerSquareStyle as any) || 'extra-rounded',
       },
       cornersDotOptions: {
@@ -178,8 +178,8 @@ const DashboardPage: React.FC = () => {
           style.frameText || 'SCAN ME',
           style.fgColor || '#2B6F53',
           style.bgColor || '#ffffff',
-          style.cornerSquareColor || style.fgColor || '#1E1E1E',
-          style.frameColor || style.fgColor || '#1E1E1E',
+          style.cornerSquareColor || style.fgColor || '#0F172A',
+          style.frameColor || style.fgColor || '#0F172A',
           style.frameTextColor || '#ffffff'
         );
         const svgBlob = new Blob([framedSvg], { type: 'image/svg+xml;charset=utf-8' });
@@ -204,8 +204,8 @@ const DashboardPage: React.FC = () => {
         style.frameText || 'SCAN ME',
         style.fgColor || '#2B6F53',
         style.bgColor || '#ffffff',
-        style.cornerSquareColor || style.fgColor || '#1E1E1E',
-        style.frameColor || style.fgColor || '#1E1E1E',
+        style.cornerSquareColor || style.fgColor || '#0F172A',
+        style.frameColor || style.fgColor || '#0F172A',
         style.frameTextColor || '#ffffff'
       );
       

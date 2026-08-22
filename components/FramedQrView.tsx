@@ -58,7 +58,7 @@ export function buildFramedSvg(
 ): string {
   const cleanText = (text || 'SCAN ME').trim().toUpperCase();
   const ctaText = cleanText.length > 0 ? cleanText : 'SCAN ME';
-  const fColor = frameCol || fg || '#1E1E1E';
+  const fColor = frameCol || fg || '#0F172A';
   const tColor = frameTextCol || '#ffffff';
   const bColor = bg || '#ffffff';
 
@@ -312,7 +312,7 @@ export async function renderFramedCanvas(
   frameTextCol?: string
 ): Promise<HTMLCanvasElement> {
   const ctaText = (text || 'SCAN ME').toUpperCase();
-  const fColor = frameCol || fg || '#1E1E1E';
+  const fColor = frameCol || fg || '#0F172A';
   const tColor = frameTextCol || '#ffffff';
   const bColor = bg || '#ffffff';
 
@@ -369,7 +369,7 @@ export const FramedQrView: React.FC<{
 }> = ({
   frame = 'none',
   text = 'SCAN ME',
-  frameColor = '#1E1E1E',
+  frameColor = '#0F172A',
   frameTextColor = '#ffffff',
   fgColor = '#000000',
   bgColor = '#ffffff',

@@ -144,7 +144,7 @@ const QRScannerPage: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
             In-Browser Optical Decoder
           </div>
-          <h1 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight leading-tight">
+          <h1 className="h1-page mb-4">
             Free Online QR Code Scanner & Reader
           </h1>
           <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
@@ -154,9 +154,9 @@ const QRScannerPage: React.FC = () => {
       </section>
 
       {/* ═══════════════════════════ SCANNER INTERFACE ═══════════════════════════ */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-2xl mx-auto px-4">
-          <div className="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden mb-16">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 overflow-hidden mb-16">
             
             {/* Viewport View */}
             <div className="relative bg-slate-950 flex items-center justify-center overflow-hidden" style={{ minHeight: '340px' }}>
@@ -275,10 +275,10 @@ const QRScannerPage: React.FC = () => {
             
             {/* Section 1: In-Browser Optical Decoding Architecture */}
             <article className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase rounded-md">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase rounded-lg">
                 Decoder Mechanics
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 The Complete Guide to Browser-Based Optical QR Code Scanning
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -290,11 +290,11 @@ const QRScannerPage: React.FC = () => {
             </article>
 
             {/* Section 2: Decoding Dynamic vs Static Codes & Security */}
-            <article className="space-y-4 bg-white p-8 rounded-3xl border border-slate-200 shadow-xs">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase rounded-md">
+            <article className="space-y-4 bg-white p-8 rounded-2xl border border-slate-200 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase rounded-lg">
                 Cybersecurity & Safety
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Decoding Dynamic vs. Static QR Codes: Link Verification
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -320,7 +320,7 @@ const QRScannerPage: React.FC = () => {
 
             {/* Section 3: Specialized Payload Parsing */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Supported Payload Standards & Automatic Format Parsing
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -357,7 +357,7 @@ const QRScannerPage: React.FC = () => {
 
             {/* Section 4: Troubleshooting Unscannable Codes */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Troubleshooting Guide: Why Some QR Codes Fail to Scan
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -393,7 +393,7 @@ const QRScannerPage: React.FC = () => {
 
             {/* Section 5: Comparison Table */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Online Web Scanner vs. Native Mobile Apps
               </h2>
               <div className="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-2xs">
@@ -434,7 +434,7 @@ const QRScannerPage: React.FC = () => {
             {/* Section 6: FAQ */}
             <article className="space-y-6">
               <div className="text-center max-w-2xl mx-auto space-y-2">
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">QR Code Scanner FAQ</h2>
                 <p className="text-xs text-slate-500">Answers to common technical questions about scanning and barcode safety.</p>
               </div>
 

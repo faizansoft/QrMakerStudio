@@ -17,15 +17,15 @@ const NotFoundPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-[70vh] flex flex-col justify-center items-center px-4 py-16 text-center bg-neutral-50/50">
+    <div className="min-h-[70vh] flex flex-col justify-center items-center px-4 py-16 text-center bg-slate-50/50">
       <div className="max-w-2xl mx-auto">
         <span className="inline-block px-4 py-1.5 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest rounded-full mb-4">
           Error 404
         </span>
-        <h1 className="text-4xl sm:text-5xl font-black text-neutral-900 mb-4 tracking-tight">
+        <h1 className="h1-page mb-4">
           Page Not Found
         </h1>
-        <p className="text-base sm:text-lg text-neutral-600 mb-8 max-w-xl mx-auto">
+        <p className="text-base sm:text-lg text-slate-600 mb-8 max-w-xl mx-auto">
           The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
         </p>
 
@@ -38,14 +38,14 @@ const NotFoundPage: React.FC = () => {
           </Link>
           <Link
             to="/faqs-qr-code-generator"
-            className="px-6 py-3 bg-white hover:bg-neutral-100 text-neutral-800 font-semibold border border-neutral-300 rounded-xl transition-all"
+            className="px-6 py-3 bg-white hover:bg-slate-100 text-slate-800 font-semibold border border-slate-300 rounded-xl transition-all"
           >
             Help & FAQ
           </Link>
         </div>
 
-        <div className="text-left bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-sm">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-neutral-500 mb-4">
+        <div className="text-left bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight uppercase mb-4">
             Popular QR Code Generators
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -53,12 +53,12 @@ const NotFoundPage: React.FC = () => {
               <Link
                 key={tool.path}
                 to={tool.path}
-                className="p-3 rounded-lg hover:bg-neutral-50 border border-transparent hover:border-neutral-200 transition-colors group"
+                className="p-3 rounded-lg hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-colors group"
               >
-                <div className="font-semibold text-neutral-900 text-sm group-hover:text-emerald-600 transition-colors">
+                <div className="font-semibold text-slate-900 text-sm group-hover:text-emerald-600 transition-colors">
                   {tool.title} &rarr;
                 </div>
-                <div className="text-xs text-neutral-500 mt-0.5">{tool.desc}</div>
+                <div className="text-xs text-slate-500 mt-0.5">{tool.desc}</div>
               </Link>
             ))}
           </div>

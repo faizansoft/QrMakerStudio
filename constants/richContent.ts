@@ -20,6 +20,8 @@ import { FEATURE_RICH_DATA } from '../scripts/featureRichData.js';
 import { BLOG_RICH_DATA } from '../scripts/blogRichData.js';
 // @ts-ignore
 import { COMPANY_RICH_DATA } from '../scripts/companyRichData.js';
+// @ts-ignore
+import { getSectionHeadings as getSectionHeadingsRaw } from '../scripts/sectionHeadings.js';
 
 export interface ContentSection {
   title: string;
@@ -99,3 +101,18 @@ export const getRouteContent = (pathname: string): RouteContent | null =>
 
 export const getRichContent = (pathname: string): RichContent | null =>
   ALL_RICH_DATA[normalisePath(pathname)] || null;
+
+export interface SectionHeadings {
+  steps: string;
+  features: string;
+  useCases: string;
+  faqs: string;
+  bestPractices: string;
+}
+
+/**
+ * Headings for the five templated long-form sections, per page.
+ * Same module the prerenderer reads, so both emit identical H2 text.
+ */
+export const getSectionHeadings = (pathname: string): SectionHeadings =>
+  getSectionHeadingsRaw(normalisePath(pathname)) as SectionHeadings;

@@ -25,29 +25,29 @@ const PrivacyPage: React.FC = () => {
   return (
     <div className="animate-in pb-24 bg-white">
       {/* ═══════════════════════════ HERO HEADER ═══════════════════════════ */}
-      <section className="bg-gradient-hero pt-16 pb-16 border-b border-neutral-100 text-center">
+      <section className="bg-gradient-hero pt-16 pb-16 border-b border-slate-100 text-center">
         <div className="max-w-4xl mx-auto px-4 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full">
             Zero-Tracking Data Guarantee
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight">
+          <h1 className="h1-page">
             Privacy Policy & Data Security
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Your privacy is protected by design. Learn how our browser-based client-side architecture keeps your URLs, contacts, WiFi passwords, and files 100% private.
           </p>
-          <div className="text-xs text-gray-400 pt-2">
+          <div className="text-xs text-slate-500 pt-2">
             Last Updated: August 3, 2026 • Policy Version 2.4
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════ MAIN CONTENT CONTAINER ═══════════════════════════ */}
-      <div className="max-w-4xl mx-auto px-4 py-16 space-y-12 text-gray-700 leading-relaxed">
+      <div className="max-w-4xl mx-auto px-4 py-16 space-y-12 text-slate-700 leading-relaxed">
         
         {/* Section 1 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             1. Core Architectural Privacy Principle: Client-Side Rendering
           </h2>
           <p>
@@ -56,8 +56,8 @@ const PrivacyPage: React.FC = () => {
           <p>
             Traditional online QR code platforms compile barcode matrices on cloud servers, requiring your inputs (such as website addresses, private <Link to="/vcard-qr-code-generator" className="text-accent font-bold hover:underline">vCard contact details</Link>, or confidential <Link to="/wifi-qr-code-generator" className="text-accent font-bold hover:underline">WiFi network passwords</Link>) to be transmitted across HTTP networks to remote databases.
           </p>
-          <div className="bg-[#1E1E1E] text-white p-6 md:p-8 rounded-2xl border border-white/10 space-y-3">
-            <h3 className="text-[#BEF392] font-bold text-lg">🛡️ Zero-Transmission Guarantee</h3>
+          <div className="bg-[#0F172A] text-white p-6 md:p-8 rounded-2xl border border-white/10 space-y-3">
+            <h3 className="text-[#A8D5C2] font-bold text-lg">🛡️ Zero-Transmission Guarantee</h3>
             <p className="text-white/80 text-sm leading-relaxed">
               All barcode rendering in QR Generator Online executes locally inside your personal web browser using client-side JavaScript. Your text, URLs, custom brand logos, and credentials never cross network requests to our servers, ensuring absolute data confidentiality.
             </p>
@@ -66,13 +66,13 @@ const PrivacyPage: React.FC = () => {
 
         {/* Section 2 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             2. Data We Do NOT Collect or Store
           </h2>
           <p>
             Because compilation happens locally inside your device’s memory, we do not log, harvest, or store any of the following payload data:
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-gray-600">
+          <ul className="list-disc pl-6 space-y-2 text-slate-600">
             <li><strong>Payload Content:</strong> Target URLs, text messages, phone numbers, email addresses, or social media links.</li>
             <li><strong>Personal Contact Records:</strong> Names, job titles, business addresses, or phone numbers entered into our <Link to="/vcard-qr-code-generator" className="text-accent font-bold hover:underline">vCard Digital Business Card Generator</Link>.</li>
             <li><strong>WiFi Network Credentials:</strong> SSIDs, WPA2/WPA3 passphrases, or security keys entered into our <Link to="/wifi-qr-code-generator" className="text-accent font-bold hover:underline">WiFi QR Code Generator</Link>.</li>
@@ -82,7 +82,7 @@ const PrivacyPage: React.FC = () => {
 
         {/* Section 3 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             3. Static vs Dynamic QR Codes: The Tracking Difference
           </h2>
           <p>
@@ -95,7 +95,7 @@ const PrivacyPage: React.FC = () => {
 
         {/* Section 4 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             4. Cookies, LocalStorage & Browser Session Data
           </h2>
           <p>
@@ -105,7 +105,7 @@ const PrivacyPage: React.FC = () => {
 
         {/* Section 5 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             5. Anonymous Web Analytics & Performance Metrics
           </h2>
           <p>
@@ -115,7 +115,7 @@ const PrivacyPage: React.FC = () => {
 
         {/* Section 6 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             6. GDPR & CCPA International Compliance
           </h2>
           <p>
@@ -128,7 +128,7 @@ const PrivacyPage: React.FC = () => {
 
         {/* Section 7 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             7. External Third-Party Web Links
           </h2>
           <p>
@@ -138,7 +138,7 @@ const PrivacyPage: React.FC = () => {
 
         {/* Section 8 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             8. Policy Revisions & Updates
           </h2>
           <p>
@@ -148,7 +148,7 @@ const PrivacyPage: React.FC = () => {
 
         {/* Section 9 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             9. Contacting Our Data Privacy Officer
           </h2>
           <p>
@@ -157,14 +157,14 @@ const PrivacyPage: React.FC = () => {
         </section>
 
         {/* Bottom Navigation Buttons */}
-        <div className="pt-8 border-t border-neutral-200 flex flex-wrap gap-4">
+        <div className="pt-8 border-t border-slate-200 flex flex-wrap gap-4">
           <Link to="/terms" className="px-6 py-3 bg-accent text-white font-bold rounded-xl text-xs hover:bg-accent-dark transition-colors shadow-md">
             Read Terms of Service →
           </Link>
-          <Link to="/about" className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-xl text-xs transition-colors">
+          <Link to="/about" className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs transition-colors">
             About QR Generator Online
           </Link>
-          <Link to="/" className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-xl text-xs transition-colors">
+          <Link to="/" className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs transition-colors">
             Create QR Code Now
           </Link>
         </div>

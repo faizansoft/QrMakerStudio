@@ -39,9 +39,9 @@ const AppStoreQRPage: React.FC = () => {
   const [webFallback, setWebFallback] = useState('');
   const [appName, setAppName] = useState('');
   
-  const [fgColor, setFgColor] = useState('#1E1E1E');
+  const [fgColor, setFgColor] = useState('#0F172A');
   const [bgColor, setBgColor] = useState('#ffffff');
-  const [cornerSquareColor, setCornerSquareColor] = useState('#1E1E1E');
+  const [cornerSquareColor, setCornerSquareColor] = useState('#0F172A');
   const [cornerDotColor, setCornerDotColor] = useState('#007AFF');
   const [dotStyle, setDotStyle] = useState<DotType>('rounded');
   const [cornerSquareStyle, setCornerSquareStyle] = useState<CornerSquareType>('extra-rounded');
@@ -188,7 +188,7 @@ const AppStoreQRPage: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
             Smart App Routing
           </div>
-          <h1 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight leading-tight">
+          <h1 className="h1-page mb-4">
             Free App Store QR Code Generator
           </h1>
           <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -198,9 +198,9 @@ const AppStoreQRPage: React.FC = () => {
       </section>
 
       {/* ═══════════════════════════ GENERATOR INTERFACE ═══════════════════════════ */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-5xl mx-auto px-4">
-          <div className="bg-white rounded-3xl shadow-xl border border-slate-200/80 p-6 md:p-8 mb-16">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 p-6 md:p-8 mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               
               {/* Left Column: Form Controls (7 cols) */}
@@ -384,10 +384,10 @@ const AppStoreQRPage: React.FC = () => {
             
             {/* Section 1: Mobile App Acquisition */}
             <article className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase rounded-md">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase rounded-lg">
                 App Growth Architecture
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 The Ultimate Guide to Smart App Store QR Codes & Mobile Acquisition
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -399,11 +399,11 @@ const AppStoreQRPage: React.FC = () => {
             </article>
 
             {/* Section 2: Why Dual Codes Fail vs Unified Smart QR */}
-            <article className="space-y-4 bg-white p-8 rounded-3xl border border-slate-200 shadow-xs">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase rounded-md">
+            <article className="space-y-4 bg-white p-8 rounded-2xl border border-slate-200 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase rounded-lg">
                 Conversion Optimization
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Why Printing Two Separate QR Codes Harms Conversion Rates
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -433,7 +433,7 @@ const AppStoreQRPage: React.FC = () => {
 
             {/* Section 3: High-Converting Offline Touchpoints */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Strategic Offline Placements for Maximum App Downloads
               </h2>
               <div className="grid md:grid-cols-3 gap-6">
@@ -477,8 +477,8 @@ const AppStoreQRPage: React.FC = () => {
             </article>
 
             {/* Section 4: Live Telemetry Analytics */}
-            <article className="space-y-4 bg-slate-900 text-white p-8 rounded-3xl">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">
+            <article className="space-y-4 bg-slate-900 text-white p-8 rounded-2xl">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
                 Live App Scan Telemetry & Channel Attribution
               </h2>
               <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
@@ -502,7 +502,7 @@ const AppStoreQRPage: React.FC = () => {
 
             {/* Section 5: Comparison Table */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Unified App Store QR vs. Manual Store Search
               </h2>
               <div className="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-2xs">
@@ -543,7 +543,7 @@ const AppStoreQRPage: React.FC = () => {
             {/* Section 6: FAQ */}
             <article className="space-y-6">
               <div className="text-center max-w-2xl mx-auto space-y-2">
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">App Store QR Code FAQ</h2>
                 <p className="text-xs text-slate-500">Everything you need to know about multi-platform App Store QR codes.</p>
               </div>
 
@@ -564,12 +564,12 @@ const AppStoreQRPage: React.FC = () => {
       {/* Dynamic Save Modal */}
       {showDynamicSaveModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-          <div className="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-200">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl border border-slate-200">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base font-bold text-slate-900">
                 {savedShortCode ? 'Dynamic App QR Created!' : 'Save Dynamic App Store QR'}
               </h3>
-              <button onClick={() => { setShowDynamicSaveModal(false); setSavedShortCode(null); }} className="text-slate-400 hover:text-slate-600 p-1 rounded-lg">✕</button>
+              <button onClick={() => { setShowDynamicSaveModal(false); setSavedShortCode(null); }} className="text-slate-500 hover:text-slate-600 p-1 rounded-lg">✕</button>
             </div>
 
             {savedShortCode ? (

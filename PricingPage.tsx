@@ -114,7 +114,7 @@ const PricingPage: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
             Radical Transparency
           </div>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-4 tracking-tight leading-tight">
+          <h1 className="h1-page mb-4">
             100% Free Forever. No Hidden Paywalls.
           </h1>
           <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
@@ -129,12 +129,12 @@ const PricingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-20">
 
             {/* 1. Free Community Tier */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-xs flex flex-col justify-between hover:shadow-md transition-all">
+            <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-xs flex flex-col justify-between hover:shadow-md transition-all">
               <div>
                 <div className="inline-block px-3 py-1 bg-slate-100 text-slate-700 text-[11px] font-bold uppercase tracking-wider rounded-lg mb-4">
                   Individual & Creator
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-1">Free Community</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 mb-1">Free Community</h2>
                 <p className="text-xs text-slate-500 mb-6">Standard static generation for personal and physical print use.</p>
                 
                 <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-slate-100">
@@ -179,7 +179,7 @@ const PricingPage: React.FC = () => {
             </div>
 
             {/* 2. Dynamic Pro (Featured Free Account) */}
-            <div className="bg-white rounded-3xl p-8 border-2 border-accent shadow-xl flex flex-col justify-between relative overflow-hidden transform md:-translate-y-2">
+            <div className="bg-white rounded-2xl p-8 border-2 border-accent shadow-xl flex flex-col justify-between relative overflow-hidden transform md:-translate-y-2">
               <div className="absolute top-0 right-0 bg-accent text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-bl-xl shadow-xs">
                 Recommended
               </div>
@@ -187,7 +187,7 @@ const PricingPage: React.FC = () => {
                 <div className="inline-block px-3 py-1 bg-accent/10 text-accent text-[11px] font-bold uppercase tracking-wider rounded-lg mb-4">
                   Growth & Business
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-1">Dynamic Studio</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 mb-1">Dynamic Studio</h2>
                 <p className="text-xs text-slate-500 mb-6">For brands needing real-time destination editing & scan analytics.</p>
                 
                 <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-slate-100">
@@ -232,12 +232,12 @@ const PricingPage: React.FC = () => {
             </div>
 
             {/* 3. Enterprise & High-Volume */}
-            <div className="bg-slate-900 text-white rounded-3xl p-8 border border-slate-800 shadow-xl flex flex-col justify-between">
+            <div className="bg-slate-900 text-white rounded-2xl p-8 border border-slate-800 shadow-xl flex flex-col justify-between">
               <div>
                 <div className="inline-block px-3 py-1 bg-white/10 text-emerald-400 text-[11px] font-bold uppercase tracking-wider rounded-lg mb-4">
                   Scale & Infrastructure
                 </div>
-                <h2 className="text-2xl font-bold text-white mb-1">Enterprise Custom</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-1 text-white">Enterprise Custom</h2>
                 <p className="text-xs text-slate-400 mb-6">For high-throughput ERP systems, packaging lines, and franchises.</p>
                 
                 <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-white/10">
@@ -270,7 +270,7 @@ const PricingPage: React.FC = () => {
 
               <Link
                 to="/contact"
-                className="w-full py-3.5 bg-white/10 hover:bg-white/20 text-[#BEF392] border border-[#BEF392]/30 font-bold rounded-2xl text-center block text-xs transition-colors"
+                className="w-full py-3.5 bg-white/10 hover:bg-white/20 text-[#A8D5C2] border border-[#A8D5C2]/30 font-bold rounded-2xl text-center block text-xs transition-colors"
               >
                 Contact Enterprise Team
               </Link>
@@ -283,10 +283,10 @@ const PricingPage: React.FC = () => {
 
             {/* Section 1: The Predatory Subscription Trap vs Transparent Free */}
             <article className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase rounded-md">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase rounded-lg">
                 Industry Analysis
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 The Truth About QR Code Generator Pricing: Avoiding the "Free Trial" Trap
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -317,11 +317,11 @@ const PricingPage: React.FC = () => {
             {/* Section 2: Complete Feature Matrix Table */}
             <article className="space-y-6">
               <div className="text-center max-w-2xl mx-auto space-y-2">
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">Comprehensive Feature Comparison Matrix</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">Comprehensive Feature Comparison Matrix</h2>
                 <p className="text-xs text-slate-500">Compare features across our Free Community, Dynamic Studio, and Enterprise tiers.</p>
               </div>
 
-              <div className="overflow-x-auto bg-white rounded-3xl border border-slate-200 shadow-2xs">
+              <div className="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-2xs">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-200 text-slate-900 font-bold">
@@ -343,13 +343,13 @@ const PricingPage: React.FC = () => {
                           <tr key={fIdx} className="hover:bg-slate-50 transition-colors">
                             <td className="p-3.5 text-slate-700 font-medium">{feat.name}</td>
                             <td className="p-3.5 text-center">
-                              {feat.free ? <span className="text-emerald-600 font-bold text-sm">✓</span> : <span className="text-slate-300 font-bold">—</span>}
+                              {feat.free ? <span className="text-accent font-bold text-sm" aria-label="Included">✓</span> : <span className="text-slate-500 font-bold" aria-label="Not included">—</span>}
                             </td>
                             <td className="p-3.5 text-center bg-accent/5">
-                              {feat.pro ? <span className="text-accent font-bold text-sm">✓</span> : <span className="text-slate-300 font-bold">—</span>}
+                              {feat.pro ? <span className="text-accent font-bold text-sm" aria-label="Included">✓</span> : <span className="text-slate-500 font-bold" aria-label="Not included">—</span>}
                             </td>
                             <td className="p-3.5 text-center">
-                              {feat.enterprise ? <span className="text-emerald-600 font-bold text-sm">✓</span> : <span className="text-slate-300 font-bold">—</span>}
+                              {feat.enterprise ? <span className="text-accent font-bold text-sm" aria-label="Included">✓</span> : <span className="text-slate-500 font-bold" aria-label="Not included">—</span>}
                             </td>
                           </tr>
                         ))}
@@ -361,11 +361,11 @@ const PricingPage: React.FC = () => {
             </article>
 
             {/* Section 3: Return on Investment (ROI) for Businesses */}
-            <article className="space-y-4 bg-white p-8 rounded-3xl border border-slate-200 shadow-xs">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase rounded-md">
+            <article className="space-y-4 bg-white p-8 rounded-2xl border border-slate-200 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase rounded-lg">
                 Financial Impact
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 Business ROI: Eliminating Printing & Marketing Waste
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -398,7 +398,7 @@ const PricingPage: React.FC = () => {
 
             {/* Section 4: Architecture of Free */}
             <article className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
                 How QR Generator Online Provides Free Tools Sustainably
               </h2>
               <p className="text-sm md:text-base leading-relaxed">
@@ -432,7 +432,7 @@ const PricingPage: React.FC = () => {
             {/* Section 5: FAQ */}
             <article className="space-y-6">
               <div className="text-center max-w-2xl mx-auto space-y-2">
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">Pricing & Licensing FAQ</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">Pricing & Licensing FAQ</h2>
                 <p className="text-xs text-slate-500">Transparent answers to all your pricing, commercial usage, and licensing questions.</p>
               </div>
 

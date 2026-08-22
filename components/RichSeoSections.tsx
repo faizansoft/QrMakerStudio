@@ -1,4 +1,5 @@
 import React from 'react';
+import { getSectionHeadings } from '../constants/richContent';
 import type { RichContent, ContentSection } from '../constants/richContent';
 
 /**
@@ -17,6 +18,8 @@ import type { RichContent, ContentSection } from '../constants/richContent';
 
 interface Props {
   rich: RichContent | null;
+  /** Pathname used to look up page-specific section headings. */
+  pathname: string;
   /**
    * Intro prose from routeContent.sections. Pass this on pages that have no
    * intro section of their own (blog posts); Home and FeaturePage render it
@@ -32,12 +35,12 @@ interface Props {
 }
 
 const SectionShell: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
-  <section className={`border-t border-neutral-100 py-16 md:py-20 ${className}`}>
+  <section className={`border-t border-slate-100 py-16 md:py-20 ${className}`}>
     <div className="mx-auto max-w-4xl px-4">{children}</div>
   </section>
 );
 
-const RichSeoSections: React.FC<Props> = ({ rich, sections, includeSharedSections = false }) => {
+const RichSeoSections: React.FC<Props> = ({ rich, pathname, sections, includeSharedSections = false }) => {
   if (!rich && !sections?.length) return null;
 
   const {
@@ -52,14 +55,16 @@ const RichSeoSections: React.FC<Props> = ({ rich, sections, includeSharedSection
     faqs
   } = rich || {};
 
+  const headings = getSectionHeadings(pathname);
+
   return (
     <>
       {sections?.map((section, si) => (
         <SectionShell key={`intro-${si}`} className="bg-white">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{section.title}</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6">{section.title}</h2>
           <div className="space-y-4">
             {section.paragraphs.map((p, i) => (
-              <p key={i} className="text-base md:text-lg leading-relaxed text-gray-600">{p}</p>
+              <p key={i} className="text-base md:text-lg leading-relaxed text-slate-600">{p}</p>
             ))}
           </div>
         </SectionShell>
@@ -70,33 +75,33 @@ const RichSeoSections: React.FC<Props> = ({ rich, sections, includeSharedSection
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
             Technical Architecture &amp; Protocol
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{technicalOverview.title}</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6">{technicalOverview.title}</h2>
           <div className="space-y-4">
             {technicalOverview.paragraphs.map((p, i) => (
-              <p key={i} className="text-base md:text-lg leading-relaxed text-gray-600">{p}</p>
+              <p key={i} className="text-base md:text-lg leading-relaxed text-slate-600">{p}</p>
             ))}
           </div>
         </SectionShell>
       )}
 
       {comparisonTable && (
-        <SectionShell className="bg-gray-50">
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-8 text-center">{comparisonTable.title}</h2>
-          <div className="overflow-x-auto rounded-2xl border border-neutral-200 bg-white">
+        <SectionShell className="bg-slate-50">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8 text-center">{comparisonTable.title}</h2>
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
             <table className="w-full border-collapse text-left text-sm">
               <thead>
-                <tr className="bg-gray-100 border-b-2 border-neutral-200">
+                <tr className="bg-slate-100 border-b-2 border-slate-200">
                   {comparisonTable.headers.map((h, i) => (
-                    <th key={i} className={`px-4 py-3.5 font-bold ${i === 1 ? 'text-accent' : 'text-gray-900'}`}>{h}</th>
+                    <th key={i} className={`px-4 py-3.5 font-bold ${i === 1 ? 'text-accent' : 'text-slate-900'}`}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {comparisonTable.rows.map((row, idx) => (
-                  <tr key={idx} className={`border-b border-neutral-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
-                    <td className="px-4 py-3 font-semibold text-gray-800">{row[0]}</td>
+                  <tr key={idx} className={`border-b border-slate-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}>
+                    <td className="px-4 py-3 font-semibold text-slate-800">{row[0]}</td>
                     <td className="px-4 py-3 font-semibold text-accent">{row[1]}</td>
-                    <td className="px-4 py-3 text-gray-500">{row[2]}</td>
+                    <td className="px-4 py-3 text-slate-500">{row[2]}</td>
                   </tr>
                 ))}
               </tbody>
@@ -107,26 +112,26 @@ const RichSeoSections: React.FC<Props> = ({ rich, sections, includeSharedSection
 
       {sizingMatrix && (
         <SectionShell className="bg-white">
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-3 text-center">{sizingMatrix.title}</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-3 text-center">{sizingMatrix.title}</h2>
           {sizingMatrix.description && (
-            <p className="text-center text-gray-500 max-w-2xl mx-auto mb-8">{sizingMatrix.description}</p>
+            <p className="text-center text-slate-500 max-w-2xl mx-auto mb-8">{sizingMatrix.description}</p>
           )}
-          <div className="overflow-x-auto rounded-2xl border border-neutral-200 bg-white">
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
             <table className="w-full border-collapse text-left text-sm">
               <thead>
-                <tr className="bg-gray-100 border-b-2 border-neutral-200">
+                <tr className="bg-slate-100 border-b-2 border-slate-200">
                   {sizingMatrix.headers.map((h, i) => (
-                    <th key={i} className="px-4 py-3 font-bold text-gray-900">{h}</th>
+                    <th key={i} className="px-4 py-3 font-bold text-slate-900">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {sizingMatrix.rows.map((row, idx) => (
-                  <tr key={idx} className={`border-b border-neutral-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
-                    <td className="px-4 py-2.5 font-semibold text-gray-800">{row[0]}</td>
-                    <td className="px-4 py-2.5 text-gray-600">{row[1]}</td>
+                  <tr key={idx} className={`border-b border-slate-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}>
+                    <td className="px-4 py-2.5 font-semibold text-slate-800">{row[0]}</td>
+                    <td className="px-4 py-2.5 text-slate-600">{row[1]}</td>
                     <td className="px-4 py-2.5 font-semibold text-accent">{row[2]}</td>
-                    <td className="px-4 py-2.5 text-gray-500">{row[3]}</td>
+                    <td className="px-4 py-2.5 text-slate-500">{row[3]}</td>
                   </tr>
                 ))}
               </tbody>
@@ -136,18 +141,18 @@ const RichSeoSections: React.FC<Props> = ({ rich, sections, includeSharedSection
       )}
 
       {includeSharedSections && steps?.length && (
-        <SectionShell className="bg-gray-50">
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-8 text-center">
-            How to Generate &amp; Deploy (3-Step Practical Manual)
+        <SectionShell className="bg-slate-50">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8 text-center">
+            {headings.steps}
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
             {steps.map((s) => (
-              <div key={s.number} className="rounded-2xl border border-neutral-200 bg-white p-6">
+              <div key={s.number} className="rounded-2xl border border-slate-200 bg-white p-6">
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-accent font-bold text-white">
                   {s.number}
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-gray-900">{s.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-500">{s.description}</p>
+                <h3 className="mb-2 text-lg font-bold text-slate-900">{s.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-500">{s.description}</p>
               </div>
             ))}
           </div>
@@ -156,14 +161,14 @@ const RichSeoSections: React.FC<Props> = ({ rich, sections, includeSharedSection
 
       {includeSharedSections && features?.length && (
         <SectionShell className="bg-white">
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-8 text-center">
-            Core Capabilities &amp; Enterprise Advantages
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8 text-center">
+            {headings.features}
           </h2>
           <div className="grid gap-5 sm:grid-cols-2">
             {features.map((f, i) => (
               <div key={i} className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
                 <h3 className="mb-2 text-base font-bold text-accent">{f.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-600">{f.description}</p>
+                <p className="text-sm leading-relaxed text-slate-600">{f.description}</p>
               </div>
             ))}
           </div>
@@ -171,18 +176,18 @@ const RichSeoSections: React.FC<Props> = ({ rich, sections, includeSharedSection
       )}
 
       {includeSharedSections && useCases?.length && (
-        <SectionShell className="bg-gray-50">
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-8 text-center">
-            Cross-Industry Practical Applications
+        <SectionShell className="bg-slate-50">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8 text-center">
+            {headings.useCases}
           </h2>
           <ul className="grid list-none gap-5 p-0 sm:grid-cols-2">
             {useCases.map((u, i) => (
-              <li key={i} className="rounded-2xl border border-neutral-200 bg-white p-6">
+              <li key={i} className="rounded-2xl border border-slate-200 bg-white p-6">
                 <div className="mb-3 flex h-7 w-7 items-center justify-center rounded-full bg-accent text-xs font-bold text-white">
                   {i + 1}
                 </div>
-                <h3 className="mb-1.5 text-base font-bold text-gray-900">{u.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-500">{u.description}</p>
+                <h3 className="mb-1.5 text-base font-bold text-slate-900">{u.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-500">{u.description}</p>
               </li>
             ))}
           </ul>
@@ -192,7 +197,7 @@ const RichSeoSections: React.FC<Props> = ({ rich, sections, includeSharedSection
       {troubleshooting && (
         <SectionShell className="bg-white">
           <div className="rounded-2xl border border-red-200 bg-red-50 p-7 md:p-9">
-            <h2 className="text-2xl md:text-3xl font-bold text-red-900 mb-5">{troubleshooting.title}</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-red-900 mb-5">{troubleshooting.title}</h2>
             <ul className="list-disc space-y-2.5 pl-5 text-red-900/90 leading-relaxed">
               {troubleshooting.points.map((pt, i) => (
                 <li key={i}>{pt}</li>
@@ -204,19 +209,19 @@ const RichSeoSections: React.FC<Props> = ({ rich, sections, includeSharedSection
 
       {includeSharedSections && faqs?.length && (
         <SectionShell className="bg-white">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 text-center">
-            Comprehensive Technical &amp; Practical FAQ
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-3 text-center">
+            {headings.faqs}
           </h2>
-          <p className="mb-8 text-center text-gray-500">
+          <p className="mb-8 text-center text-slate-500">
             Everything developers, marketers, and business owners need to know.
           </p>
           <div className="space-y-3">
             {faqs.map((f, i) => (
               // <details> keeps the answer in the DOM whether open or closed,
               // which is what lets the FAQPage schema match the page text.
-              <details key={i} className="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
-                <summary className="cursor-pointer p-5 text-base font-bold text-gray-900">{f.q}</summary>
-                <div className="border-t border-neutral-100 px-5 pb-5 pt-3 text-sm leading-relaxed text-gray-600">
+              <details key={i} className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+                <summary className="cursor-pointer p-5 text-base font-bold text-slate-900">{f.q}</summary>
+                <div className="border-t border-slate-100 px-5 pb-5 pt-3 text-sm leading-relaxed text-slate-600">
                   {f.a}
                 </div>
               </details>
@@ -227,11 +232,11 @@ const RichSeoSections: React.FC<Props> = ({ rich, sections, includeSharedSection
 
       {bestPractices && (
         <SectionShell className="bg-white">
-          <div className="rounded-2xl bg-[#111827] p-7 md:p-9">
-            <h2 className="text-xl md:text-2xl font-bold text-emerald-400 mb-3">
-              Production Checklist &amp; Scanning Quality Assurance
+          <div className="rounded-2xl bg-[#0F172A] p-7 md:p-9">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-emerald-400 mb-3">
+              {headings.bestPractices}
             </h2>
-            <p className="text-gray-300 leading-relaxed">{bestPractices}</p>
+            <p className="text-slate-300 leading-relaxed">{bestPractices}</p>
           </div>
         </SectionShell>
       )}

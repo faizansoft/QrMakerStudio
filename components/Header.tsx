@@ -112,7 +112,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white">
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white">
         <div className="flex items-center justify-between px-4 py-3">
           {/* Left: Logo + Nav */}
           <div className="flex items-center gap-3 lg:gap-4 xl:gap-8">
@@ -122,7 +122,7 @@ export const Header: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
                 </svg>
               </div>
-              <span className="text-lg font-bold text-gray-900 tracking-tight hidden sm:block">QR Generator Online</span>
+              <span className="text-lg font-bold text-slate-900 tracking-tight hidden sm:block">QR Generator Online</span>
             </Link>
 
             {/* Desktop Nav */}
@@ -130,7 +130,7 @@ export const Header: React.FC = () => {
               <Link
                 to="/"
                 onClick={handleCreateClick}
-                className="whitespace-nowrap text-sm xl:text-base transition-colors text-gray-900 hover:text-accent font-medium"
+                className="whitespace-nowrap text-sm xl:text-base transition-colors text-slate-900 hover:text-accent font-medium"
               >
                 QR Generator
               </Link>
@@ -139,19 +139,19 @@ export const Header: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => toggleDropdown('types')}
-                  className="flex items-center gap-1 whitespace-nowrap text-sm xl:text-base transition-colors text-gray-900 hover:text-accent font-medium"
+                  className="flex items-center gap-1 whitespace-nowrap text-sm xl:text-base transition-colors text-slate-900 hover:text-accent font-medium"
                 >
                   {t('nav_tools')}
                   <ChevronIcon />
                 </button>
                 {openDropdown === 'types' && (
-                  <div className="absolute left-0 top-full z-50 mt-2 w-56 max-h-[420px] overflow-y-auto rounded-xl border border-neutral-200 bg-white py-2 shadow-xl">
+                  <div className="absolute left-0 top-full z-50 mt-2 w-56 max-h-[420px] overflow-y-auto rounded-xl border border-slate-200 bg-white py-2 shadow-xl">
                     {qrTypes.map(item => (
                       <Link
                         key={item.href}
                         to={item.href}
                         onClick={() => setOpenDropdown(null)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-neutral-50 hover:text-accent transition-colors"
+                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -164,19 +164,19 @@ export const Header: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => toggleDropdown('features')}
-                  className="flex items-center gap-1 whitespace-nowrap text-sm xl:text-base transition-colors text-gray-900 hover:text-accent font-medium"
+                  className="flex items-center gap-1 whitespace-nowrap text-sm xl:text-base transition-colors text-slate-900 hover:text-accent font-medium"
                 >
                   {t('nav_features')}
                   <ChevronIcon />
                 </button>
                 {openDropdown === 'features' && (
-                  <div className="absolute left-0 top-full z-50 mt-2 w-56 rounded-xl border border-neutral-200 bg-white py-2 shadow-xl">
+                  <div className="absolute left-0 top-full z-50 mt-2 w-56 rounded-xl border border-slate-200 bg-white py-2 shadow-xl">
                     {features.map(item => (
                       <Link
                         key={item.label}
                         to={item.href}
                         onClick={() => setOpenDropdown(null)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-neutral-50 hover:text-accent transition-colors"
+                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -200,19 +200,19 @@ export const Header: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => toggleDropdown('resources')}
-                  className="flex items-center gap-1 whitespace-nowrap text-sm xl:text-base transition-colors text-gray-900 hover:text-accent font-medium"
+                  className="flex items-center gap-1 whitespace-nowrap text-sm xl:text-base transition-colors text-slate-900 hover:text-accent font-medium"
                 >
                   {t('nav_resources')}
                   <ChevronIcon />
                 </button>
                 {openDropdown === 'resources' && (
-                  <div className="absolute left-0 top-full z-50 mt-2 w-48 rounded-xl border border-neutral-200 bg-white py-2 shadow-xl">
+                  <div className="absolute left-0 top-full z-50 mt-2 w-48 rounded-xl border border-slate-200 bg-white py-2 shadow-xl">
                     {resources.map(item => (
                       <Link
                         key={item.label}
                         to={item.href}
                         onClick={() => setOpenDropdown(null)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-neutral-50 hover:text-accent transition-colors"
+                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -223,7 +223,7 @@ export const Header: React.FC = () => {
 
               <Link
                 to="/pricing"
-                className="whitespace-nowrap text-sm xl:text-base transition-colors text-gray-900 hover:text-accent font-medium"
+                className="whitespace-nowrap text-sm xl:text-base transition-colors text-slate-900 hover:text-accent font-medium"
               >
                 {t('nav_pricing')}
               </Link>
@@ -236,7 +236,7 @@ export const Header: React.FC = () => {
             <div className="relative" ref={langRef}>
               <button
                 onClick={() => setShowLang(!showLang)}
-                className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm xl:text-base text-gray-500 hover:bg-neutral-100 hover:text-gray-900"
+                className="flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-sm xl:text-base text-slate-500 hover:bg-slate-100 hover:text-slate-900"
                 aria-label="Select language"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -249,12 +249,12 @@ export const Header: React.FC = () => {
                 </svg>
               </button>
               {showLang && (
-                <div className="absolute right-0 top-full z-50 mt-1 w-48 max-h-[400px] overflow-y-auto rounded-xl border border-neutral-200 bg-white py-1 shadow-xl">
+                <div className="absolute right-0 top-full z-50 mt-1 w-48 max-h-[400px] overflow-y-auto rounded-xl border border-slate-200 bg-white py-1 shadow-xl">
                   {languageMeta.map(lang => (
                     <button
                       key={lang.code}
                       onClick={() => { setLanguage(lang.code as SupportedLanguage); setShowLang(false); }}
-                      className={`flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-neutral-50 transition-colors ${language === lang.code ? 'font-semibold text-accent' : 'text-gray-600 hover:text-gray-900'}`}
+                      className={`flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-slate-50 transition-colors ${language === lang.code ? 'font-semibold text-accent' : 'text-slate-600 hover:text-slate-900'}`}
                     >
                       <span>{lang.native}</span>
                       {language === lang.code && (
@@ -278,7 +278,7 @@ export const Header: React.FC = () => {
                   <div className="w-7 h-7 rounded-lg bg-accent text-white font-bold text-xs flex items-center justify-center">
                     {user.email?.charAt(0).toUpperCase() || 'U'}
                   </div>
-                  <span className="text-xs font-semibold text-gray-700 max-w-[120px] truncate hidden xl:inline">
+                  <span className="text-xs font-semibold text-slate-700 max-w-[120px] truncate hidden xl:inline">
                     {user.email}
                   </span>
                   <ChevronIcon />
@@ -287,7 +287,7 @@ export const Header: React.FC = () => {
                 {showUserMenu && (
                   <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-200 py-2 z-50 animate-fadeIn">
                     <div className="px-4 py-2 border-b border-slate-100">
-                      <p className="text-[10px] uppercase font-bold text-slate-400">Signed in as</p>
+                      <p className="text-[10px] uppercase font-bold text-slate-500">Signed in as</p>
                       <p className="text-xs font-bold text-slate-900 truncate">{user.email}</p>
                     </div>
                     <Link
@@ -295,7 +295,7 @@ export const Header: React.FC = () => {
                       onClick={() => setShowUserMenu(false)}
                       className="flex items-center gap-2 px-4 py-2.5 text-xs text-slate-700 hover:bg-slate-50 hover:text-accent font-medium transition-colors"
                     >
-                      <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                       </svg>
                       My QR Codes
@@ -305,7 +305,7 @@ export const Header: React.FC = () => {
                       onClick={handleCreateClick}
                       className="flex items-center gap-2 px-4 py-2.5 text-xs text-slate-700 hover:bg-slate-50 hover:text-accent font-medium transition-colors"
                     >
-                      <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
                       </svg>
                       Create New QR
@@ -328,7 +328,7 @@ export const Header: React.FC = () => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => handleOpenAuth('signin')}
-                  className="px-3.5 py-1.5 text-sm font-semibold text-gray-700 hover:text-accent transition-colors"
+                  className="px-3.5 py-1.5 text-sm font-semibold text-slate-700 hover:text-accent transition-colors"
                 >
                   Log In
                 </button>
@@ -364,34 +364,34 @@ export const Header: React.FC = () => {
               className="flex flex-col gap-1.5 p-1"
               aria-label="Toggle menu"
             >
-              <span className={`block h-0.5 w-6 bg-gray-900 transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`block h-0.5 w-6 bg-gray-900 transition-opacity ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`block h-0.5 w-6 bg-gray-900 transition-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-slate-900 transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-slate-900 transition-opacity ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-slate-900 transition-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <nav className="lg:hidden border-t border-neutral-200 bg-white px-4 py-4 space-y-1">
-            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-medium text-gray-900 hover:bg-neutral-50 rounded-lg">
+          <nav className="lg:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1">
+            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-lg">
               QR Code Generator
             </Link>
             <Link to={user ? "/dashboard" : "/login"} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-bold text-emerald-700 hover:bg-emerald-50 rounded-lg">
               My QR Codes & Analytics
             </Link>
             <div className="px-3 py-2">
-              <p className="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2">QR Code Types</p>
+              <p className="text-xs font-bold uppercase text-slate-500 tracking-wider mb-2">QR Code Types</p>
               <div className="grid grid-cols-2 gap-1">
                 {qrTypes.slice(0, 12).map(item => (
-                  <Link key={item.href} to={item.href} onClick={() => setMobileMenuOpen(false)} className="px-2 py-1.5 text-xs text-gray-600 hover:text-accent transition-colors truncate">
+                  <Link key={item.href} to={item.href} onClick={() => setMobileMenuOpen(false)} className="px-2 py-1.5 text-xs text-slate-600 hover:text-accent transition-colors truncate">
                     {item.label}
                   </Link>
                 ))}
               </div>
             </div>
             {user ? (
-              <div className="border-t border-neutral-100 pt-2 px-3">
+              <div className="border-t border-slate-100 pt-2 px-3">
                 <button
                   onClick={() => { signOut(); setMobileMenuOpen(false); }}
                   className="w-full text-left py-2 text-sm text-red-600 font-bold"
@@ -400,7 +400,7 @@ export const Header: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <div className="border-t border-neutral-100 pt-3 flex gap-2 px-3">
+              <div className="border-t border-slate-100 pt-3 flex gap-2 px-3">
                 <button
                   onClick={() => handleOpenAuth('signin')}
                   className="flex-1 py-2 bg-slate-100 text-slate-800 text-xs font-bold rounded-xl"

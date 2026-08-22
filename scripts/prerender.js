@@ -8,6 +8,10 @@ import { COMPANY_RICH_DATA } from './companyRichData.js';
 // Route copy is shared with the React app so the prerendered HTML and the
 // client-rendered DOM stay in lockstep. See scripts/routeContent.js.
 import { ROUTE_CONTENT as ROUTES } from './routeContent.js';
+import { getSectionHeadings } from './sectionHeadings.js';
+// Copy lifted from the utility page components at build time so the static
+// HTML matches what those pages actually render. See extractPageContent.js.
+import { GENERATED_PAGE_CONTENT } from './generatedPageContent.js';
 
 const ALL_RICH_DATA = {
   ...TOOL_RICH_DATA,
@@ -121,21 +125,21 @@ const FOOTER_GROUPS = [
 
 function buildHeaderHtml() {
   return `
-    <header class="prerender-header" style="background:#ffffff; border-bottom:1px solid #e5e7eb; padding:16px 24px;">
+    <header class="prerender-header" style="background:#ffffff; border-bottom:1px solid #E2E8F0; padding:16px 24px;">
       <div style="max-width:1280px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-        <a href="/" style="display:flex; align-items:center; gap:8px; font-weight:800; font-size:20px; color:#111827; text-decoration:none;">
+        <a href="/" style="display:flex; align-items:center; gap:8px; font-weight:800; font-size:20px; color:#0F172A; text-decoration:none;">
           <span style="display:inline-block; width:28px; height:28px; background:#2B6F53; border-radius:6px;"></span>
           QR Generator Online
         </a>
         <nav style="display:flex; gap:16px; flex-wrap:wrap; font-size:14px; font-weight:600;">
           <a href="/" style="color:#2B6F53; text-decoration:none;">Home</a>
-          <a href="/wifi-qr-code-generator" style="color:#4b5563; text-decoration:none;">WiFi QR</a>
-          <a href="/url-qr-code-generator" style="color:#4b5563; text-decoration:none;">URL QR</a>
-          <a href="/vcard-qr-code-generator" style="color:#4b5563; text-decoration:none;">vCard QR</a>
-          <a href="/qr-code-with-logo" style="color:#4b5563; text-decoration:none;">Logo QR</a>
-          <a href="/pricing" style="color:#4b5563; text-decoration:none;">Pricing</a>
-          <a href="/faqs-qr-code-generator" style="color:#4b5563; text-decoration:none;">FAQ</a>
-          <a href="/blog" style="color:#4b5563; text-decoration:none;">Blog</a>
+          <a href="/wifi-qr-code-generator" style="color:#475569; text-decoration:none;">WiFi QR</a>
+          <a href="/url-qr-code-generator" style="color:#475569; text-decoration:none;">URL QR</a>
+          <a href="/vcard-qr-code-generator" style="color:#475569; text-decoration:none;">vCard QR</a>
+          <a href="/qr-code-with-logo" style="color:#475569; text-decoration:none;">Logo QR</a>
+          <a href="/pricing" style="color:#475569; text-decoration:none;">Pricing</a>
+          <a href="/faqs-qr-code-generator" style="color:#475569; text-decoration:none;">FAQ</a>
+          <a href="/blog" style="color:#475569; text-decoration:none;">Blog</a>
         </nav>
       </div>
     </header>
@@ -145,7 +149,7 @@ function buildHeaderHtml() {
 function buildFooterHtml() {
   const columns = FOOTER_GROUPS.map(group => {
     const items = group.hrefs.map(href =>
-      `<li><a href="${href}" style="color:#9ca3af; text-decoration:none; font-size:13px; display:block; padding:3px 0;">${LINK_LABELS[href] || href}</a></li>`
+      `<li><a href="${href}" style="color:#94A3B8; text-decoration:none; font-size:13px; display:block; padding:3px 0;">${LINK_LABELS[href] || href}</a></li>`
     ).join('');
     return `
           <div>
@@ -155,13 +159,14 @@ function buildFooterHtml() {
   }).join('');
 
   return `
-    <footer class="prerender-footer" style="background:#111827; color:#ffffff; padding:52px 24px 32px;">
+    <footer class="prerender-footer" style="background:#0F172A; color:#ffffff; padding:52px 24px 32px;">
       <div style="max-width:1280px; margin:0 auto;">
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:36px; margin-bottom:40px;">${columns}
         </div>
-        <div style="margin-bottom:24px;"><a href="mailto:support@qr-generator.online" style="color:#34d399; font-size:12px; text-decoration:none;">support@qr-generator.online</a></div>
-        <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; text-align:center; color:#9ca3af; font-size:13px;">
+        <div style="margin-bottom:24px;"><a href="mailto:support@qr-generator.online" style="color:#A8D5C2; font-size:12px; text-decoration:none;">support@qr-generator.online</a></div>
+        <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; text-align:center; color:#94A3B8; font-size:13px;">
           <p>© ${new Date().getFullYear()} QR Generator Online. All rights reserved. Free QR Code Generator.</p>
+          <p style="margin-top:12px; font-size:11px; line-height:1.7; color:#64748B;">QR Code is a registered trademark of Denso Wave Incorporated. All other product and company names, logos and brands referenced on this site &mdash; including WhatsApp, PayPal, Instagram, Facebook, YouTube, LinkedIn, X, TikTok, Telegram, Google Forms, Google Maps, the App Store, Google Play, Paytm and PhonePe &mdash; are the property of their respective owners. QR Generator Online is an independent tool and is not affiliated with, endorsed by, or sponsored by any of them.</p>
         </div>
       </div>
     </footer>
@@ -169,42 +174,50 @@ function buildFooterHtml() {
 }
 
 function buildBodyHtml(route) {
-  const sectionsHtml = (route.sections || []).map(sec => `
+  // Utility pages keep their copy in JSX; extractPageContent.js pulls it out
+  // at build time so the prerendered HTML is not thinner than the rendered DOM.
+  const generated = GENERATED_PAGE_CONTENT[route.path] || [];
+  const allSections = [...(route.sections || []), ...generated];
+
+  const sectionsHtml = allSections.map(sec => `
     <div style="margin-bottom:28px;">
-      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:12px;">${sec.title}</h2>
-      ${sec.paragraphs.map(p => `<p style="color:#4b5563; font-size:15px; line-height:1.7; margin-bottom:12px;">${p}</p>`).join('')}
+      <h2 style="font-size:22px; font-weight:700; color:#0F172A; margin-bottom:12px;">${sec.title}</h2>
+      ${sec.paragraphs.map(p => `<p style="color:#475569; font-size:15px; line-height:1.7; margin-bottom:12px;">${p}</p>`).join('')}
     </div>
   `).join('');
 
   // Look up rich structured data for all routes (tools, features, blog, company)
   const rich = ALL_RICH_DATA[route.path] || null;
 
+  // Section headings are page-specific; see scripts/sectionHeadings.js.
+  const headings = getSectionHeadings(route.path);
+
   const techOverviewHtml = rich && rich.technicalOverview ? `
-    <section style="margin-top:40px; padding:32px; background:#f9fafb; border:1px solid #e5e7eb; border-radius:16px;">
+    <section style="margin-top:40px; padding:32px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:16px;">
       <div style="display:inline-block; padding:4px 12px; background:rgba(43,111,83,0.1); color:#2B6F53; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; border-radius:9999px; margin-bottom:12px;">
         Technical Architecture &amp; Protocol
       </div>
-      <h2 style="font-size:24px; font-weight:800; color:#111827; margin-bottom:16px;">${rich.technicalOverview.title}</h2>
-      ${rich.technicalOverview.paragraphs.map(p => `<p style="color:#4b5563; font-size:15px; line-height:1.75; margin-bottom:14px;">${p}</p>`).join('')}
+      <h2 style="font-size:24px; font-weight:800; color:#0F172A; margin-bottom:16px;">${rich.technicalOverview.title}</h2>
+      ${rich.technicalOverview.paragraphs.map(p => `<p style="color:#475569; font-size:15px; line-height:1.75; margin-bottom:14px;">${p}</p>`).join('')}
     </section>
   ` : '';
 
   const comparisonTableHtml = rich && rich.comparisonTable ? `
-    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
-      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:20px; text-align:center;">${rich.comparisonTable.title}</h2>
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #E2E8F0;">
+      <h2 style="font-size:22px; font-weight:700; color:#0F172A; margin-bottom:20px; text-align:center;">${rich.comparisonTable.title}</h2>
       <div style="overflow-x:auto; margin-bottom:20px;">
-        <table style="width:100%; border-collapse:collapse; background:#fff; border:1px solid #e5e7eb; border-radius:12px; font-size:14px; text-align:left;">
+        <table style="width:100%; border-collapse:collapse; background:#fff; border:1px solid #E2E8F0; border-radius:12px; font-size:14px; text-align:left;">
           <thead>
-            <tr style="background:#f3f4f6; border-bottom:2px solid #e5e7eb;">
-              ${rich.comparisonTable.headers.map((h, i) => `<th style="padding:14px 16px; font-weight:700; color:${i === 1 ? '#166534' : '#111827'};">${h}</th>`).join('')}
+            <tr style="background:#F1F5F9; border-bottom:2px solid #E2E8F0;">
+              ${rich.comparisonTable.headers.map((h, i) => `<th style="padding:14px 16px; font-weight:700; color:${i === 1 ? '#1F5A42' : '#0F172A'};">${h}</th>`).join('')}
             </tr>
           </thead>
           <tbody>
             ${rich.comparisonTable.rows.map((row, idx) => `
-              <tr style="border-bottom:1px solid #e5e7eb; background:${idx % 2 === 0 ? '#fff' : '#f9fafb'};">
-                <td style="padding:12px 16px; font-weight:600; color:#1f2937;">${row[0]}</td>
-                <td style="padding:12px 16px; color:#166534; font-weight:600;">${row[1]}</td>
-                <td style="padding:12px 16px; color:#6b7280;">${row[2]}</td>
+              <tr style="border-bottom:1px solid #E2E8F0; background:${idx % 2 === 0 ? '#fff' : '#F8FAFC'};">
+                <td style="padding:12px 16px; font-weight:600; color:#1E293B;">${row[0]}</td>
+                <td style="padding:12px 16px; color:#1F5A42; font-weight:600;">${row[1]}</td>
+                <td style="padding:12px 16px; color:#64748B;">${row[2]}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -214,14 +227,14 @@ function buildBodyHtml(route) {
   ` : '';
 
   const stepsHtml = rich && rich.steps ? `
-    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
-      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:20px; text-align:center;">How to Generate &amp; Deploy (3-Step Practical Manual)</h2>
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #E2E8F0;">
+      <h2 style="font-size:22px; font-weight:700; color:#0F172A; margin-bottom:20px; text-align:center;">${headings.steps}</h2>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px;">
         ${rich.steps.map(s => `
-          <div style="background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:22px;">
+          <div style="background:#fff; border:1px solid #E2E8F0; border-radius:12px; padding:22px;">
             <div style="width:36px; height:36px; background:#2B6F53; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; margin-bottom:12px;">${s.number}</div>
-            <h3 style="font-size:16px; font-weight:700; color:#111827; margin-bottom:8px;">${s.title}</h3>
-            <p style="font-size:13px; color:#6b7280; line-height:1.6; margin:0;">${s.description}</p>
+            <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin-bottom:8px;">${s.title}</h3>
+            <p style="font-size:13px; color:#64748B; line-height:1.6; margin:0;">${s.description}</p>
           </div>
         `).join('')}
       </div>
@@ -229,13 +242,13 @@ function buildBodyHtml(route) {
   ` : '';
 
   const featuresHtml = rich && rich.features ? `
-    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
-      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:20px; text-align:center;">Core Capabilities &amp; Enterprise Advantages</h2>
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #E2E8F0;">
+      <h2 style="font-size:22px; font-weight:700; color:#0F172A; margin-bottom:20px; text-align:center;">${headings.features}</h2>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;">
         ${rich.features.map(f => `
-          <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; padding:20px;">
-            <h3 style="font-size:15px; font-weight:700; color:#166534; margin-bottom:8px;">${f.title}</h3>
-            <p style="font-size:13px; color:#4b5563; line-height:1.6; margin:0;">${f.description}</p>
+          <div style="background:#EEF6F2; border:1px solid #CBE5DA; border-radius:12px; padding:20px;">
+            <h3 style="font-size:15px; font-weight:700; color:#1F5A42; margin-bottom:8px;">${f.title}</h3>
+            <p style="font-size:13px; color:#475569; line-height:1.6; margin:0;">${f.description}</p>
           </div>
         `).join('')}
       </div>
@@ -243,23 +256,23 @@ function buildBodyHtml(route) {
   ` : '';
 
   const sizingMatrixHtml = rich && rich.sizingMatrix ? `
-    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
-      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:10px; text-align:center;">${rich.sizingMatrix.title}</h2>
-      <p style="text-align:center; color:#6b7280; font-size:14px; max-width:720px; margin:0 auto 20px;">${rich.sizingMatrix.description}</p>
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #E2E8F0;">
+      <h2 style="font-size:22px; font-weight:700; color:#0F172A; margin-bottom:10px; text-align:center;">${rich.sizingMatrix.title}</h2>
+      <p style="text-align:center; color:#64748B; font-size:14px; max-width:720px; margin:0 auto 20px;">${rich.sizingMatrix.description}</p>
       <div style="overflow-x:auto; margin-bottom:20px;">
-        <table style="width:100%; border-collapse:collapse; background:#fff; border:1px solid #e5e7eb; border-radius:12px; font-size:13px; text-align:left;">
+        <table style="width:100%; border-collapse:collapse; background:#fff; border:1px solid #E2E8F0; border-radius:12px; font-size:13px; text-align:left;">
           <thead>
-            <tr style="background:#f3f4f6; border-bottom:2px solid #e5e7eb;">
-              ${rich.sizingMatrix.headers.map(h => `<th style="padding:12px 14px; font-weight:700; color:#111827;">${h}</th>`).join('')}
+            <tr style="background:#F1F5F9; border-bottom:2px solid #E2E8F0;">
+              ${rich.sizingMatrix.headers.map(h => `<th style="padding:12px 14px; font-weight:700; color:#0F172A;">${h}</th>`).join('')}
             </tr>
           </thead>
           <tbody>
             ${rich.sizingMatrix.rows.map((row, idx) => `
-              <tr style="border-bottom:1px solid #e5e7eb; background:${idx % 2 === 0 ? '#fff' : '#f9fafb'};">
-                <td style="padding:10px 14px; font-weight:600; color:#1f2937;">${row[0]}</td>
-                <td style="padding:10px 14px; color:#4b5563;">${row[1]}</td>
-                <td style="padding:10px 14px; color:#166534; font-weight:600;">${row[2]}</td>
-                <td style="padding:10px 14px; color:#6b7280;">${row[3]}</td>
+              <tr style="border-bottom:1px solid #E2E8F0; background:${idx % 2 === 0 ? '#fff' : '#F8FAFC'};">
+                <td style="padding:10px 14px; font-weight:600; color:#1E293B;">${row[0]}</td>
+                <td style="padding:10px 14px; color:#475569;">${row[1]}</td>
+                <td style="padding:10px 14px; color:#1F5A42; font-weight:600;">${row[2]}</td>
+                <td style="padding:10px 14px; color:#64748B;">${row[3]}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -269,14 +282,14 @@ function buildBodyHtml(route) {
   ` : '';
 
   const useCasesHtml = rich && rich.useCases ? `
-    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
-      <h2 style="font-size:22px; font-weight:700; color:#111827; margin-bottom:20px; text-align:center;">Cross-Industry Practical Applications</h2>
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #E2E8F0;">
+      <h2 style="font-size:22px; font-weight:700; color:#0F172A; margin-bottom:20px; text-align:center;">${headings.useCases}</h2>
       <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;">
         ${rich.useCases.map((u, i) => `
-          <li style="background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:20px;">
+          <li style="background:#fff; border:1px solid #E2E8F0; border-radius:12px; padding:20px;">
             <div style="width:26px; height:26px; background:#2B6F53; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; margin-bottom:10px;">${i+1}</div>
-            <h3 style="font-size:15px; font-weight:700; color:#111827; margin-bottom:6px;">${u.title}</h3>
-            <p style="font-size:13px; color:#6b7280; line-height:1.6; margin:0;">${u.description}</p>
+            <h3 style="font-size:15px; font-weight:700; color:#0F172A; margin-bottom:6px;">${u.title}</h3>
+            <p style="font-size:13px; color:#64748B; line-height:1.6; margin:0;">${u.description}</p>
           </li>
         `).join('')}
       </ul>
@@ -284,23 +297,23 @@ function buildBodyHtml(route) {
   ` : '';
 
   const troubleshootingHtml = rich && rich.troubleshooting ? `
-    <section style="margin-top:48px; padding:28px 32px; background:#fef2f2; border:1px solid #fecaca; border-radius:16px;">
-      <h2 style="font-size:20px; font-weight:800; color:#991b1b; margin-bottom:16px;">${rich.troubleshooting.title}</h2>
-      <ul style="margin:0; padding-left:20px; color:#7f1d1d; font-size:14px; line-height:1.75;">
+    <section style="margin-top:48px; padding:28px 32px; background:#FEF2F2; border:1px solid #FECACA; border-radius:16px;">
+      <h2 style="font-size:20px; font-weight:800; color:#991B1B; margin-bottom:16px;">${rich.troubleshooting.title}</h2>
+      <ul style="margin:0; padding-left:20px; color:#7F1D1D; font-size:14px; line-height:1.75;">
         ${rich.troubleshooting.points.map(pt => `<li style="margin-bottom:10px;">${pt}</li>`).join('')}
       </ul>
     </section>
   ` : '';
 
   const faqsHtml = rich && rich.faqs ? `
-    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #e5e7eb;">
-      <h2 style="font-size:24px; font-weight:800; color:#111827; margin-bottom:8px; text-align:center;">Comprehensive Technical &amp; Practical FAQ</h2>
-      <p style="text-align:center; color:#6b7280; font-size:14px; margin-bottom:24px;">Everything developers, marketers, and business owners need to know.</p>
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #E2E8F0;">
+      <h2 style="font-size:24px; font-weight:800; color:#0F172A; margin-bottom:8px; text-align:center;">${headings.faqs}</h2>
+      <p style="text-align:center; color:#64748B; font-size:14px; margin-bottom:24px;">Everything developers, marketers, and business owners need to know.</p>
       <div style="max-width:820px; margin:0 auto;">
         ${rich.faqs.map(f => `
-          <details style="border:1px solid #e5e7eb; border-radius:10px; margin-bottom:12px; background:#fff; overflow:hidden;">
-            <summary style="padding:16px 20px; font-size:15px; font-weight:700; color:#111827; cursor:pointer; list-style:none;">${f.q}</summary>
-            <div style="padding:0 20px 16px; font-size:14px; color:#4b5563; line-height:1.7; border-top:1px solid #f3f4f6;">${f.a}</div>
+          <details style="border:1px solid #E2E8F0; border-radius:10px; margin-bottom:12px; background:#fff; overflow:hidden;">
+            <summary style="padding:16px 20px; font-size:15px; font-weight:700; color:#0F172A; cursor:pointer; list-style:none;">${f.q}</summary>
+            <div style="padding:0 20px 16px; font-size:14px; color:#475569; line-height:1.7; border-top:1px solid #F1F5F9;">${f.a}</div>
           </details>
         `).join('')}
       </div>
@@ -308,9 +321,9 @@ function buildBodyHtml(route) {
   ` : '';
 
   const bestPracticesHtml = rich && rich.bestPractices ? `
-    <section style="margin-top:48px; padding:28px 32px; background:#111827; border-radius:16px; color:#fff;">
-      <h2 style="font-size:18px; font-weight:700; color:#34d399; margin-bottom:10px;">Production Checklist &amp; Scanning Quality Assurance</h2>
-      <p style="font-size:14px; color:#d1d5db; line-height:1.8; margin:0;">${rich.bestPractices}</p>
+    <section style="margin-top:48px; padding:28px 32px; background:#0F172A; border-radius:16px; color:#fff;">
+      <h2 style="font-size:18px; font-weight:700; color:#A8D5C2; margin-bottom:10px;">${headings.bestPractices}</h2>
+      <p style="font-size:14px; color:#CBD5E1; line-height:1.8; margin:0;">${rich.bestPractices}</p>
     </section>
   ` : '';
 
@@ -322,19 +335,19 @@ function buildBodyHtml(route) {
           <span style="display:inline-block; padding:6px 14px; background:rgba(43,111,83,0.1); color:#2B6F53; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; border-radius:9999px; margin-bottom:16px;">
             ${route.badge || 'QR Code Generator'}
           </span>
-          <h1 style="font-size:32px; sm:font-size:44px; font-weight:800; color:#111827; line-height:1.2; margin-bottom:16px; max-width:900px; margin-left:auto; margin-right:auto;">
+          <h1 style="font-size:32px; sm:font-size:44px; font-weight:800; color:#0F172A; line-height:1.2; margin-bottom:16px; max-width:900px; margin-left:auto; margin-right:auto;">
             ${route.h1}
           </h1>
-          <p style="font-size:17px; color:#4b5563; line-height:1.6; max-width:760px; margin:0 auto 28px;">
+          <p style="font-size:17px; color:#475569; line-height:1.6; max-width:760px; margin:0 auto 28px;">
             ${route.lead}
           </p>
           <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
             <a href="/" style="padding:12px 24px; background:#2B6F53; color:#ffffff; font-weight:700; border-radius:10px; text-decoration:none; display:inline-block;">Create QR Code Now</a>
-            <a href="/pricing" style="padding:12px 24px; background:#ffffff; color:#374151; font-weight:600; border:1px solid #d1d5db; border-radius:10px; text-decoration:none; display:inline-block;">View Features</a>
+            <a href="/pricing" style="padding:12px 24px; background:#ffffff; color:#334155; font-weight:600; border:1px solid #CBD5E1; border-radius:10px; text-decoration:none; display:inline-block;">View Features</a>
           </div>
         </div>
 
-        <div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:16px; padding:32px; margin-bottom:36px;">
+        <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:16px; padding:32px; margin-bottom:36px;">
           ${sectionsHtml}
         </div>
 
@@ -349,28 +362,28 @@ function buildBodyHtml(route) {
         ${bestPracticesHtml}
 
         <!-- Contextual In-Content Link Equity Mesh -->
-        <section style="margin-top:48px; padding:32px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:16px;">
-          <h3 style="font-size:20px; font-weight:800; color:#166534; margin-bottom:12px;">Explore Related Free QR Code Generators &amp; Guides</h3>
-          <p style="color:#15803d; font-size:14px; line-height:1.6; margin-bottom:18px;">
+        <section style="margin-top:48px; padding:32px; background:#EEF6F2; border:1px solid #CBE5DA; border-radius:16px;">
+          <h3 style="font-size:20px; font-weight:800; color:#1F5A42; margin-bottom:12px;">Explore Related Free QR Code Generators &amp; Guides</h3>
+          <p style="color:#2B6F53; font-size:14px; line-height:1.6; margin-bottom:18px;">
             Enhance your workflow with complementary tools from QR Generator Online. Create high-resolution vector assets with zero scan caps:
           </p>
           <div style="display:flex; flex-wrap:wrap; gap:10px;">
-            <a href="/url-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">URL QR Generator</a>
-            <a href="/wifi-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">WiFi QR Generator</a>
-            <a href="/vcard-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">vCard Business Cards</a>
-            <a href="/qr-code-with-logo" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Logo QR Generator</a>
-            <a href="/svg-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Vector SVG Export</a>
-            <a href="/colored-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Colored QR Codes</a>
-            <a href="/blog/printing-qr-codes-guide" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Print Sizing Guide</a>
-            <a href="/pricing" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #86efac; color:#166534; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Free Pricing Guarantee</a>
+            <a href="/url-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">URL QR Generator</a>
+            <a href="/wifi-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">WiFi QR Generator</a>
+            <a href="/vcard-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">vCard Business Cards</a>
+            <a href="/qr-code-with-logo" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Logo QR Generator</a>
+            <a href="/svg-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Vector SVG Export</a>
+            <a href="/colored-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Colored QR Codes</a>
+            <a href="/blog/printing-qr-codes-guide" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Print Sizing Guide</a>
+            <a href="/pricing" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Free Pricing Guarantee</a>
           </div>
         </section>
 
         <!-- Webmaster Embed & Citation Link Magnet -->
-        <section style="margin-top:36px; padding:24px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px;">
-          <h4 style="font-size:15px; font-weight:700; color:#1e293b; margin-bottom:8px;">Cite or Link to this Free Resource</h4>
-          <p style="font-size:13px; color:#64748b; margin-bottom:12px;">Webmasters, educators, and designers can cite or link to this tool using the HTML snippet below:</p>
-          <textarea readonly style="width:100%; height:54px; font-family:monospace; font-size:12px; padding:8px; border:1px solid #cbd5e1; border-radius:6px; background:#ffffff; color:#334155; resize:none;" onclick="this.select()">&lt;a href="${route.canonical}" target="_blank" rel="noopener"&gt;Free ${route.badge || 'QR Code Generator'} by QR Generator Online&lt;/a&gt;</textarea>
+        <section style="margin-top:36px; padding:24px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px;">
+          <h4 style="font-size:15px; font-weight:700; color:#1E293B; margin-bottom:8px;">Cite or Link to this Free Resource</h4>
+          <p style="font-size:13px; color:#64748B; margin-bottom:12px;">Webmasters, educators, and designers can cite or link to this tool using the HTML snippet below:</p>
+          <textarea readonly style="width:100%; height:54px; font-family:monospace; font-size:12px; padding:8px; border:1px solid #CBD5E1; border-radius:6px; background:#ffffff; color:#334155; resize:none;" onclick="this.select()">&lt;a href="${route.canonical}" target="_blank" rel="noopener"&gt;Free ${route.badge || 'QR Code Generator'} by QR Generator Online&lt;/a&gt;</textarea>
         </section>
       </main>
       ${buildFooterHtml()}

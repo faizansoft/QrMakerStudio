@@ -25,29 +25,29 @@ const TermsPage: React.FC = () => {
   return (
     <div className="animate-in pb-24 bg-white">
       {/* ═══════════════════════════ HERO HEADER ═══════════════════════════ */}
-      <section className="bg-gradient-hero pt-16 pb-16 border-b border-neutral-100 text-center">
+      <section className="bg-gradient-hero pt-16 pb-16 border-b border-slate-100 text-center">
         <div className="max-w-4xl mx-auto px-4 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full">
             Commercial Usage Governance
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight">
+          <h1 className="h1-page">
             Terms of Service & Usage Rights
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Full commercial ownership, transparent governance, print scannability standards, and acceptable usage rules.
           </p>
-          <div className="text-xs text-gray-400 pt-2">
+          <div className="text-xs text-slate-500 pt-2">
             Last Updated: August 3, 2026 • Policy Version 2.4
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════ MAIN CONTENT CONTAINER ═══════════════════════════ */}
-      <div className="max-w-4xl mx-auto px-4 py-16 space-y-12 text-gray-700 leading-relaxed">
+      <div className="max-w-4xl mx-auto px-4 py-16 space-y-12 text-slate-700 leading-relaxed">
         
         {/* Section 1 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             1. Unrestricted Commercial Ownership & Royalty-Free Rights
           </h2>
           <p>
@@ -56,9 +56,9 @@ const TermsPage: React.FC = () => {
           <p>
             You are free to print, publish, broadcast, distribute, or sell marketing collateral, product packaging, corporate stationery, clothing, and digital media containing QR codes created on our platform. We impose zero mandatory attribution requirements, zero licensing fees, and zero scan limits.
           </p>
-          <div className="bg-gray-50 border border-neutral-200 p-6 rounded-2xl space-y-2 text-sm">
-            <h3 className="font-bold text-gray-900 uppercase text-xs tracking-wider text-accent">Summary of Commercial Rights</h3>
-            <ul className="list-disc pl-5 space-y-1 text-gray-600">
+          <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl space-y-2 text-sm">
+            <h3 className="font-bold text-slate-900 uppercase text-xs tracking-wider text-accent">Summary of Commercial Rights</h3>
+            <ul className="list-disc pl-5 space-y-1 text-slate-600">
               <li>Commercial & Personal Use: 100% Free forever.</li>
               <li>Watermarks & Attribution: Zero watermarks or required back-links.</li>
               <li>Scan Limits: Unlimited scans for the lifetime of your printed material.</li>
@@ -69,7 +69,7 @@ const TermsPage: React.FC = () => {
 
         {/* Section 2 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             2. ISO/IEC 18004 Standard Compliance & Print Scannability Disclaimer
           </h2>
           <p>
@@ -78,24 +78,24 @@ const TermsPage: React.FC = () => {
           <p>
             Variables such as low color contrast, insufficient outer Quiet Zone margins, tiny print scaling below 0.8 inches (2cm), reflective glossy lamination under direct sunlight, or damaged camera lenses can impact scan success.
           </p>
-          <div className="bg-[#1E1E1E] text-white p-6 md:p-8 rounded-2xl border border-white/10 space-y-3">
-            <h3 className="text-[#BEF392] font-bold text-base uppercase tracking-wider">Mandatory Pre-Print Proofing Checklist</h3>
+          <div className="bg-[#0F172A] text-white p-6 md:p-8 rounded-2xl border border-white/10 space-y-3">
+            <h3 className="text-[#A8D5C2] font-bold text-base uppercase tracking-wider">Mandatory Pre-Print Proofing Checklist</h3>
             <ul className="space-y-2 text-xs md:text-sm text-white/90">
               <li className="flex items-start gap-2">
-                <span className="text-[#BEF392]">✓</span>
+                <span className="text-[#A8D5C2]">✓</span>
                 <span>Always perform test scans using multiple iOS and Android mobile devices on printed proofs before initiating commercial print runs.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#BEF392]">✓</span>
-                <span>Use <Link to="/svg-qr-code-generator" className="text-[#BEF392] underline font-bold">Vector SVG Export</Link> for commercial print press orders, posters, and billboards.</span>
+                <span className="text-[#A8D5C2]">✓</span>
+                <span>Use <Link to="/svg-qr-code-generator" className="text-[#A8D5C2] underline font-bold">Vector SVG Export</Link> for commercial print press orders, posters, and billboards.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#BEF392]">✓</span>
-                <span>Maintain strong optical contrast between dark pattern dots and light backgrounds using our <Link to="/colored-qr-code-generator" className="text-[#BEF392] underline font-bold">Colored QR Code Generator</Link>.</span>
+                <span className="text-[#A8D5C2]">✓</span>
+                <span>Maintain strong optical contrast between dark pattern dots and light backgrounds using our <Link to="/colored-qr-code-generator" className="text-[#A8D5C2] underline font-bold">Colored QR Code Generator</Link>.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#BEF392]">✓</span>
-                <span>Enable <Link to="/qr-code-with-logo" className="text-[#BEF392] underline font-bold">Level H Error Correction</Link> when inserting company logos in the center of the barcode.</span>
+                <span className="text-[#A8D5C2]">✓</span>
+                <span>Enable <Link to="/qr-code-with-logo" className="text-[#A8D5C2] underline font-bold">Level H Error Correction</Link> when inserting company logos in the center of the barcode.</span>
               </li>
             </ul>
           </div>
@@ -103,7 +103,7 @@ const TermsPage: React.FC = () => {
 
         {/* Section 3 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             3. Static QR Code Payload Modification Limitations
           </h2>
           <p>
@@ -116,26 +116,26 @@ const TermsPage: React.FC = () => {
 
         {/* Section 4 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             4. Acceptable Use Policy & Prohibited Conduct
           </h2>
           <p>
             You agree to use QR Generator Online exclusively for lawful business and personal purposes. You are strictly prohibited from generating QR codes that link to or promote:
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-gray-600">
+          <ul className="list-disc pl-6 space-y-2 text-slate-600">
             <li>Malicious software, phishing schemes, ransomware, or spyware distribution.</li>
             <li>Fraudulent financial schemes, deceptive spam, or unauthorized phishing landing pages.</li>
             <li>Illegal goods, unauthorized distribution of copyrighted materials, or hate speech.</li>
             <li>Content that violates international intellectual property or privacy laws.</li>
           </ul>
-          <p className="text-xs text-gray-500 italic">
+          <p className="text-xs text-slate-500 italic">
             We reserve the right to report malicious phishing or illegal content to cybersecurity clearinghouses and domain registrar authorities.
           </p>
         </section>
 
         {/* Section 5 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             5. Intellectual Property & Brand Trademarks
           </h2>
           <p>
@@ -145,7 +145,7 @@ const TermsPage: React.FC = () => {
 
         {/* Section 6 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             6. Disclaimer of Warranties
           </h2>
           <p>
@@ -158,7 +158,7 @@ const TermsPage: React.FC = () => {
 
         {/* Section 7 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             7. Limitation of Liability
           </h2>
           <p>
@@ -168,7 +168,7 @@ const TermsPage: React.FC = () => {
 
         {/* Section 8 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             8. Governing Law & Jurisdiction
           </h2>
           <p>
@@ -178,7 +178,7 @@ const TermsPage: React.FC = () => {
 
         {/* Section 9 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             9. Service Modifications & Terms Updates
           </h2>
           <p>
@@ -188,7 +188,7 @@ const TermsPage: React.FC = () => {
 
         {/* Section 10 */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 border-b border-neutral-200 pb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight border-b border-slate-200 pb-2">
             10. Contacting Legal & Support
           </h2>
           <p>
@@ -197,14 +197,14 @@ const TermsPage: React.FC = () => {
         </section>
 
         {/* Bottom Navigation Buttons */}
-        <div className="pt-8 border-t border-neutral-200 flex flex-wrap gap-4">
+        <div className="pt-8 border-t border-slate-200 flex flex-wrap gap-4">
           <Link to="/privacy" className="px-6 py-3 bg-accent text-white font-bold rounded-xl text-xs hover:bg-accent-dark transition-colors shadow-md">
             Read Privacy Policy →
           </Link>
-          <Link to="/about" className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-xl text-xs transition-colors">
+          <Link to="/about" className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs transition-colors">
             About Our Studio
           </Link>
-          <Link to="/" className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-xl text-xs transition-colors">
+          <Link to="/" className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs transition-colors">
             Create QR Code Now
           </Link>
         </div>

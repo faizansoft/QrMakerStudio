@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import QRCodeStyling from 'qr-code-styling';
 import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS } from './constants';
 import { TOOL_SEO_DATA } from './constants/toolSeoData';
-import { getRichContent, getRouteContent } from './constants/richContent';
+import { getRichContent, getRouteContent, getSectionHeadings } from './constants/richContent';
 import RichSeoSections from './components/RichSeoSections';
 import { getRouteMeta } from './constants/routeMeta';
 import { DotType, CornerSquareType, CornerDotType } from './types';
@@ -246,9 +246,9 @@ const TABS = [
 // Template Presets
 const TEMPLATES = [
   { id: 'default', name: 'Default Standard', fgColor: '#000000', bgColor: '#ffffff', cornerSquareColor: '#000000', cornerDotColor: '#000000', dotType: 'square' as DotType, cornerSquareType: 'square' as CornerSquareType, cornerDotType: 'square' as CornerDotType },
-  { id: 'emerald', name: 'Emerald Green', fgColor: '#2B6F53', bgColor: '#ffffff', cornerSquareColor: '#1E1E1E', cornerDotColor: '#2B6F53', dotType: 'rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
+  { id: 'emerald', name: 'Emerald Green', fgColor: '#2B6F53', bgColor: '#ffffff', cornerSquareColor: '#0F172A', cornerDotColor: '#2B6F53', dotType: 'rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
   { id: 'ocean', name: 'Deep Ocean', fgColor: '#0284c7', bgColor: '#f0f9ff', cornerSquareColor: '#0369a1', cornerDotColor: '#0284c7', dotType: 'classy-rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
-  { id: 'midnight', name: 'Dark Luxe', fgColor: '#f8fafc', bgColor: '#0f172a', cornerSquareColor: '#38bdf8', cornerDotColor: '#38bdf8', dotType: 'dots' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
+  { id: 'midnight', name: 'Dark Luxe', fgColor: '#F8FAFC', bgColor: '#0f172a', cornerSquareColor: '#38bdf8', cornerDotColor: '#38bdf8', dotType: 'dots' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
   { id: 'sunset', name: 'Sunset Amber', fgColor: '#d97706', bgColor: '#fffbeb', cornerSquareColor: '#b45309', cornerDotColor: '#d97706', dotType: 'extra-rounded' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
   { id: 'purple', name: 'Royal Violet', fgColor: '#7c3aed', bgColor: '#f5f3ff', cornerSquareColor: '#5b21b6', cornerDotColor: '#7c3aed', dotType: 'classy' as DotType, cornerSquareType: 'extra-rounded' as CornerSquareType, cornerDotType: 'dot' as CornerDotType },
 ];
@@ -318,7 +318,7 @@ const DynamicModalQrPreview: React.FC<{ link: DynamicLink }> = ({ link }) => {
       <FramedQrView
         frame={style.frame || 'none'}
         text={style.frameText || 'SCAN ME'}
-        frameColor={style.frameColor || style.fgColor || '#1E1E1E'}
+        frameColor={style.frameColor || style.fgColor || '#0F172A'}
         frameTextColor={style.frameTextColor || '#ffffff'}
         fgColor={style.fgColor || '#000000'}
         bgColor={style.bgColor || '#ffffff'}
@@ -392,7 +392,7 @@ function buildFramedSvg(
 ): string {
   const cleanText = (text || 'SCAN ME').trim().toUpperCase();
   const ctaText = cleanText.length > 0 ? cleanText : 'SCAN ME';
-  const fColor = frameCol || fg || '#1E1E1E';
+  const fColor = frameCol || fg || '#0F172A';
   const tColor = frameTextCol || '#ffffff';
   const bColor = bg || '#ffffff';
 
@@ -646,7 +646,7 @@ async function renderFramedCanvas(
   frameTextCol?: string
 ): Promise<HTMLCanvasElement> {
   const ctaText = (text || 'SCAN ME').toUpperCase();
-  const fColor = frameCol || fg || '#1E1E1E';
+  const fColor = frameCol || fg || '#0F172A';
   const tColor = frameTextCol || '#ffffff';
   const bColor = bg || '#ffffff';
 
@@ -828,7 +828,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
   // Frame & Badge Customization State
   const [selectedFrame, setSelectedFrame] = useState<FrameStyle>('none');
   const [frameText, setFrameText] = useState('SCAN ME');
-  const [frameColor, setFrameColor] = useState('#1E1E1E');
+  const [frameColor, setFrameColor] = useState('#0F172A');
   const [frameTextColor, setFrameTextColor] = useState('#ffffff');
   const [frameCategory, setFrameCategory] = useState<string>('All');
 
@@ -1011,19 +1011,15 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
   // versions are the longer ones, so prefer them and keep the section headings
   // the prerenderer uses — otherwise the static HTML and the rendered DOM
   // describe the same page with different copy.
-  const stepsTitle = richContent?.steps?.length
-    ? 'How to Generate & Deploy (3-Step Practical Manual)'
-    : currentSeo.stepsTitle;
+  const sectionHeadings = useMemo(() => getSectionHeadings(pathname), [pathname]);
+
+  const stepsTitle = richContent?.steps?.length ? sectionHeadings.steps : currentSeo.stepsTitle;
   const stepItems = richContent?.steps?.length ? richContent.steps : currentSeo.steps;
 
-  const featuresTitle = richContent?.features?.length
-    ? 'Core Capabilities & Enterprise Advantages'
-    : currentSeo.featuresTitle;
+  const featuresTitle = richContent?.features?.length ? sectionHeadings.features : currentSeo.featuresTitle;
   const featureItems = richContent?.features?.length ? richContent.features : currentSeo.features;
 
-  const useCasesTitle = richContent?.useCases?.length
-    ? 'Cross-Industry Practical Applications'
-    : currentSeo.useCasesTitle;
+  const useCasesTitle = richContent?.useCases?.length ? sectionHeadings.useCases : currentSeo.useCasesTitle;
   const useCaseItems = richContent?.useCases?.length ? richContent.useCases : currentSeo.useCases;
 
   // Intro prose: routeContent.sections is what the prerenderer emits.
@@ -1372,14 +1368,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
       data: qrUrl,
       margin: 12,
       dotsOptions: {
-        color: style.fgColor || '#1E1E1E',
+        color: style.fgColor || '#0F172A',
         type: (style.dotStyle as any) || 'rounded',
       },
       backgroundOptions: {
         color: style.bgColor || '#ffffff',
       },
       cornersSquareOptions: {
-        color: style.cornerSquareColor || style.fgColor || '#1E1E1E',
+        color: style.cornerSquareColor || style.fgColor || '#0F172A',
         type: (style.cornerSquareStyle as any) || 'extra-rounded',
       },
       cornersDotOptions: {
@@ -1419,8 +1415,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
           style.frameText || 'SCAN ME',
           style.fgColor || '#2B6F53',
           style.bgColor || '#ffffff',
-          style.cornerSquareColor || style.fgColor || '#1E1E1E',
-          style.frameColor || style.fgColor || '#1E1E1E',
+          style.cornerSquareColor || style.fgColor || '#0F172A',
+          style.frameColor || style.fgColor || '#0F172A',
           style.frameTextColor || '#ffffff'
         );
         const svgBlob = new Blob([framedSvg], { type: 'image/svg+xml;charset=utf-8' });
@@ -1445,8 +1441,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
         style.frameText || 'SCAN ME',
         style.fgColor || '#2B6F53',
         style.bgColor || '#ffffff',
-        style.cornerSquareColor || style.fgColor || '#1E1E1E',
-        style.frameColor || style.fgColor || '#1E1E1E',
+        style.cornerSquareColor || style.fgColor || '#0F172A',
+        style.frameColor || style.fgColor || '#0F172A',
         style.frameTextColor || '#ffffff'
       );
       
@@ -1495,10 +1491,10 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-3 mt-6 lg:mt-0">
                   {routeContent?.badge || currentSeo.badge}
                 </div>
-                <h1 className="mb-4 text-[26px] font-bold text-gray-900 leading-tight md:text-4xl lg:text-5xl">
+                <h1 className="h1-page mb-4">
                   {routeMeta.h1}
                 </h1>
-                <p className="mb-8 text-base text-gray-600 md:text-lg max-w-2xl mx-auto leading-relaxed">
+                <p className="mb-8 text-base text-slate-600 md:text-lg max-w-2xl mx-auto leading-relaxed">
                   {routeContent?.lead || currentSeo.subheadline}
                 </p>
               </div>
@@ -1506,7 +1502,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
             {/* ──── DARK QR GENERATOR WIDGET ──── */}
             <div className="order-1 lg:order-2 w-full max-w-[1205px]" id="qr-generator">
-              <div className="bg-[#1E1E1E] rounded-[20px] overflow-hidden w-full max-w-[1205px] mx-auto shadow-2xl">
+              <div className="bg-[#0F172A] rounded-[20px] overflow-hidden w-full max-w-[1205px] mx-auto shadow-2xl">
                 <div className="flex flex-col min-[700px]:flex-row min-h-[440px] pt-4 px-0 pb-0 min-[700px]:p-6">
 
                   {/* LEFT PANEL: Scrollable Tabs + Input Form */}
@@ -1538,7 +1534,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                             className={`shrink-0 flex flex-col items-center gap-[4px] px-[12px] py-[8px] rounded-[8px] text-[12px] font-medium whitespace-nowrap transition-all ${
                               activeTab === tab.id
                                 ? 'bg-white/15 text-[#e7ffd3] shadow-md border border-white/20'
-                                : 'text-[#BEF392] hover:bg-white/5 opacity-80 hover:opacity-100'
+                                : 'text-[#A8D5C2] hover:bg-white/5 opacity-80 hover:opacity-100'
                             }`}
                           >
                             <span className="shrink-0">{tab.icon}</span>
@@ -1645,7 +1641,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                     </div>
                                   ) : (
                                     <>
-                                      <svg className="w-8 h-8 text-[#BEF392] mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <svg className="w-8 h-8 text-[#A8D5C2] mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                                       </svg>
                                       <span className="text-xs font-bold text-white block">
@@ -2138,7 +2134,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                         <span className="text-white/90 font-semibold">{scannabilityInfo.label}</span>
                       </div>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${scannabilityInfo.color}`}>
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-lg border ${scannabilityInfo.color}`}>
                         {scannabilityInfo.badge}
                       </span>
                     </div>
@@ -2221,7 +2217,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         <button
                           onClick={() => handleDownload('png')}
                           disabled={!generated}
-                          className={`h-10 rounded-lg text-xs font-bold text-white transition-colors flex-1 ${generated ? 'bg-accent hover:bg-accent-dark' : 'bg-[#C7C7C7] cursor-not-allowed'}`}
+                          className={`h-10 rounded-lg text-xs font-bold text-white transition-colors flex-1 ${generated ? 'bg-accent hover:bg-accent-dark' : 'bg-slate-200 text-slate-500 cursor-not-allowed'}`}
                         >
                           Download PNG
                         </button>
@@ -2229,7 +2225,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           onClick={() => handleDownload('svg')}
                           disabled={!generated}
                           title="Download SVG Vector"
-                          className={`h-10 px-3 rounded-lg text-xs font-bold text-white transition-colors ${generated ? 'bg-accent/80 hover:bg-accent' : 'bg-[#C7C7C7] cursor-not-allowed'}`}
+                          className={`h-10 px-3 rounded-lg text-xs font-bold text-white transition-colors ${generated ? 'bg-accent/80 hover:bg-accent' : 'bg-slate-200 text-slate-500 cursor-not-allowed'}`}
                         >
                           SVG
                         </button>
@@ -2242,7 +2238,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               ? 'bg-emerald-600 ring-2 ring-emerald-400 scale-105'
                               : generated
                               ? 'bg-white/10 hover:bg-white/20'
-                              : 'bg-[#C7C7C7] cursor-not-allowed'
+                              : 'bg-slate-200 text-slate-500 cursor-not-allowed'
                           }`}
                         >
                           {copiedToast ? (
@@ -2279,7 +2275,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       {/* Customize Options Button (Opens Step-by-Step Modal) */}
                       <button
                         onClick={() => setShowCustomize(true)}
-                        className="w-full py-2.5 bg-white/10 hover:bg-white/20 text-[#BEF392] font-semibold rounded-lg text-xs flex items-center justify-center gap-2 border border-white/15 transition-all shadow-xs"
+                        className="w-full py-2.5 bg-white/10 hover:bg-white/20 text-[#A8D5C2] font-semibold rounded-lg text-xs flex items-center justify-center gap-2 border border-white/15 transition-all shadow-xs"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -2293,7 +2289,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                 {/* ════════ STEP-BY-STEP QR CUSTOMIZATION MODAL ════════ */}
                 {showCustomize && (
                   <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-in">
-                    <div className="bg-[#141414] border border-white/15 rounded-3xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+                    <div className="bg-[#141414] border border-white/15 rounded-2xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
                       
                       {/* Modal Header */}
                       <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#1a1a1a]">
@@ -2331,7 +2327,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                             onClick={() => setCustomStep(s.step)}
                             className={`py-3 px-2 flex items-center justify-center gap-1.5 transition-colors border-b-2 ${
                               customStep === s.step
-                                ? 'border-[#BEF392] text-[#BEF392] bg-white/5 font-bold'
+                                ? 'border-[#A8D5C2] text-[#A8D5C2] bg-white/5 font-bold'
                                 : 'border-transparent text-white/60 hover:text-white hover:bg-white/5'
                             }`}
                           >
@@ -2368,7 +2364,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   onChange={(e) => setFrameText(e.target.value)}
                                   placeholder="e.g. SCAN ME"
                                   maxLength={28}
-                                  className="w-full bg-white/10 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-[#BEF392]"
+                                  className="w-full bg-white/10 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-[#A8D5C2]"
                                 />
                                 
                                 {/* Quick CTA Presets */}
@@ -2390,7 +2386,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                         onClick={() => setFrameText(preset)}
                                         className={`text-[10px] px-2.5 py-1 rounded-full border transition-all ${
                                           frameText === preset
-                                            ? 'bg-[#BEF392] text-slate-950 border-[#BEF392] shadow-xs font-bold'
+                                            ? 'bg-[#A8D5C2] text-slate-950 border-[#A8D5C2] shadow-xs font-bold'
                                             : 'bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white'
                                         }`}
                                       >
@@ -2426,7 +2422,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                       onClick={() => setFrameCategory(cat)}
                                       className={`text-xs px-3 py-1 rounded-full font-semibold transition-all ${
                                         frameCategory === cat
-                                          ? 'bg-[#BEF392] text-slate-950 shadow-xs'
+                                          ? 'bg-[#A8D5C2] text-slate-950 shadow-xs'
                                           : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
                                       }`}
                                     >
@@ -2445,7 +2441,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                         onClick={() => handleSelectFrame(f.id)}
                                         className={`p-2.5 rounded-2xl border text-left transition-all flex flex-col justify-between gap-2 relative group ${
                                           selectedFrame === f.id
-                                            ? 'border-[#BEF392] bg-[#BEF392]/10 ring-2 ring-[#BEF392]/40 shadow-lg'
+                                            ? 'border-[#A8D5C2] bg-[#A8D5C2]/10 ring-2 ring-[#A8D5C2]/40 shadow-lg'
                                             : 'border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20'
                                         }`}
                                       >
@@ -2464,7 +2460,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                                         <div className="flex items-center justify-between w-full px-0.5">
                                           <div className="truncate">
-                                            <span className={`text-xs font-bold block leading-tight truncate ${selectedFrame === f.id ? 'text-[#BEF392]' : 'text-white'}`}>
+                                            <span className={`text-xs font-bold block leading-tight truncate ${selectedFrame === f.id ? 'text-[#A8D5C2]' : 'text-white'}`}>
                                               {f.label}
                                             </span>
                                             <span className="text-[10px] text-white/40 uppercase tracking-wider block font-medium mt-0.5">
@@ -2472,7 +2468,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                             </span>
                                           </div>
                                           {selectedFrame === f.id && (
-                                            <span className="w-2.5 h-2.5 rounded-full bg-[#BEF392] shrink-0 ml-1 shadow-sm shadow-[#BEF392]/50" />
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#A8D5C2] shrink-0 ml-1 shadow-sm shadow-[#A8D5C2]/50" />
                                           )}
                                         </div>
                                       </button>
@@ -2496,7 +2492,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                 <label className="text-xs font-bold text-white/80 block">Curated High-Contrast Palettes</label>
                                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                                   {[
-                                    { name: 'Emerald', fg: '#2B6F53', bg: '#ffffff', sq: '#1E1E1E', dot: '#2B6F53' },
+                                    { name: 'Emerald', fg: '#2B6F53', bg: '#ffffff', sq: '#0F172A', dot: '#2B6F53' },
                                     { name: 'Obsidian', fg: '#0f172a', bg: '#ffffff', sq: '#0f172a', dot: '#0f172a' },
                                     { name: 'Indigo', fg: '#4338ca', bg: '#ffffff', sq: '#312e81', dot: '#4338ca' },
                                     { name: 'Crimson', fg: '#be123c', bg: '#ffffff', sq: '#881337', dot: '#be123c' },
@@ -2593,7 +2589,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                     {/* Quick Frame Color Swatches */}
                                     <div className="flex items-center gap-1.5 pt-1">
                                       {[
-                                        '#1E1E1E',
+                                        '#0F172A',
                                         '#2B6F53',
                                         '#4338CA',
                                         '#BE123C',
@@ -2639,7 +2635,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                     
                                     {/* Palette Swatches */}
                                     <div className="flex items-center gap-1.5 pt-0.5">
-                                      {['#ffffff', '#000000', '#BEF392', '#fbbf24', '#f87171', '#60a5fa', '#34d399', '#e879f9'].map((c) => (
+                                      {['#ffffff', '#000000', '#A8D5C2', '#fbbf24', '#f87171', '#60a5fa', '#34d399', '#e879f9'].map((c) => (
                                         <button
                                           key={c}
                                           onClick={() => setFrameTextColor(c)}
@@ -2676,10 +2672,10 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                         Black Text
                                       </button>
                                       <button
-                                        onClick={() => setFrameTextColor('#BEF392')}
+                                        onClick={() => setFrameTextColor('#A8D5C2')}
                                         className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all ${
-                                          frameTextColor.toLowerCase() === '#bef392'
-                                            ? 'bg-[#BEF392] text-slate-950 border-[#BEF392]'
+                                          frameTextColor.toLowerCase() === '#A8D5C2'
+                                            ? 'bg-[#A8D5C2] text-slate-950 border-[#A8D5C2]'
                                             : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
                                         }`}
                                       >
@@ -2711,7 +2707,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                       onClick={() => setDotStyle(s.value as DotType)}
                                       className={`p-3 rounded-xl border text-center transition-all ${
                                         dotStyle === s.value
-                                          ? 'border-accent bg-accent/20 text-[#BEF392] font-bold shadow-md'
+                                          ? 'border-accent bg-accent/20 text-[#A8D5C2] font-bold shadow-md'
                                           : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10'
                                       }`}
                                     >
@@ -2731,7 +2727,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                       onClick={() => setCornerSquareStyle(s.value as CornerSquareType)}
                                       className={`p-3 rounded-xl border text-center transition-all ${
                                         cornerSquareStyle === s.value
-                                          ? 'border-accent bg-accent/20 text-[#BEF392] font-bold shadow-md'
+                                          ? 'border-accent bg-accent/20 text-[#A8D5C2] font-bold shadow-md'
                                           : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10'
                                       }`}
                                     >
@@ -2751,7 +2747,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                       onClick={() => setCornerDotStyle(s.value as CornerDotType)}
                                       className={`p-3 rounded-xl border text-center transition-all ${
                                         cornerDotStyle === s.value
-                                          ? 'border-accent bg-accent/20 text-[#BEF392] font-bold shadow-md'
+                                          ? 'border-accent bg-accent/20 text-[#A8D5C2] font-bold shadow-md'
                                           : 'border-white/10 bg-white/5 text-white/70 hover:bg-white/10'
                                       }`}
                                     >
@@ -2778,7 +2774,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   <svg className="w-8 h-8 mx-auto text-accent mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                                   </svg>
-                                  <span className="text-xs text-[#BEF392] block font-bold">Click to Upload Logo Image</span>
+                                  <span className="text-xs text-[#A8D5C2] block font-bold">Click to Upload Logo Image</span>
                                   <span className="text-[10px] text-white/40 block mt-0.5">Supports PNG, JPG, SVG, WebP (Square ratio recommended)</span>
                                   <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
                                 </label>
@@ -2807,7 +2803,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         <div className="md:col-span-4 flex flex-col items-center justify-start bg-black/40 border border-white/10 rounded-2xl p-4 sticky top-0">
                           <div className="w-full flex items-center justify-between mb-3 text-xs">
                             <span className="text-white/60 font-semibold">Live Simulation</span>
-                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${scannabilityInfo.color}`}>
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-lg border ${scannabilityInfo.color}`}>
                               {scannabilityInfo.score}% Scan Score
                             </span>
                           </div>
@@ -2849,7 +2845,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               setCornerDotStyle('square');
                               setLogoSrc(null);
                               setFrameText('SCAN ME');
-                              setFrameColor('#1E1E1E');
+                              setFrameColor('#0F172A');
                               setFrameTextColor('#ffffff');
                               setActiveTemplate('default');
                             }}
@@ -2872,7 +2868,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           {customStep < 4 ? (
                             <button
                               onClick={() => setCustomStep(customStep + 1)}
-                              className="px-5 py-2 rounded-xl text-xs font-bold bg-[#BEF392] text-slate-950 hover:bg-[#a8e775] transition-all shadow-md flex items-center gap-1"
+                              className="px-5 py-2 rounded-xl text-xs font-bold bg-[#A8D5C2] text-slate-950 hover:bg-[#a8e775] transition-all shadow-md flex items-center gap-1"
                             >
                               <span>Next Step</span>
                               <span>→</span>
@@ -2896,14 +2892,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
             {/* ──── SOCIAL PROOF BANNER ──── */}
             <div className="order-3 w-full max-w-[1205px]">
-              <div className="flex flex-col items-center gap-6 rounded-banner bg-white px-6 py-6 text-center shadow-sm lg:flex-row lg:justify-between lg:gap-6 lg:px-10 lg:text-left border border-neutral-100">
+              <div className="flex flex-col items-center gap-6 rounded-banner bg-white px-6 py-6 text-center shadow-sm lg:flex-row lg:justify-between lg:gap-6 lg:px-10 lg:text-left border border-slate-100">
                 <div className="flex flex-col items-center gap-4 lg:flex-row lg:gap-6">
                   <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-center lg:gap-3">
                     <div className="flex items-center gap-3">
-                      <span className="text-lg font-bold text-gray-900 border-b-2 border-gray-900">4.8</span>
-                      <span className="flex text-lg text-amber-400" aria-hidden="true">★★★★★</span>
+                      <span className="text-lg font-bold text-slate-900 border-b-2 border-slate-900">4.8</span>
+                      <span className="flex text-lg text-star" aria-hidden="true">★★★★★</span>
                     </div>
-                    <p className="text-base text-gray-500">Trusted by <strong className="text-gray-900">thousands of users</strong></p>
+                    <p className="text-base text-slate-500">Trusted by <strong className="text-slate-900">thousands of users</strong></p>
                   </div>
                 </div>
                 <div className="flex w-full flex-col items-center gap-3 lg:w-auto lg:flex-row lg:gap-6">
@@ -2913,7 +2909,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   >
                     Start Creating — It's Free
                   </a>
-                  <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+                  <div className="flex items-center justify-center gap-2 text-sm text-slate-500">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                     </svg>
@@ -2928,13 +2924,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
       </section>
 
       {/* ═══════════════════════════ TRUST BADGES ═══════════════════════════ */}
-      <section className="bg-white py-10 md:py-16 border-y border-neutral-100">
+      <section className="bg-white py-10 md:py-16 border-y border-slate-100">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 px-4 sm:flex-row sm:justify-center sm:gap-12">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-3">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="shrink-0 text-accent">
               <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5zm-1 14-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9z" />
             </svg>
-            <p className="text-base md:text-lg font-medium leading-relaxed text-gray-600 text-center sm:text-left">
+            <p className="text-base md:text-lg font-medium leading-relaxed text-slate-600 text-center sm:text-left">
               Privacy-First Platform: Static QR codes render 100% locally in your browser. Dynamic campaigns are securely managed with encrypted routing.
             </p>
           </div>
@@ -2945,7 +2941,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <span className="text-[10px] font-bold text-gray-400 uppercase">Secure</span>
+              <span className="text-[10px] font-bold text-slate-500 uppercase">Secure</span>
             </div>
             <div className="flex flex-col items-center gap-1">
               <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600">
@@ -2953,7 +2949,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <span className="text-[10px] font-bold text-gray-400 uppercase">Global</span>
+              <span className="text-[10px] font-bold text-slate-500 uppercase">Global</span>
             </div>
             <div className="flex flex-col items-center gap-1">
               <div className="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600">
@@ -2961,7 +2957,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <span className="text-[10px] font-bold text-gray-400 uppercase">Fast</span>
+              <span className="text-[10px] font-bold text-slate-500 uppercase">Fast</span>
             </div>
           </div>
         </div>
@@ -2974,19 +2970,19 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
       {!embedded && (
         <>
         {/* ═══════════════════════════ EXPLANATORY GUIDE ARTICLE ═══════════════════════════ */}
-        <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
+        <section className="bg-white py-16 md:py-20 border-t border-slate-100">
           <div className="mx-auto max-w-4xl px-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
               Comprehensive Guide
             </div>
             {introSections.map((section, si) => (
               <div key={si} className={si > 0 ? 'mt-12' : undefined}>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6">
                   {section.title}
                 </h2>
-                <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-4">
+                <div className="prose prose-lg max-w-none text-slate-600 leading-relaxed space-y-4">
                   {section.paragraphs.map((para, i) => (
-                    <p key={i} className="text-base md:text-lg leading-relaxed text-gray-600">{para}</p>
+                    <p key={i} className="text-base md:text-lg leading-relaxed text-slate-600">{para}</p>
                   ))}
                 </div>
               </div>
@@ -2995,17 +2991,17 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
         </section>
 
         {/* ═══════════════════════════ HOW TO: 3 STEPS ═══════════════════════════ */}
-        <section id="how-to-create" className="bg-gray-50 py-16 md:py-24 scroll-mt-24 border-t border-neutral-100">
+        <section id="how-to-create" className="bg-slate-50 py-16 md:py-20 scroll-mt-24 border-t border-slate-100">
           <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
             <div className="mb-12 flex flex-col items-center text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold leading-tight tracking-normal text-gray-900 text-balance">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-balance">
                 {stepsTitle}
               </h2>
             </div>
 
             <div className="relative mx-auto max-w-4xl">
               {/* Vertical timeline line */}
-              <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-neutral-200 md:block" />
+              <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-slate-200 md:block" />
 
               <div className="flex flex-col gap-12 md:gap-16">
                 {stepItems.map((step, idx) => (
@@ -3017,13 +3013,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                     {/* Text Content */}
                     <div className={`row-start-1 col-start-2 ${idx % 2 === 0 ? 'md:col-start-3 md:pl-4' : 'md:col-start-1 md:pr-4 md:text-right'}`}>
-                      <h3 className="mb-1 md:mb-2 text-xl md:text-2xl font-semibold text-gray-900">{step.title}</h3>
-                      <p className="text-base leading-relaxed text-gray-500">{step.description}</p>
+                      <h3 className="mb-1 md:mb-2 text-xl md:text-2xl font-semibold text-slate-900">{step.title}</h3>
+                      <p className="text-base leading-relaxed text-slate-500">{step.description}</p>
                     </div>
 
                     {/* Icon Visual Card */}
                     <div className={`row-start-2 col-span-full ${idx % 2 === 0 ? 'md:row-start-1 md:col-span-1 md:col-start-1 md:flex md:justify-end' : 'md:row-start-1 md:col-span-1 md:col-start-3 md:flex md:justify-start'}`}>
-                      <div className="w-full max-w-[340px] rounded-card bg-white border border-neutral-200 shadow-sm p-6 flex items-center justify-center text-accent">
+                      <div className="w-full max-w-[340px] rounded-card bg-white border border-slate-200 shadow-sm p-6 flex items-center justify-center text-accent">
                         {step.number === 1 && (
                           <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
@@ -3049,25 +3045,25 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
         </section>
 
         {/* ═══════════════════════════ FEATURES & BENEFITS ═══════════════════════════ */}
-        <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
+        <section className="bg-white py-16 md:py-20 border-t border-slate-100">
           <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{featuresTitle}</h2>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">{featuresTitle}</h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {featureItems.map((feature, idx) => (
                 <div
                   key={idx}
-                  className="bg-gray-50 rounded-2xl border border-neutral-100 p-6 hover:shadow-md hover:border-accent/20 transition-all duration-300 group"
+                  className="bg-slate-50 rounded-2xl border border-slate-100 p-6 hover:shadow-md hover:border-accent/20 transition-all duration-300 group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-colors">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-accent transition-colors">{feature.title}</h3>
-                  <p className="text-gray-500 leading-relaxed text-sm">{feature.description}</p>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-accent transition-colors">{feature.title}</h3>
+                  <p className="text-slate-500 leading-relaxed text-sm">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -3075,23 +3071,23 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
         </section>
 
         {/* ═══════════════════════════ USE CASES SECTION ═══════════════════════════ */}
-        <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-100">
+        <section className="bg-slate-50 py-16 md:py-20 border-t border-slate-100">
           <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{useCasesTitle}</h2>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">{useCasesTitle}</h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {useCaseItems.map((useCase, idx) => (
                 <div
                   key={idx}
-                  className="bg-white rounded-2xl p-6 hover:bg-accent/5 hover:shadow-md transition-all duration-300 border border-neutral-200 hover:border-accent/10"
+                  className="bg-white rounded-2xl p-6 hover:bg-accent/5 hover:shadow-md transition-all duration-300 border border-slate-200 hover:border-accent/10"
                 >
                   <div className="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4 font-bold text-base">
                     {idx + 1}
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{useCase.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{useCase.description}</p>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{useCase.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{useCase.description}</p>
                 </div>
               ))}
             </div>
@@ -3099,19 +3095,19 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
         </section>
 
         {/* ═══════ LONG-FORM SEO SECTIONS (shared with scripts/prerender.js) ═══════ */}
-        <RichSeoSections rich={richContent} />
+        <RichSeoSections rich={richContent} pathname={pathname} />
 
         {/* ═══════════════════════════ TOOL-SPECIFIC FAQ SECTION ═══════════════════════════ */}
-        <section className="bg-white py-16 md:py-24 border-t border-neutral-100">
+        <section className="bg-white py-16 md:py-20 border-t border-slate-100">
           <div className="mx-auto max-w-4xl px-4">
             <div className="mb-12 text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-3">
                 Knowledge Base & FAQs
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">
                 Frequently Asked Questions about {currentSeo.title}
               </h2>
-              <p className="text-gray-600 max-w-xl mx-auto text-base">
+              <p className="text-slate-600 max-w-xl mx-auto text-base">
                 Everything you need to know about creating, customizing, and printing {currentSeo.title}s.
               </p>
             </div>
@@ -3121,17 +3117,17 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                 <div
                   key={idx}
                   className={`border rounded-2xl transition-all overflow-hidden ${
-                    openFaqIndex === idx ? 'border-accent bg-accent/5' : 'border-neutral-200 bg-white hover:border-neutral-300'
+                    openFaqIndex === idx ? 'border-accent bg-accent/5' : 'border-slate-200 bg-white hover:border-slate-300'
                   }`}
                 >
                   <button
                     onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
                     className="w-full flex items-center justify-between p-6 text-left outline-none"
                   >
-                    <h3 className={`text-lg font-bold transition-colors ${openFaqIndex === idx ? 'text-accent' : 'text-gray-900'}`}>
+                    <h3 className={`text-lg font-bold transition-colors ${openFaqIndex === idx ? 'text-accent' : 'text-slate-900'}`}>
                       {faq.question}
                     </h3>
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${openFaqIndex === idx ? 'bg-accent text-white rotate-180' : 'bg-gray-100 text-gray-500'}`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${openFaqIndex === idx ? 'bg-accent text-white rotate-180' : 'bg-slate-100 text-slate-500'}`}>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
                       </svg>
@@ -3142,7 +3138,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       entirely, so the FAQPage schema promised Google text that
                       was nowhere on the page. */}
                   <div
-                    className={`px-6 pb-6 pt-0 text-gray-600 leading-relaxed text-sm border-t border-neutral-100/50 pt-3 ${openFaqIndex === idx ? '' : 'hidden'}`}
+                    className={`px-6 pb-6 pt-0 text-slate-600 leading-relaxed text-sm border-t border-slate-100/50 pt-3 ${openFaqIndex === idx ? '' : 'hidden'}`}
                   >
                     <p>{faq.answer}</p>
                   </div>
@@ -3153,11 +3149,11 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
         </section>
 
         {/* ═══════════════════════════ QR CODE TYPES INTERLINKING MATRIX ═══════════════════════════ */}
-        <section className="bg-gray-50 py-16 md:py-24 border-t border-neutral-200">
+        <section className="bg-slate-50 py-16 md:py-20 border-t border-slate-200">
           <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">All {TABS.length} QR Code Generators</h2>
-              <p className="text-lg text-gray-500 max-w-2xl mx-auto">Explore all {TABS.length} specialized QR Code generators to convert websites, WiFi, vCards, documents, social media, payment links, and locations into scannable barcodes.</p>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">All {TABS.length} QR Code Generators</h2>
+              <p className="text-lg text-slate-500 max-w-2xl mx-auto">Explore all {TABS.length} specialized QR Code generators to convert websites, WiFi, vCards, documents, social media, payment links, and locations into scannable barcodes.</p>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
@@ -3171,14 +3167,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                     className={`group relative bg-white rounded-2xl border p-5 text-left transition-all duration-200 ${
                       activeTab === tab.id 
                         ? 'border-accent ring-2 ring-accent/20 bg-accent/5' 
-                        : 'border-neutral-200 hover:border-accent hover:shadow-lg'
+                        : 'border-slate-200 hover:border-accent hover:shadow-lg'
                     }`}
                   >
                     <div className="text-accent mb-3 p-2 bg-accent/10 rounded-xl inline-block group-hover:bg-accent group-hover:text-white transition-colors">
                       {tab.icon}
                     </div>
-                    <h3 className="text-sm font-semibold text-gray-900 group-hover:text-accent transition-colors">{tab.label}</h3>
-                    <p className="text-xs text-gray-400 mt-1 line-clamp-2">{tab.description}</p>
+                    <h3 className="text-sm font-semibold text-slate-900 group-hover:text-accent transition-colors">{tab.label}</h3>
+                    <p className="text-xs text-slate-500 mt-1 line-clamp-2">{tab.description}</p>
                   </Link>
                 );
               })}
@@ -3187,9 +3183,9 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
         </section>
 
         {/* ═══════════════════════════ CTA SECTION ═══════════════════════════ */}
-        <section className="bg-[#1E1E1E] py-16 md:py-24">
+        <section className="bg-[#0F172A] py-16 md:py-20">
           <div className="mx-auto max-w-3xl px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4 text-white">
               Ready to Create Your {currentSeo.title}?
             </h2>
             <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
@@ -3213,7 +3209,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
           <div className="bg-white rounded-2xl p-6 sm:p-7 max-w-md w-full shadow-xl border border-slate-200 relative">
             <button
               onClick={() => { setShowDynamicSaveModal(false); setSavedDynamicLink(null); }}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
+              className="absolute top-4 right-4 text-slate-500 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -3261,7 +3257,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                 {/* Short link row */}
                 <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 text-left">
-                  <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider block mb-1">
+                  <span className="text-[10px] uppercase font-semibold text-slate-500 tracking-wider block mb-1">
                     Short Redirect Link
                   </span>
                   <div className="flex items-center justify-between gap-2">
@@ -3317,7 +3313,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-slate-900">Save Dynamic QR Code</h3>
-                    <p className="text-xs text-slate-400">Edit destination anytime & track live scans</p>
+                    <p className="text-xs text-slate-500">Edit destination anytime & track live scans</p>
                   </div>
                 </div>
 
@@ -3348,7 +3344,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       value={qrData}
                       className="w-full px-3.5 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-500 font-mono truncate"
                     />
-                    <span className="text-[10px] text-slate-400 block mt-1">
+                    <span className="text-[10px] text-slate-500 block mt-1">
                       You can change this target link at any time from your dashboard without reprinting.
                     </span>
                   </div>
@@ -3408,7 +3404,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
           <span className="text-sm font-semibold tracking-wide text-slate-100">{toastMessage}</span>
           <button
             onClick={() => setToastMessage(null)}
-            className="ml-2 text-slate-400 hover:text-white text-xs p-1"
+            className="ml-2 text-slate-500 hover:text-white text-xs p-1"
           >
             ✕
           </button>

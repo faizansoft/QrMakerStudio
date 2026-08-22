@@ -22,6 +22,7 @@ import { TOOL_RICH_DATA } from './toolRichData.js';
 import { FEATURE_RICH_DATA } from './featureRichData.js';
 import { BLOG_RICH_DATA } from './blogRichData.js';
 import { COMPANY_RICH_DATA } from './companyRichData.js';
+import { GENERATED_PAGE_CONTENT } from './generatedPageContent.js';
 
 const ALL_RICH_DATA = {
   ...TOOL_RICH_DATA,
@@ -46,6 +47,11 @@ const hashRoute = (route) => {
     h1: route.h1,
     lead: route.lead,
     sections: route.sections || [],
+    // Only present for routes that have extracted copy, so adding this field
+    // does not perturb the hash of every other page.
+    ...(GENERATED_PAGE_CONTENT[route.path]
+      ? { generated: GENERATED_PAGE_CONTENT[route.path] }
+      : {}),
     rich: ALL_RICH_DATA[route.path] || null
   });
   return crypto.createHash('sha1').update(payload).digest('hex').slice(0, 16);

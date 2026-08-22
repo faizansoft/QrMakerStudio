@@ -12,7 +12,7 @@
 export const ROUTE_CONTENT = [
   {
     path: '/',
-    title: 'Free QR Code Generator with Logo & Colors | QR Generator Online',
+    title: 'Free QR Code Generator with Logo & Colors',
     description: 'Create free static and dynamic QR codes with custom logos and colors. Generate, customize and download professional QR codes in high resolution.',
     canonical: 'https://qr-generator.online/',
     h1: 'Free Custom QR Code Generator with Logo & Vector SVG Export',
@@ -73,7 +73,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/vcard-qr-code-generator',
-    title: 'Free vCard QR Code Generator | Digital Contact Business Cards',
+    title: 'Free vCard QR Code Generator | Digital Business Cards',
     description: 'Create digital business card vCard QR codes. Share your phone, email, company, and social links instantly on smartphones with zero app needed.',
     canonical: 'https://qr-generator.online/vcard-qr-code-generator',
     h1: 'Free vCard QR Code Generator for Digital Business Cards & Contacts',
@@ -127,7 +127,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/facebook-qr-code-generator',
-    title: 'Free Social Media & Facebook QR Code Generator | QR Generator Online',
+    title: 'Free Facebook QR Code Generator | Page & Profile QR',
     description: 'Create free QR codes for Facebook pages, Instagram, TikTok, and social profiles. Grow your followers with custom branded QR codes in SVG & PNG.',
     canonical: 'https://qr-generator.online/facebook-qr-code-generator',
     h1: 'Free Social Media & Facebook QR Code Generator for Profiles',
@@ -199,7 +199,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/location-qr-code-generator',
-    title: 'Free Location & Google Maps QR Code Generator | QR Generator Online',
+    title: 'Free Location QR Code Generator | Google Maps QR',
     description: 'Create Google Maps location QR codes with custom coordinates. Guide customers directly to your store, office, or event venue with one scan.',
     canonical: 'https://qr-generator.online/location-qr-code-generator',
     h1: 'Free Location & Google Maps QR Code Generator for Directions',
@@ -253,7 +253,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/event-qr-code-generator',
-    title: 'Free Event & Calendar QR Code Generator | Save Date in 1 Scan',
+    title: 'Free Event QR Code Generator | Save the Date in 1 Scan',
     description: 'Generate calendar event QR codes with event title, location, date, and description. Let guests save appointments to their calendar instantly.',
     canonical: 'https://qr-generator.online/event-qr-code-generator',
     h1: 'Free Event & Calendar QR Code Generator for Invitations & RSVP',
@@ -271,7 +271,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/instagram-qr-code-generator',
-    title: 'Free Instagram QR Code Generator | Share Your Profile Instantly',
+    title: 'Free Instagram QR Code Generator | Share Your Profile',
     description: 'Create a free QR code for your Instagram profile. Scan to follow — perfect for business cards, flyers, product packaging, and social media growth.',
     canonical: 'https://qr-generator.online/instagram-qr-code-generator',
     h1: 'Free Instagram QR Code Generator for Profile Sharing & Follower Growth',
@@ -283,7 +283,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/youtube-qr-code-generator',
-    title: 'Free YouTube QR Code Generator | Channel & Video Link QR Codes',
+    title: 'Free YouTube QR Code Generator | Channel & Video QR',
     description: 'Generate free QR codes for YouTube channels and videos. Drive subscribers and views with scannable QR codes for print and digital marketing.',
     canonical: 'https://qr-generator.online/youtube-qr-code-generator',
     h1: 'Free YouTube QR Code Generator for Channels, Videos & Subscriber Growth',
@@ -295,7 +295,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/linkedin-qr-code-generator',
-    title: 'Free LinkedIn QR Code Generator | Professional Profile QR Codes',
+    title: 'Free LinkedIn QR Code Generator | Profile QR Codes',
     description: 'Create professional LinkedIn profile QR codes for networking events and business cards. Share your profile with a scan and grow connections fast.',
     canonical: 'https://qr-generator.online/linkedin-qr-code-generator',
     h1: 'Free LinkedIn QR Code Generator for Professional Networking & Business Cards',
@@ -307,7 +307,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/twitter-qr-code-generator',
-    title: 'Free Twitter / X QR Code Generator | Share Your Profile via QR',
+    title: 'Free X (Twitter) QR Code Generator | Share Your Profile',
     description: 'Generate free QR codes for your Twitter/X profile. Drive followers from print materials, email signatures, and events with a simple scan.',
     canonical: 'https://qr-generator.online/twitter-qr-code-generator',
     h1: 'Free Twitter / X QR Code Generator for Profile Sharing & Audience Growth',
@@ -319,7 +319,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/tiktok-qr-code-generator',
-    title: 'Free TikTok QR Code Generator | Go Viral with Scannable QR Codes',
+    title: 'Free TikTok QR Code Generator | Scannable Profile QR',
     description: 'Create free TikTok profile QR codes to grow your audience. Perfect for cross-platform promotion on Instagram, YouTube, and printed merchandise.',
     canonical: 'https://qr-generator.online/tiktok-qr-code-generator',
     h1: 'Free TikTok QR Code Generator for Profile Promotion & Viral Growth',
@@ -331,7 +331,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/telegram-qr-code-generator',
-    title: 'Free Telegram QR Code Generator | Group, Channel & Profile QR',
+    title: 'Free Telegram QR Code Generator | Group & Channel QR',
     description: 'Generate QR codes for Telegram profiles, groups, and channels. Grow your Telegram community with scannable codes on websites and print media.',
     canonical: 'https://qr-generator.online/telegram-qr-code-generator',
     h1: 'Free Telegram QR Code Generator for Groups, Channels & Profile Sharing',
@@ -355,7 +355,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/upi-qr-code-generator',
-    title: 'Free UPI QR Code Generator | GPay, PhonePe & Paytm Payment QR',
+    title: 'Free UPI QR Code Generator | GPay, PhonePe & Paytm',
     description: 'Generate free UPI payment QR codes compatible with Google Pay, PhonePe, Paytm, and all UPI apps. Perfect for Indian merchants and freelancers.',
     canonical: 'https://qr-generator.online/upi-qr-code-generator',
     h1: 'Free UPI QR Code Generator for Google Pay, PhonePe & Paytm Payments',
@@ -367,7 +367,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/bulk-qr-code-generator',
-    title: 'Free Bulk QR Code Generator | Batch Create from CSV or Text List',
+    title: 'Free Bulk QR Code Generator | Batch Create from CSV',
     description: 'Generate hundreds of QR codes at once from a CSV file or text list. Download all as individual files or a single ZIP archive. 100% free and private.',
     canonical: 'https://qr-generator.online/bulk-qr-code-generator',
     h1: 'Free Bulk QR Code Generator — Batch Create & Download as ZIP',
@@ -391,7 +391,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/social-media-qr-code',
-    title: 'Free Social Media QR Code Generator | All Platforms in One Place',
+    title: 'Free Social Media QR Code Generator | All Platforms',
     description: 'Create branded QR codes for Instagram, YouTube, LinkedIn, TikTok, Twitter/X, and more. Each code matches platform colors for instant recognition.',
     canonical: 'https://qr-generator.online/social-media-qr-code',
     h1: 'Free Social Media QR Code Generator — All Platforms, One Dashboard',
@@ -529,7 +529,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/about',
-    title: 'About QR Generator Online | Free, Secure & High-Res QR Creator',
+    title: 'About QR Generator Online | Free & Private QR Creator',
     description: 'Learn about our mission to make high-resolution, privacy-focused, and beautiful QR code generation free and accessible to businesses worldwide.',
     canonical: 'https://qr-generator.online/about',
     h1: 'About QR Generator Online — Free & Professional QR Code Solutions',
@@ -565,7 +565,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/privacy',
-    title: 'Privacy Policy | QR Generator Online Data Protection & Security',
+    title: 'Privacy Policy | QR Generator Online Data Protection',
     description: 'Read how QR Generator Online protects your privacy. We process QR codes securely in your browser with zero tracking of personal encoded data.',
     canonical: 'https://qr-generator.online/privacy',
     h1: 'Privacy Policy & Data Protection at QR Generator Online',
@@ -619,7 +619,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/blog/qr-codes-for-restaurants',
-    title: 'QR Code Menus for Restaurants: Complete 2026 Guide | QR Generator Online',
+    title: 'QR Code Menus for Restaurants: Complete 2026 Guide',
     description: 'Learn how digital QR menus cut printing costs by 90%, increase average order values by 15%, and boost table turnover rates for restaurants.',
     canonical: 'https://qr-generator.online/blog/qr-codes-for-restaurants',
     h1: 'How Restaurants & Cafes Increase Table Turnover with QR Code Menus',
@@ -801,7 +801,7 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/pdf-qr-code-generator',
-    title: 'Free PDF to QR Code Generator | Convert Menus & Documents to QR Codes',
+    title: 'Free PDF to QR Code Generator | Menus & Documents',
     description: 'Convert PDF menus, brochures, catalogs, and documents into custom branded QR codes. Free vector SVG and PNG downloads with editable dynamic destination links.',
     canonical: 'https://qr-generator.online/pdf-qr-code-generator',
     h1: 'Free PDF to QR Code Generator for Menus, Catalogs & Documents',
@@ -833,8 +833,8 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/app-store-qr-code-generator',
-    title: 'Free App Store QR Code Generator | One QR Code for iOS & Android',
-    description: 'Create a single intelligent App Store QR code that auto-detects iOS & Android devices. Redirect iPhone users to Apple App Store and Android users to Google Play with live scan tracking.',
+    title: 'Free App Store QR Code Generator | iOS & Android',
+    description: 'One App Store QR code that auto-detects the device: iPhone users go to the App Store, Android users to Google Play. Free, with scan tracking.',
     canonical: 'https://qr-generator.online/app-store-qr-code-generator',
     h1: 'Free App Store QR Code Generator for iOS & Android App Downloads',
     badge: 'Smart App Routing',
