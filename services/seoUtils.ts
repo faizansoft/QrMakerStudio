@@ -70,6 +70,25 @@ export const purgeStalePrerenderedSchema = (currentPath: string) => {
   prerenderedPath = null;
 };
 
+/**
+ * schema.org subtypes that already satisfy a broader type.
+ *
+ * The prerenderer emits WebApplication; the client separately builds a
+ * SoftwareApplication for the same tool. Because the @type strings differ,
+ * the plain equality check let both through — two schema entities describing
+ * one app, which is exactly the redundancy that muddies entity resolution for
+ * rich results and LLM ingest. WebApplication IS-A SoftwareApplication, so the
+ * narrower one already covers the broader one.
+ */
+const TYPE_COVERS: Record<string, string[]> = {
+  SoftwareApplication: ['WebApplication', 'MobileApplication'],
+  CreativeWork: ['WebPage', 'Article', 'BlogPosting'],
+  WebPage: ['FAQPage']
+};
+
+const covers = (existing: Set<string>, wanted: string): boolean =>
+  (TYPE_COVERS[wanted] || []).some((sub) => existing.has(sub));
+
 const prerenderedTypes = (): Set<string> => {
   const set = new Set<string>();
   if (typeof document === 'undefined' || prerenderedPath === null) return set;
@@ -89,7 +108,7 @@ export const injectJSONLD = (id: string, schemaObject: object | object[]) => {
 
   const existingTypes = prerenderedTypes();
   const types = collectTypes(schemaObject);
-  if (types.length && types.every((t) => existingTypes.has(t))) {
+  if (types.length && types.every((t) => existingTypes.has(t) || covers(existingTypes, t))) {
     // Already covered by the static HTML — injecting would duplicate it.
     return;
   }

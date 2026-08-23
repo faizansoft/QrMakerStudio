@@ -14,15 +14,15 @@ import { getSectionHeadings } from './sectionHeadings.js';
 import { GENERATED_PAGE_CONTENT } from './generatedPageContent.js';
 import { ROUTED_LOCALES, ROUTE_META_I18N } from './routeMetaI18nData.js';
 import { RICH_CONTENT_I18N } from './richContentI18nData.js';
+import { TOOL_GRID } from './toolGrid.js';
+import { translations } from './uiStringsData.js';
 
-/** Small fixed chrome strings inside the rich-content sections — kept in sync with translations.ts. */
-const RICH_CHROME_I18N = {
-  es: { technicalBadge: 'Arquitectura Técnica y Protocolo', faqsSubtitle: 'Todo lo que desarrolladores, especialistas en marketing y empresarios necesitan saber.' },
-  ar: { technicalBadge: 'البنية التقنية والبروتوكول', faqsSubtitle: 'كل ما يحتاج المطورون والمسوقون وأصحاب الأعمال معرفته.' },
-  hi: { technicalBadge: 'तकनीकी संरचना और प्रोटोकॉल', faqsSubtitle: 'वह सब कुछ जो डेवलपर्स, मार्केटर्स और व्यवसाय मालिकों को जानना चाहिए।' },
-  tr: { technicalBadge: 'Teknik Mimari ve Protokol', faqsSubtitle: 'Geliştiricilerin, pazarlamacıların ve işletme sahiplerinin bilmesi gereken her şey.' },
-  vi: { technicalBadge: 'Kiến Trúc Kỹ Thuật & Giao Thức', faqsSubtitle: 'Mọi thứ nhà phát triển, nhà tiếp thị và chủ doanh nghiệp cần biết.' }
-};
+/** Localized UI string, falling back to English. Mirrors getTranslation(). */
+const ui = (locale, key) =>
+  (locale && translations[locale] && translations[locale][key]) ||
+  translations.en[key] ||
+  key;
+
 
 const ALL_RICH_DATA = {
   ...TOOL_RICH_DATA,
@@ -211,7 +211,10 @@ function buildBodyHtml(route) {
   // back to the English object whole (never a per-field language mix).
   const localizedRich = route.locale ? RICH_CONTENT_I18N[route.locale]?.[route.path] : null;
   const rich = localizedRich || ALL_RICH_DATA[route.path] || null;
-  const chrome = (route.locale && RICH_CHROME_I18N[route.locale]) || { technicalBadge: 'Technical Architecture & Protocol', faqsSubtitle: 'Everything developers, marketers, and business owners need to know.' };
+  const chrome = {
+    technicalBadge: ui(route.locale, 'rich_technical_badge'),
+    faqsSubtitle: ui(route.locale, 'rich_faqs_subtitle')
+  };
 
   // Section headings are page-specific; see scripts/sectionHeadings.js.
   const headings = getSectionHeadings(route.path, route.locale);
@@ -351,6 +354,53 @@ function buildBodyHtml(route) {
     </section>
   ` : '';
 
+
+  // ── Blocks that used to exist only in the client-rendered DOM ────────────
+  // The generator widget, the 22-tool grid, the trust strip and the closing
+  // CTA were all React-only. A crawler that does not execute JS — which is
+  // most LLM ingest pipelines and every social-preview fetcher — saw none of
+  // it: 22 keyword-rich tool names, their descriptions, and 22 internal links.
+  // Emitting them here closes that gap; the markup mirrors what Home.tsx
+  // renders so the static HTML and the hydrated DOM still describe the same
+  // page in the same words.
+  const loc = route.locale;
+  const localePrefix = loc ? `/${loc}` : '';
+
+  const toolGridHtml = `
+    <section style="margin-top:48px; padding-top:36px; border-top:1px solid #E2E8F0;">
+      <h2 style="font-size:22px; font-weight:700; color:#0F172A; margin-bottom:8px; text-align:center;">${ui(loc, 'home_qr_types_heading').replace('{count}', String(TOOL_GRID.length))}</h2>
+      <p style="text-align:center; color:#64748B; font-size:14px; max-width:720px; margin:0 auto 20px;">${ui(loc, 'home_qr_types_subtitle').replace('{count}', String(TOOL_GRID.length))}</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px;">
+        ${TOOL_GRID.map(tool => `
+          <a href="${localePrefix}${tool.path}" style="display:block; background:#fff; border:1px solid #E2E8F0; border-radius:12px; padding:16px; text-decoration:none;">
+            <h3 style="font-size:14px; font-weight:700; color:#0F172A; margin:0 0 4px;">${ui(loc, `tab_${tool.id}_label`)}</h3>
+            <p style="font-size:12px; color:#64748B; line-height:1.5; margin:0;">${ui(loc, `tab_${tool.id}_desc`)}</p>
+          </a>
+        `).join('')}
+      </div>
+    </section>
+  `;
+
+  const trustHtml = `
+    <section style="margin-top:48px; padding:28px 32px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:16px;">
+      <p style="font-size:15px; line-height:1.7; color:#475569; margin:0 0 14px;">${ui(loc, 'trust_privacy_first')}</p>
+      <p style="font-size:13px; color:#64748B; margin:0;">
+        <strong>${ui(loc, 'trust_secure')}</strong> · <strong>${ui(loc, 'trust_global')}</strong> · <strong>${ui(loc, 'trust_fast')}</strong>
+        &nbsp;—&nbsp; ${ui(loc, 'social_trusted_by')} ${ui(loc, 'social_thousands')}. ${ui(loc, 'social_no_account')}.
+      </p>
+    </section>
+  `;
+
+  const toolName = route.badge || 'QR Code';
+  const ctaHtml = `
+    <section style="margin-top:48px; padding:32px; background:#0F172A; border-radius:16px; text-align:center;">
+      <h2 style="font-size:22px; font-weight:700; color:#ffffff; margin-bottom:10px;">${ui(loc, 'rich_ready_cta_title').replace('{tool}', toolName)}</h2>
+      <p style="font-size:14px; color:#CBD5E1; line-height:1.7; max-width:640px; margin:0 auto 18px;">${ui(loc, 'rich_cta_subtitle')}</p>
+      <a href="${localePrefix || '/'}" style="display:inline-block; padding:12px 24px; background:#2B6F53; color:#ffffff; font-weight:700; border-radius:10px; text-decoration:none;">${ui(loc, 'rich_cta_button').replace('{tool}', toolName)}</a>
+      <p style="font-size:12px; color:#94A3B8; margin:14px 0 0;">${ui(loc, 'rich_cta_footnote')}</p>
+    </section>
+  `;
+
   return `
     <div id="app" class="min-h-screen flex flex-col">
       ${buildHeaderHtml(route.locale)}
@@ -384,6 +434,9 @@ function buildBodyHtml(route) {
         ${troubleshootingHtml}
         ${faqsHtml}
         ${bestPracticesHtml}
+        ${toolGridHtml}
+        ${trustHtml}
+        ${ctaHtml}
 
         <!-- Contextual In-Content Link Equity Mesh -->
         <section style="margin-top:48px; padding:32px; background:#EEF6F2; border:1px solid #CBE5DA; border-radius:16px;">
@@ -439,6 +492,45 @@ function buildJsonLd(route, rich) {
   const schemas = [];
   const isContentPage = CONTENT_PAGE_PATHS.has(route.path);
 
+  // 0. Site-identity schemas. These were previously injected client-side only
+  // (SEOManager in App.tsx), so any consumer that does not execute JS — most
+  // LLM ingest pipelines, and knowledge-graph builders — never learned who
+  // publishes this site. They are cheap, identical on every page, and are the
+  // schemas that carry entity identity rather than page content.
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://qr-generator.online/#organization",
+    "name": "QR Generator Online",
+    "url": "https://qr-generator.online",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://qr-generator.online/logo.png"
+    },
+    "description":
+      "Free, privacy-first QR code generator. Static QR codes are encoded entirely in the browser, never expire, and carry no scan limits.",
+    // sameAs must point at profiles that corroborate this entity elsewhere;
+    // it previously listed only this site's own URL, which asserts nothing.
+    "sameAs": ["https://www.facebook.com/qrgenerator.online"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "support@qr-generator.online",
+      "url": "https://qr-generator.online/contact",
+      "availableLanguage": ["English", "Spanish", "Arabic", "Hindi", "Turkish", "Vietnamese"]
+    }
+  });
+
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://qr-generator.online/#website",
+    "name": "QR Generator Online",
+    "url": "https://qr-generator.online",
+    "publisher": { "@id": "https://qr-generator.online/#organization" },
+    "inLanguage": ["en", ...ROUTED_LOCALES]
+  });
+
   // 1. Top-level page schema: WebApplication for the tool itself, WebPage for
   // editorial content. applicationCategory/operatingSystem/offers only belong
   // on WebApplication — carrying them over to WebPage is exactly the kind of
@@ -451,6 +543,8 @@ function buildJsonLd(route, rich) {
           "name": route.title,
           "url": route.canonical,
           "description": route.description,
+          "inLanguage": route.locale || "en",
+          "isPartOf": { "@id": "https://qr-generator.online/#website" },
           "publisher": {
             "@type": "Organization",
             "name": "QR Generator Online",
@@ -464,6 +558,8 @@ function buildJsonLd(route, rich) {
           "name": route.title,
           "url": route.canonical,
           "description": route.description,
+          "inLanguage": route.locale || "en",
+          "isPartOf": { "@id": "https://qr-generator.online/#website" },
           "applicationCategory": "DesignApplication",
           "operatingSystem": "All",
           "offers": {
@@ -805,6 +901,28 @@ function verifyRouteCoverage() {
     process.exit(1);
   }
   console.log(`✅ Internal linking OK — all ${footerHrefs.size} footer links resolve, no orphaned pages.`);
+
+  // The tool grid is duplicated data (ids in scripts/toolGrid.js, labels in
+  // scripts/uiStringsData.js, pages in routeContent.js). Assert the three
+  // agree, or the grid silently starts emitting dead links and raw key names.
+  const routePaths = new Set(ROUTES.map((r) => r.path));
+  const gridProblems = [];
+  for (const tool of TOOL_GRID) {
+    if (!routePaths.has(tool.path)) gridProblems.push(`${tool.id}: no route ${tool.path}`);
+    for (const suffix of ['label', 'desc']) {
+      const key = `tab_${tool.id}_${suffix}`;
+      if (!translations.en[key]) gridProblems.push(`${tool.id}: missing string ${key}`);
+    }
+  }
+  if (gridProblems.length) {
+    console.error(
+      '\n❌ Tool grid is out of sync:\n' +
+        gridProblems.map((p) => `   ${p}`).join('\n') +
+        '\n   Reconcile scripts/toolGrid.js with routeContent.js and uiStringsData.js.\n'
+    );
+    process.exit(1);
+  }
+  console.log(`✅ Tool grid OK — ${TOOL_GRID.length} tools resolve to routes with translated labels.`);
 }
 
 prerender();
