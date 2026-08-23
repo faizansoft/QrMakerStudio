@@ -644,6 +644,28 @@ function prerender() {
       prerenderedBody
     );
 
+    // Inline this page's localized body copy so React's first render already
+    // has it — no English flash, and the DOM Google indexes matches the HTML
+    // above exactly. Only this one page's content travels, and only on
+    // localized URLs; see constants/richContentI18n.ts for the reader.
+    if (content.locale) {
+      const localeContent = RICH_CONTENT_I18N[content.locale]?.[content.path];
+      if (localeContent) {
+        const payload = JSON.stringify({
+          locale: content.locale,
+          path: content.path,
+          content: localeContent
+        })
+          // A literal </script> inside JSON would close the tag early; <
+          // is the standard escape and stays valid JSON.
+          .replace(/</g, '\\u003c');
+        html = html.replace(
+          '</body>',
+          `  <script id="rich-i18n-data" type="application/json">${payload}</script>\n</body>`
+        );
+      }
+    }
+
     return html;
   }
 

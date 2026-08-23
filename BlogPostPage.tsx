@@ -6,7 +6,7 @@ import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
 import { getRichContent, getRouteContent } from './constants/richContent';
 import { getLocalizedRouteMeta } from './constants/routeMetaI18n';
-import { getLocalizedRichContent } from './constants/richContentI18n';
+import { useLocalizedRichContent } from './constants/richContentI18n';
 import { useContentLocale } from './context/ContentLocaleContext';
 import RichSeoSections from './components/RichSeoSections';
 
@@ -21,10 +21,7 @@ const BlogPostPage: React.FC = () => {
   // Long-form copy shared with scripts/prerender.js — see constants/richContent.ts.
   const contentLocale = useContentLocale();
   const englishRichContent = useMemo(() => getRichContent(`/blog/${slug}`), [slug]);
-  const localizedRichContent = useMemo(
-    () => getLocalizedRichContent(contentLocale, `/blog/${slug}`),
-    [contentLocale, slug]
-  );
+  const localizedRichContent = useLocalizedRichContent(contentLocale, `/blog/${slug}`);
   const richContent = localizedRichContent || englishRichContent;
   const localizedH1 = useMemo(
     () => (contentLocale ? getLocalizedRouteMeta(contentLocale, `/blog/${slug}`)?.h1 : null),

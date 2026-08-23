@@ -10,7 +10,7 @@ import { getRichContent, getRouteContent, getSectionHeadings } from './constants
 import RichSeoSections from './components/RichSeoSections';
 import { getRouteMeta } from './constants/routeMeta';
 import { stripLocalePrefix, getLocalizedRouteMeta } from './constants/routeMetaI18n';
-import { getLocalizedRichContent } from './constants/richContentI18n';
+import { useLocalizedRichContent } from './constants/richContentI18n';
 import { useContentLocale } from './context/ContentLocaleContext';
 
 interface FeaturePageProps {
@@ -32,10 +32,7 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
   const pathname = stripLocalePrefix(location.pathname);
   const contentLocale = useContentLocale();
   const englishRichContent = useMemo(() => getRichContent(pathname), [pathname]);
-  const localizedRichContent = useMemo(
-    () => getLocalizedRichContent(contentLocale, pathname),
-    [contentLocale, pathname]
-  );
+  const localizedRichContent = useLocalizedRichContent(contentLocale, pathname);
   const richContent = localizedRichContent || englishRichContent;
   const routeContent = useMemo(() => getRouteContent(pathname), [pathname]);
   const routeMeta = useMemo(() => getRouteMeta(pathname), [pathname]);

@@ -7,7 +7,7 @@ import { TOOL_SEO_DATA } from './constants/toolSeoData';
 import { getRichContent, getRouteContent, getSectionHeadings } from './constants/richContent';
 import type { ContentSection } from './constants/richContent';
 import { stripLocalePrefix, getLocalizedRouteMeta } from './constants/routeMetaI18n';
-import { getLocalizedRichContent } from './constants/richContentI18n';
+import { useLocalizedRichContent } from './constants/richContentI18n';
 import { useContentLocale } from './context/ContentLocaleContext';
 import RichSeoSections from './components/RichSeoSections';
 import { getRouteMeta } from './constants/routeMeta';
@@ -875,14 +875,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
       const l2 = getLuminance(bgColor);
       const ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
       if (ratio >= 7) {
-        return { score: 100, label: '100% Optical Score', badge: 'Ultra-Fast Scan', color: 'text-emerald-400 border-emerald-500/30 bg-emerald-950/40' };
+        return { score: 100, label: t('scan_optical_score').replace('{n}', '100'), badge: t('scan_ultra_fast'), color: 'text-emerald-400 border-emerald-500/30 bg-emerald-950/40' };
       } else if (ratio >= 4.5) {
-        return { score: 85, label: '85% Optical Score', badge: 'Standard Contrast', color: 'text-blue-400 border-blue-500/30 bg-blue-950/40' };
+        return { score: 85, label: t('scan_optical_score').replace('{n}', '85'), badge: t('scan_standard_contrast'), color: 'text-blue-400 border-blue-500/30 bg-blue-950/40' };
       } else {
-        return { score: 50, label: 'Low Contrast Warning', badge: 'May Fail on Dim Cameras', color: 'text-amber-400 border-amber-500/30 bg-amber-950/40' };
+        return { score: 50, label: t('scan_low_contrast'), badge: t('scan_may_fail'), color: 'text-amber-400 border-amber-500/30 bg-amber-950/40' };
       }
     } catch {
-      return { score: 100, label: '100% Optical Score', badge: 'Ultra-Fast Scan', color: 'text-emerald-400 border-emerald-500/30 bg-emerald-950/40' };
+      return { score: 100, label: t('scan_optical_score').replace('{n}', '100'), badge: t('scan_ultra_fast'), color: 'text-emerald-400 border-emerald-500/30 bg-emerald-950/40' };
     }
   }, [fgColor, bgColor]);
 
@@ -1016,10 +1016,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
   // CTA/FAQ headings.
   const localizedToolName = contentLocale ? t(`tab_${activeTab}_label` as TranslationKey) : currentSeo.title;
   const englishRichContent = useMemo(() => getRichContent(pathname), [pathname]);
-  const localizedRichContent = useMemo(
-    () => getLocalizedRichContent(contentLocale, pathname),
-    [contentLocale, pathname]
-  );
+  const localizedRichContent = useLocalizedRichContent(contentLocale, pathname);
   const richContent = localizedRichContent || englishRichContent;
   const routeContent = useMemo(() => getRouteContent(pathname), [pathname]);
 
@@ -1610,7 +1607,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onChange={(e) => setUrlInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
                             />
-                            <span className="text-xs text-white/70">Enter your full web address including https://</span>
+                            <span className="text-xs text-white/70">{t('hint_url')}</span>
                           </div>
                         )}
 
@@ -1652,10 +1649,10 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                             {pdfInput.mode === 'gdrive' && (
                               <div className="space-y-2">
                                 <div className="text-[11px] text-white/80 leading-relaxed bg-black/20 p-2.5 rounded-xl border border-white/5">
-                                  <strong>How to use Google Drive for your PDF:</strong><br />
-                                  1. Upload your PDF to Google Drive.<br />
-                                  2. Right-click ➔ Share ➔ Set to <strong>"Anyone with the link can view"</strong>.<br />
-                                  3. Paste the share link below:
+                                  <strong>{t('hint_pdf_gdrive_title')}</strong><br />
+                                  1. {t('hint_pdf_gdrive_step1')}<br />
+                                  2. {t('hint_pdf_gdrive_step2')}<br />
+                                  3. {t('hint_pdf_gdrive_step3')}
                                 </div>
                                 <input
                                   type="url"
@@ -1674,7 +1671,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   {pdfInput.isUploading ? (
                                     <div className="flex flex-col items-center justify-center py-1 gap-2">
                                       <div className="w-7 h-7 border-2 border-accent border-t-transparent rounded-full animate-spin"></div>
-                                      <span className="text-xs font-bold text-accent">Uploading PDF to Cloud Storage...</span>
+                                      <span className="text-xs font-bold text-accent">{t('hint_pdf_uploading')}</span>
                                     </div>
                                   ) : (
                                     <>
@@ -1682,10 +1679,10 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                                       </svg>
                                       <span className="text-xs font-bold text-white block">
-                                        {pdfInput.fileName ? pdfInput.fileName : 'Choose a PDF file from your device'}
+                                        {pdfInput.fileName ? pdfInput.fileName : t('hint_pdf_choose_file')}
                                       </span>
                                       <span className="text-[11px] text-white/60 block mt-0.5">
-                                        Auto-hosted on Cloud • Maximum limit: <strong>10 MB</strong>
+                                        {t('hint_pdf_autohost')} <strong>10 MB</strong>
                                       </span>
                                     </>
                                   )}
@@ -1701,7 +1698,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                 {pdfInput.fileSize > 0 && !pdfInput.fileError && !pdfInput.isUploading && (
                                   <div className="flex items-center justify-between bg-emerald-950/40 border border-emerald-500/30 px-3 py-2 rounded-xl text-xs text-emerald-300">
                                     <div className="flex items-center gap-2 truncate">
-                                      <span className="font-bold">✓ Cloud Hosted:</span>
+                                      <span className="font-bold">✓ {t('hint_pdf_cloud_hosted')}</span>
                                       <span className="truncate">{pdfInput.fileName}</span>
                                     </div>
                                     <span className="font-mono text-[11px] shrink-0 font-bold bg-emerald-900/60 px-1.5 py-0.5 rounded">
@@ -1728,7 +1725,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   onChange={(e) => setPdfInput(prev => ({ ...prev, url: e.target.value }))}
                                   className="w-full rounded-xl bg-white text-black px-4 py-2.5 text-xs font-mono outline-none focus:ring-2 focus:ring-accent"
                                 />
-                                <span className="text-[11px] text-white/60 block">Enter any direct PDF link or public document endpoint.</span>
+                                <span className="text-[11px] text-white/60 block">{t('hint_pdf_url')}</span>
                               </div>
                             )}
                           </div>
@@ -1744,7 +1741,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               rows={4}
                               className="w-full rounded-2xl bg-white text-black p-4 text-base outline-none resize-none focus:ring-2 focus:ring-accent"
                             />
-                            <span className="text-xs text-white/70">Plain text QR codes work offline on all device scanners.</span>
+                            <span className="text-xs text-white/70">{t('hint_text')}</span>
                           </div>
                         )}
 
@@ -1820,7 +1817,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                             >
                               <option value="WPA">WPA / WPA2 / WPA3</option>
                               <option value="WEP">WEP</option>
-                              <option value="nopass">No Password (Open)</option>
+                              <option value="nopass">{t('wifi_enc_none')}</option>
                             </select>
                             <label className="sm:col-span-2 flex items-center gap-2 text-white/80 text-xs cursor-pointer pt-1">
                               <input
@@ -1891,7 +1888,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onChange={(e) => setPhoneInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
                             />
-                            <span className="text-xs text-white/70">Scanning will open dialer automatically</span>
+                            <span className="text-xs text-white/70">{t('hint_phone')}</span>
                           </div>
                         )}
 
@@ -2024,7 +2021,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onChange={(e) => setInstagramInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
                             />
-                            <span className="text-xs text-white/70">We'll generate instagram.com/username link automatically</span>
+                            <span className="text-xs text-white/70">{t('hint_instagram')}</span>
                           </div>
                         )}
 
@@ -2038,7 +2035,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onChange={(e) => setYoutubeInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
                             />
-                            <span className="text-xs text-white/70">Paste your YouTube channel or video URL</span>
+                            <span className="text-xs text-white/70">{t('hint_youtube')}</span>
                           </div>
                         )}
 
@@ -2052,7 +2049,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onChange={(e) => setLinkedinInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
                             />
-                            <span className="text-xs text-white/70">Paste your LinkedIn profile URL</span>
+                            <span className="text-xs text-white/70">{t('hint_linkedin')}</span>
                           </div>
                         )}
 
@@ -2066,7 +2063,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onChange={(e) => setTwitterInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
                             />
-                            <span className="text-xs text-white/70">Enter handle or paste x.com/twitter.com URL</span>
+                            <span className="text-xs text-white/70">{t('hint_twitter')}</span>
                           </div>
                         )}
 
@@ -2080,7 +2077,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onChange={(e) => setTiktokInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
                             />
-                            <span className="text-xs text-white/70">We'll generate tiktok.com/@username link automatically</span>
+                            <span className="text-xs text-white/70">{t('hint_tiktok')}</span>
                           </div>
                         )}
 
@@ -2094,7 +2091,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onChange={(e) => setTelegramInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
                             />
-                            <span className="text-xs text-white/70">We'll generate t.me/username link automatically</span>
+                            <span className="text-xs text-white/70">{t('hint_telegram')}</span>
                           </div>
                         )}
 
@@ -2108,7 +2105,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onChange={(e) => setPaypalInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
                             />
-                            <span className="text-xs text-white/70">Enter your PayPal.me username or full URL</span>
+                            <span className="text-xs text-white/70">{t('hint_paypal')}</span>
                           </div>
                         )}
 
@@ -2148,7 +2145,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <span className="inline-block h-3.5 w-3.5 rounded-full bg-white transition-transform translate-x-4" />
                         </span>
                         <span className="text-xs text-white/90 flex items-center gap-1">
-                          Privacy Mode
+                          {t('toggle_privacy_mode')}
                         </span>
                       </label>
                       <label className="flex items-center gap-2 cursor-pointer">
@@ -2156,7 +2153,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <span className="inline-block h-3.5 w-3.5 rounded-full bg-white transition-transform translate-x-4" />
                         </span>
                         <span className="text-xs text-white/90 flex items-center gap-1">
-                          High Resolution (1000px)
+                          {t('toggle_high_res')}
                         </span>
                       </label>
                     </div>
@@ -2924,7 +2921,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       <span className="text-lg font-bold text-slate-900 border-b-2 border-slate-900">4.8</span>
                       <span className="flex text-lg text-star" aria-hidden="true">★★★★★</span>
                     </div>
-                    <p className="text-base text-slate-500">Trusted by <strong className="text-slate-900">thousands of users</strong></p>
+                    <p className="text-base text-slate-500">{t('social_trusted_by')} <strong className="text-slate-900">{t('social_thousands')}</strong></p>
                   </div>
                 </div>
                 <div className="flex w-full flex-col items-center gap-3 lg:w-auto lg:flex-row lg:gap-6">
@@ -2932,13 +2929,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                     href="#qr-generator"
                     className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold rounded-button transition-colors duration-150 border-2 border-transparent bg-accent text-white hover:bg-accent-dark px-5 py-2.5 text-sm w-full lg:w-auto"
                   >
-                    Start Creating — It's Free
+                    {t('social_start_creating')}
                   </a>
                   <div className="flex items-center justify-center gap-2 text-sm text-slate-500">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                     </svg>
-                    <span>No account needed</span>
+                    <span>{t('social_no_account')}</span>
                   </div>
                 </div>
               </div>
@@ -2956,7 +2953,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
               <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5zm-1 14-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9z" />
             </svg>
             <p className="text-base md:text-lg font-medium leading-relaxed text-slate-600 text-center sm:text-left">
-              Privacy-First Platform: Static QR codes render 100% locally in your browser. Dynamic campaigns are securely managed with encrypted routing.
+              {t('trust_privacy_first')}
             </p>
           </div>
           <div className="flex items-center gap-6">
@@ -2966,7 +2963,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <span className="text-[11px] font-bold text-slate-500 uppercase">Secure</span>
+              <span className="text-[11px] font-bold text-slate-500 uppercase">{t('trust_secure')}</span>
             </div>
             <div className="flex flex-col items-center gap-1">
               <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600">
@@ -2974,7 +2971,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <span className="text-[11px] font-bold text-slate-500 uppercase">Global</span>
+              <span className="text-[11px] font-bold text-slate-500 uppercase">{t('trust_global')}</span>
             </div>
             <div className="flex flex-col items-center gap-1">
               <div className="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600">
@@ -2982,7 +2979,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <span className="text-[11px] font-bold text-slate-500 uppercase">Fast</span>
+              <span className="text-[11px] font-bold text-slate-500 uppercase">{t('trust_fast')}</span>
             </div>
           </div>
         </div>
@@ -3248,9 +3245,9 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-base font-bold text-slate-900 mb-0.5">Dynamic QR Code Created</h3>
+                <h3 className="text-base font-bold text-slate-900 mb-0.5">{t('dyn_created_title')}</h3>
                 <p className="text-xs text-slate-500 mb-4">
-                  Destination can be changed anytime with zero reprinting.
+                  {t('dyn_created_sub')}
                 </p>
 
                 {/* QR Preview Card with custom design & logo */}
@@ -3265,7 +3262,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
-                      Download PNG
+                      {t('btn_download_png')}
                     </button>
                     <button
                       type="button"
@@ -3275,7 +3272,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
-                      SVG
+                      {t('btn_download_svg')}
                     </button>
                   </div>
                 </div>
@@ -3283,7 +3280,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                 {/* Short link row */}
                 <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 text-left">
                   <span className="text-[11px] uppercase font-semibold text-slate-500 tracking-wider block mb-1">
-                    Short Redirect Link
+                    {t('dyn_short_link')}
                   </span>
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-xs font-mono font-semibold text-accent truncate">
@@ -3293,18 +3290,18 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       onClick={() => handleCopyShortUrl(savedDynamicLink.short_code)}
                       className="px-2.5 py-1 bg-accent text-white text-[11px] font-semibold rounded-lg shadow-xs hover:bg-accent-dark transition-colors shrink-0"
                     >
-                      {copyShortUrlSuccess ? '✓ Copied' : 'Copy'}
+                      {copyShortUrlSuccess ? `✓ ${t('dyn_copied')}` : t('dyn_copy')}
                     </button>
                   </div>
                   <div className="mt-2 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px]">
-                    <span className="text-slate-500">Target: <span className="font-medium text-slate-800 truncate">{savedDynamicLink.target_url}</span></span>
+                    <span className="text-slate-500">{t('dyn_target')} <span className="font-medium text-slate-800 truncate">{savedDynamicLink.target_url}</span></span>
                     <a
                       href={`https://qr-generator.online/r/${savedDynamicLink.short_code}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-accent font-semibold hover:underline shrink-0 ml-2"
                     >
-                      Test Redirect ↗
+                      {t('dyn_test_redirect')} ↗
                     </a>
                   </div>
                 </div>
@@ -3315,7 +3312,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                     onClick={() => { setShowDynamicSaveModal(false); setSavedDynamicLink(null); }}
                     className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition-colors"
                   >
-                    Go to Dashboard
+                    {t('dyn_go_dashboard')}
                   </Link>
                   <Link
                     to={`/analytics/${savedDynamicLink.id}`}
@@ -3324,7 +3321,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
-                    <span>View Analytics</span>
+                    <span>{t('dyn_view_analytics')}</span>
                   </Link>
                 </div>
               </div>
@@ -3337,8 +3334,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-slate-900">Save Dynamic QR Code</h3>
-                    <p className="text-xs text-slate-500">Edit destination anytime & track live scans</p>
+                    <h3 className="text-base font-bold text-slate-900">{t('dyn_save_title')}</h3>
+                    <p className="text-xs text-slate-500">{t('dyn_save_sub')}</p>
                   </div>
                 </div>
 
@@ -3350,7 +3347,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                 <form onSubmit={handleSaveDynamic} className="space-y-3.5">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">Campaign Title</label>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">{t('dyn_campaign_title')}</label>
                     <input
                       type="text"
                       required
@@ -3362,7 +3359,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">Current Target Link</label>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">{t('dyn_current_target')}</label>
                     <input
                       type="text"
                       disabled
@@ -3370,12 +3367,12 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       className="w-full px-3.5 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-500 font-mono truncate"
                     />
                     <span className="text-[11px] text-slate-500 block mt-1">
-                      You can change this target link at any time from your dashboard without reprinting.
+                      {t('dyn_target_hint')}
                     </span>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">Custom Slug (Optional)</label>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">{t('dyn_custom_slug')}</label>
                     <div className="flex items-center">
                       <span className="px-3 py-2.5 bg-slate-100 border border-r-0 border-slate-200 rounded-l-xl text-xs font-mono text-slate-500">
                         qr-generator.online/r/
@@ -3396,7 +3393,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       disabled={savingDynamic}
                       className="w-full py-2.5 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl text-xs shadow-xs transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
-                      {savingDynamic ? 'Creating Link...' : 'Create Dynamic QR Code'}
+                      {savingDynamic ? t('dyn_creating') : t('dyn_create_btn')}
                     </button>
                   </div>
                 </form>
