@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from './components/LocaleLink';
 import { useLanguage } from './context/LanguageContext';
 import { useContentLocale } from './context/ContentLocaleContext';
 import { getLocalizedRouteMeta } from './constants/routeMetaI18n';

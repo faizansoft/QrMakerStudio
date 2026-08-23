@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
+import Link from './components/LocaleLink';
 import { BLOG_POSTS } from './constants/blogData';
 import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';

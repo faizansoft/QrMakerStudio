@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from './components/LocaleLink';
 
 const NotFoundPage: React.FC = () => {
   // Title and the noindex robots directive come from SEOManager in App.tsx via

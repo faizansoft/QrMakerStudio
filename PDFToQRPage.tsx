@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from './components/LocaleLink';
 import QRCodeStyling, { DotType, CornerSquareType, CornerDotType } from 'qr-code-styling';
 import { useAuth } from './context/AuthContext';
 import { AuthModal } from './components/AuthModal';

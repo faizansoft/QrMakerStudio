@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Link from './components/LocaleLink';
 import { FEATURE_SEO_DATA } from './constants/featureSeoData';
 import { TOOL_SEO_DATA } from './constants/toolSeoData';
 import Home from './Home';

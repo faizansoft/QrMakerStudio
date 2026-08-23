@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Link from './components/LocaleLink';
 import QRCodeStyling from 'qr-code-styling';
 import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS } from './constants';
 import { TOOL_SEO_DATA } from './constants/toolSeoData';

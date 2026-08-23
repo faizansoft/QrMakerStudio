@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from './components/LocaleLink';
 import { BLOG_POSTS, BlogPost } from './constants/blogData';
 import { useLanguage } from './context/LanguageContext';
 import { injectJSONLD, removeJSONLD, getBreadcrumbSchema } from './services/seoUtils';
