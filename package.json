@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/extractPageContent.js && vite build && node scripts/prerender.js && node scripts/generateSitemap.js",
+    "build": "node scripts/extractPageContent.js && node scripts/auditMetaLengths.mjs && vite build && node scripts/prerender.js && node scripts/generateSitemap.js",
     "preview": "vite preview",
     "indexnow": "node scripts/submitIndexNow.js"
   },

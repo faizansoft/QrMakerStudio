@@ -31,14 +31,14 @@ export const ROUTE_META_I18N = {
       lead: 'Guía a clientes, invitados y repartidores directamente a tu dirección física o coordenadas GPS usando la navegación de Google Maps.'
     },
     '/qr-code-with-logo': {
-      title: 'Generador de Códigos QR con Logo | QR de Marca Personalizados',
+      title: 'Generador de Códigos QR con Logo | QR de Marca',
       description: 'Añade el logo de tu empresa al centro de códigos QR de alta resolución. Aumenta la tasa de escaneo, la confianza y el reconocimiento de marca en SVG y PNG.',
       h1: 'Generador de Códigos QR con Logo Personalizado Integrado',
       badge: 'Códigos QR de Marca',
       lead: 'Incrusta el logo de tu empresa, icono de marca o foto de perfil directamente en códigos QR de alta resolución para máximo reconocimiento de marca.'
     },
     '/vcard-qr-code-generator': {
-      title: 'Generador de Códigos QR vCard | Tarjetas de Presentación Digitales',
+      title: 'Generador de QR vCard | Tarjetas de Presentación Digitales',
       description: 'Crea tarjetas de presentación digitales con códigos QR vCard. Comparte tu teléfono, correo, empresa y redes sociales al instante en cualquier smartphone.',
       h1: 'Generador de Códigos QR vCard para Tarjetas de Presentación Digitales',
       badge: 'Tarjeta de Contacto Digital',
@@ -53,7 +53,7 @@ export const ROUTE_META_I18N = {
     },
     '/url-qr-code-generator': {
       title: 'Generador de Códigos QR de URL | Enlaces Web Personalizados',
-      description: 'Convierte cualquier enlace web o página de destino en un código QR personalizado con logos y colores de marca. Descarga en SVG vectorial o PNG de alta resolución gratis.',
+      description: 'Convierte cualquier enlace web o página de destino en un código QR personalizado con logos y colores de marca. Descarga en SVG vectorial o PNG gratis.',
       h1: 'Generador de Códigos QR de URL con Logo y Descarga Vectorial SVG',
       badge: 'Código QR de Enlace Web',
       lead: 'Convierte cualquier enlace web, página de destino, portafolio o catálogo online en un código QR personalizado de alta resolución al instante.'
@@ -73,14 +73,14 @@ export const ROUTE_META_I18N = {
       lead: 'Permite que los asistentes añadan seminarios web, bodas, conferencias o citas directamente a su calendario de Apple o Google con un escaneo.'
     },
     '/crypto-qr-code-generator': {
-      title: 'Generador de Códigos QR Cripto | Billetera Bitcoin y Ethereum',
+      title: 'Generador de QR Cripto | Billetera Bitcoin y Ethereum',
       description: 'Genera códigos QR seguros de criptomonedas para Bitcoin, Ethereum y billeteras cripto. Evita errores de pago y recibe transferencias fácilmente.',
       h1: 'Generador de Códigos QR de Criptomonedas para Transferencias de Billetera',
       badge: 'QR de Billetera Cripto',
       lead: 'Evita costosos errores de tipeo en transferencias cripto generando códigos QR escaneables para Bitcoin, Ethereum, USDT y billeteras populares.'
     },
     '/svg-qr-code-generator': {
-      title: 'Generador de Códigos QR SVG Vectorial | Escalable para Impresión',
+      title: 'Generador de QR SVG Vectorial | Escalable para Imprimir',
       description: 'Descarga códigos QR vectoriales SVG nítidos con fondo transparente. Perfecto para vallas publicitarias, carteles, empaques y material impreso.',
       h1: 'Generador de Códigos QR SVG Vectorial para Impresión de Alta Resolución',
       badge: 'Formato Vectorial SVG',
@@ -158,7 +158,7 @@ export const ROUTE_META_I18N = {
     },
     '/facebook-qr-code-generator': {
       title: 'Generador de Códigos QR de Facebook Gratis | Página y Perfil',
-      description: 'Crea códigos QR gratis para páginas de Facebook, Instagram, TikTok y perfiles sociales. Aumenta tus seguidores con códigos QR de marca personalizados en SVG y PNG.',
+      description: 'Crea códigos QR gratis para páginas de Facebook, Instagram, TikTok y perfiles sociales. Aumenta tus seguidores con QR de marca en SVG y PNG.',
       h1: 'Generador de Códigos QR de Redes Sociales y Facebook para Perfiles',
       badge: 'Crecimiento en Redes Sociales',
       lead: 'Impulsa seguidores e interacción dirigiendo a los usuarios directamente a tu página de Facebook, perfil de Instagram, canal de YouTube o TikTok.'
@@ -171,14 +171,14 @@ export const ROUTE_META_I18N = {
       lead: 'Permite el marcado telefónico inmediato en cualquier móvil cuando los usuarios escanean tus carteles, tarjetas de presentación, folletos o letreros.'
     },
     '/sms-qr-code-generator': {
-      title: 'Generador de Códigos QR de SMS Gratis | Mensajes Predefinidos',
+      title: 'Generador de Códigos QR de SMS | Mensajes Predefinidos',
       description: 'Crea códigos QR de SMS con número de teléfono y texto predefinidos. Perfecto para campañas de marketing, suscripciones, encuestas y alertas.',
       h1: 'Generador de Códigos QR de SMS con Mensajes de Texto Predefinidos',
       badge: 'Marketing por SMS',
       lead: 'Agiliza las suscripciones por SMS, participaciones en concursos y comunicación con clientes con mensajes de texto listos para enviar en un toque.'
     },
     '/instagram-qr-code-generator': {
-      title: 'Generador de Códigos QR de Instagram Gratis | Comparte tu Perfil',
+      title: 'Generador de QR de Instagram | Comparte tu Perfil',
       description: 'Crea un código QR gratis para tu perfil de Instagram. Escanea para seguir — perfecto para tarjetas, folletos, envases y crecimiento en redes.',
       h1: 'Generador de Códigos QR de Instagram para Compartir Perfil y Ganar Seguidores',
       badge: 'Código QR de Instagram',
@@ -192,14 +192,14 @@ export const ROUTE_META_I18N = {
       lead: 'Enlaza directamente a tu canal de YouTube, video o lista de reproducción con un código QR escaneable. Perfecto para promoción multiplataforma.'
     },
     '/linkedin-qr-code-generator': {
-      title: 'Generador de Códigos QR de LinkedIn Gratis | Perfil Profesional',
+      title: 'Generador de QR de LinkedIn | Perfil Profesional',
       description: 'Crea códigos QR profesionales de perfil de LinkedIn para eventos de networking y tarjetas de presentación. Comparte tu perfil con un escaneo.',
       h1: 'Generador de Códigos QR de LinkedIn para Networking y Tarjetas de Presentación',
       badge: 'Código QR de LinkedIn',
       lead: 'Comparte tu perfil profesional de LinkedIn al instante en eventos de networking, conferencias y tarjetas de presentación con un código QR escaneable.'
     },
     '/twitter-qr-code-generator': {
-      title: 'Generador de Códigos QR de X (Twitter) Gratis | Comparte tu Perfil',
+      title: 'Generador de QR de X (Twitter) | Comparte tu Perfil',
       description: 'Genera códigos QR gratis para tu perfil de Twitter/X. Gana seguidores desde impresos, firmas de correo y eventos con un simple escaneo.',
       h1: 'Generador de Códigos QR de Twitter / X para Compartir Perfil y Ganar Audiencia',
       badge: 'Código QR de Twitter / X',
@@ -220,42 +220,42 @@ export const ROUTE_META_I18N = {
       lead: 'Crea códigos QR que enlazan directamente a tu perfil, grupo o canal de Telegram usando el formato de enlace t.me.'
     },
     '/paypal-qr-code-generator': {
-      title: 'Generador de Códigos QR de PayPal Gratis | Recibe Pagos con QR',
+      title: 'Generador de QR de PayPal | Recibe Pagos con QR',
       description: 'Crea códigos QR de pago de PayPal gratis para tu negocio. Los clientes escanean y pagan al instante vía PayPal.me — ideal para facturas y puestos de mercado.',
       h1: 'Generador de Códigos QR de PayPal para Cobro de Pagos Instantáneo',
       badge: 'QR de Pago PayPal',
       lead: 'Acepta pagos al instante compartiendo un código QR de PayPal en tu tienda, puesto de mercado o facturas. Los clientes escanean y pagan vía PayPal.me.'
     },
     '/upi-qr-code-generator': {
-      title: 'Generador de Códigos QR de UPI Gratis | GPay, PhonePe y Paytm',
+      title: 'Generador de QR de UPI | GPay, PhonePe y Paytm',
       description: 'Genera códigos QR de pago UPI gratis compatibles con Google Pay, PhonePe, Paytm y todas las apps UPI. Perfecto para comerciantes y freelancers indios.',
       h1: 'Generador de Códigos QR de UPI para Pagos con Google Pay, PhonePe y Paytm',
       badge: 'QR de Pago UPI',
       lead: 'Genera códigos QR de pago upi:// estándar compatibles con Google Pay, PhonePe, Paytm, BHIM y todas las apps habilitadas para UPI en India.'
     },
     '/bulk-qr-code-generator': {
-      title: 'Generador de Códigos QR Masivo Gratis | Crea por Lotes desde CSV',
+      title: 'Generador de QR Masivo | Crea por Lotes desde CSV',
       description: 'Genera cientos de códigos QR a la vez desde un archivo CSV o lista de texto. Descárgalos como archivos individuales o un solo ZIP. 100% gratis y privado.',
       h1: 'Generador de Códigos QR Masivo Gratis — Crea por Lotes y Descarga en ZIP',
       badge: 'Generador Masivo por Lotes',
       lead: 'Pega una lista o sube un archivo CSV y genera cientos de códigos QR a la vez. Descárgalos individualmente o como un único archivo ZIP.'
     },
     '/qr-code-scanner': {
-      title: 'Escáner y Lector de Códigos QR Online Gratis | Cámara y Subida',
+      title: 'Escáner y Lector de Códigos QR Online | Cámara y Subida',
       description: 'Escanea y decodifica códigos QR online usando tu cámara o subiendo una imagen. Rápido, privado, en el navegador — sin necesidad de instalar apps.',
       h1: 'Escáner y Lector de Códigos QR Online Gratis — Cámara y Subida de Imagen',
       badge: 'Escáner de Código QR',
       lead: 'Escanea códigos QR usando la cámara de tu dispositivo o sube una imagen para decodificar. 100% en el navegador, sin apps, totalmente privado.'
     },
     '/social-media-qr-code': {
-      title: 'Generador de Códigos QR de Redes Sociales Gratis | Todas las Plataformas',
+      title: 'Generador de QR de Redes Sociales | Todas las Plataformas',
       description: 'Crea códigos QR de marca para Instagram, YouTube, LinkedIn, TikTok, Twitter/X y más. Cada código combina con los colores de la plataforma.',
       h1: 'Generador de Códigos QR de Redes Sociales — Todas las Plataformas, un Panel',
       badge: 'QR de Todas las Redes',
       lead: 'Ingresa tus perfiles de Instagram, YouTube, LinkedIn, TikTok, Twitter/X, Facebook, Telegram y WhatsApp. Obtén códigos QR con los colores de cada plataforma.'
     },
     '/colored-qr-code-generator': {
-      title: 'Generador de Códigos QR en Color | Paletas y Estilos Personalizados',
+      title: 'Generador de Códigos QR en Color | Paletas Personalizadas',
       description: 'Crea códigos QR de colores vibrantes que coincidan con tu identidad de marca. Personaliza colores de primer plano, fondo y ojos de esquina con exportación SVG.',
       h1: 'Generador de Códigos QR en Color Gratis con Paletas Personalizadas y SVG',
       badge: 'Paletas de Colores',
@@ -269,7 +269,7 @@ export const ROUTE_META_I18N = {
       lead: 'Genera archivos PNG y SVG de ultra alta resolución 4K diseñados específicamente para impresión comercial offset y digital profesional.'
     },
     '/blog': {
-      title: 'Blog de Marketing y Diseño de Códigos QR | Guías y Buenas Prácticas',
+      title: 'Blog de Marketing y Diseño de Códigos QR | Guías',
       description: 'Lee tutoriales prácticos sobre diseño de códigos QR, buenas prácticas de impresión, menús digitales para restaurantes, marketing inmobiliario y tarjetas vCard.',
       h1: 'Blog de Marketing, Diseño y Tecnología de Códigos QR',
       badge: 'Centro de Conocimiento y Artículos',
@@ -283,28 +283,28 @@ export const ROUTE_META_I18N = {
       lead: 'Descubre cómo los menús digitales sin contacto agilizan las operaciones del restaurante, eliminan costos de reimpresión y mejoran la rotación de mesas.'
     },
     '/blog/printing-qr-codes-guide': {
-      title: 'Guía Definitiva para Imprimir Códigos QR: Tamaño, Resolución y SVG',
+      title: 'Guía para Imprimir Códigos QR: Tamaño, Resolución y SVG',
       description: 'Domina la impresión de códigos QR: fórmulas de tamaño mínimo, reglas de zona silenciosa, ratios de contraste y formatos vectorial SVG vs raster PNG.',
       h1: 'La Guía Definitiva para Imprimir Códigos QR: Tamaño, Contraste y SVG Vectorial',
       badge: 'Guía de Producción de Impresión',
       lead: 'Evita costosos errores de reimpresión con nuestra guía completa de fórmulas de impresión, zonas silenciosas, ratios de contraste y formatos vectoriales.'
     },
     '/blog/vcard-qr-code-business-cards': {
-      title: 'Cómo Poner un Código QR vCard en Tarjetas de Presentación (Guía 2026)',
+      title: 'Código QR vCard en Tarjetas de Presentación (Guía 2026)',
       description: 'Descubre cómo diseñar tarjetas de presentación inteligentes con códigos QR vCard. Comparte tu información de contacto con un toque.',
       h1: 'Cómo Crear Tarjetas de Presentación Digitales con Códigos QR vCard',
       badge: 'Estrategia de Networking',
       lead: 'Transforma las tradicionales tarjetas de papel en herramientas de networking interactivas que guardan el contacto completo en un toque.'
     },
     '/blog/wifi-qr-codes-for-hospitality': {
-      title: 'Códigos QR WiFi para Hoteles, Cafés y Anfitriones de Airbnb (Guía 2026)',
+      title: 'Códigos QR WiFi para Hoteles, Cafés y Airbnb (Guía 2026)',
       description: 'Elimina las quejas por contraseñas WiFi en hoteles, cafés y Airbnbs con códigos QR WiFi personalizados de marca. Conexión instantánea sin escribir nada.',
       h1: 'Códigos QR WiFi para Hoteles, Cafés y Anfitriones de Airbnb: Acceso sin Fricción',
       badge: 'Hostelería y Airbnb',
       lead: 'Elimina la fricción para los huéspedes ofreciendo códigos QR WiFi escaneables para habitaciones, mesas de café, espacios coworking y alquileres vacacionales.'
     },
     '/pdf-qr-code-generator': {
-      title: 'Generador de Códigos QR desde PDF Gratis | Menús y Documentos',
+      title: 'Generador de QR desde PDF | Menús y Documentos',
       description: 'Convierte menús, folletos, catálogos y documentos PDF en códigos QR de marca personalizados. Descargas SVG y PNG gratis con enlaces dinámicos editables.',
       h1: 'Generador de Códigos QR desde PDF para Menús, Catálogos y Documentos',
       badge: 'Suite de Documentos y Menús',
@@ -322,7 +322,7 @@ export const ROUTE_META_I18N = {
   ar: {
     '/': {
       title: 'مولّد رموز QR مجاني بشعار وألوان مخصصة',
-      description: 'أنشئ رموز QR ثابتة وديناميكية مجانًا بشعارات وألوان مخصصة. أنشئ وخصص وحمّل رموز QR احترافية بدقة عالية.',
+      description: 'أنشئ رموز QR ثابتة وديناميكية مجانًا بشعارات وألوان مخصصة. صمّم وحمّل رموز QR احترافية عالية الدقة بصيغتي SVG وPNG، دون حساب ودون حدود للمسح.',
       h1: 'مولّد رموز QR مخصص مجاني بشعار وتصدير SVG متجهي',
       badge: 'مولّد QR مجاني عبر الإنترنت',
       lead: 'أنشئ رموز QR عالية الدقة بألوان مخصصة وأنماط نقاط وإطارات وشعارات الشركة. مجاني 100٪ بمسح غير محدود وبدون انتهاء صلاحية.'
@@ -357,7 +357,7 @@ export const ROUTE_META_I18N = {
     },
     '/email-qr-code-generator': {
       title: 'مولّد رمز QR للبريد الإلكتروني | رسائل معبأة مسبقًا',
-      description: 'أنشئ رموز QR للبريد الإلكتروني بعنوان مستلم وموضوع ونص معبأ مسبقًا. سهّل استفسارات وطلبات دعم عملائك مجانًا.',
+      description: 'أنشئ رموز QR للبريد الإلكتروني بعنوان مستلم وموضوع ونص معبأ مسبقًا. سهّل استفسارات عملائك وطلبات الدعم مجانًا، مع تنزيل بصيغتي SVG وPNG.',
       h1: 'مولّد رمز QR للبريد الإلكتروني للاستفسارات والملاحظات المعبأة مسبقًا',
       badge: 'رمز QR للبريد الإلكتروني',
       lead: 'اجعل التواصل مع شركتك سهلاً بفتح مسودة بريد إلكتروني بعنوان محدد مسبقًا مع سطر موضوع ونص جاهزين للإرسال.'
@@ -378,7 +378,7 @@ export const ROUTE_META_I18N = {
     },
     '/event-qr-code-generator': {
       title: 'مولّد رمز QR للفعاليات | احفظ الموعد بمسحة واحدة',
-      description: 'أنشئ رموز QR لأحداث التقويم بعنوان وموقع وتاريخ ووصف. دع ضيوفك يحفظون المواعيد في تقويمهم فورًا.',
+      description: 'أنشئ رموز QR لأحداث التقويم بعنوان وموقع وتاريخ ووصف. دع ضيوفك يحفظون الموعد في تقويم Apple أو Google بمسحة واحدة، مجانًا وبلا انتهاء صلاحية.',
       h1: 'مولّد رمز QR للفعاليات والتقويم للدعوات وتأكيد الحضور',
       badge: 'رمز QR لحدث التقويم',
       lead: 'مكّن الحاضرين من إضافة الندوات والأعراس والمؤتمرات أو المواعيد مباشرة إلى تقويم Apple أو Google بمسحة واحدة.'
@@ -448,7 +448,7 @@ export const ROUTE_META_I18N = {
     },
     '/terms': {
       title: 'شروط الخدمة | اتفاقية الاستخدام العادل',
-      description: 'راجع شروط الخدمة وإرشادات الاستخدام لإنشاء رموز QR مجانية وتجارية على منصة QR Generator Online.',
+      description: 'راجع شروط الخدمة وإرشادات الاستخدام العادل لإنشاء رموز QR مجانية وتجارية على منصة QR Generator Online، بما في ذلك حقوق الاستخدام التجاري الكاملة.',
       h1: 'شروط الخدمة وإرشادات استخدام المنصة',
       badge: 'شروط الخدمة',
       lead: 'راجع الشروط والأحكام التي تحكم إنشاء وتوزيع والاستخدام التجاري لرموز QR المُنشأة على QR Generator Online.'
@@ -695,7 +695,7 @@ export const ROUTE_META_I18N = {
       lead: 'उपस्थित लोगों को एक स्कैन से वेबिनार, शादियां, कॉन्फ्रेंस या अपॉइंटमेंट सीधे उनके Apple या Google कैलेंडर में जोड़ने दें।'
     },
     '/crypto-qr-code-generator': {
-      title: 'मुफ़्त क्रिप्टो क्यूआर कोड जनरेटर | Bitcoin और Ethereum वॉलेट',
+      title: 'क्रिप्टो क्यूआर कोड जनरेटर | Bitcoin और Ethereum वॉलेट',
       description: 'Bitcoin, Ethereum और क्रिप्टो वॉलेट के लिए सुरक्षित क्रिप्टोकरेंसी क्यूआर कोड बनाएं। भुगतान त्रुटियों से बचें और आसानी से ट्रांसफ़र प्राप्त करें।',
       h1: 'क्रिप्टो वॉलेट ट्रांसफर के लिए मुफ़्त क्रिप्टोकरेंसी क्यूआर कोड जनरेटर',
       badge: 'क्रिप्टो वॉलेट क्यूआर',
@@ -752,7 +752,7 @@ export const ROUTE_META_I18N = {
     },
     '/privacy': {
       title: 'गोपनीयता नीति | QR Generator Online डेटा सुरक्षा',
-      description: 'जानें कि QR Generator Online आपकी गोपनीयता की सुरक्षा कैसे करता है। हम आपके ब्राउज़र में क्यूआर कोड को सुरक्षित रूप से प्रोसेस करते हैं, बिना किसी व्यक्तिगत डेटा ट्रैकिंग के।',
+      description: 'जानें कि QR Generator Online आपकी गोपनीयता की सुरक्षा कैसे करता है। हम क्यूआर कोड आपके ब्राउज़र में प्रोसेस करते हैं, बिना किसी व्यक्तिगत डेटा ट्रैकिंग के।',
       h1: 'QR Generator Online पर गोपनीयता नीति और डेटा सुरक्षा',
       badge: 'गोपनीयता और सुरक्षा',
       lead: 'आपकी गोपनीयता सर्वोपरि है। जानें कि हमारा क्लाइंट-साइड जनरेटर आपके संपर्क विवरण, पासवर्ड और लिंक डेटा को कैसे सुरक्षित रखता है।'
@@ -800,8 +800,8 @@ export const ROUTE_META_I18N = {
       lead: 'एक टैप में भेजने के लिए तैयार पहले से फ़ॉर्मेट किए गए टेक्स्ट संदेशों के साथ SMS ऑप्ट-इन, प्रतियोगिता प्रविष्टियों और ग्राहक संचार को सरल बनाएं।'
     },
     '/instagram-qr-code-generator': {
-      title: 'मुफ़्त इंस्टाग्राम क्यूआर कोड जनरेटर | अपनी प्रोफ़ाइल शेयर करें',
-      description: 'अपनी इंस्टाग्राम प्रोफ़ाइल के लिए मुफ़्त क्यूआर कोड बनाएं। फॉलो करने के लिए स्कैन करें — बिज़नेस कार्ड, फ़्लायर्स, प्रोडक्ट पैकेजिंग और सोशल ग्रोथ के लिए एकदम सही।',
+      title: 'इंस्टाग्राम क्यूआर कोड जनरेटर | प्रोफ़ाइल शेयर करें',
+      description: 'अपनी इंस्टाग्राम प्रोफ़ाइल के लिए मुफ़्त क्यूआर कोड बनाएं। बिज़नेस कार्ड, फ़्लायर्स और प्रोडक्ट पैकेजिंग से फॉलोअर्स बढ़ाने के लिए एकदम सही।',
       h1: 'प्रोफ़ाइल शेयरिंग और फॉलोअर ग्रोथ के लिए मुफ़्त इंस्टाग्राम क्यूआर कोड जनरेटर',
       badge: 'इंस्टाग्राम क्यूआर कोड',
       lead: 'सुंदर, स्कैन करने योग्य क्यूआर कोड बनाएं जो सीधे आपकी इंस्टाग्राम प्रोफ़ाइल से लिंक हों। प्रिंट सामग्री और डिजिटल कैंपेन से फॉलोअर्स बढ़ाने के लिए एकदम सही।'
@@ -821,14 +821,14 @@ export const ROUTE_META_I18N = {
       lead: 'नेटवर्किंग इवेंट, कॉन्फ्रेंस और बिज़नेस कार्ड पर स्कैन करने योग्य क्यूआर कोड के साथ अपनी पेशेवर लिंक्डइन प्रोफ़ाइल तुरंत शेयर करें।'
     },
     '/twitter-qr-code-generator': {
-      title: 'मुफ़्त X (Twitter) क्यूआर कोड जनरेटर | अपनी प्रोफ़ाइल शेयर करें',
+      title: 'X (Twitter) क्यूआर कोड जनरेटर | प्रोफ़ाइल शेयर करें',
       description: 'अपनी Twitter/X प्रोफ़ाइल के लिए मुफ़्त क्यूआर कोड जनरेट करें। प्रिंट सामग्री, ईमेल हस्ताक्षर और इवेंट से एक साधारण स्कैन से फॉलोअर्स बढ़ाएं।',
       h1: 'प्रोफ़ाइल शेयरिंग और ऑडियंस ग्रोथ के लिए मुफ़्त Twitter / X क्यूआर कोड जनरेटर',
       badge: 'Twitter / X क्यूआर कोड',
       lead: 'अपनी Twitter/X प्रोफ़ाइल से लिंक करने वाले स्कैन करने योग्य क्यूआर कोड बनाएं। बिज़नेस कार्ड, फ़्लायर्स और ऑफ़लाइन मार्केटिंग सामग्री से ऑडियंस बढ़ाएं।'
     },
     '/tiktok-qr-code-generator': {
-      title: 'मुफ़्त टिकटॉक क्यूआर कोड जनरेटर | स्कैन करने योग्य प्रोफ़ाइल QR',
+      title: 'टिकटॉक क्यूआर कोड जनरेटर | स्कैन योग्य प्रोफ़ाइल QR',
       description: 'अपनी ऑडियंस बढ़ाने के लिए मुफ़्त टिकटॉक प्रोफ़ाइल क्यूआर कोड बनाएं। इंस्टाग्राम, यूट्यूब और प्रिंटेड मर्चेंडाइज़ पर क्रॉस-प्लेटफ़ॉर्म प्रमोशन के लिए एकदम सही।',
       h1: 'प्रोफ़ाइल प्रमोशन और वायरल ग्रोथ के लिए मुफ़्त टिकटॉक क्यूआर कोड जनरेटर',
       badge: 'टिकटॉक क्यूआर कोड',
@@ -842,7 +842,7 @@ export const ROUTE_META_I18N = {
       lead: 't.me डीप लिंक फ़ॉर्मेट का उपयोग करके सीधे अपनी टेलीग्राम प्रोफ़ाइल, ग्रुप या चैनल से लिंक करने वाले क्यूआर कोड बनाएं।'
     },
     '/paypal-qr-code-generator': {
-      title: 'मुफ़्त पेपाल क्यूआर कोड जनरेटर | QR के ज़रिए भुगतान स्वीकारें',
+      title: 'पेपाल क्यूआर कोड जनरेटर | QR से भुगतान स्वीकारें',
       description: 'अपने व्यवसाय के लिए मुफ़्त पेपाल भुगतान क्यूआर कोड बनाएं। ग्राहक स्कैन करके तुरंत PayPal.me के ज़रिए भुगतान करें — इनवॉइस और मार्केट स्टॉल के लिए आदर्श।',
       h1: 'तुरंत भुगतान संग्रह के लिए मुफ़्त पेपाल क्यूआर कोड जनरेटर',
       badge: 'पेपाल भुगतान QR',
@@ -891,7 +891,7 @@ export const ROUTE_META_I18N = {
       lead: 'पेशेवर ऑफ़सेट और डिजिटल कमर्शियल प्रिंटिंग के लिए विशेष रूप से डिज़ाइन की गई अल्ट्रा-हाई-रेज़ोल्यूशन 4K PNG और SVG फ़ाइलें जनरेट करें।'
     },
     '/blog': {
-      title: 'क्यूआर कोड मार्केटिंग और डिज़ाइन ब्लॉग | गाइड और बेस्ट प्रैक्टिस',
+      title: 'क्यूआर कोड मार्केटिंग और डिज़ाइन ब्लॉग | गाइड',
       description: 'क्यूआर कोड डिज़ाइन, प्रिंट बेस्ट प्रैक्टिस, रेस्तरां डिजिटल मेन्यू, रियल एस्टेट मार्केटिंग और vCard बिज़नेस कार्ड पर व्यावहारिक ट्यूटोरियल पढ़ें।',
       h1: 'क्यूआर कोड मार्केटिंग, डिज़ाइन और टेक्नोलॉजी इनसाइट्स ब्लॉग',
       badge: 'नॉलेज हब और आर्टिकल्स',
@@ -905,7 +905,7 @@ export const ROUTE_META_I18N = {
       lead: 'जानें कैसे डिजिटल टचलेस मेन्यू डाइनिंग ऑपरेशन को सुव्यवस्थित करते हैं, रीप्रिंटिंग लागत खत्म करते हैं, और टेबल टर्नओवर दर बढ़ाते हैं।'
     },
     '/blog/printing-qr-codes-guide': {
-      title: 'क्यूआर कोड प्रिंटिंग की संपूर्ण गाइड: आकार, रेज़ोल्यूशन और SVG',
+      title: 'क्यूआर कोड प्रिंटिंग गाइड: आकार, रेज़ोल्यूशन और SVG',
       description: 'क्यूआर कोड प्रिंटिंग में महारत हासिल करें: न्यूनतम आकार गणना फ़ॉर्मूला, क्वाइट ज़ोन नियम, कंट्रास्ट रेशियो और वेक्टर SVG बनाम रास्टर PNG प्रिंट फ़ॉर्मेट सीखें।',
       h1: 'क्यूआर कोड प्रिंटिंग की संपूर्ण गाइड: आकार, कंट्रास्ट और वेक्टर SVG',
       badge: 'प्रिंट प्रोडक्शन गाइड',
@@ -919,7 +919,7 @@ export const ROUTE_META_I18N = {
       lead: 'पारंपरिक पेपर बिज़नेस कार्ड को इंटरैक्टिव नेटवर्किंग टूल में अपग्रेड करें जो एक टैप में स्मार्टफोन में पूरी संपर्क प्रोफ़ाइल सेव करते हैं।'
     },
     '/blog/wifi-qr-codes-for-hospitality': {
-      title: 'होटल, कैफे और Airbnb होस्ट्स के लिए वाईफाई क्यूआर कोड (2026 गाइड)',
+      title: 'होटल, कैफे और Airbnb के लिए वाईफाई क्यूआर कोड (2026)',
       description: 'कस्टम ब्रांडेड वाईफाई क्यूआर कोड के साथ होटल, कैफे और Airbnb में गेस्ट वाईफाई पासवर्ड की शिकायतें खत्म करें। बिना टाइप किए तुरंत कनेक्शन।',
       h1: 'होटल, कैफे और Airbnb होस्ट्स के लिए वाईफाई क्यूआर कोड: सहज गेस्ट एक्सेस',
       badge: 'हॉस्पिटैलिटी और Airbnb',
@@ -934,7 +934,7 @@ export const ROUTE_META_I18N = {
     },
     '/app-store-qr-code-generator': {
       title: 'मुफ़्त ऐप स्टोर क्यूआर कोड जनरेटर | iOS और Android',
-      description: 'एक ऐप स्टोर क्यूआर कोड जो डिवाइस को ऑटो-डिटेक्ट करता है: iPhone उपयोगकर्ता App Store पर जाते हैं, Android उपयोगकर्ता Google Play पर। मुफ़्त, स्कैन ट्रैकिंग के साथ।',
+      description: 'एक ऐप स्टोर क्यूआर कोड जो डिवाइस पहचानता है: iPhone को App Store और Android को Google Play पर भेजता है। मुफ़्त, स्कैन ट्रैकिंग के साथ।',
       h1: 'iOS और Android ऐप डाउनलोड के लिए मुफ़्त ऐप स्टोर क्यूआर कोड जनरेटर',
       badge: 'स्मार्ट ऐप रूटिंग',
       lead: 'iOS और Android के लिए एक ही स्मार्ट क्यूआर कोड बनाएं। रीयल-टाइम इंस्टॉल टेलीमेट्री के साथ iPhone स्कैनर को Apple App Store और Android स्कैनर को Google Play पर स्वचालित रूप से भेजें।'
@@ -958,27 +958,27 @@ export const ROUTE_META_I18N = {
     },
     '/location-qr-code-generator': {
       title: 'Konum QR Kod Oluşturucu | Google Haritalar QR',
-      description: 'Özel koordinatlarla Google Haritalar konum QR kodları oluşturun. Müşterilerinizi tek bir taramayla doğrudan mağazanıza, ofisinize veya etkinlik yerinize yönlendirin.',
+      description: 'Özel koordinatlarla Google Haritalar konum QR kodları oluşturun. Müşterilerinizi tek taramayla doğrudan mağazanıza veya ofisinize yönlendirin.',
       h1: 'Yol Tarifi için Ücretsiz Konum ve Google Haritalar QR Kod Oluşturucu',
       badge: 'Google Haritalar Navigasyonu',
       lead: 'Google Haritalar navigasyonunu kullanarak müşterileri, misafirleri ve teslimat sürücülerini doğrudan fiziksel adresinize veya GPS koordinatlarınıza yönlendirin.'
     },
     '/qr-code-with-logo': {
       title: 'Logolu QR Kod Oluşturucu | Özel Markalı QR Kodlar',
-      description: 'Yüksek çözünürlüklü QR kodlarının merkezine şirket logonuzu veya marka simgenizi ekleyin. SVG ve PNG formatında tarama oranını, marka güvenini ve tanınırlığı artırın.',
+      description: 'Yüksek çözünürlüklü QR kodlarının merkezine şirket logonuzu ekleyin. SVG ve PNG formatında marka güvenini ve tanınırlığı artırın.',
       h1: 'Özel Logo Entegrasyonu ile Ücretsiz QR Kod Oluşturucu',
       badge: 'Markalı QR Kodlar',
       lead: 'Maksimum marka tanınırlığı için şirket logonuzu, marka simgenizi veya profil fotoğrafınızı doğrudan yüksek çözünürlüklü QR kodlarına yerleştirin.'
     },
     '/vcard-qr-code-generator': {
       title: 'Ücretsiz vCard QR Kod Oluşturucu | Dijital Kartvizitler',
-      description: 'vCard QR kodlarıyla dijital kartvizitler oluşturun. Uygulama gerekmeden telefonunuzu, e-postanızı, şirketinizi ve sosyal bağlantılarınızı akıllı telefonlarda anında paylaşın.',
+      description: 'vCard QR kodlarıyla dijital kartvizitler oluşturun. Telefonunuzu, e-postanızı ve sosyal bağlantılarınızı akıllı telefonlarda anında paylaşın.',
       h1: 'Dijital Kartvizitler ve Kişiler için Ücretsiz vCard QR Kod Oluşturucu',
       badge: 'Dijital İletişim Kartı',
       lead: 'Telefon numaranızı, e-posta adresinizi, unvanınızı, şirket web sitenizi ve sosyal bağlantılarınızı doğrudan herhangi bir akıllı telefon rehberine paylaşın.'
     },
     '/email-qr-code-generator': {
-      title: 'Ücretsiz E-posta QR Kod Oluşturucu | Önceden Doldurulmuş Mesajlar',
+      title: 'E-posta QR Kod Oluşturucu | Hazır Mesajlı QR Kodları',
       description: 'Önceden doldurulmuş alıcı adresi, konu ve gövde metniyle e-posta QR kodları oluşturun. Müşteri sorularını ve destek taleplerini ücretsiz olarak kolaylaştırın.',
       h1: 'Önceden Doldurulmuş Sorular ve Geri Bildirimler için Ücretsiz E-posta QR Kod Oluşturucu',
       badge: 'E-posta Mailto QR',
@@ -986,7 +986,7 @@ export const ROUTE_META_I18N = {
     },
     '/url-qr-code-generator': {
       title: 'Ücretsiz URL QR Kod Oluşturucu | Özel Web Sitesi Bağlantı QR',
-      description: 'Herhangi bir web sitesi bağlantısını veya açılış sayfasını logolar ve marka renkleriyle özel bir QR koda dönüştürün. Ücretsiz olarak vektör SVG veya yüksek çözünürlüklü PNG indirin.',
+      description: 'Herhangi bir web sitesi bağlantısını logolar ve marka renkleriyle özel bir QR koda dönüştürün. Ücretsiz vektör SVG veya yüksek çözünürlüklü PNG indirin.',
       h1: 'Logo ve SVG Vektör İndirme ile Ücretsiz URL QR Kod Oluşturucu',
       badge: 'Web Sitesi Bağlantı QR Kodu',
       lead: 'Herhangi bir web sitesi bağlantısını, açılış sayfasını, portföyü veya çevrimiçi kataloğu anında özel, yüksek çözünürlüklü bir QR koda dönüştürün.'
@@ -1006,14 +1006,14 @@ export const ROUTE_META_I18N = {
       lead: 'Katılımcıların webinarları, düğünleri, konferansları veya randevuları tek bir taramayla doğrudan Apple veya Google Takvimlerine eklemesini sağlayın.'
     },
     '/crypto-qr-code-generator': {
-      title: 'Ücretsiz Kripto QR Kod Oluşturucu | Bitcoin ve Ethereum Cüzdanı',
+      title: 'Kripto QR Kod Oluşturucu | Bitcoin ve Ethereum Cüzdanı',
       description: 'Bitcoin, Ethereum ve kripto cüzdanları için güvenli kripto para QR kodları oluşturun. Ödeme hatalarını önleyin ve transferleri kolayca alın.',
       h1: 'Kripto Cüzdan Transferleri için Ücretsiz Kripto Para QR Kod Oluşturucu',
       badge: 'Kripto Cüzdan QR',
       lead: 'Bitcoin, Ethereum, USDT ve popüler cüzdan adresleri için taranabilir QR kodlar oluşturarak maliyetli kripto transfer yazım hatalarını önleyin.'
     },
     '/svg-qr-code-generator': {
-      title: 'Ücretsiz SVG Vektör QR Kod Oluşturucu | Baskı için Ölçeklenebilir',
+      title: 'SVG Vektör QR Kod Oluşturucu | Baskıya Uygun Ölçek',
       description: 'Şeffaf arka planlı keskin vektör SVG QR kodları indirin. Yüksek çözünürlüklü billboardlar, posterler, ürün ambalajları ve baskı için mükemmel.',
       h1: 'Yüksek Çözünürlüklü Baskı Medyası için Ücretsiz SVG Vektör QR Kod Oluşturucu',
       badge: 'Vektör SVG Formatı',
@@ -1042,14 +1042,14 @@ export const ROUTE_META_I18N = {
     },
     '/blog/qr-codes-for-real-estate': {
       title: 'Emlak için QR Kodları: Talepleri ve Turları Artırın',
-      description: 'En iyi emlak danışmanlarının 3D sanal turları çalıştırmak ve nitelikli alıcı adayları yakalamak için tabelalarda ve broşürlerde QR kodlarını nasıl kullandığını keşfedin.',
+      description: 'Emlak danışmanlarının 3D sanal turlar için tabelalarda ve broşürlerde QR kodlarını nasıl kullandığını ve alıcı adayı yakaladığını keşfedin.',
       h1: 'Emlak için QR Kodları: Talepler ve Turlar Nasıl Artırılır',
       badge: 'Emlak Pazarlaması',
       lead: 'Modern emlakçıların potansiyel ev alıcılarını sanal 3D mülk turlarına bağlamak için bahçe tabelalarında ve broşürlerde QR kodlarını nasıl kullandığını öğrenin.'
     },
     '/about': {
       title: 'Hakkımızda | Ücretsiz ve Özel QR Oluşturucu',
-      description: 'Dünya çapındaki işletmeler için yüksek kaliteli, gizlilik odaklı ve güzel QR kod oluşturmayı ücretsiz ve erişilebilir hale getirme misyonumuz hakkında bilgi edinin.',
+      description: 'Dünya çapındaki işletmeler için yüksek kaliteli ve gizlilik odaklı QR kod oluşturmayı ücretsiz hale getirme misyonumuzu keşfedin.',
       h1: 'QR Generator Online Hakkında — Ücretsiz ve Profesyonel QR Çözümleri',
       badge: 'Misyonumuz ve Hikayemiz',
       lead: 'Misyonumuz, bireyleri ve işletmeleri hızlı, güvenli, güzel ve tamamen ücretsiz QR kod oluşturma araçlarıyla güçlendirmektir.'
@@ -1083,7 +1083,7 @@ export const ROUTE_META_I18N = {
       lead: 'QR kodu son kullanma tarihi, baskı çözünürlüğü, hata düzeltme ve logo özelleştirme ile ilgili güvenilir cevaplar bulun.'
     },
     '/whatsapp-qr-code-generator': {
-      title: 'Ücretsiz WhatsApp QR Kod Oluşturucu | Doğrudan Sohbet ve Destek',
+      title: 'WhatsApp QR Kod Oluşturucu | Doğrudan Sohbet ve Destek',
       description: 'Önceden doldurulmuş mesajlarla özel WhatsApp QR kodları oluşturun. Müşterilerin tek taramayla sohbet başlatıp işletmenize anında ulaşmasını sağlayın.',
       h1: 'Anında Sohbet ve Destek için Ücretsiz WhatsApp QR Kod Oluşturucu',
       badge: 'Doğrudan Mesajlaşma',
@@ -1097,22 +1097,22 @@ export const ROUTE_META_I18N = {
       lead: 'Kullanıcıları doğrudan Facebook sayfanıza, Instagram profilinize, YouTube kanalınıza veya TikTok\'unuza yönlendirerek takipçi ve etkileşimi artırın.'
     },
     '/phone-qr-code-generator': {
-      title: 'Ücretsiz Telefon Arama QR Kod Oluşturucu | Tıkla-Ara Barkodları',
+      title: 'Telefon Arama QR Kod Oluşturucu | Tıkla-Ara Barkodu',
       description: 'Anında tıkla-ara telefon QR kodları oluşturun. Müşterilerin broşür, poster ve paketlerden doğrudan satış veya destek hattınızı aramasını sağlayın.',
       h1: 'Doğrudan Arama ve Destek için Ücretsiz Telefon Arama QR Kod Oluşturucu',
       badge: 'Anında Arama',
       lead: 'Kullanıcılar posterlerinizi, kartvizitlerinizi, broşürlerinizi veya mağaza tabelalarınızı taradığında herhangi bir mobil cihazda anında telefon araması yapılmasını sağlayın.'
     },
     '/sms-qr-code-generator': {
-      title: 'Ücretsiz SMS Metin QR Kod Oluşturucu | Önceden Yazılmış Mesajlar',
-      description: 'Önceden doldurulmuş telefon numaraları ve metin mesajlarıyla SMS QR kodları oluşturun. Pazarlama kampanyaları, katılımlar, müşteri anketleri ve uyarılar için mükemmel.',
+      title: 'SMS QR Kod Oluşturucu | Önceden Yazılmış Mesajlar',
+      description: 'Önceden doldurulmuş telefon numaraları ve mesajlarla SMS QR kodları oluşturun. Pazarlama kampanyaları, anketler ve uyarılar için mükemmel.',
       h1: 'Önceden Doldurulmuş Metin Mesajlarıyla Ücretsiz SMS QR Kod Oluşturucu',
       badge: 'SMS Pazarlaması',
       lead: 'Tek dokunuşla gönderilmeye hazır önceden biçimlendirilmiş metin mesajlarıyla SMS katılımlarını, yarışma girişlerini ve müşteri iletişimini kolaylaştırın.'
     },
     '/instagram-qr-code-generator': {
       title: 'Ücretsiz Instagram QR Kod Oluşturucu | Profilinizi Paylaşın',
-      description: 'Instagram profiliniz için ücretsiz bir QR kod oluşturun. Takip etmek için tarayın — kartvizitler, broşürler, ürün ambalajı ve sosyal medya büyümesi için mükemmel.',
+      description: 'Instagram profiliniz için ücretsiz QR kod oluşturun. Kartvizitler, broşürler ve ürün ambalajından takipçi kazanmak için mükemmel bir çözüm.',
       h1: 'Profil Paylaşımı ve Takipçi Büyümesi için Ücretsiz Instagram QR Kod Oluşturucu',
       badge: 'Instagram QR Kodu',
       lead: 'Doğrudan Instagram profilinize bağlanan güzel, taranabilir QR kodları oluşturun. Basılı materyaller ve dijital kampanyalardan takipçi kazanmak için mükemmel.'
@@ -1126,13 +1126,13 @@ export const ROUTE_META_I18N = {
     },
     '/linkedin-qr-code-generator': {
       title: 'Ücretsiz LinkedIn QR Kod Oluşturucu | Profil QR Kodları',
-      description: 'Networking etkinlikleri ve kartvizitler için profesyonel LinkedIn profil QR kodları oluşturun. Profilinizi bir taramayla paylaşın ve bağlantılarınızı hızla artırın.',
+      description: 'Networking etkinlikleri ve kartvizitler için profesyonel LinkedIn profil QR kodları oluşturun. Profilinizi tek bir taramayla paylaşın.',
       h1: 'Profesyonel Ağ Kurma ve Kartvizitler için Ücretsiz LinkedIn QR Kod Oluşturucu',
       badge: 'LinkedIn QR Kodu',
       lead: 'Networking etkinliklerinde, konferanslarda ve kartvizitlerde taranabilir bir QR kod ile profesyonel LinkedIn profilinizi anında paylaşın.'
     },
     '/twitter-qr-code-generator': {
-      title: 'Ücretsiz X (Twitter) QR Kod Oluşturucu | Profilinizi Paylaşın',
+      title: 'X (Twitter) QR Kod Oluşturucu | Profilinizi Paylaşın',
       description: 'Twitter/X profiliniz için ücretsiz QR kodları oluşturun. Basılı materyallerden, e-posta imzalarından ve etkinliklerden basit bir taramayla takipçi kazanın.',
       h1: 'Profil Paylaşımı ve Kitle Büyümesi için Ücretsiz Twitter / X QR Kod Oluşturucu',
       badge: 'Twitter / X QR Kodu',
@@ -1168,13 +1168,13 @@ export const ROUTE_META_I18N = {
     },
     '/bulk-qr-code-generator': {
       title: 'Ücretsiz Toplu QR Kod Oluşturucu | CSV\'den Toplu Oluşturun',
-      description: 'Bir CSV dosyasından veya metin listesinden tek seferde yüzlerce QR kod oluşturun. Hepsini ayrı dosyalar veya tek bir ZIP arşivi olarak indirin. %100 ücretsiz ve gizli.',
+      description: 'Bir CSV dosyasından veya metin listesinden tek seferde yüzlerce QR kod oluşturun. Tek bir ZIP arşivi olarak indirin. %100 ücretsiz ve gizli.',
       h1: 'Ücretsiz Toplu QR Kod Oluşturucu — Toplu Oluşturun ve ZIP Olarak İndirin',
       badge: 'Toplu Grup Oluşturucu',
       lead: 'Bir liste yapıştırın veya bir CSV dosyası yükleyin ve tek seferde yüzlerce QR kod oluşturun. Ayrı ayrı veya tek bir ZIP arşivi olarak indirin.'
     },
     '/qr-code-scanner': {
-      title: 'Ücretsiz Çevrimiçi QR Kod Tarayıcı ve Okuyucu | Kamera ve Görsel Yükleme',
+      title: 'Çevrimiçi QR Kod Tarayıcı ve Okuyucu | Kamera ile Tara',
       description: 'Kameranızı kullanarak veya bir görsel yükleyerek çevrimiçi QR kodlarını tarayın ve çözün. Hızlı, gizli, tarayıcı tabanlı — uygulama kurulumu gerekmez.',
       h1: 'Ücretsiz Çevrimiçi QR Kod Tarayıcı ve Okuyucu — Kamera ve Görsel Yükleme',
       badge: 'QR Kod Tarayıcı',
@@ -1195,14 +1195,14 @@ export const ROUTE_META_I18N = {
       lead: 'Yüksek çözünürlükte özel ön plan noktaları, arka plan renkleri ve köşe gözü tonlarıyla tam marka renk şemanızla eşleştirin.'
     },
     '/high-resolution-qr-codes': {
-      title: 'Yüksek Çözünürlüklü QR Kod Oluşturucu | 4K HD PNG ve Vektör SVG',
+      title: 'Yüksek Çözünürlüklü QR Kod | 4K PNG ve Vektör SVG',
       description: 'Profesyonel ticari baskı için yüksek çözünürlüklü 4K HD PNG ve vektör SVG QR kodları oluşturun. Sınırsız tarama ve bulanıklık olmadan %100 ücretsiz.',
       h1: 'Profesyonel Baskı için Yüksek Çözünürlüklü 4K QR Kod Oluşturucu',
       badge: '4K HD Çözünürlük',
       lead: 'Özellikle profesyonel ofset ve dijital ticari baskı için tasarlanmış ultra yüksek çözünürlüklü 4K PNG ve SVG dosyaları oluşturun.'
     },
     '/blog': {
-      title: 'QR Kod Pazarlama ve Tasarım Blogu | Rehberler ve En İyi Uygulamalar',
+      title: 'QR Kod Pazarlama ve Tasarım Blogu | Rehberler',
       description: 'QR kod tasarımı, baskı en iyi uygulamaları, restoran dijital menüleri, emlak pazarlaması ve vCard kartvizitleri hakkında pratik eğitimler okuyun.',
       h1: 'QR Kod Pazarlama, Tasarım ve Teknoloji İçgörüleri Blogu',
       badge: 'Bilgi Merkezi ve Makaleler',
@@ -1210,14 +1210,14 @@ export const ROUTE_META_I18N = {
     },
     '/blog/qr-codes-for-restaurants': {
       title: 'Restoranlar için QR Kod Menüleri: Eksiksiz 2026 Rehberi',
-      description: 'Dijital QR menülerin baskı maliyetlerini %90 azalttığını, ortalama sipariş değerini %15 artırdığını ve restoranlar için masa devir hızını nasıl yükselttiğini öğrenin.',
+      description: 'Dijital QR menülerin baskı maliyetlerini %90 azalttığını, sipariş değerini %15 artırdığını ve masa devir hızını nasıl yükselttiğini öğrenin.',
       h1: 'Restoranlar ve Kafeler QR Kod Menüleriyle Masa Devir Hızını Nasıl Artırır',
       badge: 'Konaklama Teknolojisi',
       lead: 'Dijital temassız menülerin yemek operasyonlarını nasıl kolaylaştırdığını, yeniden baskı maliyetlerini nasıl ortadan kaldırdığını ve masa devir hızını nasıl artırdığını keşfedin.'
     },
     '/blog/printing-qr-codes-guide': {
       title: 'QR Kod Baskısı için Nihai Rehber: Boyut, Çözünürlük ve SVG',
-      description: 'QR kod baskısında ustalaşın: minimum boyut hesaplama formüllerini, sessiz bölge kurallarını, kontrast oranlarını ve vektör SVG ile raster PNG baskı formatlarını öğrenin.',
+      description: 'QR kod baskısında ustalaşın: minimum boyut formülleri, sessiz bölge kuralları, kontrast oranları ve vektör SVG ile raster PNG farkları.',
       h1: 'QR Kod Baskısı için Nihai Rehber: Boyutlandırma, Kontrast ve Vektör SVG',
       badge: 'Baskı Üretim Rehberi',
       lead: 'QR kod baskı formülleri, sessiz bölgeler, kontrast oranları ve vektör formatları hakkındaki kapsamlı rehberimizle maliyetli yeniden baskı hatalarından kaçının.'
@@ -1230,7 +1230,7 @@ export const ROUTE_META_I18N = {
       lead: 'Geleneksel kağıt kartvizitleri, tek dokunuşla tam iletişim profillerini akıllı telefonlara kaydeden etkileşimli ağ kurma araçlarına yükseltin.'
     },
     '/blog/wifi-qr-codes-for-hospitality': {
-      title: 'Oteller, Kafeler ve Airbnb Ev Sahipleri için WiFi QR Kodları (2026 Rehberi)',
+      title: 'Oteller, Kafeler ve Airbnb için WiFi QR Kodları (2026)',
       description: 'Otellerde, kafelerde ve Airbnb\'lerde özel markalı WiFi QR kodlarıyla misafir WiFi şifresi şikayetlerini ortadan kaldırın. Yazmadan anında bağlantı.',
       h1: 'Oteller, Kafeler ve Airbnb Ev Sahipleri için WiFi QR Kodları: Sorunsuz Misafir Erişimi',
       badge: 'Konaklama ve Airbnb',
@@ -1238,7 +1238,7 @@ export const ROUTE_META_I18N = {
     },
     '/pdf-qr-code-generator': {
       title: 'Ücretsiz PDF\'den QR Koda Oluşturucu | Menüler ve Belgeler',
-      description: 'PDF menülerini, broşürleri, katalogları ve belgeleri özel markalı QR kodlarına dönüştürün. Düzenlenebilir dinamik hedef bağlantılarla ücretsiz vektör SVG ve PNG indirmeleri.',
+      description: 'PDF menülerini, broşürleri ve katalogları özel markalı QR kodlarına dönüştürün. Düzenlenebilir hedef bağlantılarla ücretsiz SVG ve PNG indirin.',
       h1: 'Menüler, Kataloglar ve Belgeler için Ücretsiz PDF\'den QR Koda Oluşturucu',
       badge: 'Belge ve Menü Paketi',
       lead: 'Dijital menüleri, broşürleri, ürün kataloglarını ve belgeleri, düzenlenebilir dinamik hedef bağlantılarıyla markalı, yüksek çözünürlüklü QR kodlarına dönüştürün.'
@@ -1261,7 +1261,7 @@ export const ROUTE_META_I18N = {
       lead: 'Tạo mã QR độ phân giải cao với màu sắc tùy chỉnh, mẫu chấm, khung viền và logo công ty. Miễn phí 100%, quét không giới hạn và không hết hạn.'
     },
     '/text-qr-code-generator': {
-      title: 'Trình Tạo Mã QR Văn Bản Miễn Phí | Lưu Trữ Dữ Liệu Ngoại Tuyến',
+      title: 'Trình Tạo Mã QR Văn Bản | Lưu Trữ Dữ Liệu Ngoại Tuyến',
       description: 'Chuyển văn bản thuần, ghi chú, số sê-ri hoặc hướng dẫn thành mã QR có thể quét. Hoạt động 100% khi không có kết nối internet.',
       h1: 'Trình Tạo Mã QR Văn Bản Thuần cho Ghi Chú và Số Sê-ri',
       badge: 'QR Văn Bản Ngoại Tuyến',
@@ -1297,7 +1297,7 @@ export const ROUTE_META_I18N = {
     },
     '/url-qr-code-generator': {
       title: 'Trình Tạo Mã QR URL Miễn Phí | Mã QR Liên Kết Web Tùy Chỉnh',
-      description: 'Chuyển bất kỳ liên kết trang web hoặc trang đích nào thành mã QR tùy chỉnh với logo và màu sắc thương hiệu. Tải xuống định dạng vector SVG hoặc PNG độ phân giải cao miễn phí.',
+      description: 'Chuyển bất kỳ liên kết trang web nào thành mã QR tùy chỉnh với logo và màu sắc thương hiệu. Tải xuống vector SVG hoặc PNG độ phân giải cao miễn phí.',
       h1: 'Trình Tạo Mã QR URL Miễn Phí với Logo và Tải Xuống Vector SVG',
       badge: 'Mã QR Liên Kết Web',
       lead: 'Chuyển ngay bất kỳ liên kết trang web, trang đích, hồ sơ năng lực hoặc danh mục trực tuyến nào thành mã QR tùy chỉnh, độ phân giải cao.'
@@ -1395,7 +1395,7 @@ export const ROUTE_META_I18N = {
     },
     '/whatsapp-qr-code-generator': {
       title: 'Trình Tạo Mã QR WhatsApp Miễn Phí | Liên Kết Chat và Hỗ Trợ',
-      description: 'Tạo mã QR WhatsApp tùy chỉnh với tin nhắn được điền sẵn. Cho phép khách hàng bắt đầu trò chuyện và liên hệ doanh nghiệp của bạn ngay lập tức chỉ với một lần quét.',
+      description: 'Tạo mã QR WhatsApp tùy chỉnh với tin nhắn điền sẵn. Cho phép khách hàng bắt đầu trò chuyện với doanh nghiệp của bạn chỉ với một lần quét.',
       h1: 'Trình Tạo Mã QR WhatsApp Miễn Phí cho Chat và Hỗ Trợ Tức Thì',
       badge: 'Nhắn Tin Trực Tiếp',
       lead: 'Cho phép khách hàng mở cuộc trò chuyện WhatsApp trực tiếp với đội hỗ trợ hoặc bán hàng của bạn, kèm tin nhắn giới thiệu điền sẵn tùy chọn.'
@@ -1485,7 +1485,7 @@ export const ROUTE_META_I18N = {
       lead: 'Dán một danh sách hoặc tải lên tệp CSV và tạo hàng trăm mã QR cùng lúc. Tải xuống riêng lẻ hoặc dưới dạng một tệp ZIP duy nhất.'
     },
     '/qr-code-scanner': {
-      title: 'Máy Quét và Đọc Mã QR Trực Tuyến Miễn Phí | Camera và Tải Ảnh',
+      title: 'Máy Quét và Đọc Mã QR Trực Tuyến | Camera và Tải Ảnh',
       description: 'Quét và giải mã mã QR trực tuyến bằng camera của bạn hoặc bằng cách tải lên hình ảnh. Nhanh, riêng tư, dựa trên trình duyệt — không cần cài đặt ứng dụng.',
       h1: 'Máy Quét và Đọc Mã QR Trực Tuyến Miễn Phí — Camera và Tải Ảnh',
       badge: 'Máy Quét Mã QR',
@@ -1513,7 +1513,7 @@ export const ROUTE_META_I18N = {
       lead: 'Tạo tệp PNG và SVG siêu độ phân giải cao 4K được thiết kế riêng cho in offset và in thương mại kỹ thuật số chuyên nghiệp.'
     },
     '/blog': {
-      title: 'Blog Marketing và Thiết Kế Mã QR | Hướng Dẫn và Thực Hành Tốt Nhất',
+      title: 'Blog Marketing và Thiết Kế Mã QR | Hướng Dẫn Chi Tiết',
       description: 'Đọc hướng dẫn thực tế về thiết kế mã QR, thực hành in ấn tốt nhất, thực đơn kỹ thuật số nhà hàng, marketing bất động sản và danh thiếp vCard.',
       h1: 'Blog Kiến Thức về Marketing, Thiết Kế và Công Nghệ Mã QR',
       badge: 'Trung Tâm Kiến Thức và Bài Viết',
@@ -1527,7 +1527,7 @@ export const ROUTE_META_I18N = {
       lead: 'Khám phá cách thực đơn kỹ thuật số không chạm giúp hợp lý hóa vận hành nhà hàng, loại bỏ chi phí in lại và tăng tỷ lệ quay vòng bàn.'
     },
     '/blog/printing-qr-codes-guide': {
-      title: 'Hướng Dẫn Toàn Diện về In Mã QR: Kích Thước, Độ Phân Giải và SVG',
+      title: 'Hướng Dẫn In Mã QR: Kích Thước, Độ Phân Giải và SVG',
       description: 'Thành thạo in mã QR: tìm hiểu công thức tính kích thước tối thiểu, quy tắc vùng yên tĩnh, tỷ lệ tương phản và định dạng in vector SVG so với raster PNG.',
       h1: 'Hướng Dẫn Toàn Diện về In Mã QR: Kích Thước, Độ Tương Phản và Vector SVG',
       badge: 'Hướng Dẫn Sản Xuất In Ấn',
@@ -1541,7 +1541,7 @@ export const ROUTE_META_I18N = {
       lead: 'Nâng cấp danh thiếp giấy truyền thống thành công cụ kết nối tương tác lưu toàn bộ hồ sơ liên hệ vào điện thoại thông minh chỉ với một chạm.'
     },
     '/blog/wifi-qr-codes-for-hospitality': {
-      title: 'Mã QR WiFi cho Khách Sạn, Quán Cà Phê và Chủ Nhà Airbnb (Hướng Dẫn 2026)',
+      title: 'Mã QR WiFi cho Khách Sạn, Quán Cà Phê và Airbnb (2026)',
       description: 'Loại bỏ khiếu nại về mật khẩu WiFi khách tại khách sạn, quán cà phê và Airbnb bằng mã QR WiFi thương hiệu tùy chỉnh. Kết nối tức thì không cần gõ.',
       h1: 'Mã QR WiFi cho Khách Sạn, Quán Cà Phê và Chủ Nhà Airbnb: Truy Cập Khách Liền Mạch',
       badge: 'Ngành Khách Sạn và Airbnb',
