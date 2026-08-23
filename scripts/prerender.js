@@ -95,7 +95,7 @@ const LINK_LABELS = {
  */
 const FOOTER_GROUPS = [
   {
-    heading: 'QR Code Tools',
+    headingKey: 'nav_tools',
     hrefs: [
       '/url-qr-code-generator', '/wifi-qr-code-generator', '/vcard-qr-code-generator',
       '/text-qr-code-generator', '/email-qr-code-generator', '/sms-qr-code-generator',
@@ -104,7 +104,7 @@ const FOOTER_GROUPS = [
     ]
   },
   {
-    heading: 'Social & Payment',
+    headingKey: 'footer_group_social',
     hrefs: [
       '/facebook-qr-code-generator', '/instagram-qr-code-generator', '/youtube-qr-code-generator',
       '/linkedin-qr-code-generator', '/twitter-qr-code-generator', '/tiktok-qr-code-generator',
@@ -113,7 +113,7 @@ const FOOTER_GROUPS = [
     ]
   },
   {
-    heading: 'Tools & Features',
+    headingKey: 'footer_group_tools',
     hrefs: [
       '/pdf-qr-code-generator', '/app-store-qr-code-generator', '/bulk-qr-code-generator',
       '/qr-code-scanner', '/qr-code-with-logo', '/custom-qr-codes',
@@ -121,7 +121,7 @@ const FOOTER_GROUPS = [
     ]
   },
   {
-    heading: 'Guides & Blog',
+    headingKey: 'footer_group_blog',
     hrefs: [
       '/blog', '/blog/qr-codes-for-restaurants', '/blog/printing-qr-codes-guide',
       '/blog/vcard-qr-code-business-cards', '/blog/qr-codes-for-real-estate',
@@ -129,10 +129,83 @@ const FOOTER_GROUPS = [
     ]
   },
   {
-    heading: 'Company & Support',
+    headingKey: 'footer_company_title',
     hrefs: ['/pricing', '/faqs-qr-code-generator', '/about', '/contact', '/privacy', '/terms', '/login', '/signup']
   }
 ];
+
+
+/**
+ * Locale-correct internal href.
+ *
+ * Only prefixes when that (locale, path) pair actually has a translation, so
+ * navigation never points at a URL the prerenderer did not write. Untranslated
+ * or noindex targets (/login, /signup) correctly stay on the English page.
+ */
+const localeHref = (locale, href) =>
+  locale && ROUTE_META_I18N[locale] && ROUTE_META_I18N[locale][href]
+    ? `/${locale}${href === '/' ? '' : href}`
+    : href;
+
+
+/**
+ * Translation key per footer link, mirroring FOOTER_GROUPS in
+ * components/Footer.tsx so the prerendered footer and the React footer read
+ * identically in every language. Paths absent here fall back to LINK_LABELS.
+ */
+const FOOTER_LABEL_KEYS = {
+  '/url-qr-code-generator': 'tab_url_label',
+  '/wifi-qr-code-generator': 'tab_wifi_label',
+  '/vcard-qr-code-generator': 'tab_vcard_label',
+  '/text-qr-code-generator': 'tab_text_label',
+  '/email-qr-code-generator': 'tab_email_label',
+  '/sms-qr-code-generator': 'tab_sms_label',
+  '/phone-qr-code-generator': 'tab_phone_label',
+  '/location-qr-code-generator': 'tab_location_label',
+  '/event-qr-code-generator': 'tab_event_label',
+  '/crypto-qr-code-generator': 'tab_crypto_label',
+  '/googleform-qr-code-generator': 'tab_googleform_label',
+  '/whatsapp-qr-code-generator': 'tab_whatsapp_label',
+  '/facebook-qr-code-generator': 'tab_facebook_label',
+  '/instagram-qr-code-generator': 'tab_instagram_label',
+  '/youtube-qr-code-generator': 'tab_youtube_label',
+  '/linkedin-qr-code-generator': 'tab_linkedin_label',
+  '/twitter-qr-code-generator': 'tab_twitter_label',
+  '/tiktok-qr-code-generator': 'tab_tiktok_label',
+  '/telegram-qr-code-generator': 'tab_telegram_label',
+  '/paypal-qr-code-generator': 'tab_paypal_label',
+  '/upi-qr-code-generator': 'tab_upi_label',
+  '/social-media-qr-code': 'footer_social_media_qr',
+  '/pdf-qr-code-generator': 'footer_pdf_qr',
+  '/app-store-qr-code-generator': 'footer_app_store_qr',
+  '/bulk-qr-code-generator': 'footer_bulk_qr',
+  '/qr-code-scanner': 'footer_qr_scanner',
+  '/qr-code-with-logo': 'feature_logo',
+  '/custom-qr-codes': 'feature_custom',
+  '/colored-qr-code-generator': 'feature_color',
+  '/svg-qr-code-generator': 'feature_svg',
+  '/high-resolution-qr-codes': 'feature_hd',
+  '/blog': 'footer_blog_all',
+  '/blog/qr-codes-for-restaurants': 'footer_blog_restaurants',
+  '/blog/printing-qr-codes-guide': 'footer_blog_printing',
+  '/blog/vcard-qr-code-business-cards': 'footer_blog_vcard',
+  '/blog/qr-codes-for-real-estate': 'footer_blog_realestate',
+  '/blog/wifi-qr-codes-for-hospitality': 'footer_blog_hospitality',
+  '/pricing': 'nav_pricing',
+  '/faqs-qr-code-generator': 'nav_faq',
+  '/about': 'nav_about',
+  '/contact': 'nav_contact',
+  '/privacy': 'footer_privacy',
+  '/terms': 'footer_terms',
+  '/login': 'footer_login',
+  '/signup': 'footer_signup'
+};
+
+const FOOTER_LINK_LABEL = (locale, href) =>
+  FOOTER_LABEL_KEYS[href] ? ui(locale, FOOTER_LABEL_KEYS[href]) : (LINK_LABELS[href] || href);
+
+/** "Home" in each routed locale, for the prerendered header nav. */
+const HOME_NAV_LABEL = { ar: 'الرئيسية', hi: 'होम', tr: 'Ana Sayfa', es: 'Inicio', vi: 'Trang chủ' };
 
 function buildHeaderHtml(locale) {
   // Deep links (tool/company pages) stay English in phase 1 — see the module
@@ -147,28 +220,28 @@ function buildHeaderHtml(locale) {
           QR Generator Online
         </a>
         <nav style="display:flex; gap:16px; flex-wrap:wrap; font-size:14px; font-weight:600;">
-          <a href="${homeHref}" style="color:#2B6F53; text-decoration:none;">Home</a>
-          <a href="/wifi-qr-code-generator" style="color:#475569; text-decoration:none;">WiFi QR</a>
-          <a href="/url-qr-code-generator" style="color:#475569; text-decoration:none;">URL QR</a>
-          <a href="/vcard-qr-code-generator" style="color:#475569; text-decoration:none;">vCard QR</a>
-          <a href="/qr-code-with-logo" style="color:#475569; text-decoration:none;">Logo QR</a>
-          <a href="/pricing" style="color:#475569; text-decoration:none;">Pricing</a>
-          <a href="/faqs-qr-code-generator" style="color:#475569; text-decoration:none;">FAQ</a>
-          <a href="/blog" style="color:#475569; text-decoration:none;">Blog</a>
+          <a href="${homeHref}" style="color:#2B6F53; text-decoration:none;">${HOME_NAV_LABEL[locale] || 'Home'}</a>
+          <a href="${localeHref(locale, '/wifi-qr-code-generator')}" style="color:#475569; text-decoration:none;">${ui(locale, 'tab_wifi_label')}</a>
+          <a href="${localeHref(locale, '/url-qr-code-generator')}" style="color:#475569; text-decoration:none;">${ui(locale, 'tab_url_label')}</a>
+          <a href="${localeHref(locale, '/vcard-qr-code-generator')}" style="color:#475569; text-decoration:none;">${ui(locale, 'tab_vcard_label')}</a>
+          <a href="${localeHref(locale, '/qr-code-with-logo')}" style="color:#475569; text-decoration:none;">${ui(locale, 'feature_logo')}</a>
+          <a href="${localeHref(locale, '/pricing')}" style="color:#475569; text-decoration:none;">${ui(locale, 'nav_pricing')}</a>
+          <a href="${localeHref(locale, '/faqs-qr-code-generator')}" style="color:#475569; text-decoration:none;">${ui(locale, 'nav_faq')}</a>
+          <a href="${localeHref(locale, '/blog')}" style="color:#475569; text-decoration:none;">${ui(locale, 'nav_blog')}</a>
         </nav>
       </div>
     </header>
   `;
 }
 
-function buildFooterHtml() {
+function buildFooterHtml(locale) {
   const columns = FOOTER_GROUPS.map(group => {
     const items = group.hrefs.map(href =>
-      `<li><a href="${href}" style="color:#94A3B8; text-decoration:none; font-size:13px; display:block; padding:3px 0;">${LINK_LABELS[href] || href}</a></li>`
+      `<li><a href="${localeHref(locale, href)}" style="color:#94A3B8; text-decoration:none; font-size:13px; display:block; padding:3px 0;">${FOOTER_LINK_LABEL(locale, href)}</a></li>`
     ).join('');
     return `
           <div>
-            <h4 style="font-size:14px; font-weight:700; color:#ffffff; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.05em;">${group.heading}</h4>
+            <h4 style="font-size:14px; font-weight:700; color:#ffffff; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.05em;">${ui(locale, group.headingKey)}</h4>
             <ul style="list-style:none; padding:0; margin:0;">${items}</ul>
           </div>`;
   }).join('');
@@ -463,7 +536,7 @@ function buildBodyHtml(route) {
           <textarea readonly style="width:100%; height:54px; font-family:monospace; font-size:12px; padding:8px; border:1px solid #CBD5E1; border-radius:6px; background:#ffffff; color:#334155; resize:none;" onclick="this.select()">&lt;a href="${route.canonical}" target="_blank" rel="noopener"&gt;Free ${route.badge || 'QR Code Generator'} by QR Generator Online&lt;/a&gt;</textarea>
         </section>
       </main>
-      ${buildFooterHtml()}
+      ${buildFooterHtml(route.locale)}
     </div>
   `;
 }
@@ -923,6 +996,45 @@ function verifyRouteCoverage() {
     process.exit(1);
   }
   console.log(`✅ Tool grid OK — ${TOOL_GRID.length} tools resolve to routes with translated labels.`);
+
+  // The footer check above only ever looked at English routes, so it reported
+  // "no orphaned pages" while all 220 localized pages had zero inbound links
+  // in the prerendered HTML — every nav link on /es/... pointed back at the
+  // English site. They were reachable only from the sitemap, which is why
+  // Ahrefs recorded them at crawl depth 0. Verify the localized nav actually
+  // keeps a crawler inside its locale.
+  const localeLinkProblems = [];
+  for (const loc of ROUTED_LOCALES) {
+    const sample = ROUTES.find((r) => !r.noindex && ROUTE_META_I18N[loc]?.[r.path]);
+    if (!sample) continue;
+    const outPath = `/${loc}${sample.path === '/' ? '' : sample.path}`;
+    const file = path.join(distDir, outPath.replace(/^\//, ''), 'index.html');
+    if (!fs.existsSync(file)) continue;
+
+    const html = fs.readFileSync(file, 'utf8');
+    const nav =
+      (html.match(/<header[\s\S]*?<\/header>/) || [''])[0] +
+      (html.match(/<footer[\s\S]*?<\/footer>/) || [''])[0];
+    const hrefs = [...nav.matchAll(/href="(\/[^"#]*)"/g)].map((m) => m[1]);
+    const localized = hrefs.filter((h) => new RegExp(`^/${loc}(/|$)`).test(h));
+
+    // Everything except the handful of untranslated targets (/login, /signup)
+    // should stay in-locale; allow a small margin rather than demanding 100%.
+    if (localized.length < hrefs.length * 0.8) {
+      localeLinkProblems.push(
+        `${outPath}: only ${localized.length}/${hrefs.length} nav links stay in /${loc}`
+      );
+    }
+  }
+  if (localeLinkProblems.length) {
+    console.error(
+      '\n❌ Localized pages are orphaned — their nav links leave the locale:\n' +
+        localeLinkProblems.map((p) => `   ${p}`).join('\n') +
+        '\n   buildHeaderHtml/buildFooterHtml must call localeHref().\n'
+    );
+    process.exit(1);
+  }
+  console.log(`✅ Locale linking OK — localized nav keeps crawlers inside all ${ROUTED_LOCALES.length} locales.`);
 }
 
 prerender();
