@@ -10,6 +10,7 @@ import { getRichContent, getRouteContent, getSectionHeadings } from './constants
 import RichSeoSections from './components/RichSeoSections';
 import { getRouteMeta } from './constants/routeMeta';
 import { stripLocalePrefix, getLocalizedRouteMeta } from './constants/routeMetaI18n';
+import { getLocalizedRichContent } from './constants/richContentI18n';
 import { useContentLocale } from './context/ContentLocaleContext';
 
 interface FeaturePageProps {
@@ -30,7 +31,12 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
   // content lookup below is keyed by the plain English path.
   const pathname = stripLocalePrefix(location.pathname);
   const contentLocale = useContentLocale();
-  const richContent = useMemo(() => getRichContent(pathname), [pathname]);
+  const englishRichContent = useMemo(() => getRichContent(pathname), [pathname]);
+  const localizedRichContent = useMemo(
+    () => getLocalizedRichContent(contentLocale, pathname),
+    [contentLocale, pathname]
+  );
+  const richContent = localizedRichContent || englishRichContent;
   const routeContent = useMemo(() => getRouteContent(pathname), [pathname]);
   const routeMeta = useMemo(() => getRouteMeta(pathname), [pathname]);
   const localizedMeta = useMemo(
@@ -48,7 +54,7 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
 
   // Prefer the prerendered (longer) copy so the static HTML and the rendered
   // DOM describe this page with the same words. See Home.tsx for the rationale.
-  const sectionHeadings = useMemo(() => getSectionHeadings(pathname), [pathname]);
+  const sectionHeadings = useMemo(() => getSectionHeadings(pathname, contentLocale), [pathname, contentLocale]);
 
   const stepsTitle = richContent?.steps?.length ? sectionHeadings.steps : featureSeo.stepsTitle;
   const stepItems = richContent?.steps?.length ? richContent.steps : featureSeo.steps;

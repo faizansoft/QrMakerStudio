@@ -5,7 +5,9 @@ import QRCodeStyling from 'qr-code-styling';
 import { DOT_STYLES, CORNER_SQUARE_STYLES, CORNER_DOT_STYLES, FAQ_ITEMS } from './constants';
 import { TOOL_SEO_DATA } from './constants/toolSeoData';
 import { getRichContent, getRouteContent, getSectionHeadings } from './constants/richContent';
+import type { ContentSection } from './constants/richContent';
 import { stripLocalePrefix, getLocalizedRouteMeta } from './constants/routeMetaI18n';
+import { getLocalizedRichContent } from './constants/richContentI18n';
 import { useContentLocale } from './context/ContentLocaleContext';
 import RichSeoSections from './components/RichSeoSections';
 import { getRouteMeta } from './constants/routeMeta';
@@ -1005,7 +1007,20 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
   // English path, so strip it first or every lookup here silently misses.
   const pathname = stripLocalePrefix(location.pathname);
   const contentLocale = useContentLocale();
-  const richContent = useMemo(() => getRichContent(pathname), [pathname]);
+
+  // currentSeo.title is English-only (constants/toolSeoData.ts) and more
+  // descriptive than a bare tab label ("URL QR Code Generator" vs "URL"), so
+  // English keeps it unchanged. On a routed locale, substitute the already-
+  // translated tab label (translations.ts tab_*_label) rather than leaving
+  // the tool name as the one English fragment inside otherwise-localized
+  // CTA/FAQ headings.
+  const localizedToolName = contentLocale ? t(`tab_${activeTab}_label` as TranslationKey) : currentSeo.title;
+  const englishRichContent = useMemo(() => getRichContent(pathname), [pathname]);
+  const localizedRichContent = useMemo(
+    () => getLocalizedRichContent(contentLocale, pathname),
+    [contentLocale, pathname]
+  );
+  const richContent = localizedRichContent || englishRichContent;
   const routeContent = useMemo(() => getRouteContent(pathname), [pathname]);
 
   // Headline comes from routeMeta, the same dictionary the prerenderer reads,
@@ -1031,7 +1046,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
   // versions are the longer ones, so prefer them and keep the section headings
   // the prerenderer uses — otherwise the static HTML and the rendered DOM
   // describe the same page with different copy.
-  const sectionHeadings = useMemo(() => getSectionHeadings(pathname), [pathname]);
+  const sectionHeadings = useMemo(() => getSectionHeadings(pathname, contentLocale), [pathname, contentLocale]);
 
   const stepsTitle = richContent?.steps?.length ? sectionHeadings.steps : currentSeo.stepsTitle;
   const stepItems = richContent?.steps?.length ? richContent.steps : currentSeo.steps;
@@ -1043,7 +1058,11 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
   const useCaseItems = richContent?.useCases?.length ? richContent.useCases : currentSeo.useCases;
 
   // Intro prose: routeContent.sections is what the prerenderer emits.
-  const introSections = routeContent?.sections?.length
+  // localizedRichContent may carry a translated override of the same shape.
+  const localizedSections: ContentSection[] | undefined = (localizedRichContent as any)?.sections;
+  const introSections = localizedSections?.length
+    ? localizedSections
+    : routeContent?.sections?.length
     ? routeContent.sections
     : [{ title: currentSeo.introTitle, paragraphs: currentSeo.introParagraphs }];
 
@@ -3108,13 +3127,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
           <div className="mx-auto max-w-4xl px-4">
             <div className="mb-12 text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-3">
-                Knowledge Base & FAQs
+                {t('rich_kb_badge')}
               </div>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">
-                Frequently Asked Questions about {currentSeo.title}
+                {t('rich_faq_about_title').replace('{tool}', localizedToolName)}
               </h2>
               <p className="text-slate-600 max-w-xl mx-auto text-base">
-                Everything you need to know about creating, customizing, and printing {currentSeo.title}s.
+                {t('rich_faq_about_subtitle').replace('{tool}', localizedToolName)}
               </p>
             </div>
 
@@ -3192,18 +3211,18 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
         <section className="bg-[#0F172A] py-16 md:py-20">
           <div className="mx-auto max-w-3xl px-4 text-center">
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4 text-white">
-              Ready to Create Your {currentSeo.title}?
+              {t('rich_ready_cta_title').replace('{tool}', localizedToolName)}
             </h2>
             <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
-              Start generating professional, customizable QR Codes in seconds. No account needed, no fees — ever.
+              {t('rich_cta_subtitle')}
             </p>
             <a
               href="#qr-generator"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold rounded-button transition-all duration-200 border-2 border-transparent bg-accent text-white hover:bg-accent-dark px-8 py-3.5 text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
-              Create {currentSeo.title} — It's Free
+              {t('rich_cta_button').replace('{tool}', localizedToolName)}
             </a>
-            <p className="text-sm text-white/40 mt-4">No sign-up required • Unlimited QR Codes • Download in PNG, SVG, WebP</p>
+            <p className="text-sm text-white/40 mt-4">{t('rich_cta_footnote')}</p>
           </div>
         </section>
         </>

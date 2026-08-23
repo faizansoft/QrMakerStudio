@@ -13,6 +13,16 @@ import { getSectionHeadings } from './sectionHeadings.js';
 // HTML matches what those pages actually render. See extractPageContent.js.
 import { GENERATED_PAGE_CONTENT } from './generatedPageContent.js';
 import { ROUTED_LOCALES, ROUTE_META_I18N } from './routeMetaI18nData.js';
+import { RICH_CONTENT_I18N } from './richContentI18nData.js';
+
+/** Small fixed chrome strings inside the rich-content sections — kept in sync with translations.ts. */
+const RICH_CHROME_I18N = {
+  es: { technicalBadge: 'Arquitectura Técnica y Protocolo', faqsSubtitle: 'Todo lo que desarrolladores, especialistas en marketing y empresarios necesitan saber.' },
+  ar: { technicalBadge: 'البنية التقنية والبروتوكول', faqsSubtitle: 'كل ما يحتاج المطورون والمسوقون وأصحاب الأعمال معرفته.' },
+  hi: { technicalBadge: 'तकनीकी संरचना और प्रोटोकॉल', faqsSubtitle: 'वह सब कुछ जो डेवलपर्स, मार्केटर्स और व्यवसाय मालिकों को जानना चाहिए।' },
+  tr: { technicalBadge: 'Teknik Mimari ve Protokol', faqsSubtitle: 'Geliştiricilerin, pazarlamacıların ve işletme sahiplerinin bilmesi gereken her şey.' },
+  vi: { technicalBadge: 'Kiến Trúc Kỹ Thuật & Giao Thức', faqsSubtitle: 'Mọi thứ nhà phát triển, nhà tiếp thị và chủ doanh nghiệp cần biết.' }
+};
 
 const ALL_RICH_DATA = {
   ...TOOL_RICH_DATA,
@@ -181,8 +191,13 @@ function buildFooterHtml() {
 function buildBodyHtml(route) {
   // Utility pages keep their copy in JSX; extractPageContent.js pulls it out
   // at build time so the prerendered HTML is not thinner than the rendered DOM.
+  // Locale variants prefer a translated intro (same shape, carried on the
+  // localized rich-content entry) over the English route.sections/generated
+  // fallback — never mixed, so the static HTML always agrees with the
+  // client-rendered DOM for a given locale.
+  const localizedSections = route.locale ? RICH_CONTENT_I18N[route.locale]?.[route.path]?.sections : null;
   const generated = GENERATED_PAGE_CONTENT[route.path] || [];
-  const allSections = [...(route.sections || []), ...generated];
+  const allSections = localizedSections?.length ? localizedSections : [...(route.sections || []), ...generated];
 
   const sectionsHtml = allSections.map(sec => `
     <div style="margin-bottom:28px;">
@@ -191,16 +206,20 @@ function buildBodyHtml(route) {
     </div>
   `).join('');
 
-  // Look up rich structured data for all routes (tools, features, blog, company)
-  const rich = ALL_RICH_DATA[route.path] || null;
+  // Look up rich structured data for all routes (tools, features, blog, company).
+  // Locale variants prefer a translated override; untranslated pages fall
+  // back to the English object whole (never a per-field language mix).
+  const localizedRich = route.locale ? RICH_CONTENT_I18N[route.locale]?.[route.path] : null;
+  const rich = localizedRich || ALL_RICH_DATA[route.path] || null;
+  const chrome = (route.locale && RICH_CHROME_I18N[route.locale]) || { technicalBadge: 'Technical Architecture & Protocol', faqsSubtitle: 'Everything developers, marketers, and business owners need to know.' };
 
   // Section headings are page-specific; see scripts/sectionHeadings.js.
-  const headings = getSectionHeadings(route.path);
+  const headings = getSectionHeadings(route.path, route.locale);
 
   const techOverviewHtml = rich && rich.technicalOverview ? `
     <section style="margin-top:40px; padding:32px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:16px;">
       <div style="display:inline-block; padding:4px 12px; background:rgba(43,111,83,0.1); color:#2B6F53; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; border-radius:9999px; margin-bottom:12px;">
-        Technical Architecture &amp; Protocol
+        ${chrome.technicalBadge}
       </div>
       <h2 style="font-size:24px; font-weight:800; color:#0F172A; margin-bottom:16px;">${rich.technicalOverview.title}</h2>
       ${rich.technicalOverview.paragraphs.map(p => `<p style="color:#475569; font-size:15px; line-height:1.75; margin-bottom:14px;">${p}</p>`).join('')}
@@ -313,7 +332,7 @@ function buildBodyHtml(route) {
   const faqsHtml = rich && rich.faqs ? `
     <section style="margin-top:48px; padding-top:36px; border-top:1px solid #E2E8F0;">
       <h2 style="font-size:24px; font-weight:800; color:#0F172A; margin-bottom:8px; text-align:center;">${headings.faqs}</h2>
-      <p style="text-align:center; color:#64748B; font-size:14px; margin-bottom:24px;">Everything developers, marketers, and business owners need to know.</p>
+      <p style="text-align:center; color:#64748B; font-size:14px; margin-bottom:24px;">${chrome.faqsSubtitle}</p>
       <div style="max-width:820px; margin:0 auto;">
         ${rich.faqs.map(f => `
           <details style="border:1px solid #E2E8F0; border-radius:10px; margin-bottom:12px; background:#fff; overflow:hidden;">
@@ -675,6 +694,7 @@ function prerender() {
       if (!localized) continue;
 
       const outputPath = `/${loc}${route.path === '/' ? '' : route.path}`;
+      const localizedRich = RICH_CONTENT_I18N[loc]?.[route.path] || rich;
       const localizedRoute = {
         ...route,
         title: localized.title,
@@ -685,7 +705,7 @@ function prerender() {
         canonical: `https://qr-generator.online${outputPath}`,
         locale: loc
       };
-      const localeHtml = renderRoute(localizedRoute, rich, {
+      const localeHtml = renderRoute(localizedRoute, localizedRich, {
         htmlLang: loc,
         dir: loc === 'ar' ? 'rtl' : 'ltr',
         hreflangs

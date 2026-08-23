@@ -98,7 +98,11 @@ export type TranslationKey =
   | 'modal_scan_score_suffix' | 'modal_step_of'
   | 'modal_open_button' | 'btn_save_dynamic'
   | 'field_event_start' | 'field_event_end' | 'field_upi_payee_name'
-  | 'aria_scroll_tabs_left' | 'aria_scroll_tabs_right';
+  | 'aria_scroll_tabs_left' | 'aria_scroll_tabs_right'
+  | 'rich_technical_badge' | 'rich_faqs_subtitle'
+  | 'rich_faq_about_title' | 'rich_ready_cta_title'
+  | 'rich_kb_badge' | 'rich_faq_about_subtitle'
+  | 'rich_cta_subtitle' | 'rich_cta_button' | 'rich_cta_footnote';
 
 export const languageMeta = [
   { code: 'en', label: 'English', native: 'English' },
@@ -286,7 +290,16 @@ const baseTranslations: Record<TranslationKey, string> = {
   field_event_end: 'End Date & Time',
   field_upi_payee_name: 'Payee Name',
   aria_scroll_tabs_left: 'Scroll tabs left',
-  aria_scroll_tabs_right: 'Scroll tabs right'
+  aria_scroll_tabs_right: 'Scroll tabs right',
+  rich_technical_badge: 'Technical Architecture & Protocol',
+  rich_faqs_subtitle: 'Everything developers, marketers, and business owners need to know.',
+  rich_faq_about_title: 'Frequently Asked Questions about {tool}',
+  rich_ready_cta_title: 'Ready to Create Your {tool}?',
+  rich_kb_badge: 'Knowledge Base & FAQs',
+  rich_faq_about_subtitle: 'Everything you need to know about creating, customizing, and printing {tool}s.',
+  rich_cta_subtitle: 'Start generating professional, customizable QR Codes in seconds. No account needed, no fees — ever.',
+  rich_cta_button: 'Create {tool} — It\'s Free',
+  rich_cta_footnote: 'No sign-up required • Unlimited QR Codes • Download in PNG, SVG, WebP'
 };
 
 export const translations: Record<string, Partial<Record<TranslationKey, string>>> = {
@@ -452,7 +465,16 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     field_event_end: 'Fecha y Hora de Fin',
     field_upi_payee_name: 'Nombre del Beneficiario',
     aria_scroll_tabs_left: 'Desplazar pestañas a la izquierda',
-    aria_scroll_tabs_right: 'Desplazar pestañas a la derecha'
+    aria_scroll_tabs_right: 'Desplazar pestañas a la derecha',
+    rich_technical_badge: 'Arquitectura Técnica y Protocolo',
+    rich_faqs_subtitle: 'Todo lo que desarrolladores, especialistas en marketing y empresarios necesitan saber.',
+    rich_faq_about_title: 'Preguntas Frecuentes sobre {tool}',
+    rich_ready_cta_title: '¿Listo para Crear tu {tool}?',
+    rich_kb_badge: 'Base de Conocimiento y Preguntas Frecuentes',
+    rich_faq_about_subtitle: 'Todo lo que necesitas saber sobre cómo crear, personalizar e imprimir {tool}.',
+    rich_cta_subtitle: 'Comienza a generar códigos QR profesionales y personalizables en segundos. Sin cuenta, sin costos, nunca.',
+    rich_cta_button: 'Crear {tool} — Es Gratis',
+    rich_cta_footnote: 'No requiere registro • Códigos QR ilimitados • Descarga en PNG, SVG, WebP'
   },
 
   ar: {
@@ -615,7 +637,16 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     field_event_end: 'تاريخ ووقت الانتهاء',
     field_upi_payee_name: 'اسم المستفيد',
     aria_scroll_tabs_left: 'تمرير علامات التبويب لليسار',
-    aria_scroll_tabs_right: 'تمرير علامات التبويب لليمين'
+    aria_scroll_tabs_right: 'تمرير علامات التبويب لليمين',
+    rich_technical_badge: 'البنية التقنية والبروتوكول',
+    rich_faqs_subtitle: 'كل ما يحتاج المطورون والمسوقون وأصحاب الأعمال معرفته.',
+    rich_faq_about_title: 'الأسئلة الشائعة حول {tool}',
+    rich_ready_cta_title: 'هل أنت مستعد لإنشاء {tool}؟',
+    rich_kb_badge: 'قاعدة المعرفة والأسئلة الشائعة',
+    rich_faq_about_subtitle: 'كل ما تحتاج معرفته عن إنشاء وتخصيص وطباعة {tool}.',
+    rich_cta_subtitle: 'ابدأ في إنشاء رموز QR احترافية وقابلة للتخصيص في ثوانٍ. بدون حساب، وبدون رسوم — أبدًا.',
+    rich_cta_button: 'إنشاء {tool} — مجانًا',
+    rich_cta_footnote: 'لا يتطلب التسجيل • رموز QR غير محدودة • تنزيل بصيغة PNG وSVG وWebP'
   },
 
   hi: {
@@ -778,7 +809,16 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     field_event_end: 'समाप्ति तिथि और समय',
     field_upi_payee_name: 'प्राप्तकर्ता का नाम',
     aria_scroll_tabs_left: 'टैब बाईं ओर स्क्रॉल करें',
-    aria_scroll_tabs_right: 'टैब दाईं ओर स्क्रॉल करें'
+    aria_scroll_tabs_right: 'टैब दाईं ओर स्क्रॉल करें',
+    rich_technical_badge: 'तकनीकी संरचना और प्रोटोकॉल',
+    rich_faqs_subtitle: 'वह सब कुछ जो डेवलपर्स, मार्केटर्स और व्यवसाय मालिकों को जानना चाहिए।',
+    rich_faq_about_title: '{tool} के बारे में सामान्य प्रश्न',
+    rich_ready_cta_title: 'क्या आप अपना {tool} बनाने के लिए तैयार हैं?',
+    rich_kb_badge: 'नॉलेज बेस और सामान्य प्रश्न',
+    rich_faq_about_subtitle: '{tool} बनाने, कस्टमाइज़ करने और प्रिंट करने के बारे में आपको जो कुछ जानना चाहिए।',
+    rich_cta_subtitle: 'सेकंडों में पेशेवर, कस्टमाइज़ करने योग्य क्यूआर कोड बनाना शुरू करें। कोई खाता नहीं, कोई शुल्क नहीं — कभी नहीं।',
+    rich_cta_button: '{tool} बनाएं — यह मुफ़्त है',
+    rich_cta_footnote: 'साइन-अप की आवश्यकता नहीं • असीमित क्यूआर कोड • PNG, SVG, WebP में डाउनलोड करें'
   },
 
   tr: {
@@ -941,7 +981,16 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     field_event_end: 'Bitiş Tarihi ve Saati',
     field_upi_payee_name: 'Alıcı Adı',
     aria_scroll_tabs_left: 'Sekmeleri sola kaydır',
-    aria_scroll_tabs_right: 'Sekmeleri sağa kaydır'
+    aria_scroll_tabs_right: 'Sekmeleri sağa kaydır',
+    rich_technical_badge: 'Teknik Mimari ve Protokol',
+    rich_faqs_subtitle: 'Geliştiricilerin, pazarlamacıların ve işletme sahiplerinin bilmesi gereken her şey.',
+    rich_faq_about_title: '{tool} Hakkında Sıkça Sorulan Sorular',
+    rich_ready_cta_title: '{tool} Oluşturmaya Hazır mısınız?',
+    rich_kb_badge: 'Bilgi Bankası ve SSS',
+    rich_faq_about_subtitle: '{tool} oluşturma, özelleştirme ve yazdırma hakkında bilmeniz gereken her şey.',
+    rich_cta_subtitle: 'Saniyeler içinde profesyonel, özelleştirilebilir QR Kodları oluşturmaya başlayın. Hesap gerekmez, ücret yok — asla.',
+    rich_cta_button: '{tool} Oluştur — Ücretsiz',
+    rich_cta_footnote: 'Kayıt gerekmez • Sınırsız QR Kodu • PNG, SVG, WebP olarak indirin'
   },
 
   vi: {
@@ -1104,7 +1153,16 @@ export const translations: Record<string, Partial<Record<TranslationKey, string>
     field_event_end: 'Ngày & Giờ Kết Thúc',
     field_upi_payee_name: 'Tên Người Nhận',
     aria_scroll_tabs_left: 'Cuộn tab sang trái',
-    aria_scroll_tabs_right: 'Cuộn tab sang phải'
+    aria_scroll_tabs_right: 'Cuộn tab sang phải',
+    rich_technical_badge: 'Kiến Trúc Kỹ Thuật & Giao Thức',
+    rich_faqs_subtitle: 'Mọi thứ nhà phát triển, nhà tiếp thị và chủ doanh nghiệp cần biết.',
+    rich_faq_about_title: 'Câu Hỏi Thường Gặp Về {tool}',
+    rich_ready_cta_title: 'Sẵn Sàng Tạo {tool} Của Bạn?',
+    rich_kb_badge: 'Cơ Sở Kiến Thức & Câu Hỏi Thường Gặp',
+    rich_faq_about_subtitle: 'Mọi thứ bạn cần biết về việc tạo, tùy chỉnh và in {tool}.',
+    rich_cta_subtitle: 'Bắt đầu tạo Mã QR chuyên nghiệp, có thể tùy chỉnh trong vài giây. Không cần tài khoản, không phí — mãi mãi.',
+    rich_cta_button: 'Tạo {tool} — Miễn Phí',
+    rich_cta_footnote: 'Không cần đăng ký • Mã QR Không Giới Hạn • Tải xuống dạng PNG, SVG, WebP'
   }
 };
 

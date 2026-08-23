@@ -17,6 +17,8 @@
  * components — so the static HTML and the rendered DOM stay in agreement.
  */
 
+import { getSectionHeadingsI18n } from './sectionHeadingsI18n.js';
+
 /** Entity label per tool/feature route, used to build headings. */
 const ENTITY = {
   '/url-qr-code-generator': 'URL QR Code',
@@ -158,10 +160,16 @@ const EXPLICIT = {
 };
 
 /**
- * Returns the five section headings for a path.
- * Falls back to the original generic wording for any page not covered.
+ * Returns the five section headings for a path, optionally localized.
+ * `locale` is optional; when given and a translation exists, it wins.
+ * Falls back to the original generic English wording for any page not covered.
  */
-export function getSectionHeadings(pathname) {
+export function getSectionHeadings(pathname, locale) {
+  if (locale) {
+    const localized = getSectionHeadingsI18n(pathname, locale);
+    if (localized) return localized;
+  }
+
   if (EXPLICIT[pathname]) return EXPLICIT[pathname];
 
   const entity = ENTITY[pathname];

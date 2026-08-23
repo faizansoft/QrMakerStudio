@@ -1,6 +1,8 @@
 import React from 'react';
 import { getSectionHeadings } from '../constants/richContent';
 import type { RichContent, ContentSection } from '../constants/richContent';
+import { useLanguage } from '../context/LanguageContext';
+import { useContentLocale } from '../context/ContentLocaleContext';
 
 /**
  * Renders the long-form sections that previously existed ONLY in the
@@ -41,6 +43,9 @@ const SectionShell: React.FC<{ children: React.ReactNode; className?: string }> 
 );
 
 const RichSeoSections: React.FC<Props> = ({ rich, pathname, sections, includeSharedSections = false }) => {
+  const { t } = useLanguage();
+  const contentLocale = useContentLocale();
+
   if (!rich && !sections?.length) return null;
 
   const {
@@ -55,7 +60,7 @@ const RichSeoSections: React.FC<Props> = ({ rich, pathname, sections, includeSha
     faqs
   } = rich || {};
 
-  const headings = getSectionHeadings(pathname);
+  const headings = getSectionHeadings(pathname, contentLocale);
 
   return (
     <>
@@ -73,7 +78,7 @@ const RichSeoSections: React.FC<Props> = ({ rich, pathname, sections, includeSha
       {technicalOverview && (
         <SectionShell className="bg-white">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-4">
-            Technical Architecture &amp; Protocol
+            {t('rich_technical_badge')}
           </div>
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6">{technicalOverview.title}</h2>
           <div className="space-y-4">
@@ -213,7 +218,7 @@ const RichSeoSections: React.FC<Props> = ({ rich, pathname, sections, includeSha
             {headings.faqs}
           </h2>
           <p className="mb-8 text-center text-slate-500">
-            Everything developers, marketers, and business owners need to know.
+            {t('rich_faqs_subtitle')}
           </p>
           <div className="space-y-3">
             {faqs.map((f, i) => (

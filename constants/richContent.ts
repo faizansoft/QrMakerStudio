@@ -113,6 +113,7 @@ export interface SectionHeadings {
 /**
  * Headings for the five templated long-form sections, per page.
  * Same module the prerenderer reads, so both emit identical H2 text.
+ * `locale` is optional; when given and translated, it overrides the English default.
  */
-export const getSectionHeadings = (pathname: string): SectionHeadings =>
-  getSectionHeadingsRaw(normalisePath(pathname)) as SectionHeadings;
+export const getSectionHeadings = (pathname: string, locale?: string | null): SectionHeadings =>
+  getSectionHeadingsRaw(normalisePath(pathname), locale || undefined) as SectionHeadings;
