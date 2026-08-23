@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { AuthModal } from './AuthModal';
 import { languageMeta, SupportedLanguage } from '../translations';
 import { useContentLocale } from '../context/ContentLocaleContext';
-import { ROUTED_LOCALES, stripLocalePrefix, isRoutedLocale } from '../constants/routeMetaI18n';
+import { stripLocalePrefix, isRoutedLocale } from '../constants/routeMetaI18n';
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -64,37 +64,37 @@ export const Header: React.FC = () => {
   const activeLangData = languageMeta.find(l => l.code === language) || languageMeta[0];
 
   const qrTypes = [
-    { label: 'PDF to QR Code', href: '/pdf-qr-code-generator' },
-    { label: 'App Store Multi-Link', href: '/app-store-qr-code-generator' },
-    { label: t('tool_url') || 'URL', href: '/url-qr-code-generator' },
-    { label: t('tool_text') || 'Plain Text', href: '/text-qr-code-generator' },
-    { label: t('tool_vcard') || 'vCard Contact', href: '/vcard-qr-code-generator' },
-    { label: t('tool_wifi') || 'WiFi', href: '/wifi-qr-code-generator' },
-    { label: 'Instagram QR', href: '/instagram-qr-code-generator' },
-    { label: 'YouTube QR', href: '/youtube-qr-code-generator' },
-    { label: 'LinkedIn QR', href: '/linkedin-qr-code-generator' },
-    { label: 'Twitter / X QR', href: '/twitter-qr-code-generator' },
-    { label: 'TikTok QR', href: '/tiktok-qr-code-generator' },
-    { label: 'Telegram QR', href: '/telegram-qr-code-generator' },
-    { label: 'PayPal Payment QR', href: '/paypal-qr-code-generator' },
-    { label: 'UPI Payment QR', href: '/upi-qr-code-generator' },
-    { label: t('tool_email') || 'Email', href: '/email-qr-code-generator' },
-    { label: t('tool_sms') || 'SMS', href: '/sms-qr-code-generator' },
-    { label: t('tool_phone') || 'Phone', href: '/phone-qr-code-generator' },
-    { label: t('tool_whatsapp') || 'WhatsApp', href: '/whatsapp-qr-code-generator' },
-    { label: t('tool_facebook') || 'Facebook', href: '/facebook-qr-code-generator' },
-    { label: t('tool_location') || 'Location', href: '/location-qr-code-generator' },
-    { label: t('tool_event') || 'Event', href: '/event-qr-code-generator' },
-    { label: t('tool_crypto') || 'Crypto', href: '/crypto-qr-code-generator' },
-    { label: t('tool_googleform') || 'Google Form', href: '/googleform-qr-code-generator' },
+    { label: t('footer_pdf_qr'), href: '/pdf-qr-code-generator' },
+    { label: t('footer_app_store_qr'), href: '/app-store-qr-code-generator' },
+    { label: t('tab_url_label'), href: '/url-qr-code-generator' },
+    { label: t('tab_text_label'), href: '/text-qr-code-generator' },
+    { label: t('tab_vcard_label'), href: '/vcard-qr-code-generator' },
+    { label: t('tab_wifi_label'), href: '/wifi-qr-code-generator' },
+    { label: t('tab_instagram_label'), href: '/instagram-qr-code-generator' },
+    { label: t('tab_youtube_label'), href: '/youtube-qr-code-generator' },
+    { label: t('tab_linkedin_label'), href: '/linkedin-qr-code-generator' },
+    { label: t('tab_twitter_label'), href: '/twitter-qr-code-generator' },
+    { label: t('tab_tiktok_label'), href: '/tiktok-qr-code-generator' },
+    { label: t('tab_telegram_label'), href: '/telegram-qr-code-generator' },
+    { label: t('tab_paypal_label'), href: '/paypal-qr-code-generator' },
+    { label: t('tab_upi_label'), href: '/upi-qr-code-generator' },
+    { label: t('tab_email_label'), href: '/email-qr-code-generator' },
+    { label: t('tab_sms_label'), href: '/sms-qr-code-generator' },
+    { label: t('tab_phone_label'), href: '/phone-qr-code-generator' },
+    { label: t('tab_whatsapp_label'), href: '/whatsapp-qr-code-generator' },
+    { label: t('tab_facebook_label'), href: '/facebook-qr-code-generator' },
+    { label: t('tab_location_label'), href: '/location-qr-code-generator' },
+    { label: t('tab_event_label'), href: '/event-qr-code-generator' },
+    { label: t('tab_crypto_label'), href: '/crypto-qr-code-generator' },
+    { label: t('tab_googleform_label'), href: '/googleform-qr-code-generator' },
   ];
 
   const features = [
-    { label: 'PDF to QR Code', href: '/pdf-qr-code-generator' },
-    { label: 'App Store QR Generator', href: '/app-store-qr-code-generator' },
-    { label: 'Bulk QR Generator', href: '/bulk-qr-code-generator' },
-    { label: 'QR Code Scanner', href: '/qr-code-scanner' },
-    { label: 'Social Media QR Hub', href: '/social-media-qr-code' },
+    { label: t('footer_pdf_qr'), href: '/pdf-qr-code-generator' },
+    { label: t('footer_app_store_qr'), href: '/app-store-qr-code-generator' },
+    { label: t('footer_bulk_qr'), href: '/bulk-qr-code-generator' },
+    { label: t('footer_qr_scanner'), href: '/qr-code-scanner' },
+    { label: t('footer_social_media_qr'), href: '/social-media-qr-code' },
     { label: t('feature_logo'), href: '/qr-code-with-logo' },
     { label: t('feature_custom'), href: '/custom-qr-codes' },
     { label: t('feature_color'), href: '/colored-qr-code-generator' },
@@ -265,16 +265,11 @@ export const Header: React.FC = () => {
                         const code = lang.code as SupportedLanguage;
                         setLanguage(code);
                         setShowLang(false);
-                        // Routed locales are real URLs — follow the visitor
-                        // into (or out of) the localized site. The other 10
-                        // languages remain chrome-only, matching prior
-                        // behaviour: no page they have content for exists.
+                        // Every language here is either 'en' (unprefixed) or
+                        // a routed locale with a real /<code>/... URL tree —
+                        // follow the visitor into (or out of) it.
                         const base = stripLocalePrefix(location.pathname);
-                        if (isRoutedLocale(code)) {
-                          navigate(`/${code}${base === '/' ? '' : base}`);
-                        } else if (ROUTED_LOCALES.includes(language as any)) {
-                          navigate(base);
-                        }
+                        navigate(isRoutedLocale(code) ? `/${code}${base === '/' ? '' : base}` : base);
                       }}
                       className={`flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-slate-50 transition-colors ${language === lang.code ? 'font-semibold text-accent' : 'text-slate-600 hover:text-slate-900'}`}
                     >

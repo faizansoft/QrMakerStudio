@@ -15,7 +15,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     const saved = localStorage.getItem('app_lang');
     if (saved) return saved as SupportedLanguage;
     const browserLang = navigator.language.split('-')[0];
-    const supported = ['en', 'es', 'fr', 'de', 'it', 'pt', 'ja', 'zh', 'ar', 'hi', 'ru', 'tr', 'ko', 'nl', 'vi'];
+    const supported = ['en', 'es', 'ar', 'hi', 'tr', 'vi'];
     return (supported.includes(browserLang) ? browserLang : 'en') as SupportedLanguage;
   });
 

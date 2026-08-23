@@ -10,6 +10,7 @@ import RichSeoSections from './components/RichSeoSections';
 import { getRouteMeta } from './constants/routeMeta';
 import { DotType, CornerSquareType, CornerDotType } from './types';
 import { useLanguage } from './context/LanguageContext';
+import type { TranslationKey } from './translations';
 import { useAuth } from './context/AuthContext';
 import { AuthModal } from './components/AuthModal';
 import Modal from './components/Modal';
@@ -1530,8 +1531,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       <button
                         onClick={() => scrollTabs('left')}
                         className="z-10 p-2 text-white/70 hover:text-white bg-black/40 hover:bg-black/80 rounded-full transition-all focus:outline-none shrink-0"
-                        title="Scroll Left"
-                        aria-label="Scroll tabs left"
+                        title={t('aria_scroll_tabs_left')}
+                        aria-label={t('aria_scroll_tabs_left')}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
@@ -1554,7 +1555,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                             }`}
                           >
                             <span className="shrink-0">{tab.icon}</span>
-                            <span>{tab.label}</span>
+                            <span>{t(`tab_${tab.id}_label` as TranslationKey)}</span>
                           </button>
                         ))}
                       </div>
@@ -1563,8 +1564,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       <button
                         onClick={() => scrollTabs('right')}
                         className="z-10 p-2 text-white/70 hover:text-white bg-black/40 hover:bg-black/80 rounded-full transition-all focus:outline-none shrink-0"
-                        title="Scroll Right"
-                        aria-label="Scroll tabs right"
+                        title={t('aria_scroll_tabs_right')}
+                        aria-label={t('aria_scroll_tabs_right')}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
@@ -1575,7 +1576,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                     {/* INPUT FORM PER QR TYPE */}
                     <div className="flex-1 px-6 pt-4 pb-6 flex flex-col gap-3 min-[700px]:pt-[20px] min-[700px]:pb-[50px]">
                       <p className="text-sm font-semibold text-white min-[700px]:text-[20px]">
-                        {activeTabData.description}
+                        {t(`tab_${activeTabData.id}_desc` as TranslationKey)}
                       </p>
 
                       <div className="flex-1 mt-2">
@@ -1638,7 +1639,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                 </div>
                                 <input
                                   type="url"
-                                  placeholder="https://drive.google.com/file/d/.../view?usp=sharing" aria-label="Google Drive PDF link"
+                                  placeholder="https://drive.google.com/file/d/.../view?usp=sharing" aria-label={t('field_pdf_drive_link')}
                                   value={pdfInput.url}
                                   onChange={(e) => setPdfInput(prev => ({ ...prev, url: e.target.value }))}
                                   className="w-full rounded-xl bg-white text-black px-4 py-2.5 text-xs font-mono outline-none focus:ring-2 focus:ring-accent"
@@ -1702,7 +1703,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               <div className="space-y-1.5">
                                 <input
                                   type="url"
-                                  placeholder="https://yoursite.com/menu.pdf or Dropbox PDF link" aria-label="PDF file URL"
+                                  placeholder="https://yoursite.com/menu.pdf or Dropbox PDF link" aria-label={t('field_pdf_file_url')}
                                   value={pdfInput.url}
                                   onChange={(e) => setPdfInput(prev => ({ ...prev, url: e.target.value }))}
                                   className="w-full rounded-xl bg-white text-black px-4 py-2.5 text-xs font-mono outline-none focus:ring-2 focus:ring-accent"
@@ -1717,7 +1718,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         {activeTab === 'text' && (
                           <div className="flex flex-col gap-2">
                             <textarea
-                              placeholder="Enter message or notes to encode..." aria-label="Enter message or notes to encode"
+                              placeholder={`${t('field_text_message')}...`} aria-label={t('field_text_message')}
                               value={textInput}
                               onChange={(e) => setTextInput(e.target.value)}
                               rows={4}
@@ -1732,42 +1733,42 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="text"
-                              placeholder="First Name *" aria-label="First Name"
+                              placeholder={`${t('field_vcard_first_name')} *`} aria-label={t('field_vcard_first_name')}
                               value={vCardInput.firstName}
                               onChange={(e) => setVCardInput({ ...vCardInput, firstName: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Last Name" aria-label="Last Name"
+                              placeholder={t('field_vcard_last_name')} aria-label={t('field_vcard_last_name')}
                               value={vCardInput.lastName}
                               onChange={(e) => setVCardInput({ ...vCardInput, lastName: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="tel"
-                              placeholder="Phone Number *" aria-label="Phone Number"
+                              placeholder={`${t('field_vcard_phone')} *`} aria-label={t('field_vcard_phone')}
                               value={vCardInput.phone}
                               onChange={(e) => setVCardInput({ ...vCardInput, phone: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="email"
-                              placeholder="Email Address" aria-label="Email Address"
+                              placeholder={t('field_vcard_email')} aria-label={t('field_vcard_email')}
                               value={vCardInput.email}
                               onChange={(e) => setVCardInput({ ...vCardInput, email: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Company Name" aria-label="Company Name"
+                              placeholder={t('field_vcard_company')} aria-label={t('field_vcard_company')}
                               value={vCardInput.company}
                               onChange={(e) => setVCardInput({ ...vCardInput, company: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Job Title" aria-label="Job Title"
+                              placeholder={t('field_vcard_title')} aria-label={t('field_vcard_title')}
                               value={vCardInput.title}
                               onChange={(e) => setVCardInput({ ...vCardInput, title: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
@@ -1780,14 +1781,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="text"
-                              placeholder="WiFi SSID (Network Name) *" aria-label="WiFi SSID (Network Name)"
+                              placeholder={`${t('field_wifi_ssid')} *`} aria-label={t('field_wifi_ssid')}
                               value={wifiInput.ssid}
                               onChange={(e) => setWifiInput({ ...wifiInput, ssid: e.target.value })}
                               className="sm:col-span-2 rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <input
                               type="password"
-                              placeholder="WiFi Password" aria-label="WiFi Password"
+                              placeholder={t('field_wifi_password')} aria-label={t('field_wifi_password')}
                               value={wifiInput.password}
                               onChange={(e) => setWifiInput({ ...wifiInput, password: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
@@ -1818,20 +1819,20 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="email"
-                              placeholder="Recipient Email Address *" aria-label="Recipient Email Address"
+                              placeholder={`${t('field_email_to')} *`} aria-label={t('field_email_to')}
                               value={emailInput.to}
                               onChange={(e) => setEmailInput({ ...emailInput, to: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Email Subject" aria-label="Email Subject"
+                              placeholder={t('field_email_subject')} aria-label={t('field_email_subject')}
                               value={emailInput.subject}
                               onChange={(e) => setEmailInput({ ...emailInput, subject: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <textarea
-                              placeholder="Email Body Content..." aria-label="Email Body Content"
+                              placeholder={`${t('field_email_body')}...`} aria-label={t('field_email_body')}
                               value={emailInput.body}
                               onChange={(e) => setEmailInput({ ...emailInput, body: e.target.value })}
                               rows={2}
@@ -1845,13 +1846,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="tel"
-                              placeholder="Phone Number (+1 234 567 890) *" aria-label="Phone Number (+1 234 567 890)"
+                              placeholder={`${t('field_sms_number')} (+1 234 567 890) *`} aria-label={t('field_sms_number')}
                               value={smsInput.phone}
                               onChange={(e) => setSmsInput({ ...smsInput, phone: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <textarea
-                              placeholder="Pre-filled SMS Message..." aria-label="Pre-filled SMS Message"
+                              placeholder={`${t('field_sms_message')}...`} aria-label={t('field_sms_message')}
                               value={smsInput.message}
                               onChange={(e) => setSmsInput({ ...smsInput, message: e.target.value })}
                               rows={2}
@@ -1865,7 +1866,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="tel"
-                              placeholder="Enter Phone Number with country code (+1 234 567 890)" aria-label="Enter Phone Number with country code (+1 234 567 890)"
+                              placeholder={`${t('field_phone_number')} (+1 234 567 890)`} aria-label={t('field_phone_number')}
                               value={phoneInput}
                               onChange={(e) => setPhoneInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -1879,13 +1880,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="tel"
-                              placeholder="WhatsApp Number with country code (e.g. 14155552671) *" aria-label="WhatsApp Number with country code (e.g. 14155552671)"
+                              placeholder={`${t('field_whatsapp_number')} (e.g. 14155552671) *`} aria-label={t('field_whatsapp_number')}
                               value={whatsappInput.phone}
                               onChange={(e) => setWhatsappInput({ ...whatsappInput, phone: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <textarea
-                              placeholder="Pre-filled WhatsApp Message..." aria-label="Pre-filled WhatsApp Message"
+                              placeholder={`${t('field_whatsapp_message')}...`} aria-label={t('field_whatsapp_message')}
                               value={whatsappInput.message}
                               onChange={(e) => setWhatsappInput({ ...whatsappInput, message: e.target.value })}
                               rows={2}
@@ -1899,7 +1900,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="text"
-                              placeholder="Google Maps URL or Address" aria-label="Google Maps URL or Address"
+                              placeholder={t('field_location_address')} aria-label={t('field_location_address')}
                               value={locationInput.query}
                               onChange={(e) => setLocationInput({ ...locationInput, query: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
@@ -1907,14 +1908,14 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                             <div className="grid grid-cols-2 gap-2">
                               <input
                                 type="text"
-                                placeholder="Latitude (e.g. 40.7128)" aria-label="Latitude (e.g. 40.7128)"
+                                placeholder={`${t('field_location_lat')} (e.g. 40.7128)`} aria-label={t('field_location_lat')}
                                 value={locationInput.lat}
                                 onChange={(e) => setLocationInput({ ...locationInput, lat: e.target.value })}
                                 className="rounded-xl bg-white text-black px-3 py-2 text-xs outline-none"
                               />
                               <input
                                 type="text"
-                                placeholder="Longitude (e.g. -74.0060)" aria-label="Longitude (e.g. -74.0060)"
+                                placeholder={`${t('field_location_lng')} (e.g. -74.0060)`} aria-label={t('field_location_lng')}
                                 value={locationInput.lng}
                                 onChange={(e) => setLocationInput({ ...locationInput, lng: e.target.value })}
                                 className="rounded-xl bg-white text-black px-3 py-2 text-xs outline-none"
@@ -1928,20 +1929,20 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="text"
-                              placeholder="Event Title *" aria-label="Event Title"
+                              placeholder={`${t('field_event_title')} *`} aria-label={t('field_event_title')}
                               value={eventInput.title}
                               onChange={(e) => setEventInput({ ...eventInput, title: e.target.value })}
                               className="sm:col-span-2 rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Location / Venue" aria-label="Location / Venue"
+                              placeholder={t('field_event_venue')} aria-label={t('field_event_venue')}
                               value={eventInput.location}
                               onChange={(e) => setEventInput({ ...eventInput, location: e.target.value })}
                               className="sm:col-span-2 rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
                             />
                             <div>
-                              <span className="text-[11px] text-white/70 block mb-1">Start Date & Time</span>
+                              <span className="text-[11px] text-white/70 block mb-1">{t('field_event_start')}</span>
                               <input
                                 type="datetime-local"
                                 value={eventInput.start}
@@ -1950,7 +1951,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               />
                             </div>
                             <div>
-                              <span className="text-[11px] text-white/70 block mb-1">End Date & Time</span>
+                              <span className="text-[11px] text-white/70 block mb-1">{t('field_event_end')}</span>
                               <input
                                 type="datetime-local"
                                 value={eventInput.end}
@@ -1977,7 +1978,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               </select>
                               <input
                                 type="text"
-                                placeholder="Amount (optional)" aria-label="Amount (optional)"
+                                placeholder={t('field_crypto_amount')} aria-label={t('field_crypto_amount')}
                                 value={cryptoInput.amount}
                                 onChange={(e) => setCryptoInput({ ...cryptoInput, amount: e.target.value })}
                                 className="flex-1 rounded-xl bg-white text-black px-4 py-2 text-sm outline-none"
@@ -1985,7 +1986,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                             </div>
                             <input
                               type="text"
-                              placeholder="Crypto Wallet Address *" aria-label="Crypto Wallet Address"
+                              placeholder={`${t('field_crypto_address')} *`} aria-label={t('field_crypto_address')}
                               value={cryptoInput.address}
                               onChange={(e) => setCryptoInput({ ...cryptoInput, address: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
@@ -1998,7 +1999,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="text"
-                              placeholder="Instagram username (without @)" aria-label="Instagram username (without @)"
+                              placeholder={t('field_instagram_username')} aria-label={t('field_instagram_username')}
                               value={instagramInput}
                               onChange={(e) => setInstagramInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2012,7 +2013,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="url"
-                              placeholder="https://youtube.com/@yourchannel or video URL" aria-label="YouTube channel or video URL"
+                              placeholder="https://youtube.com/@yourchannel" aria-label={t('field_youtube_url')}
                               value={youtubeInput}
                               onChange={(e) => setYoutubeInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2026,7 +2027,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="url"
-                              placeholder="https://linkedin.com/in/yourprofile" aria-label="LinkedIn profile URL"
+                              placeholder="https://linkedin.com/in/yourprofile" aria-label={t('field_linkedin_url')}
                               value={linkedinInput}
                               onChange={(e) => setLinkedinInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2040,7 +2041,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="text"
-                              placeholder="Twitter/X handle (without @) or full URL" aria-label="Twitter/X handle (without @) or full URL"
+                              placeholder={t('field_twitter_handle')} aria-label={t('field_twitter_handle')}
                               value={twitterInput}
                               onChange={(e) => setTwitterInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2054,7 +2055,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="text"
-                              placeholder="TikTok username (without @)" aria-label="TikTok username (without @)"
+                              placeholder={t('field_tiktok_username')} aria-label={t('field_tiktok_username')}
                               value={tiktokInput}
                               onChange={(e) => setTiktokInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2068,7 +2069,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="text"
-                              placeholder="Telegram username, group, or channel name" aria-label="Telegram username, group, or channel name"
+                              placeholder={t('field_telegram_handle')} aria-label={t('field_telegram_handle')}
                               value={telegramInput}
                               onChange={(e) => setTelegramInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2082,7 +2083,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-2">
                             <input
                               type="text"
-                              placeholder="PayPal.me username or full PayPal.me URL" aria-label="PayPal.me username or full PayPal.me URL"
+                              placeholder={t('field_paypal_username')} aria-label={t('field_paypal_username')}
                               value={paypalInput}
                               onChange={(e) => setPaypalInput(e.target.value)}
                               className="w-full rounded-full bg-white text-black pl-5 pr-5 py-3 text-base outline-none focus:ring-2 focus:ring-accent"
@@ -2096,21 +2097,21 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           <div className="flex flex-col gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
                             <input
                               type="text"
-                              placeholder="UPI ID (e.g., yourname@upi) *" aria-label="UPI ID (e.g., yourname@upi)"
+                              placeholder={`${t('field_upi_id')} *`} aria-label={t('field_upi_id')}
                               value={upiInput.vpa}
                               onChange={(e) => setUpiInput({ ...upiInput, vpa: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <input
                               type="text"
-                              placeholder="Payee Name" aria-label="Payee Name"
+                              placeholder={t('field_upi_payee_name')} aria-label={t('field_upi_payee_name')}
                               value={upiInput.name}
                               onChange={(e) => setUpiInput({ ...upiInput, name: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
                             />
                             <input
                               type="number"
-                              placeholder="Amount (optional)" aria-label="Amount (optional)"
+                              placeholder={t('field_crypto_amount')} aria-label={t('field_crypto_amount')}
                               value={upiInput.amount}
                               onChange={(e) => setUpiInput({ ...upiInput, amount: e.target.value })}
                               className="rounded-xl bg-white text-black px-4 py-2.5 text-sm outline-none"
@@ -2235,20 +2236,20 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           disabled={!generated}
                           className={`h-10 rounded-lg text-xs font-bold text-white transition-colors flex-1 ${generated ? 'bg-accent hover:bg-accent-dark' : 'bg-slate-200 text-slate-500 cursor-not-allowed'}`}
                         >
-                          Download PNG
+                          {t('btn_download_png')}
                         </button>
                         <button
                           onClick={() => handleDownload('svg')}
                           disabled={!generated}
-                          title="Download SVG Vector"
+                          title={t('btn_download_svg_title')}
                           className={`h-10 px-3 rounded-lg text-xs font-bold text-white transition-colors ${generated ? 'bg-accent/80 hover:bg-accent' : 'bg-slate-200 text-slate-500 cursor-not-allowed'}`}
                         >
-                          SVG
+                          {t('btn_download_svg')}
                         </button>
                         <button
                           onClick={handleCopy}
                           disabled={!generated}
-                          title="Copy QR to clipboard"
+                          title={t('btn_copy_to_clipboard')}
                           className={`h-10 px-3 rounded-lg transition-all text-white flex items-center justify-center gap-1 text-xs font-bold ${
                             copiedToast
                               ? 'bg-emerald-600 ring-2 ring-emerald-400 scale-105'
@@ -2262,7 +2263,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                               </svg>
-                              <span className="hidden sm:inline">Copied!</span>
+                              <span className="hidden sm:inline">{t('btn_copied')}</span>
                             </>
                           ) : (
                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -2285,7 +2286,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
-                        <span>Save as Dynamic QR (Track &amp; Edit)</span>
+                        <span>{t('btn_save_dynamic')}</span>
                       </button>
 
                       {/* Customize Options Button (Opens Step-by-Step Modal) */}
@@ -2296,7 +2297,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                         </svg>
-                        <span>Customize Design &amp; Frames (Step-by-Step)</span>
+                        <span>{t('modal_open_button')}</span>
                       </button>
                     </div>
                   </div>
@@ -2310,8 +2311,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                   onClose={() => setShowCustomize(false)}
                   size="xl"
                   tone="dark"
-                  title="Customise QR design"
-                  subtitle={`Step ${customStep} of 4 — ${customStep === 1 ? 'Frame & CTA banner' : customStep === 2 ? 'Colours & theme' : customStep === 3 ? 'Shapes & patterns' : 'Logo & branding'}`}
+                  title={t('modal_title')}
+                  subtitle={`${t('modal_step_of').replace('{n}', String(customStep))} — ${customStep === 1 ? t('modal_step_frame') : customStep === 2 ? t('modal_step_colors') : customStep === 3 ? t('modal_step_shapes') : t('modal_step_logo')}`}
                   icon={
                     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/40 bg-accent/20 text-accent-light">
                       <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -2340,7 +2341,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                             }}
                             className="rounded-button px-2 py-1.5 text-xs font-medium text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
                           >
-                            Reset All
+                            {t('modal_reset_all')}
                           </button>
                         </div>
 
@@ -2350,7 +2351,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onClick={() => setCustomStep(customStep - 1)}
                               className="px-4 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white transition-colors"
                             >
-                              ← Back
+                              ← {t('modal_back')}
                             </button>
                           )}
 
@@ -2359,7 +2360,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onClick={() => setCustomStep(customStep + 1)}
                               className="px-5 py-2 rounded-xl text-xs font-bold bg-[#A8D5C2] text-slate-950 hover:bg-[#a8e775] transition-all shadow-md flex items-center gap-1"
                             >
-                              <span>Next Step</span>
+                              <span>{t('modal_next_step')}</span>
                               <span>→</span>
                             </button>
                           ) : (
@@ -2367,7 +2368,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               onClick={() => setShowCustomize(false)}
                               className="px-5 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-white hover:bg-emerald-400 transition-all shadow-md flex items-center gap-1"
                             >
-                              <span>✓ Done &amp; Apply</span>
+                              <span>✓ {t('modal_done_apply')}</span>
                             </button>
                           )}
                         </div>
@@ -2377,10 +2378,10 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       {/* Step Indicator Tabs */}
                       <div className="grid grid-cols-4 border-b border-white/10 bg-black/30 text-xs font-semibold">
                         {[
-                          { step: 1, label: '1. Frame & CTA', icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z' },
-                          { step: 2, label: '2. Colors', icon: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01' },
-                          { step: 3, label: '3. Shapes', icon: 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z' },
-                          { step: 4, label: '4. Logo', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+                          { step: 1, label: `1. ${t('modal_tab_frame')}`, icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z' },
+                          { step: 2, label: `2. ${t('modal_tab_colors')}`, icon: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01' },
+                          { step: 3, label: `3. ${t('modal_tab_shapes')}`, icon: 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z' },
+                          { step: 4, label: `4. ${t('modal_tab_logo')}`, icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
                         ].map((s) => (
                           <button
                             key={s.step}
@@ -2413,23 +2414,23 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               <div className="space-y-2.5 p-4 rounded-2xl bg-white/5 border border-white/10">
                                 <div className="flex items-center justify-between">
                                   <label className="text-xs font-bold text-white flex items-center gap-1.5">
-                                    <span>Frame Call-to-Action Text</span>
-                                    <span className="text-[11px] font-normal text-white/50">(Updates all frames below)</span>
+                                    <span>{t('modal_frame_cta_label')}</span>
+                                    <span className="text-[11px] font-normal text-white/50">{t('modal_cta_updates_hint')}</span>
                                   </label>
-                                  <span className="text-[11px] text-white/40 font-mono">{frameText.length}/28 chars</span>
+                                  <span className="text-[11px] text-white/40 font-mono">{frameText.length}/28 {t('modal_chars_suffix')}</span>
                                 </div>
                                 <input
                                   type="text"
                                   value={frameText}
                                   onChange={(e) => setFrameText(e.target.value)}
-                                  placeholder="e.g. SCAN ME" aria-label="Frame call-to-action text"
+                                  placeholder={t('modal_cta_placeholder')} aria-label={t('modal_frame_cta_label')}
                                   maxLength={28}
                                   className="w-full bg-white/10 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none border border-white/20 font-bold uppercase tracking-wider focus:border-[#A8D5C2]"
                                 />
-                                
+
                                 {/* Quick CTA Presets */}
                                 <div className="space-y-1.5 pt-1">
-                                  <span className="text-[11px] text-white/40 font-semibold block">Quick CTA Presets:</span>
+                                  <span className="text-[11px] text-white/40 font-semibold block">{t('modal_quick_cta_presets')}:</span>
                                   <div className="flex flex-wrap gap-1.5">
                                     {[
                                       'SCAN ME',
@@ -2461,22 +2462,22 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               <div className="space-y-3 pt-1">
                                 <div className="flex items-center justify-between">
                                   <div>
-                                    <h4 className="text-sm font-bold text-white">Select a Frame Style</h4>
-                                    <p className="text-xs text-white/50">Choose how your QR code and CTA badge are presented</p>
+                                    <h4 className="text-sm font-bold text-white">{t('modal_select_frame_style')}</h4>
+                                    <p className="text-xs text-white/50">{t('modal_frame_style_hint')}</p>
                                   </div>
                                   {selectedFrame !== 'none' && (
                                     <button
                                       onClick={() => setSelectedFrame('none')}
                                       className="text-xs text-white/50 hover:text-white font-medium underline"
                                     >
-                                      Clear Frame
+                                      {t('modal_clear_frame')}
                                     </button>
                                   )}
                                 </div>
 
                                 {/* Category Filter Pills */}
                                 <div className="flex flex-wrap items-center gap-1.5 pb-1">
-                                  {['All', 'Popular', 'Focus', 'Device', 'Speech', 'Modern'].map((cat) => (
+                                  {(['All', 'Popular', 'Focus', 'Device', 'Speech', 'Modern'] as const).map((cat) => (
                                     <button
                                       key={cat}
                                       onClick={() => setFrameCategory(cat)}
@@ -2486,7 +2487,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                           : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
                                       }`}
                                     >
-                                      {cat}
+                                      {t(`modal_cat_${cat.toLowerCase()}` as TranslationKey)}
                                     </button>
                                   ))}
                                 </div>
@@ -2543,13 +2544,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           {customStep === 2 && (
                             <div className="space-y-5 animate-in">
                               <div>
-                                <h4 className="text-sm font-bold text-white">Color Palette &amp; Contrast</h4>
-                                <p className="text-xs text-white/50">Customize your QR code patterns, backgrounds, and frame colors</p>
+                                <h4 className="text-sm font-bold text-white">{t('modal_color_palette_heading')}</h4>
+                                <p className="text-xs text-white/50">{t('modal_color_palette_hint')}</p>
                               </div>
 
                               {/* Curated 1-Click Themes */}
                               <div className="space-y-2">
-                                <label className="text-xs font-bold text-white/80 block">Curated High-Contrast Palettes</label>
+                                <label className="text-xs font-bold text-white/80 block">{t('modal_curated_palettes')}</label>
                                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                                   {[
                                     { name: 'Emerald', fg: '#2B6F53', bg: '#ffffff', sq: '#0F172A', dot: '#2B6F53' },
@@ -2587,11 +2588,11 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                               {/* Custom Precision QR Color Pickers */}
                               <div className="space-y-3 pt-2 border-t border-white/10">
-                                <label className="text-xs font-bold text-white/80 block">Custom Precision Colors</label>
+                                <label className="text-xs font-bold text-white/80 block">{t('modal_custom_colors')}</label>
                                 <div className="grid grid-cols-2 gap-3">
                                   <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
                                     <div>
-                                      <span className="text-xs font-semibold text-white block">Pattern Color</span>
+                                      <span className="text-xs font-semibold text-white block">{t('modal_pattern_color')}</span>
                                       <span className="text-[11px] text-white/40">{fgColor}</span>
                                     </div>
                                     <input type="color" value={fgColor} onChange={(e) => setFgColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
@@ -2599,7 +2600,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                                   <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
                                     <div>
-                                      <span className="text-xs font-semibold text-white block">Background</span>
+                                      <span className="text-xs font-semibold text-white block">{t('modal_background')}</span>
                                       <span className="text-[11px] text-white/40">{bgColor}</span>
                                     </div>
                                     <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
@@ -2607,7 +2608,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                                   <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
                                     <div>
-                                      <span className="text-xs font-semibold text-white block">Corner Frame</span>
+                                      <span className="text-xs font-semibold text-white block">{t('modal_corner_frame_color')}</span>
                                       <span className="text-[11px] text-white/40">{cornerSquareColor}</span>
                                     </div>
                                     <input type="color" value={cornerSquareColor} onChange={(e) => setCornerSquareColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
@@ -2615,7 +2616,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                                   <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
                                     <div>
-                                      <span className="text-xs font-semibold text-white block">Corner Dot Eye</span>
+                                      <span className="text-xs font-semibold text-white block">{t('modal_corner_dot_color')}</span>
                                       <span className="text-[11px] text-white/40">{cornerDotColor}</span>
                                     </div>
                                     <input type="color" value={cornerDotColor} onChange={(e) => setCornerDotColor(e.target.value)} className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" />
@@ -2626,8 +2627,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                               {/* Frame & CTA Banner Colors (Moved to Step 2) */}
                               <div className="space-y-3 pt-2 border-t border-white/10">
                                 <div>
-                                  <label className="text-xs font-bold text-white block">Frame &amp; CTA Banner Colors</label>
-                                  <span className="text-[11px] text-white/40">Applies to the active frame outline and CTA badge</span>
+                                  <label className="text-xs font-bold text-white block">{t('modal_frame_cta_colors_heading')}</label>
+                                  <span className="text-[11px] text-white/40">{t('modal_frame_cta_hint')}</span>
                                 </div>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -2635,7 +2636,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
                                     <div className="flex items-center justify-between">
                                       <div>
-                                        <span className="text-xs font-bold text-white block">Frame Color</span>
+                                        <span className="text-xs font-bold text-white block">{t('modal_frame_color')}</span>
                                         <span className="text-[11px] text-white/40 font-mono">{frameColor}</span>
                                       </div>
                                       <input
@@ -2676,7 +2677,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2.5">
                                     <div className="flex items-center justify-between">
                                       <div>
-                                        <span className="text-xs font-bold text-white block">Frame Text Color</span>
+                                        <span className="text-xs font-bold text-white block">{t('modal_frame_text_color')}</span>
                                         <span className="text-[11px] text-white/40 font-mono">{frameTextColor}</span>
                                       </div>
                                       <div className="flex items-center gap-2">
@@ -2719,7 +2720,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                             : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
                                         }`}
                                       >
-                                        White Text
+                                        {t('modal_white_text')}
                                       </button>
                                       <button
                                         onClick={() => setFrameTextColor('#000000')}
@@ -2729,7 +2730,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                             : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
                                         }`}
                                       >
-                                        Black Text
+                                        {t('modal_black_text')}
                                       </button>
                                       <button
                                         onClick={() => setFrameTextColor('#A8D5C2')}
@@ -2739,7 +2740,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                             : 'bg-white/5 text-white/70 border-white/15 hover:bg-white/10'
                                         }`}
                                       >
-                                        Lime Accent
+                                        {t('modal_lime_accent')}
                                       </button>
                                     </div>
                                   </div>
@@ -2753,13 +2754,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           {customStep === 3 && (
                             <div className="space-y-5 animate-in">
                               <div>
-                                <h4 className="text-sm font-bold text-white">QR Shapes &amp; Dot Patterns</h4>
-                                <p className="text-xs text-white/50">Customize the pattern geometry and corner detection eye shapes</p>
+                                <h4 className="text-sm font-bold text-white">{t('modal_shapes_heading')}</h4>
+                                <p className="text-xs text-white/50">{t('modal_shapes_hint')}</p>
                               </div>
 
                               {/* Dot Patterns */}
                               <div className="space-y-2">
-                                <label className="text-xs font-bold text-white/80 block">Pattern Matrix Style</label>
+                                <label className="text-xs font-bold text-white/80 block">{t('modal_pattern_matrix_style')}</label>
                                 <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                                   {DOT_STYLES.map((s) => (
                                     <button
@@ -2779,7 +2780,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                               {/* Corner Square Styles */}
                               <div className="space-y-2 pt-2 border-t border-white/10">
-                                <label className="text-xs font-bold text-white/80 block">Corner Square Frame Style</label>
+                                <label className="text-xs font-bold text-white/80 block">{t('modal_corner_square_style')}</label>
                                 <div className="grid grid-cols-3 gap-2">
                                   {CORNER_SQUARE_STYLES.map((s) => (
                                     <button
@@ -2799,7 +2800,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
 
                               {/* Corner Dot Styles */}
                               <div className="space-y-2 pt-2 border-t border-white/10">
-                                <label className="text-xs font-bold text-white/80 block">Corner Dot Eye Style</label>
+                                <label className="text-xs font-bold text-white/80 block">{t('modal_corner_dot_style')}</label>
                                 <div className="grid grid-cols-2 gap-2">
                                   {CORNER_DOT_STYLES.map((s) => (
                                     <button
@@ -2823,19 +2824,19 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                           {customStep === 4 && (
                             <div className="space-y-5 animate-in">
                               <div>
-                                <h4 className="text-sm font-bold text-white">Center Logo &amp; Branding</h4>
-                                <p className="text-xs text-white/50">Add a custom company logo or popular social platform icon</p>
+                                <h4 className="text-sm font-bold text-white">{t('modal_logo_heading')}</h4>
+                                <p className="text-xs text-white/50">{t('modal_logo_hint')}</p>
                               </div>
 
                               {/* Custom Upload */}
                               <div className="space-y-2">
-                                <label className="text-xs font-bold text-white/80 block">Upload Your Logo</label>
+                                <label className="text-xs font-bold text-white/80 block">{t('modal_upload_logo')}</label>
                                 <label className="block w-full cursor-pointer bg-white/5 hover:bg-white/10 border-2 border-white/20 border-dashed rounded-2xl p-5 text-center transition-colors">
                                   <svg className="w-8 h-8 mx-auto text-accent mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                                   </svg>
-                                  <span className="text-xs text-[#A8D5C2] block font-bold">Click to Upload Logo Image</span>
-                                  <span className="text-[11px] text-white/40 block mt-0.5">Supports PNG, JPG, SVG, WebP (Square ratio recommended)</span>
+                                  <span className="text-xs text-[#A8D5C2] block font-bold">{t('modal_click_upload')}</span>
+                                  <span className="text-[11px] text-white/40 block mt-0.5">{t('modal_supports_formats')}</span>
                                   <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
                                 </label>
 
@@ -2843,13 +2844,13 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                                   <div className="flex items-center justify-between bg-emerald-950/40 border border-emerald-500/30 p-3 rounded-xl text-xs">
                                     <div className="flex items-center gap-2 text-emerald-300 font-semibold">
                                       <span>✓</span>
-                                      <span>Custom Logo Active</span>
+                                      <span>{t('modal_custom_logo_active')}</span>
                                     </div>
                                     <button
                                       onClick={() => setLogoSrc(null)}
                                       className="text-xs text-red-400 hover:text-red-300 font-bold underline"
                                     >
-                                      Remove Logo
+                                      {t('modal_remove_logo')}
                                     </button>
                                   </div>
                                 )}
@@ -2862,9 +2863,9 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         {/* Right Sticky Preview Card (4 cols) */}
                         <div className="md:col-span-4 flex flex-col items-center justify-start bg-black/40 border border-white/10 rounded-2xl p-4 sticky top-0">
                           <div className="w-full flex items-center justify-between mb-3 text-xs">
-                            <span className="text-white/60 font-semibold">Live Simulation</span>
+                            <span className="text-white/60 font-semibold">{t('modal_live_simulation')}</span>
                             <span className={`text-[11px] font-bold px-2 py-0.5 rounded-lg border ${scannabilityInfo.color}`}>
-                              {scannabilityInfo.score}% Scan Score
+                              {scannabilityInfo.score}% {t('modal_scan_score_suffix')}
                             </span>
                           </div>
 
@@ -3156,8 +3157,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
         <section className="bg-slate-50 py-16 md:py-20 border-t border-slate-200">
           <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
             <div className="mb-12 text-center">
-              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">All {TABS.length} QR Code Generators</h2>
-              <p className="text-lg text-slate-500 max-w-2xl mx-auto">Explore all {TABS.length} specialized QR Code generators to convert websites, WiFi, vCards, documents, social media, payment links, and locations into scannable barcodes.</p>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">{t('home_qr_types_heading' as TranslationKey).replace('{count}', String(TABS.length))}</h2>
+              <p className="text-lg text-slate-500 max-w-2xl mx-auto">{t('home_qr_types_subtitle' as TranslationKey).replace('{count}', String(TABS.length))}</p>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
@@ -3177,8 +3178,8 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                     <div className="text-accent mb-3 p-2 bg-accent/10 rounded-xl inline-block group-hover:bg-accent group-hover:text-white transition-colors">
                       {tab.icon}
                     </div>
-                    <h3 className="text-sm font-semibold text-slate-900 group-hover:text-accent transition-colors">{tab.label}</h3>
-                    <p className="text-xs text-slate-500 mt-1 line-clamp-2">{tab.description}</p>
+                    <h3 className="text-sm font-semibold text-slate-900 group-hover:text-accent transition-colors">{t(`tab_${tab.id}_label` as TranslationKey)}</h3>
+                    <p className="text-xs text-slate-500 mt-1 line-clamp-2">{t(`tab_${tab.id}_desc` as TranslationKey)}</p>
                   </Link>
                 );
               })}
@@ -3335,7 +3336,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                       required
                       value={dynamicTitle}
                       onChange={(e) => setDynamicTitle(e.target.value)}
-                      placeholder="e.g. Restaurant Promo Menu" aria-label="QR code title"
+                      placeholder="e.g. Restaurant Promo Menu" aria-label={t('field_qr_title')}
                       className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-accent focus:bg-white outline-none transition-all"
                     />
                   </div>
@@ -3363,7 +3364,7 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
                         type="text"
                         value={dynamicCustomCode}
                         onChange={(e) => setDynamicCustomCode(e.target.value.replace(/[^a-zA-Z0-9-_]/g, ''))}
-                        placeholder="custom-slug" aria-label="Custom short link slug"
+                        placeholder="custom-slug" aria-label={t('field_short_slug')}
                         className="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-r-xl text-xs font-mono focus:ring-2 focus:ring-accent focus:bg-white outline-none transition-all"
                       />
                     </div>

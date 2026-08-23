@@ -30,42 +30,42 @@ const FOOTER_GROUPS: FooterGroup[] = [
   {
     headingTKey: 'nav_tools',
     links: [
-      { to: '/url-qr-code-generator', tKey: 'tool_url' },
-      { to: '/wifi-qr-code-generator', tKey: 'tool_wifi' },
-      { to: '/vcard-qr-code-generator', tKey: 'tool_vcard' },
-      { to: '/text-qr-code-generator', tKey: 'tool_text' },
-      { to: '/email-qr-code-generator', tKey: 'tool_email' },
-      { to: '/sms-qr-code-generator', tKey: 'tool_sms' },
-      { to: '/phone-qr-code-generator', label: 'Phone QR' },
-      { to: '/location-qr-code-generator', label: 'Location QR' },
-      { to: '/event-qr-code-generator', label: 'Event QR' },
-      { to: '/crypto-qr-code-generator', label: 'Crypto QR' },
-      { to: '/googleform-qr-code-generator', label: 'Google Forms QR' },
-      { to: '/whatsapp-qr-code-generator', label: 'WhatsApp QR' }
+      { to: '/url-qr-code-generator', tKey: 'tab_url_label' },
+      { to: '/wifi-qr-code-generator', tKey: 'tab_wifi_label' },
+      { to: '/vcard-qr-code-generator', tKey: 'tab_vcard_label' },
+      { to: '/text-qr-code-generator', tKey: 'tab_text_label' },
+      { to: '/email-qr-code-generator', tKey: 'tab_email_label' },
+      { to: '/sms-qr-code-generator', tKey: 'tab_sms_label' },
+      { to: '/phone-qr-code-generator', tKey: 'tab_phone_label' },
+      { to: '/location-qr-code-generator', tKey: 'tab_location_label' },
+      { to: '/event-qr-code-generator', tKey: 'tab_event_label' },
+      { to: '/crypto-qr-code-generator', tKey: 'tab_crypto_label' },
+      { to: '/googleform-qr-code-generator', tKey: 'tab_googleform_label' },
+      { to: '/whatsapp-qr-code-generator', tKey: 'tab_whatsapp_label' }
     ]
   },
   {
-    heading: 'Social & Payment',
+    headingTKey: 'footer_group_social',
     links: [
-      { to: '/facebook-qr-code-generator', label: 'Facebook QR' },
-      { to: '/instagram-qr-code-generator', label: 'Instagram QR' },
-      { to: '/youtube-qr-code-generator', label: 'YouTube QR' },
-      { to: '/linkedin-qr-code-generator', label: 'LinkedIn QR' },
-      { to: '/twitter-qr-code-generator', label: 'Twitter / X QR' },
-      { to: '/tiktok-qr-code-generator', label: 'TikTok QR' },
-      { to: '/telegram-qr-code-generator', label: 'Telegram QR' },
-      { to: '/social-media-qr-code', label: 'Social Media QR' },
-      { to: '/paypal-qr-code-generator', label: 'PayPal Payment QR' },
-      { to: '/upi-qr-code-generator', label: 'UPI Payment QR' }
+      { to: '/facebook-qr-code-generator', tKey: 'tab_facebook_label' },
+      { to: '/instagram-qr-code-generator', tKey: 'tab_instagram_label' },
+      { to: '/youtube-qr-code-generator', tKey: 'tab_youtube_label' },
+      { to: '/linkedin-qr-code-generator', tKey: 'tab_linkedin_label' },
+      { to: '/twitter-qr-code-generator', tKey: 'tab_twitter_label' },
+      { to: '/tiktok-qr-code-generator', tKey: 'tab_tiktok_label' },
+      { to: '/telegram-qr-code-generator', tKey: 'tab_telegram_label' },
+      { to: '/social-media-qr-code', tKey: 'footer_social_media_qr' },
+      { to: '/paypal-qr-code-generator', tKey: 'tab_paypal_label' },
+      { to: '/upi-qr-code-generator', tKey: 'tab_upi_label' }
     ]
   },
   {
-    heading: 'Tools & Features',
+    headingTKey: 'footer_group_tools',
     links: [
-      { to: '/pdf-qr-code-generator', label: 'PDF to QR Code' },
-      { to: '/app-store-qr-code-generator', label: 'App Store QR' },
-      { to: '/bulk-qr-code-generator', label: 'Bulk QR Generator' },
-      { to: '/qr-code-scanner', label: 'QR Code Scanner' },
+      { to: '/pdf-qr-code-generator', tKey: 'footer_pdf_qr' },
+      { to: '/app-store-qr-code-generator', tKey: 'footer_app_store_qr' },
+      { to: '/bulk-qr-code-generator', tKey: 'footer_bulk_qr' },
+      { to: '/qr-code-scanner', tKey: 'footer_qr_scanner' },
       { to: '/qr-code-with-logo', tKey: 'feature_logo' },
       { to: '/custom-qr-codes', tKey: 'feature_custom' },
       { to: '/colored-qr-code-generator', tKey: 'feature_color' },
@@ -74,14 +74,14 @@ const FOOTER_GROUPS: FooterGroup[] = [
     ]
   },
   {
-    heading: 'Guides & Blog',
+    headingTKey: 'footer_group_blog',
     links: [
-      { to: '/blog', label: 'All Articles' },
-      { to: '/blog/qr-codes-for-restaurants', label: 'Restaurant QR Menus' },
-      { to: '/blog/printing-qr-codes-guide', label: 'Printing QR Codes' },
-      { to: '/blog/vcard-qr-code-business-cards', label: 'vCard Business Cards' },
-      { to: '/blog/qr-codes-for-real-estate', label: 'Real Estate QR' },
-      { to: '/blog/wifi-qr-codes-for-hospitality', label: 'Hospitality WiFi QR' }
+      { to: '/blog', tKey: 'footer_blog_all' },
+      { to: '/blog/qr-codes-for-restaurants', tKey: 'footer_blog_restaurants' },
+      { to: '/blog/printing-qr-codes-guide', tKey: 'footer_blog_printing' },
+      { to: '/blog/vcard-qr-code-business-cards', tKey: 'footer_blog_vcard' },
+      { to: '/blog/qr-codes-for-real-estate', tKey: 'footer_blog_realestate' },
+      { to: '/blog/wifi-qr-codes-for-hospitality', tKey: 'footer_blog_hospitality' }
     ]
   },
   {
@@ -91,10 +91,10 @@ const FOOTER_GROUPS: FooterGroup[] = [
       { to: '/faqs-qr-code-generator', tKey: 'nav_faq' },
       { to: '/about', tKey: 'nav_about' },
       { to: '/contact', tKey: 'nav_contact' },
-      { to: '/privacy', label: 'Privacy Policy' },
-      { to: '/terms', label: 'Terms of Use' },
-      { to: '/login', label: 'Log In' },
-      { to: '/signup', label: 'Sign Up Free' }
+      { to: '/privacy', tKey: 'footer_privacy' },
+      { to: '/terms', tKey: 'footer_terms' },
+      { to: '/login', tKey: 'footer_login' },
+      { to: '/signup', tKey: 'footer_signup' }
     ]
   }
 ];
