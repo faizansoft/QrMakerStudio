@@ -75,6 +75,9 @@ const LINK_LABELS = {
   '/blog/vcard-qr-code-business-cards': 'vCard Business Cards',
   '/blog/qr-codes-for-real-estate': 'Real Estate QR',
   '/blog/wifi-qr-codes-for-hospitality': 'Hospitality WiFi QR',
+  '/blog/how-to-scan-qr-code': 'How to Scan QR Codes',
+  '/blog/do-qr-codes-expire': 'Do QR Codes Expire?',
+  '/blog/share-wifi-password-qr-code': 'Share WiFi via QR',
   '/pricing': 'Pricing',
   '/faqs-qr-code-generator': 'Help & FAQ',
   '/about': 'About Us',
@@ -125,7 +128,8 @@ const FOOTER_GROUPS = [
     hrefs: [
       '/blog', '/blog/qr-codes-for-restaurants', '/blog/printing-qr-codes-guide',
       '/blog/vcard-qr-code-business-cards', '/blog/qr-codes-for-real-estate',
-      '/blog/wifi-qr-codes-for-hospitality'
+      '/blog/wifi-qr-codes-for-hospitality', '/blog/how-to-scan-qr-code',
+      '/blog/do-qr-codes-expire', '/blog/share-wifi-password-qr-code'
     ]
   },
   {

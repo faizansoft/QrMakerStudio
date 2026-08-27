@@ -332,5 +332,207 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedToolSlug: '/wifi-qr-code-generator',
     relatedToolName: 'WiFi QR Code Generator'
+  },
+
+  {
+    slug: 'how-to-scan-qr-code',
+    title: 'How to Scan a QR Code on iPhone and Android (Even One on Your Own Screen)',
+    description: 'Scan a QR code with your iPhone or Android camera, from a screenshot, or when it is sitting on the very screen you are holding. A plain, step-by-step walkthrough.',
+    category: 'Tech & Security',
+    publishDate: 'August 18, 2026',
+    readTime: '8 min read',
+    author: {
+      name: 'Tomás Herrera',
+      role: 'Consumer Mobile & Devices Writer',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200'
+    },
+    keywords: [
+      'how to scan qr code on iphone',
+      'how to scan qr code with android',
+      'scan qr code on own screen iphone',
+      'scan qr code from screenshot',
+      'qr code scanner from image'
+    ],
+    excerpt: 'Your phone already has a scanner built in — no app, no download. The tricky part is knowing where it hides, and what to do when the code is on the very screen you are holding.',
+    content: [
+      {
+        sectionTitle: 'The Scanner You Already Own',
+        paragraphs: [
+          'Somewhere around 2017, phones quietly learned to read QR codes on their own. If your iPhone runs iOS 11 or later, or your Android phone runs version 9 or later, you do not need a scanning app. The camera is the scanner.',
+          'That one change is why the ad-stuffed "QR reader" apps stopped mattering. Open the camera you already use for photos, hold it over the code for a second, and a link banner slides into view. Tap it. Most of the time, that is the entire process.'
+        ]
+      },
+      {
+        sectionTitle: 'Scanning on an iPhone',
+        paragraphs: [
+          'Open the Camera app, point it at the code, and wait for the yellow notification to appear near the top. Tap that, and Safari (or whatever app the code points to) takes over. You do not need to press the shutter — the camera is reading, not photographing.',
+          'Apple also tucked a dedicated scanner into Control Center, which is handy when the main camera is being fussy. Go to Settings, then Control Center, and add Code Scanner to your list. After that, a swipe and a single tap give you a scanner that opens links without ever leaving a photo behind.',
+          'One quirk trips people up: the camera only offers the banner when the code fills a decent slice of the frame. If nothing happens, move closer until the code takes up roughly a third of the screen, and steady your hand.'
+        ]
+      },
+      {
+        sectionTitle: 'Scanning on Android',
+        paragraphs: [
+          'Android is less uniform, because every manufacturer tweaks the camera. On a Pixel, the stock camera reads codes the instant you point it. On a Samsung, you may have to open the camera settings once and switch on "Scan QR codes," which ships turned off on some models.',
+          'When the camera plays hard to get, Google Lens is the dependable fallback. It comes preinstalled on nearly every modern Android phone. Open Lens, aim at the code, and it decodes both the code and any text sitting around it. Newer Pixel and Galaxy phones add "Circle to Search," which will grab a code straight off the screen too.'
+        ]
+      },
+      {
+        sectionTitle: 'The Awkward One: a Code on Your Own Screen',
+        paragraphs: [
+          'Here is the situation no camera can solve directly: a friend texts you a QR code, or your concert ticket shows one, and it is already on the phone in your hand. You cannot point the camera at its own screen.',
+          'On an iPhone, save or screenshot the image, open it in Photos, and on iOS 16 or later a small Live Text button shows up in the corner — tap it and the link surfaces. You can also just press and hold the image and pick the link from the menu.',
+          'On Android, save the image, open Google Photos, and tap the Lens button along the bottom. Lens reads the code right out of the picture. It feels like a workaround because it is one, but it takes about five seconds once you have done it once.'
+        ]
+      }
+    ],
+    keyTakeaways: [
+      'On iOS 11+ and Android 9+, the built-in camera already scans QR codes — no app required.',
+      'Add Code Scanner to the iPhone Control Center for a scanner that never saves a photo.',
+      'Google Lens reads codes on almost any Android phone when the camera app will not.',
+      'For a code on your own screen, screenshot it and open the image in Photos (iPhone) or Google Lens (Android).'
+    ],
+    faqs: [
+      { question: 'Do I need to download a QR scanning app?', answer: 'Almost never. Any iPhone from 2017 onward, and most Android phones since version 9, read codes through the normal camera. The ad-heavy scanner apps in the store are solving a problem your phone already solved years ago.' },
+      { question: 'My camera sees the code but nothing pops up. What now?', answer: 'Two usual culprits. The code may be too small in the frame — move in until it fills about a third of the screen. Or the setting is off: on Samsung and a few other Androids, open the camera’s own settings and switch QR scanning on, since it ships disabled on some models.' },
+      { question: 'Can I scan a QR code that was sent to my phone?', answer: 'You can, though not by pointing the camera at your own screen. Save or screenshot the image first, then open it — in Photos on an iPhone (tap the Live Text button) or in Google Photos on Android (tap Lens). The link comes straight out of the picture.' },
+      { question: 'Is it safe to scan any QR code I come across?', answer: 'Treat a code like a link you cannot read yet. Your phone shows the web address before opening anything, so glance at it first. If a sticker looks slapped over the original — common on parking meters and posters — be wary, and never enter card details on a page a random code sent you to.' }
+    ],
+    relatedToolSlug: '/qr-code-scanner',
+    relatedToolName: 'QR Code Scanner'
+  },
+
+  {
+    slug: 'do-qr-codes-expire',
+    title: 'Do QR Codes Expire? The Honest Answer for Static and Dynamic Codes',
+    description: 'Do QR codes expire? Static ones never do — dynamic ones can. Here is what actually makes a code stop working, and how to keep yours scannable for years.',
+    category: 'Tech & Security',
+    publishDate: 'August 12, 2026',
+    readTime: '7 min read',
+    author: {
+      name: 'Ruth Okoye',
+      role: 'QR Standards & Data Formats Analyst',
+      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200'
+    },
+    keywords: [
+      'do qr codes expire',
+      'do qr codes stop working',
+      'static vs dynamic qr code',
+      'why did my qr code stop working',
+      'permanent qr code'
+    ],
+    excerpt: 'The short version: a QR code is a pattern of squares, and a pattern cannot expire. What can expire is whatever sits on the other end of it — and that is where people get burned.',
+    content: [
+      {
+        sectionTitle: 'A QR Code Is Not a Link — It Is a Container',
+        paragraphs: [
+          'It helps to know what the black-and-white grid actually holds. A static QR code stores its information directly in the pattern: a web address, a phone number, a WiFi password, a line of text. Nothing about that pattern decays. Print it on decent paper, keep it out of direct sun, and it will scan in fifty years exactly as it does today.',
+          'So when someone asks whether QR codes expire, the honest answer is that the code itself does not. The confusion comes from a second kind of code that behaves very differently.'
+        ]
+      },
+      {
+        sectionTitle: 'Static vs Dynamic — the Whole Story',
+        paragraphs: [
+          'A static code bakes the data in. That makes it permanent, and it also means the only way to change where it points is to generate a fresh one. For a business card or a plaque, that trade is usually fine.',
+          'A dynamic code works like a link shortener. The pattern points at a short redirect URL owned by a provider, and the provider forwards each scan to your real destination. The upside is obvious: you can change the destination whenever you like without reprinting. The catch is quieter — the code is now only as permanent as the company running that redirect, and as your account with them.'
+        ]
+      },
+      {
+        sectionTitle: 'How a Code Actually Stops Working',
+        paragraphs: [
+          'When a static code "stops working," the pattern is almost never the problem. Something on the far end moved: the page was deleted, the link structure changed, the WiFi password was reset. The code still decodes to the same address — that address just leads nowhere now.',
+          'Dynamic codes have a longer list of ways to die. The free trial ended. The subscription lapsed. The provider shut down or got acquired and retired the old links. Someone deleted the code in the dashboard. Any one of those breaks every printed copy at once.',
+          'This last point deserves a warning. A number of "free" dynamic generators hand you a code that quietly stops redirecting after 14 days unless you pay. People print a thousand flyers, the trial ends, and every code goes dead on the same afternoon. Read the fine print before you commit anything to a press run.'
+        ]
+      },
+      {
+        sectionTitle: 'How to Make Sure Yours Lasts',
+        paragraphs: [
+          'For anything printed once and meant to last — packaging, signage, a WiFi code by the door, a business card — reach for a static code and point it at an address you control. Owning the destination URL is what keeps the code alive; if you never move the page, the code never breaks.',
+          'If you genuinely need to swap the destination later, a dynamic code is the right tool, but go in with eyes open: run it through a provider you trust, keep the account paid, and know that the code’s lifespan is tied to that service. And whichever you choose, protect the print itself — high contrast, an untouched quiet zone around the edge, and a laminate if it lives outdoors.'
+        ]
+      }
+    ],
+    keyTakeaways: [
+      'A static QR code stores its data in the pattern itself and never expires.',
+      'A dynamic QR code points at a provider’s redirect, so it dies if the account lapses or the company folds.',
+      'Most "expired" static codes are really a destination that moved — the pattern still scans fine.',
+      'Some free dynamic generators disable the redirect after a trial; read the terms before printing at scale.'
+    ],
+    faqs: [
+      { question: 'Do printed QR codes stop working after a while?', answer: 'The printing tends to wear out long before the code "expires." Faded ink or a scratch across the corner squares will break a scan. The encoded data has no shelf life of its own — on clean, protected print, a static code keeps scanning indefinitely.' },
+      { question: 'Why did my QR code suddenly stop working?', answer: 'If it is a static code, something on the far end moved — the page was deleted, the link changed, or a password was reset. If it is a dynamic code, check whether the account behind it is still active and the plan has not lapsed.' },
+      { question: 'Are the codes from this site static or dynamic?', answer: 'The codes generated here are static, so the data lives in the pattern. There is nothing to expire and no subscription to keep alive — you make it once and it is yours.' },
+      { question: 'Should I ever use a dynamic code, then?', answer: 'Dynamic codes earn their keep when you truly need to change the destination after printing — a menu that moves hosts, a campaign link you swap mid-flight. Just know that the code’s life is tied to the service running the redirect.' }
+    ],
+    relatedToolSlug: '/url-qr-code-generator',
+    relatedToolName: 'URL QR Code Generator'
+  },
+
+  {
+    slug: 'share-wifi-password-qr-code',
+    title: 'How to Share Your WiFi Password With a QR Code (iPhone, Android & Mac)',
+    description: 'Share your WiFi password without reading it aloud. Make a QR code guests scan to join, and see how iPhone, Android, and Mac each handle it.',
+    category: 'Tech & Security',
+    publishDate: 'August 6, 2026',
+    readTime: '7 min read',
+    author: {
+      name: 'Sarah Lin',
+      role: 'Hospitality & Home Networking Consultant',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200'
+    },
+    keywords: [
+      'share wifi password iphone to mac',
+      'how to share wifi password to mac',
+      'qr code for wifi password',
+      'wifi qr code generator',
+      'connect to wifi without typing password'
+    ],
+    excerpt: 'Reading a twenty-character WiFi password aloud, twice, while a guest mistypes it — everyone has done it. A small QR code by the door ends that ritual for good.',
+    content: [
+      {
+        sectionTitle: 'Why a QR Beats Reading It Aloud',
+        paragraphs: [
+          'The code holds three things: your network name, the password, and which security type the router uses. A phone reads all three at once and offers to join. Nobody squints at a fridge magnet or asks you to repeat the password with the capital letters this time.',
+          'It also keeps the password off the table, literally. On most phones the guest never sees the characters — they see a "Join this network?" prompt and tap yes. That is a small privacy win over a password scrawled on a whiteboard.'
+        ]
+      },
+      {
+        sectionTitle: 'Make the Code Once',
+        paragraphs: [
+          'Generating one takes under a minute. Enter your network name exactly as it appears, type the password, pick the security your router uses (WPA2 and WPA3 cover almost everyone), and download the image. Print it small and stand it wherever guests actually sit.',
+          'One piece of advice before you print: put this on a guest network, not the one your work laptop and home server live on. Anyone who can see the code can join, so a separate guest SSID with device isolation is the sane place for a code that hangs on a wall.'
+        ]
+      },
+      {
+        sectionTitle: 'How Each Device Handles It',
+        paragraphs: [
+          'On an iPhone running iOS 11 or later, open the Camera, point it at the code, and tap "Join [network]." The password never appears on screen, which is handy in a busy cafe where someone might be reading over a shoulder.',
+          'On Android 10 or later, the camera or Google Lens reads the code and offers to connect the same way. Android has a bonus trick worth knowing: it can generate a code for you. Open Settings, go to Network and Internet, then WiFi, tap your current network, and choose Share — the phone shows a QR of the network you are already on, no generator needed.'
+        ]
+      },
+      {
+        sectionTitle: 'The iPhone-to-Mac Problem',
+        paragraphs: [
+          'This is the case people actually search for, and it is fiddlier than the phone answer. A Mac does not point a camera at a wall code the way a phone does, so scanning is not the natural path.',
+          'The smooth route between Apple devices skips the QR entirely. Keep your iPhone unlocked and near the Mac while the Mac tries to join the network, and — as long as the iPhone already knows that network and has you in its contacts — a prompt pops up on the phone offering to send the password over. It lands on the Mac without anyone typing a thing.',
+          'The QR code is still your universal fallback. It is the better answer the moment your guests are on Android or Windows, or when you want one printed thing that every device in the room can use. Apple-to-Apple, lean on the proximity prompt; for everyone else, the code on the wall does the job.'
+        ]
+      }
+    ],
+    keyTakeaways: [
+      'A WiFi QR code carries your network name, password, and security type, so one scan joins without typing.',
+      'iPhones (iOS 11+) and Androids (10+) scan straight from the camera, and the password stays off the screen.',
+      'Android can generate a QR of your current network from the WiFi settings screen — no separate tool needed.',
+      'For iPhone-to-Mac, the nearby-device proximity prompt is smoother than a QR; keep a QR for everyone else.'
+    ],
+    faqs: [
+      { question: 'Does the guest’s phone show my actual password?', answer: 'On an iPhone it does not — the prompt just says "Join this network?" and connects. That quietly shields the password from anyone reading over a shoulder. Some Android phones will display it, so treat a printed code as public information either way.' },
+      { question: 'Can I share my WiFi password from an iPhone to a Mac?', answer: 'The cleanest way is Apple’s proximity share: keep the iPhone unlocked and close to the Mac while the Mac tries to join, and a prompt to send the password appears — no QR needed. A WiFi QR code is the better pick when your guests are on Android or Windows.' },
+      { question: 'Do I need an app to make the WiFi code?', answer: 'None at all. You can generate one in the browser here — enter the network name and password, choose the security type, and download it. Android users have a second option: their phone can produce a QR of the current network from the WiFi settings screen.' },
+      { question: 'Is it risky to leave a WiFi QR code on the wall?', answer: 'Anyone who can see it can join, because the code carries the real credentials. That is fine for a guest network you have walled off from your own devices, but do not print one for the private network your work laptop connects to.' }
+    ],
+    relatedToolSlug: '/wifi-qr-code-generator',
+    relatedToolName: 'WiFi QR Code Generator'
   }
 ];

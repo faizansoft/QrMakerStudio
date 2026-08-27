@@ -403,6 +403,33 @@ export const ROUTE_METADATA: Record<string, RouteMeta> = {
     type: 'article',
     keywords: ['wifi qr codes for hotels', 'airbnb wifi qr code', 'hospitality guest wifi qr']
   },
+  '/blog/how-to-scan-qr-code': {
+    path: '/blog/how-to-scan-qr-code',
+    title: 'How to Scan a QR Code on iPhone & Android (2026)',
+    description: 'Scan a QR code with your phone camera, from a screenshot, or when it is on the screen you are holding. Step-by-step for iPhone and Android.',
+    canonical: 'https://qr-generator.online/blog/how-to-scan-qr-code',
+    h1: 'How to Scan a QR Code on iPhone, Android, and From a Screenshot',
+    type: 'article',
+    keywords: ['how to scan qr code on iphone', 'how to scan qr code with android', 'scan qr code from screenshot']
+  },
+  '/blog/do-qr-codes-expire': {
+    path: '/blog/do-qr-codes-expire',
+    title: 'Do QR Codes Expire? Static vs Dynamic, Explained',
+    description: 'Do QR codes expire? Static codes never do; dynamic ones can. Here is what really makes a code stop working and how to keep yours scannable for years.',
+    canonical: 'https://qr-generator.online/blog/do-qr-codes-expire',
+    h1: 'Do QR Codes Expire? The Honest Answer for Static and Dynamic Codes',
+    type: 'article',
+    keywords: ['do qr codes expire', 'static vs dynamic qr code', 'why did my qr code stop working']
+  },
+  '/blog/share-wifi-password-qr-code': {
+    path: '/blog/share-wifi-password-qr-code',
+    title: 'How to Share Your WiFi Password With a QR Code',
+    description: 'Share your WiFi password without reading it aloud. Make a QR code guests scan to join, and see how iPhone, Android, and Mac each handle it.',
+    canonical: 'https://qr-generator.online/blog/share-wifi-password-qr-code',
+    h1: 'How to Share Your WiFi Password Using a QR Code (iPhone, Android & Mac)',
+    type: 'article',
+    keywords: ['share wifi password iphone to mac', 'how to share wifi password to mac', 'qr code for wifi password']
+  },
   '/dashboard': {
     path: '/dashboard',
     title: 'My QR Codes & Real-Time Analytics Dashboard | QR Generator Online',

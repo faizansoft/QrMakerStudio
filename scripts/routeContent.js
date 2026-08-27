@@ -743,6 +743,81 @@ export const ROUTE_CONTENT = [
     ]
   },
   {
+    path: '/blog/how-to-scan-qr-code',
+    title: 'How to Scan a QR Code on iPhone & Android (2026)',
+    description: 'Scan a QR code with your phone camera, from a screenshot, or when it is on the screen you are holding. Step-by-step for iPhone and Android.',
+    canonical: 'https://qr-generator.online/blog/how-to-scan-qr-code',
+    h1: 'How to Scan a QR Code on iPhone, Android, and From a Screenshot',
+    badge: 'Phones & Scanning',
+    lead: 'Your phone is already a QR scanner. Here is where the feature hides on iPhone and Android, and what to do when the code is on the same screen you are holding.',
+    sections: [
+      {
+        title: 'The Scanner Built Into Your Camera',
+        paragraphs: [
+          'Since iOS 11 and Android 9, the normal camera reads QR codes on its own — no app to install. Point it at the code, hold steady for a second, and a link banner appears. Tap it and you are there.',
+          'If nothing shows up, the code is usually too small in the frame. Move closer until it fills about a third of the screen. On some Samsung phones you also have to switch on QR scanning once inside the camera settings.'
+        ]
+      },
+      {
+        title: 'When the Code Is on Your Own Screen',
+        paragraphs: [
+          'A camera cannot point at itself, so a code someone texted you needs a different move. On an iPhone, screenshot it, open the image in Photos, and tap the Live Text button to pull out the link. On Android, save the image and open it in Google Photos, then tap Lens.',
+          'Google Lens is also the reliable fallback whenever an Android camera refuses to read a code in the wild — open Lens, aim, and it decodes the code along with any text around it.'
+        ]
+      }
+    ]
+  },
+  {
+    path: '/blog/do-qr-codes-expire',
+    title: 'Do QR Codes Expire? Static vs Dynamic, Explained',
+    description: 'Do QR codes expire? Static codes never do; dynamic ones can. Here is what really makes a code stop working and how to keep yours scannable for years.',
+    canonical: 'https://qr-generator.online/blog/do-qr-codes-expire',
+    h1: 'Do QR Codes Expire? The Honest Answer for Static and Dynamic Codes',
+    badge: 'How QR Codes Work',
+    lead: 'A QR code is a pattern of squares, and a pattern cannot expire. What can expire is whatever sits on the other end of it — and that is where people get caught out.',
+    sections: [
+      {
+        title: 'Static Codes Hold the Data Themselves',
+        paragraphs: [
+          'A static QR code stores its information right in the pattern — a link, a phone number, a WiFi password. Nothing about that pattern decays. On clean, protected print it scans years from now exactly as it does today.',
+          'When a static code seems to "expire," the pattern is almost never at fault. The page it points to was deleted, the link changed, or a password was reset. The code still decodes to the same address; that address just leads nowhere now.'
+        ]
+      },
+      {
+        title: 'Dynamic Codes Depend on a Service',
+        paragraphs: [
+          'A dynamic code points at a short redirect owned by a provider, which forwards each scan to your real destination. That lets you change the target without reprinting — but the code now lives and dies with that account and that company.',
+          'Watch the free-trial trap: some "free" dynamic generators disable the redirect after a couple of weeks unless you pay, which can kill a thousand printed flyers on the same afternoon. The codes generated here are static, so there is nothing to expire and no subscription to keep alive.'
+        ]
+      }
+    ]
+  },
+  {
+    path: '/blog/share-wifi-password-qr-code',
+    title: 'How to Share Your WiFi Password With a QR Code',
+    description: 'Share your WiFi password without reading it aloud. Make a QR code guests scan to join, and see how iPhone, Android, and Mac each handle it.',
+    canonical: 'https://qr-generator.online/blog/share-wifi-password-qr-code',
+    h1: 'How to Share Your WiFi Password Using a QR Code (iPhone, Android & Mac)',
+    badge: 'WiFi & Guests',
+    lead: 'A small QR code by the door ends the ritual of reading a long WiFi password aloud. Here is how to make one, and how iPhone, Android, and Mac each deal with it.',
+    sections: [
+      {
+        title: 'One Code, Any Phone',
+        paragraphs: [
+          'A WiFi QR code carries three things — the network name, the password, and the security type — so a single scan offers to join with nothing typed. On an iPhone the password never even appears on screen, which is a quiet win in a busy cafe.',
+          'Generating one takes under a minute: enter the network name and password, pick WPA2 or WPA3, and download the image. Put it on a guest network rather than the one your work laptop uses, since anyone who can see the code can join.'
+        ]
+      },
+      {
+        title: 'The iPhone-to-Mac Case',
+        paragraphs: [
+          'Android has a shortcut worth knowing: under WiFi settings you can tap Share and the phone shows a QR of the network you are already on, no generator needed. iPhones scan a code the same way but do not generate one built in.',
+          'For iPhone to Mac, scanning is awkward because a Mac does not read a wall code like a phone. The smooth path skips the QR: hold an unlocked iPhone near the Mac as it tries to join, and a prompt offers to send the password across. Keep the QR code as the universal fallback for Android and Windows guests.'
+        ]
+      }
+    ]
+  },
+  {
     path: '/login',
     title: 'Log In to My QR Codes | QR Generator Online',
     description: 'Log in to your free QR Generator Online account to manage dynamic QR codes, update landing pages, and track scan performance.',
