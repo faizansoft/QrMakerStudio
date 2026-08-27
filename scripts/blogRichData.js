@@ -144,6 +144,7 @@ export const BLOG_RICH_DATA = {
     },
     faqs: [
       { q: 'How do I create a free QR code for my restaurant menu?', a: 'Put the menu online — a PDF or a web page — copy the public URL, paste it into the URL generator, add your logo and colours, and download the SVG or high-res PNG.' },
+      { q: 'Is a QR code a good way to run a digital menu for restaurants?', a: 'It is the simplest way. Host the menu as a web page, point a QR code at it, and put the code on the table — a scan opens your digital menu on the diner’s own phone, with no app and nothing to hand out. Dynamic codes let you update the digital menu for restaurants without reprinting a thing.' },
       { q: 'Can I change my menu items or prices without reprinting the QR code?', a: 'As long as the URL stays the same — yourrestaurant.com/menu — editing the page behind it updates what every already-printed code shows. The code never changes.' },
       { q: 'What is the best material for restaurant table QR code displays?', a: 'Matte acrylic stands, laser-engraved wooden blocks, or laminated 350+ GSM cardstock — they take a spill, resist glare, and last.' },
       { q: 'Do older diners have trouble scanning QR code menus?', a: 'Modern phones (iOS 11+, Android 9+) read a code straight from the camera with no app. A short line — "Point your camera here to view menu" — smooths it for everyone.' },

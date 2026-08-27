@@ -368,7 +368,7 @@ export const ROUTE_CONTENT = [
   {
     path: '/bulk-qr-code-generator',
     title: 'Free Bulk QR Code Generator | Batch Create from CSV',
-    description: 'Generate hundreds of QR codes at once from a CSV file or text list. Download all as individual files or a single ZIP archive. 100% free and private.',
+    description: 'QR code bulk generator: create hundreds at once from a CSV or text list, then download them individually or as one ZIP archive. Free and private.',
     canonical: 'https://qr-generator.online/bulk-qr-code-generator',
     h1: 'Free Bulk QR Code Generator — Batch Create & Download as ZIP',
     badge: 'Bulk Batch Generator',
@@ -379,10 +379,10 @@ export const ROUTE_CONTENT = [
   },
   {
     path: '/qr-code-scanner',
-    title: 'Free QR Code Scanner & Reader Online | Camera & Image Upload',
-    description: 'Scan and decode QR codes online using your camera or by uploading an image. Fast, private, browser-based — no app installation required.',
+    title: 'Free QR Code Scanner from Image & Camera | Online Reader',
+    description: 'Scan a QR code from an image or your camera and decode it online instantly — private, browser-based, and no app to install.',
     canonical: 'https://qr-generator.online/qr-code-scanner',
-    h1: 'Free Online QR Code Scanner & Reader — Camera & Image Upload',
+    h1: 'Free Online QR Code Scanner & Reader — Scan from Image or Camera',
     badge: 'QR Code Scanner',
     lead: 'Scan QR codes using your device camera or upload an image to decode. 100% browser-based, no app required, completely private.',
     sections: [
