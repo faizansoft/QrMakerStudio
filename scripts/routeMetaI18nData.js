@@ -303,6 +303,27 @@ export const ROUTE_META_I18N = {
       badge: 'Hostelería y Airbnb',
       lead: 'Elimina la fricción para los huéspedes ofreciendo códigos QR WiFi escaneables para habitaciones, mesas de café, espacios coworking y alquileres vacacionales.'
     },
+    '/blog/how-to-scan-qr-code': {
+      title: 'Cómo Escanear un Código QR en iPhone y Android (2026)',
+      description: 'Escanea un código QR con la cámara, desde una captura de pantalla o en la propia pantalla que sostienes. Guía paso a paso para iPhone y Android.',
+      h1: 'Cómo Escanear un Código QR en iPhone, Android y desde una Captura',
+      badge: 'Teléfonos y Escaneo',
+      lead: 'Tu teléfono ya es un escáner de QR. Aquí verás dónde se esconde la función en iPhone y Android, y qué hacer cuando el código está en la misma pantalla que sostienes.'
+    },
+    '/blog/do-qr-codes-expire': {
+      title: '¿Los Códigos QR Caducan? Estáticos vs Dinámicos',
+      description: '¿Caducan los códigos QR? Los estáticos nunca; los dinámicos pueden. Esto es lo que hace que un código deje de funcionar y cómo mantener el tuyo escaneable.',
+      h1: '¿Los Códigos QR Caducan? La Respuesta Honesta para Códigos Estáticos y Dinámicos',
+      badge: 'Cómo Funcionan los QR',
+      lead: 'Un código QR es un patrón de cuadros, y un patrón no caduca. Lo que sí puede caducar es aquello a lo que apunta, y ahí es donde muchos se llevan una sorpresa.'
+    },
+    '/blog/share-wifi-password-qr-code': {
+      title: 'Cómo Compartir tu Contraseña WiFi con un Código QR',
+      description: 'Comparte tu contraseña WiFi sin leerla en voz alta. Crea un código QR que los invitados escanean para conectarse, y mira cómo lo manejan iPhone, Android y Mac.',
+      h1: 'Cómo Compartir tu Contraseña WiFi con un Código QR (iPhone, Android y Mac)',
+      badge: 'WiFi e Invitados',
+      lead: 'Un pequeño código QR junto a la puerta acaba con el ritual de leer una contraseña WiFi larga en voz alta. Aquí verás cómo crear uno y cómo lo gestiona cada dispositivo.'
+    },
     '/pdf-qr-code-generator': {
       title: 'Generador de QR desde PDF | Menús y Documentos',
       description: 'Convierte menús, folletos, catálogos y documentos PDF en códigos QR de marca personalizados. Descargas SVG y PNG gratis con enlaces dinámicos editables.',
@@ -613,6 +634,27 @@ export const ROUTE_META_I18N = {
       h1: 'رموز QR للواي فاي للفنادق والمقاهي ومضيفي Airbnb: وصول سلس للضيوف',
       badge: 'الضيافة وAirbnb',
       lead: 'تخلَّص من العوائق أمام الضيوف بتوفير رموز QR قابلة للمسح للواي فاي في غرف الفنادق وطاولات المقاهي ومساحات العمل المشترك والإيجارات.'
+    },
+    '/blog/how-to-scan-qr-code': {
+      title: 'كيفية مسح رمز QR على iPhone وAndroid (2026)',
+      description: 'امسح رمز QR بكاميرا الهاتف أو من لقطة شاشة أو حين يكون على الشاشة نفسها التي تمسكها. دليل خطوة بخطوة لـ iPhone وAndroid.',
+      h1: 'كيفية مسح رمز QR على iPhone وAndroid ومن لقطة شاشة',
+      badge: 'الهواتف والمسح',
+      lead: 'هاتفك ماسح رموز QR بالفعل. تعرّف على مكان هذه الميزة في iPhone وAndroid، وماذا تفعل حين يكون الرمز على الشاشة نفسها التي تمسكها.'
+    },
+    '/blog/do-qr-codes-expire': {
+      title: 'هل تنتهي صلاحية رموز QR؟ الثابتة مقابل الديناميكية',
+      description: 'هل تنتهي صلاحية رموز QR؟ الثابتة لا تنتهي أبدًا، أما الديناميكية فقد تنتهي. إليك ما يجعل الرمز يتوقف فعليًا وكيف تُبقيه قابلًا للمسح لسنوات.',
+      h1: 'هل تنتهي صلاحية رموز QR؟ الإجابة الصادقة للرموز الثابتة والديناميكية',
+      badge: 'كيف تعمل رموز QR',
+      lead: 'رمز QR هو نمط من المربعات، والنمط لا تنتهي صلاحيته. ما قد تنتهي صلاحيته هو ما يوجد على الطرف الآخر — وهنا يقع كثيرون في الفخ.'
+    },
+    '/blog/share-wifi-password-qr-code': {
+      title: 'كيفية مشاركة كلمة مرور الواي فاي برمز QR',
+      description: 'شارك كلمة مرور الواي فاي دون قراءتها بصوت عالٍ. أنشئ رمز QR يمسحه الضيوف للاتصال، وشاهد كيف يتعامل معه iPhone وAndroid وMac.',
+      h1: 'كيفية مشاركة كلمة مرور الواي فاي برمز QR (iPhone وAndroid وMac)',
+      badge: 'الواي فاي والضيوف',
+      lead: 'رمز QR صغير بجوار الباب ينهي طقس قراءة كلمة مرور واي فاي طويلة بصوت عالٍ. تعرّف على كيفية إنشائه وكيف يتعامل معه كل جهاز.'
     },
     '/pdf-qr-code-generator': {
       title: 'مولّد رمز QR من PDF مجاني | القوائم والمستندات',
@@ -925,6 +967,27 @@ export const ROUTE_META_I18N = {
       badge: 'हॉस्पिटैलिटी और Airbnb',
       lead: 'होटल कमरों, कैफे टेबल, को-वर्किंग लाउंज और वेकेशन रेंटल के लिए स्कैन करने योग्य वाईफाई क्यूआर कोड देकर मेहमानों के लिए घर्षण खत्म करें।'
     },
+    '/blog/how-to-scan-qr-code': {
+      title: 'iPhone और Android पर QR कोड कैसे स्कैन करें (2026)',
+      description: 'फ़ोन कैमरे से, स्क्रीनशॉट से, या जब कोड उसी स्क्रीन पर हो जिसे आप पकड़े हैं — QR कोड स्कैन करें। iPhone और Android के लिए चरण-दर-चरण गाइड।',
+      h1: 'iPhone, Android और स्क्रीनशॉट से QR कोड कैसे स्कैन करें',
+      badge: 'फ़ोन और स्कैनिंग',
+      lead: 'आपका फ़ोन पहले से ही QR स्कैनर है। जानें कि iPhone और Android पर यह सुविधा कहाँ छिपी है, और जब कोड उसी स्क्रीन पर हो तो क्या करें।'
+    },
+    '/blog/do-qr-codes-expire': {
+      title: 'क्या QR कोड एक्सपायर होते हैं? स्टैटिक बनाम डायनामिक',
+      description: 'क्या QR कोड एक्सपायर होते हैं? स्टैटिक कभी नहीं; डायनामिक हो सकते हैं। जानें कि कोड काम करना क्यों बंद करता है और कोड को सालों स्कैन-योग्य कैसे रखें।',
+      h1: 'क्या QR कोड एक्सपायर होते हैं? स्टैटिक और डायनामिक कोड के लिए सच्चा जवाब',
+      badge: 'QR कोड कैसे काम करते हैं',
+      lead: 'QR कोड चौकोर खानों का एक पैटर्न है, और पैटर्न एक्सपायर नहीं होता। जो एक्सपायर हो सकता है वह है उसके दूसरे सिरे पर मौजूद चीज़ — और यहीं लोग फँसते हैं।'
+    },
+    '/blog/share-wifi-password-qr-code': {
+      title: 'QR कोड से अपना वाईफाई पासवर्ड कैसे शेयर करें',
+      description: 'अपना वाईफाई पासवर्ड ज़ोर से पढ़े बिना शेयर करें। एक QR कोड बनाएं जिसे मेहमान स्कैन करके जुड़ें, और देखें कि iPhone, Android और Mac इसे कैसे संभालते हैं।',
+      h1: 'QR कोड से अपना वाईफाई पासवर्ड कैसे शेयर करें (iPhone, Android और Mac)',
+      badge: 'वाईफाई और मेहमान',
+      lead: 'दरवाज़े के पास एक छोटा QR कोड लंबा वाईफाई पासवर्ड ज़ोर से पढ़ने की झंझट खत्म कर देता है। जानें इसे कैसे बनाएं और हर डिवाइस इसे कैसे संभालता है।'
+    },
     '/pdf-qr-code-generator': {
       title: 'मुफ़्त PDF से क्यूआर कोड जनरेटर | मेन्यू और दस्तावेज़',
       description: 'PDF मेन्यू, ब्रोशर, कैटलॉग और दस्तावेज़ों को कस्टम ब्रांडेड क्यूआर कोड में बदलें। संपादन योग्य डायनामिक डेस्टिनेशन लिंक के साथ मुफ़्त वेक्टर SVG और PNG डाउनलोड।',
@@ -1236,6 +1299,27 @@ export const ROUTE_META_I18N = {
       badge: 'Konaklama ve Airbnb',
       lead: 'Otel odaları, kafe masaları, ortak çalışma alanları ve tatil kiralıkları için taranabilir WiFi QR kodları sunarak misafirler için sürtünmeyi ortadan kaldırın.'
     },
+    '/blog/how-to-scan-qr-code': {
+      title: 'iPhone ve Android\'de QR Kod Nasıl Taranır (2026)',
+      description: 'Telefon kamerasıyla, bir ekran görüntüsünden veya kod elinizdeki ekrandayken bir QR kodu tarayın. iPhone ve Android için adım adım rehber.',
+      h1: 'iPhone, Android ve Ekran Görüntüsünden QR Kod Nasıl Taranır',
+      badge: 'Telefonlar ve Tarama',
+      lead: 'Telefonunuz zaten bir QR tarayıcı. Bu özelliğin iPhone ve Android\'de nerede saklandığını ve kod aynı ekrandayken ne yapmanız gerektiğini öğrenin.'
+    },
+    '/blog/do-qr-codes-expire': {
+      title: 'QR Kodların Süresi Dolar mı? Statik ve Dinamik',
+      description: 'QR kodlarının süresi dolar mı? Statikler asla, dinamikler dolabilir. Bir kodu neyin bozduğunu ve kodunuzu yıllarca taranabilir tutmayı açıklıyoruz.',
+      h1: 'QR Kodların Süresi Dolar mı? Statik ve Dinamik Kodlar için Dürüst Yanıt',
+      badge: 'QR Kodları Nasıl Çalışır',
+      lead: 'QR kodu bir kareler desenidir ve bir desenin süresi dolmaz. Süresi dolabilecek olan, kodun işaret ettiği yerdir — insanların çoğu tam da burada yanılır.'
+    },
+    '/blog/share-wifi-password-qr-code': {
+      title: 'WiFi Şifrenizi QR Kod ile Nasıl Paylaşırsınız',
+      description: 'WiFi şifrenizi sesli okumadan paylaşın. Misafirlerin tarayıp bağlandığı bir QR kod oluşturun ve iPhone, Android ile Mac\'in bunu nasıl ele aldığını görün.',
+      h1: 'WiFi Şifrenizi QR Kod ile Nasıl Paylaşırsınız (iPhone, Android ve Mac)',
+      badge: 'WiFi ve Misafirler',
+      lead: 'Kapının yanındaki küçük bir QR kod, uzun WiFi şifresini sesli okuma zahmetine son verir. Nasıl oluşturacağınızı ve her cihazın bunu nasıl ele aldığını öğrenin.'
+    },
     '/pdf-qr-code-generator': {
       title: 'Ücretsiz PDF\'den QR Koda Oluşturucu | Menüler ve Belgeler',
       description: 'PDF menülerini, broşürleri ve katalogları özel markalı QR kodlarına dönüştürün. Düzenlenebilir hedef bağlantılarla ücretsiz SVG ve PNG indirin.',
@@ -1546,6 +1630,27 @@ export const ROUTE_META_I18N = {
       h1: 'Mã QR WiFi cho Khách Sạn, Quán Cà Phê và Chủ Nhà Airbnb: Truy Cập Khách Liền Mạch',
       badge: 'Ngành Khách Sạn và Airbnb',
       lead: 'Loại bỏ trở ngại cho khách bằng cách cung cấp mã QR WiFi có thể quét cho phòng khách sạn, bàn quán cà phê, không gian làm việc chung và cho thuê nghỉ dưỡng.'
+    },
+    '/blog/how-to-scan-qr-code': {
+      title: 'Cách Quét Mã QR trên iPhone và Android (2026)',
+      description: 'Quét mã QR bằng camera điện thoại, từ ảnh chụp màn hình, hoặc khi mã ở ngay màn hình bạn đang cầm. Hướng dẫn từng bước cho iPhone và Android.',
+      h1: 'Cách Quét Mã QR trên iPhone, Android và từ Ảnh Chụp Màn Hình',
+      badge: 'Điện Thoại và Quét Mã',
+      lead: 'Điện thoại của bạn vốn đã là máy quét QR. Xem tính năng này nằm ở đâu trên iPhone và Android, và phải làm gì khi mã nằm ngay màn hình bạn đang cầm.'
+    },
+    '/blog/do-qr-codes-expire': {
+      title: 'Mã QR Có Hết Hạn Không? Tĩnh và Động, Giải Thích',
+      description: 'Mã QR có hết hạn không? Mã tĩnh thì không; mã động thì có thể. Đây là điều khiến mã ngừng hoạt động và cách giữ mã quét được trong nhiều năm.',
+      h1: 'Mã QR Có Hết Hạn Không? Câu Trả Lời Thành Thật cho Mã Tĩnh và Động',
+      badge: 'Cách Mã QR Hoạt Động',
+      lead: 'Mã QR là một mẫu các ô vuông, và một mẫu thì không thể hết hạn. Thứ có thể hết hạn là những gì nằm ở đầu kia của nó — và đó là chỗ nhiều người vấp phải.'
+    },
+    '/blog/share-wifi-password-qr-code': {
+      title: 'Cách Chia Sẻ Mật Khẩu WiFi bằng Mã QR',
+      description: 'Chia sẻ mật khẩu WiFi mà không cần đọc to. Tạo mã QR để khách quét và kết nối, và xem iPhone, Android cùng Mac xử lý nó ra sao.',
+      h1: 'Cách Chia Sẻ Mật Khẩu WiFi bằng Mã QR (iPhone, Android và Mac)',
+      badge: 'WiFi và Khách',
+      lead: 'Một mã QR nhỏ đặt cạnh cửa chấm dứt việc phải đọc to mật khẩu WiFi dài. Đây là cách tạo một mã và cách mỗi thiết bị xử lý nó.'
     },
     '/pdf-qr-code-generator': {
       title: 'Trình Tạo Mã QR từ PDF Miễn Phí | Thực Đơn và Tài Liệu',
