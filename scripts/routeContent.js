@@ -374,7 +374,7 @@ export const ROUTE_CONTENT = [
     badge: 'Bulk Batch Generator',
     lead: 'Paste a list or upload a CSV file and generate hundreds of QR codes at once. Download them individually or as a single ZIP archive.',
     sections: [
-      { title: 'Mass QR Code Production for Business & Marketing', paragraphs: ['Upload a CSV or paste a text list with one URL per line. Our bulk generator creates all QR codes instantly in your browser — no data leaves your device.', 'Download each QR code individually or grab them all as a single ZIP file. Perfect for product labeling, event badges, and mass mailings.'] }
+      { title: 'Mass QR Code Production for Business & Marketing', paragraphs: ['Upload a CSV, or paste a list with one URL per line. The generator builds every code right in your browser. Nothing you paste is uploaded anywhere.', 'Save them one by one, or take the whole batch as a single ZIP. It is the fast way to label a product run, badge an event, or fill a mailing.'] }
     ]
   },
   {
@@ -386,7 +386,7 @@ export const ROUTE_CONTENT = [
     badge: 'QR Code Scanner',
     lead: 'Scan QR codes using your device camera or upload an image to decode. 100% browser-based, no app required, completely private.',
     sections: [
-      { title: 'Scan & Decode QR Codes Instantly', paragraphs: ['Use your phone or laptop camera for real-time QR code scanning, or upload a screenshot or photo containing a QR code for instant decoding.', 'All processing happens locally in your browser. Your camera feed and uploaded images never leave your device.'] }
+      { title: 'Scan & Decode QR Codes Instantly', paragraphs: ['Point your phone or laptop camera at a code to read it live. No camera handy? Drop in a screenshot or a photo and it decodes that too.', 'Everything runs in the browser on your own machine. The camera feed and the images you upload stay there.'] }
     ]
   },
   {
@@ -398,7 +398,7 @@ export const ROUTE_CONTENT = [
     badge: 'All Social Media QR',
     lead: 'Enter your profiles for Instagram, YouTube, LinkedIn, TikTok, Twitter/X, Facebook, Telegram, and WhatsApp. Get color-matched QR codes for each platform.',
     sections: [
-      { title: 'One Dashboard for All Your Social QR Codes', paragraphs: ['Enter your social media handles and URLs in one form. Our generator creates individual, platform-color-matched QR codes for each profile you provide.', 'Download each QR code separately in PNG or SVG format. Perfect for business cards, media kits, and multi-platform marketing materials.'] }
+      { title: 'One Dashboard for All Your Social QR Codes', paragraphs: ['Put all your handles and profile links in one form. You get back a separate code for each one, colored to match the platform it points to.', 'Each downloads on its own as a PNG or an SVG. Use them on a business card, in a media kit, or across whatever campaign you are running.'] }
     ]
   },
   {
@@ -811,22 +811,22 @@ export const ROUTE_CONTENT = [
       {
         title: 'The Modern PDF QR Revolution for Menus & Brochures',
         paragraphs: [
-          'In commercial dining, trade conferences, real estate sales, and corporate education, printing physical multi-page paper catalogs or laminated restaurant menus is expensive, environmentally wasteful, and impossible to update once printed. A single price modification or seasonal menu overhaul previously required thousands of dollars in complete reprint runs.',
-          'A PDF to QR Code bridges the physical world to rich, high-resolution digital documents. When placed on table tents, product packaging, exhibition booths, or storefront windows, customers simply aim their smartphone cameras to open your full PDF brochure, digital menu, or technical instruction manual in seconds.'
+          'A printed catalogue or a laminated menu costs money to make and freezes the moment it leaves the printer. Change one price or swap a seasonal dish and, the old way, you reprinted the whole run. That bill lands on restaurants, trade-show teams, real estate offices, and training departments alike.',
+          'A PDF QR code cuts the tie between the print and the file behind it. Stick it on a table tent, a box, a booth, or a shop window. The customer points a camera and your full brochure, menu, or manual opens in seconds.'
         ]
       },
       {
         title: 'Static vs. Dynamic PDF QR Codes: Updating Menus Without Reprinting',
         paragraphs: [
-          'Static PDF QR codes encode permanent links directly into the pixel matrix. If your Google Drive URL changes, the printed code breaks permanently. Dynamic PDF QR codes, by contrast, encode short redirect links (qr-generator.online/r/menu).',
-          'Whenever you update weekly specials, adjust beverage pricing, or release a new product catalog edition, you update the target URL in your dashboard. Physical table stands remain 100% functional with zero reprint expense.'
+          'A static PDF QR code bakes the link straight into the pixel matrix. Move the Google Drive file and the printed code is dead. A dynamic one points at a short redirect instead — something like qr-generator.online/r/menu — and that short link never changes.',
+          'So when the weekly specials shift, or a drink goes up fifty cents, or a fresh catalogue edition ships, you just repoint the redirect in your dashboard. The table stands on the floor keep working. Nobody reprints anything.'
         ]
       },
       {
         title: 'Industry Applications for PDF QR Codes',
         paragraphs: [
-          'Restaurants display contactless table QR stands linking to food and cocktail PDF menus with allergy warnings and photography. Real estate agents add PDF QR codes to yard signs for architectural blueprints and HOA disclosures.',
-          'Manufacturers replace bulky paper manuals with compact product packaging QR codes linking to interactive PDF user guides.'
+          'Restaurants put a code on the table that opens the food and cocktail menu, allergy notes and dish photos included. Agents drop one on a yard sign so buyers can pull up floor plans and HOA disclosures on the spot.',
+          'Manufacturers skip the thick paper manual altogether and print a small code on the box that leads to the full user guide.'
         ]
       }
     ]
@@ -843,21 +843,21 @@ export const ROUTE_CONTENT = [
       {
         title: 'Smart App Store QR Codes & Mobile Acquisition',
         paragraphs: [
-          'In physical app marketing—whether on subway billboards, product packaging, TV commercials, trade show exhibits, or direct mailers—asking potential users to open their phone, launch an app store, type your exact app title, and sift through competitor search results creates severe friction. Over 65% of potential users drop off during manual app store searching.',
-          'A single smart App Store QR Code eliminates friction completely. By utilizing intelligent device routing, one scannable barcode automatically directs iOS users to the Apple App Store and Android users to Google Play with zero human decision-making required.'
+          'Picture your app on a subway poster, a cereal box, a TV spot, or a trade-show banner. To install it, someone has to unlock their phone, open the right store, type your name correctly, and pick you out of a list of competitors. Most people give up somewhere in that chain — roughly two in three, by common estimates.',
+          'One smart App Store QR code removes those steps. Scan it, and it reads the device: an iPhone lands in the Apple App Store, an Android phone lands in Google Play. The person never has to search.'
         ]
       },
       {
         title: 'Why Dual QR Codes Fail vs Unified Smart QR',
         paragraphs: [
-          'Printing two separate QR codes (one for iOS and one for Android) creates visual clutter, confuses consumers, and causes camera cross-scanning errors when phones capture the wrong adjacent barcode.',
-          'A single smart App Store QR code provides a frictionless 1-second scan-and-install experience for 100% of smartphone users, with fallback routing to desktop promotional websites.'
+          'Print two codes side by side, one for iOS and one for Android, and you invite trouble. The layout looks busy, people hesitate over which one is theirs, and cameras often grab the wrong barcode when the two sit close together.',
+          'A single smart code sidesteps all of that. Every phone gets a one-second scan-and-install, and anyone who scans from a desktop lands on your promo site instead.'
         ]
       },
       {
         title: 'Real-Time App Install Telemetry & Attribution',
         paragraphs: [
-          'When managing dynamic App Store QR codes through our platform, you gain complete visibility into real-world conversion funnels, including iOS vs. Android market share, regional geographic hotspots, and hourly scan volume.'
+          'Run your App Store codes as dynamic codes here and the whole funnel opens up. You can see how the iOS-versus-Android split actually breaks down, which regions light up, and when during the day scans cluster.'
         ]
       }
     ]

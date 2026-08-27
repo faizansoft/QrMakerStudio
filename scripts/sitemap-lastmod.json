@@ -1,179 +1,179 @@
 {
   "/": {
-    "hash": "9759cd07a22ae685",
-    "lastmod": "2026-08-22"
+    "hash": "394b705ece292d7d",
+    "lastmod": "2026-08-27"
   },
   "/url-qr-code-generator": {
-    "hash": "3b3243bf9420d7d1",
-    "lastmod": "2026-08-21"
+    "hash": "9fbee17a83b66fc4",
+    "lastmod": "2026-08-27"
   },
   "/wifi-qr-code-generator": {
-    "hash": "a9097a0cea820df1",
-    "lastmod": "2026-08-21"
+    "hash": "8d4a8de155df1279",
+    "lastmod": "2026-08-27"
   },
   "/vcard-qr-code-generator": {
-    "hash": "69bb3dc04b44c4ae",
-    "lastmod": "2026-08-22"
+    "hash": "3dfb5c93f8ee847f",
+    "lastmod": "2026-08-27"
   },
   "/googleform-qr-code-generator": {
-    "hash": "3fd05ca91b761da9",
-    "lastmod": "2026-08-21"
+    "hash": "4fa01a5f0c18acb5",
+    "lastmod": "2026-08-27"
   },
   "/whatsapp-qr-code-generator": {
-    "hash": "61e6144770c05f17",
-    "lastmod": "2026-08-21"
+    "hash": "3c0fde6831c7136b",
+    "lastmod": "2026-08-27"
   },
   "/facebook-qr-code-generator": {
-    "hash": "6eea297491fa0642",
-    "lastmod": "2026-08-22"
+    "hash": "26a27e59f0f33602",
+    "lastmod": "2026-08-27"
   },
   "/email-qr-code-generator": {
-    "hash": "1cc649f2ac579baf",
-    "lastmod": "2026-08-21"
+    "hash": "e69f7c3763efec06",
+    "lastmod": "2026-08-27"
   },
   "/phone-qr-code-generator": {
-    "hash": "4647cf5f33033a78",
-    "lastmod": "2026-08-21"
+    "hash": "9f39f2a677c25f35",
+    "lastmod": "2026-08-27"
   },
   "/sms-qr-code-generator": {
-    "hash": "4d06a1708be5ecb2",
-    "lastmod": "2026-08-21"
+    "hash": "3af3131c75c705a3",
+    "lastmod": "2026-08-27"
   },
   "/location-qr-code-generator": {
-    "hash": "09e0f2c6bc6ff810",
-    "lastmod": "2026-08-22"
+    "hash": "468efbda70f8003e",
+    "lastmod": "2026-08-27"
   },
   "/crypto-qr-code-generator": {
-    "hash": "730cbcefbab72907",
-    "lastmod": "2026-08-21"
+    "hash": "d997316d4bfada4a",
+    "lastmod": "2026-08-27"
   },
   "/text-qr-code-generator": {
-    "hash": "ed44c08379fec032",
-    "lastmod": "2026-08-21"
+    "hash": "7ed33b72905fdfcb",
+    "lastmod": "2026-08-27"
   },
   "/event-qr-code-generator": {
-    "hash": "243eb934dfce351e",
-    "lastmod": "2026-08-22"
+    "hash": "838e9803b6206705",
+    "lastmod": "2026-08-27"
   },
   "/instagram-qr-code-generator": {
-    "hash": "f16893fed7ff80c5",
-    "lastmod": "2026-08-22"
+    "hash": "497515779f04a449",
+    "lastmod": "2026-08-27"
   },
   "/youtube-qr-code-generator": {
-    "hash": "a929092e8305a36d",
-    "lastmod": "2026-08-22"
+    "hash": "80a6846a4934e2d2",
+    "lastmod": "2026-08-27"
   },
   "/linkedin-qr-code-generator": {
-    "hash": "3dadfbbd69fb30ef",
-    "lastmod": "2026-08-22"
+    "hash": "472f5f826c90e902",
+    "lastmod": "2026-08-27"
   },
   "/twitter-qr-code-generator": {
-    "hash": "cdff383d7a4b84e6",
-    "lastmod": "2026-08-22"
+    "hash": "43216b15559ca7b2",
+    "lastmod": "2026-08-27"
   },
   "/tiktok-qr-code-generator": {
-    "hash": "361831b4a644c17d",
-    "lastmod": "2026-08-22"
+    "hash": "9639d31ea86f80af",
+    "lastmod": "2026-08-27"
   },
   "/telegram-qr-code-generator": {
-    "hash": "0161781ef1800ae3",
-    "lastmod": "2026-08-22"
+    "hash": "973d007ac3e7b79e",
+    "lastmod": "2026-08-27"
   },
   "/paypal-qr-code-generator": {
-    "hash": "187d2bcf582c5a21",
-    "lastmod": "2026-08-21"
+    "hash": "334ac0ade74043f5",
+    "lastmod": "2026-08-27"
   },
   "/upi-qr-code-generator": {
-    "hash": "39be44ca8a4895d6",
-    "lastmod": "2026-08-22"
+    "hash": "56559b298c6e38dc",
+    "lastmod": "2026-08-27"
   },
   "/bulk-qr-code-generator": {
-    "hash": "26e8e4726a967f41",
-    "lastmod": "2026-08-22"
+    "hash": "01459ed46ee4a709",
+    "lastmod": "2026-08-27"
   },
   "/qr-code-scanner": {
-    "hash": "30bd720381306a14",
-    "lastmod": "2026-08-22"
+    "hash": "ce2db74447ab15cb",
+    "lastmod": "2026-08-27"
   },
   "/social-media-qr-code": {
-    "hash": "3a91b73e0a2842e9",
-    "lastmod": "2026-08-22"
+    "hash": "a8b4d47a4a9e1ac9",
+    "lastmod": "2026-08-27"
   },
   "/qr-code-with-logo": {
-    "hash": "c3b087d2fb09b3e1",
-    "lastmod": "2026-08-21"
+    "hash": "00168d5e90667ff0",
+    "lastmod": "2026-08-27"
   },
   "/custom-qr-codes": {
-    "hash": "46ccb29b9e34a876",
-    "lastmod": "2026-08-21"
+    "hash": "6a57cf9bc5de997a",
+    "lastmod": "2026-08-27"
   },
   "/colored-qr-code-generator": {
-    "hash": "b47e2d4faea3ecdf",
-    "lastmod": "2026-08-21"
+    "hash": "2ce02f0bc85997b5",
+    "lastmod": "2026-08-27"
   },
   "/svg-qr-code-generator": {
-    "hash": "dcbf335f0575b707",
-    "lastmod": "2026-08-21"
+    "hash": "5963fc60b4cb348f",
+    "lastmod": "2026-08-27"
   },
   "/high-resolution-qr-codes": {
-    "hash": "d2b0d76d055bf41e",
-    "lastmod": "2026-08-21"
+    "hash": "c361869009c873ff",
+    "lastmod": "2026-08-27"
   },
   "/pricing": {
-    "hash": "26a755a1af9a2d0f",
-    "lastmod": "2026-08-21"
+    "hash": "7510b787171fe9ac",
+    "lastmod": "2026-08-27"
   },
   "/faqs-qr-code-generator": {
-    "hash": "f17b71ea3fdf3912",
-    "lastmod": "2026-08-21"
+    "hash": "a3a7692cd24cefd8",
+    "lastmod": "2026-08-27"
   },
   "/about": {
-    "hash": "c536e932f530aef9",
-    "lastmod": "2026-08-22"
+    "hash": "94a52cbf047b74a7",
+    "lastmod": "2026-08-27"
   },
   "/contact": {
-    "hash": "b647ed1f5ea5acf7",
-    "lastmod": "2026-08-21"
+    "hash": "b11d80334c4b3a4e",
+    "lastmod": "2026-08-27"
   },
   "/privacy": {
-    "hash": "452bbf02eeeba00f",
-    "lastmod": "2026-08-22"
+    "hash": "071ec306b14c2cc7",
+    "lastmod": "2026-08-27"
   },
   "/terms": {
-    "hash": "0acb9650952f8c46",
-    "lastmod": "2026-08-21"
+    "hash": "a92e2f9cf8670d45",
+    "lastmod": "2026-08-27"
   },
   "/blog": {
-    "hash": "a1b99ae097e96e2a",
-    "lastmod": "2026-08-21"
+    "hash": "5e404ce0f6c9cd44",
+    "lastmod": "2026-08-27"
   },
   "/blog/qr-codes-for-restaurants": {
-    "hash": "d56b29ab22ef03fe",
-    "lastmod": "2026-08-22"
+    "hash": "73ac7263764aa02a",
+    "lastmod": "2026-08-27"
   },
   "/blog/printing-qr-codes-guide": {
-    "hash": "5880856ec0cc6aef",
-    "lastmod": "2026-08-21"
+    "hash": "d485d1d1e36d418e",
+    "lastmod": "2026-08-27"
   },
   "/blog/vcard-qr-code-business-cards": {
-    "hash": "22298544a8b983be",
-    "lastmod": "2026-08-21"
+    "hash": "57214eab26698eff",
+    "lastmod": "2026-08-27"
   },
   "/blog/qr-codes-for-real-estate": {
-    "hash": "9be1cffde8dd060e",
-    "lastmod": "2026-08-21"
+    "hash": "a7c48f2d850eba86",
+    "lastmod": "2026-08-27"
   },
   "/blog/wifi-qr-codes-for-hospitality": {
-    "hash": "53e69ee372f6b474",
-    "lastmod": "2026-08-21"
+    "hash": "09193e8fd2327a48",
+    "lastmod": "2026-08-27"
   },
   "/pdf-qr-code-generator": {
-    "hash": "aa30f1b024ceb5bc",
-    "lastmod": "2026-08-22"
+    "hash": "0518b09d2bb4f3ea",
+    "lastmod": "2026-08-27"
   },
   "/app-store-qr-code-generator": {
-    "hash": "9132893d38d84692",
-    "lastmod": "2026-08-22"
+    "hash": "256b5ec4577f30e3",
+    "lastmod": "2026-08-27"
   },
   "ar:/": {
     "hash": "28295d6329c1f8b3",
