@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, Link as RouterLink } from 'react-router-dom';
 import Link from './LocaleLink';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
@@ -9,7 +9,6 @@ import { useContentLocale } from '../context/ContentLocaleContext';
 import { stripLocalePrefix, isRoutedLocale } from '../constants/routeMetaI18n';
 
 export const Header: React.FC = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const { language, setLanguage, t } = useLanguage();
   const contentLocale = useContentLocale();
@@ -260,17 +259,20 @@ export const Header: React.FC = () => {
               {showLang && (
                 <div className="absolute right-0 top-full z-50 mt-1 w-48 max-h-[400px] overflow-y-auto rounded-xl border border-slate-200 bg-white py-1 shadow-xl">
                   {languageMeta.map(lang => (
-                    <button
+                    <RouterLink
                       key={lang.code}
-                      onClick={() => {
-                        const code = lang.code as SupportedLanguage;
-                        setLanguage(code);
-                        setShowLang(false);
+                      to={(() => {
                         // Every language here is either 'en' (unprefixed) or
-                        // a routed locale with a real /<code>/... URL tree —
-                        // follow the visitor into (or out of) it.
+                        // a routed locale with a real /<code>/... URL tree.
+                        // Real hrefs (not buttons) so crawlers can discover
+                        // every locale page through the header.
+                        const code = lang.code as SupportedLanguage;
                         const base = stripLocalePrefix(location.pathname);
-                        navigate(isRoutedLocale(code) ? `/${code}${base === '/' ? '' : base}` : base);
+                        return isRoutedLocale(code) ? `/${code}${base === '/' ? '' : base}` : base;
+                      })()}
+                      onClick={() => {
+                        setLanguage(lang.code as SupportedLanguage);
+                        setShowLang(false);
                       }}
                       className={`flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-slate-50 transition-colors ${language === lang.code ? 'font-semibold text-accent' : 'text-slate-600 hover:text-slate-900'}`}
                     >
@@ -280,7 +282,7 @@ export const Header: React.FC = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                         </svg>
                       )}
-                    </button>
+                    </RouterLink>
                   ))}
                 </div>
               )}

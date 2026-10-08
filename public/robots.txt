@@ -13,12 +13,24 @@ Disallow: /login
 Disallow: /signup
 
 # Googlebot
+# Crawlers use the most specific matching group, so these rules must be
+# repeated here or Googlebot would ignore the Disallow rules above.
 User-agent: Googlebot
 Allow: /
+Disallow: /r/
+Disallow: /dashboard
+Disallow: /analytics/
+Disallow: /login
+Disallow: /signup
 
 # Bingbot
 User-agent: Bingbot
 Allow: /
+Disallow: /r/
+Disallow: /dashboard
+Disallow: /analytics/
+Disallow: /login
+Disallow: /signup
 
 # AI Crawlers & LLM Agents
 User-agent: GPTBot
