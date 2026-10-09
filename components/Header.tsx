@@ -134,14 +134,6 @@ export const Header: React.FC = () => {
 
             {/* Desktop Nav */}
             <nav className="hidden items-center gap-3 lg:flex xl:gap-6" ref={dropdownRef}>
-              <Link
-                to={homeHref}
-                onClick={handleCreateClick}
-                className="whitespace-nowrap text-sm xl:text-base transition-colors text-slate-900 hover:text-accent font-medium"
-              >
-                QR Generator
-              </Link>
-
               {/* QR Code Types Dropdown */}
               <div className="relative">
                 <button
@@ -401,9 +393,6 @@ export const Header: React.FC = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <nav className="lg:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1">
-            <Link to={homeHref} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-lg">
-              QR Code Generator
-            </Link>
             <Link to={user ? "/dashboard" : "/login"} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-bold text-emerald-700 hover:bg-emerald-50 rounded-lg">
               My QR Codes & Analytics
             </Link>
