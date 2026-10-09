@@ -161,12 +161,20 @@ export const Footer: React.FC = () => {
           ))}
         </nav>
 
-        <div className="pt-8">
+        <div className="pt-8 space-y-2">
           <a
             href="mailto:support@qr-generator.online"
-            className="text-xs text-emerald-400 hover:underline"
+            className="block text-xs text-emerald-400 hover:underline"
           >
             support@qr-generator.online
+          </a>
+          <a
+            href="https://www.trustpilot.com/review/qr-generator.online"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-xs text-emerald-400 hover:underline"
+          >
+            Review us on Trustpilot
           </a>
         </div>
       </div>
