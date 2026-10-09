@@ -93,7 +93,6 @@ export const Header: React.FC = () => {
     { label: t('footer_pdf_qr'), href: '/pdf-qr-code-generator' },
     { label: t('footer_app_store_qr'), href: '/app-store-qr-code-generator' },
     { label: t('footer_bulk_qr'), href: '/bulk-qr-code-generator' },
-    { label: t('footer_qr_scanner'), href: '/qr-code-scanner' },
     { label: t('footer_social_media_qr'), href: '/social-media-qr-code' },
     { label: t('feature_logo'), href: '/qr-code-with-logo' },
     { label: t('feature_custom'), href: '/custom-qr-codes' },
@@ -202,6 +201,14 @@ export const Header: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 My QR Codes
+              </Link>
+
+              {/* QR Scanner Link (top-level, not in a dropdown) */}
+              <Link
+                to="/qr-code-scanner"
+                className="whitespace-nowrap text-sm xl:text-base transition-colors text-slate-900 hover:text-accent font-medium"
+              >
+                {t('footer_qr_scanner')}
               </Link>
 
               {/* Resources Dropdown */}
@@ -399,6 +406,9 @@ export const Header: React.FC = () => {
             </Link>
             <Link to={user ? "/dashboard" : "/login"} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-bold text-emerald-700 hover:bg-emerald-50 rounded-lg">
               My QR Codes & Analytics
+            </Link>
+            <Link to="/qr-code-scanner" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2.5 text-base font-medium text-slate-900 hover:bg-slate-50 rounded-lg">
+              {t('footer_qr_scanner')}
             </Link>
             <div className="px-3 py-2">
               <p className="text-xs font-bold uppercase text-slate-500 tracking-wider mb-2">QR Code Types</p>
