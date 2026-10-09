@@ -2917,10 +2917,6 @@ const Home: React.FC<HomeProps> = ({ initialTab = 'url', embedded = false }) => 
               <div className="flex flex-col items-center gap-6 rounded-banner bg-white px-6 py-6 text-center shadow-sm lg:flex-row lg:justify-between lg:gap-6 lg:px-10 lg:text-left border border-slate-100">
                 <div className="flex flex-col items-center gap-4 lg:flex-row lg:gap-6">
                   <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-center lg:gap-3">
-                    <div className="flex items-center gap-3">
-                      <span className="text-lg font-bold text-slate-900 border-b-2 border-slate-900">4.8</span>
-                      <span className="flex text-lg text-star" aria-hidden="true">★★★★★</span>
-                    </div>
                     <p className="text-base text-slate-500">{t('social_trusted_by')} <strong className="text-slate-900">{t('social_thousands')}</strong></p>
                   </div>
                 </div>
