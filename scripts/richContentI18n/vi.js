@@ -4285,5 +4285,3619 @@ export const RICH_CONTENT = {
       { q: 'Tôi có thể tạo mã QR cho sản phẩm và hàng hóa thương mại không?', a: 'Có! Bạn có toàn quyền sở hữu thương mại và quyền cấp phép để sử dụng tất cả mã QR được tạo trên nền tảng của chúng tôi trên bao bì bán lẻ, sách, quần áo và biển hiệu trên toàn thế giới.' }
     ],
     bestPractices: 'Luôn xuất dưới dạng vector SVG cho in thương mại, duy trì độ tương phản cao (> 4.5:1), bảo toàn vùng yên tĩnh 4 mô-đun và kiểm tra quét bản in vật lý trước khi đặt các đợt in lớn.'
+  },
+  '/pricing': {
+    "sections": [
+      {
+        "title": "Tính năng miễn phí mãi mãi so với Pro dành cho doanh nghiệp",
+        "paragraphs": [
+          "Gói miễn phí cơ bản của chúng tôi cung cấp khả năng tạo mã QR tĩnh không giới hạn cho mọi loại công cụ chuyên biệt, không giới hạn lượt quét, không có hình mờ và xuất SVG vector với chi phí bằng không.",
+          "Với các đội marketing và doanh nghiệp cần URL động có thể chỉnh sửa, bảo vệ bằng mật khẩu và phân tích lượt quét chi tiết, gói Pro của chúng tôi có mức thanh toán linh hoạt, phải chăng."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Kiến trúc minh bạch, 100% miễn phí — Tuyên ngôn chống thuê bao",
+      "paragraphs": [
+        "Đây là cách \"bẫy dùng thử miễn phí\" hoạt động. Bạn tạo một mã QR mà bạn nghĩ là miễn phí, in nó trên vài nghìn đô la bao bì hoặc decal xe, rồi hai tuần sau nó tắt hẳn — vì dịch vụ giờ đòi 35 USD mỗi tháng để giữ đường dẫn chuyển hướng hoạt động. Chủ doanh nghiệp, nhà thiết kế và người tổ chức sự kiện thường xuyên rơi vào bẫy này. Mã đó chưa bao giờ thực sự miễn phí; việc in ấn chỉ khiến việc từ bỏ nó trở nên tốn kém.",
+        "Chúng tôi cho rằng điều đó là sai. Việc tạo mã QR dựa trên một chuẩn toán học mở, ISO/IEC 18004, và một chuẩn mở không nên bị cho thuê lại. Vì vậy toàn bộ quá trình chạy ở phía máy khách: trình duyệt của bạn tự tính toán mã sửa lỗi Reed-Solomon, dựng ma trận và kết xuất SVG ngay trên máy. Không có máy chủ theo dõi nào ở giữa, nghĩa là không có máy chủ nào có thể tính phí bạn hay tắt mã của bạn.",
+        "Dưới đây là toàn bộ bảng giá. Không phí ẩn, không giới hạn lượt quét, không yêu cầu thẻ, không có ngày hết hạn. Đây không phải một gói khuyến mãi — đó là toàn bộ sản phẩm."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Ma trận tính năng và mức giá của QR Generator Online",
+      "headers": [
+        "Tính năng / Khả năng",
+        "QR Generator Online (Miễn phí mãi mãi)",
+        "Gói \"Pro\" của đối thủ (35 USD/tháng)"
+      ],
+      "rows": [
+        [
+          "Phí đăng ký hàng tháng",
+          "0,00 USD / tháng (100% miễn phí mãi mãi)",
+          "15,00 - 45,00 USD / tháng (180 - 540 USD/năm)"
+        ],
+        [
+          "Hết hạn mã QR",
+          "Không bao giờ (hiệu lực vĩnh viễn với mã tĩnh)",
+          "Bị vô hiệu hóa nếu thanh toán hàng tháng bị gián đoạn"
+        ],
+        [
+          "Giới hạn lượt quét",
+          "Không giới hạn lượt quét trọn đời (không giới hạn băng thông)",
+          "Giới hạn 50 - 500 lượt quét/tháng ở các gói thấp"
+        ],
+        [
+          "Xuất vector SVG và EPS",
+          "Miễn phí (đường vector không mất dữ liệu)",
+          "Bị khóa sau các gói cao cấp từ 25 USD/tháng"
+        ],
+        [
+          "PNG 4K 300 DPI độ phân giải cao",
+          "Miễn phí (2048x2048 px trở lên)",
+          "Bị khóa sau gói đăng ký trả phí"
+        ],
+        [
+          "Chèn logo tùy chỉnh",
+          "Miễn phí với sửa lỗi mức H",
+          "Có hình mờ hoặc bị hạn chế trên gói miễn phí"
+        ],
+        [
+          "Yêu cầu tài khoản / đăng ký",
+          "Không (không cần tài khoản, email hay thẻ tín dụng)",
+          "Bắt buộc đăng ký và nhập thẻ tín dụng"
+        ],
+        [
+          "Chủ quyền dữ liệu và quyền riêng tư",
+          "100% phía máy khách (không theo dõi, không lưu trữ)",
+          "Mọi lượt quét đều được định tuyến và ghi nhật ký trên máy chủ"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Chọn bất kỳ công cụ QR chuyên biệt nào",
+        "description": "Mọi trình tạo đều mở: URL, vCard, WiFi, PDF, WhatsApp, mạng xã hội, email, SMS, điện thoại, vị trí, sự kiện, tiền mã hóa, văn bản, thanh toán, Google Forms. Không có gì bị khóa sau gói dịch vụ."
+      },
+      {
+        "number": 2,
+        "title": "Tùy chỉnh thương hiệu trực quan và nhúng logo của bạn",
+        "description": "Áp dụng màu sắc, thay đổi kiểu chấm và góc mắt, rồi đặt logo ở giữa với mức sửa lỗi H."
+      },
+      {
+        "number": 3,
+        "title": "Tải về tệp SVG vector sẵn sàng cho sản xuất",
+        "description": "Nhấn Tải xuống. Tệp SVG hoặc PNG độ phân giải cao được tải ngay — không có bức tường thanh toán hay màn hình đăng ký chắn đường."
+      }
+    ],
+    "features": [
+      {
+        "title": "Không có phí đăng ký hàng tháng mãi mãi",
+        "description": "Tạo bao nhiêu mã cấp thương mại cũng được. Không chi phí định kỳ, không thẻ, không điều khoản ẩn."
+      },
+      {
+        "title": "Lượt quét trọn đời vĩnh viễn, không giới hạn",
+        "description": "Mã đã in tiếp tục hoạt động trong nhiều năm. Không gì làm chậm hay làm hết hạn nó."
+      },
+      {
+        "title": "Tải SVG vector không mất dữ liệu, không giới hạn",
+        "description": "Tệp vector sẵn sàng cho tiền in mà các nhà in khổ lớn yêu cầu đều có ở đây, miễn phí, không cần nâng cấp trả phí."
+      },
+      {
+        "title": "Đầy đủ quyền sử dụng thương mại",
+        "description": "Đặt mã lên bao bì, sách, quầy trưng bày bán lẻ, thậm chí cả quảng cáo truyền hình. Không có tiền bản quyền phải trả."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Chi tiết quyền truy cập tính năng doanh nghiệp miễn phí",
+      "description": "Mọi tính năng nâng cao đều dành cho 100% người dùng, không có bức tường thanh toán.",
+      "headers": [
+        "Lĩnh vực năng lực",
+        "Trạng thái bao gồm",
+        "Thông số kỹ thuật",
+        "Phạm vi thương mại"
+      ],
+      "rows": [
+        [
+          "Tất cả trình tạo dữ liệu QR chuyên biệt",
+          "100% miễn phí, không giới hạn",
+          "ISO/IEC 18004, RFC 2426, RFC 5545, BIP-0021",
+          "Không giới hạn cá nhân và thương mại"
+        ],
+        [
+          "Xuất vector SVG và EPS",
+          "100% miễn phí, không giới hạn",
+          "Đường vector toán học không mất dữ liệu",
+          "Tiền in thương mại, bao bì, CNC"
+        ],
+        [
+          "Xuất PNG 4K siêu nét",
+          "100% miễn phí, không giới hạn",
+          "2048 x 2048 px ở 300+ DPI",
+          "Marketing kỹ thuật số, màn hình 4K, web"
+        ],
+        [
+          "Chèn logo mức H",
+          "100% miễn phí, không giới hạn",
+          "Dư thừa đại số Reed-Solomon 30%",
+          "Bao bì thương hiệu và thẻ cao cấp"
+        ],
+        [
+          "Bảng màu tùy chỉnh",
+          "100% miễn phí, không giới hạn",
+          "Kiểm soát màu hex độc lập",
+          "Khớp hoàn toàn với hướng dẫn thương hiệu"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Chủ doanh nghiệp nhỏ và người khởi nghiệp",
+        "description": "In biển hiệu, bao bì và tài liệu marketing mà không phải thêm một khoản phần mềm hàng tháng vào sổ sách."
+      },
+      {
+        "title": "Công ty thiết kế đồ họa và freelancer",
+        "description": "Giao cho khách hàng một mã vector sẵn sàng cho sản xuất và không bao giờ phải nhận cuộc gọi về việc nó hết hạn do gói đăng ký của người khác."
+      },
+      {
+        "title": "Bộ phận tiền in và bao bì doanh nghiệp",
+        "description": "Đưa mã vector đáng tin cậy trực tiếp vào bản vẽ khuôn bao bì, với tính toàn vẹn dữ liệu được giữ suốt đợt in."
+      },
+      {
+        "title": "Tổ chức phi lợi nhuận và từ thiện",
+        "description": "Nhận quyên góp tiền mã hóa và tăng đăng ký sự kiện với ngân sách công nghệ đúng bằng không."
+      },
+      {
+        "title": "Người tổ chức sự kiện và nhà lập kế hoạch đám cưới",
+        "description": "Gửi hàng nghìn thiệp mời kỹ thuật số và mã RSVP cho lịch. Không giới hạn lượt quét nào sẽ cắt chúng giữa chừng sự kiện."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Cách bảo vệ doanh nghiệp của bạn khỏi các chiêu lừa đảo thuê bao mã QR",
+      "points": [
+        "Kiểm tra mã thực sự mã hóa điều gì. Quét trước khi in. Nếu nó giải mã thành một tên miền bên thứ ba như `qr-service.com/x9f2` thay vì URL của chính bạn, đó là một chuyển hướng có thể bị tắt — hãy rời đi.",
+        "Hãy cảnh giác khi được yêu cầu thẻ cho \"dùng thử miễn phí\". Khi một trình tạo đòi thông tin thanh toán ngay từ đầu, hãy chờ mã ngừng hoạt động vào ngày hết hạn dùng thử.",
+        "Xác nhận tải SVG là miễn phí. Nhà in chuyên nghiệp cần SVG hoặc EPS vector. Một nền tảng thu 20 USD trở lên cho việc xuất đó không phải là món hời như vẻ ngoài.",
+        "Coi chừng giới hạn lượt quét ẩn. Một số gói miễn phí âm thầm ngừng hoạt động ở lượt quét thứ 50 hoặc 100. Các mã tĩnh ở đây không có giới hạn như vậy.",
+        "Ưu tiên tạo mã phía máy khách. Khi mã được tạo trong trình duyệt của chính bạn, không có công ty nào giữ công tắc có thể tắt nó sau này."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "QR Generator Online có thực sự 100% miễn phí, không phí ẩn không?",
+        "a": "Hoàn toàn. Không có gói, không giới hạn lượt quét, không cần thẻ. Mọi trình tạo và mọi tải về vector đều miễn phí cho cả công việc cá nhân lẫn thương mại."
+      },
+      {
+        "q": "QR Generator Online duy trì dịch vụ mà không thu phí đăng ký như thế nào?",
+        "a": "Phần việc nặng diễn ra trong trình duyệt của bạn, không phải trên hạ tầng của chúng tôi, nên chi phí vận hành thấp. Giữ cho việc tạo mã cốt lõi miễn phí và mở chính là mục đích của dự án, không phải giai đoạn chúng tôi định rời bỏ."
+      },
+      {
+        "q": "Mã QR tạo trên QR Generator Online có bao giờ hết hạn không?",
+        "a": "Không. Dữ liệu nằm trong chính ma trận hình ảnh, nên mã vẫn hoạt động miễn là đích của nó còn hoạt động — không có máy chủ nào trong quy trình để hết thời gian chờ."
+      },
+      {
+        "q": "Mã QR của tôi có giới hạn số lần quét không?",
+        "a": "Không hề. Một mã có thể nhận vài lượt quét hoặc vài triệu lượt; không có giới hạn băng thông nào đứng sau nó."
+      },
+      {
+        "q": "Tôi có thể dùng các mã QR này trên sản phẩm thương mại mà tôi bán không?",
+        "a": "Cứ bán thoải mái. Bạn có toàn quyền thương mại với mọi mã bạn tạo — bao bì, hàng lưu niệm, sách, chương trình khuyến mãi, trên toàn thế giới."
+      },
+      {
+        "q": "Các bạn có đóng dấu hình mờ lên mã QR của tôi ở gói miễn phí không?",
+        "a": "Không bao giờ. Không hình mờ, không huy hiệu quảng cáo, không thương hiệu bên thứ ba. Thiết kế hoàn toàn thuộc về bạn."
+      },
+      {
+        "q": "Xuất SVG vector có nằm trong gói miễn phí không?",
+        "a": "Có. Cả xuất SVG vector và PNG 2048x2048 px đều miễn phí cho tất cả mọi người, không giữ lại gì."
+      },
+      {
+        "q": "Tôi có cần tạo tài khoản hoặc cung cấp địa chỉ email không?",
+        "a": "Hoàn toàn không. Tạo, tùy chỉnh và tải về bao nhiêu tùy thích mà không cần đăng ký hay cung cấp bất kỳ thông tin nào."
+      }
+    ],
+    "bestPractices": "Với mọi thứ được in, hãy chọn mã tĩnh vĩnh viễn, xuất dưới dạng SVG vector và quét một bản in thử thực tế trước khi cam kết sản xuất hàng loạt."
+  },
+  '/faqs-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Câu hỏi thường gặp và lời khuyên kỹ thuật",
+        "paragraphs": [
+          "Mã QR tĩnh có hết hạn không? Không. Mã QR tĩnh được tạo trên QR Generator Online chứa dữ liệu thô và sẽ không bao giờ hết hạn miễn là liên kết đích của bạn còn hoạt động.",
+          "Định dạng nào tốt nhất để in? SVG vector là định dạng được khuyên dùng cho in thương mại vì nó co giãn đến bất kỳ kích thước vật lý nào mà không bị vỡ hạt hay mất chất lượng."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Câu hỏi thường gặp kỹ thuật và thực tiễn cuối cùng về mã vạch 2D quang học",
+      "paragraphs": [
+        "Đây là cơ sở tri thức của QR Generator Online — nơi giải đáp mọi câu hỏi kỹ thuật, thiết kế, tiền in hay bảo mật về mã vạch ma trận 2D được định nghĩa trong ISO/IEC 18004.",
+        "Các câu trả lời ở đây bao quát toàn bộ: toán học đằng sau mã sửa lỗi Reed-Solomon, cách camera điện thoại chuyển ảnh thành dữ liệu, tỉ lệ khoảng cách-kích thước mà bạn dùng để in ($S = D / 10$), và GDPR cùng CCPA chạm đến quy trình QR ở đâu. Nhà phát triển, trưởng marketing, kỹ thuật viên tiền in và chủ doanh nghiệp đều cần những phần khác nhau trong đó.",
+        "Các danh mục bên dưới được sắp xếp để bạn có thể đi thẳng đến việc tạo, tạo kiểu, in hoặc triển khai một mã."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Tóm tắt kỹ thuật về tiêu chuẩn ký hiệu mã QR",
+      "headers": [
+        "Thông số kỹ thuật",
+        "Quy cách tiêu chuẩn",
+        "Khuyến nghị kỹ thuật"
+      ],
+      "rows": [
+        [
+          "Tiêu chuẩn áp dụng",
+          "ISO/IEC 18004:2015 (Công nghệ thông tin)",
+          "Tuân thủ nghiêm ngặt để giải mã quang học phổ quát"
+        ],
+        [
+          "Mức sửa lỗi",
+          "Mức L (7%), Mức M (15%), Mức Q (25%), Mức H (30%)",
+          "Mức H cho logo nhúng; mức M cho URL gọn"
+        ],
+        [
+          "Lề vùng yên tĩnh",
+          "Tối thiểu 4 chiều rộng module ở cả 4 cạnh",
+          "Bắt buộc để máy quét phát hiện biên"
+        ],
+        [
+          "Công thức kích thước quang học",
+          "S = D / 10 (rộng = khoảng cách quét / 10)",
+          "Tối thiểu 25 mm x 25 mm cho vật liệu in cầm tay"
+        ],
+        [
+          "Tỉ lệ tương phản WCAG",
+          "Tương phản độ sáng tối thiểu 4,5:1 (7:1 ngoài trời)",
+          "Module tiền cảnh tối trên nền sáng"
+        ],
+        [
+          "Dung lượng dữ liệu tối đa",
+          "4.296 chữ-số / 7.089 số / 2.953 byte",
+          "Giữ dưới 150 ký tự để camera giải mã nhanh"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Chọn lược đồ tải dữ liệu",
+        "description": "Bắt đầu từ thứ bạn đang mã hóa — URL, vCard 3.0, WiFi, WhatsApp, SMS, email, điện thoại, vị trí, sự kiện, tiền mã hóa, văn bản thuần hoặc Google Form."
+      },
+      {
+        "number": 2,
+        "title": "Cấu hình kiểu dáng và sửa lỗi",
+        "description": "Đặt màu thương hiệu giữ tương phản trên 4,5:1, chọn kiểu chấm và nếu có logo ở giữa, tạo ở mức H."
+      },
+      {
+        "number": 3,
+        "title": "Xuất SVG vector và kiểm tra bản in thử thực tế",
+        "description": "Tải về SVG vector hoặc PNG 4K, rồi quét trên vài điện thoại khác nhau dưới các ánh sáng khác nhau trước khi đưa đi bất cứ đâu."
+      }
+    ],
+    "features": [
+      {
+        "title": "Bao quát kỹ thuật toàn diện",
+        "description": "Toán học sửa lỗi, các giao thức URI và cách nhị phân hóa của camera thực sự hoạt động — được giải thích rõ ràng, không lướt qua."
+      },
+      {
+        "title": "Hướng dẫn tiền in và in ấn thực tế",
+        "description": "Công thức kích thước thực tế, nên chọn vật liệu nào và cách bù độ tăng điểm mực khi lên máy in."
+      },
+      {
+        "title": "Chiến lược phòng thủ bảo mật và chống quishing",
+        "description": "Cần làm gì để một mã bị giả mạo hoặc can thiệp không biến chiến dịch của bạn thành một vector lừa đảo."
+      },
+      {
+        "title": "Cơ sở tri thức 100% miễn phí và truy cập mở",
+        "description": "Tài liệu mở luôn sẵn có: không đăng nhập, không bức tường thanh toán, dù bạn là nhà phát triển hay người làm marketing."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Hướng dẫn độ phân giải và kích thước in mã QR",
+      "description": "Tài liệu tham khảo nhanh để xác định kích thước in vật lý dựa trên khoảng cách xem của người dùng.",
+      "headers": [
+        "Vị trí / Ứng dụng",
+        "Khoảng cách quét dự kiến",
+        "Chiều rộng tối thiểu (S)",
+        "Mức sửa lỗi khuyến nghị"
+      ],
+      "rows": [
+        [
+          "Danh thiếp và thẻ tên",
+          "15 cm - 30 cm (6\" - 12\")",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "Mức Q (25%) hoặc mức H (30%)"
+        ],
+        [
+          "Thẻ để bàn và đế lót ly",
+          "30 cm - 50 cm (12\" - 20\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Mức M (15%) hoặc mức H (30%)"
+        ],
+        [
+          "Bao bì sản phẩm và nhãn",
+          "20 cm - 40 cm (8\" - 16\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Mức H (30%) với logo giữa"
+        ],
+        [
+          "Tờ rơi, áp phích và tạp chí",
+          "50 cm - 150 cm (20\" - 60\")",
+          "60 mm - 150 mm (2,4\" - 6,0\")",
+          "Mức M (15%)"
+        ],
+        [
+          "Đồ họa đội xe",
+          "3,0 m - 6,0 m (10 ft - 20 ft)",
+          "300 mm x 300 mm (12\" x 12\")",
+          "Mức H (30%) trên decal đúc"
+        ],
+        [
+          "Bảng quảng cáo xa lộ",
+          "15,0 m - 30,0 m (50 ft - 100 ft)",
+          "1500 mm - 3000 mm (5 ft - 10 ft)",
+          "Mức L (7%) hoặc mức M (15%)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Tuân thủ CNTT và bảo mật doanh nghiệp",
+        "description": "Kiểm tra việc triển khai QR của doanh nghiệp có phù hợp với GDPR, CCPA và quy tắc chủ quyền dữ liệu ISO trước khi ra mắt."
+      },
+      {
+        "title": "Thiết kế bao bì và tiền in flexo",
+        "description": "Xác nhận bản vẽ khuôn mã vạch đạt giới hạn tương phản và vùng yên tĩnh của ISO/IEC 18004 trước khi làm bản in."
+      },
+      {
+        "title": "Chuỗi khách sạn và nhà hàng",
+        "description": "Triển khai thực đơn không chạm và thẻ WiFi cho khách mà không cần nhân viên giải thích."
+      },
+      {
+        "title": "Người tổ chức sự kiện và điều phối hội nghị",
+        "description": "Đẩy nhanh check-in, phát bản tải slide của diễn giả và thêm các phiên vào lịch của người tham dự."
+      },
+      {
+        "title": "Công ty môi giới bất động sản và đội marketing",
+        "description": "Biến một biển quảng cáo trước nhà thành nguồn khách hàng tiềm năng hoạt động 24/7, mở ra một tour ảo 3D."
+      }
+    ],
+    "troubleshooting": {
+      "title": "5 lỗi mã QR phổ biến nhất và cách khắc phục",
+      "points": [
+        "Tương phản yếu. Các module nhạt trên nền nhạt không cho camera có gì để bám vào. Hãy giữ ở mức 4,5:1 trở lên.",
+        "Vùng yên tĩnh bị cắt. Cắt lề quá sát khiến máy quét không tìm được điểm bắt đầu của mã. Giữ đủ viền 4 module.",
+        "Ảnh chụp màn hình 72 DPI. Đồ họa web độ phân giải thấp sẽ bị mờ ở cạnh module khi in. Hãy cung cấp SVG vector hoặc raster 300+ DPI.",
+        "Quá nhiều dữ liệu. Một URL dài nhồi ma trận bằng các chấm nhỏ bị nhòe khi in nhỏ. Hãy rút ngắn liên kết trước khi tạo mã.",
+        "Cán bóng. Lớp phủ bóng cao làm hắt ánh sáng trở lại ống kính. Hãy yêu cầu hoàn thiện mờ hoặc satin."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Sự khác biệt giữa mã QR tĩnh và mã QR động là gì?",
+        "a": "Mã tĩnh mang dữ liệu thực tế — URL, vCard, chuỗi WiFi, bất cứ thứ gì — bên trong ma trận. Không có gì hết hạn, không phụ thuộc vào máy chủ nào. Mã động mang một chuyển hướng trỏ đến máy chủ của người khác, cho phép bạn sửa đích đến sau này nhưng buộc bạn phải duy trì đăng ký để giữ chuyển hướng hoạt động."
+      },
+      {
+        "q": "Mã QR tạo trên QR Generator Online có bao giờ hết hạn không?",
+        "a": "Chúng có hiệu lực suốt đời. Lượt quét không giới hạn, không phí định kỳ, không có bộ đếm ngược — mã tự chứa đầy đủ."
+      },
+      {
+        "q": "Mã QR có thể in với kích thước vật lý nhỏ nhất là bao nhiêu?",
+        "a": "Với một URL ngắn được đọc từ khoảng 15-20 cm, 20 mm x 20 mm (0,8\" x 0,8\") là mức sàn. Trên bao bì và danh thiếp, hãy coi 25 mm x 25 mm (1,0\" x 1,0\") là mức tối thiểu an toàn của ngành."
+      },
+      {
+        "q": "Mức sửa lỗi H bảo vệ mã QR có logo như thế nào?",
+        "a": "Mức H nhân đôi khoảng 30% dữ liệu thông qua dư thừa Reed-Solomon. Bản sao dự phòng đó cho phép đặt logo lên các module ở giữa — máy quét dựng lại dữ liệu bị che từ các bit dư thừa."
+      },
+      {
+        "q": "Tôi có thể tùy chỉnh màu mã QR để khớp với nhận diện thương hiệu không?",
+        "a": "Bạn có thể đổi màu module, nền, khung góc và chấm góc một cách độc lập. Một quy tắc chi phối tất cả: tối trên sáng phải đạt tương phản 4,5:1, nếu không máy quét sẽ bắt đầu gặp khó khăn."
+      },
+      {
+        "q": "Vì sao định dạng SVG được khuyên dùng hơn PNG để in thương mại?",
+        "a": "SVG mô tả mã bằng hình học, không phải điểm ảnh. Phóng từ danh thiếp lên biển quảng cáo lớn, các cạnh vẫn sắc nét vì không có lưới điểm ảnh nào bị cạn."
+      },
+      {
+        "q": "Mã QR có an toàn khỏi mã độc và lừa đảo (\"quishing\") không?",
+        "a": "Bản thân mã chỉ chứa văn bản hoặc URL — nó không thể mang mã độc. Rủi ro là một mã bị giả mạo trỏ đến nơi không nên. Hãy phòng tránh bằng cách hiển thị logo đã xác minh của bạn ở giữa và in tên miền đích thật bằng văn bản rõ ràng bên cạnh mã."
+      },
+      {
+        "q": "Dữ liệu cá nhân của tôi có được lưu hoặc theo dõi trên máy chủ của QR Generator Online không?",
+        "a": "Không. Mọi thứ chạy phía máy khách, trong bộ nhớ trình duyệt. Liên kết, mật khẩu, thẻ liên hệ và logo đã tải lên của bạn không bao giờ được gửi tới máy chủ hay lưu giữ ở bất kỳ đâu."
+      }
+    ],
+    "bestPractices": "Giữ tương phản trên 4,5:1, bảo vệ vùng yên tĩnh 4 module và xuất SVG vector để in. Sau đó quét một bản in thử thực tế trước khi chạy số lượng lớn — bước kiểm tra cuối cùng đó là điều phân biệt một lần ra mắt suôn sẻ với một lần in lại."
+  },
+  '/qr-code-with-logo': {
+    "sections": [
+      {
+        "title": "Vì sao mã QR có thương hiệu quét được nhiều hơn tới 30%",
+        "paragraphs": [
+          "Mã QR chung chung không có thương hiệu có thể trông đáng ngờ hoặc không hấp dẫn. Nhúng logo chính thức của công ty giúp người dùng tin vào tính xác thực và an toàn của liên kết đích.",
+          "Trình tạo của chúng tôi sử dụng sửa lỗi mức H (30% dự phòng) để đảm bảo độ tin cậy khi quét tuyệt đối trong khi vẫn hiển thị thương hiệu của bạn."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Cơ chế kỹ thuật của việc nhúng logo với sửa lỗi Reed-Solomon",
+      "paragraphs": [
+        "Logo được đặt ở giữa mã QR vì một lý do duy nhất: sửa lỗi. Tiêu chuẩn ISO/IEC 18004 chia mỗi mã thành các từ mã dữ liệu và các từ mã sửa lỗi, đồng thời định nghĩa bốn mức sửa lỗi — mức L khôi phục được 7% mã bị hỏng, mức M khôi phục 15%, mức Q khôi phục 25% và mức H khôi phục 30%. Mức càng cao thì càng nhiều phần hình ảnh có thể biến mất mà vẫn giải mã được.",
+        "Khi bạn đặt logo ở giữa, bạn thực sự che một số module. Nếu tạo mã ở mức H, bạn có thể che tới 30% bề mặt trước khi dữ liệu không còn khôi phục được. Bộ giải mã camera trên iOS (AVFoundation) và Android (ML Kit) chỉ đơn giản dựng lại các byte bị che từ phần chẵn lẻ xung quanh — logo không thực sự chặn việc quét, nó chỉ che các điểm ảnh mà toán học đã có sẵn một bản sao dự phòng.",
+        "Còn một chi tiết nữa làm việc âm thầm. QR Generator Online chừa một viền trắng mỏng quanh logo để cạnh của nó không bị nhòe sang các module tối bên cạnh. Viền đệm đó là lý do mã có logo vẫn đọc rõ ràng dưới ánh đèn nhà hàng mờ hay cửa kính sáng."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Mã QR có logo thương hiệu so với mã QR đen trắng thông thường",
+      "headers": [
+        "Tiêu chí đánh giá",
+        "Mã QR có logo thương hiệu",
+        "QR đen trắng thông thường"
+      ],
+      "rows": [
+        [
+          "Tỷ lệ tương tác khi quét",
+          "Lượng quét cao hơn tới 35% (niềm tin thương hiệu đã xác minh)",
+          "Tỷ lệ quét cơ bản tiêu chuẩn (thường bị coi là đáng ngờ)"
+        ],
+        [
+          "Ghi nhớ và niềm tin thương hiệu",
+          "Truyền đạt ngay danh tính nhà xuất bản",
+          "Diện mạo ẩn danh, lo ngại quishing cao hơn"
+        ],
+        [
+          "Mức sửa lỗi",
+          "Mức H (30% dự phòng toán học)",
+          "Thường là mức L (7%) hoặc mức M (15%)"
+        ],
+        [
+          "Tác động marketing doanh nghiệp",
+          "Củng cố hướng dẫn thương hiệu trên tài liệu in",
+          "Tách rời khỏi kiểu chữ và nhận diện thương hiệu"
+        ],
+        [
+          "Khả năng chịu quét",
+          "Duy trì quét tức thời với mặt nạ viền logo",
+          "Dễ bị trầy xước bề mặt nếu dùng mức L"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Nhập đích của QR và chọn loại nội dung",
+        "description": "Viết đích của bạn vào trình tạo phía trên — URL trang web, hồ sơ vCard, mạng WiFi hoặc văn bản thuần."
+      },
+      {
+        "number": 2,
+        "title": "Tải lên logo độ phân giải cao và điều chỉnh mặt nạ",
+        "description": "Mở \"Tùy chọn QR và Logo\", tải lên PNG trong suốt, SVG hoặc JPEG, rồi tô lại màu module cho khớp bảng màu thương hiệu."
+      },
+      {
+        "number": 3,
+        "title": "Xuất SVG vector để in hoặc PNG độ phân giải cao",
+        "description": "Với bao bì, in ấn và biển hiệu cửa hàng, tải SVG vector có thể co giãn. Với màn hình, dùng PNG độ phân giải cao."
+      }
+    ],
+    "features": [
+      {
+        "title": "Sửa lỗi mức H (30% dự phòng)",
+        "description": "Đặt logo, chữ lồng hoặc biểu tượng ở giữa và biên khôi phục 30% sẽ che phủ nó — mã vẫn giải mã ngay lần đầu."
+      },
+      {
+        "title": "Xuất SVG và EPS vector không mất dữ liệu cho in ấn",
+        "description": "Phóng mã thương hiệu lên kích thước biển quảng cáo lớn và các đường vector vẫn sắc nét. Không có lưới điểm ảnh nào bị cạn kiệt."
+      },
+      {
+        "title": "Vùng đệm mặt nạ module thông minh",
+        "description": "Một khoảng trống sạch được vẽ giữa cạnh logo và các module dữ liệu xung quanh, nên hai thứ không bao giờ hòa vào nhau về thị giác."
+      },
+      {
+        "title": "Quyền riêng tư mật mã 100% phía máy khách",
+        "description": "Việc xử lý hình ảnh diễn ra trong trình duyệt của bạn. Logo và liên kết bạn tải lên không bao giờ được gửi đi đâu."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Thông số kích thước in và tỷ lệ logo",
+      "description": "Tuân theo tỷ lệ diện tích nghiêm ngặt giữa logo và ma trận để giữ tốc độ quét quang học.",
+      "headers": [
+        "Ứng dụng in",
+        "Kích thước tổng của QR",
+        "Kích thước logo tối đa",
+        "Chất liệu đề xuất"
+      ],
+      "rows": [
+        [
+          "Danh thiếp và thẻ định danh",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "8 mm x 8 mm (0,3\" x 0,3\")",
+          "Giấy bìa mờ nặng (350+ GSM)"
+        ],
+        [
+          "Bao bì sản phẩm và thẻ treo",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "10 mm x 10 mm (0,4\" x 0,4\")",
+          "Bìa giấy mờ tráng phủ / giấy kraft"
+        ],
+        [
+          "Bảng để bàn và giá trưng bày quầy",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "13 mm x 13 mm (0,5\" x 0,5\")",
+          "Giá để bàn acrylic / thẻ ép màng"
+        ],
+        [
+          "Poster bán lẻ và decal cửa kính",
+          "100 mm x 100 mm (4,0\" x 4,0\")",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "Vinyl mờ chống thời tiết"
+        ],
+        [
+          "Băng rôn và bảng quảng cáo ngoài trời",
+          "500 mm - 2000 mm",
+          "140 mm - 560 mm",
+          "Vinyl nặng không phản chiếu"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Hàng tiêu dùng đóng gói (CPG) và bán lẻ cao cấp",
+        "description": "Một dấu thương hiệu chính thức trên bao bì khiến người mua yên tâm về tính xác thực của sản phẩm và có lý do để đăng ký chương trình khách hàng thân thiết."
+      },
+      {
+        "title": "Nhận diện doanh nghiệp và danh thiếp lãnh đạo",
+        "description": "Đặt logo công ty — hoặc ảnh chân dung của lãnh đạo — ở giữa mã vCard và tấm danh thiếp sẽ không còn trông chung chung."
+      },
+      {
+        "title": "Thực đơn nhà hàng và bộ đồ ăn có thương hiệu",
+        "description": "Huy hiệu quán cà phê trong mã menu trên bàn trông như một phần của không gian, chứ không phải nhãn dán dán vội sau này."
+      },
+      {
+        "title": "Biển hiệu sự kiện và tài trợ hội nghị",
+        "description": "Logo nhà tài trợ trong mã sự kiện, trên thẻ đeo và băng rôn sân khấu giúp nhà tài trợ đó luôn hiện diện và được ghi nhận rõ ràng."
+      },
+      {
+        "title": "Thư trực tiếp và bưu thiếp quảng cáo",
+        "description": "Mã thương hiệu được thiết kế đẹp làm tăng tỷ lệ phản hồi thư trực tiếp, vì bưu thiếp mọi người nhận ra là bưu thiếp mọi người quét."
+      }
+    ],
+    "troubleshooting": {
+      "title": "5 quy tắc thiết yếu cho mã QR có logo nhúng",
+      "points": [
+        "Giữ logo dưới 30% diện tích. Vượt quá 25-30% độ che phủ, bạn sẽ vượt khả năng khôi phục của Reed-Solomon và mã sẽ ngừng giải mã.",
+        "Đừng đụng vào ba mắt định vị. Các hình vuông đồng tâm ở góc trên trái, trên phải và dưới trái phải luôn trống hoàn toàn — máy quét dựa vào chúng để định hướng mã.",
+        "Cho logo một viền. Nền trong suốt hoặc viền trắng mỏng ngăn logo lan sang các module tối xung quanh.",
+        "Tạo ở mức H. Mã có logo ở mức L hoặc M không có đủ dự phòng để chịu độ che phủ — mức H mới là thứ tạo ra biên an toàn.",
+        "Quét thử bản in. Kiểm tra trên một điện thoại Android giá rẻ và một iPhone đời mới, trong ánh sáng yếu và mạnh, trước khi chạy hàng loạt."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Vì sao thêm logo không làm mã QR khó quét?",
+        "a": "Đó là nhờ sửa lỗi Reed-Solomon. Ở mức H, khoảng 30% tải trọng được nhân bản khắp mã. Logo ở giữa che một số module, và bộ giải mã chỉ việc dựng lại chúng từ các bản sao dư thừa ở nơi khác trong ma trận."
+      },
+      {
+        "q": "Tôi có thể tải lên các định dạng ảnh nào cho logo ở giữa?",
+        "a": "PNG, SVG hoặc JPEG đều được. PNG trong suốt hoặc SVG vector cho cạnh sạch nhất và kết quả chuyên nghiệp nhất — một JPEG phẳng trên nền vuông trắng trông như bị dán lên so với chúng."
+      },
+      {
+        "q": "Logo nên lớn đến mức nào so với mã QR?",
+        "a": "Khoảng 15% đến 25% chiều rộng và chiều cao là điểm lý tưởng. Bạn không cần ước lượng bằng mắt — trình tạo tự động co logo về đúng tỷ lệ."
+      },
+      {
+        "q": "Mã QR có logo tùy chỉnh có tốn tiền hoặc cần đăng ký không?",
+        "a": "Chúng miễn phí, như mọi thứ ở đây — quét không giới hạn, hiệu lực vĩnh viễn và không có rào thanh toán nào sau khi bạn in."
+      },
+      {
+        "q": "Tôi có thể thêm biểu tượng mạng xã hội (Instagram, Facebook, WhatsApp, WiFi) thay vì logo công ty không?",
+        "a": "Có. Có sẵn thư viện biểu tượng nền tảng phổ biến; nếu không thấy cái bạn cần, hãy tải lên hình tự thiết kế."
+      },
+      {
+        "q": "Mã QR có logo có quét đáng tin cậy trên camera điện thoại đời cũ không?",
+        "a": "Có, miễn là hai điều đúng: sửa lỗi mức H được bật và logo chiếm dưới 30% bề mặt. Làm đúng hai điều đó, ngay cả camera cũ cũng giải mã tức thì."
+      },
+      {
+        "q": "Định dạng xuất nào tốt nhất để in thương mại có logo?",
+        "a": "SVG vector. Nó giữ được cả ma trận module lẫn logo nhúng sắc nét ở mọi tỷ lệ in — đúng thứ một xưởng in cần."
+      },
+      {
+        "q": "Hình logo tôi tải lên có được lưu trên máy chủ web của bạn không?",
+        "a": "Không. Logo được ghép và mã được render hoàn toàn trong trình duyệt của bạn — không có gì được tải lên hay giữ lại."
+      }
+    ],
+    "bestPractices": "Dùng PNG trong suốt hoặc logo vector, tạo ở mức H và giữ độ tương phản mạnh giữa module và nền. Sau đó quét một bản in thử trước khi chạy — logo trông ổn trên màn hình vẫn có thể lớn hơn một chút khi in ra giấy."
+  },
+  '/custom-qr-codes': {
+    "sections": [
+      {
+        "title": "Nổi bật với thiết kế mã QR trực quan đẹp mắt",
+        "paragraphs": [
+          "Chọn giữa chấm bo tròn, chấm viền, pixel vuông hình học và các kiểu nghệ thuật. Tùy chỉnh độc lập các ô vuông góc ngoài và chấm giữa.",
+          "Tạo tài liệu marketing có tỷ lệ chuyển đổi cao, trông hiện đại, chuyên nghiệp và thu hút thị giác."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Cơ chế kỹ thuật của tạo kiểu mã QR tùy chỉnh và hình học mẫu",
+      "paragraphs": [
+        "Tạo kiểu tùy chỉnh thay đổi cách mã QR trông, chứ không thay đổi ý nghĩa của nó. Bạn có thể thay các module vuông cứng bằng chấm tròn, hình thoi hoặc hình hữu cơ mềm mại, và tạo lại các mắt góc — trong khi lưới nhị phân bên dưới vẫn nằm đúng vị trí ISO/IEC 18004 quy định. Mẫu tối và sáng mới mang dữ liệu, và mẫu đó không hề thay đổi.",
+        "Máy quét tìm mã bằng cách định vị ba mẫu định vị ở góc, tuân theo tỷ lệ chiều rộng module 1:1:3:1:1 nghiêm ngặt. Giữ đúng tỷ lệ đó, giữ mỗi module căn giữa theo tọa độ lưới, và các bộ máy iOS, ML Kit Android và ZXing đọc mã có kiểu nhanh như mã đơn giản. Phá vỡ tỷ lệ đó, không kiểu dáng nào cứu được.",
+        "Đó là đường ranh mà QR Generator Online đi theo bằng toán học tọa độ vector: mọi chấm tròn, mọi mắt tùy chỉnh và mọi khung góc đều nằm đúng vị trí lưới chính xác. Bạn có được diện mạo thương hiệu mà không phải đánh đổi độ tin cậy khi quét."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Mã QR thiết kế tùy chỉnh so với mã vạch mặc định đen trắng",
+      "headers": [
+        "Thuộc tính thiết kế",
+        "Mã QR thiết kế tùy chỉnh",
+        "Mã vạch chung mặc định"
+      ],
+      "rows": [
+        [
+          "Tính thẩm mỹ",
+          "Hài hòa với bao bì cao cấp và nhận diện thương hiệu",
+          "Công nghiệp, lâm sàng và gây khó chịu về thị giác"
+        ],
+        [
+          "Tỷ lệ tương tác người dùng",
+          "Tỷ lệ quét cao hơn 40% nhờ sức hút thị giác",
+          "Tỷ lệ quét cơ bản tiêu chuẩn"
+        ],
+        [
+          "Phạm vi tùy biến",
+          "Kiểu chấm, kiểu mắt, gradient, logo ở giữa",
+          "Ô vuông cứng cố định, chỉ module màu đen"
+        ],
+        [
+          "Nhận diện thương hiệu",
+          "Củng cố màu thương hiệu và nhận diện doanh nghiệp",
+          "Diện mạo chung chung không phân biệt được với đối thủ"
+        ],
+        [
+          "Tính linh hoạt khi in",
+          "Có thể tùy chỉnh để khắc gỗ, dập nhũ và acrylic",
+          "Chỉ in 2D tiêu chuẩn"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Chọn loại dữ liệu QR và nhập tham số đầu vào",
+        "description": "Chọn loại dữ liệu — URL, vCard, WiFi hoặc văn bản — và nhập đích."
+      },
+      {
+        "number": 2,
+        "title": "Tùy chỉnh kiểu chấm, mắt góc và bảng màu",
+        "description": "Thử các kiểu bo tròn, cổ điển, chấm hoặc module mềm, rồi đặt hình dạng ô góc và chấm góc cho khớp hệ thống thiết kế của bạn."
+      },
+      {
+        "number": 3,
+        "title": "Xuất SVG vector sẵn sàng in hoặc PNG độ phân giải cao",
+        "description": "Tải thiết kế hoàn chỉnh dưới dạng SVG vector không mất dữ liệu để in offset, hoặc PNG 4K cho kỹ thuật số."
+      }
+    ],
+    "features": [
+      {
+        "title": "Nhiều bộ cài sẵn hình học module và chấm",
+        "description": "Bo tròn, cổ điển, hình thoi, chấm, mềm — mỗi kiểu được tinh chỉnh để nằm trong dung sai quét."
+      },
+      {
+        "title": "Tùy chỉnh mắt góc độc lập",
+        "description": "Khung ngoài và chấm mắt trong có màu riêng và bán kính góc riêng, tách khỏi phần thân."
+      },
+      {
+        "title": "Xuất SVG vector không mất dữ liệu cho in ấn",
+        "description": "Cùng một thiết kế in sắc nét trên danh thiếp và trên bức tường tòa nhà, không có độ mờ nào len vào giữa."
+      },
+      {
+        "title": "Miễn phí 100% với hiệu lực vĩnh viễn",
+        "description": "Thiết kế bao nhiêu tùy thích. Không giới hạn quét, không hình mờ, không phí hàng tháng."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Hướng dẫn kích thước tối thiểu và vật liệu cho mã QR tùy chỉnh",
+      "description": "Vì các module được tạo kiểu có cạnh bo tròn, hãy tuân theo các mốc kích thước tối thiểu khuyến nghị.",
+      "headers": [
+        "Phương tiện thiết kế",
+        "Kích thước tối thiểu khuyến nghị",
+        "Kiểu chấm khuyến nghị",
+        "Loại nền in"
+      ],
+      "rows": [
+        [
+          "Danh thiếp cao cấp",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Cổ điển / bo tròn",
+          "Giấy bông mờ / dập nhũ"
+        ],
+        [
+          "Mỹ phẩm và bao bì sản phẩm",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Mềm / bo tròn",
+          "Bìa couché mờ"
+        ],
+        [
+          "Bảng để bàn và lót ly nhà hàng",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "Chấm / cổ điển",
+          "Khắc gỗ / giá acrylic"
+        ],
+        [
+          "Poster sự kiện và đồ họa cửa kính",
+          "90 mm x 90 mm (3,6\" x 3,6\")",
+          "Bất kỳ kiểu tùy chỉnh nào",
+          "Vinyl mờ chống thời tiết"
+        ],
+        [
+          "Nhãn và thẻ thời trang",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Bo tròn / mềm",
+          "Thẻ vải dệt / bìa kraft dày"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Thương hiệu xa xỉ và bao bì thời trang",
+        "description": "Mã được tạo kiểu nằm gọn trong bao bì cao cấp thay vì chọi lại nó — không có mã vạch đen thô cứng phá vỡ thiết kế."
+      },
+      {
+        "title": "Hồ sơ sáng tạo và danh thiếp kiến trúc",
+        "description": "Mã hình học chính xác được đọc như một lựa chọn có chủ đích, đó là ấn tượng mà một kiến trúc sư hay nhà thiết kế muốn để lại."
+      },
+      {
+        "title": "Biển hiệu khách sạn boutique và hospitality",
+        "description": "Khắc mã tùy chỉnh trên gỗ hoặc đồng cho danh bạ khách, thực đơn spa hay thẻ WiFi hợp với sảnh."
+      },
+      {
+        "title": "Thiệp mời sự kiện và thiệp lưu ngày trang trọng",
+        "description": "Các module bo tròn và bảng màu kim loại biến mã chức năng thành một phần của văn phòng phẩm đám cưới hay tiệc gala."
+      },
+      {
+        "title": "Nhãn chai bia thủ công và đồ uống",
+        "description": "Tích hợp mã vào chính nghệ thuật nhãn, để việc quét lấy ghi chú nếm thử hay xuất xứ không bao giờ làm gián đoạn diện mạo chai."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Sai lầm thường gặp trong thiết kế mã QR tùy chỉnh",
+      "points": [
+        "Làm méo mẫu định vị. Ba mắt góc giữ tỷ lệ cố định 1:1:3:1:1 và máy quét dựa vào đó để định vị mã. Hãy tạo kiểu cho chúng nhưng đừng kéo giãn.",
+        "Độ tương phản thấp. Chấm xám đậm trên nền xám nhạt đánh lừa camera. Giữ ít nhất 4,5:1 giữa module và nền của chúng.",
+        "Bỏ qua vùng yên tĩnh. Dù nghệ thuật bao quanh mã là gì, hãy để lại viền trống bắt buộc 4 module ở phía ngoài.",
+        "Bo tròn quá mức ở kích thước nhỏ. Dưới 25 mm, bo tròn chấm nặng làm nhòe cạnh module trên camera điện thoại cơ bản. Hãy giảm bán kính với mã nhỏ.",
+        "Chỉ thử trên điện thoại của chính bạn. Một máy cao cấp đọc được hầu hết mọi thứ. Hãy kiểm tra thiết kế cả trên Android tầm trung với camera lấy nét cố định."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Mã QR tạo kiểu tùy chỉnh có quét nhanh như mã đen trắng tiêu chuẩn không?",
+        "a": "Nhanh y hệt. Tạo kiểu nằm trong dung sai của ISO/IEC 18004; khi đã tuân thủ quy tắc tương phản và vùng yên tĩnh, tốc độ giải mã giống hệt mã đơn giản."
+      },
+      {
+        "q": "Tôi có thể tùy chỉnh những yếu tố tạo kiểu nào trên QR Generator Online?",
+        "a": "Năm thứ: kiểu chấm module (bo tròn, cổ điển, chấm, mềm), khung ô vuông góc ngoài, chấm mắt góc trong, màu nền và màu chấm, và logo ở giữa."
+      },
+      {
+        "q": "Tôi có thể xuất mã QR tùy chỉnh dưới định dạng SVG vector không?",
+        "a": "SVG vector có sẵn trên mọi thiết kế tùy chỉnh — chính điều đó giữ cho mã sắc nét khi in offset, khắc laser và cắt vinyl."
+      },
+      {
+        "q": "Mã QR tùy chỉnh có hết hạn hoặc cần đăng ký trả phí không?",
+        "a": "Cả hai đều không. Mọi mã tùy chỉnh ở đây đều miễn phí, với quét không giới hạn và hiệu lực không bao giờ hết."
+      },
+      {
+        "q": "Tôi có thể dùng mã QR tùy chỉnh cho bao bì sản phẩm thương mại không?",
+        "a": "Được, và nhiều doanh nghiệp đang làm vậy — bao bì bán lẻ, nhãn thực phẩm, thẻ may mặc, trên toàn thế giới, không cần giấy phép."
+      },
+      {
+        "q": "Mức sửa lỗi H giúp ích gì cho thiết kế tùy chỉnh?",
+        "a": "Nó cho bạn biên khôi phục 30%. Khoảng trống đó là thứ cho phép các chỉnh sửa module mang tính nghệ thuật và logo ở giữa cùng tồn tại mà không mạo hiểm quét thất bại."
+      },
+      {
+        "q": "Kích thước tối thiểu khuyến nghị cho mã QR tạo kiểu tùy chỉnh là bao nhiêu?",
+        "a": "Hướng đến 30 mm x 30 mm (1,2\" x 1,2\") hoặc lớn hơn. Module được tạo kiểu cần nhiều không gian hơn ô vuông đơn giản để giữ được sự khác biệt trên mọi cảm biến camera."
+      },
+      {
+        "q": "Dữ liệu của tôi có an toàn khi thiết kế mã QR tùy chỉnh không?",
+        "a": "Hoàn toàn. Mọi phần của thiết kế được render trong bộ nhớ trình duyệt của bạn, không có gì được lưu hoặc ghi nhật ký trên máy chủ."
+      }
+    ],
+    "bestPractices": "Giữ độ tương phản trên 4,5:1, bảo vệ vùng yên tĩnh 4 module và — trước mọi đợt sản xuất — quét bản in thử trên vài điện thoại khác nhau. Mã tạo kiểu là nơi một thiết kế quá thông minh âm thầm hỏng, và bản thử là nơi bạn bắt được điều đó."
+  },
+  '/colored-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Màu sắc rực rỡ phù hợp với nhận diện thị giác của bạn",
+        "paragraphs": [
+          "Tạm biệt mã vạch đơn sắc. Chọn bất kỳ mã màu hex nào cho mẫu tiền cảnh, khung mắt góc và nền.",
+          "Tối ưu hóa độ tương phản tích hợp đảm bảo mã QR của bạn giữ độ tương phản cao để camera lấy nét nhanh và quét tức thì."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Cơ chế kỹ thuật của độ tương phản màu và quét mã QR có màu",
+      "paragraphs": [
+        "Camera điện thoại không đọc mã QR của bạn bằng màu sắc. Nó chuyển khung hình thành bản đồ độ sáng thang xám và ngưỡng hóa — quyết định từng điểm ảnh một đâu là tối, đâu là sáng. Màu gần như không quan trọng; độ sáng mới là tất cả.",
+        "Vì vậy quy tắc quan trọng là độ tương phản, chứ không phải sắc độ. Giữ tỷ lệ tương phản WCAG giữa màu tiền cảnh và màu nền trên 4,5:1, và nâng lên 7:1 với mọi thứ sẽ ra ngoài trời. Các màu đậm, độ sáng thấp đọc rất đẹp trên nền trắng hoặc nền nhạt — xanh navy #002B49, xanh rừng #1B4D3E, tím hoàng gia #3E1F58 và đỏ mận #5C061C đều vượt ngưỡng dễ dàng.",
+        "QR Generator Online cho phép bạn tô màu tiền cảnh, nền, khung góc và mắt góc một cách độc lập. Khớp chính xác bảng màu thương hiệu, và miễn là độ sáng được giữ, mã vẫn quét được 100%."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Mã QR màu tương phản cao so với mã QR bảng màu nhạt tương phản thấp",
+      "headers": [
+        "Đặc điểm thiết kế",
+        "QR màu tương phản cao (WCAG > 4,5:1)",
+        "Bảng màu pastel / nhạt tương phản thấp"
+      ],
+      "rows": [
+        [
+          "Độ tin cậy quét quang học",
+          "Giải mã tức thì 100% dưới mọi ánh sáng",
+          "Thường xuyên lỗi lấy nét camera và quá thời gian quét"
+        ],
+        [
+          "Nhị phân hóa bằng camera",
+          "Phân tách ngưỡng thang xám sạch",
+          "Giá trị độ sáng mơ hồ gây lỗi giải mã"
+        ],
+        [
+          "Hiệu năng dưới nắng ngoài trời",
+          "Giữ được độ rõ dưới nắng gắt và chói",
+          "Phai hoàn toàn dưới ánh nắng mạnh"
+        ],
+        [
+          "Đồng bộ thương hiệu",
+          "Màu doanh nghiệp đậm đà khớp nhận diện thương hiệu",
+          "Diện mạo nhạt nhòa, thiếu tác động thị giác"
+        ],
+        [
+          "Tương thích thiết bị",
+          "Phổ biến trên điện thoại giá rẻ và cao cấp",
+          "Hỏng trên camera giá rẻ dải động thấp"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Nhập nội dung đích và tải dữ liệu",
+        "description": "Dán URL, chi tiết vCard, thông tin WiFi hoặc văn bản của bạn."
+      },
+      {
+        "number": 2,
+        "title": "Chọn bảng màu tương phản cao",
+        "description": "Đặt tiền cảnh tối, nền sáng và bất kỳ màu nhấn nào cho mắt góc bằng bộ chọn hex."
+      },
+      {
+        "number": 3,
+        "title": "Xuất SVG vector để in hoặc PNG độ phân giải cao để dùng kỹ thuật số",
+        "description": "Tải SVG vector để in offset, hoặc PNG 300 DPI cho chiến dịch mạng xã hội và kỹ thuật số."
+      }
+    ],
+    "features": [
+      {
+        "title": "Tùy chỉnh nhiều màu độc lập",
+        "description": "Module tiền cảnh, nền, khung góc, chấm góc — mỗi phần nhận đúng một giá trị hex riêng."
+      },
+      {
+        "title": "Tuân thủ tương phản cao WCAG",
+        "description": "Được thiết kế để giữ độ tương phản độ sáng mà camera cần để ngưỡng hóa sạch, bất kể ánh sáng thế nào."
+      },
+      {
+        "title": "Xuất SVG vector và EPS không mất dữ liệu",
+        "description": "Tệp vector trung thực màu, mở trực tiếp trong Illustrator, InDesign hoặc Figma và chuyển sang CMYK gọn gàng."
+      },
+      {
+        "title": "Miễn phí 100% với quét trọn đời vĩnh viễn",
+        "description": "Tô màu bao nhiêu mã tùy thích — không giới hạn quét, không hình mờ, không phí."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Thông số kích thước và độ tương phản mã QR màu",
+      "description": "Đảm bảo các lựa chọn màu của bạn đạt ngưỡng quét quang học tối thiểu.",
+      "headers": [
+        "Tổ hợp màu",
+        "Tỷ lệ tương phản",
+        "Kích thước in tối thiểu",
+        "Ứng dụng khuyến nghị"
+      ],
+      "rows": [
+        [
+          "Xanh navy đậm (#001F3F) trên trắng (#FFFFFF)",
+          "14,5:1 (rất cao)",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "Nhận diện doanh nghiệp, danh thiếp, văn phòng phẩm"
+        ],
+        [
+          "Xanh rừng (#1B4D3E) trên kem (#FBF9F5)",
+          "10,2:1 (cao)",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Sản phẩm hữu cơ, bao bì thân thiện môi trường, thực đơn"
+        ],
+        [
+          "Tím hoàng gia (#4A0E4E) trên trắng (#FFFFFF)",
+          "12,8:1 (cao)",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Hàng xa xỉ, văn phòng phẩm sự kiện, thời trang"
+        ],
+        [
+          "Đỏ mận đậm (#5C061C) trên trắng (#FFFFFF)",
+          "11,4:1 (cao)",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Nhãn chai rượu vang, bao bì thực phẩm cao cấp"
+        ],
+        [
+          "Than (#222222) trên bạc hà pastel (#E8F5E9)",
+          "11,8:1 (cao)",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Bao bì bán lẻ hiện đại, phần cứng công nghệ"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Nhất quán thương hiệu doanh nghiệp",
+        "description": "Đồng bộ mã marketing với thông số Pantone và hex của thương hiệu trên tờ rơi và báo cáo thường niên."
+      },
+      {
+        "title": "Bao bì bán lẻ và nhãn sản phẩm",
+        "description": "Điều chỉnh mã theo màu bao bì chính của sản phẩm thực phẩm, đồ uống, mỹ phẩm và lối sống để nó thuộc về bao bì."
+      },
+      {
+        "title": "Thực đơn nhà hàng và thẻ bàn trong hospitality",
+        "description": "Màu mã ấm áp, thanh lịch hài hòa với không gian đọc dễ hơn nhiều so với hình vuông đen cứng trên bàn dưới ánh nến."
+      },
+      {
+        "title": "Biển hiệu sự kiện và chương trình gala",
+        "description": "Đưa bảng màu của đám cưới, lễ hội hay hội nghị vào băng rôn, thẻ đeo và thiệp mời."
+      },
+      {
+        "title": "Biển hiệu đội xe và nhà thầu",
+        "description": "Khớp mã với màu đội xe trên decal xe van lắp đặt, điều hòa và giao hàng để trông được phát hành chính thức, không phải làm vội."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Sai lầm về màu khiến mã QR không quét được",
+      "points": [
+        "Đảo ngược bảng màu. Mã trắng trên xanh đậm làm nhiều công cụ quét bị nhầm. Giữ tiền cảnh tối hơn nền, không phải ngược lại.",
+        "Màu pastel. Vàng nhạt, hồng nhạt hay bạc hà trên trắng nằm dưới tỷ lệ 2:1 — gần như vô hình với ngưỡng hóa của camera.",
+        "Ấm trên ấm. Module đỏ trên vàng hay cam có quá nhiều độ sáng chung. Kiểm tra phiên bản thang xám trước khi tin kết quả.",
+        "Lệch CMYK. Màu RGB có thể lệch khi chuyển sang in offset. Xác nhận bản in thử vẫn giữ độ sáng tối.",
+        "Chói bóng. Bề mặt bóng phản chiếu ánh sáng và làm mất độ tương phản. Mã màu đọc tốt nhất trên giấy mờ."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Mã QR có thể có bất kỳ màu nào mà vẫn hoạt động đáng tin cậy không?",
+        "a": "Gần như mọi màu, với một điều kiện: tiền cảnh phải tối hơn nền rõ rệt, trên tỷ lệ 4,5:1. Xanh navy đậm, xanh rừng, tím và đỏ mận đều làm được dễ dàng."
+      },
+      {
+        "q": "Vì sao tôi nên tránh mã QR trắng trên nền tối (đảo màu)?",
+        "a": "Bộ giải mã được thiết kế để mong đợi tối trên sáng. iPhone đời mới thường xử lý được chiều ngược lại, nhưng nhiều điện thoại Android và máy quét cầm tay bị chậm hoặc thất bại — không đáng để mạo hiểm với tài liệu in."
+      },
+      {
+        "q": "Làm sao kiểm tra tổ hợp màu của tôi có quét được không?",
+        "a": "Chuyển thiết kế sang thang xám trong bất kỳ trình xem ảnh nào. Nếu mẫu vẫn nổi rõ trên nền, độ tương phản của bạn ổn. Nếu nó tan vào nền, thì việc quét cũng sẽ tan theo."
+      },
+      {
+        "q": "Tôi có thể dùng nhiều màu không (ví dụ màu khác nhau cho mắt góc)?",
+        "a": "Bạn có thể đặt khung ngoài, chấm mắt trong và module thân thành ba màu khác nhau, và mã vẫn quét được — miễn là mỗi phần giữ được độ tương phản của nó."
+      },
+      {
+        "q": "Mã QR màu có hết hạn hoặc tốn thêm tiền không?",
+        "a": "Không cả hai. Màu không tốn gì ở đây, và mã có quét không giới hạn cùng hiệu lực vĩnh viễn như mọi loại khác."
+      },
+      {
+        "q": "Tôi nên tải định dạng nào để in chuyên nghiệp có khớp màu?",
+        "a": "SVG vector. Nó giữ đúng giá trị hex và RGB và chuyển thành mẫu CMYK gọn gàng trong InDesign hay Illustrator — đúng thứ một đợt in quản lý màu cần."
+      },
+      {
+        "q": "Tôi có thể thêm logo vào mã QR có màu không?",
+        "a": "Có — tùy chỉnh màu và logo ở giữa hoạt động cùng nhau, và sửa lỗi mức H bao phủ logo như cách nó làm với mã đen."
+      },
+      {
+        "q": "Dữ liệu thiết kế màu của tôi có được lưu trên máy chủ ngoài không?",
+        "a": "Nó ở lại cục bộ. Render màu và tạo SVG đều chạy trong bộ nhớ trình duyệt của bạn, không có gì được gửi ra ngoài."
+      }
+    ],
+    "bestPractices": "Giữ tiền cảnh rõ ràng tối hơn nền và kiểm tra thiết kế ở thang xám trước khi cam kết. Sau đó quét một bản in thử — màu trông đúng trên màn hình có thể mất tương phản ngay khi ra giấy."
+  },
+  '/svg-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Tiêu chuẩn vàng cho in thương mại chuyên nghiệp",
+        "paragraphs": [
+          "Khác với ảnh PNG hay JPEG dạng điểm ảnh, các tệp SVG vector không bao giờ bị nhòe khi phóng lên khổ in lớn.",
+          "Nhập dễ dàng tệp SVG vào Adobe Illustrator, Photoshop, InDesign, Figma hoặc Canva cho quy trình thiết kế đồ họa."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Tổng quan kỹ thuật về kiến trúc mã QR đồ họa vector có thể mở rộng (SVG)",
+      "paragraphs": [
+        "SVG là định dạng vector dựa trên XML của W3C, và sự khác biệt với PNG hay JPEG là căn bản. Một tệp raster lưu mã như lưới cố định các điểm ảnh màu. Một SVG lưu nó như toán học — mọi module, mắt góc và vùng yên tĩnh được viết thành đường tọa độ (`<rect>`, `<path>`, `<circle>`).",
+        "Đó chính là điểm mấu chốt khi phóng to. Đưa một mã SVG từ danh thiếp 25 mm lên biển quảng cáo 20 mét, bộ render chỉ tính lại các đường cong — không nội suy, không mờ do khử răng cưa, không cạnh mềm. Máy in offset, dây chuyền bao bì flexo, máy khắc laser và máy cắt vinyl CNC đều nhận được hình học mà chúng có thể đi theo chính xác.",
+        "Lợi ích thực tế còn vượt xa độ sắc nét. Một mã SVG rất nhỏ, thường dưới 5 KB. Nó được định kiểu bằng CSS, chuyển sang CMYK không mất dữ liệu trong Illustrator hoặc InDesign, và nhúng thẳng vào trang web hay ứng dụng hiện đại."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Mã QR SVG vector so với mã QR raster PNG / JPEG",
+      "headers": [
+        "Thuộc tính kỹ thuật",
+        "Mã QR SVG vector",
+        "Mã QR raster PNG / JPEG"
+      ],
+      "rows": [
+        [
+          "Khả năng co giãn",
+          "Phóng không giới hạn (không vỡ hạt hay mờ ở mọi kích thước)",
+          "Độ phân giải cố định (vỡ hạt và mờ khi phóng)"
+        ],
+        [
+          "Dung lượng tệp",
+          "Rất gọn (~3 KB - 8 KB)",
+          "100 KB - 2 MB ở độ phân giải in cao"
+        ],
+        [
+          "Tương thích máy in",
+          "Tiêu chuẩn công nghiệp cho offset thương mại, flexo và laser",
+          "Cần tính toán tối thiểu 300 DPI cho mỗi kích thước in"
+        ],
+        [
+          "Khả năng chỉnh sửa trong công cụ vector",
+          "Chỉnh sửa đường đầy đủ trong Illustrator, InDesign và Figma",
+          "Bitmap điểm ảnh phẳng; đường không sửa được gọn gàng"
+        ],
+        [
+          "Khắc laser và cắt vinyl",
+          "Hỗ trợ trực tiếp đường vector cho máy CNC và máy cắt laser",
+          "Không tương thích; cần vẽ lại vector thủ công"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Nhập nội dung QR và cấu hình dữ liệu",
+        "description": "Nhập đích của bạn — URL, chi tiết vCard, thông tin WiFi hoặc văn bản."
+      },
+      {
+        "number": 2,
+        "title": "Tùy chỉnh tham số hình ảnh và logo",
+        "description": "Chọn kiểu module, màu thương hiệu và hình học mắt góc, rồi đặt logo ở giữa nếu muốn."
+      },
+      {
+        "number": 3,
+        "title": "Xuất tệp SVG vector không mất dữ liệu",
+        "description": "Nhấn \"Tải SVG\" để có tệp vector sẵn sàng in đi thẳng vào quy trình tiền in."
+      }
+    ],
+    "features": [
+      {
+        "title": "Co giãn vô hạn hoàn hảo về toán học",
+        "description": "Phóng mã lên kích thước bất kỳ và các cạnh module vẫn sắc như dao. Không có độ phân giải nào bị cạn kiệt."
+      },
+      {
+        "title": "Tương thích trực tiếp với tiền in và in thương mại",
+        "description": "Mở gọn gàng trong InDesign, Illustrator, CorelDRAW và QuarkXPress mà không cần bước chuyển đổi nào giữa chừng."
+      },
+      {
+        "title": "Sẵn sàng cho khắc laser và máy vẽ vinyl",
+        "description": "Đường vector đưa trực tiếp vào máy cắt laser, máy phay CNC hay máy vẽ biển hiệu."
+      },
+      {
+        "title": "Dung lượng tệp siêu nhẹ",
+        "description": "Dưới 5 KB, nên tải tức thì trên web và gửi email không cần nghĩ ngợi."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Hướng dẫn ứng dụng sản xuất mã QR SVG",
+      "description": "SVG vector thích ứng liền mạch với mọi quy trình sản xuất vật lý và công nghiệp.",
+      "headers": [
+        "Quy trình sản xuất",
+        "Môi trường đầu ra",
+        "Độ phân giải khuyến nghị",
+        "Lợi thế của SVG vector"
+      ],
+      "rows": [
+        [
+          "In offset thương mại",
+          "Tờ rơi, báo cáo thường niên, sách",
+          "Sắc nét vô hạn ở đầu ra máy in 2400+ DPI",
+          "Trapping và tách màu vector sạch"
+        ],
+        [
+          "In flexo",
+          "Bao bì sản phẩm, thùng carton sóng",
+          "Co giãn đúng kích thước đường cắt khuôn",
+          "Không có tăng điểm raster trên giấy xốp"
+        ],
+        [
+          "Khắc và ăn mòn laser",
+          "Gỗ, nhôm anod hóa, thép không gỉ",
+          "Chuyển thẳng thành đường dao CNC",
+          "Cắt đường viền chính xác bằng tia laser"
+        ],
+        [
+          "Vẽ và cắt vinyl",
+          "Decal xe, biển hiệu cửa hàng",
+          "Tạo đường cắt vector trực tiếp",
+          "Loại bỏ vẽ lại bitmap thủ công"
+        ],
+        [
+          "Giao diện web và ứng dụng kỹ thuật số",
+          "Website và ứng dụng web responsive",
+          "Hiển thị sắc nét trên màn hình 4K và Retina",
+          "Không tốn băng thông (~4 KB)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Biển quảng cáo thương mại và biển hiệu khổ lớn",
+        "description": "Phóng lên băng rôn 5 mét hoặc áp phích phương tiện công cộng, các module vẫn đủ sắc để đọc từ bên kia đường."
+      },
+      {
+        "title": "In bao bì sản phẩm và thùng carton flexo",
+        "description": "Đặt mã vector thẳng vào đường khuôn bao bì và nó chịu được một đợt chạy máy tốc độ cao."
+      },
+      {
+        "title": "Hàng hóa khắc laser từ kim loại và gỗ",
+        "description": "Khắc mã vĩnh viễn lên đế bàn gỗ, thẻ khóa kim loại hay nhãn tài sản công nghiệp từ cùng một tệp."
+      },
+      {
+        "title": "Decal vinyl cho đội xe thương mại",
+        "description": "Cắt decal bọc cho xe van và xe dịch vụ trực tiếp từ đường SVG, không cần bước vẽ lại bitmap."
+      },
+      {
+        "title": "Ứng dụng web responsive mật độ cao",
+        "description": "Nhúng SVG vào ứng dụng web và nó hiển thị sắc nét trên màn hình Retina và 4K chỉ với vài kilobyte."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Thực hành tốt nhất khi làm việc với tệp SVG của mã QR",
+      "points": [
+        "Phóng trong Illustrator. Bật \"Scale Strokes & Effects\" để đường viền module lớn lên theo tỷ lệ thay vì giữ độ dày cố định.",
+        "Phông chữ trong logo. Nếu logo nhúng có chữ tùy chỉnh, chuyển chữ thành đường viền trước khi xuất bản in cuối cùng.",
+        "Vùng yên tĩnh. Đừng cắt sát hộp bao của SVG — viền trắng quanh mã chính là thứ máy ảnh dùng để tìm nó.",
+        "Màu spot. In bằng mực Pantone? Kiểm tra màu tô SVG được ánh xạ đúng kênh tách trước khi gửi ra bản kẽm.",
+        "Raster bên trong vector. Hãy chắc rằng mọi logo nằm trong SVG cũng là vector, không phải JPEG độ phân giải thấp sẽ làm mờ cả tệp."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Mã QR SVG là gì và vì sao tốt hơn để in?",
+        "a": "SVG là viết tắt của Scalable Vector Graphics (đồ họa vector có thể co giãn). Trong khi PNG hay JPEG được tạo từ điểm ảnh, SVG mô tả hình của nó bằng toán học — nên mã phóng lên bất kỳ kích thước nào mà không bị nhòe hay vỡ. Với in ấn, sự khác biệt đó là tất cả."
+      },
+      {
+        "q": "Tôi có thể mở và chỉnh sửa mã QR SVG trong Adobe Illustrator hay Figma không?",
+        "a": "Trực tiếp. SVG là định dạng vector tiêu chuẩn, nên nó mở để chỉnh sửa trong Illustrator, InDesign, Photoshop, Figma, CorelDRAW và Inkscape mà không cần chuyển đổi."
+      },
+      {
+        "q": "SVG có tương thích với khắc laser và máy CNC không?",
+        "a": "Đó chính là định dạng họ muốn. Máy cắt laser hoặc máy vẽ CNC đọc đường viền vector trực tiếp từ SVG để dẫn tia laser hoặc lưỡi dao."
+      },
+      {
+        "q": "Mã QR SVG có hết hạn hoặc có giới hạn quét không?",
+        "a": "Không hết hạn, không giới hạn. Mã SVG tĩnh giữ dữ liệu của chính nó và tiếp tục hoạt động trọn đời, không có phí định kỳ."
+      },
+      {
+        "q": "Tôi có thể phóng mã QR SVG lớn đến mức nào mà không mất chất lượng?",
+        "a": "Lớn bằng bạn cần — một con tem 1 cm hay băng rôn sân vận động 50 mét, cả hai đều với độ chính xác đầy đủ. Hình học vector không có trần kích thước."
+      },
+      {
+        "q": "Tôi có thể nhúng logo công ty vào mã QR SVG không?",
+        "a": "Bạn có thể đặt logo ở giữa ma trận vector, và sửa lỗi mức H bao phủ các module mà nó nằm lên."
+      },
+      {
+        "q": "Tôi có thể dùng mã QR SVG trên website và ứng dụng di động không?",
+        "a": "Trình duyệt render SVG tự nhiên, nên mã SVG nhúng tải dưới 5 KB và giữ sắc nét trên màn hình Retina và 4K mật độ cao."
+      },
+      {
+        "q": "Tạo mã QR SVG trên QR Generator Online có miễn phí không?",
+        "a": "Tải SVG vector độ phân giải cao là miễn phí, không có tài khoản hay đăng ký chen vào."
+      }
+    ],
+    "bestPractices": "Đưa cho xưởng in tệp SVG vector, giữ nguyên vùng yên tĩnh 4 module và đảm bảo mọi logo nhúng cũng là vector. Sự kết hợp đó cho xưởng in một tệp có thể thả thẳng lên máy in."
+  },
+  '/high-resolution-qr-codes': {
+    "sections": [
+      {
+        "title": "Độ rõ hoàn hảo cho bao bì, thực đơn và biển hiệu",
+        "paragraphs": [
+          "Độ phân giải DPI cao ngăn cạnh mờ và lỗi quét trên bề mặt in bóng, bao bì có kết cấu hay môi trường thiếu sáng.",
+          "Xuất mã QR trong suốt, nền trong suốt như pha lê, sẵn sàng đặt ngay lên tài liệu marketing."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Tổng quan kỹ thuật về kỹ thuật mã QR độ phân giải cao (300+ DPI / 4K)",
+      "paragraphs": [
+        "Mã QR độ phân giải cao là mã được tạo với mật độ điểm ảnh đủ để tồn tại khi in — ít nhất 2048x2048 điểm ảnh ở 300 đến 600 DPI, hoặc tệp vector không phụ thuộc độ phân giải. Hầu hết trình tạo web đưa bạn một ảnh 200x200 ở 72 DPI, trông ổn trên màn hình nhưng sụp đổ ngay khi lên giấy: vỡ hạt, cạnh mềm, ranh giới module nhòe.",
+        "Đây là điều thực sự hỏng. Khi một mã độ phân giải thấp được in, máy in cố lấp đầy dữ liệu điểm ảnh không bao giờ tồn tại. Phép nội suy đó làm tròn các góc sắc của module vuông và bóp méo tỷ lệ định vị 1:1:3:1:1 mà máy quét dựa vào — và camera hoặc giải mã chậm, hoặc bỏ cuộc.",
+        "QR Generator Online loại bỏ hoàn toàn chế độ thất bại đó. Nó xuất raster độ phân giải siêu cao lên tới 4K ở 300 DPI, cùng SVG và EPS vector. Theo cả hai cách, cạnh module vẫn đủ sắc để một xưởng in bao bì, một nhà văn phòng phẩm cao cấp hay một xưởng biển quảng cáo khổ lớn chấp nhận mà không cần nhìn lại lần hai."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Mã QR 300 DPI độ phân giải cao so với xuất web tiêu chuẩn 72 DPI",
+      "headers": [
+        "Thông số / chỉ số",
+        "Xuất độ phân giải cao 300 DPI (QR Generator Online)",
+        "Trình tạo web độ phân giải thấp 72 DPI"
+      ],
+      "rows": [
+        [
+          "Kích thước điểm ảnh",
+          "2048 x 2048 px đến 4096 x 4096 px (4K)",
+          "200 x 200 px đến 350 x 350 px"
+        ],
+        [
+          "Chất lượng đầu ra in",
+          "Ranh giới module sắc nét ở 300+ DPI",
+          "Cạnh module bị vỡ hạt, mờ và lởm chởm"
+        ],
+        [
+          "Tốc độ giải mã của camera",
+          "Giải mã tức thì (< 0,2 giây) dưới mọi ánh sáng",
+          "Giải mã chậm (1 - 3 giây) do mờ quang học"
+        ],
+        [
+          "Kích thước in tối đa",
+          "Co giãn được đến kích thước áp phích và biển quảng cáo",
+          "Giới hạn ở màn hình web/nhỏ"
+        ],
+        [
+          "Tiêu chuẩn tiền in thương mại",
+          "Đạt tiêu chuẩn in thương mại ISO 12647",
+          "Bị từ chối bởi kiểm tra tiền in thương mại"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Cấu hình tải dữ liệu và loại nội dung",
+        "description": "Nhập đích của bạn — URL, hồ sơ vCard, thông tin WiFi hoặc văn bản."
+      },
+      {
+        "number": 2,
+        "title": "Tùy chỉnh thông số thiết kế và sửa lỗi",
+        "description": "Đặt màu, kiểu chấm và mắt góc của bạn, và thêm logo ở giữa ở mức H nếu cần."
+      },
+      {
+        "number": 3,
+        "title": "Tải PNG 4K Ultra HD hoặc SVG vector không mất dữ liệu",
+        "description": "Xuất PNG 2048x2048px sắc nét ở 300 DPI cho kỹ thuật số, hoặc SVG vector cho in khổ lớn."
+      }
+    ],
+    "features": [
+      {
+        "title": "Độ phân giải 4K Ultra HD và đầu ra 300+ DPI",
+        "description": "Xuất raster được xây dựng cho mật độ điểm ảnh mà một máy in thương mại thực sự cần."
+      },
+      {
+        "title": "Không có hiện tượng nén hay nhòe cạnh",
+        "description": "Kết xuất không mất dữ liệu giữ cạnh module sạch, nên camera không bao giờ bị kẹt ở ranh giới mờ."
+      },
+      {
+        "title": "Tuân thủ tiền in thương mại",
+        "description": "Vượt qua ngưỡng độ phân giải cho công việc offset, máy in kỹ thuật số và bao bì flexo."
+      },
+      {
+        "title": "Miễn phí 100% với quét trọn đời vĩnh viễn",
+        "description": "Mọi tải PNG độ phân giải cao và vector đều miễn phí — không đăng ký, không hình mờ, không trần quét."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Ma trận độ phân giải và kích thước điểm ảnh theo kích thước in",
+      "description": "Tính kích thước điểm ảnh cần thiết ở chuẩn in thương mại 300 DPI ($Điểm ảnh = Inch \\times 300$).",
+      "headers": [
+        "Kích thước in vật lý",
+        "Độ phân giải cần ở 300 DPI",
+        "Định dạng tệp khuyến nghị",
+        "Ứng dụng mục tiêu"
+      ],
+      "rows": [
+        [
+          "1,0\" x 1,0\" (25 mm x 25 mm)",
+          "300 x 300 điểm ảnh",
+          "PNG 300 DPI / SVG vector",
+          "Danh thiếp, thẻ tên"
+        ],
+        [
+          "2,0\" x 2,0\" (50 mm x 50 mm)",
+          "600 x 600 điểm ảnh",
+          "PNG 300 DPI / SVG vector",
+          "Thẻ bàn, lót ly, nhãn sản phẩm"
+        ],
+        [
+          "4,0\" x 4,0\" (100 mm x 100 mm)",
+          "1200 x 1200 điểm ảnh",
+          "SVG vector / PNG 300 DPI",
+          "Tờ rơi, bưu thiếp, quảng cáo tạp chí"
+        ],
+        [
+          "8,0\" x 8,0\" (200 mm x 200 mm)",
+          "2400 x 2400 điểm ảnh (4K)",
+          "SVG vector",
+          "Áp phích, biển hiệu cửa hàng, băng rôn"
+        ],
+        [
+          "20\"+ (khổ lớn và biển quảng cáo)",
+          "Co giãn vector vô hạn",
+          "SVG vector / EPS",
+          "Phông nền hội chợ thương mại, biển quảng cáo"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Bao bì thương mại và nhãn sản phẩm",
+        "description": "In mã sắc nét lên bao bì thực phẩm, chai mỹ phẩm và hộp bán lẻ mà không có tăng điểm làm nhòe module."
+      },
+      {
+        "title": "Văn phòng phẩm doanh nghiệp cao cấp và giấy tiêu đề",
+        "description": "Đưa cho công việc dập nhũ, dập nổi hay UV cục bộ độ chính xác nó cần trên bìa cao cấp."
+      },
+      {
+        "title": "Băng rôn khổ lớn và biển quảng cáo ngoài trời",
+        "description": "Phóng lên bảng nhiều mét vẫn giải mã gọn gàng từ đầu bên kia bãi đỗ xe."
+      },
+      {
+        "title": "Quảng cáo tạp chí và catalogue thư trực tiếp",
+        "description": "Vượt qua ngưỡng tiền in 300+ DPI mà các nhà in tạp chí và catalogue quốc gia yêu cầu."
+      },
+      {
+        "title": "Màn hình kỹ thuật số độ nét cao và kiosk 4K",
+        "description": "Hiển thị mã sắc nét trên màn hình cảm ứng, bảng menu kỹ thuật số hay slide hội nghị mà không bị mờ đi."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Tránh các cạm bẫy về độ phân giải và chất lượng in",
+      "points": [
+        "Chụp màn hình mã. Đừng bao giờ chụp màn hình để in — nó khóa độ phân giải web thấp. Tải PNG độ phân giải cao gốc hoặc SVG.",
+        "Nén JPEG. JPEG nén mất dữ liệu tạo viền mờ quanh cạnh module. Lưu dưới dạng PNG không mất dữ liệu hoặc SVG thay vào đó.",
+        "Tăng điểm trên giấy báo. Giấy rẻ, xốp làm loang mực và lấp kín khoảng trống giữa các module. Phóng mã lên khoảng 20% cho giấy báo.",
+        "Giảm mẫu khi xuất. Khi đặt mã vào InDesign hay Canva, kiểm tra xem xuất có âm thầm hạ nó xuống dưới 300 DPI không.",
+        "Rasterization mềm. Đang rasterize một vector? Dùng kết xuất láng giềng gần nhất hoặc cạnh sắc để góc module vẫn vuông."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Vì sao độ phân giải cao là thiết yếu khi in mã QR?",
+        "a": "Vì camera đọc cạnh, không đọc ý định. Ảnh độ phân giải thấp làm nhòe ranh giới module khi in, và ranh giới nhòe chính là thứ máy quét khó ngưỡng hóa nhất. Ở 300+ DPI, cạnh vẫn sắc và giải mã diễn ra tức thì."
+      },
+      {
+        "q": "QR Generator Online xuất PNG với độ phân giải bao nhiêu?",
+        "a": "Xuất PNG là 2048x2048 điểm ảnh ở 300 DPI — đủ để in sắc nét đến khoảng 7x7 inch mà không mất chất lượng."
+      },
+      {
+        "q": "Khi nào nên dùng SVG vector thay vì PNG độ phân giải cao?",
+        "a": "Dùng SVG bất cứ khi nào mã sẽ lớn hoặc chuyên nghiệp: áp phích, băng rôn, biển quảng cáo, quy trình Illustrator hay InDesign, hoặc bất cứ thứ gì khắc laser hay cắt vinyl."
+      },
+      {
+        "q": "Mã QR độ phân giải cao có tốn tiền hoặc yêu cầu tài khoản Pro không?",
+        "a": "Không tài khoản, không chi phí. Mọi PNG độ phân giải cao và SVG vector ở đây đều miễn phí, không giới hạn và không hình mờ."
+      },
+      {
+        "q": "Làm sao biết nên in mã QR của tôi với kích thước nào?",
+        "a": "Dùng quy tắc 10:1: chia khoảng cách quét cho mười. Một áp phích được đọc từ một mét cần một mã rộng ít nhất 10 cm (4 inch)."
+      },
+      {
+        "q": "Tôi có thể tạo mã QR độ phân giải cao với màu và logo tùy chỉnh không?",
+        "a": "Bạn có thể tạo kiểu màu, kiểu chấm và hình dạng góc, thêm logo ở giữa, và vẫn xuất kết quả dưới dạng PNG 4K hoặc SVG vector."
+      },
+      {
+        "q": "Vì sao các xưởng in thương mại từ chối ảnh 72 DPI?",
+        "a": "Máy in của họ chạy ở 2400+ DPI. Một tệp 72 DPI đơn giản không mang đủ dữ liệu điểm ảnh, nên nó in thành các khối nhìn thấy được và không qua được kiểm tra tiền in."
+      },
+      {
+        "q": "Dữ liệu của tôi có an toàn khi tạo mã QR độ phân giải cao không?",
+        "a": "Có. Việc kết xuất độ phân giải cao diễn ra cục bộ trong trình duyệt của bạn, không có dữ liệu hay hình ảnh nào gửi lên máy chủ."
+      }
+    ],
+    "bestPractices": "Xuất SVG vector để in, hoặc PNG 2048px ở 300 DPI, và tránh JPEG nén mất dữ liệu. Như mọi khi, hãy quét bản in thử trước khi chạy toàn bộ — các vấn đề độ phân giải chỉ xuất hiện trên giấy, không bao giờ trên màn hình."
+  },
+  '/about': {
+    "sections": [
+      {
+        "title": "Xây dựng công nghệ mã vạch đặt quyền riêng tư lên hàng đầu",
+        "paragraphs": [
+          "QR Generator Online được tạo ra để giải quyết sự bực bội với các trình tạo QR thu phí, bóc lột, giữ liên kết người dùng làm con tin sau thời gian dùng thử miễn phí.",
+          "Mọi việc tạo mã tĩnh được xử lý 100% trong trình duyệt của bạn mà không ghi lại thông tin liên hệ cá nhân hay thông tin WiFi nhạy cảm nào trên máy chủ của chúng tôi."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Sứ mệnh kiến trúc của chúng tôi — Công nghệ QR mở, riêng tư và bền vững",
+      "paragraphs": [
+        "QR Generator Online bắt đầu từ một bực bội chung. Một vài kỹ sư, một cặp nhà thiết kế kiểu chữ và một số người quan tâm đến quyền riêng tư đều từng chứng kiến cùng một điều xảy ra: việc tạo mã vạch 2D — một tiêu chuẩn mở mà Denso Wave và ISO/IEC công bố từ năm 2000 — bị rào lại sau các gói đăng ký 30 USD mỗi tháng, giữ chiến dịch in ấn làm con tin. Vì vậy họ đã xây dựng giải pháp thay thế.",
+        "Lựa chọn kỹ thuật bên dưới đó đơn giản để phát biểu và khó để bắt chước: mọi thứ chạy phía máy khách. Toán đa thức Reed-Solomon, lắp ghép ma trận, kết xuất vector — tất cả đều thực thi trong trình duyệt của bạn thông qua JavaScript hiện đại và WebAssembly. Không có proxy theo dõi nào trên đường đi vì không có máy chủ nào trên đường đi cả.",
+        "Nền tảng đó hiện tiếp cận người dùng ở 190 quốc gia. Một quán cà phê góc phố và một nhà preflight thuộc danh sách Fortune 500 dùng cùng trình tạo, và cả hai đều nhận được mã vector vĩnh viễn, độ phân giải cao, không có rào thanh toán, không giới hạn quét và không ghi nhật ký gì."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Triết lý kiến trúc của chúng tôi so với SaaS QR thương mại truyền thống",
+      "headers": [
+        "Giá trị / trụ cột cốt lõi",
+        "QR Generator Online",
+        "SaaS QR thương mại truyền thống"
+      ],
+      "rows": [
+        [
+          "Mô hình giá",
+          "Miễn phí 100% mãi mãi (không rào thanh toán, không đăng ký)",
+          "Đăng ký hàng tháng định kỳ (15 - 45 USD/tháng)"
+        ],
+        [
+          "Kiến trúc dữ liệu",
+          "100% phía máy khách (mọi xử lý trong bộ nhớ trình duyệt)",
+          "Proxy máy chủ tập trung ghi lại mọi lưu lượng quét"
+        ],
+        [
+          "Quyền riêng tư và tuân thủ GDPR",
+          "Không thu thập dữ liệu, không cookie, không theo dõi",
+          "Thu thập địa chỉ IP, vị trí địa lý và thiết bị của khách truy cập"
+        ],
+        [
+          "Xuất tệp vector",
+          "SVG và EPS vector đầy đủ miễn phí cho mọi người dùng",
+          "Định dạng vector bị khóa sau các gói Pro đắt tiền"
+        ],
+        [
+          "Tuổi thọ của mã",
+          "Hiệu lực vĩnh viễn trọn đời (mã tĩnh mã hóa trực tiếp)",
+          "Mã hết hạn sau 14 ngày nếu không trả đăng ký"
+        ],
+        [
+          "Quyền sử dụng thương mại",
+          "Đầy đủ giấy phép thương mại không hạn chế",
+          "Hạn chế sử dụng thương mại ở gói miễn phí hoặc khởi đầu"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Truy cập mở cho mọi người dùng trên toàn cầu",
+        "description": "Cùng bộ công cụ cấp doanh nghiệp dành cho tất cả — một nhà thiết kế độc lập, một cửa hàng góc phố hay một thương hiệu toàn cầu — không có gì bị giữ lại cho gói trả phí."
+      },
+      {
+        "number": 2,
+        "title": "Bảo mật dữ liệu không thỏa hiệp ngay từ thiết kế",
+        "description": "Không URL, mật khẩu hay hồ sơ liên hệ nào của khách hàng được lưu, ghi nhật ký hay bán. Ngay từ đầu cũng không có cơ sở dữ liệu nào giữ bất cứ thứ gì trong số đó."
+      },
+      {
+        "number": 3,
+        "title": "Tiêu chuẩn tiền in chính xác cho in ấn vật lý",
+        "description": "Đầu ra SVG vector được xây dựng để sống sót trên máy in thương mại — chính xác về toán học, sẵn sàng cho bao bì và công việc khổ lớn."
+      }
+    ],
+    "features": [
+      {
+        "title": "Kiến trúc phía máy khách dựa trên trình duyệt 100%",
+        "description": "Mã hóa và kết xuất diễn ra cục bộ, đó là lý do bản xem trước tức thì và dữ liệu nhập của bạn luôn riêng tư."
+      },
+      {
+        "title": "Tuân thủ đầy đủ ISO/IEC 18004",
+        "description": "Được xây dựng đúng từng chữ theo tiêu chuẩn quốc tế, nên mã quét được ngay lần đầu trên mọi camera iOS hay Android."
+      },
+      {
+        "title": "Đầu ra SVG vector không mất dữ liệu và PNG 4K",
+        "description": "Một đường xuất duy nhất phục vụ ngang nhau một miếng dán siêu nhỏ và một biển quảng cáo đường cao tốc dài 50 mét."
+      },
+      {
+        "title": "Đảm bảo mã vĩnh viễn trọn đời",
+        "description": "Không có chuyển hướng trung gian nên không có gì để tắt. Mã bạn in ở đây vẫn tiếp tục hoạt động."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Quy mô toàn cầu và chuẩn hiệu năng của chúng tôi",
+      "description": "Các chỉ số chính phản ánh độ tin cậy và phạm vi toàn cầu của nền tảng QR Generator Online.",
+      "headers": [
+        "Chuẩn / chỉ số",
+        "Tiêu chuẩn hiệu năng",
+        "Kiến trúc kỹ thuật",
+        "Lợi ích cho người dùng"
+      ],
+      "rows": [
+        [
+          "Độ trễ tạo mã",
+          "< 50 mili giây",
+          "Thực thi WebAssembly / JS cục bộ trong trình duyệt",
+          "Cập nhật bản xem trước thời gian thực tức thì"
+        ],
+        [
+          "Tỷ lệ tin cậy khi quét",
+          "99,99% giải mã quang học ngay lần đầu",
+          "Mẫu thời gian tuân thủ ISO/IEC 18004",
+          "Không cản trở việc quét của khách hàng"
+        ],
+        [
+          "Độ chính xác vector",
+          "Co giãn toán học vô hạn",
+          "Hình học đường vector SVG W3C sạch sẽ",
+          "Đầu ra máy in thương mại hoàn hảo"
+        ],
+        [
+          "Ghi nhật ký dữ liệu máy chủ",
+          "0,00% (không lưu byte nào)",
+          "Không có cơ sở dữ liệu ngoài hay proxy theo dõi",
+          "Tuân thủ đầy đủ GDPR / CCPA"
+        ],
+        [
+          "Khả dụng toàn cầu",
+          "100,0% thời gian hoạt động tĩnh",
+          "Phân phối qua mạng CDN biên toàn cầu",
+          "Khả dụng toàn thế giới 24/7/365"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Doanh nghiệp nhỏ độc lập và bán lẻ địa phương",
+        "description": "Tài liệu marketing chuyên nghiệp, biển hiệu cửa hàng và bao bì — mà không có phí phần mềm nào ăn vào lợi nhuận."
+      },
+      {
+        "title": "Agency thiết kế và chuyên gia sáng tạo",
+        "description": "Tệp SVG vector sạch nhập thẳng vào InDesign, Illustrator hoặc Figma mà không cần chỉnh sửa."
+      },
+      {
+        "title": "Nhà preflight và xưởng in bao bì thương mại",
+        "description": "Bản vẽ khuôn mã vạch tương phản cao vượt qua kiểm tra preflight nghiêm ngặt thay vì bị trả lại."
+      },
+      {
+        "title": "Tổ chức phi lợi nhuận, trường học và hội nhóm cộng đồng",
+        "description": "Check-in sự kiện không chạm, câu đố lớp học và liên kết quyên góp — tất cả không cần ngân sách công nghệ."
+      },
+      {
+        "title": "Nhà phát triển phần mềm và chuyên gia tích hợp kỹ thuật",
+        "description": "Một bảng tham chiếu gọn gàng cho các lược đồ URI như `WIFI:`, `mailto:`, `vCard 3.0` và `BIP-0021` khi kết nối ứng dụng di động."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Tiêu chuẩn kỹ thuật cốt lõi và cam kết của chúng tôi",
+      "points": [
+        "Chúng tôi sẽ không giữ mã đã in làm con tin. Mã tĩnh là vĩnh viễn — không chuyển hướng, không bẫy hết hạn chôn trong điều khoản.",
+        "Chúng tôi sẽ không bán dữ liệu của bạn. Chạy phía máy khách, chúng tôi ngay từ đầu không có cơ sở dữ liệu người dùng để khai thác hay giao cho nhà quảng cáo.",
+        "Chúng tôi sẽ không đặt rào thanh toán trên tải vector. Xuất SVG là nhu cầu làm việc của nhà thiết kế, nên nó vẫn miễn phí cho mọi người.",
+        "Chúng tôi sẽ giữ tuân thủ ISO. Mọi module, mẫu thời gian và mắt định vị đều được kiểm chứng theo ISO/IEC 18004.",
+        "Chúng tôi sẽ tiếp tục ủng hộ web mở. Các công cụ trình duyệt miễn phí, nhanh và hữu ích cho bất kỳ ai cần — đó là toàn bộ ý tưởng."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Sứ mệnh của QR Generator Online là gì?",
+        "a": "Đưa việc tạo mã QR vĩnh viễn, riêng tư và chất lượng thương mại vào tay mọi người miễn phí — không có đăng ký nào đứng giữa bạn và mã bạn đã in."
+      },
+      {
+        "q": "Ai đã sáng lập QR Generator Online?",
+        "a": "Một nhóm nhỏ kỹ sư phần mềm, nhà thiết kế preflight và người ủng hộ quyền riêng tư, những người muốn một đối trọng trung thực và mở cho các dịch vụ QR theo đăng ký."
+      },
+      {
+        "q": "Kiến trúc phía máy khách của bạn bảo vệ quyền riêng tư người dùng như thế nào?",
+        "a": "Việc tạo mã chạy trong trình duyệt của bạn bằng JavaScript, từ đầu đến cuối. URL đích, chi tiết liên hệ và mật khẩu WiFi của bạn không bao giờ được gửi tới chúng tôi vì không có lệnh gọi máy chủ nào để gửi chúng đi."
+      },
+      {
+        "q": "Doanh nghiệp có thể dùng QR Generator Online cho bao bì thương mại không?",
+        "a": "Họ đã làm vậy. Nhiều thương hiệu thương mại và nhóm preflight đặt các mã vector này lên bao bì, kệ bán lẻ, sách và chiến dịch quảng cáo trên toàn thế giới."
+      },
+      {
+        "q": "Có chi phí ẩn, tài khoản Pro hay yêu cầu thẻ tín dụng nào không?",
+        "a": "Không có gì ẩn. Mọi công cụ, mọi tùy chọn tạo kiểu, nhúng logo và tải vector đều miễn phí cho mọi người dùng."
+      },
+      {
+        "q": "Làm sao bạn đảm bảo mã QR được tạo quét đáng tin cậy trên mọi thiết bị?",
+        "a": "Bộ máy tuân thủ ISO/IEC 18004, giữ vùng yên tĩnh bắt buộc 4 module và áp dụng sửa lỗi Reed-Solomon mức H bất cứ khi nào có logo. Sự kết hợp đó là thứ làm cho mã được đọc ngay lần đầu trên mọi thiết bị."
+      },
+      {
+        "q": "Tôi có thể góp ý hoặc đề xuất tính năng mới không?",
+        "a": "Hãy làm vậy — ý kiến cộng đồng thúc đẩy phần lớn những gì chúng tôi xây dựng. Trang Liên hệ là cách nhanh nhất để gửi ý tưởng hoặc yêu cầu tính năng."
+      },
+      {
+        "q": "Máy chủ của bạn được lưu trữ ở đâu?",
+        "a": "Tài nguyên tĩnh được phục vụ qua mạng CDN biên toàn cầu, nên trang tải nhanh dù bạn mở từ Bắc Mỹ, châu Âu, châu Á hay bất kỳ nơi nào khác."
+      }
+    ],
+    "bestPractices": "Nếu công cụ tiết kiệm thời gian cho bạn, hãy chia sẻ nó — một nhà thiết kế, chủ cửa hàng hay nhóm marketing bạn quen có lẽ cũng sẽ cần."
+  },
+  '/contact': {
+    "sections": [
+      {
+        "title": "Liên hệ đội ngũ kỹ thuật và hỗ trợ của chúng tôi",
+        "paragraphs": [
+          "Có câu hỏi về định dạng mã QR tùy chỉnh, thực hành in ấn tốt nhất hay tạo hàng loạt? Gửi email cho chúng tôi tại support@qr-generator.online.",
+          "Đội hỗ trợ kỹ thuật của chúng tôi phản hồi mọi yêu cầu trong vòng 24 giờ làm việc."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Hỗ trợ kỹ thuật doanh nghiệp, yêu cầu và trợ giúp cộng đồng",
+      "paragraphs": [
+        "Bị kẹt với một đặc tả preflight, một lô công việc khối lượng lớn, một tệp SVG vector không khớp đúng trong InDesign hay một định dạng dữ liệu doanh nghiệp? Đó là lý do đội hỗ trợ có mặt.",
+        "Những người trả lời hiểu rõ ISO/IEC 18004, tiền in preflight bao bì flexo, vật lý quét quang học và các bộ giải mã camera bên trong iOS (AVFoundation) và Android (Google ML Kit). Nhà thiết kế, nhà in thương mại, lãnh đạo marketing và nhà phát triển đều đổ về cùng một hộp thư và nhận được câu trả lời thực sự.",
+        "Chọn kênh bên dưới phù hợp nhất. Mọi yêu cầu kỹ thuật và thương mại đều được trả lời trong vòng 24 giờ làm việc."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Các kênh hỗ trợ và chuẩn thời gian phản hồi",
+      "headers": [
+        "Loại yêu cầu",
+        "Kênh khuyến nghị",
+        "Thời gian phản hồi trung bình",
+        "Phạm vi hỗ trợ"
+      ],
+      "rows": [
+        [
+          "Hỗ trợ preflight và in vector",
+          "support@qr-generator.online",
+          "< 12 giờ làm việc",
+          "Định dạng SVG vector, kiểm tra DPI, duyệt bản in preflight"
+        ],
+        [
+          "Yêu cầu doanh nghiệp và khối lượng lớn",
+          "support@qr-generator.online",
+          "< 12 giờ làm việc",
+          "Lược đồ dữ liệu tùy chỉnh, tạo hàng loạt, tích hợp thương hiệu"
+        ],
+        [
+          "Báo lỗi và phản hồi kỹ thuật",
+          "support@qr-generator.online",
+          "< 24 giờ làm việc",
+          "Khả năng tương thích trình duyệt, phản hồi kết xuất, yêu cầu tính năng"
+        ],
+        [
+          "Câu hỏi chung và hướng dẫn sử dụng",
+          "Trang cơ sở kiến thức và FAQ",
+          "Tự phục vụ tức thì",
+          "Hướng dẫn toàn diện về kích thước, tạo kiểu và quét"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Xem cơ sở kiến thức toàn diện của chúng tôi",
+        "description": "Hầu hết câu hỏi về kích thước, in ấn và định dạng tệp đã có câu trả lời viết sẵn trong cơ sở kiến thức và FAQ — đáng xem trước khi gửi email."
+      },
+      {
+        "number": 2,
+        "title": "Chuẩn bị chi tiết kỹ thuật cho yêu cầu của bạn",
+        "description": "Ghi chú lược đồ bạn đang mã hóa (URL, vCard, WiFi), kích thước vật lý bạn sẽ in và phần mềm bạn đang dàn trang — Illustrator, InDesign hay Canva."
+      },
+      {
+        "number": 3,
+        "title": "Gửi yêu cầu của bạn tới bộ phận hỗ trợ",
+        "description": "Gửi email tới đội tại support@qr-generator.online. Một chuyên gia phản hồi trong vòng 24 giờ làm việc."
+      }
+    ],
+    "features": [
+      {
+        "title": "Chuyên môn kỹ thuật preflight trực tiếp",
+        "description": "Lời khuyên từ những người thực sự đã vận hành quy trình offset, flexo và máy in kỹ thuật số — không phải câu trả lời kịch bản cấp một."
+      },
+      {
+        "title": "Cam kết phản hồi nhanh trong 24 giờ",
+        "description": "Dù là câu hỏi cộng đồng hay yêu cầu doanh nghiệp, nó được đọc và trả lời trong một ngày làm việc."
+      },
+      {
+        "title": "Cơ sở kiến thức tự phục vụ toàn diện",
+        "description": "Hàng chục hướng dẫn chuyên sâu về công thức kích thước, sửa lỗi và lựa chọn nền in — mở bất cứ lúc nào."
+      },
+      {
+        "title": "Hỗ trợ cộng đồng và doanh nghiệp miễn phí 100%",
+        "description": "Dù là doanh nghiệp nhỏ, tổ chức phi lợi nhuận hay nhà thiết kế doanh nghiệp, sự trợ giúp đều như nhau và không tốn gì."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Các chủ đề hỗ trợ được yêu cầu nhiều nhất và tài nguyên trực tiếp",
+      "description": "Liên kết nhanh tới các tài nguyên kỹ thuật chuyên biệt để hỗ trợ tức thì.",
+      "headers": [
+        "Lĩnh vực chủ đề",
+        "Hướng dẫn tài nguyên chính",
+        "Công thức / tiêu chuẩn chính",
+        "Đối tượng mục tiêu"
+      ],
+      "rows": [
+        [
+          "Kích thước in và công thức S = D / 10",
+          "Hướng dẫn đầy đủ in mã QR",
+          "$S = D / 10$",
+          "Nhà thiết kế đồ họa, kỹ thuật viên preflight"
+        ],
+        [
+          "Định dạng danh thiếp vCard 3.0",
+          "Hướng dẫn danh thiếp mã QR vCard",
+          "RFC 2426 / RFC 6350",
+          "Marketing doanh nghiệp, lãnh đạo networking"
+        ],
+        [
+          "Vận hành thực đơn khách sạn và nhà hàng",
+          "Hướng dẫn mã QR cho nhà hàng",
+          "HTTPS / viewport responsive di động",
+          "Chủ nhà hàng, nhà điều hành ăn uống"
+        ],
+        [
+          "Marketing biển bất động sản",
+          "Hướng dẫn tạo khách hàng tiềm năng bằng mã QR bất động sản",
+          "Matterport 3D / S = D / 10",
+          "Môi giới bất động sản, quản lý tài sản"
+        ],
+        [
+          "Thiết lập truy cập mạng WiFi",
+          "Hướng dẫn mã QR WiFi cho khách sạn",
+          "Giao thức URI WIFI: (WPA3/WPA2)",
+          "Quản lý khách sạn, chủ quán cà phê, nhân viên IT"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Kiểm tra preflight bao bì thương mại",
+        "description": "Nhờ đội kiểm tra SVG bao bì của bạn có vượt giới hạn tương phản ISO và vùng yên tĩnh trước khi cắt khuôn kẽm."
+      },
+      {
+        "title": "Biển quảng cáo khổ lớn và biển hiệu ngoài trời",
+        "description": "Nhận kích thước chính xác cho biển đường cao tốc được đọc từ 20 đến 50 mét, để nó quét được từ xe đang chạy."
+      },
+      {
+        "title": "Triển khai vCard doanh nghiệp tùy chỉnh",
+        "description": "Tìm cách chuẩn hóa mã danh thiếp vCard trên một lực lượng lao động hàng nghìn người."
+      },
+      {
+        "title": "Triển khai thực đơn đa điểm cho khách sạn",
+        "description": "Lên kế hoạch triển khai thực đơn PDF tải nhanh trên mạng lưới nhượng quyền mà không đau đầu cho từng cơ sở."
+      },
+      {
+        "title": "Hỗ trợ chiến dịch giáo dục và phi lợi nhuận",
+        "description": "Nhận trợ giúp cho dự án câu đố lớp học, triển lãm bảo tàng hay chiến dịch gây quỹ."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Thông tin nên đưa vào để hỗ trợ nhanh chóng",
+      "points": [
+        "Nêu tên trình tạo. Cho chúng tôi biết bạn đang dùng công cụ nào — URL, vCard, WiFi, Google Forms.",
+        "Cho kích thước in. Chiều rộng và chiều cao dự kiến rất hữu ích, ví dụ 25 mm x 25 mm trên danh thiếp.",
+        "Nêu khoảng cách quét. Mọi người sẽ đứng cách khoảng bao xa — 30 cm cho thực đơn hay 3 mét cho biển bất động sản?",
+        "Nêu phần mềm. Illustrator, InDesign, Photoshop, CorelDRAW hay Figma — nó thay đổi lời khuyên.",
+        "Đính kèm tệp. Với vấn đề quét, gửi SVG hoặc PNG đã xuất để chúng tôi xem trực tiếp."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Đội hỗ trợ QR Generator Online phản hồi nhanh đến mức nào?",
+        "a": "Trong vòng 24 giờ làm việc, và thường trong 12 giờ vào ngày làm việc."
+      },
+      {
+        "q": "Địa chỉ email hỗ trợ chính là gì?",
+        "a": "support@qr-generator.online đến thẳng đội kỹ thuật."
+      },
+      {
+        "q": "Các bạn có hỗ trợ điện thoại hay trò chuyện trực tiếp không?",
+        "a": "Hỗ trợ hoạt động qua email và cơ sở kiến thức thay vì điện thoại hay trò chuyện. Đó là một phần lý do dịch vụ giữ được hoàn toàn miễn phí."
+      },
+      {
+        "q": "Các bạn có thể xem lại thiết kế in thương mại của tôi trước khi lên máy không?",
+        "a": "Rất sẵn lòng. Gửi bản duyệt SVG vector hoặc PDF của bạn tới support@qr-generator.online và đội preflight sẽ kiểm tra vùng yên tĩnh, độ tương phản và hình học module trước khi bạn cam kết."
+      },
+      {
+        "q": "Tôi có thể yêu cầu một tính năng tùy chỉnh hoặc một loại mã QR mới không?",
+        "a": "Đề xuất tính năng được hoan nghênh và thực sự được đọc. Gửi ý tưởng qua email tới đội sản phẩm tại support@qr-generator.online."
+      },
+      {
+        "q": "Các bạn có tính phí tư vấn hay hỗ trợ không?",
+        "a": "Không. Trợ giúp kỹ thuật, đánh giá preflight và hướng dẫn cách làm đều miễn phí."
+      },
+      {
+        "q": "Tôi có thể tìm hướng dẫn và hướng dẫn tự phục vụ ở đâu?",
+        "a": "Trang Blog và FAQ có các hướng dẫn chi tiết về kích thước in, thực đơn nhà hàng, liên hệ vCard và truy cập WiFi."
+      },
+      {
+        "q": "Thông tin liên hệ của khách hàng có được giữ bí mật không?",
+        "a": "Hoàn toàn. Mọi email, chi tiết hay tác phẩm bạn chia sẻ với bộ phận hỗ trợ đều được giữ bí mật và không bao giờ được chia sẻ hay bán."
+      }
+    ],
+    "bestPractices": "Xem nhanh FAQ và Blog trước để có câu trả lời ngay, và khi gửi email, hãy ghi kèm kích thước in và phần mềm dàn trang — điều đó biến một cuộc trao đổi hai email thành một email duy nhất."
+  },
+  '/privacy': {
+    "sections": [
+      {
+        "title": "Xử lý dữ liệu phía máy khách và lưu trữ bằng không",
+        "paragraphs": [
+          "QR Generator Online xử lý việc tạo mã QR tĩnh cục bộ trong trình duyệt web của bạn. Chúng tôi không lưu trữ, thu thập hay bán văn bản, mật khẩu hay thông tin liên hệ bạn mã hóa.",
+          "Chúng tôi tuân thủ nghiêm ngặt các quy định bảo mật dữ liệu quốc tế, bao gồm GDPR và CCPA."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Kiến trúc quyền riêng tư bằng mật mã và chính sách chủ quyền dữ liệu của chúng tôi",
+      "paragraphs": [
+        "Quyền riêng tư không phải là một tính năng chúng tôi gắn thêm — nó là hình dạng của toàn bộ hệ thống. Hầu hết nền tảng SaaS thương mại thu thập dữ liệu, theo dõi địa chỉ IP và âm thầm bán những gì bạn duyệt. Dịch vụ này được xây dựng trên tiền đề ngược lại: không biết gì cả, và dữ liệu của bạn vẫn thuộc về bạn.",
+        "Tạo một mã ở đây và mọi bước đều diễn ra trong trình duyệt của bạn. Mã hóa Reed-Solomon, rasterization ma trận, kết xuất vector — tất cả chạy cục bộ trong bộ nhớ thông qua JavaScript và WebAssembly. URL, văn bản, liên hệ vCard, mật khẩu WiFi và logo đã tải lên của bạn không bao giờ đi qua mạng và không bao giờ đổ vào cơ sở dữ liệu, vì không có cơ sở dữ liệu và không có lệnh gọi mạng.",
+        "Chính sách này nêu rõ các tiêu chuẩn kỹ thuật đằng sau điều đó, các cam kết không theo dõi, và cách toàn bộ thiết kế phù hợp với GDPR, CCPA và các khung quyền riêng tư của ISO/IEC."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Kiến trúc quyền riêng tư của QR Generator Online so với các nền tảng QR SaaS truyền thống",
+      "headers": [
+        "Chỉ số quyền riêng tư và dữ liệu",
+        "QR Generator Online (không biết gì)",
+        "Nền tảng QR thương mại truyền thống"
+      ],
+      "rows": [
+        [
+          "Vị trí xử lý dữ liệu",
+          "100% phía máy khách (trong bộ nhớ trình duyệt của bạn)",
+          "Cơ sở dữ liệu máy chủ bên ngoài tập trung"
+        ],
+        [
+          "Ghi nhật ký URL đích",
+          "Không ghi nhật ký (chúng tôi không bao giờ thấy URL đích của bạn)",
+          "Ghi và lưu trữ đầy đủ URL đích trên đám mây"
+        ],
+        [
+          "Theo dõi địa chỉ IP khách truy cập",
+          "Không theo dõi IP (liên kết tĩnh mã hóa trực tiếp)",
+          "Theo dõi và ghi nhật ký địa chỉ IP của mọi người quét"
+        ],
+        [
+          "Truyền mật khẩu WiFi",
+          "Không bao giờ truyền qua mạng (rủi ro bằng không)",
+          "Lưu dạng văn bản thuần hoặc trong cơ sở dữ liệu đám mây"
+        ],
+        [
+          "Thu thập tài khoản và email người dùng",
+          "Không yêu cầu tài khoản, email hay đăng ký",
+          "Bắt buộc tạo tài khoản và email tiếp thị"
+        ],
+        [
+          "Kiếm tiền từ dữ liệu bên thứ ba",
+          "Không bán dữ liệu hay chia sẻ với môi giới quảng cáo",
+          "Thường kiếm tiền từ phân tích lượt quét tổng hợp"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Xử lý phía máy khách cục bộ trong trình duyệt web",
+        "description": "Bất cứ thứ gì bạn gõ — URL, mật khẩu, vCard — được xử lý hoàn toàn trong bộ nhớ trình duyệt của bạn, không có lệnh API nào gửi đi tới máy chủ."
+      },
+      {
+        "number": 2,
+        "title": "Không lưu trữ đám mây và không ghi nhật ký cơ sở dữ liệu",
+        "description": "Không có cơ sở dữ liệu phía chúng tôi lưu mã, logo đã tải lên hay liên kết đích của bạn. Không giữ gì vì không gửi gì đi."
+      },
+      {
+        "number": 3,
+        "title": "Mã hóa tĩnh trực tiếp để chủ quyền bền vững",
+        "description": "Mã đã in trỏ thẳng đến đích của bạn, không có proxy bên thứ ba nào ở giữa để ghi nhật ký hay chặn lượt quét."
+      }
+    ],
+    "features": [
+      {
+        "title": "Thực thi mật mã 100% phía máy khách",
+        "description": "Việc tạo mã chạy trong bộ nhớ trình duyệt, và đó là điều giữ dữ liệu nhập của bạn bí mật — chúng không có nơi nào khác để đi."
+      },
+      {
+        "title": "Tuân thủ đầy đủ GDPR và CCPA ngay từ thiết kế",
+        "description": "Không thu thập thông tin cá nhân nào là con đường đơn giản nhất có thể để tuân thủ, và đó là con đường chúng tôi đã chọn."
+      },
+      {
+        "title": "Không theo dõi người quét hay người dùng cuối",
+        "description": "Những người quét mã của bạn đến thẳng trang web của bạn. Không có bước theo dõi nào, không có cookie nào được gắn lên họ trên đường đi."
+      },
+      {
+        "title": "Không tạo tài khoản và không thu thập email",
+        "description": "Tạo và tải xuống bao nhiêu tùy thích một cách ẩn danh — không có đăng ký ngay từ đầu."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Phân tích luồng dữ liệu và bảo mật truyền tải",
+      "description": "Xác minh kỹ thuật về cách dữ liệu được xử lý qua từng loại trình tạo QR trên QR Generator Online.",
+      "headers": [
+        "Loại trình tạo QR",
+        "Phạm vi dữ liệu đầu vào",
+        "Phương pháp xử lý",
+        "Trạng thái lưu trữ trên máy chủ"
+      ],
+      "rows": [
+        [
+          "Trình tạo QR URL",
+          "Địa chỉ web đích và UTM",
+          "Biên dịch UTF-8 phía máy khách",
+          "0 byte lưu trữ (không truyền lên máy chủ)"
+        ],
+        [
+          "Trình tạo QR WiFi",
+          "SSID và mật khẩu WPA2/WPA3",
+          "Mã hóa chuỗi WIFI: phía máy khách",
+          "0 byte lưu trữ (không bao giờ rời trình duyệt)"
+        ],
+        [
+          "Trình tạo QR vCard",
+          "Tên, số điện thoại, email, địa chỉ",
+          "Phân tích RFC 6350 phía máy khách",
+          "0 byte lưu trữ (không thu thập danh bạ)"
+        ],
+        [
+          "WhatsApp / SMS / điện thoại",
+          "Số điện thoại và nội dung tin nhắn",
+          "Tổng hợp chuỗi URI phía máy khách",
+          "0 byte lưu trữ (không ghi nhật ký liên hệ)"
+        ],
+        [
+          "Trình tạo QR tiền mã hóa",
+          "Địa chỉ ví nhận công khai",
+          "Tổng hợp URI BIP-0021 phía máy khách",
+          "0 byte lưu trữ (không bao giờ chạm khóa riêng)"
+        ],
+        [
+          "Tải lên logo và hình ảnh",
+          "Hình ảnh thương hiệu PNG, SVG, JPEG",
+          "Kết xuất HTML5 Canvas phía máy khách",
+          "0 byte lưu trữ (không tải hình lên)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Y tế và bảo mật bệnh nhân (HIPAA)",
+        "description": "Tạo mã tiếp nhận bệnh nhân và liên kết phòng khám mà không có rủi ro thông tin sức khỏe được bảo vệ đi tới máy chủ nào."
+      },
+      {
+        "title": "Bảo mật pháp lý và doanh nghiệp",
+        "description": "Tạo liên kết nội bộ cho cuộc họp hội đồng quản trị hay tài liệu tố tụng trong khi giữ đầy đủ chủ quyền dữ liệu doanh nghiệp."
+      },
+      {
+        "title": "Cơ sở chính phủ và nhà thầu quốc phòng",
+        "description": "Phát thẻ WiFi cho khách bên trong một cơ sở an ninh mà không để thông tin xác thực mật nào rời khỏi phòng."
+      },
+      {
+        "title": "Dịch vụ tài chính và chuyển tiền tiền mã hóa",
+        "description": "Xây mã thanh toán blockchain khi biết địa chỉ ví và số tiền chỉ nằm nghiêm ngặt trên thiết bị của bạn."
+      },
+      {
+        "title": "Tiếp thị thương hiệu tiêu dùng và xây dựng niềm tin",
+        "description": "Nói với khách hàng quan tâm quyền riêng tư, một cách trung thực, rằng quét mã chiến dịch của bạn sẽ không theo dõi họ đang ở đâu."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Cách xác minh quyền riêng tư phía máy khách trong trình duyệt của bạn",
+      "points": [
+        "Theo dõi tab mạng. Mở Công cụ dành cho nhà phát triển (F12) và xem Network trong khi tạo mã hoặc tải logo. Không có gì đi ra — không có POST hay GET nào mang dữ liệu của bạn.",
+        "Rút phích cắm. Tải trang, ngắt WiFi và di động, rồi tạo mã. Nó hiện ra ngay lập tức, ngoại tuyến, điều chỉ có thể xảy ra khi mọi thứ chạy trong trình duyệt của bạn.",
+        "Giải mã mã của chính bạn. Đọc mã URL đã tạo bằng bất kỳ ứng dụng quét nào. Văn bản được giải mã chính xác là URL của bạn, không có tên miền chuyển hướng nào bọc quanh nó.",
+        "Tìm trình theo dõi. Các trang trình tạo không tải pixel theo dõi hành vi hay script của nhà môi giới dữ liệu.",
+        "Đóng tab. Vì dữ liệu nằm trong bộ nhớ dễ bay hơi, đóng tab sẽ xóa sạch mọi thứ bạn đã nhập."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "QR Generator Online có lưu URL, mật khẩu hay chi tiết liên hệ của tôi không?",
+        "a": "Không gì bạn nhập được lưu. Việc tạo mã diễn ra hoàn toàn trong bộ nhớ trình duyệt của bạn, nên không phần nào của nó từng được truyền đi hay giữ lại trên máy chủ."
+      },
+      {
+        "q": "Các bạn có theo dõi có bao nhiêu người quét mã QR của tôi không?",
+        "a": "Chúng tôi không thể, và theo thiết kế là không. Mã tĩnh liên kết thẳng tới đích của bạn không có máy chủ chuyển hướng ở giữa, nên không có điểm nào mà lượt quét có thể được đếm hay ghi lại."
+      },
+      {
+        "q": "QR Generator Online có tuân thủ quy định GDPR và CCPA không?",
+        "a": "Hoàn toàn. Không có thông tin cá nhân nào được thu thập, lưu trữ hay xử lý — và địa chỉ IP của người quét không được ghi lại — nên không có gì để các quy định đó đánh dấu."
+      },
+      {
+        "q": "Hình logo tôi tải lên có được lưu trên máy chủ web của bạn không?",
+        "a": "Chúng không được tải lên chút nào. Logo được ghép cục bộ qua API HTML5 Canvas trong trình duyệt của bạn, nên hình ảnh không bao giờ đến máy chủ bên ngoài."
+      },
+      {
+        "q": "Tạo mã QR WiFi chứa mật khẩu router của tôi có an toàn không?",
+        "a": "Có. Tên mạng và mật khẩu được lắp ráp cục bộ và ghi trực tiếp vào mẫu mã vạch. Không cái nào trong số đó từng được gửi qua internet."
+      },
+      {
+        "q": "Các bạn có bán dữ liệu người dùng cho nhà quảng cáo bên thứ ba hay nhà môi giới dữ liệu không?",
+        "a": "Không có gì để bán. Không tồn tại cơ sở dữ liệu người dùng, hồ sơ tài khoản hay bản ghi theo dõi nào để giao cho bất kỳ ai."
+      },
+      {
+        "q": "Các bạn có dùng cookie trên QR Generator Online không?",
+        "a": "Chỉ loại kỹ thuật tối thiểu cần để trang hoạt động. Không sử dụng cookie quảng cáo hành vi của bên thứ ba."
+      },
+      {
+        "q": "Tôi có thể liên hệ ai về các câu hỏi quyền riêng tư?",
+        "a": "Đội bảo vệ dữ liệu trả lời trực tiếp các câu hỏi về quyền riêng tư và tuân thủ tại support@qr-generator.online."
+      }
+    ],
+    "bestPractices": "Bạn có thể tạo mã tự do ở đây mà không phải lo lắng gì — quy trình diễn ra phía máy khách từ đầu đến cuối và không phụ thuộc vào bất kỳ máy chủ bên thứ ba nào."
+  },
+  '/terms': {
+    "sections": [
+      {
+        "title": "Điều khoản sử dụng hợp lý và phân phối thương mại",
+        "paragraphs": [
+          "Các mã QR tĩnh được tạo qua QR Generator Online có thể được sử dụng tự do cho cả mục đích cá nhân và thương mại trên các phương tiện in ấn và kỹ thuật số.",
+          "Người dùng chịu trách nhiệm đảm bảo nội dung được mã hóa tuân thủ các tiêu chuẩn pháp lý hiện hành."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Điều khoản dịch vụ, cấp phép thương mại và khung sử dụng",
+      "paragraphs": [
+        "Sử dụng QR Generator Online có nghĩa là đồng ý với Điều khoản dịch vụ, thỏa thuận cấp phép thương mại và chính sách sử dụng hợp lệ được nêu dưới đây.",
+        "Nền tảng tạo mã vạch 2D theo tiêu chuẩn ISO/IEC 18004, phía máy khách và miễn phí. Bất cứ thứ gì bạn tạo đi kèm quyền đầy đủ, không hạn chế, không tiền bản quyền cho cả sử dụng thương mại lẫn cá nhân, được trao cho bạn vĩnh viễn — không cần mua giấy phép riêng sau này.",
+        "Các phần tiếp theo bao gồm sở hữu trí tuệ, sử dụng hợp lệ, giới hạn trách nhiệm và tuyên bố miễn trừ liên quan đến sản xuất in thương mại. Đáng đọc trước một lô lớn."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Tóm tắt điều khoản cấp phép thương mại",
+      "headers": [
+        "Hạng mục cấp phép",
+        "Điều khoản và quyền trên QR Generator Online",
+        "Dịch vụ mã vạch thương mại truyền thống"
+      ],
+      "rows": [
+        [
+          "Quyền sử dụng thương mại",
+          "Quyền thương mại 100% không hạn chế, không tiền bản quyền",
+          "Yêu cầu gói cấp phép thương mại trả phí ($300+/năm)"
+        ],
+        [
+          "Phí bản quyền / phí quét",
+          "0,00 USD (không tiền bản quyền hay phí theo lượt quét)",
+          "Phí vượt mức khi lượt quét vượt giới hạn hàng tháng"
+        ],
+        [
+          "Quyền sở hữu trí tuệ",
+          "Bạn sở hữu 100% tác phẩm và dữ liệu mã QR đã tạo",
+          "Nền tảng giữ quyền hoặc khẳng định chuyển hướng độc quyền"
+        ],
+        [
+          "Phạm vi tái bản in",
+          "Không hạn chế (bao bì, sách, biển quảng cáo, truyền hình)",
+          "Bị giới hạn theo lượng in hoặc giới hạn gói"
+        ],
+        [
+          "Rủi ro hủy tài khoản",
+          "Rủi ro bằng không (mã tĩnh có hiệu lực vĩnh viễn)",
+          "Mã bị vô hiệu nếu hủy đăng ký"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Tạo tác phẩm mã QR tùy chỉnh của bạn",
+        "description": "Xây mã bằng bất kỳ trình tạo nào ở đây, bao gồm cả kiểu dáng và logo."
+      },
+      {
+        "number": 2,
+        "title": "Có ngay giấy phép thương mại toàn cầu",
+        "description": "Ngay khi mã được tạo, bạn có giấy phép vĩnh viễn, không tiền bản quyền, toàn cầu để sử dụng trên bất kỳ phương tiện nào, vật lý hoặc kỹ thuật số."
+      },
+      {
+        "number": 3,
+        "title": "Triển khai trên sản phẩm và chiến dịch thương mại",
+        "description": "Đặt lên bao bì, quảng cáo truyền hình, kệ bán lẻ hay chiến dịch quảng cáo. Không có phí cấp phép nào gắn với bất kỳ điều nào trong số đó."
+      }
+    ],
+    "features": [
+      {
+        "title": "Giấy phép thương mại vĩnh viễn không tiền bản quyền",
+        "description": "Sử dụng mã trên sản phẩm, sách, bao bì và phương tiện kỹ thuật số trên toàn thế giới mà không có khoản phí định kỳ nào."
+      },
+      {
+        "title": "Sở hữu đầy đủ tài sản đã tạo",
+        "description": "Thiết kế mã vạch và mọi tác phẩm tùy chỉnh bên trong nó là của riêng bạn."
+      },
+      {
+        "title": "Không ràng buộc nhà cung cấp hay phụ thuộc dịch vụ",
+        "description": "Mã mã hóa trực tiếp tĩnh không phụ thuộc vào chúng tôi. Một thay đổi chính sách trong tương lai không thể quay ngược lại làm hỏng thứ bạn đã in."
+      },
+      {
+        "title": "Tuyên bố minh bạch về chất lượng tiền in",
+        "description": "Hướng dẫn rõ ràng về kiểm thử bản in trước khi chạy in, không có gì chôn trong chữ nhỏ."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Các trường hợp sử dụng thương mại được phép và ứng dụng",
+      "description": "Tổng quan đầy đủ về các ứng dụng thương mại được phép trên QR Generator Online.",
+      "headers": [
+        "Ứng dụng thương mại",
+        "Tình trạng cấp phép",
+        "Phạm vi được phép",
+        "Tiền bản quyền yêu cầu"
+      ],
+      "rows": [
+        [
+          "Bao bì sản phẩm bán lẻ và nhãn thực phẩm",
+          "Được phép vĩnh viễn",
+          "Phân phối đơn vị toàn cầu không giới hạn",
+          "0,00 USD (không)"
+        ],
+        [
+          "Quảng cáo truyền hình và streaming thương mại",
+          "Được phép vĩnh viễn",
+          "Phát sóng và truyền thông streaming toàn cầu",
+          "0,00 USD (không)"
+        ],
+        [
+          "Sách, tạp chí và ấn phẩm in",
+          "Được phép vĩnh viễn",
+          "Lưu hành in toàn cầu không giới hạn",
+          "0,00 USD (không)"
+        ],
+        [
+          "Biển quảng cáo ngoài trời và quảng cáo phương tiện công cộng",
+          "Được phép vĩnh viễn",
+          "Chiến dịch ngoài trời quốc gia và quốc tế",
+          "0,00 USD (không)"
+        ],
+        [
+          "Văn phòng phẩm doanh nghiệp và danh thiếp thông minh",
+          "Được phép vĩnh viễn",
+          "Phân phối không giới hạn cho nhân viên",
+          "0,00 USD (không)"
+        ],
+        [
+          "Phần mềm, ứng dụng di động và giao diện web",
+          "Được phép vĩnh viễn",
+          "Nhúng vào SaaS, web và ứng dụng di động",
+          "0,00 USD (không)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Nhà sản xuất hàng tiêu dùng và nhà bán lẻ",
+        "description": "In mã vector vĩnh viễn lên hàng triệu thùng và chai với sự chắc chắn pháp lý và không có tiền bản quyền phải theo dõi."
+      },
+      {
+        "title": "Nhà xuất bản và nhà sách giáo dục",
+        "description": "Đưa mã quét được vào sách giáo khoa, tiểu thuyết và phiếu bài tập theo quyền in ấn vĩnh viễn."
+      },
+      {
+        "title": "Agency quảng cáo và truyền thông quốc gia",
+        "description": "Chạy quảng cáo truyền hình, trang tạp chí và chiến dịch biển quảng cáo mà không có rủi ro cấp phép treo lơ lửng."
+      },
+      {
+        "title": "Nhượng quyền khách sạn và chuỗi nhà hàng",
+        "description": "Chuẩn hóa mã thực đơn kỹ thuật số và thanh toán tại bàn trên hàng trăm địa điểm."
+      },
+      {
+        "title": "Nhà sáng tạo, nghệ sĩ và tác giả độc lập",
+        "description": "Thêm mã thương hiệu vào bản in nghệ thuật, hàng hóa hay sách tự xuất bản mà không có rào cản ngân sách."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Chính sách sử dụng hợp lệ và tuyên bố miễn trừ in ấn preflight",
+      "points": [
+        "Không có nội dung độc hại. Mã không được liên kết tới các trang lừa đảo, phần mềm độc hại, lừa đảo hay tài liệu bất hợp pháp.",
+        "Kiểm tra trước khi in. Quét thử một bản in trước khi chạy số lượng lớn là trách nhiệm của bạn, và đó là cách tốt nhất để tránh in lại tốn kém.",
+        "Giữ đích luôn hoạt động. Bạn chịu trách nhiệm đảm bảo URL mà mã trỏ tới vẫn trực tuyến và truy cập được.",
+        "Tôn trọng thương hiệu. Chỉ nhúng logo mà bạn thực sự có quyền sử dụng.",
+        "Dịch vụ được cung cấp \"nguyên trạng\". Chúng tôi tuân thủ ISO/IEC 18004, nhưng không thể bảo đảm hiệu chuẩn máy in của bên thứ ba, nên bản duyệt cuối cùng là việc của bạn kiểm tra."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Tôi có thể dùng mã QR tạo trên QR Generator Online cho sản phẩm thương mại không?",
+        "a": "Tự do và trên toàn thế giới. Bạn có đầy đủ quyền, không hạn chế, không tiền bản quyền để đặt chúng lên bao bì, sách, kệ bán lẻ và phương tiện kỹ thuật số."
+      },
+      {
+        "q": "Tôi có nợ tiền bản quyền hay phí theo lượt quét khi doanh nghiệp tôi lớn lên không?",
+        "a": "Không một xu nào. Mỗi mã đều miễn phí, không tiền bản quyền, không giới hạn quét và không có phí nào tăng theo khối lượng của bạn."
+      },
+      {
+        "q": "Ai sở hữu quyền sở hữu trí tuệ của mã QR đã tạo?",
+        "a": "Bạn — mã vạch và bất kỳ logo hay văn bản nào được nhúng vào đó hoàn toàn thuộc về bạn."
+      },
+      {
+        "q": "Tôi có thể tạo mã QR cho khách hàng thiết kế và tính phí họ không?",
+        "a": "Chắc chắn. Agency, freelancer và nhà tư vấn được hoan nghênh tạo mã cho các công việc khách hàng có thu phí."
+      },
+      {
+        "q": "Điều gì xảy ra nếu QR Generator Online thay đổi trong tương lai?",
+        "a": "Bất cứ thứ gì bạn đã tải về vẫn tiếp tục hoạt động. Một mã tĩnh giữ dữ liệu trong chính ma trận, không phụ thuộc vào máy chủ của chúng tôi — nên tương lai của chúng tôi không ảnh hưởng đến mã đã in của bạn."
+      },
+      {
+        "q": "Có hạn chế nào về nội dung tôi có thể mã hóa không?",
+        "a": "Chỉ những hạn chế hiển nhiên: không phần mềm độc hại, lừa đảo, gian lận hay tài liệu bất hợp pháp, như chính sách sử dụng hợp lệ nêu rõ."
+      },
+      {
+        "q": "Giới hạn trách nhiệm của bạn liên quan đến các đợt in thương mại là gì?",
+        "a": "Như thông lệ với phần mềm, các công cụ được cung cấp \"nguyên trạng\". Quét một bản in thử trước khi duyệt một đơn hàng thương mại lớn — kiểm tra đó chính là biện pháp bảo vệ của bạn."
+      },
+      {
+        "q": "Tôi liên hệ đội pháp lý hoặc cấp phép của các bạn bằng cách nào?",
+        "a": "Các câu hỏi về pháp lý và cấp phép gửi tới support@qr-generator.online."
+      }
+    ],
+    "bestPractices": "Quét một bản in thử trước khi duyệt đợt số lượng lớn, và giữ các URL đích của bạn hoạt động — một mã chỉ tốt bằng trang nó trỏ tới."
+  },
+  '/blog': {
+    "sections": [
+      {
+        "title": "Hướng dẫn QR thực tiễn để phát triển doanh nghiệp",
+        "paragraphs": [
+          "Khám phá thư viện hướng dẫn chi tiết của chúng tôi, bao gồm tối ưu thực đơn nhà hàng, công thức kích thước in tối thiểu, tạo khách hàng tiềm năng từ biển bất động sản và thiết lập WiFi cho khách trong ngành khách sạn.",
+          "Tìm hiểu cách các thương hiệu hiện đại tận dụng công nghệ QR để đưa tương tác từ ngoại tuyến sang trực tuyến."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Bách khoa toàn thư và sổ tay thực hành về công nghệ QR hiện đại",
+      "paragraphs": [
+        "Đây là trung tâm tri thức của QR Generator Online — nơi bạn nhận được câu trả lời rõ ràng về kỹ thuật mã vạch, marketing QR di động, tiêu chuẩn in thương mại và chia sẻ danh thiếp. Mã QR chạy theo tiêu chuẩn ISO/IEC 18004, và trong hơn hai mươi năm đã đi từ theo dõi linh kiện xe hơi trên dây chuyền lắp ráp đến trở thành cầu nối giữa một trang in và dịch vụ đám mây, một khoản thanh toán hay một trang di động.",
+        "Dù bạn là người quản lý thương hiệu đang ra mắt bao bì bán lẻ, chủ nhà hàng đang tinh giản gọi món tại bàn, nhà thiết kế preflight đang vật lộn với lề tràn, hay kỹ sư đang nối một lược đồ URI — các hướng dẫn ở đây cung cấp công thức thực sự, chi tiết giao thức và quy trình làm việc, chứ không phải lớp bóng bẩy của marketing.",
+        "Các hướng dẫn chuyên sâu bên dưới bao quát vật lý kích thước, toán sửa lỗi, khía cạnh quyền riêng tư và chiến thuật chuyển đổi."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Tổng quan các hướng dẫn mã QR cốt lõi và ứng dụng theo ngành",
+      "headers": [
+        "Ngành / lĩnh vực",
+        "Trọng tâm chính",
+        "Tiêu chuẩn kỹ thuật chính",
+        "Lợi ích thương mại chính"
+      ],
+      "rows": [
+        [
+          "Khách sạn và ẩm thực",
+          "Thực đơn PDF kỹ thuật số không chạm và gọi món tại bàn",
+          "HTTPS, liên kết toàn cầu, viewport responsive",
+          "Không chi phí in, tăng 25% vòng quay bàn"
+        ],
+        [
+          "Sản xuất in thương mại",
+          "Vật lý kích thước, chuẩn DPI và tỷ lệ tương phản",
+          "ISO/IEC 18004, tương phản WCAG 2.1 (> 4,5:1), SVG/EPS",
+          "Độ tin cậy quét ngay lần đầu 100% trên mọi chất liệu"
+        ],
+        [
+          "Doanh nghiệp và kết nối",
+          "Danh thiếp kỹ thuật số vCard 3.0",
+          "RFC 2426, RFC 6350, mã hóa UTF-8",
+          "Giữ liên hệ cao hơn 88%, lưu địa chỉ bằng một chạm"
+        ],
+        [
+          "Tiếp thị bất động sản",
+          "Biển bán nhà, tour 3D ảo và yêu cầu về danh sách",
+          "Liên kết Matterport 3D, theo dõi UTM, in độ phân giải cao",
+          "Tạo khách hàng tiềm năng 24/7 từ người mua lái xe ngang qua"
+        ],
+        [
+          "Quản lý WiFi cho khách",
+          "Truy cập mạng WPA3/WPA2 không cản trở",
+          "Lược đồ URI WIFI:, chuẩn IEEE 802.11ax/ac",
+          "Không có mật khẩu gõ sai, giảm tải hỗ trợ nhân viên"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Chọn giao thức tối ưu cho trường hợp sử dụng của bạn",
+        "description": "Xác định trước công việc cần gì — một liên kết web tĩnh (HTTPS), một thẻ liên hệ (vCard), WiFi tức thì (WIFI:), hay tin nhắn trực tiếp (WhatsApp/SMS). Giao thức quyết định mọi thứ sau đó."
+      },
+      {
+        "number": 2,
+        "title": "Áp dụng quy tắc kích thước và tương phản bằng toán học",
+        "description": "Đặt kích thước mã theo S = D / 10 với khoảng cách mọi người sẽ quét, và giữ tương phản trên 4,5:1."
+      },
+      {
+        "number": 3,
+        "title": "Xuất tệp vector không mất dữ liệu và kiểm tra bản in thật",
+        "description": "Xuất SVG vector cho mọi thứ sẽ in, rồi quét bản in thử trên vài iPhone và Android trước khi gửi đi."
+      }
+    ],
+    "features": [
+      {
+        "title": "Phân tích giao thức kỹ thuật chuyên sâu",
+        "description": "Chi tiết RFC và ISO đằng sau việc tạo mã vạch 2D và cách camera điện thoại phân tích chúng — được giải thích rõ, không lướt qua."
+      },
+      {
+        "title": "Công thức sản xuất in ấn thực tế",
+        "description": "Phương trình kích thước thực, tiêu chuẩn sửa lỗi và lời khuyên về nền in mà một công việc in thực sự cần."
+      },
+      {
+        "title": "Nghiên cứu điển hình ROI đa ngành",
+        "description": "Sổ tay thực tiễn cho khách sạn, in thương mại, kết nối doanh nghiệp, bất động sản và chăm sóc sức khỏe."
+      },
+      {
+        "title": "Kiến thức miễn phí 100% và truy cập mở",
+        "description": "Hướng dẫn miễn phí, mẫu vector và hướng dẫn chuyên gia — không rào thanh toán, không đăng ký."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Bảng tra cứu chính về kích thước quang học và khoảng cách xem",
+      "description": "Hướng dẫn tra nhanh để tính kích thước tối thiểu của mã QR trên mọi phương tiện vật lý.",
+      "headers": [
+        "Phương tiện vật lý",
+        "Khoảng cách quét thông thường",
+        "Chiều rộng tối thiểu (S)",
+        "Sửa lỗi khuyến nghị"
+      ],
+      "rows": [
+        [
+          "Danh thiếp và thẻ đeo",
+          "15 cm - 30 cm (6\" - 12\")",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "Mức Q (25%) hoặc mức H (30%)"
+        ],
+        [
+          "Thẻ để bàn và lót ly",
+          "30 cm - 50 cm (12\" - 20\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Mức M (15%) hoặc mức H (30%)"
+        ],
+        [
+          "Bao bì sản phẩm và nhãn",
+          "20 cm - 40 cm (8\" - 16\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Mức H (30%) nếu có logo"
+        ],
+        [
+          "Tờ rơi, áp phích và tạp chí",
+          "50 cm - 150 cm (20\" - 60\")",
+          "60 mm - 150 mm (2,4\" - 6,0\")",
+          "Mức M (15%)"
+        ],
+        [
+          "Đội xe và xe van",
+          "3,0 m - 6,0 m (10 ft - 20 ft)",
+          "300 mm x 300 mm (12\" x 12\")",
+          "Mức H (30%) trên vinyl đúc"
+        ],
+        [
+          "Biển quảng cáo đường cao tốc",
+          "15,0 m - 30,0 m (50 ft - 100 ft)",
+          "1500 mm - 3000 mm (5 ft - 10 ft)",
+          "Mức L (7%) hoặc mức M (15%)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Đội marketing đa kênh doanh nghiệp",
+        "description": "Chuẩn hóa thiết kế QR, theo dõi chiến dịch UTM và đầu ra vector preflight trên các bộ phận marketing toàn cầu."
+      },
+      {
+        "title": "Nhà in thương mại và nhà preflight",
+        "description": "Kiểm tra tác phẩm của khách hàng so với ISO/IEC 18004, ngưỡng 300+ DPI và giới hạn tương phản trước khi chạy máy."
+      },
+      {
+        "title": "Nhà điều hành khách sạn và chuỗi nhà hàng",
+        "description": "Triển khai thực đơn không chạm và gọi món tại bàn giúp giảm chi phí nhân sự và tăng tốc vòng quay bàn."
+      },
+      {
+        "title": "Môi giới bất động sản và quản lý tài sản",
+        "description": "Biến một biển hay tờ rơi thành nguồn khách hàng tiềm năng đo lường được 24/7 và trung tâm tour 3D."
+      },
+      {
+        "title": "Ban tổ chức sự kiện và điều phối hội chợ",
+        "description": "Tăng tốc check-in, thêm phiên vào lịch người tham dự, trao đổi thẻ kỹ thuật số và ghi nhận lưu lượng nhà tài trợ."
+      }
+    ],
+    "troubleshooting": {
+      "title": "5 lỗi sản xuất mã QR phổ biến nhất",
+      "points": [
+        "Tương phản yếu. Các module nhạt trên giấy nhạt đánh bại camera. Giữ 4,5:1 hoặc cao hơn.",
+        "Vùng yên tĩnh bị cắt. Cắt lề quá sát và máy quét không tìm được ranh giới mã.",
+        "Bitmap 72 DPI. Ảnh chụp web độ phân giải thấp làm nhòe cạnh module khi in. Cung cấp SVG vector hoặc raster 300+ DPI.",
+        "URL quá dài. Liên kết 250 ký tự tạo ra các chấm siêu nhỏ bị lem khi in nhỏ. Hãy rút ngắn lại.",
+        "Chói bóng. Lớp phủ bóng hắt đèn chiếu vào ống kính. Chọn mờ hoặc satin."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Mục đích của trung tâm tri thức QR Generator Online là gì?",
+        "a": "Nó tồn tại để cung cấp cho doanh nghiệp, nhà thiết kế và nhà phát triển các hướng dẫn kỹ thuật, công thức và nghiên cứu điển hình cần thiết để đưa mã QR thực sự quét được ra thị trường — chiều sâu mà bạn nếu không sẽ phải ghép từ hàng chục nguồn."
+      },
+      {
+        "q": "Các hướng dẫn và bài học trên blog này có hoàn toàn miễn phí không?",
+        "a": "Mọi hướng dẫn, chuẩn và công cụ vector ở đây đều miễn phí và mở — không rào thanh toán, không tài khoản."
+      },
+      {
+        "q": "Bạn cập nhật các hướng dẫn công nghệ QR bao lâu một lần?",
+        "a": "Các bài viết được sửa khi bộ giải mã camera iOS và Android thay đổi, khi tiêu chuẩn ISO chuyển động và khi thực tiễn marketing di động thay đổi."
+      },
+      {
+        "q": "Tôi có thể yêu cầu một hướng dẫn hay bài học tùy chỉnh về một chủ đề QR cụ thể không?",
+        "a": "Gửi chủ đề qua trang Liên hệ và đội biên tập sẽ xem xét."
+      },
+      {
+        "q": "Các hướng dẫn của bạn có bao quát cả kiến trúc mã QR tĩnh và động không?",
+        "a": "Có — bao gồm phân tích đầy đủ các đánh đổi giữa mã tĩnh không phụ thuộc và chuyển hướng động."
+      },
+      {
+        "q": "Tôi có thể tìm hướng dẫn kích thước cụ thể cho dự án in của mình ở đâu?",
+        "a": "\"Hướng dẫn đầy đủ về in mã QR\" có bảng kích thước, lời khuyên về nền in và công thức DPI đúng cho việc đó."
+      },
+      {
+        "q": "Làm sao để đảm bảo mã QR của tôi tuân thủ quy định quyền riêng tư trên di động?",
+        "a": "Các hướng dẫn dựa vào việc tạo mã tĩnh phía máy khách, xử lý mọi thứ trong bộ nhớ trình duyệt — không ghi IP khách truy cập, không theo dõi phân tích, nên có rất ít thứ để quy định về quyền riêng tư đánh dấu."
+      },
+      {
+        "q": "Tôi có thể chia sẻ các bài viết và tài nguyên này với đội của mình không?",
+        "a": "Hãy chia sẻ — đồng nghiệp, đội marketing, agency và bộ phận preflight chính là đối tượng được nhắm đến."
+      }
+    ],
+    "bestPractices": "Đánh dấu trung tâm này để tra cứu công thức kích thước, chuẩn tương phản và danh sách kiểm tra trước khi in — đó là những thứ đáng kiểm tra trước khi bất kỳ công việc in thương mại nào được phát hành."
+  },
+  '/blog/qr-codes-for-restaurants': {
+    "sections": [
+      {
+        "title": "Chuyển sang thực đơn kỹ thuật số không chạm",
+        "paragraphs": [
+          "Trong ngành khách sạn hiện đại, tốc độ và độ chính xác của dịch vụ là thiết yếu. Thực đơn QR kỹ thuật số trên thẻ để bàn cho phép khách xem các lựa chọn đồ ăn và thức uống cập nhật ngay khi vừa ngồi xuống.",
+          "Nhà hàng cắt giảm chi phí in lại mỗi khi giá thay đổi, đồng thời làm nổi bật các món đặc biệt theo mùa và món có biên lợi nhuận cao."
+        ]
+      },
+      {
+        "title": "Cách thiết lập thực đơn mã QR cho nhà hàng của bạn",
+        "paragraphs": [
+          "Bắt đầu chỉ mất chưa đến năm phút. Tải lên thực đơn PDF hiện có hoặc liên kết trang đặt món trực tuyến của bạn, rồi tạo mã QR có thương hiệu với logo nhà hàng ở giữa. In lên thẻ để bàn laminate bền, decal cửa sổ hoặc chân biên lai.",
+          "Các nghiên cứu cho thấy nhà hàng dùng thực đơn QR kỹ thuật số ghi nhận mức tăng trung bình 15% giá trị đơn hàng trung bình, vì khách khám phá toàn bộ thực đơn theo nhịp của riêng họ thay vì phụ thuộc vào các món đặc biệt được nói miệng. Cập nhật món, giá hay ưu đãi theo mùa là tức thì — không cần in lại. Ghép mỗi mã QR với một lời kêu gọi hành động ngắn như \"Quét để xem toàn bộ thực đơn hôm nay\" để có kết quả tốt nhất."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Hướng dẫn toàn diện về thực đơn mã QR và vận hành ăn uống không chạm",
+      "paragraphs": [
+        "Thực đơn QR bắt đầu như một giải pháp tạm thời trong đại dịch và ở lại như một tiêu chuẩn vận hành. Nó chạy trên HTTPS thuần: mã đưa trình duyệt điện thoại của khách đến một thực đơn PDF lưu trên đám mây, một cổng đặt món hay một trang thanh toán, không cần tải ứng dụng trước.",
+        "Kinh tế học là thứ giữ nó ở lại. Thực đơn kỹ thuật số loại bỏ chi phí in lại định kỳ — thường từ 1.500 đến 4.000 USD mỗi năm cho mỗi địa điểm — cho phép bạn đổi giá hay ưu đãi trong vài giây, giảm lỗi gọi món, và nâng hóa đơn trung bình từ 12% đến 22% khi khách nhìn thấy món ăn và nhận lời gợi ý thêm món.",
+        "Không điều nào trong số đó xảy ra nếu phần vật lý chưa được làm đúng. Vị trí đặt, độ bền của thẻ để bàn, ánh sáng và một trang thân thiện với di động quyết định khách ở mọi độ tuổi quét một lần là xong hay bỏ cuộc."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Thực đơn mã QR kỹ thuật số so với thực đơn giấy laminate truyền thống",
+      "headers": [
+        "Yếu tố vận hành",
+        "Thực đơn mã QR kỹ thuật số",
+        "Thực đơn giấy laminate truyền thống"
+      ],
+      "rows": [
+        [
+          "Chi phí in lại hằng năm",
+          "0 USD (cập nhật trực tuyến ngay)",
+          "1.500 - 4.000+ USD mỗi địa điểm mỗi năm"
+        ],
+        [
+          "Tốc độ cập nhật thực đơn",
+          "Thời gian thực (gỡ món đã hết trong vài giây)",
+          "Vài ngày đến vài tuần để thiết kế lại và in lại"
+        ],
+        [
+          "Tốc độ luân chuyển bàn",
+          "Nhanh hơn 15 - 25 phút mỗi lượt ngồi",
+          "Chậm hơn vì phải chờ thực đơn giấy và hóa đơn"
+        ],
+        [
+          "Giá trị đơn hàng trung bình",
+          "Cao hơn 12% - 22% (hình ảnh món ăn trực quan)",
+          "Chữ tĩnh với khả năng bán thêm hạn chế"
+        ],
+        [
+          "Vệ sinh và sạch sẽ",
+          "100% không chạm trên thiết bị riêng của khách",
+          "Phải khử trùng sau mỗi lượt khách"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Đưa thực đơn tối ưu cho di động lên mạng",
+        "description": "Đăng thực đơn trực tuyến dưới dạng trang responsive nhẹ hoặc PDF nén dưới 3 MB, lưu trên trang của bạn."
+      },
+      {
+        "number": 2,
+        "title": "Tạo mã QR có thương hiệu với sửa lỗi mức H",
+        "description": "Dán URL thực đơn vào trình tạo, áp dụng màu của bạn, đặt huy hiệu ở giữa với mức H và xuất SVG vector."
+      },
+      {
+        "number": 3,
+        "title": "In lên acrylic, gỗ hoặc bìa laminate bền",
+        "description": "Làm màn hình để bàn ít nhất 40 mm x 40 mm và giữ bề mặt mờ để đèn trần không làm chói."
+      }
+    ],
+    "features": [
+      {
+        "title": "Cập nhật thực đơn và giá theo thời gian thực tức thì",
+        "description": "Đổi giá, thêm ưu đãi hoặc gỡ món đã hết trực tuyến — mã đã in không bao giờ phải thay đổi."
+      },
+      {
+        "title": "Trải nghiệm khách hàng sạch sẽ và không chạm",
+        "description": "Khách đọc thực đơn trên điện thoại của chính họ, không có gì dùng chung giữa các bàn."
+      },
+      {
+        "title": "Hỗ trợ thực đơn kỹ thuật số đa ngôn ngữ",
+        "description": "Hướng khách quốc tế đến một thực đơn tự động dịch theo ngôn ngữ trình duyệt của họ."
+      },
+      {
+        "title": "Liên kết tĩnh vĩnh viễn không phí",
+        "description": "Mã thực đơn tĩnh luôn có hiệu lực, không giới hạn quét và không phí."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Thông số vị trí và kích thước mã QR trên bàn nhà hàng",
+      "description": "Đảm bảo thực khách có thể quét mã thực đơn dễ dàng khi đang ngồi thoải mái tại bàn.",
+      "headers": [
+        "Vị trí đặt",
+        "Khoảng cách quét",
+        "Kích thước in khuyến nghị",
+        "Vật liệu khuyến nghị"
+      ],
+      "rows": [
+        [
+          "Thẻ và khối để bàn ăn",
+          "25 cm - 45 cm (10\" - 18\")",
+          "40 mm x 40 mm (1,6\" x 1,6\")",
+          "Gỗ cứng khắc laser / giá acrylic"
+        ],
+        [
+          "Lót ly đồ uống và mặt quầy bar",
+          "20 cm - 35 cm (8\" - 14\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Bìa lót thấm nặng"
+        ],
+        [
+          "Bục tiếp đón và màn hình lối vào",
+          "50 cm - 100 cm (20\" - 40\")",
+          "80 mm x 80 mm (3,2\" x 3,2\")",
+          "Màn hình để quầy có khung / thẻ đỡ"
+        ],
+        [
+          "Decal cửa sổ để xem ngoài giờ",
+          "50 cm - 120 cm (20\" - 48\")",
+          "100 mm x 100 mm (4,0\" x 4,0\")",
+          "Decal cửa sổ vinyl mờ chống thời tiết"
+        ],
+        [
+          "Tờ chèn túi giao hàng mang đi và nhãn dán",
+          "20 cm - 35 cm (8\" - 14\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Nhãn dán mờ có keo"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Nhà hàng phục vụ đầy đủ",
+        "description": "Một giá có khung ở mỗi bàn ăn giúp khách xem khai vị và cocktail ngay khi ngồi xuống."
+      },
+      {
+        "title": "Quán cà phê phục vụ nhanh và nhà hàng thức ăn nhanh",
+        "description": "Một mã áp phích phá hàng chờ cho phép mọi người xem thực đơn khi đang xếp hàng, nên gọi món ở quầy nhanh hơn."
+      },
+      {
+        "title": "Nhà máy bia thủ công và danh sách bia taproom",
+        "description": "Một mã lót ly liên kết với danh sách vòi bia trực tiếp giữ thực đơn bia tươi theo mùa luân phiên chính xác đến từng phút."
+      },
+      {
+        "title": "Phục vụ phòng khách sạn và ăn trong phòng",
+        "description": "Một thẻ đầu giường thay thế cuốn sổ phòng cũ nát bằng việc gọi phục vụ phòng 24/7."
+      },
+      {
+        "title": "Hộp đêm, lounge và quầy bar hồ bơi",
+        "description": "Một bộ đánh dấu acrylic khắc laser chống nước đảm nhiệm việc phục vụ chai và đặt cocktail bên hồ bơi."
+      }
+    ],
+    "troubleshooting": {
+      "title": "5 sai lầm lớn nhất phá hỏng trải nghiệm thực đơn QR nhà hàng",
+      "points": [
+        "PDF nặng. Một tệp 25 MB mất nửa phút trên mạng di động. Nén xuống dưới 2 MB, hoặc liên kết một trang HTML nhanh thay thế.",
+        "Chói bóng. Giá acrylic bóng phản chiếu đèn trần vào ống kính. Dùng acrylic mờ chống chói hoặc gỗ tự nhiên.",
+        "Vùng chết sóng di động. Tầng hầm và bê tông làm mất dữ liệu di động. Đặt mã WiFi cạnh mã thực đơn.",
+        "Bắt buộc dùng ứng dụng. Đừng bao giờ bắt thực khách tải ứng dụng để đọc thực đơn. Dùng liên kết web chuẩn mở trong trình duyệt.",
+        "Bố cục chỉ cho máy tính để bàn. Không ai nên phải bấm để phóng to và thu nhỏ. Đặt cỡ chữ thực đơn 16 px hoặc lớn hơn trên di động."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Làm sao tạo mã QR miễn phí cho thực đơn nhà hàng của tôi?",
+        "a": "Đưa thực đơn lên mạng — một PDF hoặc trang web — sao chép URL công khai, dán vào trình tạo URL, thêm logo và màu của bạn, rồi tải SVG hoặc PNG độ phân giải cao."
+      },
+      {
+        "q": "Mã QR có phải cách tốt để vận hành thực đơn kỹ thuật số cho nhà hàng không?",
+        "a": "Đó là cách đơn giản nhất. Lưu thực đơn như một trang web, trỏ mã QR đến nó và đặt mã lên bàn — khi quét, thực đơn kỹ thuật số của bạn mở trên chính điện thoại của thực khách, không cần ứng dụng và không có gì phải phát. Mã động cho phép bạn cập nhật thực đơn kỹ thuật số mà không cần in lại bất cứ thứ gì."
+      },
+      {
+        "q": "Tôi có thể đổi món hay giá trong thực đơn mà không in lại mã QR không?",
+        "a": "Miễn là URL vẫn giữ nguyên — yourrestaurant.com/menu — việc sửa trang phía sau sẽ cập nhật thứ mà mọi mã đã in hiển thị. Mã không bao giờ thay đổi."
+      },
+      {
+        "q": "Vật liệu tốt nhất cho giá để bàn mã QR nhà hàng là gì?",
+        "a": "Giá acrylic mờ, khối gỗ khắc laser, hoặc bìa cứng laminate 350+ GSM — chúng chịu được đổ vỡ, chống chói và bền."
+      },
+      {
+        "q": "Thực khách lớn tuổi có gặp khó khăn khi quét mã QR thực đơn không?",
+        "a": "Điện thoại hiện đại (iOS 11+, Android 9+) đọc mã trực tiếp từ camera mà không cần ứng dụng. Một dòng ngắn như \"Hướng camera vào đây để xem thực đơn\" giúp mọi người dễ dùng hơn."
+      },
+      {
+        "q": "Tôi nên liên kết đến tệp PDF hay trang web responsive?",
+        "a": "Trang web responsive là lựa chọn tốt hơn: nó tải nhanh hơn và thích ứng với màn hình. Nếu chọn PDF, hãy nén xuống dưới 2 MB và định dạng theo chiều dọc."
+      },
+      {
+        "q": "Mã QR nhà hàng tạo trên QR Generator Online có hết hạn không?",
+        "a": "Chúng có hiệu lực trọn đời, với lượt quét không giới hạn và không phí định kỳ."
+      },
+      {
+        "q": "Tôi có thể đưa logo nhà hàng vào giữa mã QR thực đơn không?",
+        "a": "Được. Mức H giữ lại khoảng 30% mã để phục hồi lỗi, đủ dư cho logo hay huy hiệu của bạn ở giữa."
+      },
+      {
+        "q": "Thực đơn QR làm tăng chi tiêu trung bình của khách như thế nào?",
+        "a": "Thực đơn kỹ thuật số có thể hiển thị ảnh món ăn thật, gợi ý kết hợp rượu vang hoặc cocktail và nhắc món tráng miệng — điều đó đẩy hóa đơn trung bình lên 12% đến 22%."
+      }
+    ],
+    "bestPractices": "Làm cho trang thực đơn tải dưới hai giây, dùng vật liệu để bàn mờ chống chói và đặt một mã WiFi cho khách ở mọi chỗ sóng di động yếu."
+  },
+  '/blog/printing-qr-codes-guide': {
+    "sections": [
+      {
+        "title": "Tính kích thước in tối thiểu cho mã QR",
+        "paragraphs": [
+          "Một công thức đơn giản cho kích thước in là tỷ lệ khoảng cách trên kích thước 10:1. Ví dụ, một áp phích được quét từ 1 mét cần một mã QR có chiều rộng tối thiểu 10 cm.",
+          "Luôn giữ lề vùng yên tĩnh 4 module và xuất dạng SVG vector để đầu ra offset và máy in kỹ thuật số hoàn hảo."
+        ]
+      },
+      {
+        "title": "Tương phản màu, sửa lỗi và khuyến nghị định dạng",
+        "paragraphs": [
+          "Luôn giữ tỷ lệ tương phản tối thiểu 4:1 giữa tiền cảnh và nền của mã QR. Tránh in mẫu QR sáng lên nền nhạt — tương phản thấp là nguyên nhân hàng đầu gây lỗi quét trong môi trường in bóng. Dùng sửa lỗi mức H (30% dự phòng dữ liệu) khi nhúng logo để duy trì việc quét đáng tin cậy.",
+          "Với in offset thương mại, luôn cung cấp tệp ở định dạng SVG vector hoặc EPS cho nhà in. Ảnh raster PNG hay JPEG bị vỡ hạt khi phóng vượt độ phân giải gốc, dẫn đến cạnh module mờ làm máy quét nhầm lẫn. Tối thiểu, xuất PNG 2048×2048 điểm ảnh ở 300 DPI khi không chấp nhận SVG. Luôn yêu cầu bản in thử thực tế và thực hiện kiểm tra quét trước khi duyệt các đợt in lớn."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Hướng dẫn kỹ thuật cuối cùng về in mã QR (preflight, kích thước và chất liệu nền)",
+      "paragraphs": [
+        "In tốt một mã QR nghĩa là hiểu vật lý đằng sau việc quét: độ phân giải quang học, tiêu chuẩn preflight, tràn mực, bề mặt phản chiếu ánh sáng ra sao và hình học ống kính điện thoại. Một mã quét ngay trên màn hình có thể hoàn toàn thất bại khi in nếu độ phân giải, vùng yên tĩnh, tương phản hoặc lớp hoàn thiện được xác định sai.",
+        "Theo ISO/IEC 18004, camera giải mã một mã bằng cách đọc mối quan hệ không gian giữa mẫu thời gian và mẫu định vị của nó. Bất cứ thứ gì làm méo nó — mực lan vào vùng yên tĩnh 4 module, chói từ lớp laminate bóng, vỡ hạt từ nguồn DPI thấp — đều phá vỡ giải mã Reed-Solomon.",
+        "Hướng dẫn này cho kỹ thuật viên preflight, nhà thiết kế, kỹ sư bao bì và nhà in các công thức, thông số vật liệu và danh sách kiểm tra chất lượng để đạt độ tin cậy quét ngay lần đầu 100% trong mọi đợt in."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Định dạng tệp in thương mại cho sản xuất mã QR",
+      "headers": [
+        "Định dạng tệp",
+        "Loại độ phân giải",
+        "Tương thích preflight",
+        "Ứng dụng in khuyến nghị"
+      ],
+      "rows": [
+        [
+          "SVG / EPS vector",
+          "Không phụ thuộc độ phân giải (đường vector)",
+          "100% không mất dữ liệu trên mọi công cụ RIP thương mại",
+          "Biển quảng cáo, bao bì, decal xe, văn phòng phẩm"
+        ],
+        [
+          "PNG độ phân giải cao (300+ DPI)",
+          "Bitmap raster (2048x2048+ px không mất dữ liệu)",
+          "Tiêu chuẩn cho máy in kỹ thuật số và đợt ngắn",
+          "Tờ rơi, thực đơn, thư trực tiếp, tạp chí"
+        ],
+        [
+          "PDF / PDF vector",
+          "Đường vector đóng gói",
+          "Tiêu chuẩn preflight và dàn trang toàn cầu",
+          "Sách thương mại, báo cáo thường niên, khuôn bao bì"
+        ],
+        [
+          "JPEG nén mất dữ liệu (tránh)",
+          "Raster nén (có artifact mất dữ liệu)",
+          "Không phù hợp in thương mại (viền rung)",
+          "Chỉ hiển thị web/màn hình (không bao giờ để in)"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Tính kích thước vật lý bằng công thức S = D / 10",
+        "description": "Lấy khoảng cách mọi người quét (D), chia cho mười, đó là chiều rộng và chiều cao tối thiểu (S) của bạn."
+      },
+      {
+        "number": 2,
+        "title": "Xác minh tỷ lệ tương phản WCAG (> 4,5:1) và vùng yên tĩnh",
+        "description": "Xác nhận module tối trên nền sáng, và giữ viền trống đầy đủ 4 module ở mọi cạnh."
+      },
+      {
+        "number": 3,
+        "title": "Xuất SVG vector và thực hiện kiểm thử bản in thật",
+        "description": "Xuất SVG vector, đặt vào InDesign hoặc Illustrator và quét bản duyệt in trên vài điện thoại trước khi chốt."
+      }
+    ],
+    "features": [
+      {
+        "title": "Tỷ lệ khoảng cách quét toán học 10:1",
+        "description": "Tính kích thước chính xác cho mọi phương tiện, từ con tem bưu chính đến biển đường cao tốc 50 mét."
+      },
+      {
+        "title": "Tuân thủ preflight ISO/IEC 18004",
+        "description": "Làm đúng tệp của bạn về thời gian module, mẫu căn chỉnh và dư thừa Reed-Solomon."
+      },
+      {
+        "title": "Hướng dẫn tương thích nền và lớp phủ",
+        "description": "Hiểu cách mực, độ thấm giấy, tăng điểm và mờ so với bóng thực sự tương tác trên máy in."
+      },
+      {
+        "title": "Tải trực tiếp SVG và EPS vector không mất dữ liệu",
+        "description": "Tệp vector sẵn sàng sản xuất cho preflight thương mại và chế bản."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Bảng tham chiếu chính về kích thước in và khoảng cách",
+      "description": "Áp dụng công thức quang học tiêu chuẩn $S = D / 10$ để xác định kích thước in vật lý.",
+      "headers": [
+        "Vị trí vật lý",
+        "Khoảng cách quét (D)",
+        "Chiều rộng tối thiểu (S)",
+        "Định dạng tệp khuyến nghị"
+      ],
+      "rows": [
+        [
+          "Danh thiếp và thẻ tên",
+          "15 cm - 30 cm (6\" - 12\")",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "SVG vector / EPS"
+        ],
+        [
+          "Thẻ để bàn và lót ly",
+          "30 cm - 50 cm (12\" - 20\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "SVG vector / PNG 300 DPI"
+        ],
+        [
+          "Bao bì sản phẩm và thùng",
+          "20 cm - 40 cm (8\" - 16\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "SVG vector / PDF"
+        ],
+        [
+          "Tờ rơi, brochure và tạp chí",
+          "50 cm - 100 cm (20\" - 40\")",
+          "60 mm x 60 mm (2,4\" x 2,4\")",
+          "SVG vector / PNG 300 DPI"
+        ],
+        [
+          "Băng rôn và áp phích hội chợ thương mại",
+          "1,5 m - 3,0 m (5 ft - 10 ft)",
+          "200 mm x 200 mm (8,0\" x 8,0\")",
+          "SVG vector"
+        ],
+        [
+          "Decal xe và đồ họa đội xe",
+          "3,0 m - 6,0 m (10 ft - 20 ft)",
+          "350 mm x 350 mm (14\" x 14\")",
+          "SVG vector / vinyl đúc"
+        ],
+        [
+          "Biển quảng cáo đường cao tốc và quảng cáo phương tiện công cộng",
+          "15,0 m - 30,0 m (50 ft - 100 ft)",
+          "1500 mm - 3000 mm (5 ft - 10 ft)",
+          "SVG vector / EPS khổ lớn"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Bao bì thương mại và hộp sóng flexo",
+        "description": "Đặt mã vector sắc nét vào bản vẽ khuôn bao bì, tính đến độ thấm mực và tăng điểm của máy in."
+      },
+      {
+        "title": "Preflight tạp chí quốc gia và thư trực tiếp",
+        "description": "Vượt ngưỡng 300+ DPI và tách màu CMYK mà các nhà xuất bản tạp chí yêu cầu bạn."
+      },
+      {
+        "title": "Quảng cáo ngoài trời và biển quảng cáo đường cao tốc",
+        "description": "Phóng mã vector lên tỷ lệ biển quảng cáo trong khi hình học module vẫn sắc nét."
+      },
+      {
+        "title": "Danh thiếp cao cấp và dập nhũ",
+        "description": "Tạo đường vector mịn cho dập nhũ, dập nổi và UV cục bộ trên giấy trên 400 GSM."
+      },
+      {
+        "title": "Thẻ tài sản máy móc công nghiệp và tấm kim loại",
+        "description": "Tạo nghệ thuật vector chính xác để khắc laser lên nhôm anod hóa và tấm thép không gỉ."
+      }
+    ],
+    "troubleshooting": {
+      "title": "6 sai lầm preflight chí tử làm hỏng mã QR đã in",
+      "points": [
+        "Vùng yên tĩnh bị cắt. Cắt sát đến viền module và camera mất cạnh. Giữ đủ lề 4 module.",
+        "JPEG nén mất dữ liệu. Nén làm nhòe góc module. Dùng SVG vector hoặc PNG không nén.",
+        "Tương phản yếu. Màu pastel, vàng trên trắng hay xám nhạt không qua được nhị phân hóa. Giữ 4,5:1.",
+        "Chói bóng. Lớp phủ bóng cao chói dưới đèn rọi. Chọn mờ hoặc lụa.",
+        "Bỏ qua tăng điểm. Mực lan trên giấy không tráng và giấy báo, lấp kín khoảng trống giữa các module. Phóng mã lên 15-20% trên vật liệu xốp.",
+        "Màu đảo. Trắng trên đen thất bại trên máy quét cũ. Giữ module tối."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Mã QR có thể in nhỏ nhất là bao nhiêu mà vẫn quét được?",
+        "a": "Với một URL ngắn hoặc thẻ liên hệ đọc từ 15-20 cm, 20 mm x 20 mm (0,8\" x 0,8\") là mức sàn. Trên bao bì và danh thiếp, hãy xem 25 mm x 25 mm (1,0\" x 1,0\") là mức tối thiểu an toàn."
+      },
+      {
+        "q": "Vì sao SVG vector vượt trội hơn PNG để in thương mại?",
+        "a": "SVG mô tả mã như hình học, không phải điểm ảnh, nên nó co giãn đến bất kỳ kích thước biển quảng cáo hay bao bì nào mà không mất độ sắc nét, và nhập sạch vào InDesign và Illustrator."
+      },
+      {
+        "q": "Vùng yên tĩnh là gì và vì sao nó bắt buộc?",
+        "a": "Đó là viền trống — rộng ít nhất 4 module — quanh cả bốn cạnh của mã. Camera cần lề trống đó để biết mã vạch kết thúc ở đâu và nghệ thuật xung quanh bắt đầu ở đâu."
+      },
+      {
+        "q": "Mức sửa lỗi ảnh hưởng thế nào đến độ bền khi in?",
+        "a": "Mức H có 30% dư thừa, nên mã vẫn quét được ngay cả khi tới 30% bề mặt bị xước, rách, bẩn hoặc bị logo ở giữa che phủ."
+      },
+      {
+        "q": "Tôi có thể in mã QR màu lên giấy màu không?",
+        "a": "Có, miễn là module tối vượt 4,5:1 so với giấy sáng. Tránh tối trên tối hoặc sáng trên sáng."
+      },
+      {
+        "q": "Vì sao mã QR laminate bóng thường không quét được?",
+        "a": "Dưới ánh nắng trực tiếp hoặc đèn rọi, độ bóng hoạt động như gương và làm cháy độ tương phản bằng một điểm nóng trắng. Laminate mờ hoặc chống chói sửa được điều này."
+      },
+      {
+        "q": "Cần độ phân giải nào nếu in tệp raster PNG?",
+        "a": "Tệp raster cần 300 DPI ở kích thước in cuối cùng (điểm ảnh = inch × 300). Bản xuất PNG 2048x2048px in sắc nét đến khoảng 7x7 inch."
+      },
+      {
+        "q": "Làm sao kiểm tra mã QR in trước khi duyệt đợt in 10.000 đơn vị?",
+        "a": "Lấy bản duyệt máy in 1:1 trên đúng giấy và lớp phủ bạn sẽ chạy, rồi quét trên cả Android đời cũ và iPhone đời mới, trong ánh sáng yếu và sáng."
+      }
+    ],
+    "bestPractices": "Đưa cho nhà in tệp SVG vector, yêu cầu lớp hoàn thiện mờ, bảo vệ vùng yên tĩnh 4 module và quét bản duyệt thực tế trước khi duyệt toàn bộ đợt in."
+  },
+  '/blog/vcard-qr-code-business-cards': {
+    "sections": [
+      {
+        "title": "Biến danh thiếp thành công cụ lưu liên hệ chỉ bằng một chạm",
+        "paragraphs": [
+          "Mã QR vCard loại bỏ lỗi gõ tay thông tin liên hệ trong các sự kiện kết nối và hội chợ thương mại.",
+          "Người quét mặt sau danh thiếp của bạn ngay lập tức thêm tên, số điện thoại di động, email và hồ sơ LinkedIn của bạn vào danh bạ của họ."
+        ]
+      },
+      {
+        "title": "Mẹo thiết kế cho danh thiếp có mã QR",
+        "paragraphs": [
+          "Đặt mã QR ở mặt sau danh thiếp với lời kêu gọi hành động rõ ràng như \"Quét để lưu liên hệ của tôi\". Giữ mã ít nhất 2,5 cm × 2,5 cm (1 inch × 1 inch) để quét đáng tin cậy. Để lại viền vùng yên tĩnh trắng ít nhất 4 module ở cả bốn cạnh. Nhúng ảnh chân dung chuyên nghiệp hoặc logo công ty ở giữa giúp tăng độ tin cậy và tỷ lệ quét.",
+          "Dùng QR Generator Online để mã hóa toàn bộ hồ sơ vCard 3.0 của bạn, bao gồm tên, họ, chức danh, công ty, điện thoại công việc, di động, email, website và địa chỉ bưu điện. Xuất SVG vector để đảm bảo chất lượng hoàn hảo ở mọi kích thước in danh thiếp. Giấy danh thiếp cao cấp hoàn thiện mờ cho độ tin cậy quét cao nhất so với laminate bóng, vốn có thể tạo chói trên ống kính dưới ánh sáng mạnh."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Hướng dẫn cuối cùng về mã QR vCard cho danh thiếp thông minh hiện đại",
+      "paragraphs": [
+        "Danh thiếp giấy đang lặng lẽ chết dần. Hơn 88% số danh thiếp được phát ra ở sự kiện kết nối bị vứt trong vòng một tuần, và khoảng 9% mang số điện thoại hoặc chức danh lỗi thời trong vòng sáu tháng. Mã QR vCard biến tờ giấy chết đó thành một tài sản kỹ thuật số hoạt động.",
+        "Nó chạy trên chuẩn VCF (vCard 3.0, định nghĩa trong RFC 2426 và RFC 6350) và mã hóa toàn bộ danh tính nghề nghiệp của bạn — tên, chức danh, công ty, di động, email công việc, địa chỉ văn phòng, website — trực tiếp vào mã vạch.",
+        "Quét bằng bất kỳ iPhone hay Android nào và hệ điều hành mở bản xem trước liên hệ với tùy chọn \"Thêm vào Danh bạ\". Một chạm lưu toàn bộ hồ sơ vào sổ địa chỉ — không gõ, không sai chính tả, không mất khách hàng tiềm năng trong túi áo."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Danh thiếp thông minh QR vCard so với danh thiếp giấy truyền thống",
+      "headers": [
+        "Chỉ số kết nối",
+        "Danh thiếp thông minh QR vCard",
+        "Danh thiếp giấy truyền thống"
+      ],
+      "rows": [
+        [
+          "Tốc độ lưu liên hệ",
+          "1 chạm (dưới 3 giây thẳng vào sổ địa chỉ điện thoại)",
+          "Gõ tay (1 - 3 phút, thường bị bỏ qua)"
+        ],
+        [
+          "Tỷ lệ giữ lại liên hệ",
+          "Lưu trữ vĩnh viễn trong sổ địa chỉ đám mây",
+          "88% bị vứt trong vòng 7 ngày"
+        ],
+        [
+          "Độ phong phú dữ liệu",
+          "Hồ sơ đầy đủ: 3 số điện thoại, email, địa chỉ văn phòng, website",
+          "Bị giới hạn bởi diện tích thẻ vật lý 3,5\" x 2\""
+        ],
+        [
+          "Lãng phí môi trường",
+          "Không lãng phí (thẻ bền, tái sử dụng và lai)",
+          "Hàng nghìn danh thiếp giấy bị vứt mỗi năm cho mỗi chuyên gia"
+        ],
+        [
+          "Tương tác một chạm",
+          "Gọi, gửi email và chỉ đường trực tiếp",
+          "Văn bản thụ động phải chép tay"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Điền các trường liên hệ nghề nghiệp có cấu trúc",
+        "description": "Nhập tên, chức danh, công ty, di động, email công việc và website của bạn."
+      },
+      {
+        "number": 2,
+        "title": "Áp dụng thương hiệu trực quan và nhúng ảnh hoặc logo",
+        "description": "Định kiểu mẫu chấm theo thương hiệu của bạn và đặt ảnh chân dung hoặc logo ở giữa với sửa lỗi mức H."
+      },
+      {
+        "number": 3,
+        "title": "Xuất SVG vector để in danh thiếp",
+        "description": "Lấy SVG vector cho xưởng in, hoặc PNG độ phân giải cao cho chữ ký email hay hình nền màn hình khóa."
+      }
+    ],
+    "features": [
+      {
+        "title": "Tích hợp gốc phổ quát với iOS và Android",
+        "description": "Được xây dựng theo vCard 3.0, nên lưu sạch vào Apple Contacts, Google Contacts và Outlook."
+      },
+      {
+        "title": "Lưu vào sổ địa chỉ điện thoại chỉ với một chạm",
+        "description": "Điện thoại, email, website và địa chỉ của bạn được lưu chỉ trong một chạm — người kia không phải gõ gì."
+      },
+      {
+        "title": "Quét ngoại tuyến 100% và quyền riêng tư đầy đủ",
+        "description": "Dữ liệu liên hệ nằm trong mã vạch. Không máy chủ bên thứ ba nào lưu trữ hay thu thập nó."
+      },
+      {
+        "title": "SVG vector độ chính xác cao cho giấy cao cấp",
+        "description": "Đầu ra vector sắc nét cho dập nhũ, UV cục bộ, dập nổi, hoặc thẻ kim loại hay gỗ khắc laser."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Thông số kích thước và chất liệu của mã QR vCard",
+      "description": "Vì tải trọng vCard chứa 150 đến 350 ký tự văn bản có cấu trúc, hãy duy trì các mốc kích thước khuyến nghị.",
+      "headers": [
+        "Chất liệu / phương tiện thẻ",
+        "Kích thước tối thiểu khuyến nghị",
+        "Mức sửa lỗi",
+        "Hoàn thiện tối ưu"
+      ],
+      "rows": [
+        [
+          "Danh thiếp giấy tiêu chuẩn (3,5\" x 2\")",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "Mức Q (25%) hoặc mức H (30%)",
+          "Bìa cứng mờ nặng (350+ GSM)"
+        ],
+        [
+          "Thẻ NFC lai kim loại / gỗ thông minh",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Mức H (30%)",
+          "Nhôm anod hóa mờ khắc laser"
+        ],
+        [
+          "Thẻ đeo hội chợ và huy hiệu hội nghị",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "Mức M (15%) hoặc mức Q (25%)",
+          "PVC tổng hợp ép màng / Tyvek"
+        ],
+        [
+          "Tiêu đề sơ yếu lý lịch và bìa hồ sơ",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Mức Q (25%)",
+          "Giấy trắng sáng mịn không tráng"
+        ],
+        [
+          "Hình nền màn hình khóa điện thoại thông minh",
+          "250 x 250 px trên màn hình số",
+          "Mức H (30%)",
+          "Màn hình OLED số độ tương phản cao"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Giám đốc điều hành và lãnh đạo bán hàng",
+        "description": "Một mã ở mặt sau danh thiếp cao cấp biến cái bắt tay thành một liên hệ đã lưu."
+      },
+      {
+        "title": "Hội chợ thương mại, triển lãm và hội nghị ngành",
+        "description": "Trên thẻ đeo hay huy hiệu gian hàng, thông tin của bạn đến điện thoại khách hàng tiềm năng trong khoảng hai giây."
+      },
+      {
+        "title": "Người tìm việc — sơ yếu lý lịch và thư bìa hồ sơ",
+        "description": "Một mã ở tiêu đề sơ yếu lý lịch cho phép nhà tuyển dụng lưu thông tin của bạn mà không phải gõ lại."
+      },
+      {
+        "title": "Môi giới bất động sản và môi giới thế chấp",
+        "description": "Một mã trên tờ rơi mở cửa xem nhà biến việc đặt lịch xem nhà thành một chạm."
+      },
+      {
+        "title": "Chân trang email doanh nghiệp và chữ ký kỹ thuật số",
+        "description": "Một mã trong mẫu email cho phép người đọc trên máy tính quét nó từ màn hình."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Lỗi thiết kế mã QR vCard thường gặp và cách tránh",
+      "points": [
+        "Hồ sơ quá tải. Hai mươi trường khiến ma trận quá dày để quét. Giữ lại những thứ thiết yếu.",
+        "In quá nhỏ. Ma trận vCard phiên bản 6-10 bị nhòe dưới 25 mm trên camera rẻ. Hãy để nó có chỗ.",
+        "Giấy bóng. Thẻ bóng cao phản chiếu đèn sảnh vào ống kính. Chọn mờ, lụa hoặc cảm ứng mềm.",
+        "Đảo màu. Trắng trên thẻ tối thất bại trên một số máy quét cũ. Tối trên sáng vẫn là chuẩn.",
+        "Thiếu mã quốc gia. Bỏ +84 hoặc +1 thì liên hệ quốc tế không thể gọi thẻ đã lưu."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Mã QR vCard là gì và nó hoạt động thế nào?",
+        "a": "Đó là mã vạch 2D chứa thông tin liên hệ của bạn — tên, điện thoại, email, công ty, chức danh, website — theo định dạng vCard 3.0. Khi quét, điện thoại đề nghị lưu liên hệ thẳng vào sổ địa chỉ."
+      },
+      {
+        "q": "Mã QR vCard có cần kết nối internet để quét không?",
+        "a": "Chúng hoạt động hoàn toàn ngoại tuyến. Mọi trường đều nằm trong mã vạch dưới dạng văn bản vCard 3.0, nên điện thoại đọc và lưu liên hệ mà không cần dữ liệu hay WiFi."
+      },
+      {
+        "q": "Tôi có thể đưa ảnh của mình vào mã QR vCard tĩnh không?",
+        "a": "Mã hóa ảnh thô làm tải trọng phình to đến mức không thể quét. Cách chuẩn là phủ ảnh hoặc logo của bạn ở giữa mã và đặt địa chỉ nơi ảnh đầy đủ được lưu trữ vào trường URL của vCard."
+      },
+      {
+        "q": "Mã QR vCard có tương thích với cả iPhone và Android không?",
+        "a": "vCard 3.0 là chuẩn liên hệ phổ quát, có sẵn trong Apple Contacts, Google Contacts, Outlook và Samsung Contacts."
+      },
+      {
+        "q": "Mã QR vCard tĩnh có hết hạn hoặc thu phí hàng tháng không?",
+        "a": "Không. Dữ liệu liên hệ nằm trong mã và có hiệu lực vĩnh viễn, không có phí định kỳ hay giới hạn quét."
+      },
+      {
+        "q": "Tôi có thể in mã QR vCard nhỏ đến mức nào trên danh thiếp?",
+        "a": "Hướng đến 28 mm x 28 mm (1,1\" x 1,1\") hoặc lớn hơn để ma trận dày hơn vẫn sắc nét với ống kính điện thoại."
+      },
+      {
+        "q": "Tôi có nên định dạng số điện thoại có mã quốc gia không?",
+        "a": "Luôn luôn — dùng E.164 (+84901234567) để liên hệ quốc tế có thể gọi bạn mà không phải đoán tiền tố."
+      },
+      {
+        "q": "Tôi nên gửi định dạng tệp nào cho xưởng in danh thiếp?",
+        "a": "SVG vector hoặc EPS. Vector giữ độ chính xác trên mọi máy in offset hay kỹ thuật số."
+      }
+    ],
+    "bestPractices": "Giữ danh thiếp ở các trường thiết yếu, viết số điện thoại theo định dạng quốc tế (+84...), yêu cầu giấy bìa mờ và quét bản in thử thực tế trước khi chạy toàn bộ."
+  },
+  '/blog/qr-codes-for-real-estate': {
+    "sections": [
+      {
+        "title": "Tương tác với người mua tiềm năng trực tiếp từ biển bất động sản",
+        "paragraphs": [
+          "Đặt mã QR trên biển \"Bán\" cho phép người đi ngang qua xem sơ đồ 3D, video tham quan và giá ngay từ xe của họ.",
+          "Thu thập yêu cầu của người mua có ý định cao 24/7 mà không phải chờ các buổi xem nhà mở cửa."
+        ]
+      },
+      {
+        "title": "Thực hành tốt nhất cho chiến dịch mã QR bất động sản",
+        "paragraphs": [
+          "Liên kết mã QR trực tiếp đến một trang đích bất động sản chuyên biệt thay vì trang chủ chung. Bao gồm địa chỉ đầy đủ, giá niêm yết, số phòng ngủ và phòng tắm, diện tích m² và một video tham quan nhúng. Mã QR động cho phép bạn cập nhật URL đích nếu giá niêm yết thay đổi, hoặc nếu bất động sản được bán và bạn muốn chuyển hướng đến một tin tương tự mà không phải in lại biển.",
+          "Để có độ tin cậy quét ngoài trời tối đa, in mã QR ở kích thước tối thiểu 7 cm × 7 cm (khoảng 2,75 inch) trên biển chống thời tiết. Dùng độ tương phản cao đen trên trắng hoặc xanh đậm trên trắng để đảm bảo nhìn thấy dưới ánh nắng trực tiếp. Thêm logo thương hiệu và một khẩu hiệu ngắn như \"Quét để xem tour ảo\" làm tăng đáng kể tỷ lệ quét từ người đi ngang qua. Theo dõi phân tích quét để biết khu vực và loại bất động sản nào tạo ra nhiều quan tâm nhất từ người mua."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Hướng dẫn toàn diện của môi giới bất động sản về tạo khách hàng tiềm năng và tiếp thị bằng mã QR",
+      "paragraphs": [
+        "Tiếp thị bất động sản mang tính địa điểm và trực quan, và người mua giờ kỳ vọng chi tiết theo yêu cầu khi họ đứng trước một ngôi nhà. Hộp tờ rơi giấy cũ trên biển hết giấy, bị mưa làm ướt và không cho bạn biết ai đã quan tâm.",
+        "Mã QR bất động sản giải quyết cả ba vấn đề. Nó biến một biển bán, một chỉ dẫn xem nhà mở cửa, một trưng bày cửa sổ hay một bưu thiếp thành cổng 24/7 — một lần quét mở tour Matterport 3D, thư viện ảnh HD, sơ đồ tầng, điểm trường học và cuộc gọi hay tin nhắn trực tiếp đến môi giới.",
+        "Thêm theo dõi UTM và luồng thu thập khách hàng tiềm năng, và các môi giới giỏi nhất thu được khách hàng địa phương có ý định cao đúng vào thời điểm sự quan tâm lên đỉnh — từ lề đường, vào bất kỳ giờ nào."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Biển bất động sản mã QR so với hộp tờ rơi giấy truyền thống",
+      "headers": [
+        "Khả năng tiếp thị",
+        "Biển bất động sản mã QR",
+        "Hộp tờ rơi giấy truyền thống"
+      ],
+      "rows": [
+        [
+          "Khả năng thu khách hàng tiềm năng",
+          "24/7/365 (không bao giờ hết hàng)",
+          "Hộp tờ rơi trống mất hơn 60% khách hàng tiềm năng"
+        ],
+        [
+          "Độ phong phú đa phương tiện",
+          "Tour ảo 3D, video tham quan, hơn 50 ảnh HD",
+          "Giới hạn ở 1-2 ảnh đen trắng in ra"
+        ],
+        [
+          "Khả năng chống thời tiết",
+          "Vinyl / nhôm chống thời tiết (chống mưa, tuyết và nắng)",
+          "Tờ rơi giấy bị ướt, nhăn hoặc bị gió cuốn đi"
+        ],
+        [
+          "Ghi nhận và phân tích khách hàng tiềm năng",
+          "Theo dõi chính xác số lần quét, giờ trong ngày và loại thiết bị",
+          "Không biết có bao nhiêu tờ rơi đã được lấy"
+        ],
+        [
+          "Liên hệ môi giới tức thì",
+          "Gọi, nhắn SMS hoặc WhatsApp chỉ một chạm",
+          "Người mua phải tự gõ số điện thoại môi giới"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Tạo trang đích một bất động sản hoặc liên kết tour 3D",
+        "description": "Sao chép URL trực tiếp tới trang niêm yết, tour Matterport hoặc video tham quan."
+      },
+      {
+        "number": 2,
+        "title": "Tạo mã QR bất động sản có độ tương phản cao với logo",
+        "description": "Dán URL bất động sản, áp dụng màu môi giới của bạn, đặt logo ở giữa và xuất SVG vector."
+      },
+      {
+        "number": 3,
+        "title": "In lên biển nhựa gợn sóng hoặc nhôm chống thời tiết",
+        "description": "Gắn một biển phụ ít nhất 150 mm x 150 mm với dòng chữ như \"Quét để xem tour ảo 3D và giá\"."
+      }
+    ],
+    "features": [
+      {
+        "title": "Cung cấp thông tin bất động sản 24/7 theo yêu cầu",
+        "description": "Người mua đi ngang qua nhận được giá, ảnh nội thất và sơ đồ tầng vào bất kỳ giờ nào."
+      },
+      {
+        "title": "Tích hợp trực tiếp với tour 3D và video tham quan",
+        "description": "Đưa người mua vào trong nhà qua Matterport, Zillow 3D Home hoặc tour YouTube."
+      },
+      {
+        "title": "Kết nối môi giới tức thì chỉ một chạm",
+        "description": "Người mua đứng ở lề đường có thể gọi, nhắn tin hay WhatsApp cho môi giới niêm yết ngay tại chỗ."
+      },
+      {
+        "title": "Mã vạch tĩnh vĩnh viễn không hết hạn",
+        "description": "Mã bất động sản tĩnh luôn hoạt động vô thời hạn, không phí hàng tháng hay giới hạn quét."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Thông số kích thước in và đặt biển bất động sản",
+      "description": "Đảm bảo người mua tiềm năng có thể quét mã bất động sản của bạn dễ dàng từ xe hay vỉa hè.",
+      "headers": [
+        "Vị trí biển",
+        "Khoảng cách quét dự kiến",
+        "Kích thước in tối thiểu",
+        "Chất liệu đề xuất"
+      ],
+      "rows": [
+        [
+          "Biển phụ dưới biển bán (treo bên dưới)",
+          "1,5 m - 3,0 m (5 ft - 10 ft)",
+          "150 mm x 150 mm (6\" x 6\")",
+          "Nhựa gợn sóng phản quang / nhôm"
+        ],
+        [
+          "Biển chỉ đường xem nhà mở cửa",
+          "1,0 m - 2,5 m (3 ft - 8 ft)",
+          "120 mm x 120 mm (4,8\" x 4,8\")",
+          "Biển cọc nhựa gợn sóng nặng"
+        ],
+        [
+          "Tờ rơi và brochure niêm yết bất động sản",
+          "20 cm - 35 cm (8\" - 14\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Bìa cứng mờ nặng (100 lb+)"
+        ],
+        [
+          "Trưng bày cửa sổ văn phòng bất động sản",
+          "50 cm - 150 cm (20\" - 60\")",
+          "100 mm x 100 mm (4,0\" x 4,0\")",
+          "Decal cửa sổ vinyl mờ chống thời tiết"
+        ],
+        [
+          "Bưu thiếp thư trực tiếp \"Mới niêm yết\"",
+          "20 cm - 35 cm (8\" - 14\")",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "Giấy bưu thiếp mờ tráng phủ"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Biển phụ tour 3D ảo cho biển bán",
+        "description": "Một biển phụ dưới biển \"Bán\" cho phép người đi ngang qua tham quan nội thất từ điện thoại."
+      },
+      {
+        "title": "Biển chỉ đường xem nhà mở cửa",
+        "description": "Mã vị trí trên biển góc dẫn thẳng người mua đến lối vào xem nhà mở cửa."
+      },
+      {
+        "title": "Bưu thiếp thư trực tiếp \"Mới niêm yết\" và \"Đã bán\"",
+        "description": "Mã trên bưu thiếp khu phố liên kết tới video tham quan và công cụ ước tính giá trị nhà."
+      },
+      {
+        "title": "Trưng bày cửa sổ tại văn phòng môi giới",
+        "description": "Mã cửa sổ biến lượng người đi bộ thành tìm kiếm bất động sản 24/7."
+      },
+      {
+        "title": "Danh thiếp môi giới với liên hệ vCard",
+        "description": "Mã vCard trên danh thiếp môi giới lưu thông tin của họ chỉ trong một chạm."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Sai lầm thường gặp trong tiếp thị bất động sản bằng mã QR",
+      "points": [
+        "Quá nhỏ cho người đi ngang qua. Mã 50 mm không đọc được từ xe cách 3 mét. Dùng ít nhất 150 mm x 150 mm trên biển bán.",
+        "Liên kết MLS lộn xộn. Trang MLS trên máy tính chậm với chữ nhỏ làm khó máy quét di động. Thay vào đó hãy liên kết một trang nhanh cho một bất động sản.",
+        "Không có lời kêu gọi hành động. Mã trơ trọi thu được ít lượt quét. Kèm theo \"Quét để xem giá, ảnh và tour 3D\".",
+        "Chói nắng. Lớp phủ bóng trên biển phản chiếu dưới nắng gắt. Dùng vinyl ngoài trời mờ hoặc nhựa gợn sóng.",
+        "Tường đăng nhập hung hăng. Bắt đăng ký ngay gây tỷ lệ thoát 70%. Hiển thị ảnh chính trước, rồi mới yêu cầu đồng ý."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Môi giới bất động sản dùng mã QR thế nào để tạo khách hàng tiềm năng?",
+        "a": "Họ đặt mã lên biển bán, tờ rơi xem nhà mở cửa và bưu thiếp, liên kết đến một trang bất động sản, tour 3D hoặc yêu cầu nhắn tin tức thì — thu hút người mua đúng lúc sự quan tâm cao nhất."
+      },
+      {
+        "q": "Kích thước khuyến nghị cho mã QR trên biển bất động sản là bao nhiêu?",
+        "a": "Một biển phụ được đọc từ lối đi hoặc vỉa hè (1,5 đến 3 mét) nên có kích thước ít nhất 150 mm x 150 mm (6\" x 6\") với độ tương phản cao."
+      },
+      {
+        "q": "Tôi có thể liên kết mã QR trực tiếp đến tour ảo 3D Matterport không?",
+        "a": "Sao chép liên kết chia sẻ công khai của Matterport, dán vào trình tạo URL và tải SVG hoặc PNG sẵn sàng in."
+      },
+      {
+        "q": "Mã QR bất động sản có hết hạn khi bất động sản được bán không?",
+        "a": "Mã tĩnh vẫn có hiệu lực. Khi bất động sản đã bán, chuyển URL đích sang trang \"Đã bán\" hoặc danh sách niêm yết đang hoạt động của bạn — mã đã in vẫn tiếp tục hoạt động."
+      },
+      {
+        "q": "Tôi nên in lời kêu gọi hành động nào bên cạnh mã QR bất động sản?",
+        "a": "Các câu hiệu quả là: \"Quét để xem giá và tour ảo 3D\", \"Quét để xem ngay ảnh nội thất\", \"Quét để nhắn tin cho môi giới\"."
+      },
+      {
+        "q": "Tôi có thể thêm logo công ty môi giới của mình vào mã QR không?",
+        "a": "Có — logo công ty hoặc nhóm môi giới của bạn đặt gọn ở giữa, vì mức H có thể mất tới một phần ba mã và vẫn quét được."
+      },
+      {
+        "q": "Vật liệu tốt nhất cho biển bất động sản ngoài trời có mã QR là gì?",
+        "a": "Nhựa gợn sóng chống thời tiết (Coroplast) hoặc tấm composite nhôm với lớp phủ UV mờ — bền và không chói."
+      },
+      {
+        "q": "Mã QR bất động sản có miễn phí tạo trên QR Generator Online không?",
+        "a": "Xuất SVG và PNG đều miễn phí, với lượt quét không giới hạn và không phí định kỳ."
+      }
+    ],
+    "bestPractices": "In mã biển ở 150 mm x 150 mm trở lên trên chất liệu mờ chống thời tiết, thêm lời kêu gọi hành động có giá trị và đảm bảo trang đích tải nhanh trên di động."
+  },
+  '/blog/wifi-qr-codes-for-hospitality': {
+    "sections": [
+      {
+        "title": "Kết nối không dây liền mạch cho khách",
+        "paragraphs": [
+          "Khách khách sạn và Airbnb thường gặp khó khăn khi gõ mật khẩu WiFi phức tạp vào điện thoại và laptop.",
+          "Một thẻ mã QR WiFi được đóng khung, tùy chỉnh trên tủ đầu giường hoặc quầy quán cà phê cho phép khách quét và kết nối ngay lập tức."
+        ]
+      },
+      {
+        "title": "Cách triển khai mã QR WiFi trong khách sạn và nhà cho thuê kỳ nghỉ",
+        "paragraphs": [
+          "Tạo một mã QR WiFi riêng cho mỗi vùng mạng — WiFi phòng khách, WiFi sảnh và WiFi khu hồ bơi — rồi in lên các thẻ có thương hiệu riêng. Với khách sạn, ép plastic thẻ mã QR và đặt trên bàn làm việc trong phòng và gương phòng tắm, nơi khách tự nhiên tìm hướng dẫn kết nối. Ghi tên mạng (SSID) và một ghi chú xác nhận mật khẩu có đã được điền sẵn hay không, để khách yên tâm về việc quét sẽ làm gì.",
+          "Với chủ nhà Airbnb, nhúng mã QR WiFi vào một sổ chào đón tùy chỉnh cùng quy tắc nhà và gợi ý địa phương sẽ cải thiện đáng kể điểm hài lòng khi nhận phòng. Quán cà phê và không gian làm việc chung hưởng lợi nhiều nhất từ màn hình để bàn khổ lớn với mã QR đóng khung ngang tầm mắt. Đổi mật khẩu WiFi hằng tháng để bảo mật và chỉ cần tạo mã QR mới — không cần in lại nếu bạn dùng bảng thực đơn kỹ thuật số hoặc thẻ thay thế được."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Hướng dẫn toàn diện về mã QR WiFi cho khách sạn, quán cà phê và nhà cho thuê kỳ nghỉ",
+      "paragraphs": [
+        "Trong ngành khách sạn, WiFi không còn là đặc quyền — đó là tiện nghi làm thay đổi điểm hài lòng và đánh giá trực tuyến. Các nghiên cứu đặt con số này trên 85%: đó là tỷ lệ khách khách sạn và quán cà phê đánh giá WiFi nhanh, không cản trở là yếu tố then chốt cho kỳ lưu trú của họ. Tuy vậy, điều cản đường thường là một mật khẩu gõ sai và một cuộc gọi đến lễ tân.",
+        "Một mã WiFi khách sạn mang thông tin đăng nhập theo định dạng `WIFI:` chuẩn (`WIFI:T:WPA;S:Hotel_Guest;P:SecretPass;H:false;;`). Khách đưa camera lên, chạm \"Join Network\" và trực tuyến trong dưới hai giây — không mật khẩu trên màn hình, không gõ phím.",
+        "Hướng dẫn này đồng hành cùng khách sạn, khu nghỉ dưỡng, quán cà phê và chủ nhà Airbnb trong việc triển khai mã WiFi có thương hiệu khắp phòng, bàn và khu nhận phòng để giảm các yêu cầu hỗ trợ, giữ mạng an toàn và nâng trải nghiệm khách."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Truy cập WiFi bằng mã QR so với thẻ mật khẩu thủ công trong khách sạn",
+      "headers": [
+        "Yếu tố vận hành",
+        "Mã QR WiFi khách sạn",
+        "Thẻ mật khẩu thủ công / bảng phấn"
+      ],
+      "rows": [
+        [
+          "Thời gian kết nối của khách",
+          "1 - 2 giây (một lần quét camera và chạm)",
+          "45 - 90 giây (gõ hơn 16 ký tự phức tạp)"
+        ],
+        [
+          "Yêu cầu hỗ trợ lễ tân",
+          "Giảm hơn 80% các câu hỏi liên quan đến WiFi",
+          "Lượng lớn cuộc gọi của khách nhờ hỗ trợ mật khẩu"
+        ],
+        [
+          "Tỷ lệ gõ sai",
+          "0% (truyền chính xác từng byte)",
+          "30% - 50% với mật khẩu phức tạp có ký hiệu"
+        ],
+        [
+          "Bảo mật mật khẩu",
+          "Ngăn khách nhìn thấy khóa dạng văn bản thuần",
+          "Phơi bày mật khẩu trên bảng phấn và biển công khai"
+        ],
+        [
+          "Tác động đến đánh giá của khách",
+          "Nâng điểm hài lòng và điểm nhận phòng",
+          "Bực bội về kết nối dẫn đến đánh giá tiêu cực"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Tách riêng một mạng dành cho khách trên bộ định tuyến",
+        "description": "Chạy WiFi khách trên một VLAN cách ly với cách ly client bật, để khách không bao giờ truy cập được các hệ thống nội bộ của bạn."
+      },
+      {
+        "number": 2,
+        "title": "Tạo mã QR WiFi có thương hiệu với sửa lỗi mức H",
+        "description": "Nhập SSID và mật khẩu của khách, áp dụng thương hiệu và đặt biểu tượng WiFi hoặc logo ở giữa."
+      },
+      {
+        "number": 3,
+        "title": "In lên giá để bàn acrylic cao cấp hoặc thẻ gỗ đầu giường",
+        "description": "Trưng bày mã ngang tầm mắt — bàn khách sạn, tủ đầu giường, quầy quán cà phê hoặc sổ chào đón nhà cho thuê."
+      }
+    ],
+    "features": [
+      {
+        "title": "Kết nối khách tức thì, không cản trở",
+        "description": "Một lần quét camera chạm chấm dứt bực bội về mật khẩu và các cuộc gọi lễ tân."
+      },
+      {
+        "title": "Hỗ trợ WPA3, WPA2, WEP và mạng ẩn",
+        "description": "Hoạt động với bộ định tuyến mesh doanh nghiệp hay thiết lập cho thuê boutique như nhau."
+      },
+      {
+        "title": "Không lưu trữ trên máy chủ và quyền riêng tư đầy đủ",
+        "description": "Thông tin đăng nhập mạng ở lại trong trình duyệt của bạn. Không gì được lưu bên ngoài."
+      },
+      {
+        "title": "SVG vector độ chính xác cao cho biển cao cấp",
+        "description": "Vector sắc nét để khắc laser trên gỗ hay tấm đồng, hoặc cho giá acrylic cao cấp."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Hướng dẫn kích thước và chất liệu màn hình mã QR WiFi cho khách sạn",
+      "description": "Đặt mã WiFi nơi khách mới đến tự nhiên tìm hướng dẫn kết nối.",
+      "headers": [
+        "Môi trường khách sạn",
+        "Khoảng cách quét",
+        "Kích thước in khuyến nghị",
+        "Chất liệu khuyến nghị"
+      ],
+      "rows": [
+        [
+          "Tủ đầu giường và bàn trong phòng khách sạn",
+          "25 cm - 40 cm (10\" - 16\")",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "Thẻ mờ đóng khung / lều acrylic"
+        ],
+        [
+          "Thẻ để bàn và lót ly quán cà phê",
+          "20 cm - 30 cm (8\" - 12\")",
+          "40 mm x 40 mm (1,6\" x 1,6\")",
+          "Gỗ khắc laser / thẻ ép màng"
+        ],
+        [
+          "Sổ chào đón Airbnb và nam châm tủ lạnh",
+          "20 cm - 35 cm (8\" - 14\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Thẻ mờ nặng / tấm nam châm"
+        ],
+        [
+          "Quầy nhận phòng và lễ tân khách sạn",
+          "40 cm - 80 cm (16\" - 32\")",
+          "75 mm x 75 mm (3,0\" x 3,0\")",
+          "Thẻ đỡ trưng bày trên quầy"
+        ],
+        [
+          "Băng rôn trung tâm hội nghị và sảnh sự kiện",
+          "1,0 m - 2,0 m (3 ft - 6,5 ft)",
+          "150 mm x 150 mm (6,0\" x 6,0\")",
+          "Băng vải không phản chiếu"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Khách sạn, nhà nghỉ boutique và khu nghỉ dưỡng",
+        "description": "Một thẻ đóng khung trên bàn hoặc gương đưa khách lên mạng ngay khi họ bước vào."
+      },
+      {
+        "title": "Airbnb, VRBO và nhà cho thuê kỳ nghỉ",
+        "description": "Một mã trong sổ chào đón hay trên nam châm tủ lạnh loại bỏ câu hỏi \"WiFi là gì?\" lúc nhận phòng."
+      },
+      {
+        "title": "Quán cà phê, quán cafe và trung tâm làm việc chung",
+        "description": "Một mã trên giá để bàn giảm việc nhân viên bị làm phiền và giữ khách ở lại lâu hơn."
+      },
+      {
+        "title": "Địa điểm sự kiện, hội nghị và tiệc",
+        "description": "Hàng trăm người kết nối cùng lúc khi nhận phòng, giảm nghẽn dữ liệu di động trong hội trường."
+      },
+      {
+        "title": "Phòng chờ sân bay và khu vực chờ điều hành",
+        "description": "Khách đi công tác kết nối WiFi khách an toàn, tốc độ cao mà không cần hỏi."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Ngăn chặn các lỗi mã QR WiFi khách sạn thường gặp",
+      "points": [
+        "Không khớp chữ hoa/thường. Tên mạng phân biệt chữ hoa và chữ thường — \"HotelGuest\" và \"hotelguest\" khác nhau. Khớp chính xác.",
+        "Sai loại bảo mật. Chọn WEP cho bộ định tuyến WPA2 khiến bắt tay thất bại. Chọn WPA/WPA2/WPA3.",
+        "Cổng xác thực (captive portal). Nếu mạng có trang điều khoản, mã kết nối radio và trang chào của trình duyệt sau đó hiện ra. Điều đó là bình thường.",
+        "Thiếu cờ mạng ẩn. SSID ẩn cần bật công tắc Hidden Network, nếu không thiết bị sẽ không kết nối.",
+        "Màn hình bị bẩn. Đổ tràn và lớp ép màng trầy xước làm mờ các mẫu định vị. Dùng acrylic bền hoặc gỗ khắc laser."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Mã QR WiFi kết nối khách mà không cần gõ mật khẩu như thế nào?",
+        "a": "Nó mã hóa các tham số WIFI: chuẩn. Camera điện thoại đọc SSID và mật khẩu từ hình ảnh và tự động bắt đầu kết nối không dây."
+      },
+      {
+        "q": "Có an toàn không khi trưng bày mã QR WiFi trong phòng khách sạn và quán cà phê?",
+        "a": "Có, miễn là mã thuộc một mạng khách riêng và cách ly client được bật — điều này giữ khách tránh xa các hệ thống quản trị nội bộ của bạn."
+      },
+      {
+        "q": "Mã QR WiFi có hoạt động trên cả iPhone và điện thoại Android không?",
+        "a": "iPhone chạy iOS 11+ và điện thoại Android chạy Android 10+ đều nhận dạng định dạng WIFI: từ camera và đề nghị tham gia chỉ một chạm."
+      },
+      {
+        "q": "Điều gì xảy ra nếu tôi đổi mật khẩu WiFi khách trong tương lai?",
+        "a": "Mã cũ ngừng hoạt động, vì mật khẩu cụ thể được cố định trong các module. Thay đổi nghĩa là in một mã mới."
+      },
+      {
+        "q": "Tôi có thể thêm logo khách sạn hoặc quán cà phê vào mã QR WiFi không?",
+        "a": "Được. Với sửa lỗi mức H, một logo địa điểm hoặc biểu tượng WiFi ở giữa không làm giảm độ tin cậy chút nào."
+      },
+      {
+        "q": "Vật liệu tốt nhất cho màn hình WiFi trên tủ đầu giường khách sạn là gì?",
+        "a": "Acrylic mờ, khối gỗ khắc laser hoặc thẻ đóng khung với kính không phản chiếu — đẹp mắt và không chói khi quét."
+      },
+      {
+        "q": "Mã QR WiFi có hết hạn hoặc thu phí hàng tháng không?",
+        "a": "Không. Mã WiFi tĩnh tồn tại vô thời hạn. Bất kỳ số lượng khách nào cũng có thể quét, và không bao giờ có hóa đơn nào."
+      },
+      {
+        "q": "Mật khẩu WiFi của tôi có được lưu trên máy chủ bên ngoài khi tạo không?",
+        "a": "Nó ở lại cục bộ. Trình duyệt của bạn tạo mã, nên thông tin đăng nhập không bao giờ được tải lên, ghi nhật ký hay chia sẻ."
+      }
+    ],
+    "bestPractices": "Tách WiFi khách vào VLAN riêng, trưng bày mã ngang tầm mắt trên giá không phản chiếu mờ và thêm một dòng ngắn như \"Quét để kết nối WiFi khách\"."
+  },
+  '/bulk-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Sản xuất mã QR hàng loạt cho doanh nghiệp và marketing",
+        "paragraphs": [
+          "Tải lên tệp CSV, hoặc dán danh sách có một URL trên mỗi dòng. Trình tạo dựng từng mã ngay trong trình duyệt của bạn. Không có gì bạn dán được tải lên bất cứ đâu.",
+          "Lưu từng mã một, hoặc lấy cả lô dưới dạng một tệp ZIP. Đó là cách nhanh để dán nhãn một đợt sản phẩm, gắn huy hiệu sự kiện hay điền thư gửi hàng loạt."
+        ]
+      }
+    ]
+  },
+  '/qr-code-scanner': {
+    "sections": [
+      {
+        "title": "Quét và giải mã mã QR ngay lập tức",
+        "paragraphs": [
+          "Hướng camera điện thoại hoặc laptop vào mã để đọc trực tiếp. Không có camera ngay bên cạnh? Thả một ảnh chụp màn hình hoặc hình ảnh vào, và nó cũng được giải mã.",
+          "Mọi thứ chạy trong trình duyệt trên máy của bạn. Luồng camera và ảnh bạn tải lên đều ở lại đó."
+        ]
+      }
+    ]
+  },
+  '/social-media-qr-code': {
+    "sections": [
+      {
+        "title": "Một bảng điều khiển cho mọi mã QR mạng xã hội của bạn",
+        "paragraphs": [
+          "Đặt toàn bộ tên người dùng và liên kết hồ sơ của bạn vào một biểu mẫu. Bạn nhận lại một mã riêng cho mỗi nền tảng, được tô màu cho khớp với nền tảng mà nó trỏ tới.",
+          "Mỗi mã tải về riêng dưới dạng PNG hoặc SVG. Dùng trên danh thiếp, trong bộ tài liệu truyền thông hay trong bất kỳ chiến dịch nào bạn đang chạy."
+        ]
+      }
+    ]
+  },
+  '/blog/how-to-scan-qr-code': {
+    "sections": [
+      {
+        "title": "Trình quét tích hợp trong camera của bạn",
+        "paragraphs": [
+          "Từ iOS 11 và Android 9, camera thông thường tự đọc mã QR — không cần cài ứng dụng. Hướng nó vào mã, giữ yên một giây và một biểu ngữ liên kết sẽ hiện ra. Chạm vào và bạn đã ở đó.",
+          "Nếu không có gì hiện ra, thường là mã quá nhỏ trong khung hình. Di chuyển lại gần cho đến khi nó chiếm khoảng một phần ba màn hình. Trên một số điện thoại Samsung, bạn cũng cần bật quét QR bên trong cài đặt camera."
+        ]
+      },
+      {
+        "title": "Khi mã nằm trên màn hình của chính bạn",
+        "paragraphs": [
+          "Camera không thể hướng vào chính nó, nên một mã ai đó nhắn cho bạn cần một cách khác. Trên iPhone, chụp màn hình, mở ảnh trong Photos và chạm nút Live Text để lấy liên kết. Trên Android, lưu ảnh và mở trong Google Photos, rồi chạm Lens.",
+          "Google Lens cũng là phương án dự phòng đáng tin cậy bất cứ khi nào camera Android từ chối đọc một mã ngoài đời thực — mở Lens, hướng vào và nó sẽ giải mã mã cùng mọi văn bản xung quanh."
+        ]
+      }
+    ]
+  },
+  '/blog/do-qr-codes-expire': {
+    "sections": [
+      {
+        "title": "Mã tĩnh tự giữ dữ liệu",
+        "paragraphs": [
+          "Một mã QR tĩnh lưu thông tin ngay trong mẫu — một liên kết, một số điện thoại, một mật khẩu WiFi. Mẫu đó không bị phân hủy. In trên nền sạch, được bảo vệ, nó vẫn quét được sau nhiều năm giống hệt như hôm nay.",
+          "Khi một mã tĩnh có vẻ \"hết hạn\", hầu như không bao giờ là lỗi của mẫu. Trang nó trỏ tới đã bị xóa, liên kết đã đổi hoặc mật khẩu đã được đặt lại. Mã vẫn giải mã ra cùng địa chỉ đó; chỉ là địa chỉ ấy giờ không dẫn đi đâu nữa."
+        ]
+      },
+      {
+        "title": "Mã động phụ thuộc vào một dịch vụ",
+        "paragraphs": [
+          "Một mã động trỏ đến một chuyển hướng ngắn do nhà cung cấp sở hữu, và chuyển tiếp mỗi lượt quét đến đích thật của bạn. Điều đó cho phép đổi đích mà không cần in lại — nhưng giờ mã sống và chết cùng tài khoản đó và công ty đó.",
+          "Hãy cẩn thận với bẫy dùng thử miễn phí: một số trình tạo động \"miễn phí\" tắt chuyển hướng sau vài tuần nếu bạn không trả tiền, và điều đó có thể làm hỏng cả nghìn tờ rơi đã in trong cùng một buổi chiều. Các mã được tạo ở đây là tĩnh, nên không có gì hết hạn và không có đăng ký nào cần duy trì."
+        ]
+      }
+    ]
+  },
+  '/blog/share-wifi-password-qr-code': {
+    "sections": [
+      {
+        "title": "Một mã, mọi điện thoại",
+        "paragraphs": [
+          "Một mã QR WiFi mang ba thứ — tên mạng, mật khẩu và loại bảo mật — nên một lần quét đề nghị tham gia mà không cần gõ gì. Trên iPhone, mật khẩu thậm chí không hiện trên màn hình, một lợi ích kín đáo trong quán cà phê đông đúc.",
+          "Tạo một mã mất chưa đến một phút: nhập tên mạng và mật khẩu, chọn WPA2 hoặc WPA3 và tải ảnh về. Đặt nó trên mạng khách thay vì mạng mà laptop công việc của bạn dùng, vì bất kỳ ai nhìn thấy mã đều có thể tham gia."
+        ]
+      },
+      {
+        "title": "Trường hợp iPhone sang Mac",
+        "paragraphs": [
+          "Android có một mẹo đáng biết: trong cài đặt WiFi, bạn có thể chạm Chia sẻ và điện thoại hiển thị mã QR của mạng bạn đang kết nối, không cần trình tạo nào. iPhone quét mã theo cách tương tự nhưng không có trình tạo tích hợp.",
+          "Từ iPhone sang Mac, việc quét khá lúng túng vì Mac không đọc mã trên tường như điện thoại. Con đường mượt mà bỏ qua QR: đưa một iPhone đã mở khóa lại gần Mac khi nó đang cố kết nối, và một lời nhắc sẽ đề nghị gửi mật khẩu qua. Giữ mã QR như phương án phổ quát cho khách Android và Windows."
+        ]
+      }
+    ]
+  },
+  '/pdf-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Cuộc cách mạng QR PDF hiện đại cho thực đơn và tờ rơi",
+        "paragraphs": [
+          "Một catalogue in hay thực đơn ép plastic tốn tiền để làm và đông cứng ngay khi rời máy in. Thay một giá hay đổi một món theo mùa, theo cách cũ, bạn phải in lại cả lô. Hóa đơn đó đè lên nhà hàng, đội hội chợ, văn phòng bất động sản và bộ phận đào tạo như nhau.",
+          "Một mã QR PDF cắt đứt sự ràng buộc giữa bản in và tệp đằng sau nó. Dán lên thẻ bàn, hộp, gian hàng hay cửa kính cửa hàng. Khách hướng camera và tờ rơi, thực đơn hoặc sổ tay đầy đủ của bạn mở ra trong vài giây."
+        ]
+      },
+      {
+        "title": "Mã QR PDF tĩnh so với động: cập nhật thực đơn mà không in lại",
+        "paragraphs": [
+          "Một mã QR PDF tĩnh gắn liên kết trực tiếp vào ma trận điểm ảnh. Di chuyển tệp Google Drive và mã đã in chết. Một mã động thay vào đó trỏ đến một chuyển hướng ngắn — kiểu như qr-generator.online/r/menu — và liên kết ngắn đó không bao giờ đổi.",
+          "Vì vậy khi món đặc biệt hằng tuần thay đổi, hay một loại đồ uống tăng nửa đô, hoặc một bản catalogue mới được phát hành, bạn chỉ cần trỏ lại chuyển hướng trong bảng điều khiển. Các bàn trên sàn vẫn tiếp tục hoạt động. Không ai phải in lại gì cả."
+        ]
+      },
+      {
+        "title": "Ứng dụng của mã QR PDF theo ngành",
+        "paragraphs": [
+          "Nhà hàng đặt một mã trên bàn mở thực đơn món ăn và đồ uống, kèm ghi chú dị ứng và ảnh món. Môi giới đặt một mã trên biển bất động sản để người mua có thể xem sơ đồ tầng và thông tin hiệp hội chủ nhà ngay tại chỗ.",
+          "Nhà sản xuất bỏ hẳn cuốn hướng dẫn giấy dày và in một mã nhỏ trên hộp dẫn đến hướng dẫn sử dụng đầy đủ."
+        ]
+      }
+    ]
+  },
+  '/app-store-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Mã QR App Store thông minh và thu hút người dùng ứng dụng di động",
+        "paragraphs": [
+          "Hình dung ứng dụng của bạn trên áp phích tàu điện ngầm, hộp ngũ cốc, quảng cáo truyền hình hay băng rôn hội chợ. Để cài đặt, ai đó phải mở khóa điện thoại, mở đúng cửa hàng, gõ đúng tên bạn và chọn bạn trong danh sách đối thủ. Hầu hết mọi người bỏ cuộc ở đâu đó trong chuỗi đó — theo ước tính phổ biến, khoảng hai trong ba người.",
+          "Một mã QR App Store thông minh duy nhất loại bỏ các bước đó. Quét mã, nó đọc thiết bị: iPhone đến Apple App Store, điện thoại Android đến Google Play. Người dùng không bao giờ phải tìm kiếm gì."
+        ]
+      },
+      {
+        "title": "Vì sao mã QR đôi thất bại so với mã QR thông minh hợp nhất",
+        "paragraphs": [
+          "In hai mã cạnh nhau — một cho iOS và một cho Android — và bạn đang tự tìm rắc rối. Bố cục trông rối, mọi người do dự không biết mã nào là của mình, và các camera thường bắt nhầm mã khi hai cái nằm gần nhau.",
+          "Một mã thông minh duy nhất tránh được tất cả. Mỗi điện thoại có một lần quét-và-cài đặt trong một giây, và ai quét từ máy tính sẽ đến trang khuyến mãi của bạn thay vào đó."
+        ]
+      },
+      {
+        "title": "Đo lường cài đặt ứng dụng thời gian thực và ghi nhận nguồn",
+        "paragraphs": [
+          "Chạy các mã App Store của bạn ở đây như mã động và toàn bộ phễu mở ra. Bạn có thể thấy tỷ lệ iOS so với Android thực sự phân bố thế nào, khu vực nào đang hoạt động, và quét tập trung vào giờ nào trong ngày."
+        ]
+      }
+    ]
   }
 };

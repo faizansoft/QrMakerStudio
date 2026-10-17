@@ -627,504 +627,104 @@
     "hash": "ee6402a6f595490a",
     "lastmod": "2026-08-23"
   },
-  "ar:/bulk-qr-code-generator": {
-    "hash": "ab54cc6ea7b79b10",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/bulk-qr-code-generator": {
-    "hash": "8faa6b970e482f26",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/bulk-qr-code-generator": {
-    "hash": "ef378e652d25a30a",
-    "lastmod": "2026-08-23"
-  },
-  "es:/bulk-qr-code-generator": {
-    "hash": "72d6c430f68b1987",
-    "lastmod": "2026-08-23"
-  },
-  "vi:/bulk-qr-code-generator": {
-    "hash": "f852a576a5f2dfd7",
-    "lastmod": "2026-08-23"
-  },
-  "ar:/qr-code-scanner": {
-    "hash": "2f41a5b2479fe7c6",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/qr-code-scanner": {
-    "hash": "4afc41b9092f5834",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/qr-code-scanner": {
-    "hash": "4e73720852bafc6f",
-    "lastmod": "2026-08-23"
-  },
-  "es:/qr-code-scanner": {
-    "hash": "58670b507715a74c",
-    "lastmod": "2026-08-23"
-  },
-  "vi:/qr-code-scanner": {
-    "hash": "b17a7e51180bb5e1",
-    "lastmod": "2026-08-23"
-  },
-  "ar:/social-media-qr-code": {
-    "hash": "391c82c96eebd168",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/social-media-qr-code": {
-    "hash": "b2fb3d2f998f0aa3",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/social-media-qr-code": {
-    "hash": "8920c4d15f318555",
-    "lastmod": "2026-08-23"
-  },
-  "es:/social-media-qr-code": {
-    "hash": "1a08a4cbd505e6c0",
-    "lastmod": "2026-08-23"
-  },
-  "vi:/social-media-qr-code": {
-    "hash": "6826fb34743ed4f2",
-    "lastmod": "2026-08-23"
-  },
   "ar:/qr-code-with-logo": {
     "hash": "ba88066020171b6f",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "hi:/qr-code-with-logo": {
     "hash": "f9ffd9a1c14666f1",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "tr:/qr-code-with-logo": {
     "hash": "a6d79f8cc713d971",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "es:/qr-code-with-logo": {
     "hash": "8099a36d294b8c67",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "vi:/qr-code-with-logo": {
     "hash": "b9cbfd199175d503",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "ar:/custom-qr-codes": {
     "hash": "bfefd4c603f397a1",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "hi:/custom-qr-codes": {
     "hash": "5f77f85f06949cad",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "tr:/custom-qr-codes": {
     "hash": "373af58e07b359c5",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "es:/custom-qr-codes": {
     "hash": "940640311eeea824",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "vi:/custom-qr-codes": {
     "hash": "0c767276d8f0b0d8",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "ar:/colored-qr-code-generator": {
     "hash": "f32ce66e61edf2d0",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "hi:/colored-qr-code-generator": {
     "hash": "ef84f5bd5557e7c5",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "tr:/colored-qr-code-generator": {
     "hash": "c4975d63ff82812a",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "es:/colored-qr-code-generator": {
     "hash": "02086d8c8e40e100",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "vi:/colored-qr-code-generator": {
     "hash": "61a0082663d118ca",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "ar:/svg-qr-code-generator": {
     "hash": "1c258875ca9dae55",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "hi:/svg-qr-code-generator": {
     "hash": "3d28f19732073553",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "tr:/svg-qr-code-generator": {
     "hash": "1712849f88d8c64d",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "es:/svg-qr-code-generator": {
     "hash": "0444f174c334d73a",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "vi:/svg-qr-code-generator": {
     "hash": "f7cf5dfd66f1f279",
-    "lastmod": "2026-08-22"
+    "lastmod": "2026-10-17"
   },
   "ar:/high-resolution-qr-codes": {
     "hash": "72577706e9f9fb8e",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "hi:/high-resolution-qr-codes": {
     "hash": "c16bd5f2c7b91f05",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "tr:/high-resolution-qr-codes": {
     "hash": "c63cc028265a0186",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "es:/high-resolution-qr-codes": {
     "hash": "bc45a2ead7cdcd00",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   },
   "vi:/high-resolution-qr-codes": {
     "hash": "23be4764f71c624a",
-    "lastmod": "2026-08-23"
-  },
-  "ar:/pricing": {
-    "hash": "e4f887d7575c88d8",
-    "lastmod": "2026-08-22"
-  },
-  "hi:/pricing": {
-    "hash": "15dcf6fb6843f89d",
-    "lastmod": "2026-08-22"
-  },
-  "tr:/pricing": {
-    "hash": "b879209b41cb18a8",
-    "lastmod": "2026-08-22"
-  },
-  "es:/pricing": {
-    "hash": "34e2ae76f9c6e20e",
-    "lastmod": "2026-08-22"
-  },
-  "vi:/pricing": {
-    "hash": "5b1e5163d3c15aea",
-    "lastmod": "2026-08-22"
-  },
-  "ar:/faqs-qr-code-generator": {
-    "hash": "b8e4d1939b83d2f4",
-    "lastmod": "2026-08-22"
-  },
-  "hi:/faqs-qr-code-generator": {
-    "hash": "ab7bbad72b6d0dfd",
-    "lastmod": "2026-08-22"
-  },
-  "tr:/faqs-qr-code-generator": {
-    "hash": "b044be8414a8ad50",
-    "lastmod": "2026-08-22"
-  },
-  "es:/faqs-qr-code-generator": {
-    "hash": "126a6069eab76e8a",
-    "lastmod": "2026-08-22"
-  },
-  "vi:/faqs-qr-code-generator": {
-    "hash": "14c53dfbb76c44ab",
-    "lastmod": "2026-08-22"
-  },
-  "ar:/about": {
-    "hash": "06e81943e331a480",
-    "lastmod": "2026-08-22"
-  },
-  "hi:/about": {
-    "hash": "570b45d281fd976c",
-    "lastmod": "2026-08-22"
-  },
-  "tr:/about": {
-    "hash": "fedea43cf93f119a",
-    "lastmod": "2026-08-23"
-  },
-  "es:/about": {
-    "hash": "a86fd9f8dcef2489",
-    "lastmod": "2026-08-22"
-  },
-  "vi:/about": {
-    "hash": "3b852a80c2aa5195",
-    "lastmod": "2026-08-22"
-  },
-  "ar:/contact": {
-    "hash": "54ad7b0a5920a94e",
-    "lastmod": "2026-08-22"
-  },
-  "hi:/contact": {
-    "hash": "d704de07cf5d3b39",
-    "lastmod": "2026-08-22"
-  },
-  "tr:/contact": {
-    "hash": "701a6f926b273aec",
-    "lastmod": "2026-08-22"
-  },
-  "es:/contact": {
-    "hash": "302f6a3b8d24b937",
-    "lastmod": "2026-08-22"
-  },
-  "vi:/contact": {
-    "hash": "0df7d136b243d8e5",
-    "lastmod": "2026-08-22"
-  },
-  "ar:/privacy": {
-    "hash": "64ecab5151849902",
-    "lastmod": "2026-08-22"
-  },
-  "hi:/privacy": {
-    "hash": "930e63edc1221c8e",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/privacy": {
-    "hash": "17eeb281a02e17b8",
-    "lastmod": "2026-08-22"
-  },
-  "es:/privacy": {
-    "hash": "a0a6784b84f60338",
-    "lastmod": "2026-08-22"
-  },
-  "vi:/privacy": {
-    "hash": "2562d8b508c48da2",
-    "lastmod": "2026-08-22"
-  },
-  "ar:/terms": {
-    "hash": "66329a72ff33e366",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/terms": {
-    "hash": "7dd6816f32f29bc7",
-    "lastmod": "2026-08-22"
-  },
-  "tr:/terms": {
-    "hash": "f5909e2b373dda1f",
-    "lastmod": "2026-08-22"
-  },
-  "es:/terms": {
-    "hash": "e5b22b3635f5da17",
-    "lastmod": "2026-08-22"
-  },
-  "vi:/terms": {
-    "hash": "d9c78f31d90647a7",
-    "lastmod": "2026-08-22"
-  },
-  "ar:/blog": {
-    "hash": "9b4d3af31a8b7b1f",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/blog": {
-    "hash": "6157f64226e53ef2",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/blog": {
-    "hash": "cd80f0fd314c22ca",
-    "lastmod": "2026-08-23"
-  },
-  "es:/blog": {
-    "hash": "7e826f96431f0ab4",
-    "lastmod": "2026-08-23"
-  },
-  "vi:/blog": {
-    "hash": "24d461ec0f17cb1d",
-    "lastmod": "2026-08-23"
-  },
-  "ar:/blog/qr-codes-for-restaurants": {
-    "hash": "35455aec2cc710e5",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/blog/qr-codes-for-restaurants": {
-    "hash": "ef4c712d6ec66c85",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/blog/qr-codes-for-restaurants": {
-    "hash": "3d51c10fe7750721",
-    "lastmod": "2026-08-23"
-  },
-  "es:/blog/qr-codes-for-restaurants": {
-    "hash": "94df2a6cee856027",
-    "lastmod": "2026-08-23"
-  },
-  "vi:/blog/qr-codes-for-restaurants": {
-    "hash": "8c81ed30733f8a43",
-    "lastmod": "2026-08-23"
-  },
-  "ar:/blog/printing-qr-codes-guide": {
-    "hash": "b1383db6ff525290",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/blog/printing-qr-codes-guide": {
-    "hash": "442ba1fe4a985103",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/blog/printing-qr-codes-guide": {
-    "hash": "58abdf63fb829d17",
-    "lastmod": "2026-08-23"
-  },
-  "es:/blog/printing-qr-codes-guide": {
-    "hash": "91a0011c0b391a6b",
-    "lastmod": "2026-08-23"
-  },
-  "vi:/blog/printing-qr-codes-guide": {
-    "hash": "64e2bc449cd4e121",
-    "lastmod": "2026-08-23"
-  },
-  "ar:/blog/vcard-qr-code-business-cards": {
-    "hash": "00abd08d84ac66d5",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/blog/vcard-qr-code-business-cards": {
-    "hash": "56d44e784e4c1c25",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/blog/vcard-qr-code-business-cards": {
-    "hash": "9b49dbed06f84f80",
-    "lastmod": "2026-08-23"
-  },
-  "es:/blog/vcard-qr-code-business-cards": {
-    "hash": "41ce8ad572dc59c3",
-    "lastmod": "2026-08-23"
-  },
-  "vi:/blog/vcard-qr-code-business-cards": {
-    "hash": "0f0e7d6e49435dd3",
-    "lastmod": "2026-08-23"
-  },
-  "ar:/blog/qr-codes-for-real-estate": {
-    "hash": "f66c4c4b8ec47754",
-    "lastmod": "2026-08-22"
-  },
-  "hi:/blog/qr-codes-for-real-estate": {
-    "hash": "543a48492d4eba21",
-    "lastmod": "2026-08-22"
-  },
-  "tr:/blog/qr-codes-for-real-estate": {
-    "hash": "25b66d419affd75e",
-    "lastmod": "2026-08-23"
-  },
-  "es:/blog/qr-codes-for-real-estate": {
-    "hash": "ad833abf9708d3f8",
-    "lastmod": "2026-08-22"
-  },
-  "vi:/blog/qr-codes-for-real-estate": {
-    "hash": "b7dce10d220fac32",
-    "lastmod": "2026-08-22"
-  },
-  "ar:/blog/wifi-qr-codes-for-hospitality": {
-    "hash": "41d634714cd70062",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/blog/wifi-qr-codes-for-hospitality": {
-    "hash": "3ad1f2f689acafac",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/blog/wifi-qr-codes-for-hospitality": {
-    "hash": "c48b39597b8c6415",
-    "lastmod": "2026-08-23"
-  },
-  "es:/blog/wifi-qr-codes-for-hospitality": {
-    "hash": "2a44da823f2b8dd0",
-    "lastmod": "2026-08-23"
-  },
-  "vi:/blog/wifi-qr-codes-for-hospitality": {
-    "hash": "27ff5ae2511ca91e",
-    "lastmod": "2026-08-23"
-  },
-  "ar:/blog/how-to-scan-qr-code": {
-    "hash": "6000656174f0dd00",
-    "lastmod": "2026-08-27"
-  },
-  "hi:/blog/how-to-scan-qr-code": {
-    "hash": "039006e40b3083d2",
-    "lastmod": "2026-08-27"
-  },
-  "tr:/blog/how-to-scan-qr-code": {
-    "hash": "21468da5f0b0cc85",
-    "lastmod": "2026-08-27"
-  },
-  "es:/blog/how-to-scan-qr-code": {
-    "hash": "7eb4bca8de97b542",
-    "lastmod": "2026-08-27"
-  },
-  "vi:/blog/how-to-scan-qr-code": {
-    "hash": "fbc9cea4af4547da",
-    "lastmod": "2026-08-27"
-  },
-  "ar:/blog/do-qr-codes-expire": {
-    "hash": "8d1c5d05fc23804c",
-    "lastmod": "2026-08-27"
-  },
-  "hi:/blog/do-qr-codes-expire": {
-    "hash": "b614f1eccdeee706",
-    "lastmod": "2026-08-27"
-  },
-  "tr:/blog/do-qr-codes-expire": {
-    "hash": "e1b0faa9dd60236a",
-    "lastmod": "2026-08-27"
-  },
-  "es:/blog/do-qr-codes-expire": {
-    "hash": "5a84063ca78d3bfa",
-    "lastmod": "2026-08-27"
-  },
-  "vi:/blog/do-qr-codes-expire": {
-    "hash": "8e27aca062602f6a",
-    "lastmod": "2026-08-27"
-  },
-  "ar:/blog/share-wifi-password-qr-code": {
-    "hash": "c8efea3722f3d8a6",
-    "lastmod": "2026-08-27"
-  },
-  "hi:/blog/share-wifi-password-qr-code": {
-    "hash": "69ce0ec895e358b6",
-    "lastmod": "2026-08-27"
-  },
-  "tr:/blog/share-wifi-password-qr-code": {
-    "hash": "93c767dfd0fa51a0",
-    "lastmod": "2026-08-27"
-  },
-  "es:/blog/share-wifi-password-qr-code": {
-    "hash": "c6786fc8258eafdc",
-    "lastmod": "2026-08-27"
-  },
-  "vi:/blog/share-wifi-password-qr-code": {
-    "hash": "3fc256a714560f31",
-    "lastmod": "2026-08-27"
-  },
-  "ar:/pdf-qr-code-generator": {
-    "hash": "c5c0b6a6b646d422",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/pdf-qr-code-generator": {
-    "hash": "4cbc6961a0342800",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/pdf-qr-code-generator": {
-    "hash": "74f573b1adf1845c",
-    "lastmod": "2026-08-23"
-  },
-  "es:/pdf-qr-code-generator": {
-    "hash": "84723fe739f2d013",
-    "lastmod": "2026-08-23"
-  },
-  "vi:/pdf-qr-code-generator": {
-    "hash": "b0fe8ef4269d3720",
-    "lastmod": "2026-08-23"
-  },
-  "ar:/app-store-qr-code-generator": {
-    "hash": "fe71dff7f915ea69",
-    "lastmod": "2026-08-23"
-  },
-  "hi:/app-store-qr-code-generator": {
-    "hash": "149ce8817b6435af",
-    "lastmod": "2026-08-23"
-  },
-  "tr:/app-store-qr-code-generator": {
-    "hash": "a01b690e74ebcce9",
-    "lastmod": "2026-08-23"
-  },
-  "es:/app-store-qr-code-generator": {
-    "hash": "7568bed3f88a5034",
-    "lastmod": "2026-08-23"
-  },
-  "vi:/app-store-qr-code-generator": {
-    "hash": "103e48a62437e9f2",
-    "lastmod": "2026-08-23"
+    "lastmod": "2026-10-17"
   }
 }

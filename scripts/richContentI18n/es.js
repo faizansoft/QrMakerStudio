@@ -4285,5 +4285,3619 @@ export const RICH_CONTENT = {
       { q: '¿Puedo generar códigos QR para productos y mercancía comercial?', a: '¡Sí! Tienes plena propiedad comercial y derechos de licencia para usar todos los códigos QR generados en nuestra plataforma en empaques minoristas, libros, ropa y señalización en todo el mundo.' }
     ],
     bestPractices: 'Siempre exporta en SVG vectorial para impresión comercial, mantén un contraste alto (> 4.5:1), preserva la zona silenciosa de 4 módulos y prueba escaneando pruebas impresas físicas antes de encargar tiradas grandes.'
+  },
+  '/pricing': {
+    "sections": [
+      {
+        "title": "Funciones gratis para siempre frente a Pro para empresas",
+        "paragraphs": [
+          "Nuestro plan gratuito básico ofrece generación ilimitada de códigos QR estáticos en todos los tipos de herramientas especializadas, sin límite de escaneos, sin marcas de agua y con exportaciones SVG vectoriales a coste cero.",
+          "Para equipos de marketing y empresas que necesitan URL dinámicas editables, protección con contraseña y análisis detallado de escaneos, nuestro nivel Pro ofrece una facturación flexible y asequible."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Arquitectura transparente y 100 % gratuita: el manifiesto antisuscripción",
+      "paragraphs": [
+        "Así funciona la \"trampa de la prueba gratuita\". Creas un código QR que crees gratuito, lo imprimes en miles de euros de envases o vinilos de vehículos y, dos semanas después, deja de funcionar, porque el servicio ahora exige 35 $ al mes para mantener viva la redirección. Propietarios de negocios, diseñadores y organizadores de eventos caen en esto constantemente. El código nunca fue realmente gratuito; la impresión simplemente hizo que fuera caro dejarlo.",
+        "Creemos que eso es al revés. La generación de QR se basa en un estándar matemático abierto, ISO/IEC 18004, y un estándar abierto no debería alquilarse de vuelta. Por eso todo el proceso se ejecuta en el lado del cliente: tu navegador calcula la corrección de errores Reed-Solomon, construye la matriz y renderiza el SVG en local. No hay ningún servidor de seguimiento en medio, así que no existe ningún servidor que pueda cobrarte o desactivar tu código.",
+        "A continuación tienes la lista de precios completa. Sin cargos ocultos, sin límites de escaneo, sin tarjeta requerida y sin fecha de caducidad. No es un nivel promocional: es todo el producto."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Matriz de funciones y niveles de precios de QR Generator Online",
+      "headers": [
+        "Función / capacidad",
+        "QR Generator Online (gratis para siempre)",
+        "Planes \"Pro\" de la competencia (35 $/mes)"
+      ],
+      "rows": [
+        [
+          "Coste de suscripción mensual",
+          "0,00 $ al mes (100 % gratis para siempre)",
+          "De 15,00 a 45,00 $ al mes (de 180 a 540 $ al año)"
+        ],
+        [
+          "Caducidad del código QR",
+          "Nunca (validez permanente de los códigos estáticos)",
+          "Se desactiva si se interrumpe el pago mensual"
+        ],
+        [
+          "Límites de escaneo",
+          "Escaneos ilimitados de por vida (sin límite de ancho de banda)",
+          "Limitado a 50-500 escaneos al mes en los niveles bajos"
+        ],
+        [
+          "Exportación vectorial SVG y EPS",
+          "Incluida gratis (trazados vectoriales sin pérdida)",
+          "Bloqueada tras planes premium de 25 $ o más al mes"
+        ],
+        [
+          "PNG 4K de 300 PPP en alta resolución",
+          "Incluido gratis (2048x2048 px o más)",
+          "Bloqueado tras planes de pago"
+        ],
+        [
+          "Inserción de logotipo personalizado",
+          "Incluida gratis con corrección de errores de nivel H",
+          "Con marca de agua o restringida en los planes gratuitos"
+        ],
+        [
+          "Requisito de cuenta o registro",
+          "Ninguno (sin cuenta, sin correo electrónico, sin tarjeta de crédito)",
+          "Registro obligatorio e introducción de tarjeta de crédito"
+        ],
+        [
+          "Soberanía de datos y privacidad",
+          "100 % en el cliente (sin seguimiento ni almacenamiento)",
+          "Todos los escaneos se enrutan y registran en el servidor"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Elige cualquier herramienta de QR especializada",
+        "description": "Todos los generadores están abiertos: URL, vCard, WiFi, PDF, WhatsApp, redes sociales, correo, SMS, teléfono, ubicación, evento, cripto, texto, pagos y Formularios de Google. Nada está bloqueado tras un plan."
+      },
+      {
+        "number": 2,
+        "title": "Personaliza la marca visual e inserta tu logotipo",
+        "description": "Aplica tus colores, cambia el patrón de puntos y las esquinas, y coloca tu logotipo en el centro con corrección de nivel H."
+      },
+      {
+        "number": 3,
+        "title": "Descarga archivos SVG vectoriales listos para producción",
+        "description": "Pulsa Descargar. El SVG o PNG de alta resolución se descarga al instante, sin muro de pago ni pantalla de cuenta por el medio."
+      }
+    ],
+    "features": [
+      {
+        "title": "Cero cuotas mensuales para siempre",
+        "description": "Crea todos los códigos de calidad comercial que quieras. Sin coste recurrente, sin tarjeta y sin letra pequeña."
+      },
+      {
+        "title": "Escaneos permanentes de por vida sin límites",
+        "description": "Un código impreso sigue funcionando durante años. Nada lo limita ni lo caduca."
+      },
+      {
+        "title": "Descargas SVG vectoriales sin pérdida y sin restricciones",
+        "description": "El archivo vectorial listo para preimpresión que piden las imprentas de gran formato está aquí, gratis y sin mejora premium."
+      },
+      {
+        "title": "Derechos de uso comercial completos incluidos",
+        "description": "Coloca los códigos en envases, libros, expositores o incluso en un anuncio de televisión. No hay regalías que pagar."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Desglose de acceso a funciones empresariales gratuitas",
+      "description": "Todas las funciones avanzadas están disponibles para el 100 % de los usuarios, sin muros de pago.",
+      "headers": [
+        "Área de capacidad",
+        "Estado de inclusión",
+        "Especificaciones técnicas",
+        "Alcance comercial"
+      ],
+      "rows": [
+        [
+          "Todos los generadores de datos QR especializados",
+          "100 % gratis y sin límites",
+          "ISO/IEC 18004, RFC 2426, RFC 5545, BIP-0021",
+          "Uso personal y comercial ilimitado"
+        ],
+        [
+          "Exportación vectorial SVG y EPS",
+          "100 % gratis y sin límites",
+          "Trazados vectoriales matemáticos sin pérdida",
+          "Preimpresión comercial, envases, CNC"
+        ],
+        [
+          "Salida PNG 4K ultra HD",
+          "100 % gratis y sin límites",
+          "2048 x 2048 px a 300+ PPP",
+          "Marketing digital, pantallas 4K, web"
+        ],
+        [
+          "Inserción de logotipo con nivel H",
+          "100 % gratis y sin límites",
+          "Redundancia algebraica de Reed-Solomon del 30 %",
+          "Envases de marca y tarjetas de lujo"
+        ],
+        [
+          "Paletas de colores personalizadas",
+          "100 % gratis y sin límites",
+          "Control independiente del color hexadecimal",
+          "Coincidencia total con la guía de marca"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Propietarios de pequeños negocios y emprendedores",
+        "description": "Imprime señalética, envases y material de marketing sin otra línea de software mensual en el presupuesto."
+      },
+      {
+        "title": "Agencias de diseño gráfico y freelancers",
+        "description": "Entrega a tus clientes un código vectorial listo para producción y nunca tendrás que atender la llamada de que caducó por la suscripción de otro."
+      },
+      {
+        "title": "Departamentos de preimpresión y envasado de empresas",
+        "description": "Integra códigos vectoriales fiables directamente en los troqueles de envase, con una integridad de datos que se mantiene durante toda la tirada."
+      },
+      {
+        "title": "Organizaciones sin ánimo de lucro y ONG",
+        "description": "Acepta donaciones en cripto y consigue inscripciones a eventos con un presupuesto tecnológico de exactamente cero."
+      },
+      {
+        "title": "Organizadores de eventos y planificadores de bodas",
+        "description": "Envía miles de invitaciones digitales y códigos de confirmación para el calendario. Ningún límite de escaneos los cortará a mitad del evento."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Cómo proteger tu negocio de las estafas de suscripción de códigos QR",
+      "points": [
+        "Comprueba qué codifica realmente el código. Escanéalo antes de imprimirlo. Si se decodifica en un dominio de terceros, como `qr-service.com/x9f2`, en lugar de tu propia URL, es una redirección que pueden desactivar: aléjate.",
+        "Desconfía si te piden una tarjeta para una \"prueba gratuita\". Cuando un generador pide datos de pago por adelantado, espera que el código deje de funcionar el día que termine la prueba.",
+        "Confirma que la descarga SVG es gratuita. Las imprentas profesionales necesitan SVG o EPS vectorial. Una plataforma que cobra 20 $ o más por esa exportación no es la ganga que parece.",
+        "Vigila un techo oculto de escaneos. Algunos niveles gratuitos mueren en silencio en el escaneo 50 o 100. Los códigos estáticos de aquí no tienen ese límite.",
+        "Prefiere la generación en el cliente. Cuando el código se construye en tu propio navegador, ninguna empresa tiene un interruptor que pueda apagarlo más adelante."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿QR Generator Online es realmente 100 % gratis, sin cargos ocultos?",
+        "a": "Completamente. Sin niveles, sin límites de escaneo y sin tarjeta. Todos los generadores y todas las descargas vectoriales son gratis, tanto para trabajo personal como comercial."
+      },
+      {
+        "q": "¿Cómo mantiene QR Generator Online el servicio sin cobrar cuotas de suscripción?",
+        "a": "El trabajo pesado se hace en tu navegador, no en nuestra infraestructura, así que los costes de funcionamiento son bajos. Mantener gratuita y abierta la generación básica es el sentido del proyecto, no una fase de la que pensamos salir."
+      },
+      {
+        "q": "¿Caducan alguna vez los códigos QR creados en QR Generator Online?",
+        "a": "No. Los datos están en la propia matriz visual, así que el código sigue activo mientras lo esté su destino. No hay ningún servidor de por medio que pueda agotar el tiempo."
+      },
+      {
+        "q": "¿Hay algún límite de veces que se pueden escanear mis códigos QR?",
+        "a": "Ninguno. Un código puede recibir unos pocos escaneos o varios millones; no hay ningún límite de ancho de banda detrás."
+      },
+      {
+        "q": "¿Puedo usar estos códigos QR en productos comerciales que vendo?",
+        "a": "Véndelos sin problema. Tienes todos los derechos comerciales sobre cada código que generes: envases, merchandising, libros, promociones, en todo el mundo."
+      },
+      {
+        "q": "¿Pones marca de agua a mis códigos QR en el plan gratuito?",
+        "a": "Nunca. Sin marca de agua, sin distintivo promocional y sin marca de terceros. El diseño es totalmente tuyo."
+      },
+      {
+        "q": "¿Está incluida la exportación vectorial SVG en el plan gratuito?",
+        "a": "Sí. La exportación vectorial SVG y la PNG de 2048x2048 px son gratis para todos, sin nada reservado."
+      },
+      {
+        "q": "¿Necesito crear una cuenta o dar una dirección de correo electrónico?",
+        "a": "Para nada. Genera, personaliza y descarga todo lo que quieras sin registrarte ni dar ningún dato."
+      }
+    ],
+    "bestPractices": "Para todo lo que se imprima, elige un código estático permanente, expórtalo como SVG vectorial y escanea una prueba física antes de comprometerte con la fabricación en volumen."
+  },
+  '/faqs-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Preguntas frecuentes y consejos técnicos",
+        "paragraphs": [
+          "¿Caducan los códigos QR estáticos? No. Los códigos QR estáticos creados en QR Generator Online contienen los datos en bruto y nunca caducarán mientras tu enlace de destino siga activo.",
+          "¿Cuál es el mejor formato para imprimir? El SVG vectorial es el formato recomendado para la impresión comercial, porque escala a cualquier tamaño físico sin pixelado ni pérdida de calidad."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "La FAQ técnica y práctica definitiva sobre códigos de barras 2D ópticos",
+      "paragraphs": [
+        "Esta es la base de conocimiento de QR Generator Online: el lugar para resolver una duda técnica, de diseño, de preimpresión o de seguridad sobre los códigos de barras matriciales 2D definidos por ISO/IEC 18004.",
+        "Las respuestas aquí cubren todo el espectro: las matemáticas de la corrección de errores Reed-Solomon, cómo una cámara de teléfono convierte una foto en datos, la relación distancia-tamaño con la que imprimes (S = D / 10) y dónde el RGPD y la CCPA tocan un flujo de trabajo con QR. Desarrolladores, responsables de marketing, técnicos de preimpresión y propietarios de negocios necesitan piezas distintas de todo ello.",
+        "Las categorías de abajo están ordenadas para que vayas directamente a crear, diseñar, imprimir o desplegar un código."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Resumen técnico de los estándares de simbología QR",
+      "headers": [
+        "Parámetro técnico",
+        "Especificación estándar",
+        "Recomendación de ingeniería"
+      ],
+      "rows": [
+        [
+          "Estándar de referencia",
+          "ISO/IEC 18004:2015 (Tecnología de la información)",
+          "Cumplimiento estricto para la decodificación óptica universal"
+        ],
+        [
+          "Niveles de corrección de errores",
+          "Nivel L (7 %), Nivel M (15 %), Nivel Q (25 %), Nivel H (30 %)",
+          "Nivel H para logotipos insertados; nivel M para URL limpias"
+        ],
+        [
+          "Margen de zona silenciosa",
+          "Mínimo 4 anchos de módulo en los 4 lados",
+          "Obligatorio para la detección de bordes del escáner"
+        ],
+        [
+          "Fórmula de tamaño óptico",
+          "S = D / 10 (ancho = distancia de escaneo / 10)",
+          "Mínimo 25 mm x 25 mm para soportes de impresión de mano"
+        ],
+        [
+          "Relación de contraste WCAG",
+          "Contraste de luminancia mínimo 4,5:1 (7:1 en exteriores)",
+          "Módulos oscuros sobre un fondo claro"
+        ],
+        [
+          "Capacidad máxima de datos",
+          "4.296 alfanuméricos / 7.089 numéricos / 2.953 bytes",
+          "Mantenerse por debajo de 150 caracteres para una decodificación rápida con cámara"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Selecciona el esquema de datos",
+        "description": "Empieza por lo que vas a codificar: URL, vCard 3.0, WiFi, WhatsApp, SMS, correo, teléfono, ubicación, evento, cripto, texto plano o un Formulario de Google."
+      },
+      {
+        "number": 2,
+        "title": "Configura el estilo y la corrección de errores",
+        "description": "Define colores de marca que mantengan un contraste superior a 4,5:1, elige un estilo de puntos y, si vas a poner un logotipo en el centro, genera con nivel H."
+      },
+      {
+        "number": 3,
+        "title": "Exporta el SVG vectorial y prueba pruebas físicas",
+        "description": "Descarga el SVG vectorial o el PNG 4K, y luego escanéalo con varios teléfonos distintos y con diferentes iluminaciones antes de usarlo."
+      }
+    ],
+    "features": [
+      {
+        "title": "Cobertura técnica completa",
+        "description": "Las matemáticas de la corrección de errores, los protocolos URI y cómo funciona de verdad la binarización de la cámara, explicados sin simplificar."
+      },
+      {
+        "title": "Orientación práctica para preimpresión e impresión",
+        "description": "Fórmulas reales de tamaño, qué soporte elegir y cómo compensar la ganancia de punto de tinta en la prensa."
+      },
+      {
+        "title": "Estrategias de seguridad y defensa frente al quishing",
+        "description": "Qué hacer para que un código manipulado o suplantado no convierta tu campaña en un vector de phishing."
+      },
+      {
+        "title": "Base de conocimiento 100 % gratuita y de acceso abierto",
+        "description": "Documentación abierta que siempre está disponible: sin inicio de sesión ni muro de pago, seas desarrollador o especialista en marketing."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Guía de resolución y tamaños de impresión de códigos QR",
+      "description": "Referencia rápida para determinar las dimensiones físicas de impresión según la distancia de visión del usuario.",
+      "headers": [
+        "Colocación / aplicación",
+        "Distancia de escaneo esperada",
+        "Ancho mínimo (S)",
+        "Corrección de errores recomendada"
+      ],
+      "rows": [
+        [
+          "Tarjetas de visita y etiquetas con nombre",
+          "De 15 cm a 30 cm (de 6\" a 12\")",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "Nivel Q (25 %) o nivel H (30 %)"
+        ],
+        [
+          "Displays de mesa y posavasos",
+          "De 30 cm a 50 cm (de 12\" a 20\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Nivel M (15 %) o nivel H (30 %)"
+        ],
+        [
+          "Envases y etiquetas de producto",
+          "De 20 cm a 40 cm (de 8\" a 16\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Nivel H (30 %) con logotipo central"
+        ],
+        [
+          "Folletos, carteles y revistas",
+          "De 50 cm a 150 cm (de 20\" a 60\")",
+          "De 60 mm a 150 mm (de 2,4\" a 6,0\")",
+          "Nivel M (15 %)"
+        ],
+        [
+          "Gráficas de flotas de vehículos",
+          "De 3,0 m a 6,0 m (de 10 ft a 20 ft)",
+          "300 mm x 300 mm (12\" x 12\")",
+          "Nivel H (30 %) sobre vinilo de colada"
+        ],
+        [
+          "Vallas publicitarias en carretera",
+          "De 15,0 m a 30,0 m (de 50 ft a 100 ft)",
+          "De 1500 mm a 3000 mm (de 5 ft a 10 ft)",
+          "Nivel L (7 %) o nivel M (15 %)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Cumplimiento de TI y seguridad en empresas",
+        "description": "Comprueba que un despliegue corporativo de QR cumple el RGPD, la CCPA y las normas ISO de soberanía de datos antes de lanzarlo."
+      },
+      {
+        "title": "Diseño de envases y preimpresión flexográfica",
+        "description": "Confirma que el troquel de un código de barras cumple los límites de contraste y zona silenciosa de ISO/IEC 18004 antes de fabricar las planchas."
+      },
+      {
+        "title": "Cadenas de hostelería y restaurantes",
+        "description": "Despliega cartas sin contacto y tarjetas de WiFi para invitados que no necesiten que el personal las explique."
+      },
+      {
+        "title": "Organizadores de eventos y coordinadores de congresos",
+        "description": "Acelera el registro de entrada, reparte las diapositivas de las ponencias y añade las sesiones al calendario de los asistentes."
+      },
+      {
+        "title": "Agencias inmobiliarias y equipos de marketing",
+        "description": "Convierte un cartel de la obra en una fuente de contactos abierta las 24 horas que abre un tour virtual en 3D."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Los 5 fallos más comunes de los códigos QR y cómo solucionarlos",
+      "points": [
+        "Contraste débil. Los módulos pálidos sobre un fondo pálido no dan a la cámara nada en lo que enfocar. Mantente en 4,5:1 o más.",
+        "Zona silenciosa recortada. Si recortas demasiado el margen, el escáner no encuentra dónde empieza el código. Mantén el borde completo de 4 módulos.",
+        "Captura de pantalla a 72 PPP. Los gráficos web de baja resolución se difuminan en los bordes de los módulos al imprimirse. Usa SVG vectorial o un ráster de 300 PPP o más.",
+        "Demasiados datos. Una URL larga llena la matriz de puntos diminutos que se emborronan al imprimirse en pequeño. Acorta el enlace antes de generar el código.",
+        "Laminado brillante. Una capa de alto brillo devuelve reflejos a la lente. Pide acabado mate o satinado."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Cuál es la diferencia entre un código QR estático y uno dinámico?",
+        "a": "Un código estático lleva los datos reales (la URL, la vCard, la cadena de WiFi, lo que sea) dentro de la matriz. No caduca y no depende de ningún servidor. Un código dinámico lleva una redirección que apunta al servidor de otro, lo que permite editar el destino más adelante, pero te obliga a pagar una suscripción para mantener viva la redirección."
+      },
+      {
+        "q": "¿Caducan los códigos QR creados en QR Generator Online?",
+        "a": "Siguen siendo válidos de por vida. Escaneos ilimitados, sin cuota recurrente y sin cuenta atrás: el código es autocontenido."
+      },
+      {
+        "q": "¿Cuál es el tamaño físico mínimo al que se puede imprimir un código QR?",
+        "a": "Para una URL corta que se lee desde 15-20 cm, 20 mm x 20 mm (0,8\" x 0,8\") es el mínimo. En envases y tarjetas de visita, considera 25 mm x 25 mm (1,0\" x 1,0\") como el mínimo seguro del sector."
+      },
+      {
+        "q": "¿Cómo protege la corrección de errores de nivel H a un código QR con logotipo?",
+        "a": "El nivel H duplica aproximadamente el 30 % de la carga mediante redundancia Reed-Solomon. Esa copia de repuesto es lo que permite colocar un logotipo sobre los módulos centrales: el escáner reconstruye los datos tapados a partir de los bits redundantes."
+      },
+      {
+        "q": "¿Puedo personalizar los colores de un código QR para que coincidan con mi marca?",
+        "a": "Puedes cambiar el color de los módulos, el fondo, los marcos de las esquinas y los puntos de las esquinas de forma independiente. Una regla rige todo: el oscuro sobre claro debe superar un contraste de 4,5:1, o los escáneres empiezan a fallar."
+      },
+      {
+        "q": "¿Por qué se recomienda el formato SVG frente al PNG para la impresión comercial?",
+        "a": "El SVG describe el código como geometría, no como píxeles. Amplíalo de una tarjeta de visita a una valla publicitaria y los bordes siguen siendo nítidos, porque no hay una cuadrícula de píxeles que se acabe."
+      },
+      {
+        "q": "¿Están los códigos QR a salvo de malware y phishing (\"quishing\")?",
+        "a": "El código en sí solo contiene texto o una URL, así que no puede llevar malware. El riesgo es un código suplantado que apunta a un destino que no debería. Protégete mostrando tu logotipo verificado en el centro e imprimiendo en texto claro el dominio de destino real junto al código."
+      },
+      {
+        "q": "¿Se guardan o se rastrean mis datos personales en los servidores de QR Generator Online?",
+        "a": "No. Todo se ejecuta en el lado del cliente, en la memoria del navegador. Tus enlaces, contraseñas, tarjetas de contacto y logotipos subidos nunca se envían a un servidor ni se guardan en ningún sitio."
+      }
+    ],
+    "bestPractices": "Mantén el contraste por encima de 4,5:1, protege la zona silenciosa de 4 módulos y exporta SVG vectorial para impresión. Después escanea una prueba física antes de la tirada en volumen: esa última comprobación es la que separa un lanzamiento limpio de una reimpresión."
+  },
+  '/qr-code-with-logo': {
+    "sections": [
+      {
+        "title": "Por qué los códigos QR con marca consiguen hasta un 30 % más de escaneos",
+        "paragraphs": [
+          "Los códigos QR genéricos sin marca pueden parecer sospechosos o poco atractivos. Insertar el logotipo oficial de tu empresa da confianza a los usuarios sobre la autenticidad y seguridad del enlace de destino.",
+          "Nuestro generador usa corrección de errores de nivel H (30 % de redundancia) para garantizar una fiabilidad de escaneo impecable mientras muestra tu marca."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Mecánica técnica de la inserción de logotipos con corrección de errores Reed-Solomon",
+      "paragraphs": [
+        "Un logotipo se coloca en el centro de un código QR por una sola razón: la corrección de errores. El estándar ISO/IEC 18004 divide cada código en palabras de código de datos y palabras de corrección de errores, y define cuatro niveles de corrección: L recupera el 7 % de un código dañado, M recupera el 15 %, Q recupera el 25 % y H recupera el 30 %. Cuanto más alto es el nivel, más imagen puede faltar y aun así decodificarse.",
+        "Si pones un logotipo en el centro, cubres físicamente algunos módulos. Si generas ese código en nivel H, puedes cubrir hasta el 30 % de la superficie antes de que los datos sean irrecuperables. Los decodificadores de cámara de iOS (AVFoundation) y Android (ML Kit) reconstruyen simplemente los bytes ocultos a partir de la paridad de alrededor: el logotipo nunca bloquea realmente el escaneo, solo oculta píxeles de los que las matemáticas ya tienen una copia de reserva.",
+        "Un detalle más hace un trabajo silencioso. QR Generator Online deja un margen blanco fino alrededor de tu logotipo para que su borde nunca se confunda con los módulos oscuros vecinos. Ese margen es la razón por la que un código con logotipo se lee bien incluso bajo una luz tenue de restaurante o un escaparate muy iluminado."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Código QR con logotipo de marca frente a código QR genérico en blanco y negro",
+      "headers": [
+        "Métrica de evaluación",
+        "Código QR de marca con logotipo",
+        "QR genérico en blanco y negro"
+      ],
+      "rows": [
+        [
+          "Índice de engagement de escaneo",
+          "Hasta un 35 % más de escaneos (confianza de marca verificada)",
+          "Tasa de escaneo estándar de referencia (a menudo percibido como sospechoso)"
+        ],
+        [
+          "Recuerdo de marca y confianza",
+          "Comunica al instante la identidad del editor",
+          "Aspecto visual anónimo, mayor ansiedad ante el quishing"
+        ],
+        [
+          "Nivel de corrección de errores",
+          "Nivel H (30 % de redundancia matemática)",
+          "Normalmente nivel L (7 %) o nivel M (15 %)"
+        ],
+        [
+          "Impacto en el marketing corporativo",
+          "Refuerza las directrices de marca en el material físico",
+          "Desconectado de la tipografía y la identidad de marca"
+        ],
+        [
+          "Tolerancia al escaneo",
+          "Mantiene el escaneo instantáneo con una máscara de margen para el logotipo",
+          "Vulnerable a los arañazos en la superficie si se usa nivel L"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Introduce el destino del QR y elige el tipo de contenido",
+        "description": "Escribe tu destino en el generador de arriba: una URL de sitio web, un perfil vCard, una red WiFi o texto plano."
+      },
+      {
+        "number": 2,
+        "title": "Sube un logotipo de alta resolución y ajusta la máscara",
+        "description": "Abre «Opciones y logotipo QR personalizados», sube un PNG transparente, SVG o JPEG, y ajusta los colores de los módulos a la paleta de tu marca."
+      },
+      {
+        "number": 3,
+        "title": "Exporta SVG vectorial para impresión o PNG de alta resolución",
+        "description": "Para envases, impresión y señalética de tienda, descarga el SVG vectorial escalable. Para pantallas, usa el PNG de alta resolución."
+      }
+    ],
+    "features": [
+      {
+        "title": "Corrección de errores de nivel H (30 % de redundancia)",
+        "description": "Coloca un logotipo, un monograma o un icono en el centro y el margen de recuperación del 30 % lo cubre: el código sigue decodificándose a la primera."
+      },
+      {
+        "title": "Salida de impresión SVG y EPS vectorial sin pérdida",
+        "description": "Amplía el código de marca a tamaño de valla publicitaria y las líneas vectoriales siguen nítidas. No hay una cuadrícula de píxeles que se agote."
+      },
+      {
+        "title": "Máscara inteligente de módulos con margen",
+        "description": "Se dibuja un espacio limpio entre el borde del logotipo y los módulos de datos que lo rodean, para que nunca se fundan visualmente."
+      },
+      {
+        "title": "Privacidad criptográfica 100 % en el cliente",
+        "description": "El trabajo con la imagen se hace en tu navegador. Tus logotipos y enlaces subidos nunca se envían a ningún sitio."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Especificaciones de tamaño de impresión y proporción del logotipo",
+      "description": "Sigue proporciones estrictas de área entre logotipo y matriz para preservar la velocidad de escaneo óptico.",
+      "headers": [
+        "Aplicación de impresión",
+        "Dimensiones generales del QR",
+        "Tamaño máximo del logotipo",
+        "Soporte recomendado"
+      ],
+      "rows": [
+        [
+          "Tarjetas de visita y credenciales",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "8 mm x 8 mm (0,3\" x 0,3\")",
+          "Cartulina mate pesada (más de 350 g/m²)"
+        ],
+        [
+          "Envases y colgantes",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "10 mm x 10 mm (0,4\" x 0,4\")",
+          "Cartón mate recubierto / papel kraft"
+        ],
+        [
+          "Displays de mesa y mostradores",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "13 mm x 13 mm (0,5\" x 0,5\")",
+          "Soporte acrílico de sobremesa / cartulina plastificada"
+        ],
+        [
+          "Carteles de tienda y vinilos de escaparate",
+          "100 mm x 100 mm (4,0\" x 4,0\")",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "Vinilo mate resistente a la intemperie"
+        ],
+        [
+          "Pancartas y vallas publicitarias exteriores",
+          "500 mm - 2000 mm",
+          "140 mm - 560 mm",
+          "Vinilo pesado no reflectante"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Bienes de consumo envasados (CPG) y lujo minorista",
+        "description": "Una marca oficial en el envase tranquiliza al comprador sobre la autenticidad del producto y le da un motivo para registrarse en el programa de fidelidad."
+      },
+      {
+        "title": "Identidad corporativa y tarjetas ejecutivas",
+        "description": "Pon el logotipo de la empresa, o la foto del ejecutivo, en el centro del código vCard y la tarjeta dejará de parecer genérica."
+      },
+      {
+        "title": "Cartas de restaurante y vajilla de marca",
+        "description": "Un escudo de la cafetería dentro del código de la mesa se ve como parte del local y no como una pegatina puesta después."
+      },
+      {
+        "title": "Señalética de eventos y patrocinios de congresos",
+        "description": "El logotipo de un patrocinador dentro del código del evento, en acreditaciones y pancartas del escenario, mantiene visible a ese patrocinador y le da una atribución limpia."
+      },
+      {
+        "title": "Envíos directos y postales promocionales",
+        "description": "Un código de marca y bien diseñado aumenta la respuesta del correo directo, porque una postal que la gente reconoce es una postal que la gente escanea."
+      }
+    ],
+    "troubleshooting": {
+      "title": "5 reglas esenciales para códigos QR con logotipo insertado",
+      "points": [
+        "Mantén el logotipo por debajo del 30 % del área. Por encima del 25-30 % de cobertura superas lo que Reed-Solomon puede reconstruir y el código deja de decodificarse.",
+        "No toques los tres ojos de localización. Los cuadrados concéntricos de las esquinas superior izquierda, superior derecha e inferior izquierda deben quedar completamente libres: son los que usa el escáner para orientar el código.",
+        "Dale un borde al logotipo. Un fondo transparente o un borde blanco fino evita que el logotipo se funda con los módulos oscuros que lo rodean.",
+        "Genera en nivel H. Un código con logotipo en nivel L o M no tiene la redundancia necesaria para resistir la cobertura: el nivel H es lo que te da el margen.",
+        "Escanea una prueba impresa. Pruébalo en un Android económico y en un iPhone actual, con poca luz y con mucha luz, antes de lanzar la tirada."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Por qué añadir un logotipo no impide que el código QR se escanee?",
+        "a": "Se debe a la corrección de errores Reed-Solomon. En nivel H, aproximadamente el 30 % de la carga se duplica en el código. Un logotipo central cubre algunos módulos y el decodificador simplemente los reconstruye a partir de las copias redundantes que hay en el resto de la matriz."
+      },
+      {
+        "q": "¿Qué formatos de imagen puedo subir para el logotipo central?",
+        "a": "PNG, SVG o JPEG funcionan. Un PNG transparente o un SVG vectorial dan el borde más limpio y el resultado más profesional; un JPEG plano sobre un cuadrado blanco parece pegado en comparación."
+      },
+      {
+        "q": "¿De qué tamaño debe ser el logotipo en relación con el código QR?",
+        "a": "Entre el 15 % y el 25 % del ancho y el alto es el punto óptimo. No tienes que calcularlo a ojo: el generador escala el logotipo a la proporción correcta automáticamente."
+      },
+      {
+        "q": "¿Cuestan dinero los códigos QR con logotipos personalizados o requieren suscripción?",
+        "a": "Son gratuitos, como todo lo de aquí: escaneos ilimitados, validez permanente y ningún muro de pago después de imprimir."
+      },
+      {
+        "q": "¿Puedo añadir iconos de redes sociales (Instagram, Facebook, WhatsApp, WiFi) en lugar de un logotipo de empresa?",
+        "a": "Sí. Hay una biblioteca integrada de iconos de plataformas habituales; si no encuentras el que quieres, sube tu propia ilustración."
+      },
+      {
+        "q": "¿Se escanea bien un código QR con logotipo en cámaras de teléfonos antiguos?",
+        "a": "Sí, siempre que se cumplan dos cosas: la corrección de nivel H está activada y el logotipo ocupa menos del 30 % de la superficie. Si cumples ambas, incluso una cámara antigua lo decodifica al instante."
+      },
+      {
+        "q": "¿Qué formato de exportación es mejor para la impresión comercial con logotipo?",
+        "a": "SVG vectorial. Mantiene nítidas tanto la matriz de módulos como el logotipo insertado a cualquier escala de impresión, que es exactamente lo que necesita una imprenta."
+      },
+      {
+        "q": "¿Se guarda en vuestros servidores web el logotipo que subo?",
+        "a": "No. El logotipo se compone y el código se genera íntegramente en tu navegador: no se sube ni se guarda nada."
+      }
+    ],
+    "bestPractices": "Usa un PNG transparente o un logotipo vectorial, genera en nivel H y mantén un fuerte contraste entre los módulos y el fondo. Después escanea una prueba impresa antes de la tirada: un logotipo que se ve bien en pantalla puede estar un pelo demasiado grande en papel."
+  },
+  '/custom-qr-codes': {
+    "sections": [
+      {
+        "title": "Destaca con un diseño visual de códigos QR atractivo",
+        "paragraphs": [
+          "Elige entre puntos redondeados, puntos con contorno, píxeles cuadrados geométricos y estilos artísticos. Personaliza los cuadros de las esquinas exteriores y los puntos centrales de forma independiente.",
+          "Crea materiales de marketing de alta conversión que se vean modernos, profesionales y visualmente atractivos."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Mecánica técnica del estilo personalizado de códigos QR y la geometría del patrón",
+      "paragraphs": [
+        "El estilo personalizado cambia cómo se ve un código QR, no lo que significa. Puedes cambiar los módulos cuadrados rígidos por puntos redondeados, rombos o formas orgánicas fluidas, y reestilizar los ojos de las esquinas, todo mientras la cuadrícula binaria subyacente se queda exactamente donde indica ISO/IEC 18004. El patrón de oscuro y claro es lo que transporta los datos, y ese patrón no se mueve.",
+        "Los escáneres encuentran un código localizando sus tres patrones de localización de las esquinas, que siguen una proporción estricta de anchos de módulo 1:1:3:1:1. Mantén esa proporción, conserva cada módulo centrado en sus coordenadas de cuadrícula, y los motores de iOS, ML Kit de Android y ZXing leerán un código estilizado tan rápido como uno sencillo. Rompe la proporción y ningún estilo lo salvará.",
+        "Esa es la línea que QR Generator Online sigue con matemáticas de coordenadas vectoriales: cada punto redondeado, cada ojo personalizado y cada marco de esquina cae en su posición exacta de la cuadrícula. Obtienes el aspecto de marca sin sacrificar fiabilidad de escaneo."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Códigos QR con diseño personalizado frente a códigos de barras genéricos por defecto",
+      "headers": [
+        "Atributo de diseño",
+        "Código QR con diseño personalizado",
+        "Código de barras genérico por defecto"
+      ],
+      "rows": [
+        [
+          "Atractivo estético",
+          "Armoniza con el envase de lujo y la identidad de marca",
+          "Industrial, clínico y visualmente disruptivo"
+        ],
+        [
+          "Tasa de engagement del usuario",
+          "40 % más de escaneos por su atractivo visual",
+          "Tasa de escaneo estándar de referencia"
+        ],
+        [
+          "Rango de personalización",
+          "Patrones de puntos, estilos de ojos, degradados, logotipos centrales",
+          "Cuadrados rígidos fijos, módulos solo en negro"
+        ],
+        [
+          "Reconocimiento de marca",
+          "Refuerza los colores de marca y la identidad corporativa",
+          "Aspecto genérico indistinguible de la competencia"
+        ],
+        [
+          "Versatilidad de impresión",
+          "Personalizable para grabado en madera, estampado en lámina y acrílico",
+          "Solo impresión 2D estándar"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Elige el tipo de datos del QR e introduce los parámetros",
+        "description": "Selecciona tu tipo de dato (URL, vCard, WiFi o texto) e introduce el destino."
+      },
+      {
+        "number": 2,
+        "title": "Personaliza los patrones de puntos, los ojos de las esquinas y las paletas",
+        "description": "Prueba puntos redondeados, clásicos, de puntos o módulos suaves, y después define la forma del cuadro y del punto de las esquinas para que coincidan con tu sistema de diseño."
+      },
+      {
+        "number": 3,
+        "title": "Exporta SVG vectorial listo para imprimir o PNG de alta resolución",
+        "description": "Descarga el diseño terminado como SVG vectorial sin pérdida para impresión offset, o PNG 4K para uso digital."
+      }
+    ],
+    "features": [
+      {
+        "title": "Varios preajustes de geometría de módulos y puntos",
+        "description": "Redondeado, clásico, rombo, puntos, suave: cada patrón está ajustado para mantenerse dentro de la tolerancia de escaneo."
+      },
+      {
+        "title": "Personalización independiente de los ojos de las esquinas",
+        "description": "Los marcos exteriores y los puntos interiores de los ojos tienen sus propios colores y radios de esquina, separados del cuerpo del código."
+      },
+      {
+        "title": "Exportaciones SVG vectoriales de impresión sin pérdida",
+        "description": "El mismo diseño se imprime limpio en una tarjeta de visita y en un mural de edificio, sin que se cuele ningún desenfoque entre medias."
+      },
+      {
+        "title": "100 % gratis con validez permanente de por vida",
+        "description": "Diseña todos los que quieras. Sin límite de escaneos, sin marca de agua y sin cuota mensual."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Tamaño mínimo de códigos QR personalizados y guía de materiales",
+      "description": "Como los módulos estilizados tienen bordes redondeados, sigue los puntos de referencia mínimos de tamaño recomendados.",
+      "headers": [
+        "Soporte de diseño",
+        "Tamaño mínimo recomendado",
+        "Patrón de puntos recomendado",
+        "Tipo de sustrato"
+      ],
+      "rows": [
+        [
+          "Tarjetas de visita de lujo",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Clásico / redondeado",
+          "Cartulina de algodón mate / estampado en lámina"
+        ],
+        [
+          "Cosmética y envases de producto",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Suave / redondeado",
+          "Cartón couché mate"
+        ],
+        [
+          "Displays de mesa y posavasos de restaurante",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "Puntos / clásico",
+          "Grabado en madera / soporte acrílico"
+        ],
+        [
+          "Carteles de evento y gráficas de escaparate",
+          "90 mm x 90 mm (3,6\" x 3,6\")",
+          "Cualquier estilo personalizado",
+          "Vinilo mate resistente a la intemperie"
+        ],
+        [
+          "Etiquetas y tags de prendas de moda",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Redondeado / suave",
+          "Etiqueta de tela tejida / cartón kraft grueso"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Marcas de lujo y envases de moda",
+        "description": "Un código estilizado queda integrado en un envase de alta gama en lugar de pelearse con él: sin un código de barras negro y brusco que rompa el diseño."
+      },
+      {
+        "title": "Portafolios creativos y tarjetas de arquitectura",
+        "description": "Un código geométrico y preciso se lee como una elección meditada, que es la impresión que un arquitecto o diseñador quiere dejar."
+      },
+      {
+        "title": "Señalética de hotel boutique y hostelería",
+        "description": "Graba un código personalizado en madera o latón para un directorio de huéspedes, una carta del spa o una tarjeta WiFi que encaje con el vestíbulo."
+      },
+      {
+        "title": "Invitaciones de evento y save-the-date de gala",
+        "description": "Los módulos redondeados y una paleta metálica convierten un código funcional en parte de la papelería de la boda o la gala."
+      },
+      {
+        "title": "Etiquetas de botellas de cerveza artesanal y bebidas",
+        "description": "Integra el código en el propio arte de la etiqueta, para que escanearlo y ver las notas de cata o el origen nunca interrumpa el aspecto de la botella."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Errores comunes en el diseño de códigos QR personalizados",
+      "points": [
+        "Deformar el patrón de localización. Los tres ojos de las esquinas mantienen una proporción fija 1:1:3:1:1, y el escáner depende de ella para localizar el código. Estilízalos, pero no los estires.",
+        "Contraste bajo. Los puntos gris oscuro sobre gris claro despistan a la cámara. Mantén al menos 4,5:1 entre los módulos y su fondo.",
+        "Saltarse la zona silenciosa. Sea cual sea el arte que rodea el código, deja el margen en blanco obligatorio de 4 módulos alrededor del exterior.",
+        "Redondear demasiado en tamaños pequeños. Por debajo de 25 mm, un redondeo excesivo de los puntos emborrona los bordes de los módulos en una cámara de teléfono básica. Reduce el radio en los códigos pequeños.",
+        "Probar solo en tu propio teléfono. Un móvil de gama alta lee casi cualquier cosa. Comprueba también el diseño en un Android de gama media con cámara de enfoque fijo."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Escanean los códigos QR con estilo personalizado tan rápido como los códigos estándar en blanco y negro?",
+        "a": "Igual de rápido. El estilo se mantiene dentro de las tolerancias de ISO/IEC 18004; una vez respetadas las reglas de contraste y de zona silenciosa, la velocidad de decodificación es idéntica a la de un código sencillo."
+      },
+      {
+        "q": "¿Qué elementos de estilo puedo personalizar en QR Generator Online?",
+        "a": "Cinco cosas: el estilo de punto de los módulos (redondeado, clásico, puntos, suave), los cuadros exteriores de las esquinas, los puntos interiores de los ojos, los colores de primer plano y de fondo, y un logotipo central."
+      },
+      {
+        "q": "¿Puedo exportar códigos QR personalizados en formato SVG vectorial?",
+        "a": "El SVG vectorial viene de serie en todos los diseños personalizados, y es lo que mantiene la nitidez para impresión offset, grabado láser y corte de vinilo."
+      },
+      {
+        "q": "¿Caducan los códigos QR personalizados o requieren suscripciones de pago?",
+        "a": "Ninguna de las dos cosas. Cada código personalizado aquí es gratuito, con escaneos ilimitados y una validez que nunca se agota."
+      },
+      {
+        "q": "¿Puedo usar códigos QR personalizados en el envase comercial de productos?",
+        "a": "Sí, y muchas empresas lo hacen: envases minoristas, etiquetas de alimentos, etiquetas de ropa, en todo el mundo, sin necesidad de licencia."
+      },
+      {
+        "q": "¿Cómo ayuda la corrección de errores de nivel H a los diseños personalizados?",
+        "a": "Te da un margen de recuperación del 30 %. Ese espacio es lo que permite que las modificaciones artísticas de los módulos y un logotipo central convivan sin arriesgar un escaneo fallido."
+      },
+      {
+        "q": "¿Cuál es el tamaño mínimo recomendado para códigos QR personalizados?",
+        "a": "Apunta a 30 mm x 30 mm (1,2\" x 1,2\") o más. Los módulos estilizados necesitan algo más de espacio que los cuadrados simples para mantenerse distintos en cualquier sensor de cámara."
+      },
+      {
+        "q": "¿Están protegidos mis datos cuando diseño códigos QR personalizados?",
+        "a": "Completamente. Todo el diseño se renderiza en la memoria de tu navegador, sin nada guardado ni registrado en un servidor."
+      }
+    ],
+    "bestPractices": "Mantén el contraste por encima de 4,5:1, protege la zona silenciosa de 4 módulos y, antes de cualquier tirada de producción, escanea la prueba impresa en varios teléfonos. Los códigos estilizados son donde un diseño demasiado ingenioso falla sin que nadie lo note, y la prueba es donde lo detectas."
+  },
+  '/colored-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Colores vibrantes adaptados a tu identidad visual",
+        "paragraphs": [
+          "Di adiós a los códigos de barras monocromos. Elige cualquier código de color hexadecimal para el patrón de primer plano, los marcos de los ojos de las esquinas y el lienzo de fondo.",
+          "La optimización de contraste integrada asegura que tu código QR mantenga un contraste alto para un enfoque rápido de la cámara y un escaneo instantáneo."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Mecánica técnica del contraste de color y el escaneo cromático de códigos QR",
+      "paragraphs": [
+        "Una cámara de teléfono no lee tu código QR en color. Convierte el fotograma en un mapa de luminancia en escala de grises y lo umbraliza, decidiendo píxel a píxel qué cuenta como oscuro y qué como claro. El color es casi incidental; lo que importa es la luminancia.",
+        "Por eso la regla que importa es el contraste, no el tono. Mantén la relación de contraste WCAG entre el color de primer plano y el de fondo por encima de 4,5:1, y súbela a 7:1 para cualquier cosa que vaya a exteriores. Los colores profundos y de baja luminancia se leen muy bien sobre blanco o un fondo pálido: azul marino #002B49, verde bosque #1B4D3E, morado real #3E1F58 y granate #5C061C superan el umbral con margen.",
+        "QR Generator Online te permite colorear el primer plano, el fondo, los marcos de las esquinas y los ojos de las esquinas de forma independiente. Ajusta exactamente una paleta de marca y, mientras la luminancia se mantenga, el código sigue siendo 100 % escaneable."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Código QR de color con alto contraste frente a código QR de paleta con bajo contraste",
+      "headers": [
+        "Característica de diseño",
+        "QR de color con alto contraste (WCAG > 4,5:1)",
+        "Paleta pastel / pálida con bajo contraste"
+      ],
+      "rows": [
+        [
+          "Fiabilidad de escaneo óptico",
+          "Decodificación instantánea del 100 % en cualquier iluminación",
+          "Fallos frecuentes de enfoque de cámara y tiempos de espera de escaneo"
+        ],
+        [
+          "Binarización por cámara",
+          "Separación limpia por umbral de escala de grises",
+          "Valores de luminancia ambiguos que causan errores de decodificación"
+        ],
+        [
+          "Rendimiento bajo sol exterior",
+          "Mantiene la legibilidad con sol directo y reflejos",
+          "Se desvanece por completo bajo el sol intenso"
+        ],
+        [
+          "Coherencia con la marca",
+          "Colores corporativos ricos que coinciden con la identidad de marca",
+          "Aspecto desvaído y sin impacto visual"
+        ],
+        [
+          "Compatibilidad con dispositivos",
+          "Universal en smartphones económicos y de gama alta",
+          "Falla en cámaras económicas con bajo rango dinámico"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Introduce el contenido de destino y los datos",
+        "description": "Pega tu URL, los datos de tu vCard, las credenciales WiFi o el texto."
+      },
+      {
+        "number": 2,
+        "title": "Selecciona una paleta de alto contraste",
+        "description": "Define un primer plano oscuro, un fondo claro y los acentos de los ojos de las esquinas mediante los selectores hexadecimales."
+      },
+      {
+        "number": 3,
+        "title": "Exporta SVG vectorial para impresión o PNG de alta resolución",
+        "description": "Descarga el SVG vectorial para impresión offset, o un PNG de 300 DPI para campañas digitales y en redes sociales."
+      }
+    ],
+    "features": [
+      {
+        "title": "Personalización independiente de múltiples colores",
+        "description": "Módulos de primer plano, lienzo de fondo, marcos de esquina y puntos de esquina: cada uno acepta su propio valor hexadecimal exacto."
+      },
+      {
+        "title": "Cumplimiento de alto contraste WCAG",
+        "description": "Diseñado para mantener el contraste de luminancia que necesita una cámara para umbralizar con limpieza, sea cual sea la iluminación."
+      },
+      {
+        "title": "Exportaciones SVG vectoriales y EPS sin pérdida",
+        "description": "Archivos vectoriales de color exacto que se abren directamente en Illustrator, InDesign o Figma y se convierten limpiamente a CMYK."
+      },
+      {
+        "title": "100 % gratis con escaneos permanentes de por vida",
+        "description": "Colorea todos los códigos que quieras: sin límite de escaneos, sin marca de agua y sin cuota."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Especificaciones de tamaño y contraste de códigos QR de color",
+      "description": "Asegúrate de que tus combinaciones de color cumplen los umbrales mínimos de escaneo óptico.",
+      "headers": [
+        "Combinación de color",
+        "Relación de contraste",
+        "Tamaño mínimo de impresión",
+        "Aplicación recomendada"
+      ],
+      "rows": [
+        [
+          "Azul marino profundo (#001F3F) sobre blanco (#FFFFFF)",
+          "14,5:1 (muy alto)",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "Identidad corporativa, tarjetas de visita, papelería"
+        ],
+        [
+          "Verde bosque (#1B4D3E) sobre crema (#FBF9F5)",
+          "10,2:1 (alto)",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Productos orgánicos, envases ecológicos, cartas"
+        ],
+        [
+          "Violeta real (#4A0E4E) sobre blanco (#FFFFFF)",
+          "12,8:1 (alto)",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Artículos de lujo, papelería de eventos, moda"
+        ],
+        [
+          "Granate intenso (#5C061C) sobre blanco (#FFFFFF)",
+          "11,4:1 (alto)",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Etiquetas de vino, envases gourmet"
+        ],
+        [
+          "Carbón (#222222) sobre menta pastel (#E8F5E9)",
+          "11,8:1 (alto)",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Envases retail modernos, hardware tecnológico"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Coherencia de marca corporativa",
+        "description": "Alinea tus códigos de marketing con la especificación Pantone y hexadecimal de la marca en folletos e informes anuales."
+      },
+      {
+        "title": "Envases minoristas y etiquetas de producto",
+        "description": "Ajusta el código a los colores principales del envase de alimentos, bebidas, cosmética y productos de estilo de vida para que encaje en el envase."
+      },
+      {
+        "title": "Cartas de restaurante y mesas de hostelería",
+        "description": "Los colores cálidos y elegantes que armonizan con la sala se leen mucho mejor que un cuadrado negro y brusco sobre una mesa con velas."
+      },
+      {
+        "title": "Señalética de eventos y programas de gala",
+        "description": "Lleva la paleta de la boda, el festival o el congreso a pancartas, acreditaciones e invitaciones."
+      },
+      {
+        "title": "Señalización de flotas de vehículos y contratistas",
+        "description": "Ajusta el código a la librea de la flota en las calcomanías de furgonetas de fontanería, climatización y reparto para que parezca emitido oficialmente, no improvisado."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Errores de color que impiden que los códigos QR se escaneen",
+      "points": [
+        "Invertir la paleta. Un código blanco sobre azul oscuro desconcierta a muchos motores de escaneo. Mantén el primer plano más oscuro que el fondo, y no al revés.",
+        "Pasteles. El amarillo pálido, el rosa suave o el menta sobre blanco tienen un contraste inferior a 2:1: casi invisibles para la umbralización de la cámara.",
+        "Cálido sobre cálido. Los módulos rojos sobre amarillo o naranja comparten demasiada luminancia. Comprueba la versión en escala de grises antes de confiar en el resultado.",
+        "Deriva CMYK. Los colores RGB pueden cambiar al convertirse para impresión offset. Confirma que la prueba impresa sigue teniendo una luminancia oscura.",
+        "Reflejos del brillo. Un acabado brillante refleja la luz y se come el contraste. Los códigos de color se leen mejor sobre papel mate."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Puede un código QR tener cualquier color y seguir funcionando de forma fiable?",
+        "a": "Casi cualquier color, con una condición: el primer plano tiene que ser claramente más oscuro que el fondo, con una relación superior a 4,5:1. El azul marino profundo, el verde bosque, el morado y el granate lo cumplen sin problema."
+      },
+      {
+        "q": "¿Por qué debo evitar los códigos QR blancos sobre fondos oscuros (colores invertidos)?",
+        "a": "Los decodificadores están diseñados para esperar oscuro sobre claro. Un iPhone actual suele manejar lo inverso, pero muchos teléfonos Android y escáneres portátiles se atascan o fallan: no merece la pena arriesgarse en material impreso."
+      },
+      {
+        "q": "¿Cómo compruebo si mi combinación de colores es escaneable?",
+        "a": "Convierte el diseño a escala de grises en cualquier visor de imágenes. Si el patrón sigue destacando con nitidez sobre el fondo, tu contraste es correcto. Si se funde con el fondo, también lo hará el escaneo."
+      },
+      {
+        "q": "¿Puedo usar varios colores (por ejemplo, colores diferentes para los ojos de las esquinas)?",
+        "a": "Puedes asignar tres colores distintos a los marcos exteriores, a los puntos interiores de los ojos y a los módulos del cuerpo, y el código sigue escaneándose siempre que cada parte mantenga su contraste."
+      },
+      {
+        "q": "¿Caducan los códigos QR de color o cuestan más?",
+        "a": "Ni una cosa ni otra. El color no tiene coste aquí, y los códigos tienen escaneos ilimitados y validez permanente como cualquier otro tipo."
+      },
+      {
+        "q": "¿Qué formato debo descargar para una impresión profesional con colores ajustados?",
+        "a": "SVG vectorial. Conserva los valores hexadecimales y RGB exactos y se convierte limpiamente a muestras CMYK dentro de InDesign o Illustrator, que es lo que necesita un trabajo de impresión con gestión de color."
+      },
+      {
+        "q": "¿Puedo añadir un logotipo a un código QR de color?",
+        "a": "Sí: la personalización de color y el logotipo central funcionan juntos, y la corrección de nivel H cubre el logotipo igual que lo haría en un código negro."
+      },
+      {
+        "q": "¿Se almacenan los datos de mi diseño de color en servidores externos?",
+        "a": "Se quedan en local. El renderizado del color y la generación del SVG se ejecutan en la memoria de tu navegador, sin enviar nada fuera."
+      }
+    ],
+    "bestPractices": "Mantén el primer plano claramente más oscuro que el fondo y revisa el diseño en escala de grises antes de comprometerte. Después escanea una prueba impresa: un color que se ve bien en el monitor puede perder contraste en cuanto llega al papel."
+  },
+  '/svg-qr-code-generator': {
+    "sections": [
+      {
+        "title": "El estándar de oro para la impresión comercial profesional",
+        "paragraphs": [
+          "A diferencia de las imágenes PNG o JPEG pixeladas, los archivos SVG vectoriales nunca se emborronan al ampliarse a formatos de impresión grandes.",
+          "Importa fácilmente archivos SVG en Adobe Illustrator, Photoshop, InDesign, Figma o Canva para flujos de trabajo de diseño gráfico."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Visión técnica de la arquitectura de códigos QR en gráficos vectoriales escalables (SVG)",
+      "paragraphs": [
+        "SVG es un formato vectorial basado en XML del W3C, y la diferencia con un PNG o un JPEG es fundamental. Un archivo ráster guarda el código como una cuadrícula fija de píxeles de color. Un SVG lo guarda como matemáticas: cada módulo, ojo de esquina y zona silenciosa se escribe como trazados de coordenadas (`<rect>`, `<path>`, `<circle>`).",
+        "Esa distinción es el punto clave al ampliar. Lleva un código SVG de una tarjeta de visita de 25 mm a una valla publicitaria de 20 metros y el renderizador simplemente recalcula las curvas: sin interpolación, sin desenfoque de antialiasing, sin bordes blandos. Las prensas offset, las líneas de envasado flexográfico, los grabadores láser y los plóteres de vinilo CNC reciben una geometría que pueden seguir exactamente.",
+        "Las ventajas prácticas van más allá de la nitidez. Un código SVG pesa muy poco, normalmente menos de 5 KB. Se estiliza con CSS, se convierte sin pérdida a CMYK en Illustrator o InDesign y se integra directamente en una página o aplicación web moderna."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Código QR SVG vectorial frente a código QR PNG / JPEG ráster",
+      "headers": [
+        "Atributo técnico",
+        "Código QR SVG vectorial",
+        "Código QR PNG / JPEG ráster"
+      ],
+      "rows": [
+        [
+          "Escalabilidad",
+          "Escalable infinitamente (sin pixelado ni desenfoque a ningún tamaño)",
+          "Resolución fija (se pixela y se emborrona al ampliar)"
+        ],
+        [
+          "Tamaño de archivo",
+          "Muy compacto (~3 KB - 8 KB)",
+          "100 KB - 2 MB con resoluciones de impresión altas"
+        ],
+        [
+          "Compatibilidad con la prensa",
+          "Estándar industrial para offset comercial, flexo y láser",
+          "Requiere un cálculo mínimo de 300 DPI por dimensión de impresión"
+        ],
+        [
+          "Editabilidad en herramientas vectoriales",
+          "Edición completa de trazados en Illustrator, InDesign y Figma",
+          "Mapa de bits plano; los trazos no se pueden editar limpiamente"
+        ],
+        [
+          "Grabado láser y corte de vinilo",
+          "Soporte directo de trazados vectoriales para CNC y cortadoras láser",
+          "Incompatible; requiere trazado manual a vector"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Introduce el contenido del QR y configura los datos",
+        "description": "Escribe tu destino: una URL, los datos de una vCard, las credenciales WiFi o un texto."
+      },
+      {
+        "number": 2,
+        "title": "Personaliza los parámetros visuales y el logotipo",
+        "description": "Elige los estilos de módulo, los colores de marca y la geometría de los ojos de las esquinas, y coloca un logotipo central si lo quieres."
+      },
+      {
+        "number": 3,
+        "title": "Exporta el archivo SVG vectorial sin pérdida",
+        "description": "Pulsa «Descargar SVG» para obtener un archivo vectorial listo para impresión que va directo a un flujo de preimpresión."
+      }
+    ],
+    "features": [
+      {
+        "title": "Escalado infinito matemáticamente perfecto",
+        "description": "Amplía el código al tamaño que quieras y los bordes de los módulos siguen siendo afilados como una cuchilla. No hay resolución que se agote."
+      },
+      {
+        "title": "Compatibilidad directa con preimpresión e impresión comercial",
+        "description": "Se abre limpiamente en InDesign, Illustrator, CorelDRAW y QuarkXPress sin ningún paso de conversión intermedio."
+      },
+      {
+        "title": "Preparado para grabado láser y plóter de vinilo",
+        "description": "Los trazados vectoriales alimentan directamente una cortadora láser, una fresadora CNC o un plóter de rotulación."
+      },
+      {
+        "title": "Archivo ultraligero de tamaño mínimo",
+        "description": "Menos de 5 KB, así que carga al instante en la web y se envía por correo sin pensarlo dos veces."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Guía de aplicación de producción de códigos QR SVG",
+      "description": "El SVG vectorial se adapta sin fisuras a todos los procesos de fabricación físicos e industriales.",
+      "headers": [
+        "Proceso de fabricación",
+        "Soporte de salida",
+        "Resolución recomendada",
+        "Ventajas del SVG vectorial"
+      ],
+      "rows": [
+        [
+          "Impresión offset comercial",
+          "Folletos, informes anuales, libros",
+          "Infinitamente nítido a 2400+ DPI de salida de prensa",
+          "Trapping y separación de color vectoriales limpios"
+        ],
+        [
+          "Impresión flexográfica",
+          "Envases de producto, cajas de cartón ondulado",
+          "Se escala a las dimensiones exactas de la línea de troquelado",
+          "Cero ganancia de punto ráster en soportes porosos"
+        ],
+        [
+          "Grabado y marcado láser",
+          "Madera, aluminio anodizado, acero inoxidable",
+          "Se convierte directamente en trayectorias CNC",
+          "Corte de contorno preciso con haz láser"
+        ],
+        [
+          "Plotteo y corte de vinilo",
+          "Calcomanías de vehículos, rótulos de escaparate",
+          "Generación directa de líneas de corte vectoriales",
+          "Elimina el trazado manual de mapa de bits"
+        ],
+        [
+          "UI web y de aplicaciones digitales",
+          "Sitios web responsivos y aplicaciones web",
+          "Visualización nítida en pantallas 4K y Retina",
+          "Cero sobrecarga de ancho de banda (~4 KB)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Vallas publicitarias comerciales y señalización de gran formato",
+        "description": "Escálalo a una pancarta de 5 metros o un cartel de transporte público y los módulos siguen nítidos para leerse desde el otro lado de la calle."
+      },
+      {
+        "title": "Envases de producto y flexo de cartón",
+        "description": "Inserta el código vectorial directamente en un troquel de envase y aguantará una tirada de prensa a alta velocidad."
+      },
+      {
+        "title": "Merchandising grabado en metal y madera",
+        "description": "Graba un código permanente en un soporte de mesa de madera, una tarjeta de llave metálica o una etiqueta de activos industrial, desde el mismo archivo."
+      },
+      {
+        "title": "Calcomanías de vinilo para flotas de vehículos comerciales",
+        "description": "Corta calcomanías de envoltura para furgonetas y camiones de servicio directamente desde los trazados SVG, sin paso de trazado de mapa de bits."
+      },
+      {
+        "title": "Aplicaciones web responsivas de alta densidad",
+        "description": "Incrusta el SVG en una aplicación web y se verá nítido en pantallas Retina y 4K por unos pocos kilobytes."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Buenas prácticas al trabajar con archivos SVG de códigos QR",
+      "points": [
+        "Escalar en Illustrator. Activa «Escalar trazos y efectos» para que los contornos de los módulos crezcan en proporción en lugar de mantener un grosor fijo.",
+        "Fuentes en un logotipo. Si tu logotipo insertado lleva tipografía personalizada, convierte el texto en contornos antes de la exportación final para impresión.",
+        "La zona silenciosa. No recortes el cuadro delimitador del SVG demasiado ajustado: el margen blanco alrededor del código es lo que usa la cámara para encontrarlo.",
+        "Color plano. ¿Imprimes con tintas Pantone? Comprueba que el relleno del SVG esté asignado al canal de separación correcto antes de pasarlo a plancha.",
+        "Ráster dentro de vector. Asegúrate de que cualquier logotipo que haya dentro del SVG sea también vectorial, no un JPEG de baja resolución que emborronará todo el archivo."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Qué es un código QR SVG y por qué es mejor para imprimir?",
+        "a": "SVG son las siglas de Scalable Vector Graphics (gráficos vectoriales escalables). Mientras que un PNG o un JPEG se construye con píxeles, un SVG describe sus formas con matemáticas, así que el código se escala a cualquier tamaño sin emborronarse ni romperse. Para la impresión, esa diferencia lo es todo."
+      },
+      {
+        "q": "¿Puedo abrir y editar códigos QR SVG en Adobe Illustrator o Figma?",
+        "a": "Directamente. SVG es un formato vectorial estándar, así que se abre para editarlo en Illustrator, InDesign, Photoshop, Figma, CorelDRAW e Inkscape sin conversión."
+      },
+      {
+        "q": "¿Es compatible el SVG con el grabado láser y las máquinas CNC?",
+        "a": "Es el formato que necesitan. Una cortadora láser o un plóter CNC lee los contornos de los trazados vectoriales directamente del SVG para guiar el haz o la cuchilla."
+      },
+      {
+        "q": "¿Caducan los códigos QR SVG o tienen límites de escaneo?",
+        "a": "Sin caducidad y sin límite. Un código SVG estático guarda sus propios datos y sigue funcionando de por vida, sin cuotas recurrentes."
+      },
+      {
+        "q": "¿Hasta qué tamaño puedo ampliar un código QR SVG sin pérdida de calidad?",
+        "a": "Tan grande como necesites: un sello de 1 cm o una pancarta de estadio de 50 metros, ambos con precisión total. La geometría vectorial no tiene techo de tamaño."
+      },
+      {
+        "q": "¿Puedo insertar el logotipo de mi empresa dentro de un código QR SVG?",
+        "a": "Puedes colocar un logotipo en el centro de la matriz vectorial, con corrección de nivel H que cubre los módulos sobre los que se sitúa."
+      },
+      {
+        "q": "¿Puedo usar códigos QR SVG en sitios web y aplicaciones móviles?",
+        "a": "Los navegadores renderizan SVG de forma nativa, así que un código SVG insertado carga en menos de 5 KB y se mantiene nítido en pantallas Retina y 4K de alta densidad."
+      },
+      {
+        "q": "¿Son gratuitos los códigos QR SVG en QR Generator Online?",
+        "a": "Descargar el SVG vectorial de alta resolución es gratuito, sin cuenta y sin suscripción de por medio."
+      }
+    ],
+    "bestPractices": "Entrega a tu imprenta el SVG vectorial, mantén intacta la zona silenciosa de 4 módulos y asegúrate de que cualquier logotipo insertado sea también vectorial. Esa combinación es la que le da a una imprenta un archivo que puede llevar directamente a la prensa."
+  },
+  '/high-resolution-qr-codes': {
+    "sections": [
+      {
+        "title": "Nitidez impecable para envases, cartas y señalética",
+        "paragraphs": [
+          "La alta resolución DPI evita los bordes borrosos y los fallos de escaneo en superficies de impresión brillantes, envases con textura o entornos con poca luz.",
+          "Exporta códigos QR cristalinos con fondos transparentes, listos para colocarlos de inmediato en material de marketing."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Visión técnica de la ingeniería de códigos QR de alta resolución (300+ DPI / 4K)",
+      "paragraphs": [
+        "Un código QR de alta resolución es el que tiene suficiente densidad de píxeles para sobrevivir a la impresión: al menos 2048x2048 píxeles a 300 o 600 DPI, o un archivo vectorial independiente de la resolución. La mayoría de los generadores web te entregan una imagen de 200x200 a 72 DPI, que se ve bien en pantalla pero se desmorona al llegar al papel: pixelado, bordes blandos y límites de módulo emborronados.",
+        "Esto es lo que realmente falla. Cuando se imprime un código de baja resolución, la prensa intenta rellenar datos de píxeles que nunca existieron. Esa interpolación redondea las esquinas afiladas de los módulos cuadrados y deforma la proporción 1:1:3:1:1 de los localizadores de la que depende el escáner, y la cámara o decodifica despacio o se rinde.",
+        "QR Generator Online evita por completo ese fallo. Exporta ráster de ultra alta resolución hasta 4K a 300 DPI, además de SVG y EPS vectoriales. En cualquier caso, los bordes de los módulos se mantienen lo bastante nítidos como para que un impresor de envases, una casa de papelería de lujo o un taller de gran formato los acepte sin volver a mirarlos."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Código QR de 300 DPI de alta resolución frente a exportación web estándar de 72 DPI",
+      "headers": [
+        "Especificación / métrica",
+        "Exportación de alta resolución de 300 DPI (QR Generator Online)",
+        "Generador web de baja resolución de 72 DPI"
+      ],
+      "rows": [
+        [
+          "Dimensiones en píxeles",
+          "De 2048 x 2048 px a 4096 x 4096 px (4K)",
+          "De 200 x 200 px a 350 x 350 px"
+        ],
+        [
+          "Calidad de salida impresa",
+          "Límites de módulo muy nítidos a 300+ DPI",
+          "Bordes de módulo pixelados, borrosos y dentados"
+        ],
+        [
+          "Velocidad de decodificación por cámara",
+          "Decodificación instantánea (< 0,2 s) con cualquier iluminación",
+          "Decodificación retardada (1 - 3 s) por el desenfoque óptico"
+        ],
+        [
+          "Tamaño máximo de impresión",
+          "Escalable hasta tamaños de cartel y valla publicitaria",
+          "Limitado solo a pantallas web o de pantalla pequeñas"
+        ],
+        [
+          "Estándares de preimpresión comercial",
+          "Cumple los estándares comerciales de impresión ISO 12647",
+          "Rechazado por los controles de preimpresión comercial"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Configura la carga de datos y el tipo de contenido",
+        "description": "Introduce tu destino: una URL, un perfil vCard, credenciales WiFi o texto."
+      },
+      {
+        "number": 2,
+        "title": "Personaliza los parámetros de diseño y la corrección de errores",
+        "description": "Define tus colores, el patrón de puntos y los ojos de las esquinas, y añade un logotipo central en nivel H si lo necesitas."
+      },
+      {
+        "number": 3,
+        "title": "Descarga el PNG 4K Ultra HD o el SVG vectorial sin pérdida",
+        "description": "Exporta un PNG nítido de 2048x2048 px a 300 DPI para digital, o un SVG vectorial para impresión de gran formato."
+      }
+    ],
+    "features": [
+      {
+        "title": "Resolución Ultra HD 4K y salida de 300+ DPI",
+        "description": "Exportaciones ráster diseñadas para la densidad de píxeles que una prensa comercial física realmente necesita."
+      },
+      {
+        "title": "Cero artefactos de compresión ni desenfoque de bordes",
+        "description": "El renderizado sin pérdida mantiene limpios los bordes de los módulos, así que la cámara nunca se atasca en un límite difuso."
+      },
+      {
+        "title": "Cumplimiento de preimpresión comercial",
+        "description": "Supera el listón de resolución para trabajos de offset, prensa digital y envasado flexográfico."
+      },
+      {
+        "title": "100 % gratis con escaneos permanentes de por vida",
+        "description": "Cada descarga PNG de alta resolución y vectorial es gratuita: sin suscripción, sin marca de agua y sin límite de escaneos."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Matriz de resolución y dimensiones en píxeles según el tamaño de impresión",
+      "description": "Calcula las dimensiones en píxeles necesarias con el punto de referencia comercial estándar de 300 DPI ($Píxeles = Pulgadas \\times 300$).",
+      "headers": [
+        "Dimensiones físicas de impresión",
+        "Resolución necesaria a 300 DPI",
+        "Formato de archivo recomendado",
+        "Aplicación objetivo"
+      ],
+      "rows": [
+        [
+          "1,0\" x 1,0\" (25 mm x 25 mm)",
+          "300 x 300 píxeles",
+          "PNG de 300 DPI / SVG vectorial",
+          "Tarjetas de visita, credenciales"
+        ],
+        [
+          "2,0\" x 2,0\" (50 mm x 50 mm)",
+          "600 x 600 píxeles",
+          "PNG de 300 DPI / SVG vectorial",
+          "Displays de mesa, posavasos, etiquetas de producto"
+        ],
+        [
+          "4,0\" x 4,0\" (100 mm x 100 mm)",
+          "1200 x 1200 píxeles",
+          "SVG vectorial / PNG de 300 DPI",
+          "Folletos, postales, anuncios de revista"
+        ],
+        [
+          "8,0\" x 8,0\" (200 mm x 200 mm)",
+          "2400 x 2400 píxeles (4K)",
+          "SVG vectorial",
+          "Carteles, señalética de tienda, pancartas"
+        ],
+        [
+          "20\"+ (gran formato y vallas publicitarias)",
+          "Escalado vectorial infinito",
+          "SVG vectorial / EPS",
+          "Fondos de ferias comerciales, vallas publicitarias"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Envases comerciales y etiquetas de producto",
+        "description": "Imprime un código nítido en envases de alimentos, botes de cosmética y cajas de tienda sin que la ganancia de punto emborrone los módulos."
+      },
+      {
+        "title": "Papelería de empresa de lujo y membretes",
+        "description": "Ofrece al trabajo de estampado en lámina, relieve o barniz UV la precisión que necesita sobre cartulina premium."
+      },
+      {
+        "title": "Pancartas de gran formato y vallas publicitarias exteriores",
+        "description": "Escálalo a un panel de varios metros que aún se decodifica limpiamente desde el otro lado de un aparcamiento."
+      },
+      {
+        "title": "Publicidad en revistas y catálogos de correo directo",
+        "description": "Supera la barrera de preimpresión de 300+ DPI que exigen las imprentas de revistas y catálogos nacionales."
+      },
+      {
+        "title": "Pantallas digitales de alta definición y quioscos 4K",
+        "description": "Muestra un código nítido en una pantalla táctil, un panel de menú digital o una diapositiva de congreso sin que pierda definición."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Cómo evitar errores de resolución y calidad de impresión",
+      "points": [
+        "Hacer una captura de pantalla del código. Nunca hagas una captura para imprimir: fija la baja resolución de la web. Descarga el PNG original de alta resolución o el SVG.",
+        "Compresión JPEG. El JPEG con pérdida deja halos tenues alrededor de los bordes de los módulos. Guarda como PNG sin pérdida o SVG.",
+        "Ganancia de punto en papel de periódico. El papel poroso y barato extiende la tinta y cierra los huecos entre módulos. Aumenta el código alrededor de un 20 % para papel de periódico.",
+        "Reducción de muestreo al exportar. Cuando colocas un código en InDesign o Canva, comprueba que la exportación no lo baje en silencio por debajo de 300 DPI.",
+        "Rasterización suave. ¿Rasterizas un vector? Usa renderizado de vecino más próximo o de bordes nítidos para que las esquinas de los módulos sigan siendo en ángulo recto."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Por qué es esencial la alta resolución para imprimir códigos QR?",
+        "a": "Porque la cámara lee los bordes, no las intenciones. Una imagen de baja resolución emborrona los límites de los módulos en la impresión, y un límite emborronado es justo lo que a un escáner le cuesta umbralizar. A 300+ DPI los bordes se mantienen nítidos y la decodificación es instantánea."
+      },
+      {
+        "q": "¿Qué resolución exporta QR Generator Online en los archivos PNG?",
+        "a": "La exportación PNG es de 2048x2048 píxeles a 300 DPI, suficiente para imprimir con limpieza hasta unas 7x7 pulgadas sin pérdida de calidad."
+      },
+      {
+        "q": "¿Cuándo debo usar SVG vectorial en lugar de PNG de alta resolución?",
+        "a": "Usa SVG siempre que el código vaya a ser grande o profesional: carteles, pancartas, vallas publicitarias, un flujo de trabajo en Illustrator o InDesign, o cualquier cosa grabada con láser o cortada en vinilo."
+      },
+      {
+        "q": "¿Cuestan dinero los códigos QR de alta resolución o requieren una cuenta Pro?",
+        "a": "Sin cuenta y sin coste. Cada PNG de alta resolución y cada SVG vectorial de aquí es gratuito, ilimitado y sin marca de agua."
+      },
+      {
+        "q": "¿Cómo sé qué tamaño debo imprimir mi código QR?",
+        "a": "Usa la regla 10:1: divide la distancia de escaneo entre diez. Un cartel leído desde un metro necesita un código de al menos 10 cm (4 pulgadas) de ancho."
+      },
+      {
+        "q": "¿Puedo generar códigos QR de alta resolución con colores y logotipos personalizados?",
+        "a": "Puedes dar estilo a los colores, al patrón de puntos y a las formas de las esquinas, añadir un logotipo central y seguir exportando el resultado en PNG 4K o como SVG vectorial."
+      },
+      {
+        "q": "¿Por qué las imprentas comerciales rechazan las imágenes de 72 DPI?",
+        "a": "Sus prensas trabajan a más de 2400 DPI. Un archivo de 72 DPI simplemente no tiene datos de píxeles suficientes, así que se imprime como bloques visibles y no supera el control de preimpresión."
+      },
+      {
+        "q": "¿Están seguros mis datos al generar códigos QR de alta resolución?",
+        "a": "Sí. El renderizado de alta resolución se hace en local, en tu navegador, sin enviar datos ni imágenes a ningún servidor."
+      }
+    ],
+    "bestPractices": "Exporta SVG vectorial para impresión, o un PNG de 2048 px a 300 DPI, y evita el JPEG con pérdida. Como siempre, escanea la prueba impresa antes de la tirada completa: los problemas de resolución solo aparecen en papel, nunca en pantalla."
+  },
+  '/about': {
+    "sections": [
+      {
+        "title": "Construir tecnología de códigos de barras con la privacidad en primer lugar",
+        "paragraphs": [
+          "QR Generator Online nació para acabar con la frustración de los generadores de QR de pago y abusivos, que retienen los enlaces de los usuarios como rehenes tras las pruebas gratuitas.",
+          "Toda la generación estática se procesa al 100 % en tu navegador, sin registrar en nuestros servidores datos de contacto personales ni credenciales WiFi sensibles."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Nuestra misión arquitectónica: tecnología QR abierta, privada y permanente",
+      "paragraphs": [
+        "QR Generator Online empezó con una irritación compartida. Unos cuantos ingenieros, un par de diseñadores de tipografía y algunas personas comprometidas con la privacidad habían visto todos lo mismo: la generación de códigos de barras 2D —un estándar abierto que Denso Wave e ISO/IEC publicaron ya en el año 2000— se encerró tras suscripciones de 30 $ al mes que tenían secuestrada la publicidad impresa. Así que construyeron la alternativa.",
+        "La decisión de ingeniería que hay debajo es sencilla de enunciar y difícil de falsificar: todo se ejecuta en el lado del cliente. Las matemáticas de polinomios Reed-Solomon, el ensamblado de la matriz y el renderizado vectorial se ejecutan en tu navegador mediante JavaScript moderno y WebAssembly. No hay ningún proxy de seguimiento en el camino porque no hay ningún servidor en el camino.",
+        "Esa plataforma llega ahora a personas de 190 países. Una cafetería de barrio y una empresa de preimpresión de la lista Fortune 500 usan el mismo generador, y ambas obtienen códigos vectoriales permanentes y de alta resolución, sin muro de pago, sin límite de escaneos y sin registro de nada."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Nuestra filosofía arquitectónica frente al SaaS comercial tradicional",
+      "headers": [
+        "Valor / pilar central",
+        "QR Generator Online",
+        "SaaS comercial de QR tradicional"
+      ],
+      "rows": [
+        [
+          "Modelo de precios",
+          "100 % gratis para siempre (sin muros de pago ni suscripciones)",
+          "Suscripción mensual recurrente (15 - 45 $/mes)"
+        ],
+        [
+          "Arquitectura de datos",
+          "100 % en el cliente (todo el procesamiento en memoria del navegador)",
+          "Proxy centralizado en servidor que registra todo el tráfico de escaneos"
+        ],
+        [
+          "Privacidad y cumplimiento del RGPD",
+          "Cero recogida de datos, cero cookies, cero seguimiento",
+          "Recopila direcciones IP, geolocalizaciones y dispositivos de los visitantes"
+        ],
+        [
+          "Exportaciones vectoriales",
+          "SVG y EPS vectoriales completos incluidos gratis para todos los usuarios",
+          "Formatos vectoriales bloqueados tras planes Pro caros"
+        ],
+        [
+          "Durabilidad del código",
+          "Validez permanente de por vida (codificación estática directa)",
+          "Los códigos caducan a los 14 días si no se paga la suscripción"
+        ],
+        [
+          "Derechos de uso comercial",
+          "Licencia comercial completa e ilimitada incluida",
+          "Uso comercial restringido en los planes gratuitos o de inicio"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Acceso abierto para todos los usuarios del mundo",
+        "description": "El mismo conjunto de herramientas de nivel empresarial llega a todos: a un diseñador independiente, a una tienda de barrio o a una marca global, sin nada reservado para un nivel de pago."
+      },
+      {
+        "number": 2,
+        "title": "Privacidad de datos sin concesiones desde el diseño",
+        "description": "Ninguna URL, contraseña ni perfil de contacto de cliente se almacena, registra ni vende. No existe ninguna base de datos que los contenga en primer lugar."
+      },
+      {
+        "number": 3,
+        "title": "Estándares de precisión en preimpresión para la impresión física",
+        "description": "La salida SVG vectorial está diseñada para sobrevivir a una prensa comercial: matemáticamente exacta y lista para envases y trabajos de gran formato."
+      }
+    ],
+    "features": [
+      {
+        "title": "Arquitectura 100 % en el cliente basada en navegador",
+        "description": "La codificación y el renderizado se hacen en local, por eso la vista previa es instantánea y tus datos se quedan privados."
+      },
+      {
+        "title": "Cumplimiento total de ISO/IEC 18004",
+        "description": "Construido al pie de la letra del estándar internacional, así que un código se escanea a la primera en cualquier cámara iOS o Android."
+      },
+      {
+        "title": "Salida vectorial SVG sin pérdida y PNG 4K",
+        "description": "Una misma vía de exportación sirve igual de bien a un microadhesivo que a una valla de 50 metros en una autopista."
+      },
+      {
+        "title": "Garantía de código permanente de por vida",
+        "description": "Sin redirección intermedia, no hay nada que apagar. Un código que imprimes aquí sigue funcionando."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Nuestra escala global y referencias de rendimiento",
+      "description": "Métricas clave que reflejan la fiabilidad y el alcance global de la plataforma QR Generator Online.",
+      "headers": [
+        "Referencia / métrica",
+        "Estándar de rendimiento",
+        "Arquitectura técnica",
+        "Beneficio para el usuario"
+      ],
+      "rows": [
+        [
+          "Latencia de generación",
+          "< 50 milisegundos",
+          "Ejecución local de WebAssembly / JS en el navegador",
+          "Actualizaciones de vista previa instantáneas en tiempo real"
+        ],
+        [
+          "Tasa de fiabilidad de escaneo",
+          "99,99 % de decodificación óptica al primer intento",
+          "Patrones de temporización conformes con ISO/IEC 18004",
+          "Cero fricción para el cliente al escanear"
+        ],
+        [
+          "Precisión vectorial",
+          "Escalabilidad matemática infinita",
+          "Geometría de trazados vectoriales SVG conforme al W3C",
+          "Salida impecable para prensas comerciales"
+        ],
+        [
+          "Registro de datos en servidor",
+          "0,00 % (cero bytes almacenados)",
+          "Sin base de datos externa ni proxy de seguimiento",
+          "Cumplimiento completo de RGPD / CCPA"
+        ],
+        [
+          "Disponibilidad global",
+          "100,0 % de disponibilidad estática",
+          "Entrega mediante una CDN distribuida global",
+          "Disponibilidad mundial 24/7/365"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Pequeñas empresas independientes y comercio local",
+        "description": "Material de marketing profesional, señalética de tienda y envases, sin que una suscripción de software se coma el margen."
+      },
+      {
+        "title": "Agencias de diseño y profesionales creativos",
+        "description": "Archivos SVG vectoriales limpios que se importan directamente en InDesign, Illustrator o Figma sin retoques."
+      },
+      {
+        "title": "Casas de preimpresión y talleres de envases comerciales",
+        "description": "Troqueles de código de barras de alto contraste que superan una inspección estricta de preimpresión en lugar de ser devueltos."
+      },
+      {
+        "title": "ONG, escuelas y organizaciones comunitarias",
+        "description": "Registros de eventos sin contacto, cuestionarios de aula y enlaces de donación, todo sin presupuesto tecnológico."
+      },
+      {
+        "title": "Desarrolladores de software e integradores técnicos",
+        "description": "Una referencia limpia de esquemas URI como `WIFI:`, `mailto:`, `vCard 3.0` y `BIP-0021` al conectar una aplicación móvil."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Nuestros estándares de ingeniería y compromisos",
+      "points": [
+        "No retendremos un código impreso como rehén. Los códigos estáticos son permanentes: sin redirección ni trampa de caducidad escondida en los términos.",
+        "No venderemos tus datos. Al ejecutarse en el cliente, ni siquiera tenemos una base de datos de usuarios que explotar o entregar a un anunciante.",
+        "No pondremos muro de pago a las descargas vectoriales. La exportación SVG es una necesidad de trabajo para un diseñador, así que sigue siendo gratis para todos.",
+        "Mantendremos el cumplimiento de ISO. Cada módulo, patrón de temporización y ojo de localización se valida frente a ISO/IEC 18004.",
+        "Seguiremos apoyando la web abierta. Herramientas de navegador gratuitas, rápidas y útiles para quien las necesite: esa es toda la idea."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Cuál es la misión de QR Generator Online?",
+        "a": "Poner la generación de códigos QR permanente, privada y de calidad comercial en manos de todos, gratis, sin una suscripción que se interponga entre tú y un código que ya has impreso."
+      },
+      {
+        "q": "¿Quién fundó QR Generator Online?",
+        "a": "Un pequeño grupo de ingenieros de software, diseñadores de preimpresión y defensores de la privacidad que querían un contrapeso honesto y abierto frente a los servicios de QR por suscripción."
+      },
+      {
+        "q": "¿Cómo protege la privacidad del usuario vuestra arquitectura en el cliente?",
+        "a": "La generación se ejecuta en tu navegador con JavaScript, de principio a fin. Tus URL de destino, tus datos de contacto y tus contraseñas WiFi nunca nos llegan, porque no hay ninguna llamada al servidor que pudiera enviarlos."
+      },
+      {
+        "q": "¿Pueden las empresas usar QR Generator Online para envases comerciales?",
+        "a": "Ya lo hacen. Muchas marcas comerciales y equipos de preimpresión colocan estos códigos vectoriales en envases, expositores, libros y campañas publicitarias en todo el mundo."
+      },
+      {
+        "q": "¿Hay costes ocultos, cuentas Pro o requisitos de tarjeta de crédito?",
+        "a": "No hay nada oculto. Cada herramienta, cada opción de estilo, la inserción de logotipos y cada descarga vectorial son gratis para todos los usuarios."
+      },
+      {
+        "q": "¿Cómo garantizáis que los códigos QR generados se escaneen bien en todos los dispositivos?",
+        "a": "El motor cumple ISO/IEC 18004, mantiene la zona silenciosa obligatoria de 4 módulos y aplica la corrección Reed-Solomon de nivel H siempre que va un logotipo. Esa combinación es lo que hace que un código se lea a la primera en todos los dispositivos."
+      },
+      {
+        "q": "¿Puedo enviar comentarios o sugerir nuevas funciones?",
+        "a": "Por favor, hazlo: las aportaciones de la comunidad impulsan gran parte de lo que construimos. La página de contacto es la forma más rápida de enviar una idea o una petición de función."
+      },
+      {
+        "q": "¿Dónde están alojados vuestros servidores?",
+        "a": "Los recursos estáticos se sirven desde una CDN global de borde, así que la página carga rápido desde Norteamérica, Europa, Asia o cualquier otro lugar."
+      }
+    ],
+    "bestPractices": "Si la herramienta te ha ahorrado tiempo, compártela: un diseñador, un tendero o un equipo de marketing que conozcas probablemente también la necesite."
+  },
+  '/contact': {
+    "sections": [
+      {
+        "title": "Ponte en contacto con nuestro equipo de ingeniería y soporte",
+        "paragraphs": [
+          "¿Tienes preguntas sobre formatos personalizados de códigos QR, buenas prácticas de impresión o generación masiva? Escríbenos a support@qr-generator.online.",
+          "Nuestro equipo de soporte técnico responde a todas las consultas en un plazo de 24 horas laborables."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Soporte técnico empresarial, consultas y asistencia de la comunidad",
+      "paragraphs": [
+        "¿Te has atascado con una especificación de preimpresión, con un trabajo de lotes de gran volumen, con un SVG vectorial que no encaja bien en InDesign o con un formato de datos empresarial? Para eso está el equipo de soporte.",
+        "Quienes responden conocen a fondo ISO/IEC 18004, la preimpresión de envases flexográficos, la física del escaneo óptico y los decodificadores de cámara de iOS (AVFoundation) y Android (Google ML Kit). Diseñadores, impresores comerciales, responsables de marketing y desarrolladores llegan todos a la misma bandeja de entrada y reciben una respuesta real.",
+        "Elige el canal de abajo que mejor se adapte. Cada consulta técnica o comercial recibe respuesta en un plazo de 24 horas laborables."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Canales de soporte y referencias de tiempo de respuesta",
+      "headers": [
+        "Categoría de consulta",
+        "Canal recomendado",
+        "Tiempo medio de respuesta",
+        "Alcance de la ayuda"
+      ],
+      "rows": [
+        [
+          "Soporte de preimpresión e impresión vectorial",
+          "support@qr-generator.online",
+          "< 12 horas laborables",
+          "Formato SVG vectorial, verificación de DPI, pruebas de preimpresión"
+        ],
+        [
+          "Consultas empresariales y de gran volumen",
+          "support@qr-generator.online",
+          "< 12 horas laborables",
+          "Esquemas de datos personalizados, generación masiva, integración de marca"
+        ],
+        [
+          "Informes de errores y comentarios técnicos",
+          "support@qr-generator.online",
+          "< 24 horas laborables",
+          "Compatibilidad de navegadores, comentarios sobre el renderizado, peticiones de función"
+        ],
+        [
+          "Preguntas generales y de uso",
+          "Base de conocimiento y página de preguntas frecuentes",
+          "Autoservicio instantáneo",
+          "Guías completas sobre tamaños, estilos y escaneo"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Consulta nuestra base de conocimiento completa",
+        "description": "La mayoría de las preguntas sobre tamaños, impresión y formatos de archivo ya tienen respuesta escrita en la base de conocimiento y en las preguntas frecuentes: merece la pena echarles un vistazo antes de escribir."
+      },
+      {
+        "number": 2,
+        "title": "Prepara los detalles técnicos de tu consulta",
+        "description": "Anota qué esquema estás codificando (URL, vCard, WiFi), el tamaño físico con el que vas a imprimir y el software con el que maquetas: Illustrator, InDesign o Canva."
+      },
+      {
+        "number": 3,
+        "title": "Envía tu consulta a soporte",
+        "description": "Escribe al equipo en support@qr-generator.online. Un especialista responde en un plazo de 24 horas laborables."
+      }
+    ],
+    "features": [
+      {
+        "title": "Experiencia directa en ingeniería de preimpresión",
+        "description": "Consejos de personas que han dirigido de verdad flujos de trabajo de offset, flexo y prensa digital, no una respuesta de primer nivel con guion."
+      },
+      {
+        "title": "Compromiso de respuesta rápida en 24 horas",
+        "description": "Tanto si es una pregunta de la comunidad como una consulta empresarial, se lee y se responde en un día laborable."
+      },
+      {
+        "title": "Base de conocimiento de autoservicio completa",
+        "description": "Decenas de guías en profundidad sobre fórmulas de tamaño, corrección de errores y elección de soporte, disponibles en cualquier momento."
+      },
+      {
+        "title": "Soporte comunitario y empresarial 100 % gratuito",
+        "description": "Ya seas un pequeño negocio, una ONG o un diseñador de empresa, la ayuda es la misma y no cuesta nada."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Temas de soporte más solicitados y recursos directos",
+      "description": "Enlaces rápidos a recursos técnicos especializados para una ayuda inmediata.",
+      "headers": [
+        "Área temática",
+        "Guía de recurso principal",
+        "Ecuación / estándar clave",
+        "Público objetivo"
+      ],
+      "rows": [
+        [
+          "Tamaño de impresión y fórmula S = D / 10",
+          "Guía completa para imprimir códigos QR",
+          "$S = D / 10$",
+          "Diseñadores gráficos, técnicos de preimpresión"
+        ],
+        [
+          "Formato de tarjetas de visita con vCard 3.0",
+          "Guía de tarjetas de visita con código QR vCard",
+          "RFC 2426 / RFC 6350",
+          "Marketing corporativo, responsables de networking"
+        ],
+        [
+          "Operaciones de menús de hostelería",
+          "Guía de códigos QR para restaurantes",
+          "HTTPS / viewport responsivo para móvil",
+          "Restauradores, operadores de alimentación y bebidas"
+        ],
+        [
+          "Marketing de carteles inmobiliarios",
+          "Guía de generación de leads con QR para inmobiliarias",
+          "Matterport 3D / S = D / 10",
+          "Agentes inmobiliarios, administradores de propiedades"
+        ],
+        [
+          "Configuración de acceso a redes WiFi",
+          "Guía de códigos QR WiFi para hostelería",
+          "Protocolo URI WIFI: (WPA3/WPA2)",
+          "Gerentes de hoteles, dueños de cafeterías, personal de TI"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Verificación de preimpresión de envases comerciales",
+        "description": "Pide al equipo que compruebe que tu SVG de envase cumple los límites de contraste ISO y de zona silenciosa antes de cortar las planchas."
+      },
+      {
+        "title": "Vallas publicitarias de gran formato y señalética exterior",
+        "description": "Obtén el tamaño exacto para un cartel de autopista que se lee a 20-50 metros, para que escanee desde un coche en movimiento."
+      },
+      {
+        "title": "Despliegue corporativo de vCard personalizada",
+        "description": "Averigua cómo estandarizar los códigos de tarjetas de visita vCard en una plantilla de miles de personas."
+      },
+      {
+        "title": "Despliegues de menús en varias ubicaciones de hostelería",
+        "description": "Planifica el despliegue de un menú PDF de carga rápida en una red de franquicias sin quebraderos de cabeza por local."
+      },
+      {
+        "title": "Ayuda para campañas educativas y de organizaciones sin ánimo de lucro",
+        "description": "Recibe apoyo para un proyecto de cuestionario en el aula, una exposición de museo o una campaña de recaudación de fondos."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Información que debes incluir para una atención rápida",
+      "points": [
+        "Indica el generador. Dinos en qué herramienta estás: URL, vCard, WiFi, Formularios de Google.",
+        "Facilita el tamaño de impresión. El ancho y el alto previstos ayudan mucho, por ejemplo 25 mm x 25 mm en una tarjeta de visita.",
+        "Indica la distancia de escaneo. ¿A qué distancia estará aproximadamente la gente? ¿30 cm para una carta o 3 metros para un cartel?",
+        "Menciona el software. Illustrator, InDesign, Photoshop, CorelDRAW o Figma: cambia el consejo.",
+        "Adjunta el archivo. Si es un problema de escaneo, envía el SVG o el PNG exportado para que lo podamos revisar directamente."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿En cuánto tiempo responde el equipo de soporte de QR Generator Online?",
+        "a": "En un plazo de 24 horas laborables, y normalmente en menos de 12 en un día laborable."
+      },
+      {
+        "q": "¿Cuál es el correo principal de soporte?",
+        "a": "support@qr-generator.online llega directamente al equipo técnico."
+      },
+      {
+        "q": "¿Ofrecéis soporte telefónico o por chat en directo?",
+        "a": "El soporte funciona por correo electrónico y con la base de conocimiento, no por teléfono ni chat. Forma parte de lo que hace que el servicio siga siendo completamente gratuito."
+      },
+      {
+        "q": "¿Podéis revisar mi arte de impresión comercial antes de enviarlo a la prensa?",
+        "a": "Con gusto. Envía tu prueba en SVG vectorial o PDF a support@qr-generator.online y el equipo de preimpresión comprobará la zona silenciosa, el contraste y la geometría de los módulos antes de que te comprometas."
+      },
+      {
+        "q": "¿Puedo pedir una función personalizada o un nuevo tipo de código QR?",
+        "a": "Las sugerencias de funciones son bienvenidas y se leen de verdad. Envía la idea al equipo de producto en support@qr-generator.online."
+      },
+      {
+        "q": "¿Cobráis honorarios de consultoría o de soporte?",
+        "a": "No. La ayuda técnica, las revisiones de preimpresión y las guías de uso son todas gratuitas."
+      },
+      {
+        "q": "¿Dónde puedo encontrar guías y tutoriales de autoservicio?",
+        "a": "Las páginas del Blog y de Preguntas frecuentes contienen guías detalladas sobre tamaños de impresión, menús de restaurante, contactos vCard y acceso WiFi."
+      },
+      {
+        "q": "¿Se mantiene confidencial la información de contacto de los clientes?",
+        "a": "Totalmente. Cualquier correo, dato o arte que compartas con soporte es confidencial y nunca se comparte ni se vende."
+      }
+    ],
+    "bestPractices": "Echa primero un vistazo a las preguntas frecuentes y al blog para obtener una respuesta inmediata, y cuando escribas, incluye las medidas de impresión y el software de maquetación: convierte un intercambio de dos correos en uno solo."
+  },
+  '/privacy': {
+    "sections": [
+      {
+        "title": "Procesamiento de datos en el cliente y cero almacenamiento",
+        "paragraphs": [
+          "QR Generator Online procesa la generación de códigos QR estáticos en local, en tu navegador web. No almacenamos, recopilamos ni vendemos el texto, las contraseñas ni los datos de contacto que codificas.",
+          "Cumplimos estrictamente con la normativa internacional de protección de datos, incluidos el RGPD y la CCPA."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Nuestra arquitectura criptográfica de privacidad y política de soberanía de datos",
+      "paragraphs": [
+        "La privacidad no es una función que añadimos después: es la forma de todo el conjunto. La mayoría de las plataformas SaaS comerciales recogen datos, rastrean direcciones IP y venden en silencio lo que navegas. Este servicio parte de la premisa opuesta: conocimiento cero, y tus datos siguen siendo tuyos.",
+        "Crea un código aquí y cada paso ocurre dentro de tu navegador. La codificación Reed-Solomon, la rasterización de la matriz y el renderizado vectorial se ejecutan en local, en memoria, mediante JavaScript y WebAssembly. Tus URL, textos, contactos vCard, contraseñas WiFi y logotipos subidos nunca cruzan la red ni llegan a una base de datos, porque no existe ninguna base de datos ni ninguna llamada a la red.",
+        "Esta política expone los estándares técnicos que lo respaldan, los compromisos de cero seguimiento y cómo todo el diseño se alinea con el RGPD, la CCPA y los marcos de privacidad de ISO/IEC."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Arquitectura de privacidad de QR Generator Online frente a plataformas SaaS de QR tradicionales",
+      "headers": [
+        "Métrica de privacidad y datos",
+        "QR Generator Online (conocimiento cero)",
+        "Plataformas comerciales de QR tradicionales"
+      ],
+      "rows": [
+        [
+          "Lugar de procesamiento de datos",
+          "100 % en el cliente (dentro de la memoria de tu navegador)",
+          "Bases de datos centralizadas en servidores externos"
+        ],
+        [
+          "Registro de URL de destino",
+          "Cero registros (nunca vemos tu URL de destino)",
+          "Registran y almacenan en la nube las URL de destino completas"
+        ],
+        [
+          "Seguimiento de direcciones IP de visitantes",
+          "Cero seguimiento de IP (enlaces estáticos de codificación directa)",
+          "Rastrean y registran las IP de todas las personas que escanean"
+        ],
+        [
+          "Transmisión de contraseñas WiFi",
+          "Nunca se transmiten por la red (riesgo cero)",
+          "Almacenadas en texto plano o en bases de datos en la nube"
+        ],
+        [
+          "Captación de cuentas y correos de usuarios",
+          "No se requiere cuenta, correo ni registro",
+          "Creación obligatoria de cuenta y correos de marketing"
+        ],
+        [
+          "Monetización de datos por terceros",
+          "Cero venta de datos ni compartición con corredores publicitarios",
+          "A menudo monetizan análisis agregados de escaneos"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Procesamiento local en el cliente, en el navegador web",
+        "description": "Lo que escribas —una URL, una contraseña, una vCard— se gestiona por completo en la memoria de tu navegador, sin ninguna llamada a un servidor."
+      },
+      {
+        "number": 2,
+        "title": "Cero almacenamiento en la nube y cero registros en base de datos",
+        "description": "No hay en nuestro lado ninguna base de datos que guarde tus códigos, tus logotipos subidos ni tus enlaces de destino. No se conserva nada porque nada se envía."
+      },
+      {
+        "number": 3,
+        "title": "Codificación estática directa para una soberanía permanente",
+        "description": "Un código impreso apunta directamente a tu destino, sin ningún proxy de terceros en medio que registre o intercepte el escaneo."
+      }
+    ],
+    "features": [
+      {
+        "title": "Ejecución criptográfica 100 % en el cliente",
+        "description": "La generación se ejecuta en la memoria del navegador, lo que mantiene confidenciales tus datos: no tienen otro lugar donde estar."
+      },
+      {
+        "title": "Cumplimiento total del RGPD y la CCPA desde el diseño",
+        "description": "No recoger ninguna información personal es la vía más sencilla posible hacia el cumplimiento, y es la que hemos tomado."
+      },
+      {
+        "title": "Cero seguimiento de quien escanea o de los usuarios finales",
+        "description": "Las personas que escanean tu código llegan directamente a tu sitio. Ningún salto de seguimiento ni cookie les queda puesta por el camino."
+      },
+      {
+        "title": "Sin creación de cuenta ni captación de correos",
+        "description": "Genera y descarga todo lo que quieras de forma anónima: ni siquiera hay registro."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Desglose del flujo de datos y de la seguridad de transmisión",
+      "description": "Verificación técnica de cómo se gestionan los datos en cada tipo de generador de QR de QR Generator Online.",
+      "headers": [
+        "Tipo de generador QR",
+        "Alcance de los datos de entrada",
+        "Método de procesamiento",
+        "Estado de almacenamiento en servidor"
+      ],
+      "rows": [
+        [
+          "Generador de QR de URL",
+          "Dirección web de destino y UTM",
+          "Compilación UTF-8 en el cliente",
+          "0 bytes almacenados (cero transmisión al servidor)"
+        ],
+        [
+          "Generador de QR de WiFi",
+          "SSID y contraseñas WPA2/WPA3",
+          "Codificación de la cadena WIFI: en el cliente",
+          "0 bytes almacenados (nunca sale del navegador)"
+        ],
+        [
+          "Generador de QR de vCard",
+          "Nombre, teléfonos, correos, dirección",
+          "Análisis RFC 6350 en el cliente",
+          "0 bytes almacenados (cero captación de la agenda)"
+        ],
+        [
+          "WhatsApp / SMS / teléfono",
+          "Números de teléfono y texto del mensaje",
+          "Síntesis de cadena URI en el cliente",
+          "0 bytes almacenados (cero registro de contactos)"
+        ],
+        [
+          "Generador de QR cripto",
+          "Dirección pública de recepción de la cartera",
+          "Síntesis de URI BIP-0021 en el cliente",
+          "0 bytes almacenados (las claves privadas nunca se tocan)"
+        ],
+        [
+          "Subidas de logotipos e imágenes",
+          "Arte de marca en PNG, SVG, JPEG",
+          "Renderizado en el cliente con HTML5 Canvas",
+          "0 bytes almacenados (cero subida de imágenes)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Sanidad y confidencialidad del paciente (HIPAA)",
+        "description": "Genera códigos para la admisión de pacientes y enlaces de clínica sin riesgo de que información sanitaria protegida viaje a un servidor."
+      },
+      {
+        "title": "Confidencialidad legal y de empresa",
+        "description": "Crea enlaces internos para reuniones del consejo o documentos de litigios manteniendo la plena soberanía de los datos corporativos."
+      },
+      {
+        "title": "Instalaciones de gobierno y contratistas de defensa",
+        "description": "Reparte tarjetas WiFi para visitantes dentro de una instalación segura sin que una credencial clasificada salga nunca de la sala."
+      },
+      {
+        "title": "Servicios financieros y transferencias de criptomonedas",
+        "description": "Construye un código de pago de blockchain sabiendo que la dirección de la cartera y el importe se quedan estrictamente en tu dispositivo."
+      },
+      {
+        "title": "Marketing de marca para el consumidor y generación de confianza",
+        "description": "Comunica a los clientes preocupados por la privacidad, con verdad, que escanear el código de tu campaña no rastreará dónde están."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Cómo verificar la privacidad en el cliente en tu navegador",
+      "points": [
+        "Observa la pestaña de red. Abre las Herramientas de desarrollo (F12) y mira Red mientras generas un código o subes un logotipo. No sale nada: ni POST ni GET que transporten tus datos.",
+        "Desconecta el cable. Carga la página, desactiva el WiFi y los datos móviles y genera un código. Aparece al instante, sin conexión, algo que solo funciona si todo se ejecuta en tu navegador.",
+        "Decodifica tu propio código. Lee un código de URL generado con cualquier aplicación de escaneo. El texto decodificado es tu URL exacta, sin ningún dominio de redirección envolviéndola.",
+        "Busca rastreadores. Las páginas del generador no cargan píxeles de seguimiento del comportamiento ni scripts de corredores de datos.",
+        "Cierra la pestaña. Como los datos viven en memoria volátil, cerrar la pestaña borra todo lo que introdujiste."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Guarda QR Generator Online mis URL, contraseñas o datos de contacto?",
+        "a": "No se guarda nada de lo que introduces. La generación se hace por completo en la memoria de tu navegador, así que nunca se transmite ni se conserva en un servidor."
+      },
+      {
+        "q": "¿Hacéis seguimiento de cuántas personas escanean mis códigos QR?",
+        "a": "No podemos, y así está diseñado. Un código estático enlaza directamente con tu destino sin ningún servidor de redirección en medio, así que en ningún punto se puede contar ni registrar un escaneo."
+      },
+      {
+        "q": "¿Cumple QR Generator Online la normativa del RGPD y de la CCPA?",
+        "a": "Plenamente. Sin información personal recogida, almacenada ni procesada —y sin registrar direcciones IP de quien escanea—, no hay nada que esas normativas puedan señalar."
+      },
+      {
+        "q": "¿Se almacenan en vuestros servidores web los logotipos que subo?",
+        "a": "No se suben en absoluto. El logotipo se compone en local mediante la API HTML5 Canvas en tu navegador, así que la imagen nunca llega a un servidor externo."
+      },
+      {
+        "q": "¿Es seguro generar códigos QR WiFi con la contraseña de mi router?",
+        "a": "Sí. El nombre de la red y la contraseña se montan en local y se escriben directamente en el patrón del código de barras. Ninguno de los dos se envía nunca por internet."
+      },
+      {
+        "q": "¿Vendéis datos de usuarios a anunciantes externos o a corredores de datos?",
+        "a": "No hay nada que vender. No existe ninguna base de datos de usuarios, ni perfiles de cuenta, ni registros de seguimiento que entregar a nadie."
+      },
+      {
+        "q": "¿Usáis cookies en QR Generator Online?",
+        "a": "Solo las del tipo técnico mínimo necesario para que el sitio funcione. No se usan cookies de publicidad conductual de terceros."
+      },
+      {
+        "q": "¿A quién puedo contactar para consultas sobre privacidad?",
+        "a": "El equipo de protección de datos responde directamente a las preguntas de privacidad y cumplimiento en support@qr-generator.online."
+      }
+    ],
+    "bestPractices": "Puedes generar libremente aquí sin preocuparte por nada: el proceso es en el cliente de principio a fin y es independiente de cualquier servidor de terceros."
+  },
+  '/terms': {
+    "sections": [
+      {
+        "title": "Términos de uso justo y distribución comercial",
+        "paragraphs": [
+          "Los códigos QR estáticos generados con QR Generator Online pueden usarse libremente con fines personales y comerciales, en medios impresos y digitales.",
+          "Los usuarios son responsables de garantizar que el contenido codificado cumpla las normas legales aplicables."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Condiciones del servicio, licencia comercial y marco de uso",
+      "paragraphs": [
+        "Usar QR Generator Online implica aceptar las Condiciones del servicio, el acuerdo de licencia comercial y la política de uso aceptable que se exponen a continuación.",
+        "La plataforma genera códigos de barras 2D conforme al estándar ISO/IEC 18004, en el cliente y de forma gratuita. Lo que creas incluye derechos completos, sin restricciones y libres de regalías, para uso comercial y personal, concedidos a perpetuidad: no hace falta comprar una licencia aparte más adelante.",
+        "Las secciones siguientes tratan sobre la propiedad intelectual, el uso aceptable, la limitación de responsabilidad y la exención relativa a la producción comercial de impresión. Conviene leerlas antes de una tirada grande."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Resumen de las condiciones de licencia comercial",
+      "headers": [
+        "Categoría de licencia",
+        "Condiciones y permisos en QR Generator Online",
+        "Servicios comerciales de códigos de barras tradicionales"
+      ],
+      "rows": [
+        [
+          "Derechos de uso comercial",
+          "Derechos comerciales 100 % sin restricciones y libres de regalías",
+          "Requieren un nivel de licencia comercial de pago (300 $ o más al año)"
+        ],
+        [
+          "Regalías / tarifas por escaneo",
+          "0,00 $ (cero regalías ni cargos por escaneo)",
+          "Cargos por exceso cuando el volumen de escaneos supera los límites mensuales"
+        ],
+        [
+          "Propiedad intelectual",
+          "Tú eres dueño del 100 % del arte y los datos de los códigos QR generados",
+          "La plataforma conserva derechos o reclama redirecciones propietarias"
+        ],
+        [
+          "Alcance de reproducción en impresión",
+          "Sin restricciones (envases, libros, vallas, televisión)",
+          "Restringido según la tirada impresa o los límites del nivel"
+        ],
+        [
+          "Riesgo de cancelación de cuenta",
+          "Riesgo nulo (los códigos estáticos tienen validez permanente)",
+          "Los códigos se desactivan si se cancela la suscripción"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Genera tu arte de código QR personalizado",
+        "description": "Crea el código con cualquier generador de aquí, con estilo y logotipo incluidos."
+      },
+      {
+        "number": 2,
+        "title": "Obtén al instante una licencia comercial mundial",
+        "description": "En el momento en que se genera, tienes una licencia perpetua, libre de regalías y mundial para usarlo en cualquier medio, físico o digital."
+      },
+      {
+        "number": 3,
+        "title": "Despliégalo en productos y campañas comerciales",
+        "description": "Ponlo en un envase, en un anuncio de televisión, en un expositor o en una campaña publicitaria. No hay ninguna tasa de licencia asociada a nada de eso."
+      }
+    ],
+    "features": [
+      {
+        "title": "Licencia comercial perpetua y libre de regalías",
+        "description": "Usa los códigos en productos, libros, envases y medios digitales en todo el mundo sin ninguna tarifa recurrente."
+      },
+      {
+        "title": "Propiedad total de los activos generados",
+        "description": "El diseño del código de barras y cualquier arte personalizado que contenga son tuyos, en exclusiva."
+      },
+      {
+        "title": "Cero dependencia de proveedor o del servicio",
+        "description": "Los códigos estáticos de codificación directa no dependen de nosotros. Un cambio futuro de política no puede volver atrás y romper algo que ya imprimiste."
+      },
+      {
+        "title": "Aviso transparente sobre la calidad de preimpresión",
+        "description": "Orientación clara sobre las pruebas de impresión antes de una tirada, sin nada escondido en la letra pequeña."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Usos comerciales permitidos y aplicaciones",
+      "description": "Descripción general de las aplicaciones comerciales permitidas en QR Generator Online.",
+      "headers": [
+        "Aplicación comercial",
+        "Estado de la licencia",
+        "Alcance permitido",
+        "Regalías requeridas"
+      ],
+      "rows": [
+        [
+          "Envases de productos minoristas y etiquetas de alimentos",
+          "Permitido a perpetuidad",
+          "Distribución ilimitada de unidades a nivel mundial",
+          "0,00 $ (ninguna)"
+        ],
+        [
+          "Anuncios comerciales de televisión y streaming",
+          "Permitido a perpetuidad",
+          "Difusión y medios de streaming mundiales",
+          "0,00 $ (ninguna)"
+        ],
+        [
+          "Libros, revistas y publicaciones impresas",
+          "Permitido a perpetuidad",
+          "Circulación impresa mundial ilimitada",
+          "0,00 $ (ninguna)"
+        ],
+        [
+          "Vallas publicitarias exteriores y publicidad en transporte",
+          "Permitido a perpetuidad",
+          "Campañas exteriores nacionales e internacionales",
+          "0,00 $ (ninguna)"
+        ],
+        [
+          "Papelería corporativa y tarjetas de visita inteligentes",
+          "Permitido a perpetuidad",
+          "Distribución ilimitada entre empleados",
+          "0,00 $ (ninguna)"
+        ],
+        [
+          "Software, aplicaciones móviles e interfaces web",
+          "Permitido a perpetuidad",
+          "Integrado en SaaS, web y aplicaciones móviles",
+          "0,00 $ (ninguna)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Fabricantes de bienes de consumo y minoristas",
+        "description": "Imprime códigos vectoriales permanentes en millones de cartones y botellas con seguridad jurídica y sin regalías que controlar."
+      },
+      {
+        "title": "Editoriales y editoriales educativas",
+        "description": "Incorpora códigos escaneables en libros de texto, novelas y fichas de trabajo con derechos de impresión perpetuos."
+      },
+      {
+        "title": "Agencias nacionales de publicidad y medios",
+        "description": "Lleva a cabo anuncios de televisión, páginas de revista y campañas de vallas sin ningún riesgo de licencia que las amenace."
+      },
+      {
+        "title": "Franquicias de hostelería y cadenas de restaurantes",
+        "description": "Estandariza los códigos de carta digital y de pago en mesa en cientos de locales."
+      },
+      {
+        "title": "Creadores, artistas y autores independientes",
+        "description": "Añade un código de marca a láminas de arte, merchandising o un libro autoeditado sin obstáculos de presupuesto."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Política de uso aceptable y descargo de responsabilidad de preimpresión",
+      "points": [
+        "Nada de contenido malicioso. Los códigos no pueden enlazar con sitios de phishing, malware, estafas ni material ilegal.",
+        "Prueba antes de imprimir. Escanear una prueba física antes de una tirada grande es responsabilidad tuya, y es la mejor forma de evitar una reimpresión costosa.",
+        "Mantén el destino activo. Eres responsable de que la URL a la que apunta un código siga en línea y accesible.",
+        "Respeta las marcas registradas. Incorpora solo logotipos sobre los que tengas derechos de uso.",
+        "El servicio se ofrece \"tal cual\". Nos atenemos a ISO/IEC 18004, pero no podemos garantizar la calibración de la impresora de un tercero, así que la prueba final te corresponde a ti."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Puedo usar códigos QR generados en QR Generator Online para productos comerciales?",
+        "a": "Libremente y en todo el mundo. Tienes derechos completos, sin restricciones y libres de regalías para ponerlos en envases, libros, expositores y medios digitales."
+      },
+      {
+        "q": "¿Debo pagar regalías o tarifas por escaneo a medida que crece mi negocio?",
+        "a": "Ni un céntimo. Cada código es gratuito, sin regalías, sin límite de escaneos y sin tarifa que crezca con tu volumen."
+      },
+      {
+        "q": "¿Quién es el propietario de la propiedad intelectual del código QR generado?",
+        "a": "Tú. El código de barras y cualquier logotipo o texto incrustado en él son totalmente tuyos."
+      },
+      {
+        "q": "¿Puedo generar códigos QR para mis clientes de diseño y cobrárselos?",
+        "a": "Por supuesto. Las agencias, los freelancers y los consultores pueden generar códigos para trabajos de clientes de pago."
+      },
+      {
+        "q": "¿Qué pasa si QR Generator Online cambia en el futuro?",
+        "a": "Lo que ya hayas descargado sigue funcionando. Un código estático guarda sus datos en la propia matriz, sin depender de nuestros servidores: nuestro futuro no afecta a los códigos que ya has impreso."
+      },
+      {
+        "q": "¿Hay restricciones sobre el contenido que puedo codificar?",
+        "a": "Solo las obvias: nada de malware, phishing, fraude ni material ilegal, como detalla la política de uso aceptable."
+      },
+      {
+        "q": "¿Cuál es vuestra limitación de responsabilidad en las tiradas comerciales?",
+        "a": "Como es habitual en el software, las herramientas se ofrecen \"tal cual\". Escanea una prueba física antes de aprobar un pedido comercial grande: esa comprobación es tu salvaguarda."
+      },
+      {
+        "q": "¿Cómo contacto con vuestro equipo jurídico o de licencias?",
+        "a": "Las consultas legales y de licencias se envían a support@qr-generator.online."
+      }
+    ],
+    "bestPractices": "Escanea una prueba impresa antes de aprobar una tirada de gran volumen y mantén activas tus URL de destino: un código vale tanto como la página a la que apunta."
+  },
+  '/blog': {
+    "sections": [
+      {
+        "title": "Guías prácticas de códigos QR para el crecimiento del negocio",
+        "paragraphs": [
+          "Explora nuestra biblioteca de tutoriales detallados sobre optimización de menús de restaurante, fórmulas de tamaño mínimo de impresión, generación de contactos con carteles inmobiliarios y configuración de WiFi para huéspedes en hostelería.",
+          "Descubre cómo las marcas modernas aprovechan la tecnología QR para impulsar la interacción del mundo físico al digital."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "La enciclopedia completa y el manual práctico de la tecnología QR moderna",
+      "paragraphs": [
+        "Este es el centro de conocimiento de QR Generator Online: el lugar para obtener respuestas claras sobre la ingeniería de códigos de barras, el marketing QR móvil, los estándares de impresión comercial y el intercambio de contactos. Los códigos QR funcionan sobre el estándar ISO/IEC 18004 y, en más de veinte años, han pasado de rastrear piezas de coche en una cadena de montaje a ser el puente entre una página impresa y un servicio en la nube, un pago o un sitio móvil.",
+        "Seas quien seas —un responsable de marca que lanza un envase para tienda, un restaurador que agiliza los pedidos en mesa, un diseñador de preimpresión que lucha con un margen de sangrado o un ingeniero que conecta un esquema URI—, las guías de aquí te dan las fórmulas reales, los detalles de protocolo y el flujo de trabajo, no el brillo de marketing.",
+        "Las guías en profundidad de abajo cubren la física del tamaño, las matemáticas de la corrección de errores, el lado de la privacidad y las tácticas de conversión."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Resumen de las guías principales de códigos QR y aplicaciones por sector",
+      "headers": [
+        "Sector / ámbito",
+        "Área de enfoque principal",
+        "Estándares técnicos clave",
+        "Beneficio comercial principal"
+      ],
+      "rows": [
+        [
+          "Hostelería y restauración",
+          "Menús PDF digitales sin contacto y pedidos en mesa",
+          "HTTPS, enlaces universales, viewports responsivos",
+          "Cero costes de impresión, 25 % más de rotación de mesas"
+        ],
+        [
+          "Producción de impresión comercial",
+          "Física del tamaño, referencias de DPI y ratios de contraste",
+          "ISO/IEC 18004, contraste WCAG 2.1 (> 4,5:1), SVG/EPS",
+          "Fiabilidad de escaneo al primer intento en todos los soportes del 100 %"
+        ],
+        [
+          "Empresa y networking",
+          "Tarjetas de visita digitales de contacto vCard 3.0",
+          "RFC 2426, RFC 6350, codificación UTF-8",
+          "88 % más de retención de contactos, guardado de dirección con un toque"
+        ],
+        [
+          "Marketing inmobiliario",
+          "Carteles, recorridos virtuales 3D y consultas de inmuebles",
+          "Enlaces de Matterport 3D, seguimiento UTM, impresión de alta resolución",
+          "Generación de contactos 24/7 de compradores que pasan en coche"
+        ],
+        [
+          "Gestión de WiFi para huéspedes",
+          "Acceso a la red WPA3/WPA2 sin fricciones",
+          "Esquema URI WIFI:, estándares IEEE 802.11ax/ac",
+          "Cero contraseñas mal escritas, menos carga de soporte al personal"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Elige el protocolo óptimo para tu caso de uso",
+        "description": "Primero define qué necesita el trabajo: un enlace web estático (HTTPS), una tarjeta de contacto (vCard), un WiFi instantáneo (WIFI:) o un mensaje directo (WhatsApp/SMS). El protocolo condiciona todo lo que viene después."
+      },
+      {
+        "number": 2,
+        "title": "Aplica las reglas matemáticas de tamaño y contraste",
+        "description": "Dimensiona el código con S = D / 10 según la distancia desde la que escanea la gente, y mantén el contraste por encima de 4,5:1."
+      },
+      {
+        "number": 3,
+        "title": "Exporta archivos vectoriales sin pérdida y prueba pruebas físicas",
+        "description": "Exporta SVG vectorial para cualquier cosa impresa y, después, escanea una prueba física en un par de iPhone y Android antes de enviarla."
+      }
+    ],
+    "features": [
+      {
+        "title": "Análisis técnico en profundidad de los protocolos",
+        "description": "Los detalles de las RFC e ISO detrás de la generación de códigos de barras 2D y cómo una cámara de teléfono los interpreta: explicados, no hojeados por encima."
+      },
+      {
+        "title": "Fórmulas de producción de impresión aplicables",
+        "description": "Las ecuaciones de tamaño reales, los referentes de corrección de errores y los consejos de soporte que necesita de verdad un trabajo de prensa."
+      },
+      {
+        "title": "Casos de ROI en distintos sectores",
+        "description": "Guías prácticas para hostelería, impresión comercial, networking corporativo, inmobiliario y sanidad."
+      },
+      {
+        "title": "Conocimiento 100 % gratuito y de acceso abierto",
+        "description": "Tutoriales gratuitos, plantillas vectoriales y guías de expertos: sin muro de pago y sin registro."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Hoja de referencia maestra de tamaño óptico y distancia de visión",
+      "description": "Guía rápida para calcular las dimensiones mínimas de los códigos QR en todos los soportes físicos.",
+      "headers": [
+        "Soporte físico",
+        "Distancia típica de escaneo",
+        "Ancho mínimo (S)",
+        "Corrección de errores recomendada"
+      ],
+      "rows": [
+        [
+          "Tarjetas de visita y acreditaciones",
+          "15 cm - 30 cm (6\" - 12\")",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "Nivel Q (25 %) o nivel H (30 %)"
+        ],
+        [
+          "Displays de mesa y posavasos",
+          "30 cm - 50 cm (12\" - 20\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Nivel M (15 %) o nivel H (30 %)"
+        ],
+        [
+          "Envases y etiquetas de producto",
+          "20 cm - 40 cm (8\" - 16\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Nivel H (30 %) si lleva logotipo"
+        ],
+        [
+          "Folletos, carteles y revistas",
+          "50 cm - 150 cm (20\" - 60\")",
+          "60 mm - 150 mm (2,4\" - 6,0\")",
+          "Nivel M (15 %)"
+        ],
+        [
+          "Flotas de vehículos y furgonetas",
+          "3,0 m - 6,0 m (10 ft - 20 ft)",
+          "300 mm x 300 mm (12\" x 12\")",
+          "Nivel H (30 %) sobre vinilo de colada"
+        ],
+        [
+          "Vallas publicitarias de autopista",
+          "15,0 m - 30,0 m (50 ft - 100 ft)",
+          "1500 mm - 3000 mm (5 ft - 10 ft)",
+          "Nivel L (7 %) o nivel M (15 %)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Equipos de marketing omnicanal",
+        "description": "Estandariza el diseño de los QR, el seguimiento UTM de campañas y la salida vectorial de preimpresión en divisiones de marketing globales."
+      },
+      {
+        "title": "Impresores comerciales y casas de preimpresión",
+        "description": "Revisa el arte de los clientes frente a ISO/IEC 18004, el umbral de 300+ DPI y los límites de contraste antes de una tirada."
+      },
+      {
+        "title": "Operadores de hostelería y cadenas de restaurantes",
+        "description": "Despliega carta sin contacto y pedidos en mesa que reducen la carga de personal y aceleran la rotación de mesas."
+      },
+      {
+        "title": "Inmobiliarias y administradores de propiedades",
+        "description": "Convierte un cartel o un folleto en una fuente de contactos medible 24/7 y en un centro de recorridos 3D."
+      },
+      {
+        "title": "Organizadores de eventos y coordinadores de ferias",
+        "description": "Acelera el registro de entrada, añade sesiones a los calendarios de los asistentes, intercambia tarjetas digitales y atribuye el tráfico de patrocinadores."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Los 5 fallos de producción de códigos QR más comunes",
+      "points": [
+        "Contraste débil. Los módulos pálidos sobre un soporte claro vencen a la cámara. Mantén 4,5:1 o más.",
+        "Zona silenciosa recortada. Si recortas demasiado el margen, el escáner no encuentra el límite del código.",
+        "Mapa de bits de 72 DPI. Una captura web de baja resolución emborrona los bordes de los módulos al imprimirse. Usa SVG vectorial o un ráster de 300+ DPI.",
+        "URL demasiado larga. Un enlace de 250 caracteres crea puntos microscópicos que se emborronan al imprimirse en pequeño. Acórtalo.",
+        "Reflejos del brillo. Un recubrimiento brillante lanza focos a la lente. Mate o satinado."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Cuál es el propósito del centro de conocimiento de QR Generator Online?",
+        "a": "Existe para dar a empresas, diseñadores y desarrolladores las guías técnicas, las fórmulas y los casos de estudio necesarios para publicar códigos QR que realmente se escaneen: la profundidad que, de otro modo, tendrías que reunir a partir de una docena de fuentes."
+      },
+      {
+        "q": "¿Son completamente gratuitos los tutoriales y guías de este blog?",
+        "a": "Cada guía, referencia y herramienta vectorial de aquí es gratuita y abierta: sin muro de pago y sin cuenta."
+      },
+      {
+        "q": "¿Con qué frecuencia se actualizan vuestras guías sobre tecnología QR?",
+        "a": "Los artículos se revisan a medida que cambian los decodificadores de cámara de iOS y Android, se actualizan los estándares ISO y evoluciona la práctica del marketing móvil."
+      },
+      {
+        "q": "¿Puedo pedir una guía o un tutorial personalizado sobre un tema QR concreto?",
+        "a": "Envía el tema a través de la página de contacto y el equipo editorial lo estudiará."
+      },
+      {
+        "q": "¿Tus guías cubren tanto las arquitecturas de códigos QR estáticas como las dinámicas?",
+        "a": "Sí, incluido un desglose completo de las ventajas e inconvenientes entre un código estático, sin dependencias, y una redirección dinámica."
+      },
+      {
+        "q": "¿Dónde puedo encontrar pautas de tamaño específicas para mi proyecto de impresión?",
+        "a": "La \"Guía completa para imprimir códigos QR\" incluye justo para eso las tablas de tamaño, los consejos sobre soportes y las fórmulas de DPI."
+      },
+      {
+        "q": "¿Cómo me aseguro de que mis códigos QR cumplan las normativas de privacidad móvil?",
+        "a": "Las guías se apoyan en la generación estática en el cliente, que procesa todo en la memoria del navegador: sin IP de visitantes registradas, sin analítica de seguimiento, así que hay poco que una normativa de privacidad pueda señalar."
+      },
+      {
+        "q": "¿Puedo compartir estos artículos y recursos con mi equipo?",
+        "a": "Por favor, hazlo: compañeros, equipos de marketing, agencias y departamentos de preimpresión son exactamente el público al que van dirigidos."
+      }
+    ],
+    "bestPractices": "Guarda el centro en tus marcadores para las fórmulas de tamaño, los estándares de contraste y la lista de comprobación de preimpresión: son las cosas que vale la pena revisar antes de que salga cualquier trabajo de impresión comercial."
+  },
+  '/blog/qr-codes-for-restaurants': {
+    "sections": [
+      {
+        "title": "El paso a los menús digitales sin contacto",
+        "paragraphs": [
+          "En la hostelería moderna, la rapidez y la precisión del servicio son esenciales. Los menús QR digitales en los displays de mesa permiten a los clientes ver al instante las opciones de comida y bebida actualizadas nada más sentarse.",
+          "Los restaurantes reducen los gastos de reimpresión cada vez que cambian los precios, a la vez que destacan los platos de temporada y los de mayor margen."
+        ]
+      },
+      {
+        "title": "Cómo configurar un menú con código QR para tu restaurante",
+        "paragraphs": [
+          "Empezar lleva menos de cinco minutos. Sube tu menú PDF actual o enlaza tu página de pedidos en línea, luego genera un código QR de marca con el logotipo de tu restaurante en el centro. Imprímelo en displays de mesa laminados y resistentes, en pegatinas para ventanas o en el pie de los tickets.",
+          "Los estudios muestran que los restaurantes con menús QR digitales registran un aumento medio del 15 % en el importe medio del pedido, porque los clientes exploran la carta completa a su ritmo en lugar de depender de las recomendaciones verbales. Actualizar artículos, precios u ofertas de temporada es instantáneo, sin reimprimir nada. Acompaña cada código QR con una breve llamada a la acción como «Escanea para ver la carta completa de hoy» para obtener mejores resultados."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Guía completa de menús con código QR y operaciones de restauración sin contacto",
+      "paragraphs": [
+        "El menú QR empezó como solución de emergencia durante la pandemia y se quedó como estándar operativo. Funciona sobre HTTPS normal: el código lleva el navegador del teléfono del cliente a un menú PDF alojado en la nube, a un portal de pedidos o a una página de pago, sin tener que descargar antes ninguna aplicación.",
+        "La economía es lo que lo mantiene en pie. Un menú digital elimina el coste recurrente de reimprimir —normalmente entre 1.500 y 4.000 $ al año por local—, permite cambiar un precio o una oferta en segundos, reduce los errores de pedido y eleva el ticket medio entre un 12 % y un 22 % cuando los clientes ven la comida y reciben una sugerencia de venta adicional.",
+        "Nada de eso se logra sin hacer bien la parte física. La colocación, la resistencia del display de mesa, la iluminación y una página adaptada al móvil deciden si un cliente de cualquier edad escanea de una vez o se rinde."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Menú digital con código QR frente a carta tradicional plastificada en papel",
+      "headers": [
+        "Factor operativo",
+        "Menú digital con código QR",
+        "Carta tradicional plastificada en papel"
+      ],
+      "rows": [
+        [
+          "Coste anual de reimpresión",
+          "0 $ (se actualiza al instante en línea)",
+          "1.500 - 4.000 $ o más por local al año"
+        ],
+        [
+          "Velocidad de actualización de la carta",
+          "En tiempo real (retira los artículos agotados en segundos)",
+          "Días o semanas para rediseñar y reimprimir"
+        ],
+        [
+          "Velocidad de rotación de mesas",
+          "15 - 25 minutos más rápido por servicio",
+          "Más lenta por la espera de cartas físicas y de la cuenta"
+        ],
+        [
+          "Importe medio del pedido",
+          "Un 12 % - 22 % más (fotografía visual de la comida)",
+          "Texto estático con poca capacidad de venta adicional"
+        ],
+        [
+          "Higiene y limpieza",
+          "100 % sin contacto, en el propio dispositivo del cliente",
+          "Requiere desinfectar después de cada uso"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Aloja tu menú optimizado para móvil en línea",
+        "description": "Publica la carta como una página responsiva ligera o como un PDF comprimido de menos de 3 MB, alojado en tu sitio."
+      },
+      {
+        "number": 2,
+        "title": "Genera un código QR de marca con corrección de errores de nivel H",
+        "description": "Pega la URL del menú en el generador, aplica tus colores, coloca tu escudo en el centro con nivel H y exporta SVG vectorial."
+      },
+      {
+        "number": 3,
+        "title": "Imprime en acrílico, madera o cartulina laminada resistente",
+        "description": "Haz el display de mesa de al menos 40 mm x 40 mm, y mantén el acabado mate para que las luces del techo no lo deslumbren."
+      }
+    ],
+    "features": [
+      {
+        "title": "Actualizaciones instantáneas del menú y de los precios en tiempo real",
+        "description": "Cambia un precio, añade una oferta o retira en línea un plato agotado: el código impreso nunca tiene que cambiar."
+      },
+      {
+        "title": "Experiencia de cliente higiénica y sin contacto",
+        "description": "Los clientes leen la carta en su propio teléfono, sin nada compartido entre mesas."
+      },
+      {
+        "title": "Compatibilidad con menús digitales multilingües",
+        "description": "Dirige a los clientes internacionales a una carta con traducción automática que sigue el idioma de su navegador."
+      },
+      {
+        "title": "Enlaces estáticos permanentes sin comisiones",
+        "description": "Un código de carta estático que sigue siendo válido para siempre, con escaneos ilimitados y sin ninguna tarifa."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Especificaciones de colocación y tamaño de códigos QR en la mesa del restaurante",
+      "description": "Asegúrate de que los comensales puedan escanear tus códigos de carta sin esfuerzo mientras están cómodamente sentados.",
+      "headers": [
+        "Ubicación",
+        "Distancia de escaneo",
+        "Tamaño de impresión recomendado",
+        "Material recomendado"
+      ],
+      "rows": [
+        [
+          "Displays de mesa y bloques de comedor",
+          "25 cm - 45 cm (10\" - 18\")",
+          "40 mm x 40 mm (1,6\" x 1,6\")",
+          "Madera dura grabada con láser / soporte de acrílico"
+        ],
+        [
+          "Posavasos y barras",
+          "20 cm - 35 cm (8\" - 14\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Cartón absorbente de gramaje alto para posavasos"
+        ],
+        [
+          "Atril de recepción y displays de entrada",
+          "50 cm - 100 cm (20\" - 40\")",
+          "80 mm x 80 mm (3,2\" x 3,2\")",
+          "Display de mostrador enmarcado / tarjeta de soporte"
+        ],
+        [
+          "Pegatinas de ventana para consultar fuera de horario",
+          "50 cm - 120 cm (20\" - 48\")",
+          "100 mm x 100 mm (4,0\" x 4,0\")",
+          "Pegatina de vinilo mate resistente a la intemperie"
+        ],
+        [
+          "Inserciones y pegatinas para bolsas de entrega para llevar",
+          "20 cm - 35 cm (8\" - 14\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Etiqueta adhesiva mate"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Restaurantes de servicio completo",
+        "description": "Un atril enmarcado en cada reservado permite a los clientes ver aperitivos y cócteles en cuanto se sientan."
+      },
+      {
+        "title": "Cafeterías de servicio rápido y restaurantes de comida rápida",
+        "description": "Un cartel con código que evita las colas permite revisar la carta mientras se espera, así el pedido en caja es más rápido."
+      },
+      {
+        "title": "Cervecerías artesanales y listas de cerveza de taberna",
+        "description": "Un posavasos con un código enlazado a la lista de grifos en vivo mantiene la carta rotativa de barril de temporada precisa al minuto."
+      },
+      {
+        "title": "Servicio de habitaciones y comida en la habitación de hotel",
+        "description": "Una tarjeta junto a la cama sustituye la carpeta desgastada de la habitación por pedidos de servicio de habitaciones las 24 horas."
+      },
+      {
+        "title": "Discotecas, salones y bares de piscina",
+        "description": "Un marcador de acrílico grabado con láser e impermeable gestiona el servicio de botellas y los pedidos de cócteles junto a la piscina."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Los 5 errores que arruinan la experiencia de menú QR en un restaurante",
+      "points": [
+        "Un PDF pesado. Un archivo de 25 MB tarda medio minuto con datos móviles. Comprímelo por debajo de 2 MB o enlaza una página HTML rápida.",
+        "Reflejos del brillo. Un atril de acrílico brillante refleja las luces del techo en la lente. Usa acrílico mate antirreflejos o madera natural.",
+        "Una zona sin cobertura. Los sótanos y el hormigón cortan los datos móviles. Pon un código WiFi junto al código del menú.",
+        "Una aplicación obligatoria. Nunca obligues a un comensal a descargar una aplicación para leer la carta. Usa un enlace web estándar que se abra en el navegador.",
+        "Un diseño solo para escritorio. Nadie debería tener que pellizcar y hacer zoom. Usa un tamaño de letra de 16 px o más en móvil."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Cómo creo un código QR gratuito para la carta de mi restaurante?",
+        "a": "Publica la carta en línea —un PDF o una página web—, copia la URL pública, pégala en el generador de URL, añade tu logotipo y tus colores, y descarga el SVG o el PNG de alta resolución."
+      },
+      {
+        "q": "¿Es un código QR una buena forma de gestionar un menú digital para restaurantes?",
+        "a": "Es la forma más sencilla. Aloja la carta en una página web, apunta un código QR a ella y coloca el código en la mesa: al escanearlo se abre tu menú digital en el propio teléfono del comensal, sin aplicación y sin nada que repartir. Los códigos dinámicos te permiten actualizar el menú digital sin reimprimir nada."
+      },
+      {
+        "q": "¿Puedo cambiar los artículos o precios del menú sin reimprimir el código QR?",
+        "a": "Mientras la URL siga siendo la misma —turestaurante.com/menu—, al editar la página que hay detrás se actualiza lo que muestra cada código ya impreso. El código nunca cambia."
+      },
+      {
+        "q": "¿Cuál es el mejor material para los displays de mesa con código QR de un restaurante?",
+        "a": "Soportes de acrílico mate, bloques de madera grabados con láser o cartulina laminada de 350+ g/m²: aguantan los derrames, resisten el reflejo y duran."
+      },
+      {
+        "q": "¿Tienen problemas los comensales mayores para escanear los códigos QR de la carta?",
+        "a": "Los teléfonos modernos (iOS 11+, Android 9+) leen el código directamente desde la cámara sin aplicación. Una línea breve —«Apunta aquí con la cámara para ver la carta»— lo hace más fácil para todos."
+      },
+      {
+        "q": "¿Debo enlazar a un archivo PDF o a una página web responsiva?",
+        "a": "Una página web responsiva es la mejor apuesta: carga más rápido y se adapta a la pantalla. Si optas por un PDF, comprímelo por debajo de 2 MB y dale formato vertical."
+      },
+      {
+        "q": "¿Caducan los códigos QR de restaurante creados en QR Generator Online?",
+        "a": "Siguen siendo válidos de por vida, con escaneos ilimitados y sin cuota recurrente."
+      },
+      {
+        "q": "¿Puedo incluir el logotipo de nuestro restaurante en el centro del código QR del menú?",
+        "a": "Adelante. El nivel H reserva alrededor del 30 % del código para la recuperación de errores, más que suficiente para tu logotipo o escudo en el centro."
+      },
+      {
+        "q": "¿Cómo aumentan los menús QR el gasto medio de los clientes?",
+        "a": "Un menú digital puede mostrar fotos reales de la comida, sugerir un maridaje de vino o de cóctel e invitar al postre, y eso es lo que empuja el ticket medio entre un 12 % y un 22 %."
+      }
+    ],
+    "bestPractices": "Consigue que la página del menú cargue en menos de dos segundos, usa materiales de mesa mate y antirreflejos, y coloca un código WiFi para huéspedes donde la cobertura móvil sea débil."
+  },
+  '/blog/printing-qr-codes-guide': {
+    "sections": [
+      {
+        "title": "Cálculo del tamaño mínimo de impresión de un código QR",
+        "paragraphs": [
+          "Una fórmula sencilla para el tamaño de impresión es la relación 10:1 entre distancia y tamaño. Por ejemplo, un cartel escaneado desde 1 metro necesita un código QR de al menos 10 cm de ancho.",
+          "Conserva siempre el margen de zona silenciosa de 4 módulos y exporta en SVG vectorial para una salida impecable en offset y prensa digital."
+        ]
+      },
+      {
+        "title": "Contraste de color, corrección de errores y recomendaciones de formato",
+        "paragraphs": [
+          "Mantén siempre una relación de contraste mínima de 4:1 entre el primer plano y el fondo del código QR. Evita imprimir patrones QR claros sobre fondos pálidos: el bajo contraste es la causa principal de fallos de escaneo en entornos de impresión brillantes. Usa corrección de errores de nivel H (30 % de redundancia de datos) al insertar logotipos para mantener un escaneo fiable.",
+          "Para la impresión comercial en offset, entrega siempre los archivos en formato SVG vectorial o EPS a la imprenta. Las imágenes PNG o JPEG ráster se pixelan al ampliarlas más allá de su resolución original, lo que provoca bordes de módulo borrosos que confunden a los escáneres. Como mínimo, exporta un PNG de 2048×2048 píxeles a 300 DPI si no se acepta SVG. Pide siempre una impresión de prueba física y haz una prueba de escaneo antes de aprobar tiradas grandes."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "La guía de ingeniería definitiva para imprimir códigos QR (preimpresión, tamaños y soportes)",
+      "paragraphs": [
+        "Imprimir bien un código QR exige entender la física que hay detrás del escaneo: resolución óptica, estándares de preimpresión, ganancia de punto de tinta, cómo refleja la luz una superficie y la geometría de la lente de un teléfono. Un código que se escanea al instante en un monitor puede fallar por completo en papel si la resolución, la zona silenciosa, el contraste o el acabado están mal especificados.",
+        "Según ISO/IEC 18004, la cámara decodifica un código leyendo la relación espacial entre sus patrones de temporización y de localización. Cualquier cosa que lo distorsione —tinta que se corre hacia la zona silenciosa de 4 módulos, reflejos de un laminado muy brillante, pixelado de una fuente de baja resolución— rompe la decodificación Reed-Solomon.",
+        "Esta guía ofrece a técnicos de preimpresión, diseñadores, ingenieros de envases e impresores las fórmulas, las especificaciones de material y la lista de control de calidad para lograr una fiabilidad de escaneo al primer intento del 100 % en cada tirada."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Formatos de archivo de impresión comercial para la producción de códigos QR",
+      "headers": [
+        "Formato de archivo",
+        "Tipo de resolución",
+        "Compatibilidad con preimpresión",
+        "Aplicaciones de impresión recomendadas"
+      ],
+      "rows": [
+        [
+          "SVG / EPS vectorial",
+          "Independiente de la resolución (trazados vectoriales)",
+          "100 % sin pérdida en todos los motores RIP comerciales",
+          "Vallas, envases, calcomanías de vehículos, papelería"
+        ],
+        [
+          "PNG de alta resolución (300+ DPI)",
+          "Mapa de bits ráster (2048x2048+ px sin pérdida)",
+          "Estándar para prensas digitales y tiradas cortas",
+          "Folletos, cartas, correo directo, revistas"
+        ],
+        [
+          "PDF / PDF vectorial",
+          "Trazados vectoriales encapsulados",
+          "Estándar universal de preimpresión e imposición",
+          "Libros comerciales, memorias anuales, troqueles de envase"
+        ],
+        [
+          "JPEG con pérdida (evitar)",
+          "Ráster comprimido (artefactos de pérdida)",
+          "No apto para impresión comercial (halos en los bordes)",
+          "Solo para pantalla web (nunca para impresión)"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Calcula las dimensiones físicas con la fórmula S = D / 10",
+        "description": "Toma la distancia desde la que escanea la gente (D), divídela entre diez y ese es tu ancho y alto mínimos (S)."
+      },
+      {
+        "number": 2,
+        "title": "Verifica el ratio de contraste WCAG (> 4,5:1) y la zona silenciosa",
+        "description": "Confirma módulos oscuros sobre un fondo claro y mantén el borde blanco completo de 4 módulos en todos los lados."
+      },
+      {
+        "number": 3,
+        "title": "Exporta SVG vectorial y realiza una prueba física",
+        "description": "Exporta el SVG vectorial, colócalo en InDesign o Illustrator y escanea la prueba de prensa impresa en un par de teléfonos antes de dar el visto bueno."
+      }
+    ],
+    "features": [
+      {
+        "title": "La relación matemática de distancia de escaneo 10:1",
+        "description": "Calcula el tamaño exacto para cualquier soporte, desde un sello de correos hasta un panel de autopista de 50 metros."
+      },
+      {
+        "title": "Cumplimiento de preimpresión ISO/IEC 18004",
+        "description": "Haz bien tus archivos en cuanto a temporización de módulos, patrones de alineación y redundancia Reed-Solomon."
+      },
+      {
+        "title": "Guía de compatibilidad de soportes y recubrimientos",
+        "description": "Entiende cómo interactúan de verdad la tinta, la absorción del papel, la ganancia de punto y el mate frente al brillo en la prensa."
+      },
+      {
+        "title": "Descargas directas de SVG y EPS vectoriales sin pérdida",
+        "description": "Archivos vectoriales listos para producción, pensados para la preimpresión comercial y la fabricación de planchas."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Tabla maestra de tamaños de impresión y distancias de referencia",
+      "description": "Aplica la fórmula óptica estándar $S = D / 10$ para determinar las dimensiones físicas de impresión.",
+      "headers": [
+        "Ubicación física",
+        "Distancia de escaneo (D)",
+        "Ancho mínimo (S)",
+        "Formato de archivo recomendado"
+      ],
+      "rows": [
+        [
+          "Tarjetas de visita y credenciales",
+          "15 cm - 30 cm (6\" - 12\")",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "SVG vectorial / EPS"
+        ],
+        [
+          "Displays de mesa y posavasos",
+          "30 cm - 50 cm (12\" - 20\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "SVG vectorial / PNG de 300 DPI"
+        ],
+        [
+          "Envases de producto y cartones",
+          "20 cm - 40 cm (8\" - 16\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "SVG vectorial / PDF"
+        ],
+        [
+          "Folletos, dípticos y revistas",
+          "50 cm - 100 cm (20\" - 40\")",
+          "60 mm x 60 mm (2,4\" x 2,4\")",
+          "SVG vectorial / PNG de 300 DPI"
+        ],
+        [
+          "Pancartas y carteles de ferias comerciales",
+          "1,5 m - 3,0 m (5 ft - 10 ft)",
+          "200 mm x 200 mm (8,0\" x 8,0\")",
+          "SVG vectorial"
+        ],
+        [
+          "Calcomanías de vehículos y gráficas de flota",
+          "3,0 m - 6,0 m (10 ft - 20 ft)",
+          "350 mm x 350 mm (14\" x 14\")",
+          "SVG vectorial / vinilo de colada"
+        ],
+        [
+          "Vallas publicitarias de autopista y anuncios de transporte",
+          "15,0 m - 30,0 m (50 ft - 100 ft)",
+          "1500 mm - 3000 mm (5 ft - 10 ft)",
+          "SVG vectorial / EPS de gran formato"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Envases comerciales y cajas flexográficas",
+        "description": "Incorpora un código vectorial nítido en un troquel de envase, teniendo en cuenta la absorción de tinta y la ganancia de punto de la prensa."
+      },
+      {
+        "title": "Preimpresión de revistas nacionales y correo directo",
+        "description": "Supera el umbral de 300+ DPI y de separación CMYK que exigen los editores de revistas."
+      },
+      {
+        "title": "Publicidad exterior y vallas de autopista",
+        "description": "Escala un código vectorial a proporciones de valla publicitaria manteniendo nítida la geometría de los módulos."
+      },
+      {
+        "title": "Tarjetas de visita de lujo y estampado en lámina",
+        "description": "Produce trazados vectoriales finos para estampado en lámina, gofrado y barniz UV sobre cartulina de más de 400 g/m²."
+      },
+      {
+        "title": "Etiquetas de activos de maquinaria industrial y placas metálicas",
+        "description": "Genera arte vectorial preciso para grabado láser sobre aluminio anodizado y placas de acero inoxidable."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Los 6 errores fatales de preimpresión que rompen los códigos QR impresos",
+      "points": [
+        "Zona silenciosa recortada. Si recortas hasta el borde de los módulos, la cámara pierde el límite. Deja el margen completo de 4 módulos.",
+        "JPEG con pérdida. La compresión difumina las esquinas de los módulos. Usa SVG vectorial o un PNG sin comprimir.",
+        "Contraste débil. Los pasteles, el amarillo sobre blanco o el gris claro fallan en la binarización. Mantén 4,5:1.",
+        "Reflejos del brillo. Un recubrimiento muy brillante destella bajo un foco. Mate o seda.",
+        "Ganancia de punto ignorada. La tinta se extiende en papel sin estucar y en papel de periódico, y cierra los huecos entre módulos. Aumenta el código un 15-20 % en soportes porosos.",
+        "Colores invertidos. Blanco sobre negro falla en escáneres antiguos. Mantén los módulos oscuros."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Cuál es el tamaño mínimo al que se puede imprimir un código QR y que siga escaneándose?",
+        "a": "Para una URL corta o una tarjeta de contacto que se lee desde 15-20 cm, 20 mm x 20 mm (0,8\" x 0,8\") es el mínimo. En envases y tarjetas de visita, considera 25 mm x 25 mm (1,0\" x 1,0\") como el mínimo seguro."
+      },
+      {
+        "q": "¿Por qué el SVG vectorial es superior al PNG para la impresión comercial?",
+        "a": "El SVG describe el código como geometría, no como píxeles, así que se escala a cualquier tamaño de valla o de envase sin pérdida de nitidez y se importa limpiamente en InDesign e Illustrator."
+      },
+      {
+        "q": "¿Qué es la zona silenciosa y por qué es obligatoria?",
+        "a": "Es el borde en blanco —de al menos 4 anchos de módulo— alrededor de los cuatro lados del código. La cámara necesita ese margen vacío para distinguir dónde acaba el código de barras y dónde empieza el arte que lo rodea."
+      },
+      {
+        "q": "¿Cómo afecta el nivel de corrección de errores a la durabilidad de la impresión?",
+        "a": "El nivel H incorpora un 30 % de redundancia, así que el código sigue escaneándose aunque hasta el 30 % de la superficie esté rayado, roto, sucio o cubierto por un logotipo central."
+      },
+      {
+        "q": "¿Puedo imprimir un código QR de color sobre papel de color?",
+        "a": "Sí, siempre que los módulos oscuros superen 4,5:1 frente al papel claro. Evita el oscuro sobre oscuro y el claro sobre claro."
+      },
+      {
+        "q": "¿Por qué fallan con frecuencia al escanearse los códigos QR laminados y brillantes?",
+        "a": "Bajo el sol directo o un foco, el brillo actúa como un espejo y quema el contraste con un punto blanco. Un laminado mate o antirreflejo lo soluciona."
+      },
+      {
+        "q": "¿Qué resolución se necesita si se imprimen archivos PNG ráster?",
+        "a": "Un archivo ráster necesita 300 DPI en el tamaño final de impresión (píxeles = pulgadas × 300). La exportación PNG de 2048x2048 px se imprime nítida hasta unas 7x7 pulgadas."
+      },
+      {
+        "q": "¿Cómo pruebo mi código QR impreso antes de aprobar una tirada de 10.000 unidades?",
+        "a": "Saca una prueba de prensa 1:1 sobre el mismo soporte y recubrimiento con los que vas a imprimir, y escanéala en un Android antiguo y en un iPhone actual, con poca luz y con mucha luz."
+      }
+    ],
+    "bestPractices": "Entrega al impresor el SVG vectorial, pide un acabado mate, protege la zona silenciosa de 4 módulos y escanea una prueba física antes de aprobar la tirada completa."
+  },
+  '/blog/vcard-qr-code-business-cards': {
+    "sections": [
+      {
+        "title": "Convierte las tarjetas de visita en un guardado de contacto con un toque",
+        "paragraphs": [
+          "Un código QR vCard elimina los errores de escribir contactos a mano en eventos de networking y ferias comerciales.",
+          "Quien lo escanea en el reverso de tu tarjeta añade al instante tu nombre, tu móvil, tu correo y tu perfil de LinkedIn a su agenda."
+        ]
+      },
+      {
+        "title": "Consejos de diseño para tarjetas de visita con código QR",
+        "paragraphs": [
+          "Coloca el código QR en el reverso de la tarjeta con una llamada a la acción clara, como «Escanea para guardar mi contacto». Mantén el código de al menos 2,5 cm × 2,5 cm (1 pulgada × 1 pulgada) para un escaneo fiable. Deja un borde blanco de zona silenciosa de al menos 4 módulos en los cuatro lados. Insertar en el centro tu foto profesional o el logotipo de tu empresa aumenta la confianza y la tasa de escaneo.",
+          "Usa QR Generator Online para codificar tu perfil vCard 3.0 completo, con nombre, apellidos, cargo, empresa, teléfono de trabajo, móvil, correo, web y dirección postal. Exporta en SVG vectorial para garantizar una calidad impecable en cualquier tamaño de impresión. La cartulina premium con acabado mate ofrece la mayor fiabilidad de escaneo frente al laminado brillante, que puede provocar reflejos bajo una luz intensa."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "La guía definitiva de códigos QR vCard para tarjetas de visita inteligentes modernas",
+      "paragraphs": [
+        "La tarjeta de visita de papel se está muriendo en silencio. Más del 88 % de las tarjetas que se reparten en un evento de networking acaban en la basura en una semana, y alrededor de un 9 % contienen un número o un cargo desactualizado en seis meses. Un código QR vCard convierte ese papel muerto en un activo digital que funciona.",
+        "Funciona con el estándar VCF (vCard 3.0, definido en las RFC 2426 y RFC 6350) y codifica toda tu identidad profesional —nombre, cargo, empresa, móvil, correo de trabajo, dirección de oficina, web— directamente en el código de barras.",
+        "Escanéalo con cualquier iPhone o Android y el sistema abre una vista previa de contacto con la opción «Añadir a contactos». Un toque guarda el perfil completo en la agenda: sin escribir, sin errores de ortografía y sin un contacto perdido en un bolsillo de chaqueta."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Tarjeta de visita inteligente con vCard QR frente a tarjeta de visita de papel tradicional",
+      "headers": [
+        "Métrica de networking",
+        "Tarjeta de visita inteligente con vCard QR",
+        "Tarjeta de visita de papel tradicional"
+      ],
+      "rows": [
+        [
+          "Velocidad de guardado del contacto",
+          "1 toque (menos de 3 segundos directamente en la agenda del teléfono)",
+          "Escritura manual (1 - 3 minutos, a menudo se omite)"
+        ],
+        [
+          "Tasa de retención del contacto",
+          "Almacenamiento permanente en la agenda de la nube",
+          "El 88 % se tira en 7 días"
+        ],
+        [
+          "Riqueza de datos",
+          "Perfil completo: 3 teléfonos, correos, dirección de oficina, web",
+          "Limitado por la superficie física de 3,5\" x 2\""
+        ],
+        [
+          "Residuos ambientales",
+          "Cero residuos (tarjetas híbridas duraderas y reutilizables)",
+          "Miles de tarjetas de papel desechadas por profesional al año"
+        ],
+        [
+          "Interacción con un toque",
+          "Llamada, correo y navegación directa al mapa",
+          "Texto pasivo que requiere transcripción manual"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Rellena los campos de contacto profesional estructurados",
+        "description": "Introduce tu nombre, cargo, empresa, móvil, correo de trabajo y web."
+      },
+      {
+        "number": 2,
+        "title": "Aplica tu marca visual e inserta foto o logotipo",
+        "description": "Da estilo al patrón de puntos a tu marca y coloca tu foto o logotipo en el centro con corrección de errores de nivel H."
+      },
+      {
+        "number": 3,
+        "title": "Exporta SVG vectorial para imprimir tarjetas de visita",
+        "description": "Lleva el SVG vectorial a la imprenta, o un PNG de alta resolución para la firma del correo o un fondo de pantalla de bloqueo."
+      }
+    ],
+    "features": [
+      {
+        "title": "Integración nativa universal con iOS y Android",
+        "description": "Diseñado según vCard 3.0, así que se guarda sin problemas en Contactos de Apple, Contactos de Google y Outlook."
+      },
+      {
+        "title": "Guardado en la agenda del teléfono con un toque",
+        "description": "Tu teléfono, correo, web y dirección se guardan con un solo toque: la otra persona no escribe nada."
+      },
+      {
+        "title": "Escaneo 100 % sin conexión y privacidad completa",
+        "description": "Los datos de contacto viven dentro del código de barras. Ningún servidor de terceros los almacena ni los recoge."
+      },
+      {
+        "title": "SVG vectorial de alta precisión para cartulina premium",
+        "description": "Salida vectorial nítida para estampado en lámina, barniz UV, gofrado o una tarjeta de metal o madera grabada con láser."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Especificaciones de tamaño y materiales de códigos QR vCard",
+      "description": "Como las cargas vCard contienen entre 150 y 350 caracteres de texto estructurado, mantén las referencias de tamaño recomendadas.",
+      "headers": [
+        "Soporte / medio de la tarjeta",
+        "Tamaño mínimo recomendado",
+        "Nivel de corrección de errores",
+        "Acabado óptimo"
+      ],
+      "rows": [
+        [
+          "Tarjetas de visita de papel estándar (3,5\" x 2\")",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "Nivel Q (25 %) o nivel H (30 %)",
+          "Cartulina mate de gramaje alto (más de 350 g/m²)"
+        ],
+        [
+          "Tarjetas híbridas inteligentes NFC de metal o madera",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Nivel H (30 %)",
+          "Aluminio anodizado mate grabado con láser"
+        ],
+        [
+          "Acreditaciones de ferias y credenciales de congreso",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "Nivel M (15 %) o nivel Q (25 %)",
+          "PVC sintético laminado / Tyvek"
+        ],
+        [
+          "Cabeceras de currículum y portadas de portafolio",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Nivel Q (25 %)",
+          "Papel liso sin estucar blanco brillante"
+        ],
+        [
+          "Fondo de pantalla de bloqueo del smartphone",
+          "250 x 250 px en pantalla digital",
+          "Nivel H (30 %)",
+          "Pantalla OLED digital de alto contraste"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Ejecutivos corporativos y líderes de ventas",
+        "description": "Un código en el reverso de una tarjeta de lujo convierte un apretón de manos en un contacto guardado."
+      },
+      {
+        "title": "Ferias comerciales, exposiciones y congresos del sector",
+        "description": "En una acreditación o en la credencial del stand, tus datos llegan al teléfono de un prospecto en unos dos segundos."
+      },
+      {
+        "title": "Candidatos a empleo: currículums y cartas de presentación del portafolio",
+        "description": "Un código en la cabecera del currículum permite a un reclutador guardar tus datos sin volver a escribirlos."
+      },
+      {
+        "title": "Agentes inmobiliarios y corredores hipotecarios",
+        "description": "Un código en un folleto de jornada de puertas abiertas convierte la reserva de una visita en un solo toque."
+      },
+      {
+        "title": "Pies de correo corporativo y firmas digitales",
+        "description": "Un código en la plantilla de correo permite a quien lee desde el escritorio escanearlo desde la pantalla."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Errores comunes en el diseño de códigos QR vCard y cómo evitarlos",
+      "points": [
+        "Un perfil demasiado cargado. Veinte campos hacen que la matriz sea demasiado densa para escanear. Quédate con lo esencial.",
+        "Imprimir demasiado pequeño. Una matriz de vCard de versión 6-10 se emborrona por debajo de 25 mm con una cámara económica. Dale espacio.",
+        "Soporte brillante. Una tarjeta de alto brillo refleja las luces de la sala en la lente. Mate, seda o tacto suave.",
+        "Colores invertidos. Blanco sobre una tarjeta oscura falla en algunos escáneres antiguos. Oscuro sobre claro sigue siendo el estándar.",
+        "Sin código de país. Si omites el +34 o el +1, un contacto internacional no puede marcar la tarjeta guardada."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Qué es un código QR vCard y cómo funciona?",
+        "a": "Es un código de barras 2D que contiene tus datos de contacto —nombre, teléfono, correo, empresa, cargo, web— en formato vCard 3.0. Al escanearlo, el teléfono ofrece guardar el contacto directamente en la agenda."
+      },
+      {
+        "q": "¿Necesitan los códigos QR vCard conexión a internet para escanearse?",
+        "a": "Funcionan completamente sin conexión. Cada campo vive en el código de barras como texto vCard 3.0, así que el teléfono lee y guarda el contacto sin datos ni WiFi."
+      },
+      {
+        "q": "¿Puedo incluir mi foto en un código QR vCard estático?",
+        "a": "Codificar la imagen en bruto hace que la carga sea tan grande que ya no se puede escanear. Lo habitual es superponer tu foto o logotipo en el centro del código y poner en el campo URL de la vCard la dirección donde está alojada la foto completa."
+      },
+      {
+        "q": "¿Son compatibles los códigos QR vCard con iPhone y Android?",
+        "a": "vCard 3.0 es el estándar universal de contactos, nativo de Contactos de Apple, Contactos de Google, Outlook y Contactos de Samsung."
+      },
+      {
+        "q": "¿Caducan los códigos QR vCard estáticos o cobran cuotas mensuales?",
+        "a": "No. Los datos de contacto están en el código y siguen siendo válidos para siempre, sin cuota recurrente ni límite de escaneos."
+      },
+      {
+        "q": "¿Qué tamaño mínimo puedo imprimir para un código QR vCard en una tarjeta de visita?",
+        "a": "Apunta a 28 mm x 28 mm (1,1\" x 1,1\") o más, para que la matriz más densa se mantenga nítida para la lente de un teléfono."
+      },
+      {
+        "q": "¿Debo dar formato a los números de teléfono con código de país?",
+        "a": "Siempre: usa E.164 (+14155552671) para que un contacto internacional pueda llamarte sin tener que adivinar el prefijo."
+      },
+      {
+        "q": "¿Qué formato de archivo debo enviar a la imprenta de tarjetas de visita?",
+        "a": "El SVG vectorial o el EPS. El vectorial mantiene su precisión en cualquier prensa offset o digital."
+      }
+    ],
+    "bestPractices": "Limita la tarjeta a los campos esenciales, escribe los números de teléfono en formato internacional (+34...), pide cartulina mate y escanea una prueba física antes de la tirada completa."
+  },
+  '/blog/qr-codes-for-real-estate': {
+    "sections": [
+      {
+        "title": "Atrae a los compradores potenciales directamente desde los carteles",
+        "paragraphs": [
+          "Colocar un código QR en los carteles de «Se vende» permite a quien pasa ver planos 3D, vídeos de recorrido y precios al instante desde el coche.",
+          "Capta consultas de compradores con alta intención 24/7 sin esperar a las jornadas de puertas abiertas."
+        ]
+      },
+      {
+        "title": "Mejores prácticas para campañas de códigos QR inmobiliarios",
+        "paragraphs": [
+          "Enlaza tu código QR directamente a una página de destino específica del inmueble, no a tu página de inicio general. Incluye la dirección completa, el precio de venta, el número de dormitorios y baños, los metros cuadrados y un vídeo de recorrido insertado. Los códigos QR dinámicos te permiten actualizar la URL de destino si cambia el precio del anuncio o si la propiedad se vende y quieres redirigir a un anuncio similar sin reimprimir los carteles.",
+          "Para la máxima fiabilidad de escaneo al aire libre, imprime los códigos QR con un tamaño mínimo de 7 cm × 7 cm (unas 2,75 pulgadas) en señalética resistente a la intemperie. Usa negro sobre blanco o verde oscuro sobre blanco de alto contraste para que se vean con sol directo. Añadir un logotipo de marca y un lema breve como «Escanea para el tour virtual» aumenta mucho la tasa de escaneo del tráfico que pasa en coche. Registra las analíticas de escaneo para saber qué barrios y tipos de anuncio generan más interés de compra."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "La guía completa del agente inmobiliario para la generación de contactos con códigos QR y marketing",
+      "paragraphs": [
+        "El marketing inmobiliario se basa en la ubicación y en lo visual, y los compradores esperan ahora los detalles bajo demanda mientras están delante de una casa. La vieja caja de folletos del cartel se queda sin hojas, se moja y no te dice nada sobre quién se interesó.",
+        "Un código QR de propiedad resuelve las tres cosas. Convierte un cartel, una señal de jornada de puertas abiertas, un escaparate o una postal en un portal de 24/7: un escaneo abre un recorrido 3D de Matterport, una galería de fotos en HD, un plano, valoraciones de colegios y una llamada o un mensaje directo al agente.",
+        "Añade seguimiento UTM y un flujo de captación de contactos, y los agentes más destacados obtienen contactos locales de alta intención en el momento exacto en que el interés está en su punto más alto: desde la acera, a cualquier hora."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Cartel de código QR inmobiliario frente a caja tradicional de folletos de papel",
+      "headers": [
+        "Capacidad de marketing",
+        "Cartel inmobiliario con código QR",
+        "Caja tradicional de folletos de papel"
+      ],
+      "rows": [
+        [
+          "Disponibilidad de captación de contactos",
+          "24/7/365 (nunca se queda sin existencias)",
+          "Las cajas de folletos vacías pierden más del 60 % de los contactos potenciales"
+        ],
+        [
+          "Riqueza multimedia",
+          "Recorridos virtuales 3D, vídeos de recorrido, más de 50 fotos HD",
+          "Limitado a 1-2 fotos impresas en blanco y negro"
+        ],
+        [
+          "Resistencia a la intemperie",
+          "Vinilo / aluminio resistente al agua (a prueba de lluvia, nieve y sol)",
+          "Los folletos de papel se empapan, se arrugan o se los lleva el viento"
+        ],
+        [
+          "Atribución de contactos y analíticas",
+          "Registra el volumen exacto de escaneos, la hora del día y el tipo de dispositivo",
+          "Ninguna visibilidad sobre cuántos folletos se han cogido"
+        ],
+        [
+          "Contacto instantáneo con el agente",
+          "Llamada, SMS o mensaje de WhatsApp con un toque",
+          "El comprador tiene que escribir el teléfono del agente a mano"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Crea una página de destino de una sola propiedad o un enlace de recorrido 3D",
+        "description": "Copia la URL directa de la ficha del anuncio, del recorrido de Matterport o del vídeo de recorrido."
+      },
+      {
+        "number": 2,
+        "title": "Genera un código QR inmobiliario de alto contraste con logotipo",
+        "description": "Pega la URL de la propiedad, aplica los colores de tu agencia, coloca tu logotipo en el centro y exporta SVG vectorial."
+      },
+      {
+        "number": 3,
+        "title": "Imprime en carteles resistentes de plástico ondulado o aluminio",
+        "description": "Monta un rótulo complementario de al menos 150 mm x 150 mm con un texto como «Escanea para el tour virtual 3D y el precio»."
+      }
+    ],
+    "features": [
+      {
+        "title": "Entrega de información de la propiedad 24/7 bajo demanda",
+        "description": "Un comprador que pasa en coche obtiene el precio, las fotos interiores y el plano a cualquier hora."
+      },
+      {
+        "title": "Integración directa con recorridos 3D y vídeos de recorrido",
+        "description": "Lleva al comprador dentro de la casa a través de Matterport, Zillow 3D Home o un tour de YouTube."
+      },
+      {
+        "title": "Conexión instantánea con el agente con un toque",
+        "description": "Un comprador en la acera puede llamar, escribir o enviar un WhatsApp al agente del anuncio en el momento."
+      },
+      {
+        "title": "Códigos de barras estáticos permanentes sin caducidad",
+        "description": "Un código estático de propiedad que sigue activo indefinidamente, sin cuota mensual ni límite de escaneos."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Especificaciones de tamaño y colocación de impresión inmobiliaria",
+      "description": "Asegúrate de que los posibles compradores puedan escanear tus códigos de propiedad sin esfuerzo desde el coche o la acera.",
+      "headers": [
+        "Ubicación de la señalética",
+        "Distancia de escaneo prevista",
+        "Tamaño mínimo de impresión",
+        "Soporte recomendado"
+      ],
+      "rows": [
+        [
+          "Rótulo complementario bajo el cartel (colgado debajo)",
+          "1,5 m - 3,0 m (5 ft - 10 ft)",
+          "150 mm x 150 mm (6\" x 6\")",
+          "Plástico ondulado reflectante / aluminio"
+        ],
+        [
+          "Señales direccionales de jornada de puertas abiertas",
+          "1,0 m - 2,5 m (3 ft - 8 ft)",
+          "120 mm x 120 mm (4,8\" x 4,8\")",
+          "Cartel de estaca de plástico ondulado de gramaje alto"
+        ],
+        [
+          "Folletos y dípticos de propiedades en venta",
+          "20 cm - 35 cm (8\" - 14\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Cartulina mate de gramaje alto (más de 100 lb)"
+        ],
+        [
+          "Escaparates de la oficina inmobiliaria",
+          "50 cm - 150 cm (20\" - 60\")",
+          "100 mm x 100 mm (4,0\" x 4,0\")",
+          "Pegatina de escaparate de vinilo mate resistente a la intemperie"
+        ],
+        [
+          "Postales de correo directo de «Recién en venta»",
+          "20 cm - 35 cm (8\" - 14\")",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "Papel de postal mate estucado"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Rótulos complementarios de cartel para recorridos virtuales 3D",
+        "description": "Un rótulo debajo del cartel de venta permite al comprador que pasa ver el interior desde el teléfono."
+      },
+      {
+        "title": "Señales direccionales de jornada de puertas abiertas",
+        "description": "Un código de ubicación en una señal de esquina lleva al comprador directamente al acceso de la jornada de puertas abiertas."
+      },
+      {
+        "title": "Postales de correo directo «Recién en venta» y «Vendido»",
+        "description": "Un código en la postal del barrio enlaza con el vídeo de recorrido y con una calculadora del valor de la vivienda."
+      },
+      {
+        "title": "Escaparates en las oficinas de la agencia",
+        "description": "Un código en el escaparate convierte el tráfico peatonal en una búsqueda de propiedades 24/7."
+      },
+      {
+        "title": "Tarjetas de visita del agente con contactos vCard",
+        "description": "Un código vCard en la tarjeta del agente guarda sus datos con un solo toque."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Errores comunes en el marketing inmobiliario con códigos QR",
+      "points": [
+        "Demasiado pequeño para quien pasa en coche. Un código de 50 mm no se puede leer desde un coche a 3 metros. Usa al menos 150 mm x 150 mm en un cartel.",
+        "Un enlace torpe al MLS. Una página de MLS de escritorio lenta y con letra diminuta frustra a un escáner móvil. Enlaza una página rápida de una sola propiedad.",
+        "Sin llamada a la acción. Un código sin texto consigue pocos escaneos. Acompáñalo con «Escanea para ver precio, fotos y tour 3D».",
+        "Reflejos del sol. Un barniz brillante en el cartel refleja con el sol fuerte. Usa vinilo exterior mate o plástico ondulado.",
+        "Un muro de inicio de sesión agresivo. Obligar a registrarse al instante provoca un 70 % de rebote. Muestra primero las fotos clave y pide el consentimiento después."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Cómo usan los agentes inmobiliarios los códigos QR para generar contactos?",
+        "a": "Colocan códigos en carteles, folletos de puertas abiertas y postales que enlazan con una web de una sola propiedad, un tour 3D o una consulta por mensaje instantáneo, captando al comprador en el momento de máximo interés."
+      },
+      {
+        "q": "¿Cuál es el tamaño recomendado para un código QR en un cartel inmobiliario?",
+        "a": "Un rótulo que se lea desde el camino de entrada o la acera (de 1,5 a 3 metros) debe medir al menos 150 mm x 150 mm (6\" x 6\") con alto contraste."
+      },
+      {
+        "q": "¿Puedo enlazar un código QR directamente a un tour virtual 3D de Matterport?",
+        "a": "Copia el enlace público de compartir de Matterport, pégalo en el generador de URL y descarga el SVG o el PNG listo para imprimir."
+      },
+      {
+        "q": "¿Caducan los códigos QR inmobiliarios cuando se vende la propiedad?",
+        "a": "Un código estático sigue siendo válido. Cuando la propiedad se vende, redirige su URL de destino a una página de «Vendido» o a tus anuncios activos: el código impreso sigue funcionando."
+      },
+      {
+        "q": "¿Qué llamada a la acción debo imprimir junto al código QR de la propiedad?",
+        "a": "Funcionan frases como «Escanea para ver precio y tour virtual 3D», «Escanea para ver fotos interiores al instante» o «Escanea para enviar un mensaje al agente»."
+      },
+      {
+        "q": "¿Puedo añadir el logotipo de mi agencia inmobiliaria al código QR?",
+        "a": "Sí: el logotipo de tu agencia o de tu equipo cabe bien en el centro, porque el nivel H puede perder hasta un tercio del código y aun así escanearse."
+      },
+      {
+        "q": "¿Cuál es el mejor material para carteles inmobiliarios de exterior con código QR?",
+        "a": "Plástico ondulado resistente al agua (Coroplast) o panel compuesto de aluminio con un barniz UV mate: duradero y sin reflejos."
+      },
+      {
+        "q": "¿Son gratuitos los códigos QR inmobiliarios en QR Generator Online?",
+        "a": "Las exportaciones SVG y PNG son gratuitas, con escaneos ilimitados y sin cuota recurrente."
+      }
+    ],
+    "bestPractices": "Imprime los códigos de los carteles a 150 mm x 150 mm o más, en material mate resistente a la intemperie, añade una llamada a la acción con valor y asegúrate de que la página de destino cargue rápido en el móvil."
+  },
+  '/blog/wifi-qr-codes-for-hospitality': {
+    "sections": [
+      {
+        "title": "Conectividad inalámbrica sin fricciones para los huéspedes",
+        "paragraphs": [
+          "Los huéspedes de hoteles y Airbnb suelen tener problemas para escribir contraseñas WiFi complejas en sus teléfonos y portátiles.",
+          "Una tarjeta enmarcada y personalizada con código QR WiFi en la mesita de noche o en el mostrador de la cafetería permite a los huéspedes escanear y conectarse al instante."
+        ]
+      },
+      {
+        "title": "Cómo desplegar códigos QR WiFi en hoteles y alquileres vacacionales",
+        "paragraphs": [
+          "Genera un código QR WiFi distinto para cada zona de red —WiFi de las habitaciones, WiFi del vestíbulo y WiFi de la zona de piscina— e imprímelos en tarjetas con marca individual. En los hoteles, plastifica la tarjeta con el código QR y colócala en el escritorio de la habitación y en el espejo del baño, donde los huéspedes buscan de forma natural las instrucciones de conexión. Incluye el nombre de la red (SSID) y una nota que confirme si la contraseña ya va incluida, para que los huéspedes sepan con seguridad qué hará el escaneo.",
+          "En el caso de los anfitriones de Airbnb, incrustar un código QR WiFi en un libro de bienvenida personalizado, junto con las normas de la casa y recomendaciones de la zona, mejora mucho la satisfacción con el check-in. Las cafeterías y los espacios de coworking se benefician sobre todo de displays de mesa de gran formato con códigos enmarcados a la altura de los ojos. Cambia la contraseña WiFi cada mes por seguridad y simplemente genera un código QR nuevo: no hace falta reimprimir si usas pizarras de menú digitales o inserciones de tarjeta reemplazables."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "La guía completa de códigos QR WiFi para hoteles, cafeterías y alquileres vacacionales",
+      "paragraphs": [
+        "En hostelería, el WiFi ya no es un extra: es la comodidad que mueve las valoraciones de satisfacción y las reseñas en línea. Los estudios lo sitúan por encima del 85 %: ese es el porcentaje de huéspedes de hoteles y cafeterías que consideran fundamental un WiFi rápido y sin fricciones para su estancia. Sin embargo, lo que se interpone suele ser una contraseña mal escrita y una llamada a recepción.",
+        "Un código WiFi de hostelería lleva el acceso en el formato estándar `WIFI:` (`WIFI:T:WPA;S:Hotel_Guest;P:SecretPass;H:false;;`). El huésped apunta la cámara, pulsa «Unirse a la red» y está conectado en menos de dos segundos: sin contraseña en pantalla y sin escribir.",
+        "Esta guía acompaña a hoteles, resorts, cafeterías y anfitriones de Airbnb en el despliegue de códigos WiFi con marca en habitaciones, mesas y zonas de check-in para reducir las incidencias de soporte, mantener la red segura y mejorar la experiencia del huésped."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Acceso WiFi con código QR frente a tarjetas manuscritas de contraseña en hostelería",
+      "headers": [
+        "Factor operativo",
+        "Código QR WiFi de hostelería",
+        "Tarjeta manual de contraseña / pizarra"
+      ],
+      "rows": [
+        [
+          "Tiempo de conexión del huésped",
+          "1 - 2 segundos (un escaneo y un toque con la cámara)",
+          "45 - 90 segundos (escribir más de 16 caracteres complejos)"
+        ],
+        [
+          "Incidencias de soporte en recepción",
+          "Reduce las consultas relacionadas con el WiFi en más de un 80 %",
+          "Gran volumen de llamadas de huéspedes pidiendo ayuda con la contraseña"
+        ],
+        [
+          "Tasa de errores al escribir",
+          "0 % (transmisión exacta byte a byte)",
+          "Del 30 % al 50 % con contraseñas complejas con símbolos"
+        ],
+        [
+          "Seguridad de la contraseña",
+          "Evita que los huéspedes vean las claves en texto plano",
+          "Expone las contraseñas en pizarras y carteles públicos"
+        ],
+        [
+          "Impacto en las reseñas de huéspedes",
+          "Eleva la satisfacción y las valoraciones del check-in",
+          "La frustración con la conexión provoca reseñas negativas"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Aísla una red de huéspedes dedicada en tu router",
+        "description": "Ejecuta el WiFi de huéspedes en una VLAN aislada con aislamiento de clientes activado, para que los huéspedes nunca puedan llegar a tus sistemas internos."
+      },
+      {
+        "number": 2,
+        "title": "Genera un código QR WiFi con marca y corrección de errores de nivel H",
+        "description": "Introduce el SSID y la contraseña de huéspedes, aplica tu imagen de marca y coloca un icono WiFi o tu logotipo en el centro."
+      },
+      {
+        "number": 3,
+        "title": "Imprime en displays de mesa de acrílico premium o tarjetas de madera para la mesita",
+        "description": "Muestra el código a la altura de los ojos: el escritorio de un hotel, la mesita de noche, el mostrador de una cafetería o la carpeta de bienvenida de un alquiler."
+      }
+    ],
+    "features": [
+      {
+        "title": "Conectividad instantánea y sin fricciones para el huésped",
+        "description": "Un escaneo de cámara con un toque acaba con la frustración de la contraseña y con las llamadas a recepción."
+      },
+      {
+        "title": "Compatible con WPA3, WPA2, WEP y redes ocultas",
+        "description": "Funciona igual con un router empresarial en malla que con una instalación de alquiler boutique."
+      },
+      {
+        "title": "Cero almacenamiento en servidor y privacidad completa",
+        "description": "Las credenciales de la red se quedan en tu navegador. No se almacena nada en el exterior."
+      },
+      {
+        "title": "SVG vectorial de alta precisión para señalética premium",
+        "description": "Vector nítido para grabado láser en madera o una placa de latón, o para un soporte de acrílico de gama alta."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Guía de tamaños y sustratos de displays de códigos QR WiFi para hostelería",
+      "description": "Coloca tus códigos WiFi allí donde los huéspedes que llegan buscan de forma natural las instrucciones de conexión.",
+      "headers": [
+        "Entorno de hostelería",
+        "Distancia de escaneo",
+        "Tamaño de impresión recomendado",
+        "Material recomendado"
+      ],
+      "rows": [
+        [
+          "Mesitas y escritorios de habitación de hotel",
+          "25 cm - 40 cm (10\" - 16\")",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "Tarjeta mate enmarcada / soporte de acrílico"
+        ],
+        [
+          "Displays de mesa y posavasos de cafetería",
+          "20 cm - 30 cm (8\" - 12\")",
+          "40 mm x 40 mm (1,6\" x 1,6\")",
+          "Madera grabada con láser / tarjeta laminada"
+        ],
+        [
+          "Carpetas de bienvenida y imanes de nevera de Airbnb",
+          "20 cm - 35 cm (8\" - 14\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Tarjeta mate de gramaje alto / lámina magnética"
+        ],
+        [
+          "Mostradores de check-in y recepción de hoteles",
+          "40 cm - 80 cm (16\" - 32\")",
+          "75 mm x 75 mm (3,0\" x 3,0\")",
+          "Display de tarjeta de soporte para mostrador"
+        ],
+        [
+          "Pancartas de centros de congresos y salones de eventos",
+          "1,0 m - 2,0 m (3 ft - 6,5 ft)",
+          "150 mm x 150 mm (6,0\" x 6,0\")",
+          "Pancarta de tela no reflectante"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Hoteles, hostales boutique y resorts",
+        "description": "Una tarjeta enmarcada en el escritorio o en el espejo conecta al huésped en cuanto entra."
+      },
+      {
+        "title": "Airbnb, VRBO y alquileres vacacionales",
+        "description": "Un código en el libro de bienvenida o en un imán de nevera acaba con la pregunta «¿cuál es la contraseña del WiFi?» durante el check-in."
+      },
+      {
+        "title": "Cafeterías, cafés y espacios de coworking",
+        "description": "Un código en un display de mesa reduce las interrupciones al personal y hace que los clientes se queden más tiempo."
+      },
+      {
+        "title": "Recintos de eventos, congresos y banquetes",
+        "description": "Cientos de personas se conectan a la vez al hacer check-in, lo que alivia la saturación de datos móviles en el salón."
+      },
+      {
+        "title": "Salas VIP de aeropuertos y zonas de espera ejecutivas",
+        "description": "Los viajeros de negocios se conectan a un WiFi de huéspedes seguro y de alta velocidad sin tener que preguntar."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Cómo evitar los fallos habituales de los códigos QR WiFi en hostelería",
+      "points": [
+        "Diferencia de mayúsculas. Los nombres de red distinguen mayúsculas y minúsculas: «HotelGuest» y «hotelguest» son distintos. Escríbelo exactamente igual.",
+        "Tipo de seguridad incorrecto. Si eliges WEP para un router WPA2, el handshake falla. Elige WPA/WPA2/WPA3.",
+        "Un portal cautivo. Si tu red tiene una página de condiciones, el código conecta la radio y después aparece la página de bienvenida del navegador. Es normal.",
+        "Falta la marca de red oculta. Un SSID oculto necesita activado el interruptor de red oculta, o los dispositivos no se conectarán.",
+        "Un display manchado. Los derrames y el laminado rayado ocultan los patrones de localización. Usa acrílico resistente o madera grabada con láser."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "¿Cómo conecta un código QR WiFi a los huéspedes sin que escriban la contraseña?",
+        "a": "Codifica los parámetros estándar WIFI:. La cámara del teléfono lee el SSID y la contraseña de la imagen y arranca la conexión inalámbrica por sí sola."
+      },
+      {
+        "q": "¿Es seguro mostrar un código QR WiFi en las habitaciones de un hotel o en una cafetería?",
+        "a": "Lo es, siempre que el código sea de una red de huéspedes dedicada y con aislamiento de clientes activado, lo que mantiene a los huéspedes fuera de tus sistemas de administración internos."
+      },
+      {
+        "q": "¿Funciona un código QR WiFi tanto en iPhone como en Android?",
+        "a": "Los iPhone con iOS 11+ y los teléfonos Android con Android 10+ reconocen el formato WIFI: desde la cámara y ofrecen unirse con un toque."
+      },
+      {
+        "q": "¿Qué pasa si cambio en el futuro la contraseña WiFi de huéspedes?",
+        "a": "El código antiguo deja de funcionar, porque la contraseña concreta está fijada en los módulos. Cambiarla implica imprimir un código nuevo."
+      },
+      {
+        "q": "¿Puedo añadir el logotipo de nuestro hotel o cafetería al código QR WiFi?",
+        "a": "Sí. Con la corrección de nivel H, un logotipo del local o un icono WiFi en el centro no resta fiabilidad en absoluto."
+      },
+      {
+        "q": "¿Cuál es el mejor material para los displays WiFi de la mesita de noche de un hotel?",
+        "a": "Acrílico mate, un bloque de madera grabado con láser o una tarjeta enmarcada con cristal no reflectante: resulta elegante a la vista y sin reflejos para escanear."
+      },
+      {
+        "q": "¿Caducan los códigos QR WiFi o cobran cuotas mensuales?",
+        "a": "No. Un código WiFi estático dura indefinidamente. Cualquier número de huéspedes puede escanearlo, y nunca se factura nada."
+      },
+      {
+        "q": "¿Se almacena mi contraseña WiFi en servidores externos durante la generación?",
+        "a": "Se queda en local. Tu navegador genera el código, así que las credenciales nunca se suben, se registran ni se comparten."
+      }
+    ],
+    "bestPractices": "Aísla el WiFi de huéspedes en su propia VLAN, muestra el código a la altura de los ojos en un soporte mate no reflectante y añade una frase breve como «Escanea para conectarte al WiFi de huéspedes»."
+  },
+  '/bulk-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Producción masiva de códigos QR para negocios y marketing",
+        "paragraphs": [
+          "Sube un CSV o pega una lista con una URL por línea. El generador crea cada código directamente en tu navegador. Nada de lo que pegues se sube a ningún sitio.",
+          "Guárdalos uno a uno o descarga todo el lote en un único ZIP. Es la forma rápida de etiquetar una tirada de producto, acreditar un evento o preparar un envío postal."
+        ]
+      }
+    ]
+  },
+  '/qr-code-scanner': {
+    "sections": [
+      {
+        "title": "Escanea y decodifica códigos QR al instante",
+        "paragraphs": [
+          "Apunta la cámara de tu teléfono o de tu portátil a un código para leerlo en directo. ¿No tienes la cámara a mano? Arrastra una captura de pantalla o una foto y también se decodifica.",
+          "Todo se ejecuta en el navegador de tu propio equipo. La imagen de la cámara y las imágenes que subes se quedan allí."
+        ]
+      }
+    ]
+  },
+  '/social-media-qr-code': {
+    "sections": [
+      {
+        "title": "Un solo panel para todos tus códigos QR de redes sociales",
+        "paragraphs": [
+          "Pon todos tus nombres de usuario y enlaces de perfil en un solo formulario. Recibirás un código distinto para cada uno, con el color de la plataforma a la que apunta.",
+          "Cada uno se descarga por separado como PNG o SVG. Úsalos en una tarjeta de visita, en un dossier de prensa o en la campaña que estés llevando a cabo."
+        ]
+      }
+    ]
+  },
+  '/blog/how-to-scan-qr-code': {
+    "sections": [
+      {
+        "title": "El escáner integrado en tu cámara",
+        "paragraphs": [
+          "Desde iOS 11 y Android 9, la cámara normal lee los códigos QR por sí sola, sin instalar ninguna aplicación. Apúntala al código, mantenla quieta un segundo y aparecerá un banner con el enlace. Tócalo y ya estás allí.",
+          "Si no aparece nada, normalmente es que el código se ve demasiado pequeño en el encuadre. Acércate hasta que ocupe alrededor de un tercio de la pantalla. En algunos teléfonos Samsung también tienes que activar el escaneo de QR dentro de los ajustes de la cámara."
+        ]
+      },
+      {
+        "title": "Cuando el código está en tu propia pantalla",
+        "paragraphs": [
+          "Una cámara no puede apuntarse a sí misma, así que un código que alguien te ha enviado por mensaje necesita otro método. En un iPhone, haz una captura de pantalla, abre la imagen en Fotos y pulsa el botón de Texto en vivo para extraer el enlace. En Android, guarda la imagen y ábrela en Google Fotos, y luego pulsa Lens.",
+          "Google Lens también es la alternativa fiable cuando una cámara Android se niega a leer un código en el mundo real: ábrelo, apunta y decodificará el código junto con cualquier texto que lo rodee."
+        ]
+      }
+    ]
+  },
+  '/blog/do-qr-codes-expire': {
+    "sections": [
+      {
+        "title": "Los códigos estáticos guardan los datos por sí mismos",
+        "paragraphs": [
+          "Un código QR estático almacena su información en el propio patrón: un enlace, un número de teléfono, una contraseña WiFi. Ese patrón no se deteriora. Impreso sobre un soporte limpio y protegido, se escaneará dentro de años exactamente igual que hoy.",
+          "Cuando un código estático parece «caducado», casi nunca es culpa del patrón. La página a la que apunta se eliminó, el enlace cambió o se restableció una contraseña. El código sigue decodificando la misma dirección; simplemente esa dirección ya no lleva a ninguna parte."
+        ]
+      },
+      {
+        "title": "Los códigos dinámicos dependen de un servicio",
+        "paragraphs": [
+          "Un código dinámico apunta a una redirección corta que es propiedad de un proveedor, y que reenvía cada escaneo a tu destino real. Eso te permite cambiar el destino sin reimprimir, pero el código ahora vive y muere con esa cuenta y con esa empresa.",
+          "Cuidado con la trampa de la prueba gratuita: algunos generadores dinámicos «gratuitos» desactivan la redirección al cabo de un par de semanas si no pagas, lo que puede inutilizar mil folletos impresos en la misma tarde. Los códigos que se generan aquí son estáticos, así que no hay nada que caduque ni una suscripción que mantener activa."
+        ]
+      }
+    ]
+  },
+  '/blog/share-wifi-password-qr-code': {
+    "sections": [
+      {
+        "title": "Un solo código, cualquier teléfono",
+        "paragraphs": [
+          "Un código QR WiFi lleva tres cosas: el nombre de la red, la contraseña y el tipo de seguridad. Así, un solo escaneo ofrece unirse sin escribir nada. En un iPhone la contraseña ni siquiera aparece en pantalla, lo cual es una ventaja discreta en una cafetería llena.",
+          "Generarlo lleva menos de un minuto: introduce el nombre de la red y la contraseña, elige WPA2 o WPA3 y descarga la imagen. Colócalo en una red de invitados y no en la que usa tu portátil de trabajo, porque cualquiera que vea el código puede unirse."
+        ]
+      },
+      {
+        "title": "El caso de iPhone a Mac",
+        "paragraphs": [
+          "Android tiene un atajo que conviene conocer: en los ajustes de WiFi puedes pulsar Compartir y el teléfono muestra un QR de la red a la que ya estás conectado, sin necesidad de generador. Los iPhone escanean un código de la misma forma, pero no generan uno integrado.",
+          "Para pasar de iPhone a Mac, escanear es incómodo, porque un Mac no lee un código de pared como lo hace un teléfono. El camino fluido se salta el QR: acerca un iPhone desbloqueado al Mac mientras intenta conectarse, y aparecerá un aviso para enviarle la contraseña. Conserva el código QR como alternativa universal para huéspedes con Android y Windows."
+        ]
+      }
+    ]
+  },
+  '/pdf-qr-code-generator': {
+    "sections": [
+      {
+        "title": "La revolución moderna del QR a PDF para menús y folletos",
+        "paragraphs": [
+          "Un catálogo impreso o una carta plastificada cuestan dinero y quedan congelados en el momento en que salen de la imprenta. Cambiar un precio o una oferta de temporada, a la manera tradicional, significa reimprimir toda la tirada. Esa factura recae en restaurantes, equipos de ferias comerciales, oficinas inmobiliarias y departamentos de formación por igual.",
+          "Un código QR a PDF rompe la atadura entre la impresión y el archivo que hay detrás. Colócalo en un display de mesa, en una caja, en un stand o en un escaparate. El cliente apunta la cámara y tu folleto, carta o manual completo se abre en segundos."
+        ]
+      },
+      {
+        "title": "Códigos QR a PDF estáticos y dinámicos: actualizar la carta sin reimprimir",
+        "paragraphs": [
+          "Un código QR a PDF estático incorpora el enlace directamente en la matriz de píxeles. Si mueves el archivo de Google Drive, el código impreso deja de funcionar. Uno dinámico apunta a una redirección corta —algo como qr-generator.online/r/menu— y ese enlace corto nunca cambia.",
+          "Así que cuando cambian las ofertas semanales, sube un refresco medio euro o se publica una nueva edición del catálogo, basta con reapuntar la redirección en tu panel. Los displays que están sobre la mesa siguen funcionando. Nadie reimprime nada."
+        ]
+      },
+      {
+        "title": "Aplicaciones por sector para códigos QR de PDF",
+        "paragraphs": [
+          "Los restaurantes colocan en la mesa un código que abre la carta de comida y bebida, con las notas de alérgenos y las fotos de los platos incluidas. Los agentes inmobiliarios ponen uno en un cartel de la calle para que los compradores consulten en el acto los planos y la documentación de la comunidad de propietarios.",
+          "Los fabricantes prescinden del grueso manual de papel y ponen en la caja un código pequeño que lleva a la guía de usuario completa."
+        ]
+      }
+    ]
+  },
+  '/app-store-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Códigos QR inteligentes de la App Store y captación de apps móviles",
+        "paragraphs": [
+          "Imagina tu aplicación en un cartel del metro, en una caja de cereales, en un anuncio de televisión o en una pancarta de feria. Para instalarla, alguien tiene que desbloquear el teléfono, abrir la tienda correcta, escribir bien tu nombre y elegirte entre una lista de competidores. La mayoría abandona en algún punto de esa cadena: según las estimaciones habituales, unos dos de cada tres.",
+          "Un único código QR inteligente de la App Store elimina esos pasos. Al escanearlo, lee el dispositivo: un iPhone llega a la Apple App Store y un teléfono Android llega a Google Play. La persona nunca tiene que buscar nada."
+        ]
+      },
+      {
+        "title": "Por qué fallan los códigos QR dobles frente al QR inteligente unificado",
+        "paragraphs": [
+          "Si imprimes dos códigos juntos, uno para iOS y otro para Android, te expones a problemas. El diseño parece cargado, la gente duda sobre cuál es el suyo y, a menudo, las cámaras capturan el código equivocado cuando los dos están muy cerca.",
+          "Un único código inteligente evita todo eso. Cada teléfono obtiene un escaneo e instalación en un segundo, y quien escanee desde un ordenador llega a tu sitio promocional."
+        ]
+      },
+      {
+        "title": "Telemetría y atribución de instalaciones de la app en tiempo real",
+        "paragraphs": [
+          "Si usas tus códigos de la App Store como códigos dinámicos aquí, se abre todo el embudo. Puedes ver cómo se reparte realmente la proporción entre iOS y Android, qué regiones responden y a qué horas del día se concentran los escaneos."
+        ]
+      }
+    ]
   }
 };

@@ -12,6 +12,11 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Try to load from localStorage or detect from browser
   const [language, setLanguageState] = useState<SupportedLanguage>(() => {
+    // A /<locale>/ URL prefix wins on first render. Otherwise the stored
+    // preference paints the wrong language for one frame before LocaleUrlSync
+    // corrects it, which is visible as a flash on localized pages.
+    const prefix = window.location.pathname.match(/^\/(ar|hi|tr|es|vi)(\/|$)/);
+    if (prefix) return prefix[1] as SupportedLanguage;
     const saved = localStorage.getItem('app_lang');
     if (saved) return saved as SupportedLanguage;
     const browserLang = navigator.language.split('-')[0];

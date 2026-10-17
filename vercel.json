@@ -11,6 +11,506 @@
       ],
       "destination": "https://qr-generator.online/$1",
       "permanent": true
+    },
+    {
+      "source": "/ar/bulk-qr-code-generator",
+      "destination": "/bulk-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/ar/qr-code-scanner",
+      "destination": "/qr-code-scanner",
+      "permanent": true
+    },
+    {
+      "source": "/ar/social-media-qr-code",
+      "destination": "/social-media-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/ar/pricing",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/ar/faqs-qr-code-generator",
+      "destination": "/faqs-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/ar/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/ar/contact",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/ar/privacy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/ar/terms",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/ar/blog",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/ar/blog/qr-codes-for-restaurants",
+      "destination": "/blog/qr-codes-for-restaurants",
+      "permanent": true
+    },
+    {
+      "source": "/ar/blog/printing-qr-codes-guide",
+      "destination": "/blog/printing-qr-codes-guide",
+      "permanent": true
+    },
+    {
+      "source": "/ar/blog/vcard-qr-code-business-cards",
+      "destination": "/blog/vcard-qr-code-business-cards",
+      "permanent": true
+    },
+    {
+      "source": "/ar/blog/qr-codes-for-real-estate",
+      "destination": "/blog/qr-codes-for-real-estate",
+      "permanent": true
+    },
+    {
+      "source": "/ar/blog/wifi-qr-codes-for-hospitality",
+      "destination": "/blog/wifi-qr-codes-for-hospitality",
+      "permanent": true
+    },
+    {
+      "source": "/ar/blog/how-to-scan-qr-code",
+      "destination": "/blog/how-to-scan-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/ar/blog/do-qr-codes-expire",
+      "destination": "/blog/do-qr-codes-expire",
+      "permanent": true
+    },
+    {
+      "source": "/ar/blog/share-wifi-password-qr-code",
+      "destination": "/blog/share-wifi-password-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/ar/pdf-qr-code-generator",
+      "destination": "/pdf-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/ar/app-store-qr-code-generator",
+      "destination": "/app-store-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/hi/bulk-qr-code-generator",
+      "destination": "/bulk-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/hi/qr-code-scanner",
+      "destination": "/qr-code-scanner",
+      "permanent": true
+    },
+    {
+      "source": "/hi/social-media-qr-code",
+      "destination": "/social-media-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/hi/pricing",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/hi/faqs-qr-code-generator",
+      "destination": "/faqs-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/hi/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/hi/contact",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/hi/privacy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/hi/terms",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/hi/blog",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/hi/blog/qr-codes-for-restaurants",
+      "destination": "/blog/qr-codes-for-restaurants",
+      "permanent": true
+    },
+    {
+      "source": "/hi/blog/printing-qr-codes-guide",
+      "destination": "/blog/printing-qr-codes-guide",
+      "permanent": true
+    },
+    {
+      "source": "/hi/blog/vcard-qr-code-business-cards",
+      "destination": "/blog/vcard-qr-code-business-cards",
+      "permanent": true
+    },
+    {
+      "source": "/hi/blog/qr-codes-for-real-estate",
+      "destination": "/blog/qr-codes-for-real-estate",
+      "permanent": true
+    },
+    {
+      "source": "/hi/blog/wifi-qr-codes-for-hospitality",
+      "destination": "/blog/wifi-qr-codes-for-hospitality",
+      "permanent": true
+    },
+    {
+      "source": "/hi/blog/how-to-scan-qr-code",
+      "destination": "/blog/how-to-scan-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/hi/blog/do-qr-codes-expire",
+      "destination": "/blog/do-qr-codes-expire",
+      "permanent": true
+    },
+    {
+      "source": "/hi/blog/share-wifi-password-qr-code",
+      "destination": "/blog/share-wifi-password-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/hi/pdf-qr-code-generator",
+      "destination": "/pdf-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/hi/app-store-qr-code-generator",
+      "destination": "/app-store-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/tr/bulk-qr-code-generator",
+      "destination": "/bulk-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/tr/qr-code-scanner",
+      "destination": "/qr-code-scanner",
+      "permanent": true
+    },
+    {
+      "source": "/tr/social-media-qr-code",
+      "destination": "/social-media-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/tr/pricing",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/tr/faqs-qr-code-generator",
+      "destination": "/faqs-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/tr/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/tr/contact",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/tr/privacy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/tr/terms",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/tr/blog",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/tr/blog/qr-codes-for-restaurants",
+      "destination": "/blog/qr-codes-for-restaurants",
+      "permanent": true
+    },
+    {
+      "source": "/tr/blog/printing-qr-codes-guide",
+      "destination": "/blog/printing-qr-codes-guide",
+      "permanent": true
+    },
+    {
+      "source": "/tr/blog/vcard-qr-code-business-cards",
+      "destination": "/blog/vcard-qr-code-business-cards",
+      "permanent": true
+    },
+    {
+      "source": "/tr/blog/qr-codes-for-real-estate",
+      "destination": "/blog/qr-codes-for-real-estate",
+      "permanent": true
+    },
+    {
+      "source": "/tr/blog/wifi-qr-codes-for-hospitality",
+      "destination": "/blog/wifi-qr-codes-for-hospitality",
+      "permanent": true
+    },
+    {
+      "source": "/tr/blog/how-to-scan-qr-code",
+      "destination": "/blog/how-to-scan-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/tr/blog/do-qr-codes-expire",
+      "destination": "/blog/do-qr-codes-expire",
+      "permanent": true
+    },
+    {
+      "source": "/tr/blog/share-wifi-password-qr-code",
+      "destination": "/blog/share-wifi-password-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/tr/pdf-qr-code-generator",
+      "destination": "/pdf-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/tr/app-store-qr-code-generator",
+      "destination": "/app-store-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/es/bulk-qr-code-generator",
+      "destination": "/bulk-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/es/qr-code-scanner",
+      "destination": "/qr-code-scanner",
+      "permanent": true
+    },
+    {
+      "source": "/es/social-media-qr-code",
+      "destination": "/social-media-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/es/pricing",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/es/faqs-qr-code-generator",
+      "destination": "/faqs-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/es/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/es/contact",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/es/privacy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/es/terms",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/es/blog",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/es/blog/qr-codes-for-restaurants",
+      "destination": "/blog/qr-codes-for-restaurants",
+      "permanent": true
+    },
+    {
+      "source": "/es/blog/printing-qr-codes-guide",
+      "destination": "/blog/printing-qr-codes-guide",
+      "permanent": true
+    },
+    {
+      "source": "/es/blog/vcard-qr-code-business-cards",
+      "destination": "/blog/vcard-qr-code-business-cards",
+      "permanent": true
+    },
+    {
+      "source": "/es/blog/qr-codes-for-real-estate",
+      "destination": "/blog/qr-codes-for-real-estate",
+      "permanent": true
+    },
+    {
+      "source": "/es/blog/wifi-qr-codes-for-hospitality",
+      "destination": "/blog/wifi-qr-codes-for-hospitality",
+      "permanent": true
+    },
+    {
+      "source": "/es/blog/how-to-scan-qr-code",
+      "destination": "/blog/how-to-scan-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/es/blog/do-qr-codes-expire",
+      "destination": "/blog/do-qr-codes-expire",
+      "permanent": true
+    },
+    {
+      "source": "/es/blog/share-wifi-password-qr-code",
+      "destination": "/blog/share-wifi-password-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/es/pdf-qr-code-generator",
+      "destination": "/pdf-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/es/app-store-qr-code-generator",
+      "destination": "/app-store-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/vi/bulk-qr-code-generator",
+      "destination": "/bulk-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/vi/qr-code-scanner",
+      "destination": "/qr-code-scanner",
+      "permanent": true
+    },
+    {
+      "source": "/vi/social-media-qr-code",
+      "destination": "/social-media-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/vi/pricing",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/vi/faqs-qr-code-generator",
+      "destination": "/faqs-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/vi/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/vi/contact",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/vi/privacy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/vi/terms",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/vi/blog",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/vi/blog/qr-codes-for-restaurants",
+      "destination": "/blog/qr-codes-for-restaurants",
+      "permanent": true
+    },
+    {
+      "source": "/vi/blog/printing-qr-codes-guide",
+      "destination": "/blog/printing-qr-codes-guide",
+      "permanent": true
+    },
+    {
+      "source": "/vi/blog/vcard-qr-code-business-cards",
+      "destination": "/blog/vcard-qr-code-business-cards",
+      "permanent": true
+    },
+    {
+      "source": "/vi/blog/qr-codes-for-real-estate",
+      "destination": "/blog/qr-codes-for-real-estate",
+      "permanent": true
+    },
+    {
+      "source": "/vi/blog/wifi-qr-codes-for-hospitality",
+      "destination": "/blog/wifi-qr-codes-for-hospitality",
+      "permanent": true
+    },
+    {
+      "source": "/vi/blog/how-to-scan-qr-code",
+      "destination": "/blog/how-to-scan-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/vi/blog/do-qr-codes-expire",
+      "destination": "/blog/do-qr-codes-expire",
+      "permanent": true
+    },
+    {
+      "source": "/vi/blog/share-wifi-password-qr-code",
+      "destination": "/blog/share-wifi-password-qr-code",
+      "permanent": true
+    },
+    {
+      "source": "/vi/pdf-qr-code-generator",
+      "destination": "/pdf-qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/vi/app-store-qr-code-generator",
+      "destination": "/app-store-qr-code-generator",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -27,24 +527,49 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "no-cache" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
       ]
     },
     {
       "source": "/r/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     },
     {
       "source": "/analytics/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]

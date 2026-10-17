@@ -1,4 +1,4 @@
-"""Dev helper: apply title/description length fixes to routeMetaI18nData.js.
+"""Dev helper: apply title/description length fixes to routeMetaI18nAll.js.
 
 Takes a JSON file of {locale: {path: {title?, description?}}} and rewrites just
 those fields in place, leaving the rest of the file (and its comments) intact.
@@ -13,7 +13,7 @@ import sys
 
 patch = json.load(io.open(sys.argv[1], encoding='utf-8'))
 
-PATH = 'scripts/routeMetaI18nData.js'
+PATH = 'scripts/routeMetaI18nAll.js'
 src = io.open(PATH, encoding='utf-8').read()
 
 

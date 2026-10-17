@@ -1,7 +1,7 @@
 /**
  * Localized route metadata — TypeScript bridge for the React app.
  *
- * The actual translated content lives in scripts/routeMetaI18nData.js, a
+ * The actual translated content lives in scripts/routeMetaI18nAll.js (filtered by scripts/routeMetaI18nData.js), a
  * plain JS file, because scripts/prerender.js runs directly under Node and
  * cannot import TypeScript. This mirrors how constants/richContent.ts
  * bridges the other scripts/*RichData.js files into the app — the content

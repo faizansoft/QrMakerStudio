@@ -4285,5 +4285,3619 @@ export const RICH_CONTENT = {
       { q: 'Ticari ürünler ve mallar için QR kodları oluşturabilir miyim?', a: 'Evet! Platformumuzda oluşturulan tüm QR kodlarını dünya çapında perakende ambalajı, kitaplar, giyim ve tabelalarda kullanma konusunda tam ticari mülkiyet ve lisanslama haklarına sahipsiniz.' }
     ],
     bestPractices: 'Ticari baskı için her zaman vektör SVG olarak dışa aktarın, yüksek kontrastı koruyun (> 4.5:1), 4 modüllük sessiz bölgeyi koruyun ve büyük baskılar sipariş etmeden önce fiziksel basılı prova taraması yaparak test edin.'
+  },
+  '/pricing': {
+    "sections": [
+      {
+        "title": "Her Zaman Ücretsiz Özellikler ve Kurumsal Pro Özellikleri",
+        "paragraphs": [
+          "Ücretsiz temel planımız, tüm özel araç türlerinde sınırsız statik QR kod oluşturma imkânı sunar; tarama sınırı yok, filigran yok ve vektör SVG dışa aktarımı sıfır maliyetle.",
+          "Düzenlenebilir dinamik URL'lere, parola korumasına ve ayrıntılı tarama analizlerine ihtiyaç duyan pazarlama ekipleri ve kurumlar için Pro katmanımız esnek ve uygun fiyatlı bir faturalandırma sunar."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Şeffaf, %100 Ücretsiz Mimari — Abonelik Karşıtı Manifesto",
+      "paragraphs": [
+        "\"Ücretsiz deneme tuzağı\" şöyle işler: Ücretsiz sandığınız bir QR kodu oluşturur, birkaç bin liralık ambalaj ya da araç kaplamasına basarsınız ve iki hafta sonra karanlığa gömülür; çünkü hizmet artık yönlendirmeyi canlı tutmak için ayda 35 $ istemektedir. İşletme sahipleri, tasarımcılar ve etkinlik planlayıcıları bu tuzağa sürekli düşer. Kod hiçbir zaman gerçekten ücretsiz değildi; baskı, vazgeçmeyi pahalı hale getirdi.",
+        "Bunun ters olduğunu düşünüyoruz. QR üretimi açık bir matematiksel standart olan ISO/IEC 18004 üzerine kuruludur ve açık bir standart size geri kiralanmamalıdır. Bu yüzden her şey istemci tarafında çalışır: tarayıcınız Reed-Solomon hata düzeltmesini hesaplar, matrisi oluşturur ve SVG'yi yerel olarak çizer. Ortada hiçbir izleme sunucusu yoktur; dolayısıyla sizden ücret alabilecek ya da kodunuzu kapatabilecek bir sunucu da yoktur.",
+        "Aşağıda tüm fiyat listesi yer alıyor. Gizli ücret yok, tarama sınırı yok, kart gerekmiyor ve son kullanma tarihi yok. Bu bir promosyon katmanı değil; ürünün tamamı bu."
+      ]
+    },
+    "comparisonTable": {
+      "title": "QR Generator Online Özellik ve Fiyat Katmanı Matrisi",
+      "headers": [
+        "Özellik / Yetenek",
+        "QR Generator Online (Sonsuza Dek Ücretsiz)",
+        "Rakip \"Pro\" Planları (35 $/ay)"
+      ],
+      "rows": [
+        [
+          "Aylık abonelik ücreti",
+          "0,00 $ / ay (%100 sonsuza dek ücretsiz)",
+          "15,00 - 45,00 $ / ay (yılda 180 - 540 $)"
+        ],
+        [
+          "QR kod sona erme",
+          "Asla (statik kodlar kalıcı olarak geçerli)",
+          "Aylık ödeme aksarsa devre dışı kalır"
+        ],
+        [
+          "Tarama sınırlamaları",
+          "Sınırsız ömür boyu tarama (bant genişliği sınırı yok)",
+          "Düşük katmanlarda ayda 50 - 500 taramayla sınırlı"
+        ],
+        [
+          "Vektör SVG ve EPS dışa aktarımı",
+          "Ücretsiz dahil (kayıpsız vektör yolları)",
+          "Ayda 25 $ ve üzeri premium katmanların arkasında kilitli"
+        ],
+        [
+          "Yüksek çözünürlüklü 300 DPI 4K PNG",
+          "Ücretsiz dahil (2048x2048+ px)",
+          "Ücretli abonelik planlarının arkasında kilitli"
+        ],
+        [
+          "Özel logo ekleme",
+          "Seviye H hata düzeltmesiyle ücretsiz dahil",
+          "Ücretsiz planlarda filigranlı veya kısıtlı"
+        ],
+        [
+          "Hesap / kayıt gereksinimi",
+          "Yok (hesap yok, e-posta yok, kredi kartı yok)",
+          "Zorunlu kayıt ve kredi kartı girişi"
+        ],
+        [
+          "Veri egemenliği ve gizlilik",
+          "%100 istemci tarafında (izleme ve depolama yok)",
+          "Tüm taramalar sunucuda yönlendirilir ve kaydedilir"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Özel bir QR aracı seçin",
+        "description": "Tüm oluşturucular açık: URL, vCard, WiFi, PDF, WhatsApp, sosyal medya, e-posta, SMS, telefon, konum, etkinlik, kripto, metin, ödemeler, Google Formları. Hiçbiri bir planın arkasında kilitli değil."
+      },
+      {
+        "number": 2,
+        "title": "Görsel markanızı özelleştirin ve logonuzu ekleyin",
+        "description": "Renklerinizi uygulayın, nokta desenini ve köşe gözlerini yeniden biçimlendirin ve logonuzu Seviye H düzeltmeyle merkeze yerleştirin."
+      },
+      {
+        "number": 3,
+        "title": "Üretime hazır vektör SVG dosyalarını indirin",
+        "description": "İndir'e basın. Yüksek çözünürlüklü SVG veya PNG anında iner; ödeme duvarı ya da araya giren hesap ekranı yoktur."
+      }
+    ],
+    "features": [
+      {
+        "title": "Sonsuza dek sıfır aylık abonelik ücreti",
+        "description": "İstediğiniz kadar ticari kalitede kod oluşturun. Yinelenen maliyet yok, kart yok, küçük harf yok."
+      },
+      {
+        "title": "Sınırsız kalıcı ömür boyu taramalar",
+        "description": "Basılı bir kod yıllarca çalışmaya devam eder. Hiçbir şey onu yavaşlatmaz ya da sona erdirmez."
+      },
+      {
+        "title": "Sınırsız kayıpsız vektör SVG indirmeleri",
+        "description": "Geniş formatlı matbaacıların istediği baskı öncesi vektör dosyası burada, ücretsiz ve premium yükseltme olmadan."
+      },
+      {
+        "title": "Tam ticari kullanım hakları dahil",
+        "description": "Kodları ambalajlara, kitaplara, perakende standlarına ve hatta bir televizyon reklamına koyun. Ödenecek telif yok."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Ücretsiz Kurumsal Özellik Erişimi Dökümü",
+      "description": "Her gelişmiş özellik, tüm kullanıcılar için ödeme duvarı olmadan kullanılabilir.",
+      "headers": [
+        "Yetenek Alanı",
+        "Dahil Olma Durumu",
+        "Teknik Özellikler",
+        "Ticari Kapsam"
+      ],
+      "rows": [
+        [
+          "Tüm özel QR veri oluşturucular",
+          "%100 ücretsiz ve sınırsız",
+          "ISO/IEC 18004, RFC 2426, RFC 5545, BIP-0021",
+          "Sınırsız kişisel ve ticari kullanım"
+        ],
+        [
+          "Vektör SVG ve EPS dışa aktarımı",
+          "%100 ücretsiz ve sınırsız",
+          "Kayıpsız matematiksel vektör yolları",
+          "Ticari baskı öncesi, ambalaj, CNC"
+        ],
+        [
+          "Ultra HD 4K PNG çıktısı",
+          "%100 ücretsiz ve sınırsız",
+          "2048 x 2048 px, 300+ DPI",
+          "Dijital pazarlama, 4K ekranlar, web"
+        ],
+        [
+          "Seviye H logo ekleme",
+          "%100 ücretsiz ve sınırsız",
+          "%30 Reed-Solomon cebirsel fazlalığı",
+          "Markalı ambalaj ve lüks kartlar"
+        ],
+        [
+          "Özel renk paletleri",
+          "%100 ücretsiz ve sınırsız",
+          "Bağımsız onaltılık renk kontrolü",
+          "Tam marka kılavuzu eşleşmesi"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Küçük işletme sahipleri ve girişimciler",
+        "description": "Bütçede bir aylık yazılım kalemi olmadan tabela, ambalaj ve pazarlama materyali basın."
+      },
+      {
+        "title": "Grafik tasarım ajansları ve serbest çalışanlar",
+        "description": "Müşterilerinize üretime hazır bir vektör kod verin; başka birinin aboneliğinin sona erdiğine dair telefonu hiç açmak zorunda kalmayın."
+      },
+      {
+        "title": "Baskı öncesi ve ambalaj departmanları",
+        "description": "Güvenilir vektör kodlarını doğrudan ambalaj kalıplarına yerleştirin; veri bütünlüğü baskı sürecinin tamamında korunur."
+      },
+      {
+        "title": "Kar amacı gütmeyen kuruluşlar ve hayır kurumları",
+        "description": "Kripto bağışları alın ve tam olarak sıfır teknoloji bütçesiyle etkinlik kayıtlarını artırın."
+      },
+      {
+        "title": "Etkinlik organizatörleri ve düğün planlayıcıları",
+        "description": "Binlerce dijital davetiye ve takvim RSVP kodu gönderin. Hiçbir tarama sınırı etkinliğin ortasında onları kesmeyecek."
+      }
+    ],
+    "troubleshooting": {
+      "title": "QR Kod Abonelik Dolandırıcılıklarından İşletmenizi Nasıl Korursunuz",
+      "points": [
+        "Kodun gerçekte neyi kodladığını kontrol edin. Basmadan önce tarayın. Kendi URL'niz yerine `qr-service.com/x9f2` gibi üçüncü taraf bir alan adına çözülüyorsa, kapatılabilecek bir yönlendirmedir; uzak durun.",
+        "\"Ücretsiz deneme\" için kart istenmesine karşı dikkatli olun. Bir oluşturucu peşin ödeme bilgisi istediğinde, deneme bittiği gün kodun çalışmayı bırakacağını bekleyin.",
+        "SVG indirmesinin ücretsiz olduğunu doğrulayın. Profesyonel matbaacılar vektör SVG veya EPS ister. Bu dışa aktarım için 20 $ ve üzeri ücret alan bir platform göründüğü kadar avantajlı değildir.",
+        "Gizli bir tarama tavanına dikkat edin. Bazı ücretsiz katmanlar 50. ya da 100. taramada sessizce ölür. Buradaki statik kodların böyle bir sınırı yoktur.",
+        "İstemci tarafı üretimi tercih edin. Kod kendi tarayıcınızda oluşturulduğunda, daha sonra onu kapatabilecek bir anahtarı tutan bir şirket yoktur."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "QR Generator Online gerçekten %100 ücretsiz mi, gizli ücret yok mu?",
+        "a": "Tamamen. Katman yok, tarama sınırı yok, kart yok. Her oluşturucu ve her vektör indirmesi kişisel ve ticari işler için ücretsizdir."
+      },
+      {
+        "q": "QR Generator Online abonelik ücreti almadan hizmetini nasıl sürdürüyor?",
+        "a": "Ağır iş altyapımızda değil tarayıcınızda yapılır; bu yüzden işletme maliyetleri düşük kalır. Temel üretimi ücretsiz ve açık tutmak projenin amacıdır; büyütmek için planladığımız bir aşama değildir."
+      },
+      {
+        "q": "QR Generator Online'da oluşturulan QR kodlar hiç sona erer mi?",
+        "a": "Ermez. Veri görsel matrisin kendisinde saklanır; kod, hedefi aktif olduğu sürece canlı kalır. Zaman aşımına uğratacak bir sunucu yoktur."
+      },
+      {
+        "q": "QR kodlarımın kaç kez taranabilmesine dair bir sınır var mı?",
+        "a": "Hiç yok. Bir kod birkaç taramadan birkaç milyona kadar alabilir; arkasında bekleyen bir bant genişliği sınırı yoktur."
+      },
+      {
+        "q": "Sattığım ürünlerde bu QR kodları kullanabilir miyim?",
+        "a": "Rahatça satın. Oluşturduğunuz her kod üzerinde tam ticari haklara sahipsiniz: ambalaj, promosyon ürünleri, kitaplar, reklamlar; dünya genelinde."
+      },
+      {
+        "q": "Ücretsiz planda QR kodlarıma filigran koyuyor musunuz?",
+        "a": "Asla. Filigran yok, promosyon rozeti yok, üçüncü taraf markası yok. Tasarım tamamen size ait."
+      },
+      {
+        "q": "Vektör SVG dışa aktarımı ücretsiz planda dahil mi?",
+        "a": "Evet. Hem vektör SVG hem de 2048x2048 px PNG dışa aktarımı herkes için ücretsiz; hiçbir şey saklı tutulmuyor."
+      },
+      {
+        "q": "Hesap oluşturmam ya da e-posta adresi vermem gerekiyor mu?",
+        "a": "Hiç gerekmiyor. Hiçbir bilgi vermeden, kayıt olmadan istediğiniz kadar kod oluşturun, düzenleyin ve indirin."
+      }
+    ],
+    "bestPractices": "Basılacak her şey için kalıcı bir statik kod seçin, vektör SVG olarak dışa aktarın ve seri üretime geçmeden önce fiziksel bir prova tarayın."
+  },
+  '/faqs-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Sık Sorulan Sorular ve Teknik Tavsiyeler",
+        "paragraphs": [
+          "Statik QR kodlar sona erer mi? Hayır. QR Generator Online'da oluşturulan statik QR kodlar ham veriyi içerir ve hedef bağlantınız aktif kaldığı sürece asla sona ermez.",
+          "Baskı için en iyi format hangisi? Vektör SVG, ticari baskı için önerilen formattır; çünkü pikselleşme veya kalite kaybı olmadan herhangi bir fiziksel boyuta ölçeklenir."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Optik 2B Barkodlar İçin Nihai Teknik ve Pratik SSS",
+      "paragraphs": [
+        "Burası QR Generator Online bilgi tabanıdır: ISO/IEC 18004 tarafından tanımlanan 2B matris barkodlarla ilgili teknik, tasarım, baskı öncesi veya güvenlik sorularınızın yanıtlarını bulacağınız yer.",
+        "Buradaki yanıtlar tüm yelpazeyi kapsar: Reed-Solomon hata düzeltmesinin matematiği, bir telefon kamerasının bir fotoğrafı nasıl veriye dönüştürdüğü, baskı yaparken kullandığınız mesafe-boyut oranı ($S = D / 10$) ve GDPR ile CCPA'nın bir QR iş akışına nerede değdiği. Geliştiriciler, pazarlama liderleri, baskı öncesi teknisyenleri ve işletme sahipleri bunların farklı parçalarına ihtiyaç duyar.",
+        "Aşağıdaki kategoriler, doğrudan bir kod oluşturmaya, biçimlendirmeye, basmaya veya yayınlamaya gitmeniz için sıralanmıştır."
+      ]
+    },
+    "comparisonTable": {
+      "title": "QR Kod Sembolojisi Standartlarının Teknik Özeti",
+      "headers": [
+        "Teknik Parametre",
+        "Standart Spesifikasyon",
+        "Mühendislik Önerisi"
+      ],
+      "rows": [
+        [
+          "Yönetici standart",
+          "ISO/IEC 18004:2015 (Bilgi Teknolojisi)",
+          "Evrensel optik kod çözme için sıkı uyum"
+        ],
+        [
+          "Hata düzeltme seviyeleri",
+          "Seviye L (%7), Seviye M (%15), Seviye Q (%25), Seviye H (%30)",
+          "Logo yerleştirmeleri için Seviye H; temiz URL'ler için Seviye M"
+        ],
+        [
+          "Sessiz bölge kenar payı",
+          "Dört kenarın her birinde en az 4 modül genişliği",
+          "Tarayıcının sınır kenar algılaması için zorunlu"
+        ],
+        [
+          "Optik boyutlandırma formülü",
+          "S = D / 10 (genişlik = tarama mesafesi / 10)",
+          "El tipi baskı ortamları için en az 25 mm x 25 mm"
+        ],
+        [
+          "WCAG kontrast oranı",
+          "En az 4,5:1 parlaklık kontrastı (dış mekânda 7:1)",
+          "Açık renkli zemin üzerinde koyu ön plan modülleri"
+        ],
+        [
+          "Maksimum veri kapasitesi",
+          "4.296 alfanümerik / 7.089 sayısal / 2.953 bayt",
+          "Hızlı kamera çözümü için 150 karakterin altında tutun"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Veri yükü şemasını seçin",
+        "description": "Kodlayacağınız şeyden başlayın: URL, vCard 3.0, WiFi, WhatsApp, SMS, e-posta, telefon, konum, etkinlik, kripto, düz metin veya bir Google Formu."
+      },
+      {
+        "number": 2,
+        "title": "Stil ve hata düzeltmeyi yapılandırın",
+        "description": "4,5:1 kontrastın üzerinde kalan marka renkleri belirleyin, bir nokta stili seçin ve ortaya bir logo konacaksa Seviye H ile üretin."
+      },
+      {
+        "number": 3,
+        "title": "Vektör SVG'yi dışa aktarın ve fiziksel provaları test edin",
+        "description": "Vektör SVG veya 4K PNG'yi indirin, ardından herhangi bir yere göndermeden önce farklı aydınlatmalarda birkaç farklı telefonla tarayın."
+      }
+    ],
+    "features": [
+      {
+        "title": "Kapsamlı teknik kapsam",
+        "description": "Hata düzeltme matematiği, URI protokolleri ve kamera ikilileştirmesinin gerçekte nasıl çalıştığı; geçiştirilmeden açıklanır."
+      },
+      {
+        "title": "Pratik baskı öncesi ve baskı rehberliği",
+        "description": "Gerçek boyutlandırma formülleri, hangi yüzeyin seçileceği ve baskıda mürekkep nokta kazancının nasıl telafi edileceği."
+      },
+      {
+        "title": "Güvenlik ve quishing savunma stratejileri",
+        "description": "Değiştirilmiş veya sahtelenmiş bir kodun kampanyanızı bir oltalama vektörüne dönüştürmemesi için ne yapmanız gerektiği."
+      },
+      {
+        "title": "%100 ücretsiz ve açık erişimli bilgi tabanı",
+        "description": "Geliştirici olun ya da pazarlamacı, giriş yok, ödeme duvarı yok; her zaman yerinde duran açık dokümantasyon."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "QR Kod Çözünürlüğü ve Baskı Boyutlandırma Rehberi",
+      "description": "Kullanıcının görüntüleme mesafesine göre fiziksel baskı boyutlarını belirlemek için hızlı başvuru rehberi.",
+      "headers": [
+        "Yerleşim / Uygulama",
+        "Beklenen Tarama Mesafesi",
+        "Minimum Genişlik (S)",
+        "Önerilen Hata Düzeltme"
+      ],
+      "rows": [
+        [
+          "İş kartları ve isim etiketleri",
+          "15 cm - 30 cm (6\" - 12\")",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "Seviye Q (%25) veya Seviye H (%30)"
+        ],
+        [
+          "Masa standları ve bardak altlıkları",
+          "30 cm - 50 cm (12\" - 20\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Seviye M (%15) veya Seviye H (%30)"
+        ],
+        [
+          "Ürün ambalajları ve etiketler",
+          "20 cm - 40 cm (8\" - 16\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Merkez logolu Seviye H (%30)"
+        ],
+        [
+          "Broşürler, afişler ve dergiler",
+          "50 cm - 150 cm (20\" - 60\")",
+          "60 mm - 150 mm (2,4\" - 6,0\")",
+          "Seviye M (%15)"
+        ],
+        [
+          "Araç filosu grafikleri",
+          "3,0 m - 6,0 m (10 ft - 20 ft)",
+          "300 mm x 300 mm (12\" x 12\")",
+          "Döküm vinil üzerinde Seviye H (%30)"
+        ],
+        [
+          "Otoyol billboardları",
+          "15,0 m - 30,0 m (50 ft - 100 ft)",
+          "1500 mm - 3000 mm (5 ft - 10 ft)",
+          "Seviye L (%7) veya Seviye M (%15)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Kurumsal BT ve güvenlik uyumluluğu",
+        "description": "Kurumsal bir QR dağıtımının yayına girmeden önce GDPR, CCPA ve ISO veri egemenliği kurallarına uyduğunu doğrulayın."
+      },
+      {
+        "title": "Ambalaj tasarımı ve fleksografik baskı öncesi",
+        "description": "Plakalar hazırlanmadan önce bir barkod kalıbının ISO/IEC 18004 kontrast ve sessiz bölge sınırlarını karşıladığını teyit edin."
+      },
+      {
+        "title": "Konaklama ve restoran zincirleri",
+        "description": "Açıklaması için personel gerektirmeyen temassız menüler ve misafir WiFi kartları devreye alın."
+      },
+      {
+        "title": "Etkinlik organizatörleri ve konferans koordinatörleri",
+        "description": "Girişleri hızlandırın, konuşmacı sunum indirmelerini dağıtın ve oturumları katılımcıların takvimlerine ekleyin."
+      },
+      {
+        "title": "Emlak acentaları ve pazarlama ekipleri",
+        "description": "Bir tabela tabelasını, 3B sanal tur açan 7/24 bir potansiyel müşteri kaynağına dönüştürün."
+      }
+    ],
+    "troubleshooting": {
+      "title": "En Yaygın 5 QR Kod Hatası ve Bunları Nasıl Düzeltirsiniz",
+      "points": [
+        "Zayıf kontrast. Açık gri bir zemin üzerindeki soluk modüller kameraya tutunacak bir şey bırakmaz. 4,5:1 veya üzerinde kalın.",
+        "Kırpılmış sessiz bölge. Kenar payını çok fazla kırparsanız tarayıcı kodun nerede başladığını bulamaz. Tam 4 modüllük kenarlığı koruyun.",
+        "72 DPI ekran görüntüsü. Düşük çözünürlüklü web grafikleri baskıda modül kenarlarında bulanıklaşır. Bunun yerine vektör SVG veya 300+ DPI raster sağlayın.",
+        "Çok fazla veri. Uzun bir URL, küçük basıldığında lekelenen minik noktalarla matrisi doldurur. Oluşturmadan önce bağlantıyı kısaltın.",
+        "Parlak laminasyon. Yüksek parlaklıktaki bir kaplama, ışıkları merceğe geri yansıtır. Mat veya satenimsi bir yüzey isteyin."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Statik ve dinamik bir QR kod arasındaki fark nedir?",
+        "a": "Statik kod, gerçek veriyi (URL, vCard, WiFi dizgisi ya da her ne ise) matrisin içinde taşır. Sona erecek bir şey yoktur, bağlı olunacak bir sunucu yoktur. Dinamik kod ise başka birinin sunucusuna işaret eden bir yönlendirme taşır; bu, hedefi daha sonra düzenlemenize izin verir ama yönlendirmeyi canlı tutmak için bir aboneliğe bağlar."
+      },
+      {
+        "q": "QR Generator Online'da oluşturulan QR kodlar süresi dolar mı?",
+        "a": "Ömür boyu geçerli kalırlar. Sınırsız tarama, yinelenen ücret yok, geri sayan bir zamanlayıcı yok; kod kendi kendine yeterlidir."
+      },
+      {
+        "q": "Bir QR kod en az hangi fiziksel boyutta basılabilir?",
+        "a": "15-20 cm uzaktan okunan kısa bir URL için 20 mm x 20 mm (0,8\" x 0,8\") alt sınırdır. Ambalaj ve iş kartlarında 25 mm x 25 mm (1,0\" x 1,0\") güvenli sektör minimumu olarak kabul edilmelidir."
+      },
+      {
+        "q": "Seviye H hata düzeltmesi logolu bir QR kodu nasıl korur?",
+        "a": "Seviye H, Reed-Solomon fazlalığı yoluyla yükün yaklaşık %30'unu çoğaltır. Bu yedek kopya, merkez modüllerin üzerine bir logo koyabilmenizi sağlar: tarayıcı, kapanan verileri matrisin başka yerlerindeki fazla bitlerden yeniden oluşturur."
+      },
+      {
+        "q": "QR kodların renklerini markama uyacak şekilde özelleştirebilir miyim?",
+        "a": "Modüllerin, arka planın, köşe çerçevelerinin ve köşe noktalarının renklerini bağımsız olarak değiştirebilirsiniz. Tüm bunları yöneten tek bir kural vardır: koyu ile açık arasındaki kontrast 4,5:1'i geçmelidir; aksi halde tarayıcılar zorlanmaya başlar."
+      },
+      {
+        "q": "Ticari baskı için neden PNG yerine SVG formatı önerilir?",
+        "a": "SVG, kodu piksel değil geometri olarak tanımlar. Bir iş kartından bir billboarda büyütün; kenarlar keskin kalır, çünkü tükenecek bir piksel ızgarası yoktur."
+      },
+      {
+        "q": "QR kodlar kötü amaçlı yazılım ve oltalamadan (\"quishing\") güvende mi?",
+        "a": "Kodun kendisi yalnızca metin ya da URL taşır; bu yüzden kötü amaçlı yazılım taşıyamaz. Asıl risk, olmaması gereken bir yere işaret eden sahte bir koddur. Buna karşı, ortaya doğrulanmış logonuzu koyarak ve kodun yanına gerçek hedef alan adını düz metin olarak yazdırarak önlem alın."
+      },
+      {
+        "q": "Kişisel verilerim QR Generator Online sunucularında saklanıyor veya izleniyor mu?",
+        "a": "Hayır. Her şey tarayıcı belleğinde, istemci tarafında çalışır. Bağlantılarınız, parolalarınız, kişi kartlarınız ve yüklediğiniz logolar hiçbir sunucuya gönderilmez ve hiçbir yerde tutulmaz."
+      }
+    ],
+    "bestPractices": "Kontrastı 4,5:1'in üzerinde tutun, 4 modüllük sessiz bölgeyi koruyun ve baskı için vektör SVG dışa aktarın. Ardından seri üretimden önce fiziksel bir prova tarayın; temiz bir lansmanla yeniden baskı arasındaki farkı yaratan son kontrol budur."
+  },
+  '/qr-code-with-logo': {
+    "sections": [
+      {
+        "title": "Markalı QR kodlar neden %30'a kadar daha fazla tarama alır",
+        "paragraphs": [
+          "Markasız genel QR kodlar şüpheli ya da davetkâr olmayabilir. Resmi şirket logonuzu eklemek, kullanıcılara hedef bağlantının özgünlüğü ve güvenliği konusunda güven verir.",
+          "Oluşturucumuz, markanızı öne çıkarırken kusursuz tarama güvenilirliği sağlamak için H seviyesi hata düzeltme (%30 fazlalık) kullanır."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Reed-Solomon hata düzeltmesiyle logo yerleştirmenin teknik mekaniği",
+      "paragraphs": [
+        "Bir logo QR kodun tam ortasına tek bir nedenle yerleştirilir: hata düzeltme. ISO/IEC 18004 standardı her kodu veri kod sözcüklerine ve hata düzeltme kod sözcüklerine böler ve dört düzeltme seviyesi tanımlar — L seviyesi hasarlı kodun %7'sini, M %15'ini, Q %25'ini ve H %30'unu geri kazanabilir. Seviye ne kadar yüksekse görüntünün o kadar çok kısmı kaybolabilir ve yine de çözümlenebilir.",
+        "Ortaya bir logo koyduğunuzda bazı modülleri fiziksel olarak kapatırsınız. Kodu H seviyesinde oluşturduysanız, veriler kurtarılamaz hale gelmeden önce yüzeyin %30'una kadar örtebilirsiniz. iOS (AVFoundation) ve Android (ML Kit) kamera çözümleyicileri, gizlenen baytları çevredeki eşlik bitlerinden yeniden oluşturur — logo taramayı gerçekten engellemez, yalnızca matematiğin zaten yedeğini tuttuğu pikselleri gizler.",
+        "Sessizce çalışan bir ayrıntı daha var. QR Generator Online logonuzun etrafında ince bir beyaz tampon bırakır, böylece kenarı komşu koyu modüllerle karışmaz. Bu tampon, logolu kodun loş bir restoran ışığı ya da parlak bir vitrin altında bile temiz okunmasının nedenidir."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Markalı logolu QR kod ile genel siyah-beyaz QR kodun karşılaştırması",
+      "headers": [
+        "Değerlendirme ölçütü",
+        "Logolu markalı QR kod",
+        "Genel siyah-beyaz QR"
+      ],
+      "rows": [
+        [
+          "Tarama etkileşim oranı",
+          "%35'e kadar daha fazla tarama hacmi (doğrulanmış marka güveni)",
+          "Standart temel tarama oranı (sıklıkla şüpheli algılanır)"
+        ],
+        [
+          "Marka hatırlama ve güven",
+          "Yayıncı kimliğini anında iletir",
+          "Anonim görünüm, daha yüksek quishing kaygısı"
+        ],
+        [
+          "Hata düzeltme seviyesi",
+          "H seviyesi (%30 matematiksel fazlalık)",
+          "Genellikle L (%7) veya M (%15) seviyesi"
+        ],
+        [
+          "Kurumsal pazarlama etkisi",
+          "Basılı materyallerde marka yönergelerini pekiştirir",
+          "Marka tipografisi ve kimliğiyle bağlantısız"
+        ],
+        [
+          "Taranabilirlik toleransı",
+          "Logo tampon maskesiyle anında taramayı sürdürür",
+          "L seviyesi kullanılırsa yüzey çizikleriyle zarar görür"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "QR hedefini girin ve içerik türünü seçin",
+        "description": "Yukarıdaki oluşturucuya hedefinizi yazın — web sitesi URL'si, vCard profili, WiFi ağı veya düz metin."
+      },
+      {
+        "number": 2,
+        "title": "Yüksek çözünürlüklü bir logo yükleyin ve maskeyi ayarlayın",
+        "description": "\"Özel QR Seçenekleri ve Logo\" bölümünü açın, şeffaf PNG, SVG veya JPEG yükleyin ve modül renklerini marka paletinize uyacak şekilde düzenleyin."
+      },
+      {
+        "number": 3,
+        "title": "Baskı için vektör SVG veya yüksek çözünürlüklü PNG dışa aktarın",
+        "description": "Ambalaj, baskı ve mağaza tabelaları için ölçeklenebilir vektör SVG'yi indirin. Ekranlar için yüksek çözünürlüklü PNG'yi tercih edin."
+      }
+    ],
+    "features": [
+      {
+        "title": "H seviyesi hata düzeltme (%30 fazlalık)",
+        "description": "Ortaya bir logo, monogram veya simge koyun; %30'luk kurtarma payı onu karşılar — kod ilk denemede çözümlenmeye devam eder."
+      },
+      {
+        "title": "Kayıpsız vektör SVG ve EPS baskı çıktısı",
+        "description": "Markalı kodu bir billboard ölçeğine büyütün; vektör çizgileri keskin kalır. Tükenecek bir piksel ızgarası yoktur."
+      },
+      {
+        "title": "Akıllı modül maskeleme tamponu",
+        "description": "Logo kenarı ile çevredeki veri modülleri arasına temiz bir boşluk çizilir, böylece ikisi görsel olarak asla birleşmez."
+      },
+      {
+        "title": "%100 istemci tarafı kriptografik gizlilik",
+        "description": "Görüntü işlemleri tarayıcınızda gerçekleşir. Yüklediğiniz logolar ve bağlantılar hiçbir yere gönderilmez."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Baskı boyutu ve logo oranı spesifikasyonları",
+      "description": "Optik tarama hızını korumak için katı logo-matris alan oranlarına uyun.",
+      "headers": [
+        "Baskı uygulaması",
+        "QR'ın genel boyutları",
+        "Maksimum logo boyutu",
+        "Önerilen alt tabaka"
+      ],
+      "rows": [
+        [
+          "İş kartları ve kimlik rozetleri",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "8 mm x 8 mm (0,3\" x 0,3\")",
+          "Ağır mat karton (350+ GSM)"
+        ],
+        [
+          "Ürün ambalajları ve asma etiketler",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "10 mm x 10 mm (0,4\" x 0,4\")",
+          "Kaplamalı mat karton / kraft kağıt"
+        ],
+        [
+          "Masa standları ve tezgâh ekranları",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "13 mm x 13 mm (0,5\" x 0,5\")",
+          "Akrilik masa standı / laminasyonlu kart"
+        ],
+        [
+          "Perakende posterleri ve vitrin çıkartmaları",
+          "100 mm x 100 mm (4,0\" x 4,0\")",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "Mat hava koşullarına dayanıklı vinil"
+        ],
+        [
+          "Afişler ve açık hava billboardları",
+          "500 mm - 2000 mm",
+          "140 mm - 560 mm",
+          "Parlamayan ağır vinil"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Tüketici paketli ürünler (CPG) ve lüks perakende",
+        "description": "Pakette resmi bir marka işareti, alıcıya ürünün özgünlüğü konusunda güvence verir ve sadakat programına kaydolmak için bir neden sunar."
+      },
+      {
+        "title": "Kurumsal kimlik ve yönetici kartvizitleri",
+        "description": "Şirket logosunu ya da yöneticinin kendi fotoğrafını vCard kodunun ortasına koyun ve kartvizit sıradan görünmekten çıkar."
+      },
+      {
+        "title": "Restoran menüleri ve markalı sofra eşyaları",
+        "description": "Masa menü kodunun içindeki kafe amblemi, sonradan yapıştırılmış bir çıkartma değil, mekânın bir parçası gibi görünür."
+      },
+      {
+        "title": "Etkinlik tabelaları ve konferans sponsorlukları",
+        "description": "Etkinlik kodunun içinde, rozetlerde ve sahne afişlerinde yer alan bir sponsor logosu, o sponsoru görünür tutar ve ona net bir atıf sağlar."
+      },
+      {
+        "title": "Doğrudan posta ve promosyon kartpostalları",
+        "description": "İyi tasarlanmış markalı bir kod doğrudan posta yanıt oranını yükseltir, çünkü insanların tanıdığı bir kartpostal, insanların tarayacağı bir kartpostaldır."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Logo gömülü QR kodlar için 5 temel kural",
+      "points": [
+        "Logoyu alanın %30'unun altında tutun. %25-30 kapsamın üzerinde Reed-Solomon'un yeniden oluşturabileceğini aşarsınız ve kod çözülmeyi bırakır.",
+        "Üç bulucu gözü rahat bırakın. Sol üst, sağ üst ve sol alt köşelerdeki eşmerkezli kareler tamamen temiz kalmalıdır — tarayıcı kodu yönlendirmek için bunları kullanır.",
+        "Logoya bir kenarlık verin. Şeffaf bir arka plan ya da ince beyaz bir kenar, logonun çevresindeki koyu modüllere sızmasını engeller.",
+        "H seviyesiyle oluşturun. Logolu bir kodun L ya da M seviyesinde olması, kapsamı kaldıracak fazlalığa sahip değildir — marjı sağlayan H seviyesidir.",
+        "Basılı bir kanıtı tarayın. Büyük baskıya geçmeden önce ucuz bir Android ve güncel bir iPhone'da, loş ve parlak ışıkta test edin."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Ortaya logo eklemek QR kodun taranabilirliğini neden bozmaz?",
+        "a": "Bu, Reed-Solomon hata düzeltmesinden kaynaklanır. H seviyesinde yükün yaklaşık %30'u kod boyunca çoğaltılır. Ortadaki logo bazı modülleri örter ve çözümleyici bunları matrisin başka yerlerindeki yedek kopyalardan yeniden oluşturur."
+      },
+      {
+        "q": "Merkezi logo için hangi görüntü biçimlerini yükleyebilirim?",
+        "a": "PNG, SVG ve JPEG çalışır. Şeffaf bir PNG ya da vektör SVG en temiz kenarı ve en profesyonel sonucu verir — beyaz bir kare üzerindeki düz bir JPEG ise yanına kıyasla yapıştırılmış görünür."
+      },
+      {
+        "q": "Logo QR koda göre ne kadar büyük olmalı?",
+        "a": "Genişlik ve yüksekliğin %15 ile %25'i arasında olması en iyi aralıktır. Gözle tahmin etmenize gerek yok — oluşturucu logoyu doğru orana otomatik olarak ölçekler."
+      },
+      {
+        "q": "Özel logolu QR kodlar para mı tutar ya da abonelik mi gerektirir?",
+        "a": "Buradaki her şey gibi ücretsizdirler — sınırsız tarama, kalıcı geçerlilik ve yazdırdıktan sonra bekleyen bir ödeme duvarı yok."
+      },
+      {
+        "q": "Şirket logosu yerine sosyal medya simgeleri (Instagram, Facebook, WhatsApp, WiFi) ekleyebilir miyim?",
+        "a": "Evet. Yaygın platform simgelerinin yerleşik bir kitaplığı var; istediğinizi bulamazsanız kendi görselinizi yükleyin."
+      },
+      {
+        "q": "Logolu bir QR kod eski akıllı telefon kameralarında güvenilir şekilde taranır mı?",
+        "a": "Evet, iki şart sağlandığı sürece: H seviyesi düzeltme açıktır ve logo yüzeyin %30'unun altında kalır. Bu ikisi doğruysa eski bir kamera bile kodu anında çözer."
+      },
+      {
+        "q": "Logolu ticari baskı için en iyi dışa aktarma biçimi hangisidir?",
+        "a": "Vektör SVG. Hem modül matrisini hem de gömülü logoyu herhangi bir baskı ölçeğinde keskin tutar — bir baskı merkezinin tam olarak istediği şey budur."
+      },
+      {
+        "q": "Yüklediğim logo görüntüsü web sunucularınızda saklanıyor mu?",
+        "a": "Hayır. Logo birleştirilir ve kod tamamen tarayıcınızda oluşturulur — bunların hiçbiri yüklenmez ya da saklanmaz."
+      }
+    ],
+    "bestPractices": "Şeffaf bir PNG ya da vektör logo kullanın, H seviyesinde oluşturun ve modüller ile arka plan arasında güçlü bir kontrast tutun. Ardından çalıştırmadan önce basılı bir kanıtı tarayın — ekranda iyi görünen bir logo, baskıda bir tık fazla büyük olabilir."
+  },
+  '/custom-qr-codes': {
+    "sections": [
+      {
+        "title": "Güzel görsel QR kod tasarımıyla öne çıkın",
+        "paragraphs": [
+          "Yuvarlatılmış noktalar, dış hatlı noktalar, geometrik kare pikseller ve sanatsal stiller arasından seçim yapın. Dış köşe karelerini ve merkez noktalarını bağımsız olarak özelleştirin.",
+          "Modern, profesyonel ve görsel olarak çekici görünen yüksek dönüşümlü pazarlama materyalleri oluşturun."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Özel QR kod stilizasyonunun ve desen geometrisinin teknik mekaniği",
+      "paragraphs": [
+        "Özel stilizasyon, bir QR kodun ne anlama geldiğini değil, nasıl göründüğünü değiştirir. Katı kare modülleri yuvarlatılmış noktalar, elmaslar veya akıcı organik şekillerle değiştirebilir ve köşe gözlerini yeniden biçimlendirebilirsiniz — altta yatan ikili ızgara ISO/IEC 18004'ün söylediği yerde kalırken. Verileri taşıyan koyu ve açık desendir ve bu desen değişmez.",
+        "Tarayıcılar, 1:1:3:1:1 modül genişliği oranını katı biçimde izleyen üç köşe bulucu deseni bularak bir kodu tespit eder. Bu oranı koruyun, her modülü ızgara koordinatında ortalanmış tutun; iOS, Android ML Kit ve ZXing motorları stilize bir kodu düz bir kod kadar hızlı okur. Oranı bozarsanız hiçbir stilizasyon kurtaramaz.",
+        "QR Generator Online'ın vektör koordinat matematiğiyle izlediği çizgi de budur: her yuvarlatılmış nokta, her özel göz ve her köşe çerçevesi tam ızgara konumuna oturur. Tarama güvenilirliğinden ödün vermeden marka görünümünü elde edersiniz."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Özel tasarlanmış QR kodlar ile varsayılan siyah-beyaz barkodların karşılaştırması",
+      "headers": [
+        "Tasarım özelliği",
+        "Özel tasarlanmış QR kod",
+        "Varsayılan genel barkod"
+      ],
+      "rows": [
+        [
+          "Estetik çekicilik",
+          "Lüks ambalaj ve marka kimliğiyle uyumludur",
+          "Endüstriyel, klinik ve görsel olarak rahatsız edici"
+        ],
+        [
+          "Kullanıcı etkileşim oranı",
+          "Görsel çekiciliği nedeniyle %40 daha yüksek tarama oranı",
+          "Standart temel tarama oranı"
+        ],
+        [
+          "Özelleştirme aralığı",
+          "Nokta desenleri, göz stilleri, gradyanlar, merkez logolar",
+          "Sabit katı kareler, yalnızca siyah modüller"
+        ],
+        [
+          "Marka tanınırlığı",
+          "Marka renklerini ve kurumsal kimliği pekiştirir",
+          "Rakiplerinden ayırt edilemeyen genel görünüm"
+        ],
+        [
+          "Baskı çok yönlülüğü",
+          "Ahşap oyma, folyo basım ve akrilik için özelleştirilebilir",
+          "Yalnızca standart 2B baskı"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "QR veri türünü seçin ve giriş parametrelerini girin",
+        "description": "Veri türünüzü seçin — URL, vCard, WiFi veya metin — ve hedefi girin."
+      },
+      {
+        "number": 2,
+        "title": "Nokta desenlerini, köşe gözlerini ve paletleri özelleştirin",
+        "description": "Yuvarlatılmış, klasik, noktalı veya pürüzsüz modülleri deneyin; ardından köşe karesini ve köşe noktasını tasarım sisteminize uyacak şekilde ayarlayın."
+      },
+      {
+        "number": 3,
+        "title": "Baskıya hazır vektör SVG veya yüksek çözünürlüklü PNG dışa aktarın",
+        "description": "Bitmiş tasarımı ofset baskı için kayıpsız vektör SVG olarak ya da dijital kullanım için 4K PNG olarak indirin."
+      }
+    ],
+    "features": [
+      {
+        "title": "Birden çok modül ve nokta geometrisi önayarı",
+        "description": "Yuvarlatılmış, klasik, elmas, noktalı, pürüzsüz — her desen tarama toleransı içinde kalacak şekilde ayarlanmıştır."
+      },
+      {
+        "title": "Bağımsız köşe gözü özelleştirmesi",
+        "description": "Dış çerçeveler ve iç göz noktaları, gövdeden ayrı kendi renklerini ve köşe yarıçaplarını alır."
+      },
+      {
+        "title": "Kayıpsız vektör SVG baskı çıktıları",
+        "description": "Aynı tasarım bir kartvizitte de bir bina duvar resminde de temiz basılır; aralarında bulanıklık sızmaz."
+      },
+      {
+        "title": "Kalıcı ömür boyu geçerlilikle %100 ücretsiz",
+        "description": "İstediğiniz kadar tasarlayın. Tarama sınırı yok, filigran yok, aylık ücret yok."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Özel QR kod minimum boyut ve malzeme kılavuzu",
+      "description": "Stilize modüllerin yuvarlatılmış kenarları olduğundan, önerilen minimum boyut ölçütlerini izleyin.",
+      "headers": [
+        "Tasarım ortamı",
+        "Önerilen minimum boyut",
+        "Önerilen nokta deseni",
+        "Alt tabaka türü"
+      ],
+      "rows": [
+        [
+          "Lüks kartvizitler",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Klasik / yuvarlatılmış",
+          "Mat pamuklu karton / folyo basım"
+        ],
+        [
+          "Kozmetik ve ürün ambalajı",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Pürüzsüz / yuvarlatılmış",
+          "Mat kaplamalı karton"
+        ],
+        [
+          "Restoran masa standları ve bardak altlıkları",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "Noktalı / klasik",
+          "Ahşap oyma / akrilik stand"
+        ],
+        [
+          "Etkinlik afişleri ve vitrin grafikleri",
+          "90 mm x 90 mm (3,6\" x 3,6\")",
+          "Herhangi bir özel stil",
+          "Mat hava koşullarına dayanıklı vinil"
+        ],
+        [
+          "Moda giysi etiketleri ve bantlar",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Yuvarlatılmış / pürüzsüz",
+          "Dokuma kumaş etiket / kalın kraft karton"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Lüks markalar ve moda ambalajı",
+        "description": "Stilize bir kod, tasarımla çatışmak yerine yüksek kaliteli ambalajın içine oturur — tasarımı bozan kaba bir siyah barkod yoktur."
+      },
+      {
+        "title": "Yaratıcı portfolyolar ve mimari kartlar",
+        "description": "Hassas, geometrik bir kod düşünülmüş bir tercih gibi okunur; bir mimar ya da tasarımcının bırakmak istediği izlenim budur."
+      },
+      {
+        "title": "Butik otel ve konukseverlik tabelaları",
+        "description": "Bir misafir rehberi, spa menüsü ya da lobiye uygun bir WiFi kartı için ahşap ya da pirinç üzerine özel bir kodu lazerle oyun."
+      },
+      {
+        "title": "Etkinlik davetiyeleri ve gala kaydet-tarih kartları",
+        "description": "Yuvarlatılmış modüller ve metalik bir palet, işlevsel bir kodu düğün ya da gala kırtasiyesinin parçası yapar."
+      },
+      {
+        "title": "Zanaat birası ve içecek şişesi etiketleri",
+        "description": "Kodu etiket sanatının içine yerleştirin; böylece tadım notları ya da menşei için yapılan bir tarama şişenin görünümünü asla bozmaz."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Özel QR kod tasarımında yaygın hatalar",
+      "points": [
+        "Bulucu desenini bozmak. Üç köşe gözü sabit bir 1:1:3:1:1 oranını korur ve tarayıcı kodu bulmak için buna güvenir. Stilize edin, ama germeyin.",
+        "Düşük kontrast. Açık gri üzerinde koyu gri noktalar kamerayı yanıltır. Modüller ile arka planları arasında en az 4,5:1 tutun.",
+        "Sessiz bölgeyi atlamak. Kodun etrafındaki sanat ne olursa olsun, dış çevrede zorunlu 4 modüllük boş kenar payını bırakın.",
+        "Küçük boyutlarda aşırı yuvarlatma. 25 mm'nin altında, ağır nokta yuvarlatması temel bir telefon kamerasında modül kenarlarını bulandırır. Küçük kodlarda yarıçapı azaltın.",
+        "Yalnızca kendi telefonunuzda test etmek. Amiral gemisi bir telefon neredeyse her şeyi okur. Tasarımı sabit odaklı kameraya sahip orta segment bir Android'de de kontrol edin."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Özel stilli QR kodlar standart siyah-beyaz kodlar kadar hızlı taranır mı?",
+        "a": "Aynı hızda. Stilizasyon ISO/IEC 18004 toleransları içinde kalır; kontrast ve sessiz bölge kurallarına uyulduğunda çözümleme hızı düz bir kodla aynıdır."
+      },
+      {
+        "q": "QR Generator Online'da hangi stilizasyon öğelerini özelleştirebilirim?",
+        "a": "Beş şey: modül nokta stili (yuvarlatılmış, klasik, noktalı, pürüzsüz), dış köşe kareleri, iç köşe göz noktaları, ön plan ve arka plan renkleri ve bir merkez logo."
+      },
+      {
+        "q": "Özel QR kodlarımı vektör SVG biçiminde dışa aktarabilir miyim?",
+        "a": "Vektör SVG her özel tasarımda standarttır — ofset baskı, lazer oyma ve vinil kesim için keskinliği koruyan da budur."
+      },
+      {
+        "q": "Özel QR kodlar sona erer mi ya da ücretli abonelik gerektirir mi?",
+        "a": "İkisi de hayır. Buradaki her özel kod ücretsizdir; sınırsız tarama ve asla dolmayan geçerlilik sunar."
+      },
+      {
+        "q": "Özel QR kodlarımı ürün ambalajı için kullanabilir miyim?",
+        "a": "Evet ve birçok işletme bunu yapar — perakende ambalajları, gıda etiketleri, giysi etiketleri; dünya genelinde, lisans gerekmeden."
+      },
+      {
+        "q": "H seviyesi hata düzeltme özel tasarımlara nasıl yardımcı olur?",
+        "a": "%30'luk bir kurtarma payı sağlar. Bu pay, sanatsal modül değişikliklerinin ve merkez logonun tarama başarısızlığı riski olmadan bir arada var olmasına olanak tanır."
+      },
+      {
+        "q": "Özel stilli bir QR kod için önerilen minimum boyut nedir?",
+        "a": "30 mm x 30 mm (1,2\" x 1,2\") ya da daha büyük hedefleyin. Stilize modüllerin her kamera sensöründe ayırt edilebilir kalması için düz karelerden biraz daha fazla alana ihtiyacı vardır."
+      },
+      {
+        "q": "Özel QR kodlar tasarlarken verilerim güvende mi?",
+        "a": "Tamamen. Tasarımın her parçası tarayıcınızın belleğinde oluşturulur; bir sunucuda hiçbir şey saklanmaz ya da kaydedilmez."
+      }
+    ],
+    "bestPractices": "Kontrastı 4,5:1'in üzerinde tutun, 4 modüllük sessiz bölgeyi koruyun ve herhangi bir üretim serisinden önce basılı kanıtı birkaç telefonda tarayın. Stilize kodlar, aşırı akıllı bir tasarımın sessizce başarısız olduğu yerdir; kanıt ise bunu yakaladığınız yerdir."
+  },
+  '/colored-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Marka kimliğinize uyan canlı renkler",
+        "paragraphs": [
+          "Tek renkli barkodlara veda edin. Ön plan desenine, köşe göz çerçevelerine ve arka plan tuvaline herhangi bir hex renk seçin.",
+          "Yerleşik kontrast optimizasyonu, QR kodunuzun hızlı kamera odağı ve anlık tarama için yüksek kontrast korumasını sağlar."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Renk kontrastı ve renkli QR kod taramanın teknik mekaniği",
+      "paragraphs": [
+        "Bir telefon kamerası QR kodunuzu renkle okumaz. Kareyi gri tonlamalı bir parlaklık haritasına dönüştürür ve eşikleme yapar; piksel piksel neyin koyu, neyin açık sayılacağına karar verir. Renk neredeyse tesadüfidir; önemli olan parlaklıktır.",
+        "Bu yüzden önemli kural renk tonu değil, kontrasttır. Ön plan ve arka plan renginiz arasındaki WCAG kontrast oranını 4,5:1'in üzerinde tutun ve dışarıda kullanılacak her şey için 7:1'e çıkarın. Beyaz ya da açık bir zemin üzerinde derin, düşük parlaklıklı renkler çok güzel okunur — lacivert #002B49, orman yeşili #1B4D3E, kraliyet moru #3E1F58 ve bordo #5C061C hepsi bu eşiği rahatça geçer.",
+        "QR Generator Online ön planı, arka planı, köşe çerçevelerini ve köşe gözlerini bağımsız olarak renklendirmenize izin verir. Bir marka paletini tam olarak eşleştirin; parlaklık korunduğu sürece kod %100 taranabilir kalır."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Yüksek kontrastlı renkli QR kod ile düşük kontrastlı pastel palet QR kodun karşılaştırması",
+      "headers": [
+        "Tasarım özelliği",
+        "Yüksek kontrastlı renkli QR (WCAG > 4,5:1)",
+        "Düşük kontrastlı pastel / soluk palet"
+      ],
+      "rows": [
+        [
+          "Optik tarama güvenilirliği",
+          "Her ışıkta %100 anlık çözümleme",
+          "Sık görülen kamera odak hataları ve tarama zaman aşımları"
+        ],
+        [
+          "Kamera ikili dönüşümü",
+          "Temiz gri tonlama eşikleme ayrımı",
+          "Kod çözme hatalarına yol açan belirsiz parlaklık değerleri"
+        ],
+        [
+          "Açık hava güneş performansı",
+          "Doğrudan güneşte ve parlamada okunabilirliği korur",
+          "Parlak güneş altında tamamen solar"
+        ],
+        [
+          "Marka uyumu",
+          "Kurumsal kimlikle eşleşen zengin kurumsal renkler",
+          "Soluk görünüm, görsel etkiden yoksun"
+        ],
+        [
+          "Cihaz uyumluluğu",
+          "Bütçe ve amiral gemisi akıllı telefonlarda evrensel",
+          "Düşük dinamik aralıklı ucuz kameralarda başarısız"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Hedef içeriğinizi ve veri yükünüzü girin",
+        "description": "URL'nizi, vCard ayrıntılarınızı, WiFi kimlik bilgilerinizi ya da metninizi yapıştırın."
+      },
+      {
+        "number": 2,
+        "title": "Yüksek kontrastlı bir renk paleti seçin",
+        "description": "Hex seçicilerle koyu bir ön plan, açık bir arka plan ve köşe gözleri için istediğiniz vurgu renklerini belirleyin."
+      },
+      {
+        "number": 3,
+        "title": "Baskı için vektör SVG ya da dijital kullanım için yüksek çözünürlüklü PNG dışa aktarın",
+        "description": "Ofset baskı için vektör SVG'yi, sosyal ve dijital kampanyalar için 300 DPI PNG'yi indirin."
+      }
+    ],
+    "features": [
+      {
+        "title": "Bağımsız çoklu renk özelleştirmesi",
+        "description": "Ön plan modülleri, arka plan tuvali, köşe çerçeveleri, köşe noktaları — her biri kendi tam hex değerini alır."
+      },
+      {
+        "title": "WCAG yüksek kontrast uyumu",
+        "description": "Kameranın temiz bir şekilde eşikleme yapması için gereken parlaklık kontrastını, aydınlatma ne olursa olsun korumak üzere tasarlanmıştır."
+      },
+      {
+        "title": "Kayıpsız vektör SVG ve EPS dışa aktarımı",
+        "description": "Illustrator, InDesign ya da Figma'da doğrudan açılan ve CMYK'ya temiz biçimde dönüşen renk-doğru vektör dosyaları."
+      },
+      {
+        "title": "Kalıcı ömür boyu taramalarla %100 ücretsiz",
+        "description": "İstediğiniz kadar renkli kod oluşturun — tarama sınırı yok, filigran yok, ücret yok."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Renkli QR kod boyut ve kontrast spesifikasyonları",
+      "description": "Renk seçimlerinizin minimum optik tarama eşiklerini karşıladığından emin olun.",
+      "headers": [
+        "Renk kombinasyonu",
+        "Kontrast oranı",
+        "Minimum baskı boyutu",
+        "Önerilen kullanım"
+      ],
+      "rows": [
+        [
+          "Koyu lacivert (#001F3F) üzerine beyaz (#FFFFFF)",
+          "14,5:1 (çok yüksek)",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "Kurumsal kimlik, kartvizit, kırtasiye"
+        ],
+        [
+          "Orman yeşili (#1B4D3E) üzerine krem (#FBF9F5)",
+          "10,2:1 (yüksek)",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Organik ürünler, çevre dostu ambalaj, menüler"
+        ],
+        [
+          "Kraliyet moru (#4A0E4E) üzerine beyaz (#FFFFFF)",
+          "12,8:1 (yüksek)",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Lüks ürünler, etkinlik kırtasiyesi, moda"
+        ],
+        [
+          "Zengin bordo (#5C061C) üzerine beyaz (#FFFFFF)",
+          "11,4:1 (yüksek)",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Şarap şişesi etiketleri, gurme gıda ambalajı"
+        ],
+        [
+          "Antrasit (#222222) üzerine pastel nane (#E8F5E9)",
+          "11,8:1 (yüksek)",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Modern perakende ambalajı, teknoloji donanımı"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Kurumsal marka tutarlılığı",
+        "description": "Pazarlama kodlarınızı broşürler ve yıllık raporlar genelinde marka Pantone ve hex spesifikasyonuna uyumlu tutun."
+      },
+      {
+        "title": "Perakende ambalajı ve ürün etiketleri",
+        "description": "Kodu gıda, içecek, kozmetik ve yaşam tarzı ürünlerinin birincil ambalaj renklerine göre ayarlayın, böylece pakete ait görünsün."
+      },
+      {
+        "title": "Restoran menüleri ve konukseverlik masa kartları",
+        "description": "Mekânı yansıtan sıcak, zarif kod renkleri, mum ışığı altındaki bir masada sert siyah bir kareden çok daha iyi okunur."
+      },
+      {
+        "title": "Etkinlik tabelaları ve gala programları",
+        "description": "Düğünün, festivalin ya da konferansın paletini afişlere, kartlıklara ve davetiyelere taşıyın."
+      },
+      {
+        "title": "Araç filosu ve yüklenici tabelaları",
+        "description": "Kodu tesisat, iklimlendirme ve teslimat araç çıkartmalarındaki filo renklerine uydurun; böylece plansız değil, resmi görünür."
+      }
+    ],
+    "troubleshooting": {
+      "title": "QR kodların taranmasını engelleyen renk hataları",
+      "points": [
+        "Paleti ters çevirmek. Koyu mavi üzerinde beyaz bir kod birçok tarama motorunu yanıltır. Ön planı arka plandan koyu tutun, tersini değil.",
+        "Pastel renkler. Beyaz üzerinde soluk sarı, yumuşak pembe ya da nane 2:1'in altındadır — kameranın eşiklemesi için neredeyse görünmezdir.",
+        "Sıcak üzerine sıcak. Sarı ya da turuncu üzerindeki kırmızı modüller çok fazla parlaklık paylaşır. Güvenmeden önce gri tonlamalı versiyonu kontrol edin.",
+        "CMYK sapması. RGB renkler ofset baskı için dönüştürülürken kayabilir. Basılı kanıtın hâlâ koyu bir parlaklık taşıdığını doğrulayın.",
+        "Parlama yansıması. Parlak bir kaplama ışığı yansıtır ve kontrastınızı yok eder. Renkli kodlar en iyi mat kağıt üzerinde okunur."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Bir QR kod herhangi bir renkte olabilir ve yine de güvenilir çalışabilir mi?",
+        "a": "Neredeyse herhangi bir renkte, tek bir koşulla: ön plan arka plandan açıkça daha koyu olmalı, 4,5:1 oranını aşmalı. Koyu lacivert, orman yeşili, mor ve bordo bunu kolayca başarır."
+      },
+      {
+        "q": "Neden koyu arka planlarda beyaz QR kodlardan (ters renkler) kaçınmalıyım?",
+        "a": "Çözümleyiciler koyu üzerine açık bekleyecek şekilde tasarlanmıştır. Güncel bir iPhone ters çevrilmiş olanı genellikle işler, ancak birçok Android telefon ve el tipi tarayıcı takılır ya da başarısız olur — basılı materyalde bu riski almaya değmez."
+      },
+      {
+        "q": "Renk kombinasyonumun taranabilir olup olmadığını nasıl kontrol ederim?",
+        "a": "Tasarımı herhangi bir görüntü görüntüleyicide gri tonlamaya çevirin. Desen hâlâ arka plandan net biçimde ayrışıyorsa kontrastınız yeterlidir. Zemine karışıyorsa, tarama da karışır."
+      },
+      {
+        "q": "Birden fazla renk kullanabilir miyim (ör. köşe gözleri için farklı renkler)?",
+        "a": "Dış çerçeveleri, iç göz noktalarını ve gövde modüllerini üç farklı renge ayarlayabilirsiniz; her parça kontrastını koruduğu sürece kod yine taranır."
+      },
+      {
+        "q": "Renkli QR kodlar sona erer mi ya da ek ücret gerektirir mi?",
+        "a": "İkisi de hayır. Burada renk ücretsizdir ve kodlar, diğer tüm türler gibi sınırsız tarama ve kalıcı geçerlilikle gelir."
+      },
+      {
+        "q": "Profesyonel renk eşleştirmeli baskı için hangi biçimi indirmeliyim?",
+        "a": "Vektör SVG. Tam hex ve RGB değerlerini korur ve InDesign ya da Illustrator içinde CMYK örneklerine temiz biçimde dönüşür; renk yönetimli bir baskı işinin ihtiyacı olan budur."
+      },
+      {
+        "q": "Renkli bir QR koda logo ekleyebilir miyim?",
+        "a": "Evet — renk özelleştirmesi ve merkez logo birlikte çalışır; H seviyesi hata düzeltme, logoyu siyah kodda olduğu gibi kapsar."
+      },
+      {
+        "q": "Renk tasarım verilerim harici sunucularda saklanıyor mu?",
+        "a": "Yerel kalır. Renk işleme ve SVG oluşturma, ikisi de tarayıcınızın belleğinde çalışır; dışarıya hiçbir şey gönderilmez."
+      }
+    ],
+    "bestPractices": "Ön planı arka plandan belirgin biçimde koyu tutun ve taahhüt etmeden önce tasarımı gri tonlamada kontrol edin. Ardından basılı bir kanıtı tarayın — monitörde doğru görünen bir renk, kağıda geçtiği anda kontrast kaybedebilir."
+  },
+  '/svg-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Profesyonel ticari baskının altın standardı",
+        "paragraphs": [
+          "Piksellerden oluşan PNG ya da JPEG görsellerinin aksine, vektör SVG dosyaları büyük baskı boyutlarına ölçeklendiğinde asla bulanıklaşmaz.",
+          "Grafik tasarım iş akışları için SVG dosyalarını Adobe Illustrator, Photoshop, InDesign, Figma ya da Canva'ya kolayca aktarın."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Ölçeklenebilir vektör grafik (SVG) QR kod mimarisine teknik genel bakış",
+      "paragraphs": [
+        "SVG, W3C'nin XML tabanlı bir vektör biçimidir ve PNG ya da JPEG'den farkı temeldir. Bir raster dosya kodu sabit bir renkli piksel ızgarası olarak saklar. Bir SVG ise onu matematik olarak saklar — her modül, köşe gözü ve sessiz bölge koordinat yolları (`<rect>`, `<path>`, `<circle>`) olarak yazılır.",
+        "Büyütürken asıl önemli olan budur. 25 mm'lik bir kartvizitteki SVG kodu 20 metrelik bir billboarda taşıyın; işleyici yalnızca eğrileri yeniden hesaplar — enterpolasyon yok, anti-aliasing bulanıklığı yok, yumuşak kenarlar yok. Ofset presler, flekso ambalaj hatları, lazer gravürcüler ve CNC vinil plotterlar, tam olarak takip edebilecekleri bir geometri alır.",
+        "Pratik kazançlar keskinliğin ötesine uzanır. Bir SVG kod çok küçüktür, genellikle 5 KB'nin altında. CSS ile stillendirilir, Illustrator ya da InDesign'da CMYK'ya kayıpsız dönüşür ve doğrudan modern bir web sayfasına ya da uygulamaya yerleşir."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Vektör SVG QR kod ile raster PNG / JPEG QR kodun karşılaştırması",
+      "headers": [
+        "Teknik özellik",
+        "Vektör SVG QR kod",
+        "Raster PNG / JPEG QR kod"
+      ],
+      "rows": [
+        [
+          "Ölçeklenebilirlik",
+          "Sonsuz ölçeklenebilir (her boyutta pikselleşme ya da bulanıklık yok)",
+          "Sabit çözünürlük (büyütüldüğünde pikselleşir ve bulanıklaşır)"
+        ],
+        [
+          "Dosya boyutu",
+          "Çok kompakt (~3 KB - 8 KB)",
+          "Yüksek baskı çözünürlüklerinde 100 KB - 2 MB"
+        ],
+        [
+          "Baskı presi uyumluluğu",
+          "Ticari ofset, flekso ve lazer için endüstri standardı",
+          "Her baskı boyutu için en az 300 DPI hesabı gerekir"
+        ],
+        [
+          "Vektör araçlarında düzenlenebilirlik",
+          "Illustrator, InDesign ve Figma'da tam yol düzenlenebilirliği",
+          "Düz piksel bitmap; yollar temiz biçimde düzenlenemez"
+        ],
+        [
+          "Lazer gravür ve vinil kesim",
+          "CNC ve lazer kesiciler için doğrudan vektör yolu desteği",
+          "Uyumsuz; manuel vektör izleme gerekir"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "QR içeriğinizi girin ve veri yükünü yapılandırın",
+        "description": "Hedefinizi girin — bir URL, vCard ayrıntıları, WiFi kimlik bilgileri ya da metin."
+      },
+      {
+        "number": 2,
+        "title": "Görsel parametreleri ve logoyu özelleştirin",
+        "description": "Modül stillerini, marka renklerini ve köşe gözü geometrisini seçin; istiyorsanız merkeze bir logo yerleştirin."
+      },
+      {
+        "number": 3,
+        "title": "Kayıpsız vektör SVG dosyasını dışa aktarın",
+        "description": "Baskı öncesi iş akışına doğrudan giden, baskıya hazır vektör dosyası için \"SVG'yi İndir\"e tıklayın."
+      }
+    ],
+    "features": [
+      {
+        "title": "Matematiksel olarak mükemmel sonsuz ölçekleme",
+        "description": "Kodu istediğiniz boyuta büyütün; modül kenarları bıçak gibi keskin kalır. Tükenecek bir çözünürlük yoktur."
+      },
+      {
+        "title": "Doğrudan baskı öncesi ve ticari baskı uyumluluğu",
+        "description": "Aralarında dönüştürme adımı olmadan InDesign, Illustrator, CorelDRAW ve QuarkXPress'te temiz biçimde açılır."
+      },
+      {
+        "title": "Lazer gravür ve vinil plotter için hazır",
+        "description": "Vektör yolları doğrudan bir lazer kesiciyi, CNC frezeyi ya da tabela plotterını besler."
+      },
+      {
+        "title": "Ultra hafif dosya boyutu",
+        "description": "5 KB'nin altında; web'de anında yüklenir ve e-postayla gönderilirken hiç düşünmenize gerek kalmaz."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "SVG QR kod üretim uygulamaları kılavuzu",
+      "description": "Vektör SVG tüm fiziksel ve endüstriyel üretim süreçlerine sorunsuz uyum sağlar.",
+      "headers": [
+        "Üretim süreci",
+        "Çıktı ortamı",
+        "Önerilen çözünürlük",
+        "Vektör SVG'nin avantajları"
+      ],
+      "rows": [
+        [
+          "Ticari ofset baskı",
+          "Broşürler, yıllık raporlar, kitaplar",
+          "2400+ DPI pres çıktısında sonsuz keskinlik",
+          "Temiz vektör trapping ve ayırma"
+        ],
+        [
+          "Flekso baskı",
+          "Ürün ambalajları, oluklu kutular",
+          "Kalıp kesim hattının tam boyutlarına ölçeklenir",
+          "Gözenekli kağıtta sıfır raster nokta kazancı"
+        ],
+        [
+          "Lazer gravür ve aşındırma",
+          "Ahşap, anodize alüminyum, paslanmaz çelik",
+          "Doğrudan CNC takım yollarına dönüşür",
+          "Hassas lazer ışını kontur kesimi"
+        ],
+        [
+          "Vinil plotlama ve kesim",
+          "Araç çıkartmaları, mağaza vitrin tabelaları",
+          "Doğrudan vektör kesim çizgisi üretimi",
+          "Manuel bitmap izlemeyi ortadan kaldırır"
+        ],
+        [
+          "Dijital web ve uygulama arayüzü",
+          "Duyarlı web siteleri ve web uygulamaları",
+          "4K ve Retina ekranlarda keskin görüntü",
+          "Sıfır bant genişliği yükü (~4 KB)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Ticari billboard ve büyük format tabela",
+        "description": "5 metrelik bir afişe ya da toplu taşıma posterine ölçeklendirin; modüller karşı taraftan okunacak kadar keskin kalır."
+      },
+      {
+        "title": "Ürün ambalajı ve flekso karton baskısı",
+        "description": "Vektör kodu doğrudan bir ambalaj kalıp hattına yerleştirin; yüksek hızlı bir pres çalışmasında bile dayanır."
+      },
+      {
+        "title": "Lazerle gravürlenmiş metal ve ahşap ürünler",
+        "description": "Aynı dosyadan bir ahşap masa standına, metal bir anahtarlığa ya da endüstriyel bir varlık etiketine kalıcı kod kazıyın."
+      },
+      {
+        "title": "Ticari araç filoları için vinil çıkartmalar",
+        "description": "Bitmap izleme adımı olmadan, van ve servis kamyonları için sargı çıkartmalarını doğrudan SVG yollarından kesin."
+      },
+      {
+        "title": "Yüksek yoğunluklu duyarlı web uygulamaları",
+        "description": "SVG'yi bir web uygulamasına gömün; birkaç kilobayt karşılığında Retina ve 4K ekranlarda keskin görünür."
+      }
+    ],
+    "troubleshooting": {
+      "title": "SVG QR kod dosyalarıyla çalışırken en iyi uygulamalar",
+      "points": [
+        "Illustrator'da ölçekleme. \"Scale Strokes & Effects\" seçeneğini açın; böylece modül çizgileri sabit bir kalınlıkta kalmak yerine orantılı büyür.",
+        "Logodaki yazı tipleri. Gömülü logonuzda özel yazı tipi varsa, son baskı dışa aktarımından önce metni anahatlara çevirin.",
+        "Sessiz bölge. SVG'nin sınırlayıcı kutusunu sıkıca kesmeyin — kodun etrafındaki beyaz kenar payı, kameranın kodu bulmak için kullandığı alandır.",
+        "Spot renk. Pantone mürekkeplerle mi basıyorsunuz? Plakaya göndermeden önce SVG dolgusunun doğru ayırma kanalına eşlendiğini kontrol edin.",
+        "Vektörün içinde raster. SVG'nin içindeki her logonun da vektör olduğundan emin olun; dosyanın tamamını bulandıracak düşük çözünürlüklü bir JPEG olmamalı."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "SVG QR kod nedir ve neden baskı için daha iyidir?",
+        "a": "SVG, Scalable Vector Graphics (ölçeklenebilir vektör grafik) anlamına gelir. PNG ya da JPEG piksellerden oluşurken SVG şekillerini matematikle tanımlar; böylece kod bulanıklaşmadan ya da bozulmadan herhangi bir boyuta ölçeklenir. Baskı için bu fark her şeydir."
+      },
+      {
+        "q": "SVG QR kodlarını Adobe Illustrator ya da Figma'da açıp düzenleyebilir miyim?",
+        "a": "Doğrudan. SVG standart bir vektör biçimidir; dönüştürme gerekmeden Illustrator, InDesign, Photoshop, Figma, CorelDRAW ve Inkscape'te düzenlemek için açılır."
+      },
+      {
+        "q": "SVG lazer gravür ve CNC makineleriyle uyumlu mu?",
+        "a": "Onların istediği biçim budur. Bir lazer kesici ya da CNC plotter, ışını ya da bıçağı yönlendirmek için vektör yolu konturlarını doğrudan SVG'den okur."
+      },
+      {
+        "q": "SVG QR kodları sona erer mi ya da tarama sınırları var mı?",
+        "a": "Sona ermez, sınır yoktur. Statik bir SVG kod verilerini kendi içinde tutar ve tekrarlayan ücret olmadan ömür boyu çalışmaya devam eder."
+      },
+      {
+        "q": "Bir SVG QR kodu kalite kaybı olmadan ne kadar büyütebilirim?",
+        "a": "İhtiyacınız kadar — 1 cm'lik bir pul da olsa 50 metrelik bir stadyum afişi de olsa, ikisi de tam hassasiyetle. Vektör geometrisinin bir boyut tavanı yoktur."
+      },
+      {
+        "q": "Şirket logomu bir SVG QR kodun içine gömebilir miyim?",
+        "a": "Vektör matrisin ortasına bir logo koyabilirsiniz; üzerine oturduğu modülleri H seviyesi hata düzeltme kapsar."
+      },
+      {
+        "q": "SVG QR kodlarını web sitelerinde ve mobil uygulamalarda kullanabilir miyim?",
+        "a": "Tarayıcılar SVG'yi doğal olarak işler; bu yüzden satır içi bir SVG kod 5 KB'nin altında yüklenir ve yüksek yoğunluklu Retina ve 4K ekranlarda keskin kalır."
+      },
+      {
+        "q": "QR Generator Online'da SVG QR kod oluşturmak ücretsiz mi?",
+        "a": "Yüksek çözünürlüklü vektör SVG'yi indirmek ücretsizdir; araya giren bir hesap ya da abonelik yoktur."
+      }
+    ],
+    "bestPractices": "Matbaanıza vektör SVG verin, 4 modüllük sessiz bölgeyi bozulmadan tutun ve gömülü logonun da vektör olduğundan emin olun. Bu kombinasyon, bir baskı merkezine doğrudan preste kullanabileceği bir dosya verir."
+  },
+  '/high-resolution-qr-codes': {
+    "sections": [
+      {
+        "title": "Ambalaj, menü ve tabela için kusursuz netlik",
+        "paragraphs": [
+          "Yüksek DPI çözünürlük, parlak baskı yüzeylerinde, dokulu ambalajlarda ya da düşük ışıklı ortamlarda bulanık kenarları ve tarama hatalarını önler.",
+          "Pazarlama materyallerine hemen yerleştirilmeye hazır, şeffaf arka planlı kristal netliğinde QR kodlar dışa aktarın."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Yüksek çözünürlüklü (300+ DPI / 4K) QR kod mühendisliğine teknik genel bakış",
+      "paragraphs": [
+        "Yüksek çözünürlüklü bir QR kod, baskıda ayakta kalacak kadar piksel yoğunluğuyla oluşturulmuş bir koddur — en az 300 ila 600 DPI'da 2048x2048 piksel ya da çözünürlükten bağımsız bir vektör dosyası. Çoğu web oluşturucu size 72 DPI'da 200x200 bir görüntü verir; bu ekranda iyi görünür ama kâğıda değer değmez dağılır: pikselleşme, yumuşak kenarlar, bulanık modül sınırları.",
+        "Gerçekte ne bozulur? Düşük çözünürlüklü bir kod basıldığında pres, hiç var olmamış piksel verisini doldurmaya çalışır. Bu enterpolasyon, kare modüllerin keskin köşelerini yuvarlar ve tarayıcının bağlı olduğu 1:1:3:1:1 bulucu oranını çarpıtır — kamera ya yavaş çözer ya da pes eder.",
+        "QR Generator Online bu başarısızlık modunu tamamen atlar. 300 DPI'da 4K'ya kadar ultra yüksek çözünürlüklü raster yanı sıra vektör SVG ve EPS dışa aktarır. Her iki yolda da modül kenarları, bir ambalaj matbaacısının, lüks kırtasiye evinin ya da büyük format billboard atölyesinin ikinci bir bakışa gerek kalmadan kabul edeceği kadar keskin kalır."
+      ]
+    },
+    "comparisonTable": {
+      "title": "300 DPI yüksek çözünürlüklü QR kod ile standart 72 DPI web çıktısının karşılaştırması",
+      "headers": [
+        "Spesifikasyon / ölçüt",
+        "300 DPI yüksek çözünürlüklü çıktı (QR Generator Online)",
+        "72 DPI düşük çözünürlüklü web oluşturucu"
+      ],
+      "rows": [
+        [
+          "Piksel boyutları",
+          "2048 x 2048 px ile 4096 x 4096 px (4K)",
+          "200 x 200 px ile 350 x 350 px"
+        ],
+        [
+          "Basılı çıktı kalitesi",
+          "300+ DPI'da keskin modül sınırları",
+          "Pikselleşmiş, bulanık ve dişli modül kenarları"
+        ],
+        [
+          "Kamera çözme hızı",
+          "Her ışıkta anında çözme (< 0,2 sn)",
+          "Optik bulanıklık nedeniyle gecikmeli çözme (1 - 3 sn)"
+        ],
+        [
+          "Maksimum baskı boyutu",
+          "Poster ve billboard boyutlarına kadar ölçeklenebilir",
+          "Yalnızca küçük web/ekran görüntülerine sınırlı"
+        ],
+        [
+          "Ticari baskı öncesi standartlar",
+          "ISO 12647 ticari baskı standartlarını karşılar",
+          "Ticari baskı öncesi kontrollerde reddedilir"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Veri yükünü ve içerik türünü yapılandırın",
+        "description": "Hedefinizi girin — bir URL, vCard profili, WiFi kimlik bilgileri ya da metin."
+      },
+      {
+        "number": 2,
+        "title": "Tasarım parametrelerini ve hata düzeltmeyi özelleştirin",
+        "description": "Renklerinizi, nokta desenini ve köşe gözlerini ayarlayın; ihtiyacınız varsa H seviyesinde merkeze bir logo ekleyin."
+      },
+      {
+        "number": 3,
+        "title": "4K Ultra HD PNG ya da kayıpsız vektör SVG indirin",
+        "description": "Dijital kullanım için 300 DPI'da keskin bir 2048x2048 piksel PNG ya da büyük format baskı için vektör SVG dışa aktarın."
+      }
+    ],
+    "features": [
+      {
+        "title": "4K Ultra HD çözünürlük ve 300+ DPI çıktı",
+        "description": "Fiziksel bir ticari presin gerçekten ihtiyaç duyduğu piksel yoğunluğu için tasarlanmış raster dışa aktarımlar."
+      },
+      {
+        "title": "Sıkıştırma artefaktı veya kenar bulanıklığı yok",
+        "description": "Kayıpsız işleme modül kenarlarını temiz tutar; böylece kamera asla bulanık bir sınırda takılmaz."
+      },
+      {
+        "title": "Ticari baskı öncesi uyumluluk",
+        "description": "Ofset, dijital pres ve flekso ambalaj işleri için çözünürlük çıtasını geçer."
+      },
+      {
+        "title": "Kalıcı ömür boyu taramalarla %100 ücretsiz",
+        "description": "Her yüksek çözünürlüklü PNG ve vektör indirmesi ücretsizdir — abonelik yok, filigran yok, tarama tavanı yok."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Baskı boyutuna göre çözünürlük ve piksel boyutu matrisi",
+      "description": "Standart ticari baskı ölçütü olan 300 DPI'da gereken piksel boyutlarını hesaplayın ($Piksel = İnç \\times 300$).",
+      "headers": [
+        "Fiziksel baskı boyutları",
+        "300 DPI'da gereken çözünürlük",
+        "Önerilen dosya biçimi",
+        "Hedef uygulama"
+      ],
+      "rows": [
+        [
+          "1,0\" x 1,0\" (25 mm x 25 mm)",
+          "300 x 300 piksel",
+          "300 DPI PNG / vektör SVG",
+          "Kartvizitler, isim rozetleri"
+        ],
+        [
+          "2,0\" x 2,0\" (50 mm x 50 mm)",
+          "600 x 600 piksel",
+          "300 DPI PNG / vektör SVG",
+          "Masa standları, bardak altlıkları, ürün etiketleri"
+        ],
+        [
+          "4,0\" x 4,0\" (100 mm x 100 mm)",
+          "1200 x 1200 piksel",
+          "Vektör SVG / 300 DPI PNG",
+          "Broşürler, kartpostallar, dergi reklamları"
+        ],
+        [
+          "8,0\" x 8,0\" (200 mm x 200 mm)",
+          "2400 x 2400 piksel (4K)",
+          "Vektör SVG",
+          "Posterler, mağaza içi tabelalar, afişler"
+        ],
+        [
+          "20\"+ (büyük format ve billboardlar)",
+          "Sonsuz vektör ölçekleme",
+          "Vektör SVG / EPS",
+          "Fuar arka planları, billboardlar"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Ticari ambalaj ve ürün etiketleri",
+        "description": "Gıda ambalajlarında, kozmetik şişelerde ve perakende kutularında, nokta kazancı modüllerin üzerine yayılmadan keskin bir kod basın."
+      },
+      {
+        "title": "Lüks iş kırtasiyesi ve antetli kâğıtlar",
+        "description": "Folyo baskı, kabartma ya da seçici UV işine, premium kartonda ihtiyaç duyduğu hassasiyeti verin."
+      },
+      {
+        "title": "Büyük format afişler ve açık hava billboardları",
+        "description": "Bir otoparkın öbür ucundan bile temiz çözülen çok metrelik bir panoya ölçeklendirin."
+      },
+      {
+        "title": "Dergi reklamları ve doğrudan posta katalogları",
+        "description": "Ulusal dergi ve katalog matbaacılarının sizden beklediği 300+ DPI baskı öncesi çıtasını geçin."
+      },
+      {
+        "title": "Yüksek tanımlı dijital ekranlar ve 4K kiosklar",
+        "description": "Dokunmatik ekranda, dijital menü panosunda ya da konferans slaytında kodun bulanıklaşmadan keskin görünmesini sağlayın."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Çözünürlük ve baskı kalitesi tuzaklarından kaçınma",
+      "points": [
+        "Kodun ekran görüntüsünü almak. Asla baskı için ekran görüntüsü almayın — düşük web çözünürlüğünü kilitler. Orijinal yüksek çözünürlüklü PNG'yi ya da SVG'yi indirin.",
+        "JPEG sıkıştırması. Kayıplı JPEG, modül kenarları etrafında soluk halkalar oluşturur. Bunun yerine kayıpsız PNG ya da SVG olarak kaydedin.",
+        "Gazete kâğıdında nokta kazancı. Gözenekli, ucuz kâğıt mürekkebi yayar ve modüller arasındaki boşlukları kapatır. Gazete kâğıdı için kodu yaklaşık %20 büyütün.",
+        "Dışa aktarırken örnekleme düşürme. Bir kodu InDesign ya da Canva'ya yerleştirdiğinizde, dışa aktarmanın onu sessizce 300 DPI'nın altına indirmediğini kontrol edin.",
+        "Yumuşak rasterleştirme. Bir vektörü rasterleştiriyor musunuz? Modül köşelerinin dik açılı kalması için en yakın komşu ya da keskin kenarlı işleme kullanın."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "QR kodları basarken yüksek çözünürlük neden önemlidir?",
+        "a": "Çünkü kamera niyetleri değil kenarları okur. Düşük çözünürlüklü bir görüntü baskıda modül sınırlarını bulandırır ve bulanık bir sınır, bir tarayıcının eşiklemesini zorlaştıran tam da şeydir. 300+ DPI'da kenarlar keskin kalır ve çözme anında gerçekleşir."
+      },
+      {
+        "q": "QR Generator Online PNG dosyaları için hangi çözünürlüğü dışa aktarır?",
+        "a": "PNG dışa aktarımı 300 DPI'da 2048x2048 pikseldir — kalite kaybı olmadan yaklaşık 7x7 inçe kadar temiz basmaya yeterlidir."
+      },
+      {
+        "q": "Yüksek çözünürlüklü PNG yerine ne zaman vektör SVG kullanmalıyım?",
+        "a": "Kod büyüdüğünde ya da profesyonel bir işte kullanıldığında SVG'ye yönelin: posterler, afişler, billboardlar, bir Illustrator ya da InDesign iş akışı ya da lazerle gravürlenen ya da vinil kesilen her şey."
+      },
+      {
+        "q": "Yüksek çözünürlüklü QR kodlar para mı tutar ya da Pro hesap mı gerektirir?",
+        "a": "Hesap yok, maliyet yok. Buradaki her yüksek çözünürlüklü PNG ve vektör SVG ücretsiz, sınırsız ve filigransızdır."
+      },
+      {
+        "q": "QR kodumu hangi boyutta basmam gerektiğini nasıl bilirim?",
+        "a": "10:1 kuralını kullanın: tarama mesafesini ona bölün. Bir metre uzaktan okunacak bir poster, en az 10 cm (4 inç) genişliğinde bir koda ihtiyaç duyar."
+      },
+      {
+        "q": "Özel renkler ve logolarla yüksek çözünürlüklü QR kod oluşturabilir miyim?",
+        "a": "Renkleri, nokta desenini ve köşe şekillerini stillendirebilir, ortaya bir logo ekleyebilir ve sonucu yine de 4K PNG ya da vektör SVG olarak dışa aktarabilirsiniz."
+      },
+      {
+        "q": "Ticari matbaalar neden 72 DPI görüntüleri reddeder?",
+        "a": "Presleri 2400+ DPI'da çalışır. 72 DPI'lık bir dosya yeterli piksel verisi taşımaz; bu yüzden görünür bloklar olarak basılır ve baskı öncesi kontrolü geçemez."
+      },
+      {
+        "q": "Yüksek çözünürlüklü QR kodlar oluştururken verilerim güvende mi?",
+        "a": "Evet. Yüksek çözünürlüklü işleme tarayıcınızda yerel olarak gerçekleşir; bir sunucuya veri ya da görsel gönderilmez."
+      }
+    ],
+    "bestPractices": "Baskı için vektör SVG ya da 300 DPI'da 2048 px PNG dışa aktarın ve kayıplı JPEG'den uzak durun. Her zaman olduğu gibi, tam seriden önce basılı kanıtı tarayın — çözünürlük sorunları yalnızca kâğıtta ortaya çıkar, ekranda asla."
+  },
+  '/about': {
+    "sections": [
+      {
+        "title": "Gizlilik öncelikli barkod teknolojisi inşa etmek",
+        "paragraphs": [
+          "QR Generator Online, deneme sürelerinden sonra kullanıcıların bağlantılarını rehin tutan ücretli ve yırtıcı QR oluşturucuların yarattığı hayal kırıklığını gidermek için yapıldı.",
+          "Tüm statik oluşturma, kişisel iletişim bilgilerini ya da hassas WiFi kimlik bilgilerini sunucularımızda kaydetmeden tarayıcınızda %100 işlenir."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Mimari misyonumuz — Açık, özel ve kalıcı QR teknolojisi",
+      "paragraphs": [
+        "QR Generator Online ortak bir sıkıntıyla başladı. Birkaç mühendis, birkaç yazı tipi tasarımcısı ve bazı gizlilik savunucuları aynı şeyin olduğunu görmüştü: 2B barkod üretimi — Denso Wave ve ISO/IEC'nin 2000 yılında yayımladığı açık bir standart — basılı pazarlamayı rehin tutan aylık 30 dolarlık aboneliklerin arkasına kapatılmıştı. Bu yüzden alternatifi inşa ettiler.",
+        "Bunun altındaki mühendislik tercihi söylemesi kolay, taklit etmesi zor bir şeydir: her şey istemci tarafında çalışır. Reed-Solomon polinom matematiği, matris birleştirme, vektör işleme — hepsi modern JavaScript ve WebAssembly aracılığıyla tarayıcınızda yürütülür. Yolda hiçbir izleme vekili yoktur, çünkü yolda hiçbir sunucu yoktur.",
+        "Bu platform bugün 190 ülkedeki insanlara ulaşıyor. Köşedeki bir kahve dükkânı ile bir Fortune 500 baskı öncesi şirketi aynı oluşturucuyu kullanıyor; ikisi de ücretsiz duvarı, tarama sınırı ve kayıt olmadan kalıcı, yüksek çözünürlüklü vektör kodlar alıyor."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Mimari felsefemiz ile geleneksel ticari QR SaaS karşılaştırması",
+      "headers": [
+        "Temel değer / ilke",
+        "QR Generator Online",
+        "Geleneksel ticari QR SaaS"
+      ],
+      "rows": [
+        [
+          "Fiyatlandırma modeli",
+          "Sonsuza kadar %100 ücretsiz (ödeme duvarı ve abonelik yok)",
+          "Tekrarlayan aylık abonelik (15 - 45 $/ay)"
+        ],
+        [
+          "Veri mimarisi",
+          "%100 istemci tarafı (tüm işlemler tarayıcı belleğinde)",
+          "Tüm tarama trafiğini kaydeden merkezi sunucu vekili"
+        ],
+        [
+          "Gizlilik ve GDPR uyumu",
+          "Sıfır veri toplama, sıfır çerez, sıfır izleme",
+          "Ziyaretçilerin IP adreslerini, konumlarını ve cihazlarını toplar"
+        ],
+        [
+          "Vektör dosya dışa aktarımları",
+          "Tüm kullanıcılar için ücretsiz tam vektör SVG ve EPS",
+          "Vektör biçimleri pahalı Pro katmanların arkasında kilitli"
+        ],
+        [
+          "Kod uzun ömürlülüğü",
+          "Kalıcı ömür boyu geçerlilik (doğrudan kodlanmış statik)",
+          "Abonelik ödenmezse kodlar 14 gün sonra sona erer"
+        ],
+        [
+          "Ticari kullanım hakları",
+          "Tam ve kısıtsız ticari lisans dahil",
+          "Ücretsiz/başlangıç planlarında ticari kullanım kısıtlı"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Dünya genelindeki tüm kullanıcılar için açık erişim",
+        "description": "Aynı kurumsal düzeydeki araç seti herkese sunulur — tek başına çalışan bir tasarımcıya, köşedeki bir dükkâna ya da küresel bir markaya — ücretli bir katman için hiçbir şey saklanmaz."
+      },
+      {
+        "number": 2,
+        "title": "Tasarımdan başlayan ödünsüz veri gizliliği",
+        "description": "Hiçbir müşteri URL'si, parolası ya da iletişim profili saklanmaz, kaydedilmez ya da satılmaz. Bunların herhangi birini tutan bir veritabanı zaten yoktur."
+      },
+      {
+        "number": 3,
+        "title": "Fiziksel baskı için hassas baskı öncesi standartlar",
+        "description": "Vektör SVG çıktısı ticari bir presten sağ çıkacak şekilde tasarlanmıştır — matematiksel olarak kesin, ambalaj ve büyük format işler için hazır."
+      }
+    ],
+    "features": [
+      {
+        "title": "%100 tarayıcı tabanlı istemci tarafı mimari",
+        "description": "Kodlama ve işleme yerel olarak gerçekleşir; bu yüzden önizleme anlıktır ve girdileriniz özel kalır."
+      },
+      {
+        "title": "Tam ISO/IEC 18004 uyumu",
+        "description": "Uluslararası standardın harfi harfine göre inşa edilmiştir; bu yüzden bir kod herhangi bir iOS ya da Android kamerada ilk denemede taranır."
+      },
+      {
+        "title": "Kayıpsız vektör SVG ve 4K PNG çıktısı",
+        "description": "Tek bir dışa aktarma yolu, bir mikro etiketi de 50 metrelik bir otoyol billboardını da aynı ölçüde iyi karşılar."
+      },
+      {
+        "title": "Kalıcı ömür boyu kod garantisi",
+        "description": "Ara bir yönlendirme olmadığı için kapatılacak bir şey yoktur. Burada bastığınız kod çalışmaya devam eder."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Küresel ölçeğimiz ve performans ölçütlerimiz",
+      "description": "QR Generator Online platformunun güvenilirliğini ve küresel erişimini yansıtan temel ölçütler.",
+      "headers": [
+        "Ölçüt / metrik",
+        "Performans standardı",
+        "Teknik mimari",
+        "Kullanıcı faydası"
+      ],
+      "rows": [
+        [
+          "Oluşturma gecikmesi",
+          "< 50 milisaniye",
+          "Tarayıcıda yerel WebAssembly / JS yürütme",
+          "Anında gerçek zamanlı önizleme güncellemeleri"
+        ],
+        [
+          "Tarama güvenilirlik oranı",
+          "%99,99 ilk geçişte optik çözme",
+          "ISO/IEC 18004 uyumlu zamanlama desenleri",
+          "Müşteriler için sıfır tarama sürtünmesi"
+        ],
+        [
+          "Vektör hassasiyeti",
+          "Sonsuz matematiksel ölçeklenebilirlik",
+          "Temiz W3C SVG vektör yolu geometrisi",
+          "Kusursuz ticari baskı presi çıktısı"
+        ],
+        [
+          "Sunucu veri kaydı",
+          "%0,00 (sıfır bayt depolanan)",
+          "Harici veritabanı veya izleme vekili yok",
+          "Tam GDPR / CCPA gizlilik uyumu"
+        ],
+        [
+          "Küresel erişilebilirlik",
+          "%100,0 statik çalışma süresi",
+          "Dağıtık küresel edge CDN teslimatı",
+          "Dünya genelinde 7/24/365 erişilebilirlik"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Bağımsız küçük işletmeler ve yerel perakende",
+        "description": "Profesyonel pazarlama materyalleri, mağaza tabelaları ve ambalaj — kâra bir yazılım aboneliği yük olmadan."
+      },
+      {
+        "title": "Tasarım ajansları ve yaratıcı profesyoneller",
+        "description": "Hiçbir düzenleme gerektirmeden doğrudan InDesign, Illustrator ya da Figma'ya aktarılan temiz vektör SVG dosyaları."
+      },
+      {
+        "title": "Baskı öncesi evleri ve ticari ambalaj matbaaları",
+        "description": "Reddedilmek yerine sıkı bir baskı öncesi denetimi geçen yüksek kontrastlı barkod kalıp çizimleri."
+      },
+      {
+        "title": "Kâr amacı gütmeyen kuruluşlar, okullar ve topluluk örgütleri",
+        "description": "Temassız etkinlik girişleri, sınıf sınavları ve bağış bağlantıları — hepsi hiçbir teknoloji bütçesi olmadan."
+      },
+      {
+        "title": "Yazılım geliştiricileri ve teknik entegratörler",
+        "description": "Bir mobil uygulamayı bağlarken `WIFI:`, `mailto:`, `vCard 3.0` ve `BIP-0021` gibi URI şemaları için temiz bir referans."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Temel mühendislik standartlarımız ve taahhütlerimiz",
+      "points": [
+        "Basılı bir kodu rehin tutmayacağız. Statik kodlar kalıcıdır — yönlendirme yok, koşullara gömülü bir son kullanma tuzağı yok.",
+        "Verilerinizi satmayacağız. İstemci tarafında çalıştığımız için, madencilik yapabileceğimiz ya da bir reklamverene verebileceğimiz bir kullanıcı veritabanı zaten yok.",
+        "Vektör indirmelerini ödeme duvarının arkasına koymayacağız. SVG dışa aktarımı bir tasarımcının iş gereksinimidir; bu yüzden herkes için ücretsiz kalır.",
+        "ISO uyumuna bağlı kalacağız. Her modül, zamanlama deseni ve bulucu göz ISO/IEC 18004'e karşı doğrulanır.",
+        "Açık web'i desteklemeye devam edeceğiz. İhtiyacı olan herkes için ücretsiz, hızlı ve faydalı tarayıcı araçları — bütün fikir budur."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "QR Generator Online'ın misyonu nedir?",
+        "a": "Kalıcı, gizlilik öncelikli ve ticari kalitede QR üretimini herkesin eline ücretsiz vermek — zaten bastığınız bir kodla aranızda duran bir abonelik olmadan."
+      },
+      {
+        "q": "QR Generator Online'ı kim kurdu?",
+        "a": "Abonelik tabanlı QR hizmetlerine dürüst ve açık bir karşı ağırlık isteyen küçük bir yazılım mühendisi, baskı öncesi tasarımcı ve gizlilik savunucusu grubu."
+      },
+      {
+        "q": "İstemci tarafı mimariniz kullanıcı gizliliğini nasıl korur?",
+        "a": "Oluşturma baştan sona JavaScript aracılığıyla tarayıcınızda çalışır. Hedef URL'leriniz, iletişim bilgileriniz ve WiFi parolalarınız bize asla ulaşmaz, çünkü onları gönderecek bir sunucu çağrısı yoktur."
+      },
+      {
+        "q": "Kurumsal işletmeler QR Generator Online'ı ticari ambalaj için kullanabilir mi?",
+        "a": "Zaten kullanıyorlar. Birçok ticari marka ve baskı öncesi ekip, bu vektör kodları dünya genelinde ambalajlara, perakende standlarına, kitaplara ve reklam kampanyalarına yerleştiriyor."
+      },
+      {
+        "q": "Gizli maliyetler, Pro hesaplar ya da kredi kartı gereksinimleri var mı?",
+        "a": "Gizli hiçbir şey yok. Her araç, her stil seçeneği, logo gömme ve her vektör indirme tüm kullanıcılar için ücretsizdir."
+      },
+      {
+        "q": "Oluşturulan QR kodların tüm cihazlarda güvenilir şekilde taranmasını nasıl sağlıyorsunuz?",
+        "a": "Motor ISO/IEC 18004'e uyar, zorunlu 4 modüllük sessiz bölgeyi korur ve logonun konduğu her yerde H seviyesi Reed-Solomon düzeltmesi uygular. Bu kombinasyon, bir kodun cihazlar arasında ilk denemede okunmasını sağlar."
+      },
+      {
+        "q": "Geri bildirim verebilir ya da yeni özellik önerebilir miyim?",
+        "a": "Lütfen yapın — topluluk girdileri inşa ettiğimiz şeylerin çoğunu yönlendirir. Bir fikir ya da özellik isteği göndermenin en hızlı yolu İletişim sayfasıdır."
+      },
+      {
+        "q": "Sunucularınız nerede barındırılıyor?",
+        "a": "Statik varlıklar küresel bir edge CDN üzerinden sunulur; bu yüzden sayfa Kuzey Amerika'dan, Avrupa'dan, Asya'dan ya da başka herhangi bir yerden hızlı yüklenir."
+      }
+    ],
+    "bestPractices": "Araç size zaman kazandırdıysa, paylaşın — tanıdığınız bir tasarımcı, dükkân sahibi ya da pazarlama ekibi muhtemelen onu da kullanabilir."
+  },
+  '/contact': {
+    "sections": [
+      {
+        "title": "Mühendislik ve destek ekibimize ulaşın",
+        "paragraphs": [
+          "Özel QR kod formatları, baskı en iyi uygulamaları ya da toplu oluşturma hakkında sorularınız mı var? Bize support@qr-generator.online adresinden e-posta gönderin.",
+          "Teknik destek ekibimiz tüm talepleri 24 iş saati içinde yanıtlar."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Kurumsal teknik destek, talepler ve topluluk yardımı",
+      "paragraphs": [
+        "Bir baskı öncesi spesifikasyonda, yüksek hacimli bir toplu işte, InDesign'da düzgün oturmayan bir SVG vektörde ya da kurumsal bir veri formatında takıldınız mı? Destek ekibi tam da bunun için burada.",
+        "Yanıt verenler ISO/IEC 18004'ü, flekso ambalaj baskı öncesini, optik taramanın fiziğini ve iOS (AVFoundation) ile Android (Google ML Kit) içindeki kamera çözümleyicilerini iyi bilir. Tasarımcılar, ticari matbaacılar, pazarlama liderleri ve geliştiriciler hepsi aynı gelen kutusuna ulaşır ve gerçek bir yanıt alır.",
+        "Aşağıdan size uygun kanalı seçin. Her teknik ve ticari talep 24 iş saati içinde yanıtlanır."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Destek kanalları ve yanıt süresi ölçütleri",
+      "headers": [
+        "Talep kategorisi",
+        "Önerilen kanal",
+        "Ortalama yanıt süresi",
+        "Yardım kapsamı"
+      ],
+      "rows": [
+        [
+          "Baskı öncesi ve vektör baskı desteği",
+          "support@qr-generator.online",
+          "< 12 iş saati",
+          "Vektör SVG biçimlendirme, DPI doğrulama, baskı öncesi provalama"
+        ],
+        [
+          "Kurumsal ve yüksek hacimli talepler",
+          "support@qr-generator.online",
+          "< 12 iş saati",
+          "Özel veri şemaları, toplu oluşturma, marka entegrasyonu"
+        ],
+        [
+          "Hata raporları ve teknik geri bildirim",
+          "support@qr-generator.online",
+          "< 24 iş saati",
+          "Tarayıcı uyumluluğu, işleme geri bildirimi, özellik istekleri"
+        ],
+        [
+          "Genel kullanıcı ve nasıl yapılır soruları",
+          "Bilgi bankası ve SSS sayfası",
+          "Anında self-servis",
+          "Boyut, stilizasyon ve tarama hakkında kapsamlı rehberler"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Kapsamlı bilgi bankamıza bakın",
+        "description": "Boyut, baskı ve dosya biçimi sorularının çoğunun yanıtı zaten bilgi bankası ve SSS'de yazılıdır — e-posta göndermeden önce bir göz atmaya değer."
+      },
+      {
+        "number": 2,
+        "title": "Talebinizin teknik ayrıntılarını hazırlayın",
+        "description": "Hangi şemayı kodladığınızı (URL, vCard, WiFi), hangi fiziksel boyutta bastığınızı ve hangi yazılımda düzenlediğinizi not edin — Illustrator, InDesign ya da Canva."
+      },
+      {
+        "number": 3,
+        "title": "Talebinizi desteğe gönderin",
+        "description": "Ekibe support@qr-generator.online adresinden e-posta gönderin. Bir uzman 24 iş saati içinde yanıt verir."
+      }
+    ],
+    "features": [
+      {
+        "title": "Doğrudan baskı öncesi mühendislik uzmanlığı",
+        "description": "Gerçekten ofset, flekso ve dijital pres iş akışlarını yönetmiş kişilerden tavsiye — senaryolu bir birinci kademe cevap değil."
+      },
+      {
+        "title": "24 saat içinde hızlı yanıt taahhüdü",
+        "description": "İster bir topluluk sorusu ister kurumsal bir talep olsun, bir iş günü içinde okunur ve yanıtlanır."
+      },
+      {
+        "title": "Kapsamlı self-servis bilgi bankası",
+        "description": "Boyut formülleri, hata düzeltme ve alt tabaka seçimi üzerine düzinelerce derinlemesine rehber — istediğiniz zaman açın."
+      },
+      {
+        "title": "%100 ücretsiz topluluk ve kurumsal destek",
+        "description": "Küçük işletme, kâr amacı gütmeyen kuruluş ya da kurumsal bir tasarımcı olun, yardım aynıdır ve bir maliyeti yoktur."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Sık istenen destek konuları ve doğrudan kaynaklar",
+      "description": "Anında yardım için özel teknik kaynaklara hızlı bağlantılar.",
+      "headers": [
+        "Konu alanı",
+        "Birincil kaynak rehberi",
+        "Temel formül / standart",
+        "Hedef kitle"
+      ],
+      "rows": [
+        [
+          "Baskı boyutu ve S = D / 10 formülü",
+          "QR kod basımına eksiksiz rehber",
+          "$S = D / 10$",
+          "Grafik tasarımcılar, baskı öncesi teknisyenler"
+        ],
+        [
+          "vCard 3.0 kartvizit biçimlendirme",
+          "vCard QR kodlu kartvizit rehberi",
+          "RFC 2426 / RFC 6350",
+          "Kurumsal pazarlama, ağ oluşturma liderleri"
+        ],
+        [
+          "Konaklama menü operasyonları",
+          "Restoranlar için QR kod rehberi",
+          "HTTPS / mobil uyumlu görünüm alanı",
+          "Restoran sahipleri, yiyecek ve içecek operatörleri"
+        ],
+        [
+          "Emlak tabelası pazarlaması",
+          "Emlak QR potansiyel müşteri oluşturma rehberi",
+          "Matterport 3D / S = D / 10",
+          "Emlak komisyoncuları, mülk yöneticileri"
+        ],
+        [
+          "WiFi ağı erişim kurulumu",
+          "Konaklama için WiFi QR kodları rehberi",
+          "WIFI: URI protokolü (WPA3/WPA2)",
+          "Otel yöneticileri, kafe sahipleri, BT personeli"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Ticari ambalaj baskı öncesi doğrulama",
+        "description": "Plakalar kesilmeden önce ambalaj SVG'nizin ISO kontrast ve sessiz bölge sınırlarını geçtiğini ekibe kontrol ettirin."
+      },
+      {
+        "title": "Büyük format billboard ve açık hava tabelası",
+        "description": "Arabadan geçerken taranabilmesi için 20 ila 50 metre uzaktan okunacak bir otoyol panosunun tam boyutunu alın."
+      },
+      {
+        "title": "Özel vCard kurumsal dağıtımı",
+        "description": "Binlerce kişilik bir iş gücünde vCard kartvizit kodlarını nasıl standardize edeceğinizi belirleyin."
+      },
+      {
+        "title": "Konaklamada çok lokasyonlu menü dağıtımları",
+        "description": "Her şube için ayrı bir baş ağrısı olmadan bir franchise ağı genelinde hızlı yüklenen bir PDF menü dağıtımını planlayın."
+      },
+      {
+        "title": "Eğitim ve kâr amacı gütmeyen kampanya desteği",
+        "description": "Bir sınıf sınavı projesi, bir müze sergisi ya da bir bağış kampanyası için yardım alın."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Hızlı destek değerlendirmesi için eklenmesi gereken bilgiler",
+      "points": [
+        "Oluşturucuyu belirtin. Hangi araçta olduğunuzu söyleyin — URL, vCard, WiFi, Google Forms.",
+        "Baskı boyutunu verin. Hedeflenen genişlik ve yükseklik çok yardımcı olur, örneğin bir kartvizitte 25 mm x 25 mm.",
+        "Tarama mesafesini belirtin. İnsanlar yaklaşık ne kadar uzakta olacak — bir menü için 30 cm mi, bir arsa tabelası için 3 metre mi?",
+        "Yazılımı belirtin. Illustrator, InDesign, Photoshop, CorelDRAW ya da Figma — tavsiyeyi değiştirir.",
+        "Dosyayı ekleyin. Bir tarama sorunu için dışa aktarılmış SVG ya da PNG'yi gönderin ki doğrudan bakabilelim."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "QR Generator Online destek ekibi ne kadar hızlı yanıt veriyor?",
+        "a": "24 iş saati içinde ve çoğunlukla bir iş gününde 12 saat içinde."
+      },
+      {
+        "q": "Birincil destek e-posta adresi nedir?",
+        "a": "support@qr-generator.online doğrudan teknik ekibe ulaşır."
+      },
+      {
+        "q": "Telefon ya da canlı sohbet desteği sunuyor musunuz?",
+        "a": "Destek e-posta ve bilgi bankası üzerinden çalışır, telefon ya da sohbet üzerinden değil. Hizmetin tamamen ücretsiz kalmasının bir parçası budur."
+      },
+      {
+        "q": "Baskıya göndermeden önce ticari baskı tasarımımı inceleyebilir misiniz?",
+        "a": "Memnuniyetle. Vektör SVG ya da PDF provanızı support@qr-generator.online adresine gönderin; baskı öncesi ekibi taahhüt etmeden önce sessiz bölgeyi, kontrastı ve modül geometrisini kontrol edecektir."
+      },
+      {
+        "q": "Özel bir özellik ya da yeni bir QR kod türü talep edebilir miyim?",
+        "a": "Özellik önerileri memnuniyetle karşılanır ve gerçekten okunur. Fikrinizi support@qr-generator.online adresinden ürün ekibine e-posta ile iletin."
+      },
+      {
+        "q": "Danışmanlık ya da destek ücreti alıyor musunuz?",
+        "a": "Hayır. Teknik yardım, baskı öncesi incelemeler ve nasıl yapılır rehberliği hepsi ücretsizdir."
+      },
+      {
+        "q": "Self-servis rehberlere ve eğitimlere nerede ulaşabilirim?",
+        "a": "Blog ve SSS sayfaları; baskı boyutları, restoran menüleri, vCard kişileri ve WiFi erişimi üzerine ayrıntılı rehberler içerir."
+      },
+      {
+        "q": "Müşteri iletişim bilgileri gizli tutulur mu?",
+        "a": "Tamamen. Destekle paylaştığınız her e-posta, ayrıntı ya da tasarım gizli kalır ve asla paylaşılmaz ya da satılmaz."
+      }
+    ],
+    "bestPractices": "Anında bir yanıt için önce SSS ve bloga göz atın; e-posta gönderdiğinizde baskı ölçülerinizi ve tasarım yazılımınızı ekleyin — bu, iki e-postalık bir yazışmayı tek e-postaya indirir."
+  },
+  '/privacy': {
+    "sections": [
+      {
+        "title": "İstemci tarafı veri işleme ve sıfır depolama",
+        "paragraphs": [
+          "QR Generator Online, statik QR kod oluşturmayı web tarayıcınızda yerel olarak işler. Kodladığınız metni, parolaları ya da iletişim bilgilerini saklamaz, toplamaz veya satmayız.",
+          "GDPR ve CCPA dahil olmak üzere uluslararası veri gizliliği düzenlemelerine kesinlikle uyuyoruz."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Kriptografik gizlilik mimarimiz ve veri egemenliği politikamız",
+      "paragraphs": [
+        "Gizlilik sonradan eklediğimiz bir özellik değil — bütün yapının biçimidir. Çoğu ticari SaaS platformu veri toplar, IP adreslerini izler ve sessizce neye göz attığınızı satar. Bu hizmet tam tersi bir önerme üzerine kuruludur: sıfır bilgi ve verileriniz size ait kalır.",
+        "Burada bir kod oluşturduğunuzda her adım tarayıcınızın içinde gerçekleşir. Reed-Solomon kodlaması, matris rasterleştirme, vektör işleme — hepsi JavaScript ve WebAssembly aracılığıyla bellekte yerel olarak çalışır. URL'leriniz, metinleriniz, vCard kişileriniz, WiFi parolalarınız ve yüklediğiniz logolar hiçbir zaman ağa çıkmaz ve bir veritabanına düşmez, çünkü veritabanı yoktur ve ağ çağrısı da yoktur.",
+        "Bu politika, bunun arkasındaki teknik standartları, sıfır izleme taahhütlerini ve tüm tasarımın GDPR, CCPA ve ISO/IEC gizlilik çerçeveleriyle nasıl hizalandığını ortaya koyar."
+      ]
+    },
+    "comparisonTable": {
+      "title": "QR Generator Online gizlilik mimarisi ile geleneksel QR SaaS platformlarının karşılaştırması",
+      "headers": [
+        "Gizlilik ve veri ölçütü",
+        "QR Generator Online (sıfır bilgi)",
+        "Geleneksel ticari QR platformları"
+      ],
+      "rows": [
+        [
+          "Veri işleme konumu",
+          "%100 istemci tarafı (tarayıcı belleğinizin içinde)",
+          "Merkezi harici sunucu veritabanları"
+        ],
+        [
+          "Hedef URL kaydı",
+          "Sıfır kayıt (hedef URL'nizi asla görmeyiz)",
+          "Tam hedef URL'leri buluta kaydeder ve saklar"
+        ],
+        [
+          "Ziyaretçi IP adresi izleme",
+          "Sıfır IP izleme (doğrudan kodlanmış statik bağlantılar)",
+          "Tarayan herkesin IP adreslerini izler ve kaydeder"
+        ],
+        [
+          "WiFi parolası aktarımı",
+          "Asla ağ üzerinden aktarılmaz (sıfır risk)",
+          "Düz metin olarak ya da bulut veritabanlarında saklanır"
+        ],
+        [
+          "Kullanıcı hesabı ve e-posta toplama",
+          "Hesap, e-posta ya da kayıt gerekmez",
+          "Zorunlu hesap oluşturma ve pazarlama e-postaları"
+        ],
+        [
+          "Üçüncü taraf veri paraya çevirme",
+          "Sıfır veri satışı ya da reklam aracısıyla paylaşım",
+          "Sıklıkla toplu tarama analizlerini paraya çevirir"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Web tarayıcısında yerel istemci tarafı işleme",
+        "description": "Yazdığınız her şey — bir URL, bir parola, bir vCard — tamamen tarayıcınızın belleğinde işlenir; sunucuya giden bir API çağrısı yoktur."
+      },
+      {
+        "number": 2,
+        "title": "Sıfır bulut depolama ve sıfır veritabanı kaydı",
+        "description": "Kodlarınızı, yüklediğiniz logoları ya da hedef bağlantılarınızı saklayan bir veritabanımız yoktur. Bir şey gönderilmediği için hiçbir şey tutulmaz."
+      },
+      {
+        "number": 3,
+        "title": "Kalıcı egemenlik için doğrudan statik kodlama",
+        "description": "Basılı bir kod doğrudan hedefinize işaret eder; taramayı kaydedecek ya da engelleyecek bir üçüncü taraf vekil ortada yoktur."
+      }
+    ],
+    "features": [
+      {
+        "title": "%100 istemci tarafı kriptografik yürütme",
+        "description": "Oluşturma tarayıcı belleğinde çalışır ve girdilerinizi gizli tutan da budur — başka bir yere gidecekleri yoktur."
+      },
+      {
+        "title": "Tasarımdan gelen tam GDPR ve CCPA uyumu",
+        "description": "Kişisel bilgi toplamamak uyum için en basit yoldur ve bizim seçtiğimiz yol budur."
+      },
+      {
+        "title": "Tarayıcılar ya da son kullanıcılar için sıfır izleme",
+        "description": "Kodunuzu tarayan kişiler doğrudan sitenize ulaşır. Yolda izleme adımı yok, onlara bırakılmış bir çerez yok."
+      },
+      {
+        "title": "Hesap oluşturma ya da e-posta toplama yok",
+        "description": "Anonim olarak istediğiniz kadar oluşturun ve indirin — zaten bir kayıt yoktur."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Veri akışı ve iletim güvenliği ayrıntısı",
+      "description": "QR Generator Online'daki her QR oluşturucu türünde verilerin nasıl işlendiğinin teknik doğrulaması.",
+      "headers": [
+        "QR oluşturucu türü",
+        "Girdi veri kapsamı",
+        "İşleme yöntemi",
+        "Sunucu depolama durumu"
+      ],
+      "rows": [
+        [
+          "URL QR oluşturucu",
+          "Hedef web adresi ve UTM'ler",
+          "İstemci tarafı UTF-8 derleme",
+          "0 bayt depolanır (sıfır sunucu iletimi)"
+        ],
+        [
+          "WiFi QR oluşturucu",
+          "SSID ve WPA2/WPA3 parolaları",
+          "İstemci tarafı WIFI: dizgi kodlaması",
+          "0 bayt depolanır (tarayıcıdan asla çıkmaz)"
+        ],
+        [
+          "vCard QR oluşturucu",
+          "Ad, telefonlar, e-postalar, adres",
+          "İstemci tarafı RFC 6350 ayrıştırma",
+          "0 bayt depolanır (sıfır adres defteri toplama)"
+        ],
+        [
+          "WhatsApp / SMS / telefon",
+          "Telefon numaraları ve mesaj metni",
+          "İstemci tarafı URI dizgisi sentezi",
+          "0 bayt depolanır (sıfır kişi kaydı)"
+        ],
+        [
+          "Kripto QR oluşturucu",
+          "Genel cüzdan alma adresi",
+          "İstemci tarafı BIP-0021 URI sentezi",
+          "0 bayt depolanır (özel anahtarlara asla dokunulmaz)"
+        ],
+        [
+          "Logo yüklemeleri ve görseller",
+          "PNG, SVG, JPEG marka görselleri",
+          "İstemci tarafı HTML5 Canvas işleme",
+          "0 bayt depolanır (sıfır görsel yükleme)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Sağlık hizmetleri ve hasta mahremiyeti (HIPAA)",
+        "description": "Korunan sağlık bilgisinin bir sunucuya gitme riski olmadan hasta kabul ve klinik bağlantısı kodları oluşturun."
+      },
+      {
+        "title": "Hukuki ve kurumsal işletme gizliliği",
+        "description": "Tam kurumsal veri egemenliğini korurken iç yönetim kurulu toplantısı ya da dava belgesi bağlantıları oluşturun."
+      },
+      {
+        "title": "Devlet tesisleri ve savunma yükleniciler",
+        "description": "Gizli bir kimlik bilgisi odadan asla çıkmadan güvenli bir tesisin içinde ziyaretçilere WiFi kartları dağıtın."
+      },
+      {
+        "title": "Finansal hizmetler ve kripto para transferleri",
+        "description": "Cüzdan adresinin ve tutarın kesinlikle cihazınızda kaldığını bilerek bir blok zinciri ödeme kodu oluşturun."
+      },
+      {
+        "title": "Tüketici markası pazarlaması ve güven inşası",
+        "description": "Gizliliğe duyarlı müşterilere, kampanya kodunuzu taramanın nerede olduklarını izlemeyeceğini dürüstçe söyleyin."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Tarayıcınızda istemci tarafı gizliliği nasıl doğrularsınız",
+      "points": [
+        "Ağ sekmesini izleyin. Geliştirici Araçlarını (F12) açın ve bir kod oluştururken ya da logo yüklerken Network'e bakın. Hiçbir şey çıkmaz — verilerinizi taşıyan POST ya da GET yok.",
+        "Fişi çekin. Sayfayı yükleyin, WiFi ve mobil veriyi kapatın, sonra bir kod oluşturun. Anında, çevrimdışı görünür — bu yalnızca her şey tarayıcınızda çalışıyorsa mümkündür.",
+        "Kendi kodunuzu çözün. Oluşturulan bir URL kodunu herhangi bir tarayıcı uygulamasıyla okuyun. Çözülen metin tam URL'nizdir; etrafında bir yönlendirme alanı adı sarılı değildir.",
+        "İzleyicileri arayın. Oluşturucu sayfaları davranışsal izleme pikselleri ya da veri aracısı betikleri yüklemez.",
+        "Sekmeyi kapatın. Veriler uçucu bellekte yaşadığı için sekmeyi kapatmak girdiğiniz her şeyi siler."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "QR Generator Online URL'lerimi, parolalarımı ya da iletişim ayrıntılarımı saklıyor mu?",
+        "a": "Girdiğiniz hiçbir şey saklanmaz. Oluşturma tamamen tarayıcınızın belleğinde gerçekleşir; bu yüzden hiçbir kısmı asla bir sunucuya iletilmez ya da orada tutulmaz."
+      },
+      {
+        "q": "QR kodlarımı kaç kişinin taradığını izliyor musunuz?",
+        "a": "Yapamayız ve tasarım gereği yapamayız. Statik bir kod, ortada bir yönlendirme sunucusu olmadan doğrudan hedefinize bağlanır; bu yüzden bir taramanın sayılabileceği ya da kaydedilebileceği bir nokta yoktur."
+      },
+      {
+        "q": "QR Generator Online GDPR ve CCPA düzenlemelerine uygun mu?",
+        "a": "Tamamen. Hiçbir kişisel bilgi toplanmaz, saklanmaz ya da işlenmez; tarayıcıların IP adresleri de kaydedilmez — bu yüzden bu düzenlemelerin işaretleyeceği bir şey yoktur."
+      },
+      {
+        "q": "Yüklediğim logo görselleri web sunucularınızda saklanıyor mu?",
+        "a": "Hiç yüklenmezler. Logo HTML5 Canvas API'si aracılığıyla tarayıcınızda yerel olarak birleştirilir; bu yüzden görsel asla harici bir sunucuya ulaşmaz."
+      },
+      {
+        "q": "Yönlendirici parolamı içeren WiFi QR kodları oluşturmak güvenli mi?",
+        "a": "Evet. Ağ adı ve parola yerel olarak birleştirilir ve doğrudan barkod desenine yazılır. Bunların hiçbiri internet üzerinden gönderilmez."
+      },
+      {
+        "q": "Kullanıcı verilerini üçüncü taraf reklamverenlere ya da veri aracılarına satıyor musunuz?",
+        "a": "Satılacak bir şey yok. Kimseye verilecek bir kullanıcı veritabanı, hesap profili ya da izleme kaydı yoktur."
+      },
+      {
+        "q": "QR Generator Online'da çerez kullanıyor musunuz?",
+        "a": "Yalnızca sitenin çalışması için gereken en düşük teknik türde. Üçüncü taraf davranışsal reklam çerezleri kullanılmaz."
+      },
+      {
+        "q": "Gizlilik soruları için kiminle iletişime geçebilirim?",
+        "a": "Veri koruma ekibi gizlilik ve uyum sorularını doğrudan support@qr-generator.online adresinden yanıtlar."
+      }
+    ],
+    "bestPractices": "Burada hiçbir kaygı duymadan özgürce oluşturabilirsiniz — süreç baştan sona istemci tarafındadır ve herhangi bir üçüncü taraf sunucudan bağımsız kalır."
+  },
+  '/terms': {
+    "sections": [
+      {
+        "title": "Adil kullanım ve ticari dağıtım koşulları",
+        "paragraphs": [
+          "QR Generator Online üzerinden oluşturulan statik QR kodlar, basılı ve dijital ortamlarda hem kişisel hem ticari amaçlarla serbestçe kullanılabilir.",
+          "Kullanıcılar, kodlanan içeriğin geçerli yasal standartlara uymasını sağlamaktan sorumludur."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Hizmet koşulları, ticari lisanslama ve kullanım çerçevesi",
+      "paragraphs": [
+        "QR Generator Online'ı kullanmak, aşağıda belirtilen Hizmet Koşulları, ticari lisans sözleşmesi ve kabul edilebilir kullanım politikasını kabul etmek anlamına gelir.",
+        "Platform, ISO/IEC 18004 standardına uygun 2B barkodları istemci tarafında ve ücretsiz olarak üretir. Oluşturduğunuz her şey, ticari ve kişisel kullanım için tam, kısıtsız, telifsiz haklarla gelir; bu haklar size süresiz olarak verilir — daha sonra satın alınacak ayrı bir lisans gerekmez.",
+        "Aşağıdaki bölümler fikri mülkiyeti, kabul edilebilir kullanımı, sorumluluğun sınırlandırılmasını ve ticari baskı üretimine ilişkin feragatnameyi kapsar. Büyük bir baskı işinden önce okumaya değer."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Ticari lisans koşullarının özeti",
+      "headers": [
+        "Lisans kategorisi",
+        "QR Generator Online'daki koşullar ve izinler",
+        "Geleneksel ticari barkod hizmetleri"
+      ],
+      "rows": [
+        [
+          "Ticari kullanım hakları",
+          "%100 kısıtsız, telifsiz ticari haklar",
+          "Ücretli ticari lisans katmanı gerektirir (yılda 300 $ ve üzeri)"
+        ],
+        [
+          "Telif / tarama ücretleri",
+          "0,00 $ (sıfır telif veya tarama başına ücret)",
+          "Tarama hacmi aylık sınırları aştığında fazla kullanım ücretleri"
+        ],
+        [
+          "Fikri mülkiyet sahipliği",
+          "Oluşturulan tüm QR eseri ve verilerin %100'üne sahipsiniz",
+          "Platform hakları elinde tutar ya da mülkiyet yönlendirmeleri iddia eder"
+        ],
+        [
+          "Baskı çoğaltma kapsamı",
+          "Kısıtsız (ambalaj, kitaplar, billboardlar, televizyon)",
+          "Baskı tirajı ya da katman sınırlarına göre kısıtlı"
+        ],
+        [
+          "Hesap iptali riski",
+          "Sıfır risk (statik kodlar kalıcı geçerliliğe sahiptir)",
+          "Abonelik iptal edilirse kodlar devre dışı kalır"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Özel QR kod eserinizi oluşturun",
+        "description": "Burada herhangi bir oluşturucuyla kodu oluşturun; stil ve logo dahil."
+      },
+      {
+        "number": 2,
+        "title": "Anında dünya çapında bir ticari lisans edinin",
+        "description": "Oluşturulduğu anda, fiziksel ya da dijital herhangi bir ortamda kullanmak için kalıcı, telifsiz ve dünya çapında bir lisansa sahip olursunuz."
+      },
+      {
+        "number": 3,
+        "title": "Ticari ürünlerinize ve kampanyalarınıza yerleştirin",
+        "description": "Ambalaja, bir televizyon reklamına, bir perakende standına ya da bir reklam kampanyasına koyun. Bunların hiçbiriyle ilgili bir lisans ücreti yoktur."
+      }
+    ],
+    "features": [
+      {
+        "title": "Kalıcı telifsiz ticari lisans",
+        "description": "Kodları ürünlerde, kitaplarda, ambalajlarda ve dijital medyada dünya çapında sürekli bir ücret olmadan kullanın."
+      },
+      {
+        "title": "Oluşturulan varlıkların tam mülkiyeti",
+        "description": "Barkod tasarımı ve içindeki özel eser yalnızca sizindir."
+      },
+      {
+        "title": "Sıfır satıcı kilidi veya hizmete bağımlılık",
+        "description": "Statik doğrudan kodlanmış kodlar bize bağlı değildir. Gelecekteki bir politika değişikliği, zaten bastığınız bir şeyi geriye dönük bozamaz."
+      },
+      {
+        "title": "Şeffaf baskı öncesi kalite feragatnamesi",
+        "description": "Baskı tirajından önce provaları test etmeye dair açık rehberlik; küçük yazının altında hiçbir şey gizli değil."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "İzin verilen ticari kullanım durumları ve uygulamalar",
+      "description": "QR Generator Online'da izin verilen ticari uygulamaların kapsamlı bir genel bakışı.",
+      "headers": [
+        "Ticari uygulama",
+        "Lisans durumu",
+        "İzin verilen kapsam",
+        "Gerekli telif"
+      ],
+      "rows": [
+        [
+          "Perakende ürün ambalajı ve gıda etiketleri",
+          "Süresiz izinli",
+          "Sınırsız küresel birim dağıtımı",
+          "0,00 $ (yok)"
+        ],
+        [
+          "Ticari televizyon ve yayın reklamları",
+          "Süresiz izinli",
+          "Dünya çapında yayın ve yayın medyası",
+          "0,00 $ (yok)"
+        ],
+        [
+          "Kitaplar, dergiler ve basılı yayınlar",
+          "Süresiz izinli",
+          "Sınırsız küresel basılı dolaşım",
+          "0,00 $ (yok)"
+        ],
+        [
+          "Açık hava billboardları ve toplu taşıma reklamları",
+          "Süresiz izinli",
+          "Ulusal ve uluslararası açık hava kampanyaları",
+          "0,00 $ (yok)"
+        ],
+        [
+          "Kurumsal kırtasiye ve akıllı iş kartları",
+          "Süresiz izinli",
+          "Sınırsız çalışan dağıtımı",
+          "0,00 $ (yok)"
+        ],
+        [
+          "Yazılım, mobil uygulamalar ve web arayüzleri",
+          "Süresiz izinli",
+          "SaaS, web ve mobil uygulamalara gömülü",
+          "0,00 $ (yok)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Tüketici malı üreticileri ve perakendeciler",
+        "description": "Milyonlarca koliye ve şişeye yasal güvenceyle ve takip edilmesi gereken telif olmadan kalıcı vektör kodlar basın."
+      },
+      {
+        "title": "Yayıncılar ve eğitim kitabı evleri",
+        "description": "Kalıcı baskı hakları altında ders kitaplarına, romanlara ve çalışma kâğıtlarına taranabilir kodlar yerleştirin."
+      },
+      {
+        "title": "Ulusal reklam ve medya ajansları",
+        "description": "Üzerlerinde bir lisans riski olmadan TV reklamlarını, dergi sayfalarını ve billboard kampanyalarını yürütün."
+      },
+      {
+        "title": "Konaklama franchise'ları ve restoran zincirleri",
+        "description": "Yüzlerce lokasyonda dijital menü ve masa başı ödeme kodlarını standartlaştırın."
+      },
+      {
+        "title": "Bağımsız yaratıcılar, sanatçılar ve yazarlar",
+        "description": "Bütçe engeli olmadan sanat baskılarına, ürünlere ya da kendi yayınladığınız bir kitaba markalı bir kod ekleyin."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Kabul edilebilir kullanım politikası ve baskı öncesi baskı feragatnamesi",
+      "points": [
+        "Zararlı içerik yok. Kodlar oltalama siteleri, kötü amaçlı yazılım, dolandırıcılık ya da yasa dışı materyallere bağlanamaz.",
+        "Basmadan önce kanıtlayın. Büyük bir seri öncesinde basılı bir provayı test taramak sizin sorumluluğunuzdadır ve pahalı bir yeniden baskıdan kaçınmanın en iyi yoludur.",
+        "Hedefi canlı tutun. Bir kodun işaret ettiği URL'nin çevrimiçi ve erişilebilir kalmasını sağlamaktan siz sorumlusunuz.",
+        "Markalara saygı gösterin. Yalnızca kullanma hakkına sahip olduğunuz bir logoyu gömün.",
+        "Hizmet \"olduğu gibi\" sunulur. ISO/IEC 18004'e bağlıyız, ancak üçüncü bir tarafın yazıcı kalibrasyonunu garanti edemeyiz; bu yüzden son provayı kontrol etmek size düşer."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "QR Generator Online'da oluşturulan QR kodları ticari ürünlerde kullanabilir miyim?",
+        "a": "Serbestçe ve dünya genelinde. Bunları ambalajlara, kitaplara, perakende standlarına ve dijital medyaya yerleştirmek için tam, kısıtsız ve telifsiz haklara sahipsiniz."
+      },
+      {
+        "q": "İşim büyüdükçe telif ya da tarama başına ücret ödemem gerekir mi?",
+        "a": "Bir kuruş bile değil. Her kod ücretsizdir; telif, tarama sınırı ya da hacminize göre artan bir ücret yoktur."
+      },
+      {
+        "q": "Oluşturulan QR kodun fikri mülkiyetinin sahibi kimdir?",
+        "a": "Siz — barkod ve içine gömülü herhangi bir logo ya da metin tamamen sizindir."
+      },
+      {
+        "q": "Tasarım müşterilerim için QR kodlar oluşturup onlardan ücret alabilir miyim?",
+        "a": "Elbette. Ajanslar, serbest çalışanlar ve danışmanlar ücretli müşteri işleri için kod oluşturmaya davetlidir."
+      },
+      {
+        "q": "QR Generator Online gelecekte değişirse ne olur?",
+        "a": "Daha önce indirdiğiniz her şey çalışmaya devam eder. Statik bir kod verilerini matrisin içinde tutar ve sunucularımıza bağımlı değildir — bu yüzden geleceğimiz basılı kodlarınızı etkilemez."
+      },
+      {
+        "q": "Hangi içeriği kodlayabileceğime dair herhangi bir kısıtlama var mı?",
+        "a": "Yalnızca bariz olanlar: kabul edilebilir kullanım politikasında belirtildiği gibi kötü amaçlı yazılım, oltalama, dolandırıcılık ya da yasa dışı materyal yok."
+      },
+      {
+        "q": "Ticari baskı tirajları konusunda sorumluluk sınırlamanız nedir?",
+        "a": "Yazılımlarda olduğu gibi, araçlar \"olduğu gibi\" sunulur. Büyük bir ticari siparişi onaylamadan önce basılı bir provayı tarayın — bu kontrol sizin güvenceniz."
+      },
+      {
+        "q": "Yasal veya lisanslama ekibinize nasıl ulaşabilirim?",
+        "a": "Yasal ve lisanslama soruları support@qr-generator.online adresine iletilir."
+      }
+    ],
+    "bestPractices": "Büyük hacimli bir seriyi onaylamadan önce basılı bir provayı tarayın ve hedef URL'lerinizi canlı tutun — bir kod, işaret ettiği sayfa kadar değerlidir."
+  },
+  '/blog': {
+    "sections": [
+      {
+        "title": "İşletme büyümesi için pratik QR kod rehberleri",
+        "paragraphs": [
+          "Restoran menüsü optimizasyonu, minimum baskı boyutu formülleri, emlak arsa tabelasından potansiyel müşteri üretimi ve konaklamada misafir WiFi kurulumlarını kapsayan ayrıntılı eğitimler kütüphanemize göz atın.",
+          "Modern markaların, çevrimdışı etkileşimi çevrimiçine taşımak için QR teknolojisinden nasıl yararlandığını öğrenin."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Modern QR teknolojisinin kapsamlı ansiklopedisi ve pratik el kitabı",
+      "paragraphs": [
+        "Burası QR Generator Online bilgi merkezi — barkod mühendisliği, mobil QR pazarlaması, ticari baskı standartları ve kişi paylaşımı hakkında net yanıtlar alabileceğiniz yer. QR kodlar ISO/IEC 18004 standardı üzerinde çalışır ve yirmi küsur yılda montaj hattında otomobil parçalarını izlemekten, basılı bir sayfa ile bulut hizmeti, ödeme ya da mobil site arasındaki köprüye dönüşmüştür.",
+        "Perakende ambalajını başlatan bir marka yöneticisi, masa siparişini düzenleyen bir restoran sahibi, kenar payı boşluğuyla uğraşan bir baskı öncesi tasarımcı ya da bir URI şemasını bağlayan bir mühendis olun — buradaki rehberler size pazarlama parıltısı değil, gerçek formülleri, protokol ayrıntılarını ve iş akışını verir.",
+        "Aşağıdaki derinlemesine rehberler boyut fiziğini, hata düzeltme matematiğini, gizlilik yönünü ve dönüşüm taktiklerini kapsar."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Temel QR kod rehberleri ve sektör uygulamalarına genel bakış",
+      "headers": [
+        "Sektör / alan",
+        "Temel odak alanı",
+        "Temel teknik standartlar",
+        "Birincil ticari fayda"
+      ],
+      "rows": [
+        [
+          "Konaklama ve yemek",
+          "Temassız dijital PDF menüler ve masa siparişi",
+          "HTTPS, evrensel bağlantılar, duyarlı görünüm alanları",
+          "Sıfır baskı maliyeti, %25 daha yüksek masa devri"
+        ],
+        [
+          "Ticari baskı üretimi",
+          "Boyut fiziği, DPI ölçütleri ve kontrast oranları",
+          "ISO/IEC 18004, WCAG 2.1 kontrast (> 4,5:1), SVG/EPS",
+          "Tüm alt tabakalarda %100 ilk geçiş tarama güvenilirliği"
+        ],
+        [
+          "Kurumsal ve networking",
+          "vCard 3.0 dijital iletişim kartvizitleri",
+          "RFC 2426, RFC 6350, UTF-8 kodlama",
+          "%88 daha yüksek iletişim saklama, tek dokunuşla adres kaydı"
+        ],
+        [
+          "Emlak pazarlaması",
+          "Arsa tabelaları, sanal 3B turlar ve ilan sorguları",
+          "Matterport 3B bağlantıları, UTM izleme, yüksek çözünürlüklü baskı",
+          "Arabayla geçen alıcılardan 7/24 potansiyel müşteri üretimi"
+        ],
+        [
+          "Misafir WiFi yönetimi",
+          "Sürtünmesiz WPA3/WPA2 ağ erişimi",
+          "WIFI: URI şeması, IEEE 802.11ax/ac standartları",
+          "Sıfır yanlış yazılan parola, personel destek yükü azalır"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Kullanım durumunuz için en uygun protokolü seçin",
+        "description": "Önce işin neye ihtiyaç duyduğunu belirleyin — statik bir web bağlantısı (HTTPS), bir iletişim kartı (vCard), anlık WiFi (WIFI:) ya da doğrudan bir mesaj (WhatsApp/SMS). Protokol, ondan sonraki her şeyi belirler."
+      },
+      {
+        "number": 2,
+        "title": "Matematiksel boyut ve kontrast kurallarını uygulayın",
+        "description": "İnsanların hangi mesafeden tarayacağına göre kodun boyutunu S = D / 10 ile belirleyin ve kontrastı 4,5:1'in üzerinde tutun."
+      },
+      {
+        "number": 3,
+        "title": "Kayıpsız vektör dosyaları dışa aktarın ve fiziksel provaları test edin",
+        "description": "Basılacak her şey için vektör SVG dışa aktarın, ardından sevk etmeden önce birkaç iPhone ve Android'de fiziksel bir prova tarayın."
+      }
+    ],
+    "features": [
+      {
+        "title": "Derinlemesine teknik protokol analizi",
+        "description": "2B barkod üretiminin arkasındaki RFC ve ISO ayrıntıları ve bir telefon kamerasının bunları nasıl ayrıştırdığı — üstünkörü değil, açıklanmış olarak."
+      },
+      {
+        "title": "Uygulanabilir baskı üretim formülleri",
+        "description": "Bir baskı işinin gerçekten ihtiyaç duyduğu gerçek boyut denklemleri, hata düzeltme ölçütleri ve alt tabaka tavsiyeleri."
+      },
+      {
+        "title": "Sektörler arası ROI vaka çalışmaları",
+        "description": "Konaklama, ticari baskı, kurumsal networking, emlak ve sağlık hizmetleri için pratik el kitapları."
+      },
+      {
+        "title": "%100 ücretsiz ve açık erişimli bilgi",
+        "description": "Ücretsiz eğitimler, vektör şablonları ve uzman rehberleri — ödeme duvarı yok, kayıt yok."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Ana optik boyut ve görüntüleme mesafesi kopya kağıdı",
+      "description": "Tüm fiziksel ortamlarda minimum QR kod boyutlarını hesaplamak için hızlı başvuru rehberi.",
+      "headers": [
+        "Fiziksel ortam",
+        "Tipik tarama mesafesi",
+        "Minimum genişlik (S)",
+        "Önerilen hata düzeltme"
+      ],
+      "rows": [
+        [
+          "Kartvizitler ve boyunluklar",
+          "15 cm - 30 cm (6\" - 12\")",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "Seviye Q (%25) veya Seviye H (%30)"
+        ],
+        [
+          "Masa standları ve bardak altlıkları",
+          "30 cm - 50 cm (12\" - 20\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Seviye M (%15) veya Seviye H (%30)"
+        ],
+        [
+          "Ürün ambalajı ve etiketler",
+          "20 cm - 40 cm (8\" - 16\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Logo gömülüyse Seviye H (%30)"
+        ],
+        [
+          "Broşürler, afişler ve dergiler",
+          "50 cm - 150 cm (20\" - 60\")",
+          "60 mm - 150 mm (2,4\" - 6,0\")",
+          "Seviye M (%15)"
+        ],
+        [
+          "Araç filoları ve kamyonetler",
+          "3,0 m - 6,0 m (10 ft - 20 ft)",
+          "300 mm x 300 mm (12\" x 12\")",
+          "Döküm vinil üzerinde Seviye H (%30)"
+        ],
+        [
+          "Otoyol billboardları",
+          "15,0 m - 30,0 m (50 ft - 100 ft)",
+          "1500 mm - 3000 mm (5 ft - 10 ft)",
+          "Seviye L (%7) veya Seviye M (%15)"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Kurumsal omnikanal pazarlama ekipleri",
+        "description": "Küresel pazarlama bölümlerinde QR tasarımını, kampanya UTM izlemesini ve baskı öncesi vektör çıktısını standartlaştırın."
+      },
+      {
+        "title": "Ticari matbaacılar ve baskı öncesi evleri",
+        "description": "Bir pres çalışmasından önce müşteri görsellerini ISO/IEC 18004, 300+ DPI eşiği ve kontrast sınırlarına karşı kontrol edin."
+      },
+      {
+        "title": "Konaklama işletmecileri ve restoran zincirleri",
+        "description": "Personel yükünü azaltan ve masa devrini hızlandıran temassız menü ve masa başı sipariş uygulayın."
+      },
+      {
+        "title": "Emlak komisyoncuları ve mülk yöneticileri",
+        "description": "Bir arsa tabelasını ya da broşürü, ölçülebilir bir 7/24 potansiyel müşteri kaynağına ve 3B tur merkezine dönüştürün."
+      },
+      {
+        "title": "Etkinlik organizatörleri ve fuar koordinatörleri",
+        "description": "Girişleri hızlandırın, oturumları katılımcı takvimlerine ekleyin, dijital kartları değiştirin ve sponsor trafiğini atfedin."
+      }
+    ],
+    "troubleshooting": {
+      "title": "QR kod üretiminde en yaygın 5 hata",
+      "points": [
+        "Zayıf kontrast. Açık kâğıt üzerindeki soluk modüller kameraya kaybettirir. 4,5:1 veya daha iyisini tutun.",
+        "Kırpılmış sessiz bölge. Kenar boşluğunu çok yakından kırparsanız tarayıcı kodun sınırını bulamaz.",
+        "72 DPI bitmap. Düşük çözünürlüklü bir web yakalaması baskıda modül kenarlarını bulanıklaştırır. Vektör SVG ya da 300+ DPI raster sağlayın.",
+        "Gereksiz uzun bir URL. 250 karakterlik bir bağlantı, küçük basıldığında lekelenen mikroskobik noktalar oluşturur. Kısaltın.",
+        "Parlama. Parlak bir kaplama, ışık huzmelerini lensin içine atar. Mat ya da satene tercih edin."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "QR Generator Online bilgi merkezinin amacı nedir?",
+        "a": "İşletmelere, tasarımcılara ve geliştiricilere gerçekten taranan QR kodları yayınlamak için gereken teknik rehberleri, formülleri ve vaka çalışmalarını sunmak için var — aksi takdirde bir düzine kaynaktan bir araya getirmeniz gereken derinliği."
+      },
+      {
+        "q": "Bu blogdaki eğitimler ve rehberler tamamen ücretsiz mi?",
+        "a": "Buradaki her rehber, ölçüt ve vektör aracı ücretsiz ve açıktır — ödeme duvarı yok, hesap yok."
+      },
+      {
+        "q": "QR teknolojisi rehberlerinizi ne sıklıkla güncelliyorsunuz?",
+        "a": "iOS ve Android kamera çözümleyicileri değiştikçe, ISO standartları ilerledikçe ve mobil pazarlama uygulamaları değiştikçe makaleler revize edilir."
+      },
+      {
+        "q": "Belirli bir QR konusu hakkında özel bir rehber ya da eğitim isteyebilir miyim?",
+        "a": "Konuyu İletişim sayfası üzerinden gönderin; editör ekibi bakacaktır."
+      },
+      {
+        "q": "Rehberleriniz hem statik hem de dinamik QR kod mimarilerini kapsıyor mu?",
+        "a": "Evet — sıfır bağımlılıklı statik bir kod ile dinamik bir yönlendirme arasındaki ödünleşimlerin tam bir dökümü dahil."
+      },
+      {
+        "q": "Baskı projem için belirli boyut rehberlerini nerede bulabilirim?",
+        "a": "\"QR Kodları Yazdırma Tam Rehberi\", tam olarak bunun için boyut tablolarını, alt tabaka tavsiyelerini ve DPI formüllerini içerir."
+      },
+      {
+        "q": "QR kodlarımın mobil gizlilik düzenlemelerine uymasını nasıl sağlarım?",
+        "a": "Rehberler, her şeyi tarayıcı belleğinde işleyen istemci tarafı statik üretime dayanır — ziyaretçi IP'leri kaydedilmez, analitik izlenmez; bu yüzden bir gizlilik düzenlemesinin işaretleyecek çok az şeyi vardır."
+      },
+      {
+        "q": "Bu makaleleri ve kaynakları ekibimle paylaşabilir miyim?",
+        "a": "Lütfen paylaşın — meslektaşlar, pazarlama ekipleri, ajanslar ve baskı öncesi bölümleri tam olarak bunların kime yönelik olduğu kişilerdir."
+      }
+    ],
+    "bestPractices": "Boyut formülleri, kontrast standartları ve baskı öncesi kontrol listesi için bu merkezi yer imlerinize ekleyin — ticari bir baskı işi çıkmadan önce kontrol etmeye değer olan şeyler bunlardır."
+  },
+  '/blog/qr-codes-for-restaurants': {
+    "sections": [
+      {
+        "title": "Temassız dijital menülere geçiş",
+        "paragraphs": [
+          "Modern konukseverlikte hız ve servis doğruluğu vazgeçilmezdir. Masa kartlarındaki dijital QR menüler, misafirlerin oturdukları anda güncel yiyecek ve içecek seçeneklerini görmelerini sağlar.",
+          "Fiyatlar değiştiğinde restoranlar yeniden basım giderlerinden tasarruf eder; mevsimsel özel yemekleri ve yüksek kâr marjlı yemekleri öne çıkarır."
+        ]
+      },
+      {
+        "title": "Restoranınız için QR kodlu bir menü nasıl kurulur",
+        "paragraphs": [
+          "Başlamak beş dakikadan az sürer. Mevcut PDF menünüzü yükleyin ya da çevrimiçi sipariş sayfanızı bağlayın, ardından ortasında restoran logonuzun bulunduğu markalı bir QR kod oluşturun. Dayanıklı laminasyonlu masa kartlarına, cam çıkartmalarına ya da fiş altlarına basın.",
+          "Araştırmalar, dijital QR menü kullanan restoranların ortalama sipariş değerinde yaklaşık %15 artış gördüğünü gösteriyor; çünkü misafirler sözlü özel yemeklere bağımlı kalmak yerine tüm menüyü kendi hızlarında inceliyor. Ürünleri, fiyatları ya da mevsimsel teklifleri güncellemek anında yapılır — yeniden basım gerekmez. En iyi sonuçlar için her QR kodu \"Bugünkü tüm menü için tarayın\" gibi kısa bir harekete geçirici mesajla eşleştirin."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "QR kod menüleri ve temassız yemek operasyonlarına kapsamlı rehber",
+      "paragraphs": [
+        "QR menü bir salgın dönemi geçici önlemi olarak başladı ve bir operasyon standardı olarak kaldı. Düz HTTPS üzerinden çalışır: kod, misafirin telefon tarayıcısını, bulutta barındırılan bir PDF menüye, bir sipariş portalına ya da bir ödeme sayfasına yönlendirir; önce bir uygulama indirmeye gerek yoktur.",
+        "Onu yerinde tutan şey ekonomidir. Dijital bir menü, yeniden basımın yinelenen maliyetini ortadan kaldırır — genellikle mekân başına yılda 1.500 ila 4.000 dolar — bir fiyatı ya da özel teklifi saniyeler içinde değiştirmenizi sağlar, sipariş hatalarını azaltır ve misafirler yemeği görüp bir ek satış istemi aldıklarında ortalama hesabı %12 ila %22 yükseltir.",
+        "Bunların hiçbiri fiziksel tarafı doğru yapılmadan gerçekleşmez. Yerleşim, masa kartının dayanıklılığı, aydınlatma ve mobil uyumlu bir sayfa, her yaştan bir misafirin tek seferde mi tarayacağını yoksa vazgeçeceğini belirler."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Dijital QR kod menü ile geleneksel laminasyonlu kâğıt menünün karşılaştırması",
+      "headers": [
+        "Operasyonel etken",
+        "Dijital QR kod menü",
+        "Geleneksel laminasyonlu kâğıt menü"
+      ],
+      "rows": [
+        [
+          "Yıllık yeniden basım maliyeti",
+          "0 $ (çevrimiçi anında güncellenir)",
+          "Mekân başına yıllık 1.500 - 4.000 $ veya daha fazla"
+        ],
+        [
+          "Menü güncelleme hızı",
+          "Gerçek zamanlı (tükenen ürünleri saniyeler içinde kaldırın)",
+          "Yeniden tasarım ve yeniden basım için günler ya da haftalar"
+        ],
+        [
+          "Masa devir hızı",
+          "Oturma başına 15 - 25 dakika daha hızlı",
+          "Fiziksel menüleri ve hesabı beklemek nedeniyle daha yavaş"
+        ],
+        [
+          "Ortalama sipariş değeri",
+          "%12 - %22 daha yüksek (görsel yemek fotoğrafçılığı)",
+          "Sınırlı ek satış kapasitesiyle statik metin"
+        ],
+        [
+          "Hijyen ve temizlik",
+          "Misafirin kendi cihazında %100 temassız",
+          "Her misafir kullanımından sonra dezenfekte gerektirir"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Mobil uyumlu menünüzü çevrimiçi barındırın",
+        "description": "Menüyü hafif bir duyarlı sayfa ya da 3 MB'ın altında sıkıştırılmış bir PDF olarak sitenizde yayınlayın."
+      },
+      {
+        "number": 2,
+        "title": "H seviyesi hata düzeltmeyle markalı QR kod oluşturun",
+        "description": "Menü URL'sini oluşturucuya yapıştırın, renklerinizi uygulayın, amblemi H seviyesinde ortaya koyun ve vektör SVG dışa aktarın."
+      },
+      {
+        "number": 3,
+        "title": "Dayanıklı akrilik, ahşap ya da laminasyonlu kartona basın",
+        "description": "Masa üstü ekranı en az 40 mm x 40 mm yapın ve tavan ışıklarının kamaştırmaması için yüzeyi mat tutun."
+      }
+    ],
+    "features": [
+      {
+        "title": "Anlık gerçek zamanlı menü ve fiyat güncellemeleri",
+        "description": "Bir fiyatı değiştirin, bir teklif ekleyin ya da tükenmiş bir yemeği çevrimiçi kaldırın — basılı kodun asla değişmesi gerekmez."
+      },
+      {
+        "title": "Hijyenik ve temassız misafir deneyimi",
+        "description": "Misafirler menüyü kendi telefonlarında okur; masalar arasında paylaşılan bir şey yoktur."
+      },
+      {
+        "title": "Çok dilli dijital menü desteği",
+        "description": "Uluslararası misafirleri, tarayıcı diline göre otomatik çeviri yapan bir menüye yönlendirin."
+      },
+      {
+        "title": "Sıfır ücretle kalıcı statik bağlantılar",
+        "description": "Sonsuza kadar geçerli kalan, sınırsız tarama ve ücretsiz bir statik menü kodu."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Restoran masası QR yerleşimi ve boyut spesifikasyonları",
+      "description": "Yemek yiyenlerin masalarında rahatça otururken menü kodlarınızı kolayca taramasını sağlayın.",
+      "headers": [
+        "Yerleşim konumu",
+        "Tarama mesafesi",
+        "Önerilen baskı boyutu",
+        "Önerilen malzeme"
+      ],
+      "rows": [
+        [
+          "Yemek masası kartları ve blokları",
+          "25 cm - 45 cm (10\" - 18\")",
+          "40 mm x 40 mm (1,6\" x 1,6\")",
+          "Lazerle oyulmuş sert ahşap / akrilik stand"
+        ],
+        [
+          "İçecek altlıkları ve bar üstleri",
+          "20 cm - 35 cm (8\" - 14\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Emici ağır altlık tahtası"
+        ],
+        [
+          "Karşılama standı ve giriş ekranları",
+          "50 cm - 100 cm (20\" - 40\")",
+          "80 mm x 80 mm (3,2\" x 3,2\")",
+          "Çerçeveli tezgâh üstü ekran / destek kartı"
+        ],
+        [
+          "Kapalıyken göz atma için vitrin çıkartmaları",
+          "50 cm - 120 cm (20\" - 48\")",
+          "100 mm x 100 mm (4,0\" x 4,0\")",
+          "Hava koşullarına dayanıklı mat vinil vitrin çıkartması"
+        ],
+        [
+          "Paket teslimat çantası kâğıtları ve çıkartmalar",
+          "20 cm - 35 cm (8\" - 14\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Mat yapışkanlı etiket çıkartması"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Tam hizmetli restoranlar",
+        "description": "Her masada çerçeveli bir stand, misafirlerin oturduklarında başlangıçları ve kokteyller üzerine göz atmasını sağlar."
+      },
+      {
+        "title": "Hızlı yemek kafeleri ve fast-food restoranları",
+        "description": "Kuyruğu kısaltan bir afiş kodu, insanların sırada beklerken menüyü incelemesine olanak tanır; böylece kasada sipariş daha hızlı olur."
+      },
+      {
+        "title": "Zanaat birahaneleri ve bira barları menüleri",
+        "description": "Canlı fıçı listesine bağlı bir bardak altlığı kodu, dönüşümlü mevsimlik taslak menüyü dakikasına kadar doğru tutar."
+      },
+      {
+        "title": "Otel odası servisi ve oda içinde yemek",
+        "description": "Yatak başı bir kart, yıpranmış oda içi klasörünün yerini 7/24 oda servisi siparişine bırakır."
+      },
+      {
+        "title": "Gece kulüpleri, lounge'lar ve havuz barları",
+        "description": "Suya dayanıklı, lazerle oyulmuş bir akrilik işaretçi, havuz kenarında şişe servisi ve kokteyl siparişlerini yönetir."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Restoran QR menü deneyimini bozan en büyük 5 hata",
+      "points": [
+        "Ağır bir PDF. 25 MB'lık bir dosya mobil veride yarım dakika sürer. 2 MB'ın altına sıkıştırın ya da bunun yerine hızlı bir HTML sayfası bağlayın.",
+        "Parlama. Parlak akrilik bir stand, tavan ışıklarını lense yansıtır. Yansıma önleyici mat akrilik ya da doğal ahşap kullanın.",
+        "Hücresel ölü bölge. Bodrumlar ve beton mobil veriyi keser. Menü kodunun yanına bir WiFi kodu koyun.",
+        "Zorunlu uygulama. Bir yemek yiyenin menüyü okumak için uygulama indirmesini asla zorunlu kılmayın. Tarayıcıda açılan standart bir web bağlantısı kullanın.",
+        "Yalnızca masaüstü düzeni. Kimsenin parmaklarıyla yakınlaştırıp uzaklaştırması gerekmemeli. Mobilde menü yazı tipini 16 px ya da daha büyük yapın."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Restoran menüm için nasıl ücretsiz bir QR kod oluştururum?",
+        "a": "Menüyü çevrimiçi yayınlayın — bir PDF ya da bir web sayfası — herkese açık URL'yi kopyalayın, URL oluşturucuya yapıştırın, logonuzu ve renklerinizi ekleyin ve SVG ya da yüksek çözünürlüklü PNG'yi indirin."
+      },
+      {
+        "q": "Bir QR kod, restoranlar için dijital bir menüyü yürütmenin iyi bir yolu mu?",
+        "a": "En basit yol. Menüyü bir web sayfası olarak barındırın, bir QR kodu ona yönlendirin ve kodu masaya koyun — tarandığında dijital menünüz yemek yiyenin kendi telefonunda açılır; uygulama yok, dağıtılacak bir şey yok. Dinamik kodlar, hiçbir şeyi yeniden basmadan dijital menüyü güncellemenize olanak tanır."
+      },
+      {
+        "q": "QR kodu yeniden basmadan menü öğelerimi ya da fiyatlarımı değiştirebilir miyim?",
+        "a": "URL aynı kaldığı sürece — yourrestaurant.com/menu — arkasındaki sayfayı düzenlemek, zaten basılmış her kodun gösterdiği şeyi günceller. Kod asla değişmez."
+      },
+      {
+        "q": "Restoran masası QR kod standları için en iyi malzeme hangisi?",
+        "a": "Mat akrilik standlar, lazerle oyulmuş ahşap bloklar ya da 350+ GSM laminasyonlu karton — döküntülere dayanırlar, parlamaya direnirler ve uzun ömürlüdürler."
+      },
+      {
+        "q": "Yaşlı yemek yiyenler QR kod menüleri taramakta zorlanır mı?",
+        "a": "Modern telefonlar (iOS 11+, Android 9+) kodu uygulama olmadan doğrudan kameradan okur. \"Menüyü görmek için kameranızı buraya tutun\" gibi kısa bir satır herkes için işleri kolaylaştırır."
+      },
+      {
+        "q": "Bir PDF dosyasına mı yoksa duyarlı bir web sayfasına mı bağlanmalıyım?",
+        "a": "Duyarlı bir web sayfası daha iyi bir tercihtir: daha hızlı yüklenir ve ekrana uyum sağlar. PDF seçerseniz, 2 MB'ın altına sıkıştırın ve dikey olarak biçimlendirin."
+      },
+      {
+        "q": "QR Generator Online'da oluşturulan restoran QR kodları sona erer mi?",
+        "a": "Sınırsız tarama ve tekrarlayan bir ücret olmadan ömür boyu geçerli kalırlar."
+      },
+      {
+        "q": "Restoranımızın logosunu menü QR kodunun ortasına koyabilir miyim?",
+        "a": "Elbette. H seviyesi, hata kurtarma için kodun yaklaşık %30'unu saklar; bu, ortadaki logonuz ya da amblemiz için fazlasıyla yeterlidir."
+      },
+      {
+        "q": "QR menüler misafir başına ortalama harcamayı nasıl artırır?",
+        "a": "Dijital bir menü gerçek yemek fotoğraflarını gösterebilir, bir şarap ya da kokteyl eşleşmesi önerebilir ve tatlıyı teşvik edebilir — ortalama hesabı %12 ila %22 yukarı iten de budur."
+      }
+    ],
+    "bestPractices": "Menü sayfasının iki saniyenin altında yüklenmesini sağlayın, mat ve yansıma önleyici masa üstü malzemeleri kullanın ve mobil sinyalin zayıf olduğu her yere bir misafir WiFi kodu koyun."
+  },
+  '/blog/printing-qr-codes-guide': {
+    "sections": [
+      {
+        "title": "QR kod baskı boyutunun hesaplanması",
+        "paragraphs": [
+          "Baskı boyutu için basit bir formül, 10:1 mesafe-boyut oranıdır. Örneğin, 1 metre uzaktan taranacak bir poster, en az 10 cm genişliğinde bir QR kod gerektirir.",
+          "Her zaman 4 modüllük sessiz bölge kenar boşluğunu koruyun ve kusursuz ofset ve dijital pres çıktısı için vektör SVG olarak dışa aktarın."
+        ]
+      },
+      {
+        "title": "Renk kontrastı, hata düzeltme ve biçim önerileri",
+        "paragraphs": [
+          "QR kodun ön planı ile arka planı arasında her zaman en az 4:1 kontrast oranı tutun. Açık QR desenlerini soluk zeminlere basmaktan kaçının — düşük kontrast, parlak baskı ortamlarında tarama hatasının başlıca nedenidir. Logo gömerken güvenilir tarama için H seviyesi hata düzeltme (%30 veri fazlalığı) kullanın.",
+          "Ticari ofset baskı için matbaanıza her zaman vektör SVG ya da EPS biçiminde dosyalar sağlayın. Raster PNG ya da JPEG görseller, özgün çözünürlüklerinin ötesine büyütüldüğünde pikselleşir ve tarayıcıları yanıltan bulanık modül kenarlarına yol açar. SVG kabul edilmiyorsa en azından 300 DPI'da 2048×2048 piksel bir PNG dışa aktarın. Büyük baskı işlerini onaylamadan önce her zaman fiziksel bir test baskısı isteyin ve tarama testi yapın."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "QR kod basımına ilişkin nihai mühendislik rehberi (baskı öncesi, boyut ve alt tabakalar)",
+      "paragraphs": [
+        "Bir QR kodu iyi basmak, taramanın arkasındaki fiziği anlamak demektir: optik çözünürlük, baskı öncesi standartlar, mürekkep nokta kazancı, bir yüzeyin ışığı nasıl yansıttığı ve bir telefon merceğinin geometrisi. Çözünürlük, sessiz bölge, kontrast ya da yüzey işlemi yanlış belirtilirse, ekranda anında taranan bir kod baskıda tamamen başarısız olabilir.",
+        "ISO/IEC 18004 uyarınca kamera, bir kodu zamanlama ve bulucu desenleri arasındaki uzamsal ilişkiyi okuyarak çözer. Bunu bozan her şey — 4 modüllük sessiz bölgeye taşan mürekkep, yüksek parlaklıklı bir laminasyondan gelen parlama, düşük DPI kaynaktan gelen pikselleşme — Reed-Solomon çözümünü bozar.",
+        "Bu rehber baskı öncesi teknisyenlere, tasarımcılara, ambalaj mühendislerine ve matbaacılara, her seride %100 ilk geçiş tarama güvenilirliğine ulaşmak için formülleri, malzeme özelliklerini ve kalite kontrol kontrol listesini verir."
+      ]
+    },
+    "comparisonTable": {
+      "title": "QR kod üretimi için ticari baskı dosya biçimleri",
+      "headers": [
+        "Dosya biçimi",
+        "Çözünürlük türü",
+        "Baskı öncesi uyumluluğu",
+        "Önerilen baskı uygulamaları"
+      ],
+      "rows": [
+        [
+          "Vektör SVG / EPS",
+          "Çözünürlükten bağımsız (vektör yolları)",
+          "Tüm ticari RIP motorlarında %100 kayıpsız",
+          "Billboardlar, ambalaj, araç çıkartmaları, kırtasiye"
+        ],
+        [
+          "Yüksek çözünürlüklü PNG (300+ DPI)",
+          "Raster bitmap (kayıpsız 2048x2048+ px)",
+          "Dijital presler ve kısa seriler için standart",
+          "Broşürler, menüler, doğrudan posta, dergiler"
+        ],
+        [
+          "PDF / vektör PDF",
+          "Kapsüllenmiş vektör yolları",
+          "Evrensel baskı öncesi ve montaj standardı",
+          "Ticari kitaplar, yıllık raporlar, ambalaj kalıpları"
+        ],
+        [
+          "Kayıplı JPEG (kaçının)",
+          "Sıkıştırılmış raster (kayıplı artefaktlar)",
+          "Ticari baskı için uygun değil (kenar halkalanması)",
+          "Yalnızca web/ekran görüntüleme (asla baskı için değil)"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "S = D / 10 formülünü kullanarak fiziksel boyutları hesaplayın",
+        "description": "İnsanların tarama yaptığı mesafeyi (D) alın, ona bölün; bu sizin minimum genişliğiniz ve yüksekliğiniz (S) olur."
+      },
+      {
+        "number": 2,
+        "title": "WCAG kontrast oranını (> 4,5:1) ve sessiz bölgeyi doğrulayın",
+        "description": "Açık bir zemin üzerinde koyu modüller olduğunu doğrulayın ve her kenarda tam 4 modüllük boş kenarlığı koruyun."
+      },
+      {
+        "number": 3,
+        "title": "Vektör SVG dışa aktarın ve fiziksel prova testi yapın",
+        "description": "Vektör SVG'yi dışa aktarın, InDesign ya da Illustrator'a yerleştirin ve onaydan önce birkaç telefonda basılı pres provasını tarayın."
+      }
+    ],
+    "features": [
+      {
+        "title": "Matematiksel 10:1 tarama mesafesi oranı",
+        "description": "Bir posta pulundan 50 metrelik bir otoyol panosuna kadar her ortam için tam boyutu hesaplayın."
+      },
+      {
+        "title": "ISO/IEC 18004 baskı öncesi uyumu",
+        "description": "Modül zamanlaması, hizalama desenleri ve Reed-Solomon fazlalığı konusunda dosyalarınızı doğru hazırlayın."
+      },
+      {
+        "title": "Alt tabaka ve kaplama uyumluluk rehberi",
+        "description": "Presde mürekkep, kâğıt emilimi, nokta kazancı ve mat ile parlak yüzeyin gerçekte nasıl etkileştiğini anlayın."
+      },
+      {
+        "title": "Kayıpsız vektör SVG ve EPS doğrudan indirmeler",
+        "description": "Ticari baskı öncesi ve plaka yapımı için üretime hazır vektör dosyaları."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Ana baskı boyutu ve mesafe referans tablosu",
+      "description": "Fiziksel baskı boyutlarını belirlemek için standart optik formül $S = D / 10$'u uygulayın.",
+      "headers": [
+        "Fiziksel yerleşim",
+        "Tarama mesafesi (D)",
+        "Minimum genişlik (S)",
+        "Önerilen dosya biçimi"
+      ],
+      "rows": [
+        [
+          "Kartvizitler ve isim etiketleri",
+          "15 cm - 30 cm (6\" - 12\")",
+          "25 mm x 25 mm (1,0\" x 1,0\")",
+          "Vektör SVG / EPS"
+        ],
+        [
+          "Masa standları ve bardak altlıkları",
+          "30 cm - 50 cm (12\" - 20\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Vektör SVG / 300 DPI PNG"
+        ],
+        [
+          "Ürün ambalajı ve kutular",
+          "20 cm - 40 cm (8\" - 16\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Vektör SVG / PDF"
+        ],
+        [
+          "Broşürler, katlanır broşürler ve dergiler",
+          "50 cm - 100 cm (20\" - 40\")",
+          "60 mm x 60 mm (2,4\" x 2,4\")",
+          "Vektör SVG / 300 DPI PNG"
+        ],
+        [
+          "Fuar afişleri ve posterleri",
+          "1,5 m - 3,0 m (5 ft - 10 ft)",
+          "200 mm x 200 mm (8,0\" x 8,0\")",
+          "Vektör SVG"
+        ],
+        [
+          "Araç çıkartmaları ve filo grafikleri",
+          "3,0 m - 6,0 m (10 ft - 20 ft)",
+          "350 mm x 350 mm (14\" x 14\")",
+          "Vektör SVG / döküm vinil"
+        ],
+        [
+          "Otoyol billboardları ve toplu taşıma reklamları",
+          "15,0 m - 30,0 m (50 ft - 100 ft)",
+          "1500 mm - 3000 mm (5 ft - 10 ft)",
+          "Vektör SVG / büyük format EPS"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Ticari ambalaj ve oluklu kutular",
+        "description": "Mürekkep emilimi ve pres nokta kazancı hesaba katılarak bir ambalaj kalıp çizimine keskin bir vektör kod yerleştirin."
+      },
+      {
+        "title": "Ulusal dergi ve doğrudan posta baskı öncesi",
+        "description": "Dergi yayıncılarının sizden beklediği 300+ DPI ve CMYK ayrım çıtasını geçin."
+      },
+      {
+        "title": "Açık hava reklamcılığı ve otoyol billboardları",
+        "description": "Modül geometrisini keskin tutarak bir vektör kodu billboard oranlarına ölçekleyin."
+      },
+      {
+        "title": "Lüks kartvizitler ve folyo baskı",
+        "description": "400+ GSM kâğıt üzerinde folyo baskı, kabartma ve seçici UV için ince vektör yolları üretin."
+      },
+      {
+        "title": "Endüstriyel makine varlık etiketleri ve metal plakalar",
+        "description": "Anodize alüminyum ve paslanmaz çelik plakalara lazerle gravür için hassas vektör sanatı üretin."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Basılı QR kodları bozan 6 ölümcül baskı öncesi hatası",
+      "points": [
+        "Kırpılmış sessiz bölge. Modül kenarına kadar kırparsanız kamera kenarı kaybeder. Tam 4 modüllük kenar boşluğunu bırakın.",
+        "Kayıplı bir JPEG. Sıkıştırma modül köşelerini bulanıklaştırır. Vektör SVG ya da sıkıştırılmamış bir PNG kullanın.",
+        "Zayıf kontrast. Pastel renkler, beyaz üzerine sarı ya da açık gri ikili dönüşümde başarısız olur. 4,5:1 tutun.",
+        "Parlama. Yüksek parlaklıklı bir kaplama bir spot ışığı altında parlar. Mat ya da ipeksi olsun.",
+        "Yok sayılan nokta kazancı. Mürekkep, kaplanmamış kâğıt ve gazete kâğıdında yayılır ve modüller arasındaki boşlukları kapatır. Gözenekli malzemelerde kodu %15-20 büyütün.",
+        "Ters renkler. Siyah üzerine beyaz, eski tarayıcılarda başarısız olur. Modülleri koyu tutun."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Bir QR kod, hâlâ taranabilirken minimum ne kadar küçük basılabilir?",
+        "a": "15-20 cm'den okunan kısa bir URL ya da iletişim kartı için 20 mm x 20 mm (0,8\" x 0,8\") alt sınırdır. Ambalaj ve kartvizitlerde 25 mm x 25 mm (1,0\" x 1,0\") güvenli minimum olarak düşünün."
+      },
+      {
+        "q": "Ticari baskı için vektör SVG neden PNG'den üstündür?",
+        "a": "SVG kodu piksellerle değil geometriyle tanımlar; bu yüzden keskinlik kaybetmeden herhangi bir billboard ya da ambalaj boyutuna ölçeklenir ve InDesign ile Illustrator'a temiz biçimde aktarılır."
+      },
+      {
+        "q": "Sessiz bölge nedir ve neden zorunludur?",
+        "a": "Kodun dört kenarının tamamında — en az 4 modül genişliğinde — boş kenarlıktır. Kameranın barkodun nerede bittiğini ve çevredeki sanatın nerede başladığını ayırt edebilmesi için bu boş kenar payına ihtiyacı vardır."
+      },
+      {
+        "q": "Hata düzeltme seviyesi baskı dayanıklılığını nasıl etkiler?",
+        "a": "H seviyesi %30 fazlalık içerir; bu yüzden yüzeyin %30'una kadarı çizilse, yırtılsa, kirlense ya da ortadaki bir logo ile kapatılsa bile kod taranmaya devam eder."
+      },
+      {
+        "q": "Renkli bir QR kodu renkli kâğıda basabilir miyim?",
+        "a": "Evet, koyu modüller açık kâğıda karşı 4,5:1'i geçtiği sürece. Koyu üzerine koyu ya da açık üzerine açık kullanmaktan kaçının."
+      },
+      {
+        "q": "Parlak laminasyonlu QR kodları neden sık sık taranmaz?",
+        "a": "Doğrudan güneş ya da bir spot ışığı altında parlaklık bir ayna gibi davranır ve beyaz bir sıcak nokta ile kontrastı yok eder. Mat ya da yansıma önleyici laminasyon bunu çözer."
+      },
+      {
+        "q": "Raster PNG dosyaları basılıyorsa hangi çözünürlük gerekir?",
+        "a": "Raster bir dosya, son baskı boyutunda 300 DPI'ya ihtiyaç duyar (piksel = inç × 300). 2048x2048 piksellik PNG dışa aktarımı yaklaşık 7x7 inç'e kadar keskin basılır."
+      },
+      {
+        "q": "10.000 adetlik bir baskı işini onaylamadan önce basılı QR kodumu nasıl test ederim?",
+        "a": "Kullanacağınız tam kâğıt ve kaplama üzerinde 1:1 bir pres provası alın, ardından hem eski bir Android'de hem de güncel bir iPhone'da, loş ve parlak ışıkta tarayın."
+      }
+    ],
+    "bestPractices": "Matbaaya vektör SVG verin, mat bir yüzey isteyin, 4 modüllük sessiz bölgeyi koruyun ve tam seriyi onaylamadan önce fiziksel bir prova tarayın."
+  },
+  '/blog/vcard-qr-code-business-cards': {
+    "sections": [
+      {
+        "title": "Kartvizitleri tek dokunuşla kişi kaydeden araçlara dönüştürün",
+        "paragraphs": [
+          "Bir vCard QR kodu, networking etkinliklerinde ve fuarlarda elle kişi bilgisi yazma hatalarını ortadan kaldırır.",
+          "Kartvizitinizin arkasını tarayan kişi, adınızı, cep numaranızı, e-postanızı ve LinkedIn profilinizi anında kendi rehberine ekler."
+        ]
+      },
+      {
+        "title": "QR kodlu kartvizitler için tasarım ipuçları",
+        "paragraphs": [
+          "QR kodu kartvizitinizin arka yüzüne, \"İletişim bilgimi kaydetmek için tarayın\" gibi net bir harekete geçirici mesajla birlikte yerleştirin. Güvenilir tarama için kodu en az 2,5 cm × 2,5 cm (1 inç × 1 inç) tutun. Dört kenarın tamamında en az 4 modüllük beyaz bir sessiz bölge kenarlığı bırakın. Ortaya profesyonel fotoğrafınızı ya da şirket logonuzu gömmek güveni ve tarama oranlarını artırır.",
+          "QR Generator Online ile tam vCard 3.0 profilinizi kodlayın; ad, soyad, unvan, şirket, iş telefonu, cep telefonu, e-posta, web sitesi ve posta adresi dahil. Kartvizit boyutu ne olursa olsun kusursuz kalite için vektör SVG olarak dışa aktarın. Mat bitişli premium kartvizit kartonu, parlak laminasyona kıyasla en yüksek tarama güvenilirliğini sağlar; parlak laminasyon güçlü ışık altında mercekte parlama oluşturabilir."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Modern akıllı kartvizitler için vCard QR kodlarına nihai rehber",
+      "paragraphs": [
+        "Kağıt kartvizit sessizce ölmekte. Bir networking etkinliğinde dağıtılan kartların %88'den fazlası bir hafta içinde çöpe gidiyor; yaklaşık %9'u ise altı ay içinde eski bir numara ya da unvan taşıyor. Bir vCard QR kodu, o ölü kâğıdı çalışan bir dijital varlığa dönüştürür.",
+        "VCF standardında (vCard 3.0, RFC 2426 ve RFC 6350'de tanımlı) çalışır ve tüm profesyonel kimliğinizi — adınızı, unvanınızı, şirketinizi, cep numaranızı, iş e-postanızı, ofis adresinizi, web sitenizi — doğrudan barkoda kodlar.",
+        "Herhangi bir iPhone ya da Android ile tarayın ve işletim sistemi \"Kişilere Ekle\" istemiyle bir kişi önizlemesi açar. Tek dokunuş tüm profili adres defterine kaydeder — yazma yok, yazım hatası yok, bir ceket cebinde kaybolmuş bir potansiyel müşteri yok."
+      ]
+    },
+    "comparisonTable": {
+      "title": "vCard QR akıllı kartvizit ile geleneksel kağıt kartvizitin karşılaştırması",
+      "headers": [
+        "Networking ölçütü",
+        "vCard QR akıllı kartvizit",
+        "Geleneksel kağıt kartvizit"
+      ],
+      "rows": [
+        [
+          "Kişi kaydetme hızı",
+          "1 dokunuş (telefon adres defterine doğrudan 3 saniyeden kısa sürede)",
+          "Elle yazma (1 - 3 dakika, sıklıkla atlanır)"
+        ],
+        [
+          "Kişi saklama oranı",
+          "Bulut adres defterinde kalıcı depolama",
+          "7 gün içinde %88'i atılır"
+        ],
+        [
+          "Veri zenginliği",
+          "Tam profil: 3 telefon, e-postalar, ofis adresi, web sitesi",
+          "3,5\" x 2\" fiziksel kart yüzeyiyle sınırlı"
+        ],
+        [
+          "Çevresel atık",
+          "Sıfır atık (dayanıklı, yeniden kullanılabilir ve hibrit kartlar)",
+          "Profesyonel başına yılda binlerce atılan kağıt kart"
+        ],
+        [
+          "Tek dokunuşlu etkileşim",
+          "Doğrudan arama, e-posta ve harita navigasyonu",
+          "Elle yeniden yazmayı gerektiren pasif metin"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Yapılandırılmış profesyonel iletişim alanlarını doldurun",
+        "description": "Adınızı, unvanınızı, şirketinizi, cep numaranızı, iş e-postanızı ve web sitenizi girin."
+      },
+      {
+        "number": 2,
+        "title": "Görsel markayı uygulayın ve portre ya da logoyu gömün",
+        "description": "Nokta desenini markanıza göre biçimlendirin ve portrenizi ya da logonuzu H seviyesi hata düzeltmeyle ortaya yerleştirin."
+      },
+      {
+        "number": 3,
+        "title": "Kartvizit baskısı için vektör SVG dışa aktarın",
+        "description": "Matbaaya vektör SVG'yi, bir e-posta imzası ya da kilit ekranı duvar kâğıdı için yüksek çözünürlüklü PNG'yi alın."
+      }
+    ],
+    "features": [
+      {
+        "title": "Evrensel yerel iOS ve Android entegrasyonu",
+        "description": "vCard 3.0'a göre oluşturulmuştur; bu yüzden Apple Contacts, Google Contacts ve Outlook'a temiz biçimde kaydedilir."
+      },
+      {
+        "title": "Tek dokunuşla akıllı telefon adres defterine kayıt",
+        "description": "Telefonunuz, e-postanız, web siteniz ve adresiniz tek dokunuşla kaydedilir — diğer kişinin hiçbir şey yazması gerekmez."
+      },
+      {
+        "title": "%100 çevrimdışı tarama ve tam gizlilik",
+        "description": "Kişi verisi barkodun içinde yaşar. Hiçbir üçüncü taraf sunucu bunu saklamaz ya da toplamaz."
+      },
+      {
+        "title": "Premium kartonlar için yüksek hassasiyetli vektör SVG",
+        "description": "Folyo basım, seçici UV, kabartma ya da lazerle oyulmuş metal veya ahşap bir kart için keskin vektör çıktısı."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "vCard QR kod boyutu ve malzeme spesifikasyonları",
+      "description": "vCard yükleri 150 ila 350 karakterlik yapılandırılmış metin içerdiğinden, önerilen boyut ölçütlerini koruyun.",
+      "headers": [
+        "Kart alt tabakası / ortamı",
+        "Önerilen minimum boyut",
+        "Hata düzeltme seviyesi",
+        "Optimal bitiş"
+      ],
+      "rows": [
+        [
+          "Standart kâğıt kartvizitler (3,5\" x 2\")",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "Seviye Q (%25) veya Seviye H (%30)",
+          "Ağır mat karton (350+ GSM)"
+        ],
+        [
+          "Metal / ahşap akıllı NFC hibrit kartlar",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Seviye H (%30)",
+          "Lazerle oyulmuş mat anodize alüminyum"
+        ],
+        [
+          "Fuar yaka kartları ve konferans rozetleri",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "Seviye M (%15) veya Seviye Q (%25)",
+          "Laminasyonlu sentetik PVC / Tyvek"
+        ],
+        [
+          "Özgeçmiş başlıkları ve portfolyo kapakları",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Seviye Q (%25)",
+          "Kaplanmamış pürüzsüz parlak beyaz kâğıt"
+        ],
+        [
+          "Akıllı telefon kilit ekranı duvar kâğıdı",
+          "Dijital ekranda 250 x 250 px",
+          "Seviye H (%30)",
+          "Yüksek kontrastlı OLED dijital ekran"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Kurumsal yöneticiler ve satış liderleri",
+        "description": "Lüks bir kartın arkasındaki bir kod, el sıkışmayı kaydedilmiş bir kişiye dönüştürür."
+      },
+      {
+        "title": "Ticaret fuarları, sergiler ve sektör konferansları",
+        "description": "Bir yaka kartında ya da stand rozetinde, bilgileriniz yaklaşık iki saniyede bir potansiyel müşterinin telefonuna ulaşır."
+      },
+      {
+        "title": "İş arayanlar — özgeçmişler ve portfolyo kapak mektupları",
+        "description": "Özgeçmiş başlığındaki bir kod, bir işe alım uzmanının bilgilerinizi tekrar yazmadan kaydetmesini sağlar."
+      },
+      {
+        "title": "Emlak danışmanları ve kredi aracıları",
+        "description": "Açık ev broşüründeki bir kod, bir gösterim randevusunu tek dokunuşla ayarlanabilir hale getirir."
+      },
+      {
+        "title": "Kurumsal e-posta imzaları ve dijital imzalar",
+        "description": "E-posta şablonundaki bir kod, masaüstü okuyucuların ekranlarından taramasına olanak tanır."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Yaygın vCard QR kod tasarım hataları ve bunların önlenmesi",
+      "points": [
+        "Aşırı dolu bir profil. Yirmi alan, matrisi taranamayacak kadar yoğunlaştırır. Yalnızca temel bilgileri tutun.",
+        "Çok küçük basmak. Sürüm 6-10 bir vCard matrisi, ucuz bir kamerada 25 mm'nin altında bulanıklaşır. Ona yer verin.",
+        "Parlak kâğıt. Yüksek parlaklıklı bir kart, salon ışıklarını mercekte yansıtır. Mat, ipeksi ya da yumuşak dokunuşlu tercih edin.",
+        "Ters renkler. Koyu bir kart üzerine beyaz bazı eski tarayıcılarda başarısız olur. Koyu üzerine açık standart olarak kalır.",
+        "Ülke kodu yok. +90 ya da +1 gibi kodu atlarsanız, uluslararası bir kişi kaydedilen kartı arayamaz."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Bir vCard QR kodu nedir ve nasıl çalışır?",
+        "a": "İletişim bilgilerinizi — ad, telefon, e-posta, şirket, unvan, web sitesi — vCard 3.0 biçiminde taşıyan bir 2B barkoddur. Tarandığında telefon, kişiyi doğrudan adres defterine kaydetmeyi önerir."
+      },
+      {
+        "q": "vCard QR kodların taranması için internet bağlantısı gerekir mi?",
+        "a": "Tamamen çevrimdışı çalışırlar. Her alan, barkodun içinde vCard 3.0 metni olarak yaşar; bu yüzden telefon veri ya da WiFi olmadan kişiyi okur ve kaydeder."
+      },
+      {
+        "q": "Statik bir vCard QR koduna fotoğrafımı ekleyebilir miyim?",
+        "a": "Ham görüntüyü kodlamak yükü taranamayacak kadar şişirir. Standart yöntem, kodun merkezine fotoğrafınızı ya da logonuzu bindirmek ve tam fotoğrafın barındırıldığı adresi vCard'ın URL alanına koymaktır."
+      },
+      {
+        "q": "vCard QR kodları hem iPhone hem de Android ile uyumlu mu?",
+        "a": "vCard 3.0 evrensel kişi standardıdır; Apple Contacts, Google Contacts, Outlook ve Samsung Contacts'ta yerleşiktir."
+      },
+      {
+        "q": "Statik vCard QR kodları sona erer mi ya da aylık ücret alır mı?",
+        "a": "Hayır. Kişi verisi kodun içinde durur ve tekrarlayan bir ücret ya da tarama sınırı olmadan sonsuza dek geçerli kalır."
+      },
+      {
+        "q": "Bir kartvizitte vCard QR kodunu ne kadar küçük basabilirim?",
+        "a": "Daha yoğun matrisin telefon merceği için keskin kalması amacıyla 28 mm x 28 mm (1,1\" x 1,1\") ya da daha büyük hedefleyin."
+      },
+      {
+        "q": "Telefon numaralarını ülke koduyla biçimlendirmeli miyim?",
+        "a": "Her zaman — uluslararası bir kişinin önek tahmin etmeden sizi arayabilmesi için E.164 (+905551234567) kullanın."
+      },
+      {
+        "q": "Kartvizit matbaasına hangi dosya biçimini göndermeliyim?",
+        "a": "Vektör SVG ya da EPS. Vektör, herhangi bir ofset ya da dijital pres üzerinde hassasiyetini korur."
+      }
+    ],
+    "bestPractices": "Kartı temel alanlarla sınırlı tutun, telefon numaralarını uluslararası biçimde yazın (+90...), mat kartonu talep edin ve tam seriden önce fiziksel bir prova tarayın."
+  },
+  '/blog/qr-codes-for-real-estate': {
+    "sections": [
+      {
+        "title": "Potansiyel alıcılara arsa tabelalarından doğrudan ulaşın",
+        "paragraphs": [
+          "\"Satılık\" tabelalara bir QR kod koymak, yoldan geçenlerin arabalarından 3B kat planlarını, video turlarını ve fiyatları anında incelemesine olanak tanır.",
+          "Açık ev günlerini beklemeden 7/24 yüksek niyetli alıcı talepleri toplayın."
+        ]
+      },
+      {
+        "title": "Emlak QR kod kampanyaları için en iyi uygulamalar",
+        "paragraphs": [
+          "QR kodunuzu genel ana sayfanız yerine doğrudan özel bir mülk açılış sayfasına bağlayın. Tam adresi, ilan fiyatını, yatak odası ve banyo sayısını, metrekareyi ve gömülü bir video turu ekleyin. Dinamik QR kodlar, ilan fiyatı değişirse ya da mülk satılır ve tabelaları yeniden basmadan benzer bir ilana yönlendirmek isterseniz, hedef URL'yi güncellemenize olanak tanır.",
+          "Dış mekânda en yüksek tarama güvenilirliği için QR kodları hava koşullarına dayanıklı tabelalarda en az 7 cm × 7 cm (yaklaşık 2,75 inç) boyutunda basın. Doğrudan güneş ışığında görünürlüğü sağlamak için yüksek kontrastlı siyah üzerine beyaz ya da koyu yeşil üzerine beyaz kullanın. Markalı bir logo ve \"Sanal tur için tarayın\" gibi kısa bir slogan eklemek, geçen trafikten tarama oranlarını önemli ölçüde artırır. Hangi mahalle ve ilan türlerinin en fazla alıcı ilgisi çektiğini anlamak için tarama analitiğini takip edin."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Emlak acentesi için QR kod potansiyel müşteri üretimi ve pazarlamasına ilişkin eksiksiz rehber",
+      "paragraphs": [
+        "Emlak pazarlaması konuma dayalı ve görseldir; alıcılar artık bir evin önünde dururken ayrıntıları anında görmek ister. Tabeladaki eski kâğıt broşür kutusu sayfaları biter, yağmurda ıslanır ve kimin ilgilendiğine dair size hiçbir şey söylemez.",
+        "Bir mülk QR kodu bu üç sorunun hepsini çözer. Bir tabelayı, açık ev yön levhasını, vitrin sergisini ya da kartpostalı 7/24 bir portala dönüştürür — bir tarama, 3B Matterport turunu, HD fotoğraf galerisini, kat planını, okul puanlarını ve acenteye doğrudan bir arama ya da mesajı açar.",
+        "UTM izlemesi ve bir potansiyel müşteri yakalama akışı ekleyin; en iyi acenteler, ilgi zirve yaptığı tam anda — kaldırımdan, her saatte — yüksek niyetli yerel potansiyel müşteriler yakalar."
+      ]
+    },
+    "comparisonTable": {
+      "title": "QR kodlu emlak tabelası ile geleneksel kâğıt broşür kutusunun karşılaştırması",
+      "headers": [
+        "Pazarlama yeteneği",
+        "QR kodlu emlak tabelası",
+        "Geleneksel kâğıt broşür kutusu"
+      ],
+      "rows": [
+        [
+          "Potansiyel müşteri yakalama erişilebilirliği",
+          "24/7/365 (stoğu asla bitmez)",
+          "Boş broşür kutuları, potansiyel müşterilerin %60'ından fazlasını kaybeder"
+        ],
+        [
+          "Medya zenginliği",
+          "3B sanal turlar, video turları, 50'den fazla HD fotoğraf",
+          "1-2 basılı siyah-beyaz fotoğrafla sınırlı"
+        ],
+        [
+          "Hava koşullarına dayanıklılık",
+          "Hava koşullarına dayanıklı vinil / alüminyum (yağmur, kar ve güneşe dayanıklı)",
+          "Kâğıt broşürler ıslanır, buruşur ya da rüzgârda uçar"
+        ],
+        [
+          "Potansiyel müşteri atfı ve analitiği",
+          "Tam tarama hacmini, günün saatini ve cihaz türünü izler",
+          "Kaç broşürün alındığına dair hiçbir görünürlük yok"
+        ],
+        [
+          "Anında acente iletişimi",
+          "Tek dokunuşla doğrudan arama, SMS ya da WhatsApp mesajı",
+          "Alıcının acente telefon numarasını elle yazması gerekir"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Tek mülklü bir açılış sayfası ya da 3B tur bağlantısı oluşturun",
+        "description": "İlan sayfasının, Matterport turunun ya da video turunun doğrudan URL'sini kopyalayın."
+      },
+      {
+        "number": 2,
+        "title": "Logolu yüksek kontrastlı bir emlak QR kodu oluşturun",
+        "description": "Mülk URL'sini yapıştırın, aracılık firmanızın renklerini uygulayın, logonuzu ortaya yerleştirin ve vektör SVG dışa aktarın."
+      },
+      {
+        "number": 3,
+        "title": "Hava koşullarına dayanıklı oluklu plastik ya da alüminyum tabelalara basın",
+        "description": "\"Sanal 3B tur ve fiyat için tarayın\" gibi bir ifade içeren en az 150 mm x 150 mm bir tabela eki monte edin."
+      }
+    ],
+    "features": [
+      {
+        "title": "7/24 talep üzerine mülk bilgisi teslimi",
+        "description": "Geçen bir alıcı, fiyatı, iç mekân fotoğraflarını ve kat planını istediği saatte alabilir."
+      },
+      {
+        "title": "3B turlar ve video turlarıyla doğrudan entegrasyon",
+        "description": "Matterport, Zillow 3D Home ya da bir YouTube turu aracılığıyla alıcıyı eve sokun."
+      },
+      {
+        "title": "Anında tek dokunuşla acente bağlantısı",
+        "description": "Kaldırımda duran bir alıcı, ilan acentesini hemen arayabilir, mesaj atabilir ya da WhatsApp'tan yazabilir."
+      },
+      {
+        "title": "Sona erme olmadan kalıcı statik barkodlar",
+        "description": "Aylık ücret ya da tarama sınırı olmadan süresiz aktif kalan statik bir mülk kodu."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Emlak baskı boyutu ve yerleşim spesifikasyonları",
+      "description": "Potansiyel alıcıların mülk kodlarınızı arabalarından ya da kaldırımdan kolayca taramasını sağlayın.",
+      "headers": [
+        "Tabela yerleşimi",
+        "Beklenen tarama mesafesi",
+        "Minimum baskı boyutu",
+        "Önerilen alt tabaka"
+      ],
+      "rows": [
+        [
+          "Tabela ek levhası (tabelanın altına asılan)",
+          "1,5 m - 3,0 m (5 ft - 10 ft)",
+          "150 mm x 150 mm (6\" x 6\")",
+          "Yansıtıcı oluklu plastik / alüminyum"
+        ],
+        [
+          "Açık ev yön sokak tabelaları",
+          "1,0 m - 2,5 m (3 ft - 8 ft)",
+          "120 mm x 120 mm (4,8\" x 4,8\")",
+          "Ağır oluklu plastik kazıklı tabela"
+        ],
+        [
+          "Mülk ilan broşürleri ve broşürleri",
+          "20 cm - 35 cm (8\" - 14\")",
+          "30 mm x 30 mm (1,2\" x 1,2\")",
+          "Ağır mat karton (100 lb+)"
+        ],
+        [
+          "Emlak ofisi vitrin sergileri",
+          "50 cm - 150 cm (20\" - 60\")",
+          "100 mm x 100 mm (4,0\" x 4,0\")",
+          "Hava koşullarına dayanıklı mat vinil vitrin çıkartması"
+        ],
+        [
+          "Doğrudan posta \"Yeni İlan\" kartpostalları",
+          "20 cm - 35 cm (8\" - 14\")",
+          "28 mm x 28 mm (1,1\" x 1,1\")",
+          "Kaplamalı mat kartpostal kartonu"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "3B sanal turlar için tabela ekleri",
+        "description": "Satılık tabelasının altındaki bir ek, yoldan geçen alıcının telefonundan iç mekânı gezmesini sağlar."
+      },
+      {
+        "title": "Açık ev yön tabelaları",
+        "description": "Bir köşe tabelasındaki bir konum kodu, alıcıyı doğrudan açık ev girişine yönlendirir."
+      },
+      {
+        "title": "Doğrudan posta \"Yeni İlan\" ve \"Satıldı\" kartpostalları",
+        "description": "Bir mahalle kartpostalındaki kod, video turuna ve bir ev değeri hesaplayıcısına bağlanır."
+      },
+      {
+        "title": "Aracılık ofislerinin vitrin sergileri",
+        "description": "Bir vitrin kodu, yaya trafiğini 7/24 emlak aramasına dönüştürür."
+      },
+      {
+        "title": "vCard kişileriyle acente kartvizitleri",
+        "description": "Acentenin kartındaki bir vCard kodu, bilgilerini tek dokunuşla kaydeder."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Emlak QR pazarlamasında yaygın hatalar",
+      "points": [
+        "Yoldan geçenler için çok küçük. 50 mm'lik bir kod, 3 metre uzaktaki bir arabadan okunamaz. Bir satılık tabelasında en az 150 mm x 150 mm kullanın.",
+        "Beceriksiz bir MLS bağlantısı. Küçük yazılı yavaş bir masaüstü MLS sayfası mobil tarayıcıyı hayal kırıklığına uğratır. Bunun yerine hızlı bir tek mülk sayfası bağlayın.",
+        "Harekete geçirici mesaj yok. Çıplak bir kod az tarama alır. \"Fiyat, fotoğraflar ve 3B tur için tarayın\" ile eşleştirin.",
+        "Güneş parlaması. Parlak bir tabela kaplaması güneşte parlar. Mat dış mekân vinili ya da oluklu plastik kullanın.",
+        "Saldırgan bir giriş duvarı. Anında kayıt zorlamak %70 çıkışa neden olur. Önce temel fotoğrafları gösterin, sonra onay isteyin."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Emlak acenteleri potansiyel müşteri üretmek için QR kodları nasıl kullanır?",
+        "a": "Tek bir mülk sitesine, 3B bir tura ya da anında bir metin sorgusuna bağlanan kodları satılık tabelalarına, açık ev broşürlerine ve kartpostallarına koyarlar — alıcıyı ilginin en yüksek olduğu anda yakalarlar."
+      },
+      {
+        "q": "Emlak tabelası QR kodu için önerilen boyut nedir?",
+        "a": "Bir araç yolundan ya da kaldırımdan okunacak bir ek (1,5 ila 3 metre) yüksek kontrastla en az 150 mm x 150 mm olmalıdır."
+      },
+      {
+        "q": "QR kodunu doğrudan bir Matterport 3B sanal turuna bağlayabilir miyim?",
+        "a": "Matterport'un herkese açık paylaşım bağlantısını kopyalayın, QR URL oluşturucuya yapıştırın ve baskıya hazır SVG ya da PNG'yi indirin."
+      },
+      {
+        "q": "Mülk satıldığında emlak QR kodları sona erer mi?",
+        "a": "Statik bir kod geçerli kalır. Mülk satıldığında hedef URL'sini bir \"Satıldı\" sayfasına ya da aktif ilanlarınıza yönlendirin — basılı kod çalışmaya devam eder."
+      },
+      {
+        "q": "Mülk QR kodunun yanına hangi harekete geçirici mesajı basmalıyım?",
+        "a": "İşe yarayan ifadeler şunlardır: \"Fiyat ve 3B sanal tur için tarayın\", \"İç mekân fotoğraflarını hemen görmek için tarayın\", \"İlan acentesine mesaj atmak için tarayın\"."
+      },
+      {
+        "q": "Emlak acentemin logosunu QR koda ekleyebilir miyim?",
+        "a": "Evet — acentenizin ya da ekibinizin logosu ortaya temiz biçimde oturur, çünkü H seviyesi kodun üçte birine kadar kaybedebilir ve yine de taranabilir."
+      },
+      {
+        "q": "Dış mekân emlak QR tabelaları için en iyi malzeme nedir?",
+        "a": "Hava koşullarına dayanıklı oluklu plastik (Coroplast) ya da mat UV kaplamalı bir alüminyum kompozit panel — dayanıklı ve parlamasız."
+      },
+      {
+        "q": "Emlak QR kodları QR Generator Online'da oluşturmak için ücretsiz mi?",
+        "a": "SVG ve PNG dışa aktarımları ücretsizdir; sınırsız tarama ve tekrarlayan bir ücret yoktur."
+      }
+    ],
+    "bestPractices": "Tabela kodlarını mat hava koşullarına dayanıklı malzemede 150 mm x 150 mm ya da daha büyük basın, değer odaklı bir harekete geçirici mesaj ekleyin ve açılış sayfasının mobilde hızlı yüklenmesini sağlayın."
+  },
+  '/blog/wifi-qr-codes-for-hospitality': {
+    "sections": [
+      {
+        "title": "Misafirler için kesintisiz kablosuz bağlantı",
+        "paragraphs": [
+          "Otel ve Airbnb misafirleri sık sık telefonlarına ve dizüstü bilgisayarlarına karmaşık WiFi parolaları yazmakta zorlanır.",
+          "Komodinde ya da kafe tezgâhında çerçeveli, özel bir WiFi QR kodu kartı, misafirlerin taramasını ve anında bağlanmasını sağlar."
+        ]
+      },
+      {
+        "title": "Otellerde ve tatil kiralarında WiFi QR kodları nasıl kullanılır",
+        "paragraphs": [
+          "Her ağ bölgesi için ayrı bir WiFi QR kodu oluşturun — misafir odası WiFi'si, lobi WiFi'si ve havuz alanı WiFi'si — ve bunları ayrı ayrı markalanmış kartlara basın. Oteller için QR kod kartını laminasyonlayın ve misafirlerin bağlantı talimatlarını doğal olarak aradığı oda masasına ve banyo aynasına yerleştirin. Misafirler taramanın ne yapacağından emin olsun diye ağ adını (SSID) ve parolanın önceden doldurulup doldurulmadığını gösteren bir not ekleyin.",
+          "Airbnb ev sahipleri için bir WiFi QR kodunu, ev kuralları ve yerel önerilerle birlikte özel bir karşılama kitapçığına gömmek, check-in memnuniyet puanlarını çarpıcı biçimde artırır. Kafeler ve ortak çalışma alanları, göz hizasında çerçeveli QR kodlu büyük format masa ekranlarından en çok faydayı sağlar. Güvenlik için WiFi parolalarını ayda bir değiştirin ve basitçe yeni bir QR kod oluşturun — dijital menü panoları ya da değiştirilebilir kart ekleri kullanıyorsanız yeniden basım gerekmez."
+        ]
+      }
+    ],
+    "technicalOverview": {
+      "title": "Oteller, kafeler ve tatil kiralamaları için WiFi QR kodlarına eksiksiz rehber",
+      "paragraphs": [
+        "Konaklamada WiFi artık bir ayrıcalık değil — memnuniyet puanlarını ve çevrimiçi yorumları hareket ettiren amenity. Araştırmalar bunu %85'in üzerinde tutuyor: otel ve kafe misafirlerinin, konaklamaları için hızlı ve sürtünmesiz WiFi'yi kritik bulan oranı bu. Yine de önündeki engel genellikle yanlış yazılmış bir parola ve resepsiyonu arama.",
+        "Konaklama WiFi kodu, oturum bilgisini standart `WIFI:` biçiminde taşır (`WIFI:T:WPA;S:Hotel_Guest;P:SecretPass;H:false;;`). Misafir kamerayı tutar, \"Join Network\"e dokunur ve iki saniyeden kısa sürede çevrimiçi olur — ekranda parola yok, yazma yok.",
+        "Bu rehber, otelleri, tatil köylerini, kafeleri ve Airbnb ev sahiplerini, destek biletlerini azaltmak, ağı güvende tutmak ve misafir deneyimini yükseltmek için odalarda, masalarda ve check-in alanlarında markalı WiFi kodları dağıtma konusunda yönlendirir."
+      ]
+    },
+    "comparisonTable": {
+      "title": "Konaklamada WiFi QR kod erişimi ile manuel parola kartlarının karşılaştırması",
+      "headers": [
+        "Operasyonel etken",
+        "Konaklama WiFi QR kodu",
+        "Manuel parola kartı / yazı tahtası"
+      ],
+      "rows": [
+        [
+          "Misafir bağlanma süresi",
+          "1 - 2 saniye (tek kamera taraması ve dokunuş)",
+          "45 - 90 saniye (16+ karmaşık karakter yazma)"
+        ],
+        [
+          "Resepsiyon destek biletleri",
+          "WiFi ile ilgili soruları %80'den fazla azaltır",
+          "Parola yardımı için çok sayıda misafir araması"
+        ],
+        [
+          "Yazım hatası oranı",
+          "%0 (tam bayt bayt iletim)",
+          "Sembollü karmaşık parolalarda %30 - %50"
+        ],
+        [
+          "Parola güvenliği",
+          "Misafirlerin düz metin anahtarları görmesini engeller",
+          "Parolaları genel yazı tahtalarında ve tabelalarda açığa çıkarır"
+        ],
+        [
+          "Misafir yorumlarına etkisi",
+          "Misafir memnuniyetini ve check-in puanlarını yükseltir",
+          "Bağlantı hayal kırıklığı olumsuz yorumlara yol açar"
+        ]
+      ]
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": "Yönlendiricinizde ayrı bir misafir ağını yalıtın",
+        "description": "Misafir WiFi'sini istemci yalıtımı açık bir VLAN'da çalıştırın; böylece misafirler asla iç sistemlerinize erişemez."
+      },
+      {
+        "number": 2,
+        "title": "H seviyesi hata düzeltmeyle markalı bir WiFi QR kodu oluşturun",
+        "description": "Misafir SSID'sini ve parolasını girin, markanızı uygulayın ve ortaya bir WiFi simgesi ya da logonuzu koyun."
+      },
+      {
+        "number": 3,
+        "title": "Premium akrilik masa standlarına ya da ahşap komodin kartlarına basın",
+        "description": "Kodu göz hizasında gösterin — otel masasında, komodinde, kafe tezgâhında ya da kiralama karşılama kitapçığında."
+      }
+    ],
+    "features": [
+      {
+        "title": "Anında sürtünmesiz misafir bağlantısı",
+        "description": "Tek dokunuşlu kamera taraması, parola hayal kırıklığını ve resepsiyon aramalarını sona erdirir."
+      },
+      {
+        "title": "WPA3, WPA2, WEP ve gizli ağları destekler",
+        "description": "Kurumsal bir mesh yönlendirici ile butik bir kiralama kurulumu arasında aynı şekilde çalışır."
+      },
+      {
+        "title": "Sıfır sunucu depolama ve tam gizlilik",
+        "description": "Ağ kimlik bilgileri tarayıcınızda kalır. Hiçbir şey dışarıda depolanmaz."
+      },
+      {
+        "title": "Premium tabelalar için yüksek hassasiyetli vektör SVG",
+        "description": "Ahşap ya da pirinç bir plaka üzerine lazerle oyma ya da üst düzey bir akrilik stand için keskin vektör."
+      }
+    ],
+    "sizingMatrix": {
+      "title": "Konaklama WiFi QR ekranı boyutu ve alt tabaka kılavuzu",
+      "description": "WiFi QR kodlarınızı gelen misafirlerin bağlantı talimatlarını doğal olarak aradığı yere yerleştirin.",
+      "headers": [
+        "Konaklama ortamı",
+        "Tarama mesafesi",
+        "Önerilen baskı boyutu",
+        "Önerilen malzeme"
+      ],
+      "rows": [
+        [
+          "Otel odası komodinleri ve masaları",
+          "25 cm - 40 cm (10\" - 16\")",
+          "45 mm x 45 mm (1,8\" x 1,8\")",
+          "Çerçeveli mat kart / akrilik çadır"
+        ],
+        [
+          "Kafe masa standları ve bardak altlıkları",
+          "20 cm - 30 cm (8\" - 12\")",
+          "40 mm x 40 mm (1,6\" x 1,6\")",
+          "Lazerle oyulmuş ahşap / laminasyonlu kart"
+        ],
+        [
+          "Airbnb karşılama kitapçıkları ve buzdolabı mıknatısları",
+          "20 cm - 35 cm (8\" - 14\")",
+          "35 mm x 35 mm (1,4\" x 1,4\")",
+          "Ağır mat kart / mıknatıslı levha"
+        ],
+        [
+          "Otel lobisi check-in ve resepsiyon masaları",
+          "40 cm - 80 cm (16\" - 32\")",
+          "75 mm x 75 mm (3,0\" x 3,0\")",
+          "Tezgâh üstü destek kartı ekranı"
+        ],
+        [
+          "Konferans merkezi ve etkinlik salonu afişleri",
+          "1,0 m - 2,0 m (3 ft - 6,5 ft)",
+          "150 mm x 150 mm (6,0\" x 6,0\")",
+          "Yansıtmayan kumaş afiş"
+        ]
+      ]
+    },
+    "useCases": [
+      {
+        "title": "Oteller, butik hanlar ve tatil köyleri",
+        "description": "Masadaki ya da aynadaki çerçeveli bir kart, misafiri içeri girer girmez çevrimiçi yapar."
+      },
+      {
+        "title": "Airbnb, VRBO ve tatil kiralamaları",
+        "description": "Karşılama kitapçığındaki ya da buzdolabı mıknatısındaki bir kod, check-in sırasındaki \"WiFi nedir?\" sorusunu ortadan kaldırır."
+      },
+      {
+        "title": "Kahve dükkânları, kafeler ve ortak çalışma merkezleri",
+        "description": "Bir masa standındaki kod, personelin kesintilerini azaltır ve misafirlerin daha uzun kalmasını sağlar."
+      },
+      {
+        "title": "Etkinlik mekânları, konferanslar ve ziyafetler",
+        "description": "Check-in'de yüzlerce kişi aynı anda bağlanır; bu da salondaki mobil veri sıkışıklığını hafifletir."
+      },
+      {
+        "title": "Havalimanı salonları ve yönetici bekleme alanları",
+        "description": "İş seyahati yapanlar, sormadan güvenli ve yüksek hızlı misafir WiFi'sine bağlanır."
+      }
+    ],
+    "troubleshooting": {
+      "title": "Yaygın konaklama WiFi QR kodu hatalarını önlemek",
+      "points": [
+        "Büyük-küçük harf uyuşmazlığı. Ağ adları büyük-küçük harfe duyarlıdır — \"HotelGuest\" ile \"hotelguest\" farklıdır. Tam olarak eşleştirin.",
+        "Yanlış güvenlik türü. Bir WPA2 yönlendirici için WEP seçerseniz el sıkışma başarısız olur. WPA/WPA2/WPA3 seçin.",
+        "Esir portal. Ağınızda bir şartlar sayfası varsa, kod radyoyu bağlar ve ardından tarayıcının karşılama ekranı gelir. Bu normaldir.",
+        "Gizli bayrağının eksikliği. Gizli bir SSID'nin Hidden Network anahtarının açık olması gerekir; aksi halde cihazlar bağlanmaz.",
+        "Lekeli bir ekran. Dökülmeler ve çizilmiş laminasyon bulucu desenleri gizler. Dayanıklı akrilik ya da lazerle oyulmuş ahşap kullanın."
+      ]
+    },
+    "faqs": [
+      {
+        "q": "Bir WiFi QR kodu, misafirleri parola yazmadan nasıl bağlar?",
+        "a": "Standart WIFI: parametrelerini kodlar. Telefonun kamerası görüntüden SSID'yi ve parolayı okur ve kablosuz bağlantıyı kendiliğinden başlatır."
+      },
+      {
+        "q": "Otel odalarında ve kafelerde bir WiFi QR kodu göstermek güvenli mi?",
+        "a": "Evet, kod özel bir misafir ağına ait olduğu ve istemci yalıtımı açık olduğu sürece — bu da misafirleri iç yönetim sistemlerinizden uzak tutar."
+      },
+      {
+        "q": "Bir WiFi QR kodu hem iPhone hem de Android telefonlarda çalışır mı?",
+        "a": "iOS 11+ çalıştıran iPhone'lar ve Android 10+ çalıştıran Android telefonlar WIFI: biçimini kameradan tanır ve tek dokunuşla katılma seçeneği sunar."
+      },
+      {
+        "q": "Gelecekte misafir WiFi parolamı değiştirirsem ne olur?",
+        "a": "Eski kod çalışmayı durdurur, çünkü belirli parola modüllere sabitlenmiştir. Bir değişiklik, yeni bir kodun basılması anlamına gelir."
+      },
+      {
+        "q": "Otel ya da kafemin logosunu WiFi QR koduna ekleyebilir miyim?",
+        "a": "Evet. H seviyesi düzeltmeyle, ortadaki bir mekân logosu ya da WiFi simgesi güvenilirlikten hiçbir şey kaybettirmez."
+      },
+      {
+        "q": "Otel komodinindeki WiFi ekranları için en iyi malzeme nedir?",
+        "a": "Mat akrilik, lazerle oyulmuş bir ahşap blok ya da yansıtmayan camlı çerçeveli bir kart — tarandığında hem lüks görünür hem de parlamasız."
+      },
+      {
+        "q": "WiFi QR kodları sona erer mi ya da aylık ücret alır mı?",
+        "a": "Hayır. Statik bir WiFi kodu süresiz geçerlidir. İstenilen sayıda misafir tarayabilir ve hiçbir zaman fatura kesilmez."
+      },
+      {
+        "q": "Oluşturma sırasında WiFi parolam harici sunucularda saklanır mı?",
+        "a": "Yerel kalır. Kodu tarayıcınız oluşturur; bu yüzden kimlik bilgileri asla yüklenmez, kaydedilmez ya da paylaşılmaz."
+      }
+    ],
+    "bestPractices": "Misafir WiFi'sini kendi VLAN'ında yalıtın, kodu göz hizasında mat yansıtmayan bir standda gösterin ve \"Misafir WiFi'sine bağlanmak için tarayın\" gibi kısa bir satır ekleyin."
+  },
+  '/bulk-qr-code-generator': {
+    "sections": [
+      {
+        "title": "İşletme ve pazarlama için toplu QR kod üretimi",
+        "paragraphs": [
+          "Bir CSV yükleyin ya da satır başına bir URL içeren bir liste yapıştırın. Oluşturucu her kodu doğrudan tarayıcınızda üretir. Yapıştırdığınız hiçbir şey bir yere yüklenmez.",
+          "Bunları tek tek kaydedin ya da tüm seriyi tek bir ZIP olarak alın. Bir ürün partisini etiketlemek, bir etkinliğe rozet basmak ya da bir postayı doldurmak için hızlı yoldur."
+        ]
+      }
+    ]
+  },
+  '/qr-code-scanner': {
+    "sections": [
+      {
+        "title": "QR kodları anında tarayın ve çözün",
+        "paragraphs": [
+          "Kodu canlı olarak okumak için telefonunuzun ya da dizüstü bilgisayarınızın kamerasını koda tutun. Elinizde kamera yok mu? Bir ekran görüntüsü ya da fotoğraf bırakın, o da çözülür.",
+          "Her şey kendi cihazınızın tarayıcısında çalışır. Kamera görüntüsü ve yüklediğiniz görseller orada kalır."
+        ]
+      }
+    ]
+  },
+  '/social-media-qr-code': {
+    "sections": [
+      {
+        "title": "Tüm sosyal QR kodlarınız için tek bir panel",
+        "paragraphs": [
+          "Tüm kullanıcı adlarınızı ve profil bağlantılarınızı tek bir formda girin. Her biri için, işaret ettiği platformla eşleşen renklendirilmiş ayrı bir kod alırsınız.",
+          "Her biri PNG ya da SVG olarak ayrı ayrı indirilir. Bir kartvizitte, bir medya kitinde ya da yürüttüğünüz herhangi bir kampanyada kullanın."
+        ]
+      }
+    ]
+  },
+  '/blog/how-to-scan-qr-code': {
+    "sections": [
+      {
+        "title": "Kameranızın içindeki tarayıcı",
+        "paragraphs": [
+          "iOS 11 ve Android 9'dan beri normal kamera QR kodları kendi başına okur — yüklenecek bir uygulama gerekmez. Kamerayı koda doğrultun, bir saniye sabit tutun ve bir bağlantı afişi belirir. Üzerine dokunun ve oradasınız.",
+          "Hiçbir şey görünmüyorsa, kod genellikle çerçevede çok küçüktür. Ekranın yaklaşık üçte birini kaplayana kadar yaklaşın. Bazı Samsung telefonlarda kamera ayarlarının içinde QR taramayı ayrıca açmanız gerekir."
+        ]
+      },
+      {
+        "title": "Kod kendi ekranınızdaysa",
+        "paragraphs": [
+          "Bir kamera kendine doğrultulamaz; bu yüzden birinin size mesajla gönderdiği bir kodun farklı bir yöntemi gerekir. iPhone'da ekran görüntüsü alın, görüntüyü Photos'ta açın ve bağlantıyı çıkarmak için Live Text düğmesine dokunun. Android'de görüntüyü kaydedin, Google Photos'ta açın, ardından Lens'e dokunun.",
+          "Google Lens, bir Android kamerası gerçek dünyada bir kodu okumayı reddettiğinde de güvenilir yedektir — Lens'i açın, doğrultun ve kodu, etrafındaki her türlü metinle birlikte çözecektir."
+        ]
+      }
+    ]
+  },
+  '/blog/do-qr-codes-expire': {
+    "sections": [
+      {
+        "title": "Statik kodlar veriyi kendileri taşır",
+        "paragraphs": [
+          "Statik bir QR kod, bilgisini doğrudan desenin içinde saklar — bir bağlantı, bir telefon numarası, bir WiFi parolası. O desenin hiçbir şeyi çürümez. Temiz, korumalı bir baskıda yıllar sonra bile bugün taranacağı gibi taranacaktır.",
+          "Statik bir kod \"süresi dolmuş\" gibi göründüğünde, desen neredeyse hiçbir zaman suçlu değildir. İşaret ettiği sayfa silinmiştir, bağlantı değişmiştir ya da bir parola sıfırlanmıştır. Kod hâlâ aynı adrese çözülür; ama o adres artık hiçbir yere götürmez."
+        ]
+      },
+      {
+        "title": "Dinamik kodlar bir hizmete bağlıdır",
+        "paragraphs": [
+          "Dinamik bir kod, bir sağlayıcının sahip olduğu kısa bir yönlendirmeye işaret eder; bu yönlendirme her taramayı gerçek hedefinize iletir. Bu, yeniden basmadan hedefi değiştirmenize olanak tanır — ama artık kod, o hesap ve o şirketle birlikte yaşar ve ölür.",
+          "Ücretsiz deneme tuzağına dikkat edin: bazı \"ücretsiz\" dinamik oluşturucular, ödeme yapılmazsa birkaç hafta sonra yönlendirmeyi devre dışı bırakır; bu, aynı öğleden sonra binlerce basılı broşürü işe yaramaz hale getirebilir. Burada oluşturulan kodlar statiktir; yani süresi dolacak bir şey ve canlı tutulması gereken bir abonelik yoktur."
+        ]
+      }
+    ]
+  },
+  '/blog/share-wifi-password-qr-code': {
+    "sections": [
+      {
+        "title": "Tek bir kod, herhangi bir telefon",
+        "paragraphs": [
+          "Bir WiFi QR kodu üç şey taşır — ağ adı, parola ve güvenlik türü — böylece tek bir tarama, hiçbir şey yazmadan katılma seçeneği sunar. iPhone'da parola ekranda bile görünmez; bu, kalabalık bir kafede sessiz bir kazançtır.",
+          "Oluşturmak bir dakikadan kısa sürer: ağ adını ve parolayı girin, WPA2 ya da WPA3 seçin ve görüntüyü indirin. Dizüstü bilgisayarınızın işte kullandığı ağ yerine bir misafir ağına koyun, çünkü kodu gören herkes katılabilir."
+        ]
+      },
+      {
+        "title": "iPhone'dan Mac'e durumu",
+        "paragraphs": [
+          "Android'in bilmeye değer bir kısayolu var: WiFi ayarlarında Paylaş'a dokunursanız, telefon zaten bağlı olduğunuz ağın bir QR kodunu gösterir; hiçbir oluşturucuya gerek kalmaz. iPhone'lar kodu aynı şekilde tarar, ama yerleşik bir oluşturucusu yoktur.",
+          "iPhone'dan Mac'e geçişte tarama garip olur, çünkü bir Mac duvardaki bir kodu telefon gibi okumaz. Pürüzsüz yol QR'ı atlar: Mac bağlanmaya çalışırken kilidi açık bir iPhone'u yanına getirin ve parolayı göndermeyi teklif eden bir istem belirir. QR kodu, Android ve Windows misafirleri için evrensel yedek olarak tutun."
+        ]
+      }
+    ]
+  },
+  '/pdf-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Menüler ve broşürler için modern PDF QR devrimi",
+        "paragraphs": [
+          "Basılı bir katalog ya da laminasyonlu bir menü yapmak para tutar ve yazıcıdan çıktığı anda donar. Tek bir fiyatı değiştirmek ya da mevsimlik bir yemeği değiştirmek, eski yöntemde tüm seriyi yeniden basmak demekti. Bu fatura restoranlara, fuar ekiplerine, emlak ofislerine ve eğitim bölümlerine eşit biçimde yansır.",
+          "Bir PDF QR kodu, baskı ile arkasındaki dosya arasındaki bağı koparır. Bir masa kartına, bir kutuya, bir standa ya da bir mağaza vitrinine yapıştırın. Müşteri kamerasını tutar ve tüm broşürünüz, menünüz ya da kılavuzunuz saniyeler içinde açılır."
+        ]
+      },
+      {
+        "title": "Statik ve dinamik PDF QR kodları: yeniden basmadan menü güncellemek",
+        "paragraphs": [
+          "Statik bir PDF QR kodu, bağlantıyı doğrudan piksel matrisine gömer. Google Drive dosyasını taşıyın ve basılı kod ölür. Dinamik bir kod bunun yerine kısa bir yönlendirmeye — qr-generator.online/r/menu gibi bir şeye — işaret eder ve o kısa bağlantı hiç değişmez.",
+          "Yani haftalık özeller değiştiğinde, bir içecek yarım lira zamlandığında ya da yeni bir katalog baskısı çıktığında, panelinizdeki yönlendirmeyi yeni kaynağa çevirmeniz yeterlidir. Masadaki standlar çalışmaya devam eder. Hiçbir şey yeniden basılmaz."
+        ]
+      },
+      {
+        "title": "PDF QR kodlarının sektöre göre uygulamaları",
+        "paragraphs": [
+          "Restoranlar masaya, yemek ve kokteyl menüsünü, alerjen notları ve yemek fotoğraflarıyla birlikte açan bir kod koyar. Emlakçılar bir arsa tabelasına bir kod yerleştirir; böylece alıcılar kat planlarını ve site yönetimi açıklamalarını yerinde görebilir.",
+          "Üreticiler kalın kâğıt kılavuzu tamamen bırakır ve tam kullanım kılavuzuna götüren küçük bir kodu kutuya basar."
+        ]
+      }
+    ]
+  },
+  '/app-store-qr-code-generator': {
+    "sections": [
+      {
+        "title": "Akıllı App Store QR kodları ve mobil uygulama edinimi",
+        "paragraphs": [
+          "Uygulamanızı bir metro afişinde, bir gevrek kutusunda, bir televizyon reklamında ya da bir fuar afişinde hayal edin. Yüklemek için birinin telefonunun kilidini açması, doğru mağazayı açması, adınızı doğru yazması ve bir rakip listesinden sizi seçmesi gerekir. Çoğu insan bu zincirin bir yerinde vazgeçer — yaygın tahminlere göre yaklaşık üç kişiden ikisi.",
+          "Tek bir akıllı App Store QR kodu bu adımların hepsini ortadan kaldırır. Tarayın, cihazı okur: bir iPhone Apple App Store'a, bir Android telefon Google Play'e ulaşır. Kişinin hiçbir şey aramasına gerek kalmaz."
+        ]
+      },
+      {
+        "title": "Neden ikili QR kodlar birleşik akıllı QR'a karşı başarısız olur",
+        "paragraphs": [
+          "Yan yana iki kod basın — biri iOS, biri Android için — ve sorun çağırmış olursunuz. Yerleşim kalabalık görünür, insanlar hangisinin kendilerine ait olduğunda tereddüt eder ve iki kod yakın olduğunda kameralar sıklıkla yanlış barkodu yakalar.",
+          "Tek bir akıllı kod tüm bunları atlatır. Her telefon bir saniyelik tara-ve-yükle işlemi alır ve masaüstünden tarayan herkes bunun yerine tanıtım sitenize ulaşır."
+        ]
+      },
+      {
+        "title": "Gerçek zamanlı uygulama yükleme telemetrisi ve atıf",
+        "paragraphs": [
+          "App Store kodlarınızı burada dinamik kodlar olarak çalıştırın ve tüm huni açılır. iOS'a karşı Android bölünmesinin gerçekte nasıl dağıldığını, hangi bölgelerin etkinleştiğini ve taramaların gün içinde hangi saatlerde yoğunlaştığını görebilirsiniz."
+        ]
+      }
+    ]
   }
 };

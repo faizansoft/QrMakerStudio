@@ -517,26 +517,26 @@ function buildBodyHtml(route) {
 
         <!-- Contextual In-Content Link Equity Mesh -->
         <section style="margin-top:48px; padding:32px; background:#EEF6F2; border:1px solid #CBE5DA; border-radius:16px;">
-          <h3 style="font-size:20px; font-weight:800; color:#1F5A42; margin-bottom:12px;">Explore Related Free QR Code Generators &amp; Guides</h3>
+          <h3 style="font-size:20px; font-weight:800; color:#1F5A42; margin-bottom:12px;">${ui(loc, 'mesh_title')}</h3>
           <p style="color:#2B6F53; font-size:14px; line-height:1.6; margin-bottom:18px;">
-            Enhance your workflow with complementary tools from QR Generator Online. Create high-resolution vector assets with zero scan caps:
+            ${ui(loc, 'mesh_intro')}
           </p>
           <div style="display:flex; flex-wrap:wrap; gap:10px;">
-            <a href="/url-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">URL QR Generator</a>
-            <a href="/wifi-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">WiFi QR Generator</a>
-            <a href="/vcard-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">vCard Business Cards</a>
-            <a href="/qr-code-with-logo" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Logo QR Generator</a>
-            <a href="/svg-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Vector SVG Export</a>
-            <a href="/colored-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Colored QR Codes</a>
-            <a href="/blog/printing-qr-codes-guide" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Print Sizing Guide</a>
-            <a href="/pricing" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">Free Pricing Guarantee</a>
+            <a href="/url-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">${ui(loc, 'mesh_url')}</a>
+            <a href="/wifi-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">${ui(loc, 'mesh_wifi')}</a>
+            <a href="/vcard-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">${ui(loc, 'mesh_vcard')}</a>
+            <a href="/qr-code-with-logo" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">${ui(loc, 'mesh_logo')}</a>
+            <a href="/svg-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">${ui(loc, 'mesh_svg')}</a>
+            <a href="/colored-qr-code-generator" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">${ui(loc, 'mesh_colored')}</a>
+            <a href="/blog/printing-qr-codes-guide" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">${ui(loc, 'mesh_print')}</a>
+            <a href="/pricing" style="display:inline-block; padding:8px 16px; background:#ffffff; border:1px solid #A8D5C2; color:#1F5A42; font-size:13px; font-weight:600; border-radius:8px; text-decoration:none;">${ui(loc, 'mesh_pricing')}</a>
           </div>
         </section>
 
         <!-- Webmaster Embed & Citation Link Magnet -->
         <section style="margin-top:36px; padding:24px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px;">
-          <h4 style="font-size:15px; font-weight:700; color:#1E293B; margin-bottom:8px;">Cite or Link to this Free Resource</h4>
-          <p style="font-size:13px; color:#64748B; margin-bottom:12px;">Webmasters, educators, and designers can cite or link to this tool using the HTML snippet below:</p>
+          <h4 style="font-size:15px; font-weight:700; color:#1E293B; margin-bottom:8px;">${ui(loc, 'cite_title')}</h4>
+          <p style="font-size:13px; color:#64748B; margin-bottom:12px;">${ui(loc, 'cite_text')}</p>
           <textarea readonly style="width:100%; height:54px; font-family:monospace; font-size:12px; padding:8px; border:1px solid #CBD5E1; border-radius:6px; background:#ffffff; color:#334155; resize:none;" onclick="this.select()">&lt;a href="${route.canonical}" target="_blank" rel="noopener"&gt;Free ${route.badge || 'QR Code Generator'} by QR Generator Online&lt;/a&gt;</textarea>
         </section>
       </main>
@@ -1065,13 +1065,17 @@ function verifyRouteCoverage() {
       (html.match(/<header[\s\S]*?<\/header>/) || [''])[0] +
       (html.match(/<footer[\s\S]*?<\/footer>/) || [''])[0];
     const hrefs = [...nav.matchAll(/href="(\/[^"#]*)"/g)].map((m) => m[1]);
-    const localized = hrefs.filter((h) => new RegExp(`^/${loc}(/|$)`).test(h));
-
-    // Everything except the handful of untranslated targets (/login, /signup)
-    // should stay in-locale; allow a small margin rather than demanding 100%.
-    if (localized.length < hrefs.length * 0.8) {
+    // A nav link is only a problem when it sends a visitor to English while a
+    // translated page exists for it. Targets with no translated body have no
+    // locale URL at all, so the English link is the correct one.
+    const stray = hrefs.filter((h) => {
+      if (new RegExp(`^/${loc}(/|$)`).test(h)) return false;
+      const base = h === '/' ? '/' : h.replace(/\/$/, '');
+      return ROUTE_META_I18N[loc]?.[base] !== undefined;
+    });
+    if (stray.length) {
       localeLinkProblems.push(
-        `${outPath}: only ${localized.length}/${hrefs.length} nav links stay in /${loc}`
+        `${outPath}: ${stray.length} nav link(s) point to English although translated: ${stray.slice(0, 3).join(', ')}`
       );
     }
   }
