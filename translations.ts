@@ -34,6 +34,8 @@ export type TranslationKey =
   // Generator menu — one label + one description per QR type (22 tools)
   | 'tab_url_label' | 'tab_url_desc'
   | 'tab_pdf_label' | 'tab_pdf_desc'
+  | 'faq_heading' | 'faq_sub' | 'feature_select_hint' | 'feature_explore_title'
+  | 'footer_review' | 'footer_made' | 'footer_trademark'
   | 'tab_text_label' | 'tab_text_desc'
   | 'tab_vcard_label' | 'tab_vcard_desc'
   | 'tab_wifi_label' | 'tab_wifi_desc'

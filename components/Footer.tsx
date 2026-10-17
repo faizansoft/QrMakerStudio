@@ -174,7 +174,7 @@ export const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className="block text-xs text-emerald-400 hover:underline"
           >
-            Review us on Trustpilot
+            {t('footer_review')}
           </a>
         </div>
       </div>
@@ -205,7 +205,7 @@ export const Footer: React.FC = () => {
 
             </div>
 
-            <p className="text-sm text-slate-400">Made with ❤️ for creators worldwide</p>
+            <p className="text-sm text-slate-400">{t('footer_made')}</p>
           </div>
 
           {/* The site publishes pages named after third-party services
@@ -214,12 +214,7 @@ export const Footer: React.FC = () => {
               nominative use, but stating the lack of affiliation explicitly is
               what keeps that clear to both users and the brand owners. */}
           <p className="mt-4 border-t border-white/5 pt-4 text-center text-xs leading-relaxed text-slate-400">
-            QR Code is a registered trademark of Denso Wave Incorporated. All other product and
-            company names, logos and brands referenced on this site — including WhatsApp, PayPal,
-            Instagram, Facebook, YouTube, LinkedIn, X, TikTok, Telegram, Google Forms, Google Maps,
-            the App Store, Google Play, Paytm and PhonePe — are the property of their respective
-            owners. QR Generator Online is an independent tool and is not affiliated with,
-            endorsed by, or sponsored by any of them.
+            {t('footer_trademark')}
           </p>
         </div>
       </div>

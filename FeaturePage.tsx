@@ -62,7 +62,9 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
   const useCasesTitle = richContent?.useCases?.length ? sectionHeadings.useCases : featureSeo.useCasesTitle;
   const useCaseItems = richContent?.useCases?.length ? richContent.useCases : featureSeo.useCases;
 
-  const introSections = routeContent?.sections?.length
+  const introSections = localizedRichContent?.sections?.length
+    ? localizedRichContent.sections
+    : routeContent?.sections?.length
     ? routeContent.sections
     : [{ title: featureSeo.introTitle, paragraphs: featureSeo.introParagraphs }];
 
@@ -200,10 +202,10 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
               Help & Knowledge Base
             </div>
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">
-              Frequently Asked Questions about {featureSeo.title}
+              {t('faq_heading').replace('{name}', localizedMeta?.badge || featureSeo.title)}
             </h2>
             <p className="text-slate-600 max-w-xl mx-auto text-base">
-              Everything you need to know about setting up and printing {featureSeo.title}s.
+              {t('faq_sub').replace('{name}', localizedMeta?.badge || featureSeo.title)}
             </p>
           </div>
 
@@ -244,8 +246,8 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ featureId }) => {
       <section className="bg-slate-50 py-16 md:py-20 border-t border-slate-200">
         <div className="mx-auto max-w-[90rem] px-4 xl:px-28">
           <div className="mb-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">Explore All Features & Generator Tools</h2>
-            <p className="text-lg text-slate-500 max-w-2xl mx-auto">Select any feature or QR code type below to customize and generate your codes instantly.</p>
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">{t('feature_explore_title')}</h2>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto">{t('feature_select_hint')}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
