@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useContentLocale } from './context/ContentLocaleContext';
 import LocalizedRichPage from './components/LocalizedRichPage';
+import { getLocalizedRouteMeta } from './constants/routeMetaI18n';
 import Link from './components/LocaleLink';
 import { BLOG_POSTS, BlogPost } from './constants/blogData';
 import { useLanguage } from './context/LanguageContext';
@@ -69,7 +70,27 @@ const BlogPage: React.FC = () => {
     : filteredPosts;
 
   const contentLocale = useContentLocale();
-  if (contentLocale) return <LocalizedRichPage path={"/blog"} />;
+  if (contentLocale) {
+    return (
+      <LocalizedRichPage path="/blog">
+        <section className="mx-auto grid max-w-5xl gap-6 px-6 py-12 md:grid-cols-2">
+          {BLOG_POSTS.map((post) => {
+            const meta = getLocalizedRouteMeta(contentLocale, `/blog/${post.slug}`);
+            return (
+              <Link
+                key={post.slug}
+                to={`/blog/${post.slug}`}
+                className="block rounded-2xl border border-slate-200 bg-white p-6 transition-shadow hover:shadow-md"
+              >
+                <h2 className="mb-2 text-xl font-bold text-slate-900">{meta?.h1 || post.title}</h2>
+                <p className="text-sm leading-relaxed text-slate-500">{meta?.description || post.description}</p>
+              </Link>
+            );
+          })}
+        </section>
+      </LocalizedRichPage>
+    );
+  }
 
   return (
     <div className="animate-in bg-white pb-20">

@@ -11,7 +11,7 @@ import RichSeoSections from './RichSeoSections';
  * same data scripts/prerender.js writes into the static HTML, so the rendered
  * DOM matches what crawlers receive.
  */
-const LocalizedRichPage: React.FC<{ path: string }> = ({ path }) => {
+const LocalizedRichPage: React.FC<{ path: string; children?: React.ReactNode }> = ({ path, children }) => {
   const contentLocale = useContentLocale();
   const rich = useLocalizedRichContent(contentLocale, path);
   const meta = contentLocale ? getLocalizedRouteMeta(contentLocale, path) : null;
@@ -29,6 +29,7 @@ const LocalizedRichPage: React.FC<{ path: string }> = ({ path }) => {
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">{meta.lead}</p>
         </div>
       </section>
+      {children}
       <RichSeoSections rich={rich} pathname={path} sections={rich.sections} includeSharedSections />
     </div>
   );
