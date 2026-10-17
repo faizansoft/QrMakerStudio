@@ -88,16 +88,16 @@
     "lastmod": "2026-08-27"
   },
   "/bulk-qr-code-generator": {
-    "hash": "fce33b433ac06dfb",
-    "lastmod": "2026-08-27"
+    "hash": "d1a849e1c0d82e79",
+    "lastmod": "2026-10-17"
   },
   "/qr-code-scanner": {
-    "hash": "1fe6d532f5211f22",
-    "lastmod": "2026-08-27"
+    "hash": "10c5ab36c9a432f3",
+    "lastmod": "2026-10-17"
   },
   "/social-media-qr-code": {
-    "hash": "a8b4d47a4a9e1ac9",
-    "lastmod": "2026-08-27"
+    "hash": "b8bcded243e1b7b0",
+    "lastmod": "2026-10-17"
   },
   "/qr-code-with-logo": {
     "hash": "00168d5e90667ff0",
@@ -180,12 +180,12 @@
     "lastmod": "2026-08-27"
   },
   "/pdf-qr-code-generator": {
-    "hash": "0518b09d2bb4f3ea",
-    "lastmod": "2026-08-27"
+    "hash": "2d44ea5658e6cf7d",
+    "lastmod": "2026-10-17"
   },
   "/app-store-qr-code-generator": {
-    "hash": "256b5ec4577f30e3",
-    "lastmod": "2026-08-27"
+    "hash": "de38e2126365888d",
+    "lastmod": "2026-10-17"
   },
   "ar:/": {
     "hash": "28295d6329c1f8b3",
@@ -627,6 +627,66 @@
     "hash": "ee6402a6f595490a",
     "lastmod": "2026-08-23"
   },
+  "ar:/bulk-qr-code-generator": {
+    "hash": "ab54cc6ea7b79b10",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/bulk-qr-code-generator": {
+    "hash": "8faa6b970e482f26",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/bulk-qr-code-generator": {
+    "hash": "ef378e652d25a30a",
+    "lastmod": "2026-10-17"
+  },
+  "es:/bulk-qr-code-generator": {
+    "hash": "72d6c430f68b1987",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/bulk-qr-code-generator": {
+    "hash": "f852a576a5f2dfd7",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/qr-code-scanner": {
+    "hash": "2f41a5b2479fe7c6",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/qr-code-scanner": {
+    "hash": "4afc41b9092f5834",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/qr-code-scanner": {
+    "hash": "4e73720852bafc6f",
+    "lastmod": "2026-10-17"
+  },
+  "es:/qr-code-scanner": {
+    "hash": "58670b507715a74c",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/qr-code-scanner": {
+    "hash": "b17a7e51180bb5e1",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/social-media-qr-code": {
+    "hash": "391c82c96eebd168",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/social-media-qr-code": {
+    "hash": "b2fb3d2f998f0aa3",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/social-media-qr-code": {
+    "hash": "8920c4d15f318555",
+    "lastmod": "2026-10-17"
+  },
+  "es:/social-media-qr-code": {
+    "hash": "1a08a4cbd505e6c0",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/social-media-qr-code": {
+    "hash": "6826fb34743ed4f2",
+    "lastmod": "2026-10-17"
+  },
   "ar:/qr-code-with-logo": {
     "hash": "ba88066020171b6f",
     "lastmod": "2026-10-17"
@@ -1025,6 +1085,26 @@
   },
   "vi:/blog/share-wifi-password-qr-code": {
     "hash": "3fc256a714560f31",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/app-store-qr-code-generator": {
+    "hash": "fe71dff7f915ea69",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/app-store-qr-code-generator": {
+    "hash": "149ce8817b6435af",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/app-store-qr-code-generator": {
+    "hash": "a01b690e74ebcce9",
+    "lastmod": "2026-10-17"
+  },
+  "es:/app-store-qr-code-generator": {
+    "hash": "7568bed3f88a5034",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/app-store-qr-code-generator": {
+    "hash": "103e48a62437e9f2",
     "lastmod": "2026-10-17"
   }
 }

@@ -30,10 +30,11 @@ const rootDir = path.resolve(__dirname, '..');
 // would show a translated title over English copy. Their translations stay in
 // scripts/richContentI18n/<locale>.js and go live when the component reads
 // localized content. Until then these locale URLs 301 to English.
-const NOT_CLIENT_LOCALIZED = new Set([
-  '/bulk-qr-code-generator', '/qr-code-scanner', '/social-media-qr-code',
-  '/pdf-qr-code-generator', '/app-store-qr-code-generator'
-]);
+// Bulk, scanner, social and App Store read their full copy from
+// constants/toolI18n/<tool>/<locale>.ts. /pdf-qr-code-generator is still gated:
+// App.tsx routes it to <Home initialTab="pdf" />, so PDFToQRPage.tsx is never
+// mounted and the locale page would show the generic English tool copy.
+const NOT_CLIENT_LOCALIZED = new Set(['/pdf-qr-code-generator']);
 
 // Coverage is derived from the raw, unfiltered hero translations, so this
 // script must read ROUTE_META_I18N before the filter in routeMetaI18nData.js.

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import { useContentLocale } from '../context/ContentLocaleContext';
+import { getLocalizedRouteMeta } from '../constants/routeMetaI18n';
 
 /**
  * Drop-in replacement for react-router-dom's Link. AppRoutes (see App.tsx)
@@ -17,7 +18,11 @@ import { useContentLocale } from '../context/ContentLocaleContext';
 const LocaleLink = React.forwardRef<HTMLAnchorElement, LinkProps>(({ to, ...rest }, ref) => {
   const locale = useContentLocale();
   let href = to;
-  if (locale && typeof to === 'string' && to.startsWith('/') && !to.startsWith(`/${locale}/`) && to !== `/${locale}`) {
+  const path = typeof to === 'string' ? to.split(/[?#]/)[0] : '';
+  // Only prefix when the localized page actually exists; otherwise the link
+  // would 308 through the locale redirect (pages not yet translated).
+  const localized = path === '/' || !!(locale && getLocalizedRouteMeta(locale, path));
+  if (locale && localized && typeof to === 'string' && to.startsWith('/') && !to.startsWith(`/${locale}/`) && to !== `/${locale}`) {
     href = to === '/' ? `/${locale}` : `/${locale}${to}`;
   }
   return <Link ref={ref} to={href} {...rest} />;

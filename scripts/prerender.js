@@ -449,7 +449,7 @@ function buildBodyHtml(route) {
       <p style="text-align:center; color:#64748B; font-size:14px; max-width:720px; margin:0 auto 20px;">${ui(loc, 'home_qr_types_subtitle').replace('{count}', String(TOOL_GRID.length))}</p>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px;">
         ${TOOL_GRID.map(tool => `
-          <a href="${localePrefix}${tool.path}" style="display:block; background:#fff; border:1px solid #E2E8F0; border-radius:12px; padding:16px; text-decoration:none;">
+          <a href="${localeHref(loc, tool.path)}" style="display:block; background:#fff; border:1px solid #E2E8F0; border-radius:12px; padding:16px; text-decoration:none;">
             <h3 style="font-size:14px; font-weight:700; color:#0F172A; margin:0 0 4px;">${ui(loc, `tab_${tool.id}_label`)}</h3>
             <p style="font-size:12px; color:#64748B; line-height:1.5; margin:0;">${ui(loc, `tab_${tool.id}_desc`)}</p>
           </a>
