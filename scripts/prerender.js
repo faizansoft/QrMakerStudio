@@ -565,9 +565,32 @@ const CONTENT_PAGE_PATHS = new Set([
   '/blog/wifi-qr-codes-for-hospitality'
 ]);
 
+// Blog post metadata (author, publish date) parsed from the TS dataset so
+// prerendered posts can emit a real BlogPosting instead of a bare WebPage.
+const BLOG_META = (() => {
+  const meta = {};
+  try {
+    const src = fs.readFileSync(path.resolve(__dirname, '../constants/blogData.ts'), 'utf8');
+    const re = /slug:\s*'([^']+)'[\s\S]*?publishDate:\s*'([^']+)'[\s\S]*?author:\s*\{\s*name:\s*'([^']+)'/g;
+    let m;
+    while ((m = re.exec(src))) {
+      const d = new Date(`${m[2]} 12:00:00 UTC`);
+      meta[`/blog/${m[1]}`] = {
+        datePublished: isNaN(d) ? undefined : d.toISOString().slice(0, 10),
+        author: m[3]
+      };
+    }
+  } catch (e) {
+    console.warn('Could not read blog metadata for BlogPosting schema:', e.message);
+  }
+  return meta;
+})();
+
 function buildJsonLd(route, rich) {
   const schemas = [];
-  const isContentPage = CONTENT_PAGE_PATHS.has(route.path);
+  const isBlogPost = route.path.startsWith('/blog/');
+  const isContentPage = CONTENT_PAGE_PATHS.has(route.path) || isBlogPost;
+  const blogMeta = BLOG_META[route.path];
 
   // 0. Site-identity schemas. These were previously injected client-side only
   // (SEOManager in App.tsx), so any consumer that does not execute JS — most
@@ -613,7 +636,27 @@ function buildJsonLd(route, rich) {
   // on WebApplication — carrying them over to WebPage is exactly the kind of
   // "property not recognised by this type" issue Semrush also flags.
   schemas.push(
-    isContentPage
+    isBlogPost
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": route.h1 || route.title,
+          "name": route.title,
+          "url": route.canonical,
+          "mainEntityOfPage": route.canonical,
+          "description": route.description,
+          "inLanguage": route.locale || "en",
+          "image": "https://qr-generator.online/og-image.png",
+          ...(blogMeta?.datePublished
+            ? { "datePublished": blogMeta.datePublished, "dateModified": blogMeta.datePublished }
+            : {}),
+          "author": blogMeta?.author
+            ? { "@type": "Person", "name": blogMeta.author }
+            : { "@id": "https://qr-generator.online/#organization" },
+          "isPartOf": { "@id": "https://qr-generator.online/#website" },
+          "publisher": { "@id": "https://qr-generator.online/#organization" }
+        }
+      : isContentPage
       ? {
           "@context": "https://schema.org",
           "@type": "WebPage",
@@ -681,8 +724,10 @@ function buildJsonLd(route, rich) {
     "itemListElement": breadcrumbItems
   });
 
-  // 3. HowTo Schema (if steps exist)
-  if (rich && rich.steps && rich.steps.length > 0) {
+  // 3. HowTo Schema (if steps exist). Only for tool/feature pages: on
+  // editorial and company pages the steps describe the generator, not the
+  // page, so the markup would not match the page's purpose.
+  if (!isContentPage && rich && rich.steps && rich.steps.length > 0) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "HowTo",

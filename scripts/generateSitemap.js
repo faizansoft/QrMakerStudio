@@ -58,6 +58,27 @@ const hashRoute = (route) => {
   return crypto.createHash('sha1').update(payload).digest('hex').slice(0, 16);
 };
 
+const enUrl = (p) => (p === '/' ? `${ORIGIN}/` : `${ORIGIN}${p}`);
+const localeUrl = (locale, p) => `${ORIGIN}${p === '/' ? `/${locale}` : `/${locale}${p}`}`;
+
+// Full cross-referenced alternate set for a route: English, every locale that
+// has translated content for it, and x-default -> English. Every URL in the
+// set must list the same alternates, self included.
+const alternatesFor = (routePath) => {
+  const links = [{ lang: 'en', href: enUrl(routePath) }];
+  for (const locale of ROUTED_LOCALES) {
+    if (ROUTE_META_I18N[locale]?.[routePath]) {
+      links.push({ lang: locale, href: localeUrl(locale, routePath) });
+    }
+  }
+  if (links.length === 1) return '';
+  links.push({ lang: 'x-default', href: enUrl(routePath) });
+  return links
+    .map((l) => `
+    <xhtml:link rel="alternate" hreflang="${l.lang}" href="${escapeXml(l.href)}"/>`)
+    .join('');
+};
+
 const escapeXml = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -84,7 +105,7 @@ function generateSitemap() {
     if (!prior || prior.hash !== hash) changed++;
     state[route.path] = { hash, lastmod };
     const loc = route.path === '/' ? `${ORIGIN}/` : `${ORIGIN}${route.path}`;
-    return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
+    return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>${alternatesFor(route.path)}\n  </url>`;
   });
 
   // Phase-1 localized pages: only (locale, path) pairs that actually have
@@ -103,14 +124,14 @@ function generateSitemap() {
       if (!prior || prior.hash !== hash) changed++;
       state[stateKey] = { hash, lastmod };
       const localePath = route.path === '/' ? `/${locale}` : `/${locale}${route.path}`;
-      entries.push(`  <url>\n    <loc>${escapeXml(ORIGIN + localePath)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`);
+      entries.push(`  <url>\n    <loc>${escapeXml(ORIGIN + localePath)}</loc>\n    <lastmod>${lastmod}</lastmod>${alternatesFor(route.path)}\n  </url>`);
       localeCount++;
     }
   }
 
   const xml =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
     entries.join('\n') +
     '\n</urlset>\n';
 
