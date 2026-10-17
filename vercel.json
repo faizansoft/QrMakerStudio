@@ -11,31 +11,6 @@
       ],
       "destination": "https://qr-generator.online/$1",
       "permanent": true
-    },
-    {
-      "source": "/ar/pdf-qr-code-generator",
-      "destination": "/pdf-qr-code-generator",
-      "permanent": true
-    },
-    {
-      "source": "/hi/pdf-qr-code-generator",
-      "destination": "/pdf-qr-code-generator",
-      "permanent": true
-    },
-    {
-      "source": "/tr/pdf-qr-code-generator",
-      "destination": "/pdf-qr-code-generator",
-      "permanent": true
-    },
-    {
-      "source": "/es/pdf-qr-code-generator",
-      "destination": "/pdf-qr-code-generator",
-      "permanent": true
-    },
-    {
-      "source": "/vi/pdf-qr-code-generator",
-      "destination": "/pdf-qr-code-generator",
-      "permanent": true
     }
   ],
   "rewrites": [

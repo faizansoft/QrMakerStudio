@@ -235,7 +235,7 @@ const AppRoutes: React.FC = () => (
     <Route path="telegram-qr-code-generator" element={<ToolRouteHandler toolId="telegram" />} />
     <Route path="paypal-qr-code-generator" element={<ToolRouteHandler toolId="paypal" />} />
     <Route path="upi-qr-code-generator" element={<ToolRouteHandler toolId="upi" />} />
-    <Route path="pdf-qr-code-generator" element={<ToolRouteHandler toolId="pdf" />} />
+    <Route path="pdf-qr-code-generator" element={<PDFToQRPage />} />
 
     {/* Utility Pages */}
     <Route path="app-store-qr-code-generator" element={<AppStoreQRPage />} />
