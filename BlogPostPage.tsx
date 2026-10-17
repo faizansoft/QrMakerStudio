@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
+import LocalizedRichPage from './components/LocalizedRichPage';
 import { useParams, Navigate } from 'react-router-dom';
 import Link from './components/LocaleLink';
 import { BLOG_POSTS } from './constants/blogData';
@@ -73,6 +74,8 @@ const BlogPostPage: React.FC = () => {
   }
 
   const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
+
+  if (contentLocale) return <LocalizedRichPage path={`/blog/${slug}`} />;
 
   return (
     <article className="animate-in pb-24 bg-white">

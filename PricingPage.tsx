@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import LocalizedRichPage from './components/LocalizedRichPage';
 import Link from './components/LocaleLink';
 import { useLanguage } from './context/LanguageContext';
 import { useContentLocale } from './context/ContentLocaleContext';
@@ -109,6 +110,8 @@ const PricingPage: React.FC = () => {
       removeJSONLD('jsonld-faq');
     };
   }, [t]);
+
+  if (contentLocale) return <LocalizedRichPage path={"/pricing"} />;
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">

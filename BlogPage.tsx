@@ -1,4 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { useContentLocale } from './context/ContentLocaleContext';
+import LocalizedRichPage from './components/LocalizedRichPage';
 import Link from './components/LocaleLink';
 import { BLOG_POSTS, BlogPost } from './constants/blogData';
 import { useLanguage } from './context/LanguageContext';
@@ -65,6 +67,9 @@ const BlogPage: React.FC = () => {
   const gridPosts = featuredPost
     ? filteredPosts.filter((p) => p.slug !== featuredPost.slug)
     : filteredPosts;
+
+  const contentLocale = useContentLocale();
+  if (contentLocale) return <LocalizedRichPage path={"/blog"} />;
 
   return (
     <div className="animate-in bg-white pb-20">

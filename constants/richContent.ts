@@ -63,6 +63,7 @@ export interface RichFAQ {
 }
 
 export interface RichContent {
+  sections?: ContentSection[];
   technicalOverview?: ContentSection & { title: string };
   comparisonTable?: RichTable;
   steps?: RichStep[];

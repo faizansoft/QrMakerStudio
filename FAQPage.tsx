@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import LocalizedRichPage from './components/LocalizedRichPage';
 import Link from './components/LocaleLink';
 import { FAQ_ITEMS } from './constants';
 import { useLanguage } from './context/LanguageContext';
@@ -39,6 +40,8 @@ const FAQPage: React.FC = () => {
       item.category.toLowerCase().includes(search.toLowerCase())
     );
   }, [search]);
+
+  if (contentLocale) return <LocalizedRichPage path={"/faqs-qr-code-generator"} />;
 
   return (
     <div className="animate-in pb-24 bg-white">

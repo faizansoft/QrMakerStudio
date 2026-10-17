@@ -726,5 +726,305 @@
   "vi:/high-resolution-qr-codes": {
     "hash": "23be4764f71c624a",
     "lastmod": "2026-10-17"
+  },
+  "ar:/pricing": {
+    "hash": "e4f887d7575c88d8",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/pricing": {
+    "hash": "15dcf6fb6843f89d",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/pricing": {
+    "hash": "b879209b41cb18a8",
+    "lastmod": "2026-10-17"
+  },
+  "es:/pricing": {
+    "hash": "34e2ae76f9c6e20e",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/pricing": {
+    "hash": "5b1e5163d3c15aea",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/faqs-qr-code-generator": {
+    "hash": "b8e4d1939b83d2f4",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/faqs-qr-code-generator": {
+    "hash": "ab7bbad72b6d0dfd",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/faqs-qr-code-generator": {
+    "hash": "b044be8414a8ad50",
+    "lastmod": "2026-10-17"
+  },
+  "es:/faqs-qr-code-generator": {
+    "hash": "126a6069eab76e8a",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/faqs-qr-code-generator": {
+    "hash": "14c53dfbb76c44ab",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/about": {
+    "hash": "06e81943e331a480",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/about": {
+    "hash": "570b45d281fd976c",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/about": {
+    "hash": "fedea43cf93f119a",
+    "lastmod": "2026-10-17"
+  },
+  "es:/about": {
+    "hash": "a86fd9f8dcef2489",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/about": {
+    "hash": "3b852a80c2aa5195",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/contact": {
+    "hash": "54ad7b0a5920a94e",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/contact": {
+    "hash": "d704de07cf5d3b39",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/contact": {
+    "hash": "701a6f926b273aec",
+    "lastmod": "2026-10-17"
+  },
+  "es:/contact": {
+    "hash": "302f6a3b8d24b937",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/contact": {
+    "hash": "0df7d136b243d8e5",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/privacy": {
+    "hash": "64ecab5151849902",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/privacy": {
+    "hash": "930e63edc1221c8e",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/privacy": {
+    "hash": "17eeb281a02e17b8",
+    "lastmod": "2026-10-17"
+  },
+  "es:/privacy": {
+    "hash": "a0a6784b84f60338",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/privacy": {
+    "hash": "2562d8b508c48da2",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/terms": {
+    "hash": "66329a72ff33e366",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/terms": {
+    "hash": "7dd6816f32f29bc7",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/terms": {
+    "hash": "f5909e2b373dda1f",
+    "lastmod": "2026-10-17"
+  },
+  "es:/terms": {
+    "hash": "e5b22b3635f5da17",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/terms": {
+    "hash": "d9c78f31d90647a7",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/blog": {
+    "hash": "9b4d3af31a8b7b1f",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/blog": {
+    "hash": "6157f64226e53ef2",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/blog": {
+    "hash": "cd80f0fd314c22ca",
+    "lastmod": "2026-10-17"
+  },
+  "es:/blog": {
+    "hash": "7e826f96431f0ab4",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/blog": {
+    "hash": "24d461ec0f17cb1d",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/blog/qr-codes-for-restaurants": {
+    "hash": "35455aec2cc710e5",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/blog/qr-codes-for-restaurants": {
+    "hash": "ef4c712d6ec66c85",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/blog/qr-codes-for-restaurants": {
+    "hash": "3d51c10fe7750721",
+    "lastmod": "2026-10-17"
+  },
+  "es:/blog/qr-codes-for-restaurants": {
+    "hash": "94df2a6cee856027",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/blog/qr-codes-for-restaurants": {
+    "hash": "8c81ed30733f8a43",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/blog/printing-qr-codes-guide": {
+    "hash": "b1383db6ff525290",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/blog/printing-qr-codes-guide": {
+    "hash": "442ba1fe4a985103",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/blog/printing-qr-codes-guide": {
+    "hash": "58abdf63fb829d17",
+    "lastmod": "2026-10-17"
+  },
+  "es:/blog/printing-qr-codes-guide": {
+    "hash": "91a0011c0b391a6b",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/blog/printing-qr-codes-guide": {
+    "hash": "64e2bc449cd4e121",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/blog/vcard-qr-code-business-cards": {
+    "hash": "00abd08d84ac66d5",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/blog/vcard-qr-code-business-cards": {
+    "hash": "56d44e784e4c1c25",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/blog/vcard-qr-code-business-cards": {
+    "hash": "9b49dbed06f84f80",
+    "lastmod": "2026-10-17"
+  },
+  "es:/blog/vcard-qr-code-business-cards": {
+    "hash": "41ce8ad572dc59c3",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/blog/vcard-qr-code-business-cards": {
+    "hash": "0f0e7d6e49435dd3",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/blog/qr-codes-for-real-estate": {
+    "hash": "f66c4c4b8ec47754",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/blog/qr-codes-for-real-estate": {
+    "hash": "543a48492d4eba21",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/blog/qr-codes-for-real-estate": {
+    "hash": "25b66d419affd75e",
+    "lastmod": "2026-10-17"
+  },
+  "es:/blog/qr-codes-for-real-estate": {
+    "hash": "ad833abf9708d3f8",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/blog/qr-codes-for-real-estate": {
+    "hash": "b7dce10d220fac32",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/blog/wifi-qr-codes-for-hospitality": {
+    "hash": "41d634714cd70062",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/blog/wifi-qr-codes-for-hospitality": {
+    "hash": "3ad1f2f689acafac",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/blog/wifi-qr-codes-for-hospitality": {
+    "hash": "c48b39597b8c6415",
+    "lastmod": "2026-10-17"
+  },
+  "es:/blog/wifi-qr-codes-for-hospitality": {
+    "hash": "2a44da823f2b8dd0",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/blog/wifi-qr-codes-for-hospitality": {
+    "hash": "27ff5ae2511ca91e",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/blog/how-to-scan-qr-code": {
+    "hash": "6000656174f0dd00",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/blog/how-to-scan-qr-code": {
+    "hash": "039006e40b3083d2",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/blog/how-to-scan-qr-code": {
+    "hash": "21468da5f0b0cc85",
+    "lastmod": "2026-10-17"
+  },
+  "es:/blog/how-to-scan-qr-code": {
+    "hash": "7eb4bca8de97b542",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/blog/how-to-scan-qr-code": {
+    "hash": "fbc9cea4af4547da",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/blog/do-qr-codes-expire": {
+    "hash": "8d1c5d05fc23804c",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/blog/do-qr-codes-expire": {
+    "hash": "b614f1eccdeee706",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/blog/do-qr-codes-expire": {
+    "hash": "e1b0faa9dd60236a",
+    "lastmod": "2026-10-17"
+  },
+  "es:/blog/do-qr-codes-expire": {
+    "hash": "5a84063ca78d3bfa",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/blog/do-qr-codes-expire": {
+    "hash": "8e27aca062602f6a",
+    "lastmod": "2026-10-17"
+  },
+  "ar:/blog/share-wifi-password-qr-code": {
+    "hash": "c8efea3722f3d8a6",
+    "lastmod": "2026-10-17"
+  },
+  "hi:/blog/share-wifi-password-qr-code": {
+    "hash": "69ce0ec895e358b6",
+    "lastmod": "2026-10-17"
+  },
+  "tr:/blog/share-wifi-password-qr-code": {
+    "hash": "93c767dfd0fa51a0",
+    "lastmod": "2026-10-17"
+  },
+  "es:/blog/share-wifi-password-qr-code": {
+    "hash": "c6786fc8258eafdc",
+    "lastmod": "2026-10-17"
+  },
+  "vi:/blog/share-wifi-password-qr-code": {
+    "hash": "3fc256a714560f31",
+    "lastmod": "2026-10-17"
   }
 }

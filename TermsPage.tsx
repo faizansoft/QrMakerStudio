@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import LocalizedRichPage from './components/LocalizedRichPage';
 import Link from './components/LocaleLink';
 import { useLanguage } from './context/LanguageContext';
 import { useContentLocale } from './context/ContentLocaleContext';
@@ -25,6 +26,8 @@ const TermsPage: React.FC = () => {
       removeJSONLD('jsonld-breadcrumbs');
     };
   }, [t]);
+
+  if (contentLocale) return <LocalizedRichPage path={"/terms"} />;
 
   return (
     <div className="animate-in pb-24 bg-white">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import LocalizedRichPage from './components/LocalizedRichPage';
 import { Link } from 'react-router-dom';
 import { useLanguage } from './context/LanguageContext';
 import { useContentLocale } from './context/ContentLocaleContext';
@@ -64,6 +65,8 @@ const ContactPage: React.FC = () => {
     window.location.href = href;
     setSubmitted(true);
   };
+
+  if (contentLocale) return <LocalizedRichPage path={"/contact"} />;
 
   return (
     <div className="animate-in pb-24 bg-white">

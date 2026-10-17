@@ -31,12 +31,6 @@ const rootDir = path.resolve(__dirname, '..');
 // scripts/richContentI18n/<locale>.js and go live when the component reads
 // localized content. Until then these locale URLs 301 to English.
 const NOT_CLIENT_LOCALIZED = new Set([
-  '/about', '/contact', '/privacy', '/terms', '/pricing', '/faqs-qr-code-generator',
-  '/blog',
-  '/blog/qr-codes-for-restaurants', '/blog/printing-qr-codes-guide',
-  '/blog/vcard-qr-code-business-cards', '/blog/qr-codes-for-real-estate',
-  '/blog/wifi-qr-codes-for-hospitality', '/blog/how-to-scan-qr-code',
-  '/blog/do-qr-codes-expire', '/blog/share-wifi-password-qr-code',
   '/bulk-qr-code-generator', '/qr-code-scanner', '/social-media-qr-code',
   '/pdf-qr-code-generator', '/app-store-qr-code-generator'
 ]);
