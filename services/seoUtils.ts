@@ -195,11 +195,13 @@ export const getFAQSchema = (faqs: FAQItemSchema[]) => ({
 });
 
 /**
- * SoftwareApplication Schema for specific QR Code Generator Tools
+ * WebApplication schema for specific QR Code Generator Tools
  *
- * Deliberately carries no aggregateRating: the site collects no reviews, and
- * review markup without corresponding on-page reviews violates Google's
- * structured data policy and risks a manual action.
+ * WebApplication, not SoftwareApplication: Google requires aggregateRating or
+ * review on SoftwareApplication (flagged on every tool page in the crawl), and
+ * the site collects no reviews. Adding review markup without on-page reviews
+ * would violate Google's structured data policy, so the type is changed
+ * instead. This matches the type scripts/prerender.js already emits.
  */
 export const getToolSoftwareSchema = (
   toolName: string,
@@ -207,7 +209,7 @@ export const getToolSoftwareSchema = (
   description: string
 ) => ({
   '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
+  '@type': 'WebApplication',
   name: `${toolName} - QR Generator Online`,
   url: `https://qr-generator.online${toolPath}`,
   description: description,
